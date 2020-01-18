@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">desarrollo</string>
-    <string name="hola">Hello migue funciona!</string>
-    <string name="che">que viva RIiver</string>
+    <string name="avisoRegistroHijos">Antes de comenzar debemos registrar algunos datos empezando con los de sus hijo(s)</string>
+    <string name="preguntaRegistroHijos">¿Cuántos hijos registrara?</string>
+
+    <string name="unoRegistroHijo"></string>
+    <string name="dosRegistroHijo"></string>
+    <string name="tresRegistroHijo"></string>
+
 </resources>
