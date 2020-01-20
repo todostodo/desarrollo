@@ -1,70 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
 
+    <!--START [PANTALLA elejir la cantidad de hijos a registrar]-->
     <LinearLayout
-        android:layout_width="415dp"
-        android:layout_height="737dp"
+        android:id="@+id/registra"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        android:background="@color/blanco"
-        android:orientation="vertical"
+        <RelativeLayout
+            android:id="@+id/siguiente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="21dp">
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="272dp"
-            android:layout_height="54dp"
-            android:layout_marginTop="40dp"
-            android:text="@string/avisoRegistroHijos"
-            android:textAlignment="center"
-            android:textSize="15dp" />
+                <ImageView
+                    android:id="@+id/elipceVerde"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ellipseverde"></ImageView>
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="160.18dp"
-            android:layout_height="192.93dp"
-            android:layout_marginTop="14.1dp"
-            android:background="@drawable/barco"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/elipceVerde"
+                    android:src="@drawable/ellipsegris"></ImageView>
+            </RelativeLayout>
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="268dp"
-            android:layout_height="18dp"
-            android:layout_marginTop="60dp"
-            android:text="@string/preguntaRegistroHijos"
-            android:textAlignment="center"
-            android:textSize="15dp"
-            android:textStyle="bold"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            <TextView
+                android:layout_width="300sp"
+                android:layout_height="60sp"
+                android:layout_centerInParent="true"
+                android:text="@string/avisoRegistroHijos"
+                android:textAlignment="center"
+                android:textColor="@color/gris"
+                android:textSize="15sp"></TextView>
 
-        <Button
-            android:layout_width="83dp"
-            android:layout_height="83dp"
-            android:layout_marginTop="30dp"
+        </RelativeLayout>
 
+        <RelativeLayout
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.17"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="50dp"
+                android:src="@drawable/barco"></ImageView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_centerInParent="true"
+                android:text="@string/preguntaRegistroHijos"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textStyle="bold"></TextView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <Button
+                    android:id="@+id/btmUno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/uno"></Button>
+
+                <Button
+                    android:id="@+id/btmDos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/btmUno"
+                    android:background="@drawable/dos"></Button>
+
+                <Button
+                    android:id="@+id/btmTres"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/btmDos"
+                    android:background="@drawable/tres"></Button>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:id="@+id/txtMas"
+                    android:layout_width="35sp"
+                    android:layout_height="20sp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/txtMas"
+                    android:textSize="15sp"></TextView>
+
+                <EditText
+                    android:id="@+id/btmMas"
+                    android:layout_width="50dp"
+                    android:layout_height="45dp"
+                    android:layout_toRightOf="@+id/txtMas"
+                    android:focusedByDefault="true"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textSize="15sp"></EditText>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/aceptar"></Button>
+        </RelativeLayout>
     </LinearLayout>
+    <!--END-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <!--START [Iniciar Registro de la cantidad de hijos]-->
+
+    <!--END-->
+    <!--START [Iniciar Registro de la cantidad de hijos]-->
+
+    <!--END-->
+    <!--START [Iniciar Registro de la cantidad de hijos]-->
+
+    <!--END-->
+</LinearLayout>
