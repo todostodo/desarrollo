@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CLIENTE.registroHijo"
+
+    android:orientation="vertical">
+
+    <!--START [Cantidad de hijos a registrar]-->
+    <LinearLayout
+        android:id="@+id/registroCantidad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10"
+        android:background="@color/blanco"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ellipseverde"
+                android:contentDescription="@string/txtRegistro"
+                android:layout_gravity="center"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/txtRegistro"
+                android:src="@drawable/ellipsegris"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <TextView
+                android:textAlignment="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="@string/avisoRegistroHijos"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/barco"
+                android:adjustViewBounds="true"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/preguntaRegistroHijos"
+                android:textSize="15sp"
+                android:textStyle="bold"></TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1.8"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageButton
+                android:id="@+id/btmUno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/uno"
+                android:background="#FFF"
+                android:contentDescription="@string/btmNumero"
+                android:padding="5dp"
+                ></ImageButton>
+            <ImageButton
+                android:id="@+id/btmDos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/dos"
+                android:background="#FFF"
+                android:contentDescription="@string/btmNumero"
+                android:padding="5dp"></ImageButton>
+            <ImageButton
+                android:id="@+id/btmTres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/tres"
+                android:background="#FFF"
+                android:contentDescription="@string/btmNumero"
+                android:padding="5dp"></ImageButton>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:layout_gravity="center"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <EditText
+                android:id="@+id/txtMas"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:hint="@string/txtMas"
+                android:textColorHint="#ACA7A7"
+                android:inputType="number"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:selectAllOnFocus="true"
+                android:maxLength="2"
+                android:textAlignment="center"
+                android:background="@drawable/custom_textarea"></EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/btmAceptar_cantidad"
+                android:layout_width="250dp"
+                android:layout_height="45dp"
+                android:textColor="#FFF"
+                android:text="@string/btmAceptar"
+                android:layout_gravity="center"
+                android:textSize="23sp"
+                android:background="@drawable/custom_button_aceptar"
+                android:textAllCaps="false"></Button>
+        </LinearLayout>
+
+    </LinearLayout>
+    <!--END-->
+
+    <!--START [Iniciar Registro de los hijos]-->
+    <LinearLayout
+        android:id="@+id/registro"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FFF"
+        android:weightSum="10"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ellipseverde"
+                android:contentDescription="@string/txtRegistro"
+                android:layout_gravity="center"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/txtRegistro"
+                android:src="@drawable/ellipseverde"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <TextView
+                android:textAlignment="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="@string/avisoRegistroHijo_2"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_height="0dp"
+            android:layout_weight="6.8"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="@string/nombre"
+                android:textSize="15sp"
+                android:layout_marginBottom="5dp"></TextView>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:hint="Ingrese el nombre"
+                android:importantForAutofill="no"
+                android:paddingLeft="15dp"
+                android:textSize="15sp"
+                android:textColorHint="#ACA7A7"
+                android:inputType="text"
+                android:background="@drawable/custom_textarea"
+                android:layout_marginBottom="12dp"></EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="@string/edad"
+                android:textSize="15sp"
+                android:layout_marginBottom="5dp"></TextView>
+
+            <EditText
+                android:layout_width="160dp"
+                android:layout_height="45dp"
+                android:hint="Ingrese la edad"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:textSize="15sp"
+                android:paddingLeft="14dp"
+                android:textColorHint="#ACA7A7"
+                android:background="@drawable/custom_textarea"
+                android:layout_marginBottom="12dp"></EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="@string/estatura"
+                android:textSize="15sp"
+                android:layout_marginBottom="5dp"></TextView>
+
+            <EditText
+                android:layout_width="160dp"
+                android:layout_height="45dp"
+                android:hint="Ingrese la estatura"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:textSize="15sp"
+                android:paddingLeft="14dp"
+                android:textColorHint="#ACA7A7"
+                android:background="@drawable/custom_textarea"
+                android:layout_marginBottom="12dp"></EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="@string/peso"
+                android:textSize="15sp"
+                android:layout_marginBottom="5dp"></TextView>
+
+            <EditText
+                android:layout_width="160dp"
+                android:layout_height="45dp"
+                android:hint="Ingrese el peso"
+                android:importantForAutofill="no"
+                android:textSize="15sp"
+                android:inputType="numberDecimal"
+                android:paddingLeft="14dp"
+                android:textColorHint="#ACA7A7"
+                android:background="@drawable/custom_textarea"
+                android:layout_marginBottom="12dp"></EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="@string/medida"
+                android:textSize="15sp"
+                android:layout_marginBottom="5dp"></TextView>
+
+            <EditText
+                android:layout_width="160dp"
+                android:layout_height="45dp"
+                android:hint="Ingrese la medida"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:textSize="15sp"
+                android:paddingLeft="14dp"
+                android:textColorHint="#ACA7A7"
+                android:background="@drawable/custom_textarea"
+                android:layout_marginBottom="12dp"></EditText>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/btmRegresar"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:textColor="@color/gris"
+                android:text="@string/btmRegresar"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:background="@drawable/custom_button_siguiente"
+                android:textAllCaps="false"
+                android:stateListAnimator="@null"></Button>
+
+            <Button
+                android:id="@+id/btmAceptar_registro"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:textColor="#FFF"
+                android:text="@string/btmAceptar"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:background="@drawable/custom_button_aceptar"
+                android:textAllCaps="false"></Button>
+        </LinearLayout>
+
+    </LinearLayout>
+    <!--END-->
+
+</LinearLayout>

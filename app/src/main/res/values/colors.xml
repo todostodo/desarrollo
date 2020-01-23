@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="gris">#ACA7A7</color>
+    <color name="azul">#2B496B</color>
+    <color name="blanco">#FFFFFF</color>
+    <color name="morado">#6366A6</color>
+    <color name="negro">#000000</color>
+    <color name="verde">#178656</color>
 </resources>

@@ -1,6 +1,92 @@
 <resources>
+    <!-- String para saber la CANTIDAD DE LOS HIJOS -->
     <string name="app_name">desarrollo</string>
     <string name="avisoRegistroHijos">Antes de comenzar debemos registrar algunos datos empezando con los de sus hijo(s)</string>
     <string name="preguntaRegistroHijos">¿Cuántos hijos registrara?</string>
     <string name="txtMas">Mas</string>
+
+    <string name="btmAceptar">Aceptar</string>
+    <string name="btmNumero">Cantidad</string>
+
+    <!-- -->
+
+    <!-- String para la pantall REGISTRO DE LOS HIJOS-->
+    <string name="avisoRegistroHijo_2">Debera llenar los datos que se le piden a continuación de acuedo a la cantidad de hijos.</string>
+    <string name="nombre">Nombre</string>
+    <string name="edad">Edad</string>
+    <string name="estatura">Estatura</string>
+    <string name="peso">Peso</string>
+    <string name="medida">Medida de cintura</string>
+    <string name="txtRegistro">Registro</string>
+    <string name="btmRegresar">Regresar</string>
+    <!-- -->
+
+    <!-- String para el dialogo de finalizacion del registro del hijo o hijos -->
+    <string name="excelete">¡¡Excelente!!</string>
+    <string name="avisoRegistroFinalizado"> Ha terminado de registrar a su hijo ahora lo auto evaluaremos para una mejor gestión en la aplicación.</string>
+    <!---->
+    
+    <!-- STRING PARA LA NUEVA PANTALL activity_registro_cuestionario_seccion1-->
+    <string name="avisoCuestionarioPregunta1">Esta es una encuenta, no una prueba conteste a conciencia si no sabes la respuesta, marca "no estoy seguro".</string>
+    <string name="cuestionarioPreguntaUno">¿Los expertos en salud recomiendan que las personas coman más, la misma cantidad o menos de los siguientes alimentos? (marque una casilla por comida)</string>
+    <string name="cuestionarioRespuestaUnoPregunta1">FRUTA</string>
+    <string name="cuestionarioRespuestaDosPregunta1">VERDURA</string>
+    <string name="cuestionarioRespuestaTresPregunta1">ALIMENTOS GRASOS</string>
+    <string name="cuestionarioRespuestaCuatroPregunta1">CARNE ROJA PROCESADA</string>
+    <string name="cuestionarioRespuestaCincoPregunta1">GRANOS INTEGRALES</string>
+    <string name="cuestionarioRespuestaSeisPregunta1">ALIMENTOS SALADOS</string>
+    <string name="cuestionarioRespuestaSietePregunta1">AGUA</string>
+
+    <string name="avisoCuestionarioPregunta2">Esta es una encuenta, no una prueba conteste a conciencia.</string>
+    <string name="cuestionarioPreguntaDos">. ¿Cuántas porciones de frutas y verduras por día aconsejan los expertos que coman como mínimo? (Una porción podría ser, por ejemplo, una manzana o un puñado de zanahorias picadas) (marque una)</string>
+
+    <string name="btnMas">Mas</string>
+    <string name="btnIgual">Igual</string>
+    <string name="btnMenos">Menos</string>
+    <string name="btnNoEstoySeguro">No estoy seguro</string>
+    <string name="btnSiguiente">SIGUIENTE</string>
+    
+    <string name="btnComerMenos">Comer menos</string>
+    <string name="btnNoComerMenos">No comer menos</string>
+    <string name="btnNoEstoySeguro2">No estoy seguro</string>
+    <string name="txtIncisoRespuesta2">GRASAS INSATURADAS</string>
+
+    <string name="cuestionarioPreguntaCuatro">¿Qué tipo de productos lácteos dicen los expertos que las personas deberían beber? (marque una)</string>
+    <string name="CheckBox_Pregunta4_1">Grasa completa (por ejemplo, leche entera)</string>
+    <string name="CheckBox_Pregunta4_2">Reducción de grasa (por ejemplo, leche desnatada y semidesnatada)</string>
+    <string name="CheckBox_Pregunta4_3">Mezcla de grasas completas y grasas reducidas</string>
+    <string name="CheckBox_Pregunta4_4">Tampoco deben evitarse los lácteos</string>
+    <string name="CheckBox_Pregunta4_5">No estoy seguro</string>
+
+    <string name="cuestionarioPreguntaCinco">¿Cuántas veces por semana recomiendan los expertos que las personas coman pescado azul (por ejemplo, salmón y caballa)? (marque una)</string>
+    <string name="CheckBox_pregunta5_1">1-2 veces por semana</string>
+    <string name="CheckBox_pregunta5_2">3-4 veces por semana</string>
+    <string name="CheckBox_pregunta5_3">Cada día</string>
+    <string name="CheckBox_pregunta5_4">No estoy seguro</string>
+
+    <string name="cuestionarioPreguntaSeis">¿Aproximadamente cuántas bebidas alcohólicas es el máximo recomendado por día (el número exacto depende del tamaño y la concentración de la bebida)? (marque uno) </string>
+    <string name="CheckBox_pregunta6_1">1 bebida para hombres y mujeres</string>
+    <string name="CheckBox_pregunta6_2">2 bebidas para hombres y mujeres</string>
+    <string name="CheckBox_pregunta6_3">2 bebidas para hombres y 1 bebida para mujeres</string>
+    <string name="CheckBox_pregunta6_4">3 bebidas para hombres y 2 bebidas para mujeres</string>
+    <string name="CheckBox_pregunta6_5">No estoy seguro</string>
+
+    <string name="cuestionarioPreguntaSeptima">¿Cuántas veces por semana recomiendan los expertos que las personas desayunen? (marque una)</string>
+    <string name="CheckBox_pregunta7_1">3 veces por semana</string>
+    <string name="CheckBox_pregunta7_2">4 veces por semana</string>
+    <string name="CheckBox_pregunta7_3">Todos los días</string>
+    <string name="CheckBox_pregunta7_4">No estoy seguro</string>
+
+    <string name="cuestionarioPreguntaOctava">Si una persona toma dos vasos de jugo de fruta en un día, ¿cuántas de sus porciones diarias de frutas y verduras contaría? (marque una)</string>
+    <string name="CheckBox_pregunta8_1">Ninguno</string>
+    <string name="CheckBox_pregunta8_2">Una porción</string>
+    <string name="CheckBox_pregunta8_3">Dos porciones</string>
+    <string name="CheckBox_pregunta8_4">Tres porciones</string>
+    <string name="CheckBox_pregunta8_5">No estoy seguro</string>
+
+    <string name="cuestionarioPreguntaNovena_seccion1">De acuerdo con la "guía eatwell" (una guía que muestra las proporciones de los tipos de alimentos que las personas deben comer para tener una dieta equilibrada y saludable), ¿cuánto de la dieta de una persona debe estar compuesta de alimentos ricos en almidón? (marque una)</string>
+    <string name="CheckBox_pregunta9_1_seccion1">Un cuarto</string>
+    <string name="CheckBox_pregunta9_2_seccion1">Un tercio</string>
+    <string name="CheckBox_pregunta9_3_seccion1">La mitad</string>
+    <string name="CheckBox_pregunta9_4_seccion1">No estoy seguro</string>
 </resources>
