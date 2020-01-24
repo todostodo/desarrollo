@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:visibility="visible"
         android:weightSum="10">
 
 
@@ -6134,7 +6134,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="visible"
+        android:visibility="gone"
         android:weightSum="10">
 
 
@@ -6330,6 +6330,7 @@
                 android:background="@drawable/custom_cuadro_autoeficacia">
 
                 <TextView
+                    android:id="@+id/autoeficacia_preguntas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/autoeficaciaPreguntaBeinteUno"
