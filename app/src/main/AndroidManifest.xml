@@ -11,13 +11,16 @@
         android:theme="@style/AppTheme">
         <activity android:name=".CLIENTE.registro_cuestionario_seccion4"></activity>
         <activity android:name=".CLIENTE.registro_cuestionario_seccion3" />
-        <activity android:name=".CLIENTE.registro_cuestionario_seccion2" />
-        <activity android:name=".CLIENTE.registro_cuestionario">
+        <activity android:name=".CLIENTE.registro_cuestionario_seccion2" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".CLIENTE.registro_cuestionario">
+
         </activity>
         <activity android:name=".CLIENTE.registro_autoeficacia_seccion1">
         </activity>
