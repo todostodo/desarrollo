@@ -25,7 +25,7 @@
     <string name="excelete">¡¡Excelente!!</string>
     <string name="avisoRegistroFinalizado"> Ha terminado de registrar a su hijo ahora lo auto evaluaremos para una mejor gestión en la aplicación.</string>
     <!---->
-    
+
     <!-- STRING PARA LA NUEVA PANTALL activity_registro_cuestionario_seccion1-->
     <string name="avisoCuestionarioPregunta1">Esta es una encuenta, no una prueba conteste a conciencia si no sabes la respuesta, marca "no estoy seguro".</string>
     <string name="cuestionarioPreguntaUno">¿Los expertos en salud recomiendan que las personas coman más, la misma cantidad o menos de los siguientes alimentos? (marque una casilla por comida)</string>
@@ -45,7 +45,7 @@
     <string name="btnMenos">Menos</string>
     <string name="btnNoEstoySeguro">No estoy seguro</string>
     <string name="btnSiguiente">SIGUIENTE</string>
-    
+
     <string name="btnComerMenos">Comer menos</string>
     <string name="btnNoComerMenos">No comer menos</string>
     <string name="btnNoEstoySeguro2">No estoy seguro</string>
@@ -89,4 +89,177 @@
     <string name="CheckBox_pregunta9_2_seccion1">Un tercio</string>
     <string name="CheckBox_pregunta9_3_seccion1">La mitad</string>
     <string name="CheckBox_pregunta9_4_seccion1">No estoy seguro</string>
+
+    <!-- STRING PARA LA NUEVA PANTALL activity_registro_cuestionario_seccion2-->
+    <string name="cuestionarioPreguntaUno_seccion2">¿Crees que estos alimentos y bebidas son típicamente altos o bajos en azúcar agregada? (marque una casilla por comida) </string>
+    <string name="btnAltoAzucar">Alto en azúcar</string>
+    <string name="btnBajoAzuczr">Bajo en azúcar</string>
+    <string name="cuestionarioRespuestaUnoPregunta1_Seccion2">BEBIDAS DE COLA DIETETICAS</string>
+
+    <string name="btnAltoSal">Alto en sal</string>
+    <string name="btnBajoSal">Bajo en sal</string>
+    <string name="cuestionarioPregunta2_seccion2">¿Crees que estos alimentos son típicamente altos o bajos en sal? (marque una casilla por comida)</string>
+    <string name="cuestionarioRespuestaUnoPregunta2_Seccion2">Cereales para el desayuno</string>
+
+
+    <string name="btnAltoFibra">Alto en fibra</string>
+    <string name="btnBajoFibra">Bajo en fibra</string>
+    <string name="cuestionarioPregunta3_seccion2">¿Crees que estos alimentos son típicamente altos o bajos en fibra? (marque una casilla por comida)</string>
+    <string name="cuestionarioRespuestaUnoPregunta3_Seccion2">Avena</string>
+
+    <string name="btnBuenaFuente">Buena fuente</string>
+    <string name="btnNoBuenaFuente">No es buena fuente</string>
+    <string name="cuestionarioPregunta4_seccion2">¿Crees que estos alimentos son una buena fuente de proteínas? (marque una casilla por comida)</string>
+    <string name="cuestionarioRespuestaUnoPregunta4_Seccion2">Aves de corral</string>
+
+    <string name="btnConAlmidon">Con almidón</string>
+    <string name="btnSinAlmidon">Sin almidón</string>
+    <string name="cuestionarioPregunta5_seccion2">¿Cuáles de los siguientes alimentos cuentan los expertos como alimentos con almidón? (marque una casilla por comida)</string>
+    <string name="cuestionarioRespuestaUnoPregunta5_Seccion2">Queso</string>
+
+    <string name="btnGrasaPolinisaturada">Gasas polinisaturadas</string>
+    <string name="btnGrasaInsaturada">Grasas insaturadas</string>
+    <string name="btnGrasaSaturada">Grasas saturadas</string>
+    <string name="btnColesterol">Colesterol</string>
+    <string name="cuestionarioPregunta6_seccion2">¿Cuál es el principal tipo de grasa presente en cada uno de estos alimentos? (marque una casilla por comida)</string>
+    <string name="cuestionarioRespuestaUnoPregunta6_Seccion2">Aceite de oliva</string>
+
+    <string name="CheckBox_pregunta7_1_seccion2">Galletas, pasteles y pasteles</string>
+    <string name="CheckBox_pregunta7_2_seccion2">Pescado</string>
+    <string name="CheckBox_pregunta7_3_seccion2">Aceite de colza</string>
+    <string name="CheckBox_pregunta7_4_seccion2">Huevos</string>
+    <string name="cuestionarioPregunta7_seccion2">¿Cuál de estos alimentos tiene más grasas trans? (marque uno)</string>
+
+    <string name="CheckBox_pregunta8_1_seccion2">La misma</string>
+    <string name="CheckBox_pregunta8_2_seccion2">Mucho más alto</string>
+    <string name="CheckBox_pregunta8_3_seccion2">Mucho más bajo</string>
+    <string name="cuestionarioPregunta8_seccion2">La cantidad de calcio en un vaso de leche entera en comparación con un vaso de leche desnatada es: (marque uno)</string>
+
+    <string name="CheckBox_pregunta9_1_seccion2">Azúcar</string>
+    <string name="CheckBox_pregunta9_2_seccion2">Almidón</string>
+    <string name="CheckBox_pregunta9_3_seccion2">Fibra / alimentos ricos en fibra</string>
+    <string name="CheckBox_pregunta9_4_seccion2">Grasa</string>
+    <string name="cuestionarioPregunta9_seccion2">¿Cuál de los siguientes nutrientes tiene más calorías para el mismo peso?</string>
+
+    <string name="CheckBox_pregunta10_1_seccion2">Mayor en calorías</string>
+    <string name="CheckBox_pregunta10_2_seccion2">Mayor en fibra</string>
+    <string name="CheckBox_pregunta10_3_seccion2">Menor en sal</string>
+    <string name="cuestionarioPregunta10_seccion2">En comparación con los alimentos mínimamente procesados, los alimentos procesados son: (marque uno)</string>
+
+    <!-- STRING PARA LA NUEVA PANTALL activity_registro_cuestionario_seccion3-->
+    <string name="CheckBox_pregunta1_1_seccion3">Yogurt 0% de cereza</string>
+    <string name="CheckBox_pregunta1_2_seccion3">Yogurt natural</string>
+    <string name="CheckBox_pregunta1_3_seccion3">Yogurt de fruta cremoso</string>
+    <string name="cuestionarioPregunta1_seccion3">Si una persona quisiera comprar un yogurt en el supermercado, ¿cuál tendría menos azúcar / edulcorante? (marque uno)</string>
+
+    <string name="CheckBox_pregunta2_1_seccion3">Sopa de risotto de champiñones (champiñones, setas, arroz arbóreo, mantequilla, crema, perejil y pimienta negra molida)</string>
+    <string name="CheckBox_pregunta2_2_seccion3">Sopa de zanahoria y especias (zanahoria, calabaza, camote, comino, chile rojo, semillas de cilantro y limón)</string>
+    <string name="CheckBox_pregunta2_3_seccion3">Crema de pollo (pollo británico, cebolla, zanahoria, apio, papas, ajo, salvia, harina de trigo, crema doble) </string>
+    <string name="cuestionarioPregunta2_seccion3">Si una persona quisiera sopa en un restaurante o cafetería, ¿cuál sería la opción con menos grasa? (marque una)</string>
+
+    <string name="CheckBox_pregunta3_1_seccion3">Carne de res, pudín de Yorkshire y papas asadas</string>
+    <string name="CheckBox_pregunta3_2_seccion3">Pescado y papas fritas servidas con guisantes y salsa tártara</string>
+    <string name="cuestionarioPregunta3_seccion3">¿Cuál sería la opción más saludable y equilibrada para una comida principal en un restaurante? (marque una)</string>
+
+    <string name="CheckBox_pregunta4_1_seccion3">Sándwich de jamón + fruta + muffin de arándanos + jugo de fruta sándwich</string>
+    <string name="CheckBox_pregunta4_2_seccion3">Sándwich de ensalada de atún + fruta + yogurt bajo en grasa + agua</string>
+    <string name="CheckBox_pregunta4_3_seccion3">Sándwich de ensalada de huevo + patatas fritas + yogurt bajo en grasa + agua</string>
+    <string name="cuestionarioPregunta4_seccion3">¿Cuál sería el almuerzo sándwich más saludable y equilibrado? (marque uno)</string>
+
+    <string name="CheckBox_pregunta5_1_seccion3">Sorbete de bayas</string>
+    <string name="CheckBox_pregunta5_2_seccion3">Pastel de manzana y moras cake</string>
+    <string name="CheckBox_pregunta5_3_seccion3">Pastel de manzana y moras cake</string>
+    <string name="CheckBox_pregunta5_4_seccion3">Pastel de zanahoria con cobertura de queso crema</string>
+    <string name="cuestionarioPregunta5_seccion3">¿Cuál de estos alimentos sería la opción más saludable para un budín? (marque uno)</string>
+
+    <string name="CheckBox_pregunta6_1_seccion3">Lechuga, pimientos verdes y repollo</string>
+    <string name="CheckBox_pregunta6_2_seccion3">Brócoli, zanahoria y tomates</string>
+    <string name="CheckBox_pregunta6_3_seccion3">Pimientos rojos, tomates y lechuga</string>
+    <string name="cuestionarioPregunta6_seccion3">¿Cuál de estas combinaciones de verduras en una ensalada daría la mayor variedad de vitaminas y antioxidantes? (marque uno)</string>
+
+    <string name="CheckBox_pregunta7_1_seccion3">Chips de corte grueso</string>
+    <string name="CheckBox_pregunta7_2_seccion3">Chips de corte fino</string>
+    <string name="CheckBox_pregunta7_3_seccion3">Chips de corte arrugado</string>
+    <string name="cuestionarioPregunta7_seccion3">Si una persona quisiera reducir la cantidad de grasa en su dieta, pero no quisiera renunciar a las papas fritas, ¿cuál de los siguientes alimentos sería la mejor opción? (marque uno)</string>
+
+    <string name="CheckBox_pregunta8_1_seccion3">Leche de coco</string>
+    <string name="CheckBox_pregunta8_2_seccion3">Hierbas</string>
+    <string name="CheckBox_pregunta8_3_seccion3">Salsa de soja</string>
+    <string name="cuestionarioPregunta8_seccion3">Una forma saludable de agregar sabor a los alimentos sin agregar grasa o sal extra es agregar: (marque uno)</string>
+
+    <string name="CheckBox_pregunta9_1_seccion3">Asar a la parrilla</string>
+    <string name="CheckBox_pregunta9_2_seccion3">Vapor</string>
+    <string name="CheckBox_pregunta9_3_seccion3">Hornear</string>
+    <string name="CheckBox_pregunta9_4_seccion3">Saltear</string>
+    <string name="cuestionarioPregunta9_seccion3">¿Cuál de los siguientes métodos de cocción requiere que se agregue grasa? (marque uno)</string>
+
+    <string name="CheckBox_pregunta10_1_seccion3">Bajo en grasa</string>
+    <string name="CheckBox_pregunta10_2_seccion3">Medio en grasa</string>
+    <string name="CheckBox_pregunta10_3_seccion3">Alto en grasa</string>
+    <string name="cuestionarioPregunta10_seccion3">Los semáforos se usan a menudo en el etiquetado nutricional, ¿qué significaría el ámbar para el contenido de grasa de un alimento? (marque una)</string>
+
+    <string name="CheckBox_pregunta11_1_seccion3">De acuerdo</string>
+    <string name="CheckBox_pregunta11_2_seccion3">En desacuerdo</string>
+    <string name="cuestionarioPregunta11_seccion3">Los alimentos "ligeros" (o alimentos dietéticos) son siempre buenas opciones porque son bajos en calorías. (marque uno)</string>
+
+    <!-- STRING PARA LA NUEVA PANTALL activity_registro_cuestionario_seccion4-->
+    <string name="CheckBox_pregunta1_1_seccion4">Trastornos intestinales</string>
+    <string name="CheckBox_pregunta1_2_seccion4">Anemia</string>
+    <string name="CheckBox_pregunta1_3_seccion4">Caries dental</string>
+    <string name="cuestionarioPregunta1_seccion4">¿Cuál de estas enfermedades está relacionada con una baja ingesta de fibra? (marque uno)</string>
+
+    <string name="CheckBox_pregunta2_1_seccion4">Presión arterial alta</string>
+    <string name="cuestionarioPregunta2_seccion4">¿Cuál de estas enfermedades está relacionada con la cantidad de azúcar que comen las personas? (marque uno)</string>
+
+    <string name="CheckBox_pregunta3_1_seccion4">Hipotiroidismo</string>
+    <string name="CheckBox_pregunta3_2_seccion4">Diabetes</string>
+    <string name="CheckBox_pregunta3_3_seccion4">Presión arterial alta</string>
+    <string name="cuestionarioPregunta3_seccion4">¿Cuál de estas enfermedades está relacionada con la cantidad de sal (o sodio) que come la gente? (marque uno)</string>
+
+    <string name="CheckBox_pregunta4_1_seccion4">Beber alcohol regularmente</string>
+    <string name="CheckBox_pregunta4_2_seccion4">Beber alcohol regularmente</string>
+    <string name="CheckBox_pregunta4_3_seccion4">Evitar aditivos en los alimentos</string>
+    <string name="CheckBox_pregunta4_4_seccion4">Beber alcohol regularmente</string>
+    <string name="cuestionarioPregunta4_seccion4">¿Cuáles de estas opciones recomiendan los expertos para reducir las posibilidades de contraer cáncer? (marque una)</string>
+
+    <string name="CheckBox_pregunta5_1_seccion4">Tomar suplementos nutricionales</string>
+    <string name="CheckBox_pregunta5_2_seccion4">Comer menos pescado graso</string>
+    <string name="CheckBox_pregunta5_3_seccion4">Comer menos grasas trans</string>
+    <string name="cuestionarioPregunta5_seccion4">¿Cuáles de estas opciones recomiendan los expertos para prevenir enfermedades del corazón? (marque uno)</string>
+
+    <string name="CheckBox_pregunta6_1_seccion4">Coma alimentos menos refinados</string>
+    <string name="CheckBox_pregunta6_2_seccion4">Beba más jugo de frutas</string>
+    <string name="CheckBox_pregunta6_3_seccion4">Coma más carne procesada</string>
+    <string name="cuestionarioPregunta6_seccion4">¿Cuáles de estas opciones recomiendan los expertos para prevenir la diabetes? (marque uno)</string>
+
+    <string name="CheckBox_pregunta7_1_seccion4">Huevos</string>
+    <string name="CheckBox_pregunta7_2_seccion4">Aceites vegetales</string>
+    <string name="CheckBox_pregunta7_3_seccion4">Grasas animales</string>
+    <string name="cuestionarioPregunta7_seccion4">¿Cuál de estos alimentos tiene más probabilidades de elevar el colesterol en la sangre de las personas? (marque una)</string>
+
+    <string name="CheckBox_pregunta8_1_seccion4">Cereales integrales</string>
+    <string name="CheckBox_pregunta8_2_seccion4">Pan blanco</string>
+    <string name="CheckBox_pregunta8_3_seccion4">Frutas y verduras</string>
+    <string name="cuestionarioPregunta8_seccion4">¿Cuál de estos alimentos se clasifica como que tiene un índice glucémico alto (el índice glucémico es una medida del impacto de un alimento en los niveles de azúcar en la sangre, por lo tanto, un índice glucémico alto significa un mayor aumento en el azúcar en la sangre después de comer)? (marque una)</string>
+
+    <string name="CheckBox_pregunta9_1_seccion4">De acuerdo</string>
+    <string name="CheckBox_pregunta9_2_seccion4">En desacuerdo</string>
+    <string name="cuestionarioPregunta9_seccion4">Para mantener un peso saludable, las personas deben eliminar la grasa por completo. (marque una)</string>
+
+    <string name="cuestionarioPregunta10_seccion4">Para mantener un peso saludable, las personas deben eliminar la grasa por completo. (marque una)</string>
+
+    <string name="cuestionarioPregunta11_seccion4">Comer pan siempre provoca aumento de peso. (marque una)</string>
+
+    <string name="cuestionarioPregunta12_seccion4">La fibra puede disminuir las posibilidades de aumentar de peso. (marque una)</string>
+
+    <string name="btnSi">Si</string>
+    <string name="btnNo">No</string>
+    <string name="cuestionarioPregunta13_seccion4">¿Cuál de estas opciones puede ayudar a las personas a mantener un peso saludable? (responde a cada uno)</string>
+    <string name="cuestionarioRespuestaUnoPregunta13_Seccion4">No comer mientras veo televisión</string>
+
+    <string name="CheckBox_pregunta14_1_seccion4">Bajo peso</string>
+    <string name="CheckBox_pregunta14_2_seccion4">Peso normal</string>
+    <string name="CheckBox_pregunta14_3_seccion4">Sobrepeso</string>
+    <string name="CheckBox_pregunta14_4_seccion4">Obeso</string>
+    <string name="cuestionarioPregunta14_seccion4">Si alguien tiene un índice de masa corporal (IMC) de 23 kg / m2, ¿cuál sería su peso? (marque una)</string>
 </resources>

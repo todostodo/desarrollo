@@ -1,0 +1,2496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CLIENTE.registro_cuestionario_seccion4">
+
+    <!-- [START] PANTALL PARA LA PRIMERA PREGUNTA - SECCION 4-->
+    <LinearLayout
+        android:id="@+id/preguntaUno_seccion4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/gris"
+                android:text="@string/avisoCuestionarioPregunta1"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frutas"
+                android:layout_gravity="center"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cuestionarioPregunta1_seccion4"
+                android:textAlignment="center"
+                android:textColor="@color/negro"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta1_1_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta1_2_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta1_3_seccion4"></CheckBox>
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="No estoy seguro"></CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1.3"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center|end">
+                <Button
+                    android:id="@+id/btnSiguientePregunta1_4"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/custom_button_siguiente"
+                    android:text="@string/btnSiguiente"
+                    android:layout_gravity="center|end"
+                    android:textColor="#23CA82"
+                    android:stateListAnimator="@null"
+                    android:textStyle="bold"
+                    android:textSize="20sp">
+
+                </Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- [END] -->
+
+    <!-- [START] PANTALL PARA LA SEGUNDA PREGUNTA - SECCION 4-->
+    <LinearLayout
+        android:id="@+id/preguntaDos_seccion4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/gris"
+                android:text="@string/avisoCuestionarioPregunta1"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frutas"
+                android:layout_gravity="center"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cuestionarioPregunta2_seccion4"
+                android:textAlignment="center"
+                android:textColor="@color/negro"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta2_1_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta1_3_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta1_2_seccion4"></CheckBox>
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="No estoy seguro"></CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1.3"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center|end">
+                <Button
+                    android:id="@+id/btnSiguientePregunta2_4"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/custom_button_siguiente"
+                    android:text="@string/btnSiguiente"
+                    android:layout_gravity="center|end"
+                    android:textColor="#23CA82"
+                    android:stateListAnimator="@null"
+                    android:textStyle="bold"
+                    android:textSize="20sp">
+
+                </Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- [END] -->
+
+    <!-- [START] PANTALL PARA LA TERCERA PREGUNTA - SECCION 4-->
+    <LinearLayout
+        android:id="@+id/preguntaTres_seccion4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/gris"
+                android:text="@string/avisoCuestionarioPregunta1"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frutas"
+                android:layout_gravity="center"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cuestionarioPregunta3_seccion4"
+                android:textAlignment="center"
+                android:textColor="@color/negro"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta3_1_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta3_2_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta3_3_seccion4"></CheckBox>
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="No estoy seguro"></CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1.3"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center|end">
+                <Button
+                    android:id="@+id/btnSiguientePregunta3_4"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/custom_button_siguiente"
+                    android:text="@string/btnSiguiente"
+                    android:layout_gravity="center|end"
+                    android:textColor="#23CA82"
+                    android:stateListAnimator="@null"
+                    android:textStyle="bold"
+                    android:textSize="20sp">
+
+                </Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- [END] -->
+
+    <!-- [START] PANTALL PARA LA CUARTA PREGUNTA - SECCION 4-->
+    <LinearLayout
+        android:id="@+id/preguntaCuatro_seccion4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/gris"
+                android:text="@string/avisoCuestionarioPregunta1"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frutas"
+                android:layout_gravity="center"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cuestionarioPregunta4_seccion4"
+                android:textAlignment="center"
+                android:textColor="@color/negro"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta4_1_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta4_2_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta4_3_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta4_4_seccion4"></CheckBox>
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="No estoy seguro"></CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1.3"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center|end">
+                <Button
+                    android:id="@+id/btnSiguientePregunta4_4"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/custom_button_siguiente"
+                    android:text="@string/btnSiguiente"
+                    android:layout_gravity="center|end"
+                    android:textColor="#23CA82"
+                    android:stateListAnimator="@null"
+                    android:textStyle="bold"
+                    android:textSize="20sp">
+
+                </Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- [END] -->
+
+    <!-- [START] PANTALL PARA LA QUINTA PREGUNTA - SECCION 4-->
+    <LinearLayout
+        android:id="@+id/preguntaQuinta_seccion4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/gris"
+                android:text="@string/avisoCuestionarioPregunta1"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frutas"
+                android:layout_gravity="center"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cuestionarioPregunta5_seccion4"
+                android:textAlignment="center"
+                android:textColor="@color/negro"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta5_1_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta5_2_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta5_3_seccion4"></CheckBox>
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="No estoy seguro"></CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1.3"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center|end">
+                <Button
+                    android:id="@+id/btnSiguientePregunta5_4"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/custom_button_siguiente"
+                    android:text="@string/btnSiguiente"
+                    android:layout_gravity="center|end"
+                    android:textColor="#23CA82"
+                    android:stateListAnimator="@null"
+                    android:textStyle="bold"
+                    android:textSize="20sp">
+
+                </Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- [END] -->
+
+    <!-- [START] PANTALL PARA LA SEXTA PREGUNTA - SECCION 4-->
+    <LinearLayout
+        android:id="@+id/preguntaSeis_seccion4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/gris"
+                android:text="@string/avisoCuestionarioPregunta1"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frutas"
+                android:layout_gravity="center"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cuestionarioPregunta6_seccion4"
+                android:textAlignment="center"
+                android:textColor="@color/negro"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta6_1_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta6_2_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta6_3_seccion4"></CheckBox>
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="No estoy seguro"></CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1.3"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center|end">
+                <Button
+                    android:id="@+id/btnSiguientePregunta6_4"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/custom_button_siguiente"
+                    android:text="@string/btnSiguiente"
+                    android:layout_gravity="center|end"
+                    android:textColor="#23CA82"
+                    android:stateListAnimator="@null"
+                    android:textStyle="bold"
+                    android:textSize="20sp">
+
+                </Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- [END] -->
+
+    <!-- [START] PANTALL PARA LA SEPTIMA PREGUNTA - SECCION 4-->
+    <LinearLayout
+        android:id="@+id/preguntaSiete_seccion4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/gris"
+                android:text="@string/avisoCuestionarioPregunta1"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frutas"
+                android:layout_gravity="center"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cuestionarioPregunta7_seccion4"
+                android:textAlignment="center"
+                android:textColor="@color/negro"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta7_1_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta7_2_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta7_3_seccion4"></CheckBox>
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="No estoy seguro"></CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1.3"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center|end">
+                <Button
+                    android:id="@+id/btnSiguientePregunta7_4"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/custom_button_siguiente"
+                    android:text="@string/btnSiguiente"
+                    android:layout_gravity="center|end"
+                    android:textColor="#23CA82"
+                    android:stateListAnimator="@null"
+                    android:textStyle="bold"
+                    android:textSize="20sp">
+
+                </Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- [END] -->
+
+    <!-- [START] PANTALL PARA LA OCTAVA PREGUNTA - SECCION 4-->
+    <LinearLayout
+        android:id="@+id/preguntaOctava_seccion4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/gris"
+                android:text="@string/avisoCuestionarioPregunta1"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frutas"
+                android:layout_gravity="center"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cuestionarioPregunta8_seccion4"
+                android:textAlignment="center"
+                android:textColor="@color/negro"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta8_1_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta8_2_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta8_3_seccion4"></CheckBox>
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="No estoy seguro"></CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1.3"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center|end">
+                <Button
+                    android:id="@+id/btnSiguientePregunta8_4"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/custom_button_siguiente"
+                    android:text="@string/btnSiguiente"
+                    android:layout_gravity="center|end"
+                    android:textColor="#23CA82"
+                    android:stateListAnimator="@null"
+                    android:textStyle="bold"
+                    android:textSize="20sp">
+
+                </Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- [END] -->
+
+    <!-- [START] PANTALL PARA LA NOVENA PREGUNTA - SECCION 4-->
+    <LinearLayout
+        android:id="@+id/preguntaNueve_seccion4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/gris"
+                android:text="@string/avisoCuestionarioPregunta1"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frutas"
+                android:layout_gravity="center"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cuestionarioPregunta9_seccion4"
+                android:textAlignment="center"
+                android:textColor="@color/negro"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta9_1_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta9_2_seccion4"></CheckBox>
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="No estoy seguro"></CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1.3"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center|end">
+                <Button
+                    android:id="@+id/btnSiguientePregunta9_4"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/custom_button_siguiente"
+                    android:text="@string/btnSiguiente"
+                    android:layout_gravity="center|end"
+                    android:textColor="#23CA82"
+                    android:stateListAnimator="@null"
+                    android:textStyle="bold"
+                    android:textSize="20sp">
+
+                </Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- [END] -->
+
+    <!-- [START] PANTALL PARA LA DECIMA PREGUNTA - SECCION 4-->
+    <LinearLayout
+        android:id="@+id/preguntaDiez_seccion4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/gris"
+                android:text="@string/avisoCuestionarioPregunta1"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frutas"
+                android:layout_gravity="center"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cuestionarioPregunta10_seccion4"
+                android:textAlignment="center"
+                android:textColor="@color/negro"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta9_1_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta9_2_seccion4"></CheckBox>
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="No estoy seguro"></CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1.3"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center|end">
+                <Button
+                    android:id="@+id/btnSiguientePregunta10_4"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/custom_button_siguiente"
+                    android:text="@string/btnSiguiente"
+                    android:layout_gravity="center|end"
+                    android:textColor="#23CA82"
+                    android:stateListAnimator="@null"
+                    android:textStyle="bold"
+                    android:textSize="20sp">
+
+                </Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- [END] -->
+
+    <!-- [START] PANTALL PARA LA ONCEAVA PREGUNTA - SECCION 4-->
+    <LinearLayout
+        android:id="@+id/preguntaOnce_seccion4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/gris"
+                android:text="@string/avisoCuestionarioPregunta1"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frutas"
+                android:layout_gravity="center"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cuestionarioPregunta11_seccion4"
+                android:textAlignment="center"
+                android:textColor="@color/negro"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta9_1_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta9_2_seccion4"></CheckBox>
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="No estoy seguro"></CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1.3"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center|end">
+                <Button
+                    android:id="@+id/btnSiguientePregunta11_4"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/custom_button_siguiente"
+                    android:text="@string/btnSiguiente"
+                    android:layout_gravity="center|end"
+                    android:textColor="#23CA82"
+                    android:stateListAnimator="@null"
+                    android:textStyle="bold"
+                    android:textSize="20sp">
+
+                </Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- [END] -->
+
+    <!-- [START] PANTALL PARA LA DOCEAVA PREGUNTA - SECCION 4-->
+    <LinearLayout
+        android:id="@+id/preguntaDose_seccion4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/gris"
+                android:text="@string/avisoCuestionarioPregunta1"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frutas"
+                android:layout_gravity="center"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cuestionarioPregunta12_seccion4"
+                android:textAlignment="center"
+                android:textColor="@color/negro"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta9_1_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta9_2_seccion4"></CheckBox>
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="No estoy seguro"></CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1.3"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center|end">
+                <Button
+                    android:id="@+id/btnSiguientePregunta12_4"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/custom_button_siguiente"
+                    android:text="@string/btnSiguiente"
+                    android:layout_gravity="center|end"
+                    android:textColor="#23CA82"
+                    android:stateListAnimator="@null"
+                    android:textStyle="bold"
+                    android:textSize="20sp">
+
+                </Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- [END] -->
+
+    <!-- [START] PANTALLA PARA LA TRECEABA PREGUNTA - SECCION 4 -->
+    <LinearLayout
+        android:id="@+id/preguntaTrece_seccion4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/gris"
+                android:text="@string/avisoCuestionarioPregunta1"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frutas"
+                android:layout_gravity="center"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:orientation="vertical"
+            android:weightSum="5">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3.5"
+                android:orientation="horizontal"
+                android:background="@drawable/custom_cuatro_pregunta_uno">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cuestionarioPregunta13_seccion4"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="@color/blanco"></TextView>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.5"
+                android:weightSum="1"
+                android:orientation="vertical"
+                android:background="@drawable/custom_cuadro_respuesta_uno">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/txtIncisoRespuestaPregunta13_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cuestionarioRespuestaUnoPregunta13_Seccion4"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:textSize="22sp"
+                        android:textColor="@color/blanco"></TextView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/btnSi"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_button_cuestionario_respuesta"
+                android:elevation="2dp"
+                android:text="@string/btnSi"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:layout_marginRight="15dp"></Button>
+            <Button
+                android:id="@+id/btnNo"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_button_cuestionario_respuesta"
+                android:elevation="2dp"
+                android:text="@string/btnNo"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:layout_marginRight="15dp"></Button>
+
+               <Button
+                android:id="@+id/btnNoEstoySeguro13_4"
+                android:layout_width="70dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_button_cuestionario_respuesta"
+                android:elevation="2dp"
+                android:text="@string/btnNoEstoySeguro"
+                android:textAllCaps="false"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textStyle="bold"></Button>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1.3"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center|end">
+                <Button
+                    android:id="@+id/btnSiguientePregunta13_4"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/custom_button_siguiente"
+                    android:text="@string/btnSiguiente"
+                    android:layout_gravity="center|end"
+                    android:textColor="#23CA82"
+                    android:stateListAnimator="@null"
+                    android:textStyle="bold"
+                    android:textSize="20sp">
+
+                </Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <!-- [END] -->
+
+    <!-- [START] PANTALL PARA LA CATORCEAVA PREGUNTA - SECCION 4-->
+    <LinearLayout
+        android:id="@+id/preguntaCatorse_seccion4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/gris"
+                android:text="@string/avisoCuestionarioPregunta1"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frutas"
+                android:layout_gravity="center"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cuestionarioPregunta14_seccion4"
+                android:textAlignment="center"
+                android:textColor="@color/negro"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta14_1_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta14_2_seccion4"></CheckBox>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta14_3_seccion4"></CheckBox>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta14_4_seccion4"></CheckBox>
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="No estoy seguro"></CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1.3"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center|end">
+                <Button
+                    android:id="@+id/btnSiguientePregunta14_4"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/custom_button_siguiente"
+                    android:text="@string/btnSiguiente"
+                    android:layout_gravity="center|end"
+                    android:textColor="#23CA82"
+                    android:stateListAnimator="@null"
+                    android:textStyle="bold"
+                    android:textSize="20sp">
+
+                </Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- [END] -->
+
+    <!-- [START] PANTALL PARA LA QUINCEAVA PREGUNTA - SECCION 4-->
+    <LinearLayout
+        android:id="@+id/preguntaQuinse_seccion4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:weightSum="10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ellipseverde"
+                android:paddingRight="5dp"></ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/gris"
+                android:text="@string/avisoCuestionarioPregunta1"
+                ></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frutas"
+                android:layout_gravity="center"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cuestionarioPregunta14_seccion4"
+                android:textAlignment="center"
+                android:textColor="@color/negro"
+                android:textSize="15sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta14_1_seccion4"></CheckBox>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta14_2_seccion4"></CheckBox>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta14_3_seccion4"></CheckBox>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="@string/CheckBox_pregunta14_4_seccion4"></CheckBox>
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/gris"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="No estoy seguro"></CheckBox>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1.3"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center|end">
+                <Button
+                    android:id="@+id/btnSiguientePregunta15_4"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/custom_button_siguiente"
+                    android:text="@string/btnSiguiente"
+                    android:layout_gravity="center|end"
+                    android:textColor="#23CA82"
+                    android:stateListAnimator="@null"
+                    android:textStyle="bold"
+                    android:textSize="20sp">
+
+                </Button>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- [END] -->
+
+    <!-- [START] PANTALL PARA LA DIESISEISAVA PREGUNTA - SECCION 4-->
+             <!-- AQUI VA LA PREGUNTA 16 -->
+    <!-- [END] -->
+
+</LinearLayout>
