@@ -262,6 +262,27 @@
     <string name="CheckBox_pregunta14_3_seccion4">Sobrepeso</string>
     <string name="CheckBox_pregunta14_4_seccion4">Obeso</string>
     <string name="cuestionarioPregunta14_seccion4">Si alguien tiene un índice de masa corporal (IMC) de 23 kg / m2, ¿cuál sería su peso? (marque una)</string>
+
     <string name="autoeficaciaPreguntaUno">¿Qué tan seguro estas de poder estar al pendiente y aplicar recomendaciones para el cambio de hábitos de tu hijo?</string>
     <string name="autoeficaciaAviso">Tendras que responder con el puntaje que consideres mayor acerca a tu realidad. Contesta con honestidad ya que esto depende de el buen funcionamiento del programa.</string>
+    <string name="autoeficaciaPreguntaDos">¿Qué tan seguro estas de poder hacer que tu hijo coma al menos una porción de verduras cada día?</string>
+    <string name="autoeficaciaPreguntaTres">¿Qué tan seguro estas de poder hacer que tu hijo coma al menos una fruta todos los días?</string>
+    <string name="autoeficaciaPreguntaCuatro">¿Qué tan seguro estas de poder limitar a tu hijo a que consuma comida para llevar, como hamburguesas, salchichas, pizza dos veces al mes como máximo?</string>
+    <string name="autoeficaciaPreguntaCinco">¿Qué tan seguro estas de poder limitar a tu hijo a comer dulces, helados, papas fritas o pastelillos una vez por semana como máximo?</string>
+    <string name="autoeficaciaPreguntaSeis">¿Qué tan seguro estas de poder limitar a tu hijo a tomar refrescos o jugos con azúcar añadida una vez por semana como máximo?</string>
+    <string name="autoeficaciaPreguntaSiete">¿Qué tan seguro estas de que puedes ser un buen ejemplo para stu hijo cuando se trata de comer verduras?</string>
+    <string name="autoeficaciaPreguntaOcho">¿Qué tan seguro estas de que puedes ser un buen modelo a seguir para tu hijo cuando se trata de comer frutas?</string>
+    <string name="autoeficaciaPreguntaNueve">¿Qué tan seguro estas de que puedes ser un buen ejemplo para tu hijo y no comer dulces, papas fritas, galletas, muffins o beber refrescos más de una vez a la semana?</string>
+    <string name="autoeficaciaPreguntaDies">¿Qué tan seguro estas de poder hacer que tu hijo se mantenga físicamente activo al aire libre varias veces a la semana, por ejemplo, mediante juegos estructurados?</string>
+    <string name="autoeficaciaPreguntaOnce">¿Qué tan seguro estas de poder hacer que tu hijo esté afuera incluso con mal tiempo?</string>
+    <string name="autoeficaciaPreguntaDoce">¿Qué tan seguro estas de poder hacer que tu hijo participe en actividades físicas organizadas al menos una vez a la semana, por ejemplo, bailando, nadando o jugando fútbol?</string>
+    <string name="autoeficaciaPreguntaTrece">¿Qué tan seguro estas de hace que tu hijo se mantenga físicamente activo (por ejemplo, jugando al aire libre) en lugar de mirar televisión o jugar juegos de computadora?</string>
+    <string name="autoeficaciaPreguntaCatorce">¿Qué tan seguro estas de poder limitar a tu hijo de mirar televisión, jugar en la computadora, teléfono inteligente o tableta 2 horas al día como máximo?</string>
+    <string name="autoeficaciaPreguntaQuince">¿Qué tan seguro estas de poder ser un buen modelo a seguir siendo físicamente activo varias veces a la semana, por ejemplo, participando en deportes, natación o andar en bicicleta?</string>
+    <string name="autoeficaciaPreguntaDieciseis">¿Qué tan seguro estas de poder llevar a tu hijo a realizar una actividad al aire libre como caminar o pasear en bicicleta?</string>
+    <string name="autoeficaciaPreguntaDiecisiete">¿Qué tan seguro te sientes de poder dedicar un tiempo a tu hijo para realizar una actividad exclusivamente con él, como jugar un juego de mesa o ir al cine?</string>
+    <string name="autoeficaciaPreguntaDieciocho">¿Qué tan seguro estas de cuplir con el sistema de recompensas que te propone este método?</string>
+    <string name="autoeficaciaPreguntaDiecinueve">¿Qué tan seguro estas de dar a tu hijo las recompensas acordadas sólo cuando haya completado las fichas necesarias?</string>
+    <string name="autoeficaciaPreguntaBeinte">¿Qué tan seguro estas de reconocer a tu hijo cuando alcance cada meta del plan de consumo, por más sencilla que parezca?</string>
+    <string name="autoeficaciaPreguntaBeinteUno">¿Qué tan seguro estas de dar afecto a tu hijo como parte de reconocer y reforzar los comportamientos deseados?</string>
 </resources>
