@@ -262,4 +262,6 @@
     <string name="CheckBox_pregunta14_3_seccion4">Sobrepeso</string>
     <string name="CheckBox_pregunta14_4_seccion4">Obeso</string>
     <string name="cuestionarioPregunta14_seccion4">Si alguien tiene un índice de masa corporal (IMC) de 23 kg / m2, ¿cuál sería su peso? (marque una)</string>
+    <string name="autoeficaciaPreguntaUno">¿Qué tan seguro estas de poder estar al pendiente y aplicar recomendaciones para el cambio de hábitos de tu hijo?</string>
+    <string name="autoeficaciaAviso">Tendras que responder con el puntaje que consideres mayor acerca a tu realidad. Contesta con honestidad ya que esto depende de el buen funcionamiento del programa.</string>
 </resources>
