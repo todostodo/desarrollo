@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:visibility="visible"
         android:weightSum="10">
 
         <LinearLayout
@@ -106,12 +106,14 @@
             android:layout_marginLeft="30dp">
 
             <CheckBox
+                android:id="@+id/ChBx_1_1_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta1_1_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_2_1_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -119,6 +121,7 @@
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta1_2_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_3_1_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -128,6 +131,7 @@
 
 
             <CheckBox
+                android:id="@+id/ChBx_4_1_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -268,12 +272,14 @@
             android:layout_marginLeft="30dp">
 
             <CheckBox
+                android:id="@+id/ChBx_1_2_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta2_1_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_2_2_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -281,6 +287,7 @@
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta1_3_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_3_2_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -290,6 +297,7 @@
 
 
             <CheckBox
+                android:id="@+id/ChBx_4_2_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -430,12 +438,14 @@
             android:layout_marginLeft="30dp">
 
             <CheckBox
+                android:id="@+id/ChBx_1_3_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta3_1_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_2_3_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -443,6 +453,7 @@
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta3_2_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_3_3_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -452,6 +463,7 @@
 
 
             <CheckBox
+                android:id="@+id/ChBx_4_3_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -592,12 +604,14 @@
             android:layout_marginLeft="30dp">
 
             <CheckBox
+                android:id="@+id/ChBx_1_4_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta4_1_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_2_4_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -605,6 +619,7 @@
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta4_2_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_3_4_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -612,6 +627,7 @@
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta4_3_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_4_4_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -621,6 +637,7 @@
 
 
             <CheckBox
+                android:id="@+id/ChBx_5_4_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -761,12 +778,14 @@
             android:layout_marginLeft="30dp">
 
             <CheckBox
+                android:id="@+id/ChBx_1_5_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta5_1_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_2_5_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -774,6 +793,7 @@
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta5_2_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_3_5_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -783,6 +803,7 @@
 
 
             <CheckBox
+                android:id="@+id/ChBx_4_5_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -923,12 +944,14 @@
             android:layout_marginLeft="30dp">
 
             <CheckBox
+                android:id="@+id/ChBx_1_6_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta6_1_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_2_6_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -936,6 +959,7 @@
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta6_2_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_3_6_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -945,6 +969,7 @@
 
 
             <CheckBox
+                android:id="@+id/ChBx_4_6_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -1085,12 +1110,14 @@
             android:layout_marginLeft="30dp">
 
             <CheckBox
+                android:id="@+id/ChBx_1_7_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta7_1_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_2_7_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -1098,6 +1125,7 @@
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta7_2_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_3_7_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -1107,6 +1135,7 @@
 
 
             <CheckBox
+                android:id="@+id/ChBx_4_7_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -1247,12 +1276,14 @@
             android:layout_marginLeft="30dp">
 
             <CheckBox
+                android:id="@+id/ChBx_1_8_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta8_1_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_2_8_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -1260,6 +1291,7 @@
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta8_2_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_3_8_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -1269,6 +1301,7 @@
 
 
             <CheckBox
+                android:id="@+id/ChBx_4_8_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -1409,12 +1442,14 @@
             android:layout_marginLeft="30dp">
 
             <CheckBox
+                android:id="@+id/ChBx_1_9_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta9_1_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_2_9_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -1424,6 +1459,7 @@
 
 
             <CheckBox
+                android:id="@+id/ChBx_3_9_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -1564,12 +1600,14 @@
             android:layout_marginLeft="30dp">
 
             <CheckBox
+                android:id="@+id/ChBx_1_10_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta9_1_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_2_10_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -1579,6 +1617,7 @@
 
 
             <CheckBox
+                android:id="@+id/ChBx_3_10_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -1719,12 +1758,14 @@
             android:layout_marginLeft="30dp">
 
             <CheckBox
+                android:id="@+id/ChBx_1_11_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta9_1_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_2_11_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -1734,6 +1775,7 @@
 
 
             <CheckBox
+                android:id="@+id/ChBx_3_11_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -1874,12 +1916,14 @@
             android:layout_marginLeft="30dp">
 
             <CheckBox
+                android:id="@+id/ChBx_1_12_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta9_1_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_2_12_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -1889,6 +1933,7 @@
 
 
             <CheckBox
+                android:id="@+id/ChBx_3_12_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -2246,12 +2291,14 @@
             android:layout_marginLeft="30dp">
 
             <CheckBox
+                android:id="@+id/ChBx_1_14_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta14_1_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_2_14_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -2260,6 +2307,7 @@
                 android:text="@string/CheckBox_pregunta14_2_seccion4"></CheckBox>
 
             <CheckBox
+                android:id="@+id/ChBx_3_14_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -2268,6 +2316,7 @@
                 android:text="@string/CheckBox_pregunta14_3_seccion4"></CheckBox>
 
             <CheckBox
+                android:id="@+id/ChBx_4_14_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -2277,6 +2326,7 @@
 
 
             <CheckBox
+                android:id="@+id/ChBx_5_14_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -2324,7 +2374,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="visible"
+        android:visibility="gone"
         android:weightSum="10">
 
         <LinearLayout
@@ -2417,12 +2467,14 @@
             android:layout_marginLeft="30dp">
 
             <CheckBox
+                android:id="@+id/ChBx_1_15_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
                 android:textSize="16sp"
                 android:text="@string/CheckBox_pregunta14_1_seccion4"></CheckBox>
             <CheckBox
+                android:id="@+id/ChBx_2_15_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -2431,6 +2483,7 @@
                 android:text="@string/CheckBox_pregunta14_2_seccion4"></CheckBox>
 
             <CheckBox
+                android:id="@+id/ChBx_3_15_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -2439,6 +2492,7 @@
                 android:text="@string/CheckBox_pregunta14_3_seccion4"></CheckBox>
 
             <CheckBox
+                android:id="@+id/ChBx_4_15_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"
@@ -2448,6 +2502,7 @@
 
 
             <CheckBox
+                android:id="@+id/ChBx_5_15_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/gris"

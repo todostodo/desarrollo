@@ -1434,40 +1434,46 @@
             android:orientation="vertical"
             android:layout_marginLeft="30dp">
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:textSize="16sp"
-                android:text="@string/CheckBox_pregunta7_1_seccion2"></CheckBox>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:text="@string/CheckBox_pregunta7_2_seccion2"></CheckBox>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:text="@string/CheckBox_pregunta7_3_seccion2"></CheckBox>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:text="@string/CheckBox_pregunta7_4_seccion2"></CheckBox>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:text="No estoy seguro"></CheckBox>
+                <CheckBox
+                    android:id="@+id/ChBx_1_7_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:textSize="16sp"
+                    android:text="@string/CheckBox_pregunta7_1_seccion2"></CheckBox>
+                <CheckBox
+                    android:id="@+id/ChBx_2_7_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:text="@string/CheckBox_pregunta7_2_seccion2"></CheckBox>
+                <CheckBox
+                    android:id="@+id/ChBx_3_7_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:text="@string/CheckBox_pregunta7_3_seccion2"></CheckBox>
+                <CheckBox
+                    android:id="@+id/ChBx_4_7_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:text="@string/CheckBox_pregunta7_4_seccion2"></CheckBox>
+                <CheckBox
+                    android:id="@+id/ChBx_5_7_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:text="No estoy seguro"></CheckBox>
+
 
         </LinearLayout>
 
@@ -1601,34 +1607,40 @@
             android:orientation="vertical"
             android:layout_marginLeft="30dp">
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:textSize="16sp"
-                android:text="@string/CheckBox_pregunta8_1_seccion2"></CheckBox>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:text="@string/CheckBox_pregunta8_2_seccion2"></CheckBox>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:text="@string/CheckBox_pregunta8_3_seccion2"></CheckBox>
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:text="No estoy seguro"></CheckBox>
+                <CheckBox
+                    android:id="@+id/ChBx_1_8_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:textSize="16sp"
+                    android:text="@string/CheckBox_pregunta8_1_seccion2"></CheckBox>
+                <CheckBox
+                    android:id="@+id/ChBx_2_8_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:text="@string/CheckBox_pregunta8_2_seccion2"></CheckBox>
+                <CheckBox
+                    android:id="@+id/ChBx_3_8_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:text="@string/CheckBox_pregunta8_3_seccion2"></CheckBox>
+
+                <CheckBox
+                    android:id="@+id/ChBx_4_8_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:text="No estoy seguro"></CheckBox>
+
 
         </LinearLayout>
 
@@ -1762,41 +1774,47 @@
             android:orientation="vertical"
             android:layout_marginLeft="30dp">
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:textSize="16sp"
-                android:text="@string/CheckBox_pregunta9_1_seccion2"></CheckBox>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:text="@string/CheckBox_pregunta9_2_seccion2"></CheckBox>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:text="@string/CheckBox_pregunta9_3_seccion2"></CheckBox>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:text="@string/CheckBox_pregunta9_4_seccion2"></CheckBox>
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:text="No estoy seguro"></CheckBox>
+                <CheckBox
+                    android:id="@+id/ChBx_1_9_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:textSize="16sp"
+                    android:text="@string/CheckBox_pregunta9_1_seccion2"></CheckBox>
+                <CheckBox
+                    android:id="@+id/ChBx_2_9_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:text="@string/CheckBox_pregunta9_2_seccion2"></CheckBox>
+                <CheckBox
+                    android:id="@+id/ChBx_3_9_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:text="@string/CheckBox_pregunta9_3_seccion2"></CheckBox>
+                <CheckBox
+                    android:id="@+id/ChBx_4_9_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:text="@string/CheckBox_pregunta9_4_seccion2"></CheckBox>
+
+                <CheckBox
+                    android:id="@+id/ChBx_5_9_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:text="No estoy seguro"></CheckBox>
 
         </LinearLayout>
 
@@ -1929,35 +1947,41 @@
             android:orientation="vertical"
             android:layout_marginLeft="30dp">
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:textSize="16sp"
-                android:text="@string/CheckBox_pregunta10_1_seccion2"></CheckBox>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:text="@string/CheckBox_pregunta10_2_seccion2"></CheckBox>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:text="@string/CheckBox_pregunta10_3_seccion2"></CheckBox>
+                <CheckBox
+                    android:id="@+id/ChBx_1_10_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:textSize="16sp"
+                    android:text="@string/CheckBox_pregunta10_1_seccion2"></CheckBox>
+                <CheckBox
+                    android:id="@+id/ChBx_2_10_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:text="@string/CheckBox_pregunta10_2_seccion2"></CheckBox>
 
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/gris"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:text="No estoy seguro"></CheckBox>
+                <CheckBox
+                    android:id="@+id/ChBx_3_10_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:text="@string/CheckBox_pregunta10_3_seccion2"></CheckBox>
+
+
+                <CheckBox
+                    android:id="@+id/ChBx_4_10_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/gris"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:text="No estoy seguro"></CheckBox>
 
         </LinearLayout>
 
