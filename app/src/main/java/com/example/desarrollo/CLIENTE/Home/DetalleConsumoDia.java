@@ -15,12 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.desarrollo.R;
 
-import java.sql.Time;
-import java.util.Timer;
-import java.util.TimerTask;
-
-
-public class DetalleConsumoDia extends Fragment {
+public class  DetalleConsumoDia extends Fragment {
 
     View view;
     ImageButton _btnAddTutor;

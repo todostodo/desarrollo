@@ -16,13 +16,16 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <ImageView
+            <TextView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:background="@drawable/rectangulo_morado"
                 android:layout_gravity="center"
-                android:background="@drawable/circulo_verde"
-                android:scaleType="center"
-                android:src="@drawable/icon_manzana" />
+                android:text="+2"
+                android:textSize="20sp"
+                android:textColor="@color/blanco"
+                android:gravity="center"
+                android:fontFamily="@font/roboto_medium"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
