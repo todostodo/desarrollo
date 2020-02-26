@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CLIENTE.registro_autoeficacia"
+    tools:context=".CLIENTE.Encuestas.registro_autoeficacia"
     android:orientation="vertical"
     android:background="@color/blanco">
 
@@ -275,8 +275,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -581,8 +581,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -887,8 +887,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -1193,8 +1193,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -1499,8 +1499,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -1805,8 +1805,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -2111,8 +2111,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -2417,8 +2417,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -2723,8 +2723,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -3029,8 +3029,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -3335,8 +3335,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -3641,8 +3641,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -3947,8 +3947,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -4253,8 +4253,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -4559,8 +4559,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -4865,8 +4865,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -5171,8 +5171,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -5477,8 +5477,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -5783,8 +5783,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -6089,8 +6089,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 
@@ -6396,8 +6396,8 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler"
-                android:thumb="@drawable/seek_bar_slider"
+                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
 

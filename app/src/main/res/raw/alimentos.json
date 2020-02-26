@@ -1,0 +1,70 @@
+{
+  "Frutas": [
+    {
+      "nombre": "Platano",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina C",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "platano",
+      "backgroud": "#F9998D"
+    },
+    {
+      "nombre": "Manzana",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "manzana",
+      "backgroud": "#F9998D"
+    },
+    {
+      "nombre": "Naranja",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina C,A,B",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "naranja",
+      "backgroud": "#F9998D"
+    },
+    {
+      "nombre": "Pera",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "pera",
+      "backgroud": "#F9998D"
+    },
+    {
+      "nombre": "Naranja",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina C,A,B",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "naranja",
+      "backgroud": "#F9998D"
+    }
+  ],
+  "Verduras": [
+    {
+      "nombre": "Verdura",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina C",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "platano",
+      "backgroud": "#F9998D"
+    },
+    {
+      "nombre": "Verdura",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina C",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "platano",
+      "backgroud": "#F9998D"
+    }
+  ]
+}
+

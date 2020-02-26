@@ -2,10 +2,26 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="colorPrimary">@android:color/transparent</item>
         <!-- Customize your theme here. -->
     </style>
 
-    <!--
-    <style name="botones" parent="@style/Widget.AppCompat.Button.Borderless"></style>
-    -->
+    <style name="AppSearchView" parent="Widget.AppCompat.SearchView">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#AEAEAE</item>
+        <item name="android:colorBackground">@color/gris</item>
+    </style>
+
+    <!-- dialog -->
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/custom_background_dialog</item>
+    </style>
+
 </resources>

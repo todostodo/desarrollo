@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blanco"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/relLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@color/blanco"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:weightSum="10">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="8.5"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="20dp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="Ultraprocesados"
+                            android:textColor="@color/negro"
+                            android:textSize="26sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5">
+
+                        <FrameLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center">
+
+
+                            <ImageButton
+                                android:id="@+id/btmActivityRegistroFrutas"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="bottom"
+                                android:background="@color/blanco"
+                                android:outlineSpotShadowColor="@color/blanco"
+                                android:padding="10dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/corazon" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|end"
+                                android:layout_marginBottom="8dp"
+                                android:src="@drawable/notificaciones_circulo" />
+
+
+                        </FrameLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/bienvenidaFrutas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/btnBebidas"
+                                style="?android:attr/borderlessButtonStyle"
+                                android:layout_width="100dp"
+                                android:layout_height="35dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="10dp"
+                                android:fontFamily="@font/roboto_regular"
+                                android:textColor="#747576"
+                                android:background="@android:color/transparent"
+                                android:text="Bebidas"
+                                android:textAllCaps="false"
+                                android:textSize="16sp" />
+
+                            <Button
+                                android:id="@+id/btnFrituras"
+                                style="?android:attr/borderlessButtonStyle"
+                                android:layout_width="100dp"
+                                android:layout_height="35dp"
+                                android:layout_marginRight="10dp"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="Frituras"
+                                android:textColor="#747576"
+                                android:background="@android:color/transparent"
+                                android:textAllCaps="false"
+                                android:textSize="16sp" />
+
+                            <Button
+                                android:id="@+id/btnGolosinas"
+                                style="?android:attr/borderlessButtonStyle"
+                                android:layout_width="110dp"
+                                android:layout_height="35dp"
+                                android:layout_marginRight="10dp"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="Golosinas"
+                                android:textColor="#747576"
+                                android:background="@android:color/transparent"
+                                android:textAllCaps="false"
+                                android:textSize="16sp" />
+
+                            <Button
+                                android:id="@+id/btnGalletasPanesillos"
+                                style="?android:attr/borderlessButtonStyle"
+                                android:layout_width="200dp"
+                                android:layout_height="35dp"
+                                android:layout_marginRight="10dp"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="Galletas y panecillos"
+                                android:textColor="#747576"
+                                android:background="@android:color/transparent"
+                                android:textAllCaps="false"
+                                android:textSize="16sp" />
+
+                            <Button
+                                android:id="@+id/btnOtros"
+                                style="?android:attr/borderlessButtonStyle"
+                                android:layout_width="100dp"
+                                android:layout_height="35dp"
+                                android:layout_marginRight="20dp"
+                                android:fontFamily="@font/roboto_regular"
+                                android:text="Otros"
+                                android:textColor="#747576"
+                                android:background="@android:color/transparent"
+                                android:textAllCaps="false"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                    </HorizontalScrollView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/relLayout1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/BackgroundColorGris">
+
+                <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.appbar.AppBarLayout
+                        android:id="@+id/app_bar_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent">
+
+                        <com.google.android.material.appbar.CollapsingToolbarLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fitsSystemWindows="true"
+                            app:contentScrim="?attr/colorPrimary"
+                            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+                        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+                    </com.google.android.material.appbar.AppBarLayout>
+
+                    <FrameLayout
+                        android:id="@+id/fragmentContainerUltraprocesados"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                    </FrameLayout>
+
+                </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <include layout="@layout/ultraprocesados_dialog"/>
+
+</LinearLayout>

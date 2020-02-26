@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="gris">#ACA7A7</color>
+    <color name="gris">#AEAEAE</color>
     <color name="azul">#2B496B</color>
     <color name="blanco">#FFFFFF</color>
     <color name="morado">#6366A6</color>
     <color name="negro">#000000</color>
     <color name="verde">#178656</color>
+    <color name="borde_azul">#3867F9</color>
+    <color name="rojo">#F72511</color>
+
+    <!--<color name="BackgroundColorGris">#EBEEF1</color>-->
+    <color name="BackgroundColorGris">#F8F8FA</color>
+
+    
+    <color name="azul_alimentos">#2BACCB</color>
+    <color name="gris_alimentos">#F7F6FB</color>
+
+    <color name="color1">#424549</color>
+    <color name="color2">#7e455e</color>
+    <color name="color3">#796e25</color>
 </resources>

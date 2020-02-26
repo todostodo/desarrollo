@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CLIENTE.registro_cuestionario_seccion4">
+    tools:context=".CLIENTE.Encuestas.registro_cuestionario_seccion4">
 
     <!-- [START] PANTALL PARA LA PRIMERA PREGUNTA - SECCION 4-->
     <LinearLayout
