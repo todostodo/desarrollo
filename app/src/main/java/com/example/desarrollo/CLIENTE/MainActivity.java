@@ -13,6 +13,7 @@ import com.example.desarrollo.CLIENTE.Home.HomeFragment;
 
 import com.example.desarrollo.CLIENTE.Motivadores.MotivadoresFragment;
 import com.example.desarrollo.CLIENTE.Perfil.PerfilFragment;
+import com.example.desarrollo.DB.metodosDB;
 import com.example.desarrollo.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
