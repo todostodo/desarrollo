@@ -304,4 +304,21 @@
 
     <!-- LOGIN -->
 
+
+
+
+
+
+    <!-- STRINGS PARA EL TUTOR -->
+
+    <string-array name="parentesco">
+        <item>Seleccione su parentesco</item>
+        <item>Abuelo</item>
+        <item>Abuela</item>
+        <item>Tio</item>
+        <item>Tia</item>
+        <item>Primo</item>
+        <item>Prima</item>
+    </string-array>
+
 </resources>

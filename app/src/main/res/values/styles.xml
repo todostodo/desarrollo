@@ -24,4 +24,5 @@
         <item name="android:background">@drawable/custom_background_dialog</item>
     </style>
 
+
 </resources>

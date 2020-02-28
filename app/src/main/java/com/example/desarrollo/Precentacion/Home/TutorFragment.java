@@ -1,23 +1,26 @@
 package com.example.desarrollo.Precentacion.Home;
 
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
-import com.example.desarrollo.Datos.ConexionSQLHelper;
 import com.example.desarrollo.Datos.TutorDao;
 import com.example.desarrollo.R;
-import com.example.desarrollo.Ultilidades.Utilidades;
 
-public class TutorFragment extends AppCompatActivity {
+public class TutorFragment extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText _txtTutorNombre,
             _txtTutorApellidoPaterno,
@@ -27,7 +30,7 @@ public class TutorFragment extends AppCompatActivity {
             _txtTutorReContra;
 
     CheckBox _checkTutorMensaje;
-
+    Spinner _txtTutorParentesco;
     Button _btnAddTutor;
     TutorDao tutorDao;
 
@@ -36,6 +39,11 @@ public class TutorFragment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tutor_registro_activity);
         init();
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.parentesco, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        _txtTutorParentesco.setAdapter(adapter);
+        _txtTutorParentesco.setOnItemSelectedListener(this);
 
         _btnAddTutor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,7 +144,23 @@ public class TutorFragment extends AppCompatActivity {
         _txtTutorReContra = (EditText) findViewById(R.id.txtTutorReContra);
 
         _checkTutorMensaje = (CheckBox) findViewById(R.id.checkTutorMensaje);
+        _txtTutorParentesco = (Spinner) findViewById(R.id.txtTutorParentesco);
 
         _btnAddTutor = (Button) findViewById(R.id.btnAddTutor);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        ((TextView) parent.getChildAt(0)).setTextColor(Color.parseColor("#475369"));
+        ((TextView) parent.getChildAt(0)).setTextSize(18);
+        ((TextView) parent.getChildAt(0)).setTypeface(ResourcesCompat.getFont(this, R.font.roboto_regular));
+
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
