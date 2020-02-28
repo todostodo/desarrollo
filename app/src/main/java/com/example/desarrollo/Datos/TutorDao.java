@@ -15,34 +15,38 @@ public class TutorDao {
 
     private static SQLiteDatabase database;
 
-    public static void addTutor(Context context, String nombre, String apellidoP, String apellidoM, String correo, String contra, int idUsuario, String parentesco, int mensaje){
+    public static boolean addTutor(Context context, String nombre, String apellidoP, String apellidoM, String correo, String contra, int idUsuario, String parentesco, int mensaje){
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context, "basedatos", null, 1);
             database = null;
             database = connection.getWritableDatabase();
 
-            //String insert = "";
-            //db.execSQL(insert);
-            /*
-            ContentValues values = new ContentValues();
+            String inset = "INSERT INTO " + Utilidades.TABLA_Tutor + "( " +
+                    Utilidades.CAMPO_idUsuario + ", " +
+                    Utilidades.CAMPO_nombreTutor + ", " +
+                    Utilidades.CAMPO_apellidoPaterno  + ", " +
+                    Utilidades.CAMPO_apellidoMaterno + "," +
+                    Utilidades.CAMPO_parentesco  + ", " +
+                    Utilidades.CAMPO_mensaje + ", " +
+                    Utilidades.CAMPO_correo  + ", " +
+                    Utilidades.CAMPO_contrasena + ") " +
+                    "VALUES ( " +
+                    idUsuario + ", '" +
+                    nombre + "', '" +
+                    apellidoP + "', '" +
+                    apellidoM + "', '" +
+                    parentesco + "', " +
+                    mensaje + ", '" +
+                    correo + "', " +
+                    contra + ")";
 
-            values.put(Utilidades.CAMPO_nombreTutor, nombre);
-            values.put(Utilidades.CAMPO_apellidoPaterno, apellidoP);
-            values.put(Utilidades.CAMPO_apellidoMaterno, apellidoM);
-            values.put(Utilidades.CAMPO_correo, correo);
-            values.put(Utilidades.CAMPO_contrasena, contra);
+            database.execSQL(inset);
 
-            values.put(Utilidades.CAMPO_idUsuario, idUsuario);
-            values.put(Utilidades.CAMPO_parentesco, parentesco);
-            values.put(Utilidades.CAMPO_mensaje, mensaje);
+            return true;
 
-            Long rsult = database.insert(Utilidades.TABLA_Tutor, Utilidades.CAMPO_idTutor, values);
-
-            Toast.makeText(context, "Nombre: " + rsult, Toast.LENGTH_LONG).show();
-
-             */
         }catch (Exception e){
-            Toast.makeText(context, "Error al agregar tutor", Toast.LENGTH_SHORT).show();
+
+            return false;
         }finally {
             database.close();
         }
@@ -65,6 +69,7 @@ public class TutorDao {
 
                 tutorList.add(tutor);
             }
+
         }catch (Exception e){
             Toast.makeText(context, "Error al visualizar tutor", Toast.LENGTH_SHORT).show();
         }finally {

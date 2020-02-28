@@ -22,6 +22,7 @@ import com.example.desarrollo.Datos.TutorDao;
 import com.example.desarrollo.Entidades.Tutor;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewTutor;
 import com.example.desarrollo.R;
+import com.example.desarrollo.Ultilidades.Utilidades;
 
 import java.util.ArrayList;
 
@@ -56,7 +57,6 @@ public class  DetalleConsumoDia extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), TutorFragment.class);
                 startActivity(intent);
-
             }
         });
 

@@ -48,7 +48,7 @@ public class Utilidades {
                     CAMPO_apellidoMaterno + " TEXT NOT NULL, " +
                     CAMPO_parentesco + " TEXT, " +
                     CAMPO_mensaje + " TINYINT, " +
-                    CAMPO_correo + " TEXT NOR NULL, " +
-                    CAMPO_contrasena + " INTEGER NOT NULL )" +
-                    "FOREIGN KEY (" + CAMPO_idUsuario + ") REFERENCES Usuario (" + CAMPO_idUsuario + "))";
+                    CAMPO_correo + " TEXT NOR NULL UNIQUE, " +
+                    CAMPO_contrasena + " INTEGER NOT NULL )";// +
+                    //"FOREIGN KEY (" + CAMPO_idUsuario + ") REFERENCES Usuario (" + CAMPO_idUsuario + "))";
 }
