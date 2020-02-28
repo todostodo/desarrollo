@@ -70,7 +70,7 @@
                         android:layout_marginRight="10dp">
 
                         <ImageButton
-                            android:id="@+id/btnAddTutor"
+                            android:id="@+id/btnNuevoTutor"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:background="@drawable/circulo_gris"
@@ -490,6 +490,7 @@
             android:textSize="16sp" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewHistorial"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"

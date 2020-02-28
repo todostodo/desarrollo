@@ -20,7 +20,7 @@ import com.bumptech.glide.Glide;
 import com.example.desarrollo.ExportJSON.Filter.FilterHelperFrutas;
 import com.example.desarrollo.ExportJSON.Reader.ReaderFrutas;
 import com.example.desarrollo.R;
-import com.example.desarrollo.CLIENTE.Alimentos.Frutas.frutas_select_activity;
+import com.example.desarrollo.Precentacion.Alimentos.Frutas.frutas_select_activity;
 
 import java.util.ArrayList;
 import java.util.List;

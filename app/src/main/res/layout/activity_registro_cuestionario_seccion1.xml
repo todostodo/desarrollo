@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CLIENTE.Encuestas.registro_cuestionario_seccion1"
+    tools:context=".Precentacion.Encuestas.registro_cuestionario_seccion1"
     android:orientation="vertical"
     android:background="@color/blanco">
 

@@ -11,29 +11,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CLIENTE.Alimentos.Frutas.frutas_select_activity"></activity>
-        <activity android:name=".CLIENTE.MainActivity">
+        <activity android:name=".Precentacion.Alimentos.Frutas.frutas_select_activity"></activity>
+        <activity android:name=".Precentacion.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CLIENTE.Login.login_registro" />
-        <activity android:name=".CLIENTE.Login.login">
+        <activity android:name=".Precentacion.Login.login_registro" />
+        <activity android:name=".Precentacion.Login.login">
         </activity>
-        <activity android:name=".CLIENTE.Encuestas.registro_cuestionario_seccion4" />
-        <activity android:name=".CLIENTE.Encuestas.registro_cuestionario_seccion3" />
-        <activity android:name=".CLIENTE.Encuestas.registro_cuestionario_seccion2" />
-        <activity android:name=".CLIENTE.Encuestas.registro_cuestionario_seccion1" />
-        <activity android:name=".CLIENTE.Encuestas.registro_autoeficacia" />
-        <activity android:name=".CLIENTE.Encuestas.registroHijo" />
-        <activity android:name=".CLIENTE.Alimentos.Frutas.RegistrarFrutas"></activity>
-        <activity android:name=".CLIENTE.EpicMensajes.EpicChildr"></activity>
+        <activity android:name=".Precentacion.Encuestas.registro_cuestionario_seccion4" />
+        <activity android:name=".Precentacion.Encuestas.registro_cuestionario_seccion3" />
+        <activity android:name=".Precentacion.Encuestas.registro_cuestionario_seccion2" />
+        <activity android:name=".Precentacion.Encuestas.registro_cuestionario_seccion1" />
+        <activity android:name=".Precentacion.Encuestas.registro_autoeficacia" />
+        <activity android:name=".Precentacion.Encuestas.registroHijo" />
+        <activity android:name=".Precentacion.Alimentos.Frutas.RegistrarFrutas"></activity>
+        <activity android:name=".Precentacion.EpicMensajes.EpicChildr"></activity>
 
 
-        <activity android:name=".CLIENTE.Home.TutorFragment"/>
-        <activity android:name=".CLIENTE.Home.HijoRegistroActivity"/>
+        <activity android:name=".Precentacion.Home.TutorFragment"/>
+        <activity android:name=".Precentacion.Home.HijoRegistroActivity"/>
     </application>
 
 </manifest>

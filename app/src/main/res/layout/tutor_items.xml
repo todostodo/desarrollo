@@ -11,6 +11,7 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/txtTutorItemParentesco"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:background="@drawable/circulo_gris"
@@ -22,6 +23,7 @@
 
     </RelativeLayout>
     <TextView
+        android:id="@+id/txtTutorItemNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Miguel"

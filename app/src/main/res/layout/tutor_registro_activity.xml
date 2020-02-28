@@ -43,12 +43,13 @@
                 android:background="@drawable/rectangulo_blanco">
 
                 <EditText
+                    android:id="@+id/txtTutorNombre"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/roboto_regular"
+                    android:text="Marco"
                     android:paddingLeft="30dp"
-                    android:text="Marco Antonio"
                     android:textColor="#475369"
                     android:textSize="18sp" />
 
@@ -79,12 +80,13 @@
                 android:background="@drawable/rectangulo_blanco">
 
                 <EditText
+                    android:id="@+id/txtTutorApellidoPaterno"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/roboto_regular"
+                    android:text="Aguilar"
                     android:paddingLeft="30dp"
-                    android:text="Anguiano"
                     android:textColor="#475369"
                     android:textSize="18sp" />
 
@@ -115,12 +117,13 @@
                 android:background="@drawable/rectangulo_blanco">
 
                 <EditText
+                    android:id="@+id/txtTutorApellidoMaterno"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/roboto_regular"
+                    android:text="Anguiano"
                     android:paddingLeft="30dp"
-                    android:text="Aguilar"
                     android:textColor="#475369"
                     android:textSize="18sp" />
 
@@ -151,12 +154,13 @@
                 android:background="@drawable/rectangulo_blanco">
 
                 <EditText
+                    android:id="@+id/txtTutorCorreo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/roboto_regular"
+                    android:text="mrmarcodekt@gmail.com"
                     android:paddingLeft="30dp"
-                    android:text="marco15290849@itcg.edu.mx"
                     android:textColor="#475369"
                     android:textSize="18sp" />
 
@@ -187,13 +191,14 @@
                 android:background="@drawable/rectangulo_blanco">
 
                 <EditText
+                    android:id="@+id/txtTutorContra"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/roboto_regular"
-                    android:inputType="textPassword"
+                    android:inputType="numberPassword"
+                    android:text="123"
                     android:paddingLeft="30dp"
-                    android:text="password"
                     android:textColor="#475369"
                     android:textSize="18sp" />
 
@@ -234,6 +239,7 @@
             android:gravity="center">
 
             <Button
+                android:id="@+id/btnAddTutor"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="250dp"
                 android:layout_height="60dp"
