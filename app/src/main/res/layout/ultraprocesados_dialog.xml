@@ -188,6 +188,7 @@
                 android:gravity="center">
 
                 <Button
+                    android:id="@+id/btnRegistrarUltraprocesado"
                     android:layout_width="250dp"
                     android:layout_height="50dp"
                     android:background="@drawable/custom_bottom_background_azul_mostrasa"

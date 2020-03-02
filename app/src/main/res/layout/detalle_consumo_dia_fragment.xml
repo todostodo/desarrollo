@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,12 +11,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp">
 
@@ -78,15 +79,17 @@
 
                     </RelativeLayout>
 
+                    <!---->
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerViewTutores"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
                         android:orientation="horizontal"
-                        android:scrollbars="none"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:scrollbars="none"
                         tools:listitem="@layout/tutor_items" />
+
 
                 </LinearLayout>
 
@@ -489,6 +492,7 @@
             android:textColor="@color/gris"
             android:textSize="16sp" />
 
+        <!---->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewHistorial"
             android:layout_width="match_parent"
@@ -500,5 +504,7 @@
             android:layout_marginBottom="10dp"/>
 
     </LinearLayout>
+
+    <!--<include layout="@layout/tutor_dialog_options"/>-->
 
 </androidx.core.widget.NestedScrollView>

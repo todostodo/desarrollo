@@ -306,7 +306,7 @@
                 android:id="@+id/btnAddTutor"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="250dp"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:background="@drawable/rectangulo_azul"
                 android:text="Agregar"
                 android:textAllCaps="false"

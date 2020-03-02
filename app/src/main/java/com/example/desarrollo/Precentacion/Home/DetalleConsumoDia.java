@@ -1,13 +1,12 @@
 package com.example.desarrollo.Precentacion.Home;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
@@ -22,7 +21,6 @@ import com.example.desarrollo.Datos.TutorDao;
 import com.example.desarrollo.Entidades.Tutor;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewTutor;
 import com.example.desarrollo.R;
-import com.example.desarrollo.Ultilidades.Utilidades;
 
 import java.util.ArrayList;
 
@@ -30,6 +28,7 @@ public class  DetalleConsumoDia extends Fragment {
 
     View view;
     ImageButton _btnAddTutor;
+    Button _btnTutorVer, _btnTutorEliminar;
 
     ProgressBar _charFrutas, _chartVerduras;
     Handler handler = new Handler();
@@ -65,7 +64,7 @@ public class  DetalleConsumoDia extends Fragment {
 
         consultarListaTutor();
 
-        adapter = new RecyclerViewTutor(tutorList);
+        adapter = new RecyclerViewTutor(getContext(), tutorList);
         _recyclerViewTutor.setAdapter(adapter);
 
         return view;
