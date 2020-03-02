@@ -191,7 +191,6 @@ public class UltraprocesadosFragment extends Fragment {
         ft.replace(R.id.fragmentContainerUltraprocesados, fragment);
         //ft.addToBackStack(null);
         ft.commit();
-
     }
 
 }
