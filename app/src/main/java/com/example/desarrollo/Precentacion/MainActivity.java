@@ -97,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         contador++;
         if(estado==1){
+            currentTag = "home";
+            loadFragment(homeFragment, currentTag);
             super.onBackPressed();
             super.onBackPressed();
         }
@@ -105,6 +107,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         if(contador==2){
+            currentTag = "home";
+            loadFragment(homeFragment, currentTag);
             super.onBackPressed();
             super.onBackPressed();
         }
