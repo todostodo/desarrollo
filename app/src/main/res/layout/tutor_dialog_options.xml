@@ -35,7 +35,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/btnEditarTutor"
+                android:id="@+id/btnEditarTutorDialog"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -49,7 +49,7 @@
                 android:textSize="16sp" />
 
             <ImageButton
-                android:id="@+id/btnEliminarTutor"
+                android:id="@+id/btnEliminarTutorDialog"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -75,6 +75,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/txtTutorNombreDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
@@ -83,7 +84,7 @@
             android:textSize="26sp" />
 
         <TextView
-            android:id="@+id/textContra"
+            android:id="@+id/textContraDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -106,13 +107,12 @@
                 app:passwordToggleEnabled="true">
 
                 <EditText
-                    android:id="@+id/txtPasswordTutor"
+                    android:id="@+id/txtPasswordTutorDialog"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/roboto_regular"
                     android:inputType="numberPassword"
-                    android:text="43764583"
                     android:paddingLeft="30dp"
                     android:textColor="#475369"
                     android:textSize="18sp" />

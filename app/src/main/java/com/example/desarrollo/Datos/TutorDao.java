@@ -64,8 +64,12 @@ public class TutorDao {
 
             while (cursor.moveToNext()){
                 tutor = new Tutor();
+                tutor.setIdTutor(cursor.getInt(0));
                 tutor.setNombreTutor(cursor.getString(2));
+                tutor.setApellidoPTutor(cursor.getString(3));
+                tutor.setApellidoMTutor(cursor.getString(4));
                 tutor.setParentesto(cursor.getString(5));
+                tutor.setContraTutor(cursor.getInt(8));
 
                 tutorList.add(tutor);
             }

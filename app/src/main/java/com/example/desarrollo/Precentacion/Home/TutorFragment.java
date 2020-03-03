@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.example.desarrollo.Datos.TutorDao;
+import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewTutor;
 import com.example.desarrollo.R;
 
 public class TutorFragment extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -33,6 +34,8 @@ public class TutorFragment extends AppCompatActivity implements AdapterView.OnIt
     Spinner _txtTutorParentesco;
     Button _btnAddTutor;
     TutorDao tutorDao;
+
+    RecyclerViewTutor viewTutor;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,7 +66,7 @@ public class TutorFragment extends AppCompatActivity implements AdapterView.OnIt
         String contra = _txtTutorContra.getText().toString();
         String reContra = _txtTutorReContra.getText().toString();
         int idUsuario = 1;
-        String parentesco = "Tio";
+        String parentesco = _txtTutorParentesco.getSelectedItem().toString();
         int mensaje;
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
@@ -119,8 +122,9 @@ public class TutorFragment extends AppCompatActivity implements AdapterView.OnIt
 
                                         if (add == true) {
                                             Toast.makeText(this, "Tutor Agregado", Toast.LENGTH_SHORT).show();
+                                            finish();
                                         } else {
-                                            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(this, "El correo electronico ya se encuentra registrado", Toast.LENGTH_SHORT).show();
                                         }
                                     } else {
                                         _txtTutorReContra.setBackgroundResource(R.drawable.rectangulo_border_rojo);

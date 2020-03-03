@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -54,8 +55,13 @@ public class  DetalleConsumoDia extends Fragment {
         _btnAddTutor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), TutorFragment.class);
-                startActivity(intent);
+                if (adapter.getItemCount() == 3){
+                    Toast.makeText(getContext(), "Alcanzo el numero maximo de tutores", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Intent intent = new Intent(getContext(), TutorFragment.class);
+                    startActivity(intent);
+                }
             }
         });
 

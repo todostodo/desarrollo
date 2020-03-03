@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.text.method.KeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,12 +69,25 @@ public class RecyclerViewTutor extends RecyclerView.Adapter<RecyclerView.ViewHol
         viewHolder._btnTutorSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final TextView _txtPasswordTutor = (TextView) dialogOptions.findViewById(R.id.txtPasswordTutor);
+
+                final TextView _txtPasswordTutor = (TextView) dialogOptions.findViewById(R.id.txtPasswordTutorDialog);
                 _txtPasswordTutor.setKeyListener(null);
-                final TextView _textContra = (TextView) dialogOptions.findViewById(R.id.textContra);
+                final TextView _textContra = (TextView) dialogOptions.findViewById(R.id.textContraDialog);
+                final TextView _txtNombre = (TextView) dialogOptions.findViewById(R.id.txtTutorNombreDialog);
                 final LinearLayout layoutEditarTutor = (LinearLayout) dialogOptions.findViewById(R.id.layoutEditarTutor);
-                final ImageButton _btnEditarTutor = (ImageButton) dialogOptions.findViewById(R.id.btnEditarTutor);
+                final ImageButton _btnEditarTutor = (ImageButton) dialogOptions.findViewById(R.id.btnEditarTutorDialog);
                 final Button _btnGuardarTutor = (Button) dialogOptions.findViewById(R.id.btnGuardarTutor);
+
+                /*
+                MOSTRAR DATOS
+                 */
+                String nombre, apellidoP, apellidoM, contra;
+                nombre = tutorList.get(viewHolder.getAdapterPosition()).getNombreTutor();
+                apellidoP = tutorList.get(viewHolder.getAdapterPosition()).getApellidoPTutor();
+                apellidoM = tutorList.get(viewHolder.getAdapterPosition()).getApellidoMTutor();
+                _txtNombre.setText(nombre + " " + apellidoP + " " + apellidoM);
+                _txtPasswordTutor.setText(String.valueOf(tutorList.get(viewHolder.getAdapterPosition()).getContraTutor()));
+                //----------------------
                 _btnEditarTutor.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -91,6 +103,9 @@ public class RecyclerViewTutor extends RecyclerView.Adapter<RecyclerView.ViewHol
                         layoutEditarTutor.setVisibility(View.GONE);
                         _txtPasswordTutor.setKeyListener(null);
                         _textContra.setText("Contraseña");
+
+                        //Editar
+
                     }
                 });
 
