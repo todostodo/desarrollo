@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -28,7 +29,7 @@ import java.util.ArrayList;
 public class  DetalleConsumoDia extends Fragment {
 
     View view;
-    ImageButton _btnAddTutor;
+    ImageView _btnAddTutor;
     Button _btnTutorVer, _btnTutorEliminar;
 
     ProgressBar _charFrutas, _chartVerduras;
@@ -129,7 +130,7 @@ public class  DetalleConsumoDia extends Fragment {
 
     private void init() {
 
-        _btnAddTutor = (ImageButton) view.findViewById(R.id.btnNuevoTutor);
+        _btnAddTutor = (ImageView) view.findViewById(R.id.btnNuevoTutor);
 
         _charFrutas = (ProgressBar) view.findViewById(R.id.chartFrutas);
         _chartVerduras = (ProgressBar) view.findViewById(R.id.chartVerduras);

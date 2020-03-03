@@ -52,6 +52,45 @@ public class TutorDao {
         }
     }
 
+    public static boolean editarTutor(Context context, int id, int password){
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context, "basedatos", null, 1);
+            database = null;
+            database = connection.getWritableDatabase();
+
+            String editar = "UPDATE " + Utilidades.TABLA_Tutor + " " +
+                    "SET " + Utilidades.CAMPO_contrasena + " = " +
+                    password + " WHERE " + Utilidades.CAMPO_idTutor + " = " + id;
+            database.execSQL(editar);
+
+            return true;
+
+        }catch (Exception e){
+            return false;
+        }finally {
+            database.close();
+        }
+    }
+
+    public static boolean eliminarTutor(Context context, int id){
+        try{
+            ConexionSQLHelper connection = new ConexionSQLHelper(context, "basedatos",null,1);
+            database = null;
+            database = connection.getWritableDatabase();
+
+            String eliminar = "DELETE FROM " +
+                    Utilidades.TABLA_Tutor +
+                    " WHERE " + Utilidades.CAMPO_idTutor + " = " + id;
+            database.execSQL(eliminar);
+
+            return true;
+        }catch (Exception e){
+            return false;
+        }finally {
+            database.close();
+        }
+    }
+
     public static ArrayList consultaTutor(Context context, ArrayList tutorList){
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context, "basedatos", null, 1);
@@ -79,7 +118,6 @@ public class TutorDao {
         }finally {
             database.close();
         }
-
         return tutorList;
     }
 }

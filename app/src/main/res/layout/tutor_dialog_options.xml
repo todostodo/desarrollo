@@ -94,6 +94,7 @@
             android:textSize="18sp" />
 
         <RelativeLayout
+            android:id="@+id/layourPasswordTutor"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
@@ -141,13 +142,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/rectangulo_gris"
                 android:gravity="center">
 
                 <EditText
+                    android:id="@+id/txtRePasswordTutorDialog"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
+                    android:background="@drawable/rectangulo_gris"
                     android:fontFamily="@font/roboto_regular"
                     android:inputType="numberPassword"
                     android:paddingLeft="30dp"

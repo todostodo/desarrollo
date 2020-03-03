@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         contador++;
-        if(estado==1){
+        if(estado == 1){
             super.onBackPressed();
             super.onBackPressed();
         }
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.menu_home);
 
 
-        if(contador==2){
+        if(contador == 2){
             super.onBackPressed();
             super.onBackPressed();
         }
