@@ -220,7 +220,7 @@ public class Utilidades {
     public static final String CAMPO_EsfuerzoFruta = "esfuerzof";
     public static final String CAMPO_EsfuerzoVerdura = "esfuerzov";
 
-    public static final String CREAR_Nino =
+    public static final String CREAR_Tabla_Nino =
             "CREATE TABLE " + "" + TABLA_Nino + " (" +
                     CAMPO_idHijo + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_idUsuarioN + " INTEGER NOT NULL, " +

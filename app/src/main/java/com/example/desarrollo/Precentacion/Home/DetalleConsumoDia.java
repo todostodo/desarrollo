@@ -66,6 +66,13 @@ public class  DetalleConsumoDia extends Fragment {
                 }
             }
         });
+        _btnAtivityNino.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), HijoRegistroActivity.class);
+                startActivity(intent);
+            }
+        });
 
         conexion = new ConexionSQLHelper(getContext(), "basedatos", null, 1);
         _recyclerViewTutor.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
