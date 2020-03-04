@@ -31,6 +31,7 @@ public class  DetalleConsumoDia extends Fragment {
     View view;
     ImageView _btnAddTutor;
     Button _btnTutorVer, _btnTutorEliminar;
+    ImageButton  _btnAtivityNino;
 
     ProgressBar _charFrutas, _chartVerduras;
     Handler handler = new Handler();
@@ -136,5 +137,7 @@ public class  DetalleConsumoDia extends Fragment {
         _chartVerduras = (ProgressBar) view.findViewById(R.id.chartVerduras);
 
         _recyclerViewTutor = (RecyclerView) view.findViewById(R.id.recyclerViewTutores);
+
+        _btnAtivityNino = (ImageButton) view.findViewById(R.id.btnAtivityNino);
     }
 }

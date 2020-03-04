@@ -77,9 +77,7 @@ public class FrutasFragment extends Fragment{
         adapterFrutas = new RecyclerViewAdapterFrutas(getContext(), frutasItem);
         myRecyclerView.setAdapter(adapterFrutas);
 
-
         addItemsJSON();
-
 
         return rootView;
     }

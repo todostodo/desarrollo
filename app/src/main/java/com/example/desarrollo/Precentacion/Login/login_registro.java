@@ -10,87 +10,112 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.desarrollo.Datos.UserDao;
 import com.example.desarrollo.R;
 
 public class login_registro extends AppCompatActivity {
 
-    EditText _txtUsuario, _txtCorreo, _txtPassword, _txtRePassword;
+    EditText
+            _txtUsuario,
+            _txtCorreo,
+            _txtPassword,
+            _txtRePassword,
+            _txtUsuarioApellidoPaterno,
+            _txtUsuarioApellidoMaterno;
     ImageView _fondoImagen;
+    UserDao userDao;
+
+    private static final String TAG = "login_registro";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_registro);
+        setContentView(R.layout.login_registro_activity);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        init();
 
-        _txtUsuario = (EditText) findViewById(R.id.txtUsuario);
         _txtUsuario.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
-                    //_txtUsuario.setCompoundDrawablesWithIntrinsicBounds(R.drawable.usuario_select, 0, 0,0);
+                if (hasFocus) {
                     _txtUsuario.setTextColor(getResources().getColor(R.color.borde_azul));
                     _txtUsuario.setTypeface(Typeface.DEFAULT_BOLD);
-                }
-                else{
-                    //_txtUsuario.setCompoundDrawablesWithIntrinsicBounds(R.drawable.usuario_default, 0, 0,0);
+                } else {
                     _txtUsuario.setTextColor(getResources().getColor(R.color.negro));
                     _txtUsuario.setTypeface(Typeface.DEFAULT);
                 }
             }
         });
 
-        _txtCorreo = (EditText) findViewById(R.id.txtCorreo);
+        _txtUsuarioApellidoPaterno.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    _txtUsuarioApellidoPaterno.setTextColor(getResources().getColor(R.color.borde_azul));
+                    _txtUsuarioApellidoPaterno.setTypeface(Typeface.DEFAULT_BOLD);
+                } else {
+                    _txtUsuarioApellidoPaterno.setTextColor(getResources().getColor(R.color.negro));
+                    _txtUsuarioApellidoPaterno.setTypeface(Typeface.DEFAULT);
+                }
+            }
+        });
+
+        _txtUsuarioApellidoMaterno.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    _txtUsuarioApellidoMaterno.setTextColor(getResources().getColor(R.color.borde_azul));
+                    _txtUsuarioApellidoMaterno.setTypeface(Typeface.DEFAULT_BOLD);
+                } else {
+                    _txtUsuarioApellidoMaterno.setTextColor(getResources().getColor(R.color.negro));
+                    _txtUsuarioApellidoMaterno.setTypeface(Typeface.DEFAULT);
+                }
+            }
+        });
+
         _txtCorreo.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
-                    //_txtCorreo.setCompoundDrawablesWithIntrinsicBounds(R.drawable.gmail_select, 0, 0,0);
+                if (hasFocus) {
                     _txtCorreo.setTextColor(getResources().getColor(R.color.borde_azul));
                     _txtCorreo.setTypeface(Typeface.DEFAULT_BOLD);
-                }
-                else{
-                    //_txtCorreo.setCompoundDrawablesWithIntrinsicBounds(R.drawable.gmail_default, 0, 0,0);
+                } else {
                     _txtCorreo.setTextColor(getResources().getColor(R.color.negro));
                     _txtCorreo.setTypeface(Typeface.DEFAULT);
                 }
             }
         });
 
-        _txtPassword = (EditText) findViewById(R.id.txtPassword);
+
         _txtPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
-                    //_txtPassword.setCompoundDrawablesWithIntrinsicBounds(R.drawable.password_select, 0, 0,0);
+                if (hasFocus) {
                     _txtPassword.setTextColor(getResources().getColor(R.color.borde_azul));
                     _txtPassword.setTypeface(Typeface.DEFAULT_BOLD);
-                }
-                else{
-                    //_txtPassword.setCompoundDrawablesWithIntrinsicBounds(R.drawable.password_default, 0, 0,0);
+                } else {
                     _txtPassword.setTextColor(getResources().getColor(R.color.negro));
                     _txtPassword.setTypeface(Typeface.DEFAULT);
                 }
             }
         });
 
-        _txtRePassword = (EditText) findViewById(R.id.txtRePassword);
+
         _txtRePassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus){
-                    //_txtRePassword.setCompoundDrawablesWithIntrinsicBounds(R.drawable.password_select, 0, 0,0);
+                if (hasFocus) {
                     _txtRePassword.setTextColor(getResources().getColor(R.color.borde_azul));
                     _txtRePassword.setTypeface(Typeface.DEFAULT_BOLD);
-                }
-                else{
-                    //_txtRePassword.setCompoundDrawablesWithIntrinsicBounds(R.drawable.password_default, 0, 0,0);
+                } else {
                     _txtRePassword.setTextColor(getResources().getColor(R.color.negro));
                     _txtRePassword.setTypeface(Typeface.DEFAULT);
                 }
             }
         });
     }
+
     public void btmPantallaInicioSesion(View view) {
         finish();
     }
@@ -99,39 +124,84 @@ public class login_registro extends AppCompatActivity {
         Toast aviso;
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
-        if (_txtUsuario.getText().toString().isEmpty() ){
+        String nomUsuario = _txtUsuario.getText().toString().trim();
+        String apellidoPaterno = _txtUsuarioApellidoPaterno.getText().toString().trim();
+        String apellidoMaterno = _txtUsuarioApellidoMaterno.getText().toString().trim();
+        String correo = _txtCorreo.getText().toString().trim();
+        String password = _txtPassword.getText().toString().trim();
+        String rePassword = _txtRePassword.getText().toString().trim();
+
+        if (nomUsuario.equals("")) {
+            _txtUsuario.setBackgroundResource(R.drawable.login_textview_error);
+
             aviso = Toast.makeText(getApplicationContext(), "Ingrese el nombre de usuario", Toast.LENGTH_SHORT);
             aviso.show();
-        }
-        else{
-            if (_txtCorreo.getText().toString().isEmpty()){
-                aviso = Toast.makeText(getApplicationContext(), "Ingrese el correo", Toast.LENGTH_SHORT);
-                aviso.show();
-            }
-            else{
-                if (!_txtCorreo.getText().toString().trim().matches(emailPattern)){
-                    aviso = Toast.makeText(getApplicationContext(), "Correo invalido", Toast.LENGTH_SHORT);
-                    aviso.show();
-                }
-                else{
-                    if (_txtPassword.getText().toString().isEmpty()){
-                        aviso = Toast.makeText(getApplicationContext(), "Ingrese alguna contrasena", Toast.LENGTH_SHORT);
-                        aviso.show();
-                    }
-                    else{
-                        if (_txtRePassword.getText().toString().isEmpty()){
-                            aviso = Toast.makeText(getApplicationContext(), "Reescriba la contrasena", Toast.LENGTH_SHORT);
-                            aviso.show();
-                        }
-                        else{
-                            if (_txtPassword.getText().toString().equals(_txtRePassword.getText().toString())){
-                                aviso = Toast.makeText(getApplicationContext(), "Inicio de sesion CORRECTO", Toast.LENGTH_SHORT);
-                                aviso.show();
-                            }
+        } else {
+            _txtUsuario.setBackgroundResource(R.drawable.login_textview_backgound);
 
-                            else{
-                                aviso = Toast.makeText(getApplicationContext(), "La contrasena no coincide", Toast.LENGTH_SHORT);
+            if (apellidoPaterno.equals(""))
+                _txtUsuarioApellidoPaterno.setBackgroundResource(R.drawable.login_textview_error);
+            else {
+                _txtUsuarioApellidoPaterno.setBackgroundResource(R.drawable.login_textview_backgound);
+
+                if (apellidoMaterno.equals("")) {
+                    _txtUsuarioApellidoMaterno.setBackgroundResource(R.drawable.login_textview_error);
+                } else {
+                    _txtUsuarioApellidoMaterno.setBackgroundResource(R.drawable.login_textview_backgound);
+
+                    if (correo.equals("")) {
+                        _txtCorreo.setBackgroundResource(R.drawable.login_textview_error);
+
+                        aviso = Toast.makeText(getApplicationContext(), "Ingrese el correo", Toast.LENGTH_SHORT);
+                        aviso.show();
+                    } else {
+                        _txtCorreo.setBackgroundResource(R.drawable.login_textview_backgound);
+
+                        if (!correo.matches(emailPattern)) {
+                            _txtCorreo.setBackgroundResource(R.drawable.login_textview_error);
+                            aviso = Toast.makeText(getApplicationContext(), "Correo invalido", Toast.LENGTH_SHORT);
+                            aviso.show();
+                        } else {
+                            _txtCorreo.setBackgroundResource(R.drawable.login_textview_backgound);
+
+                            if (password.equals("")) {
+                                _txtPassword.setBackgroundResource(R.drawable.login_textview_error);
+                                aviso = Toast.makeText(getApplicationContext(), "Ingrese alguna contrasena", Toast.LENGTH_SHORT);
                                 aviso.show();
+                            } else {
+                                _txtPassword.setBackgroundResource(R.drawable.login_textview_backgound);
+
+                                if (rePassword.equals("")) {
+                                    _txtRePassword.setBackgroundResource(R.drawable.login_textview_error);
+                                    aviso = Toast.makeText(getApplicationContext(), "Reescriba la contrasena", Toast.LENGTH_SHORT);
+                                    aviso.show();
+                                } else {
+                                    if (password.equals(rePassword)) {
+
+                                        boolean addUser = userDao.addUsuario(
+                                                TAG,
+                                                getApplicationContext(),
+                                                nomUsuario,
+                                                apellidoPaterno,
+                                                apellidoMaterno,
+                                                correo,
+                                                password,
+                                                0
+                                        );
+
+                                        if (addUser == true){
+                                            aviso = Toast.makeText(getApplicationContext(), "Cuenta creada correctamente", Toast.LENGTH_SHORT);
+                                            aviso.show();
+                                        }
+                                        else{
+                                            aviso = Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT);
+                                            aviso.show();
+                                        }
+                                    } else {
+                                        aviso = Toast.makeText(getApplicationContext(), "La contrasena no coincide", Toast.LENGTH_SHORT);
+                                        aviso.show();
+                                    }
+                                }
                             }
                         }
                     }
@@ -139,4 +209,14 @@ public class login_registro extends AppCompatActivity {
             }
         }
     }
+
+    private void init() {
+        _txtUsuario = (EditText) findViewById(R.id.txtUsuarioNombre);
+        _txtCorreo = (EditText) findViewById(R.id.txtCorreo);
+        _txtPassword = (EditText) findViewById(R.id.txtPassword);
+        _txtRePassword = (EditText) findViewById(R.id.txtRePassword);
+        _txtUsuarioApellidoPaterno = (EditText) findViewById(R.id.txtUsuarioApellidoPaterno);
+        _txtUsuarioApellidoMaterno = (EditText) findViewById(R.id.txtUsuarioApellidoMaterno);
+    }
+
 }

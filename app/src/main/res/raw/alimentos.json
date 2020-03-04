@@ -6,7 +6,7 @@
       "vitamina": "Vitamina C",
       "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
       "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
-      "imgUrl": "platano",
+      "imgUrl": "f_platano",
       "backgroud": "#F9998D"
     },
     {
@@ -15,7 +15,7 @@
       "vitamina": "Vitamina A",
       "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
       "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
-      "imgUrl": "manzana",
+      "imgUrl": "f_manzana",
       "backgroud": "#F9998D"
     },
     {
@@ -24,7 +24,7 @@
       "vitamina": "Vitamina C,A,B",
       "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
       "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
-      "imgUrl": "naranja",
+      "imgUrl": "f_naranja",
       "backgroud": "#F9998D"
     },
     {
@@ -33,36 +33,115 @@
       "vitamina": "Vitamina A",
       "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
       "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
-      "imgUrl": "pera",
+      "imgUrl": "f_pera",
       "backgroud": "#F9998D"
     },
     {
-      "nombre": "Naranja",
+      "nombre": "Ciruela",
       "porcion": "1/2 prc",
-      "vitamina": "Vitamina C,A,B",
+      "vitamina": "Vitamina A",
       "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
       "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
-      "imgUrl": "naranja",
-      "backgroud": "#F9998D"
-    }
-  ],
-  "Verduras": [
-    {
-      "nombre": "Verdura",
-      "porcion": "1/2 prc",
-      "vitamina": "Vitamina C",
-      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
-      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
-      "imgUrl": "platano",
+      "imgUrl": "f_ciruela",
       "backgroud": "#F9998D"
     },
     {
-      "nombre": "Verdura",
+      "nombre": "Durazno",
       "porcion": "1/2 prc",
-      "vitamina": "Vitamina C",
+      "vitamina": "Vitamina A",
       "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
       "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
-      "imgUrl": "platano",
+      "imgUrl": "f_durazno",
+      "backgroud": "#F9998D"
+    },
+    {
+      "nombre": "Fresa",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "f_fresa",
+      "backgroud": "#F9998D"
+    },
+    {
+      "nombre": "Guayaba",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "f_guayaba",
+      "backgroud": "#F9998D"
+    },
+    {
+      "nombre": "kiwi",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "f_kiwi",
+      "backgroud": "#F9998D"
+    },
+    {
+      "nombre": "Mandarina",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "f_mandarina",
+      "backgroud": "#F9998D"
+    },
+    {
+      "nombre": "Melon",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "f_melon",
+      "backgroud": "#F9998D"
+    },
+    {
+      "nombre": "Papayo",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "f_papayo",
+      "backgroud": "#F9998D"
+    },
+    {
+      "nombre": "Piña",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "f_pina",
+      "backgroud": "#F9998D"
+    },
+    {
+      "nombre": "Sandia",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "f_sandia",
+      "backgroud": "#F9998D"
+    },
+    {
+      "nombre": "Uva",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "f_uva",
+      "backgroud": "#F9998D"
+    },
+    {
+      "nombre": "Zarzamora",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "f_zarzamora",
       "backgroud": "#F9998D"
     }
   ]

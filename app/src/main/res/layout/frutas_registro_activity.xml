@@ -175,7 +175,7 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="250dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/custom_botton_registrar_frutas"
+                    android:background="@drawable/rectangulo_verde"
                     android:fontFamily="@font/roboto_medium"
                     android:text="registrar"
                     android:textColor="@color/blanco" />

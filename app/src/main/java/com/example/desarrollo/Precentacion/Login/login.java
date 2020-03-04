@@ -8,21 +8,23 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.example.desarrollo.R;
 
 public class login extends AppCompatActivity {
 
     EditText _txtUsuario, _txtPassword;
+    ImageButton _btnIniciarSesion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.login_activity);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        init();
 
-        _txtUsuario = (EditText) findViewById(R.id.txtUsuario);
         _txtUsuario.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -39,7 +41,6 @@ public class login extends AppCompatActivity {
             }
         });
 
-        _txtPassword = (EditText) findViewById(R.id.txtPassword);
         _txtPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -56,6 +57,37 @@ public class login extends AppCompatActivity {
             }
         });
 
+        _btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String usuario = _txtUsuario.getText().toString().trim();
+                String password = _txtPassword.getText().toString().trim();
+
+                if (usuario.equals("")){
+                    _txtUsuario.setBackgroundResource(R.drawable.login_textview_error);
+                }
+                else{
+                    _txtUsuario.setBackgroundResource(R.drawable.login_textview_backgound);
+
+                    if (password.equals("")){
+                        _txtPassword.setBackgroundResource(R.drawable.login_textview_error);
+                    }
+                    else{
+                        _txtPassword.setBackgroundResource(R.drawable.login_textview_backgound);
+
+
+                    }
+                }
+            }
+        });
+
+
+    }
+
+    private void init() {
+        _txtUsuario = (EditText) findViewById(R.id.txtNombreUsuario);
+        _txtPassword = (EditText) findViewById(R.id.txtPassword);
+        _btnIniciarSesion = (ImageButton) findViewById(R.id.btnIniciarSesion);
     }
 
 

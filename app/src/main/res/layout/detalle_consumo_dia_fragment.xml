@@ -137,6 +137,7 @@
                     app:cardElevation="0dp">
 
                     <ImageButton
+                        android:id="@+id/btnAtivityNino"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_gravity="center"
