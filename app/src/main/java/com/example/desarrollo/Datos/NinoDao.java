@@ -14,22 +14,23 @@ public class NinoDao {
             database = null;
             database = connection.getWritableDatabase();
 
+
             String inset = "INSERT INTO " + Utilidades.TABLA_Nino + "( " +
-                    Utilidades.CAMPO_idusun + ", " +
-                    Utilidades.CAMPO_nomn  + ", " +
-                    Utilidades.CAMPO_appn + "," +
-                    Utilidades.CAMPO_apmn  + ", " +
-                    Utilidades.CAMPO_edad + ", " +
-                    Utilidades.CAMPO_peso  + ", " +
-                    Utilidades.CAMPO_estat  + ", " +
-                    Utilidades.CAMPO_medi  + ", " +
-                    Utilidades.CAMPO_lineabultra  + ", " +
-                    Utilidades.CAMPO_lineabv  + ", " +
-                    Utilidades.CAMPO_leneabf  + ", " +
-                    Utilidades.CAMPO_totfich  + ", " +
-                    Utilidades.CAMPO_esfuerzoultra  + ", " +
-                    Utilidades.CAMPO_esfuerzof  + ", " +
-                    Utilidades.CAMPO_esfuerzov + ") " +
+                    Utilidades.CAMPO_idUsuarioN + ", " +
+                    Utilidades.CAMPO_NombreN  + ", " +
+                    Utilidades.CAMPO_ApellidoPaternoN + "," +
+                    Utilidades.CAMPO_ApellidoMaternoN  + ", " +
+                    Utilidades.CAMPO_Edad + ", " +
+                    Utilidades.CAMPO_Peso  + ", " +
+                    Utilidades.CAMPO_Estatura  + ", " +
+                    Utilidades.CAMPO_Medida  + ", " +
+                    Utilidades.CAMPO_LineaBaseUltraprocesado  + ", " +
+                    Utilidades.CAMPO_LineaBaseVerdura  + ", " +
+                    Utilidades.CAMPO_LIneaBaseFruta  + ", " +
+                    Utilidades.CAMPO_TotalFichas  + ", " +
+                    Utilidades.CAMPO_EsfuerzoUltraprocesado  + ", " +
+                    Utilidades.CAMPO_EsfuerzoFruta  + ", " +
+                    Utilidades.CAMPO_EsfuerzoVerdura  + ") " +
                     "VALUES ( " +
                     idUsuario + ", '" +
                     nombre + "', '" +
