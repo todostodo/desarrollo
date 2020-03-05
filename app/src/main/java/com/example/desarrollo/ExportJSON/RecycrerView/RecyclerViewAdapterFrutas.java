@@ -50,7 +50,7 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
             view_container = (CardView) itemView.findViewById(R.id.containerFrutas);
-            nombre = (TextView) itemView.findViewById(R.id.nombre);
+            nombre = (TextView) itemView.findViewById(R.id.nombreFruta);
             porcion = (TextView) itemView.findViewById(R.id.porcion);
             vitamina = (TextView) itemView.findViewById(R.id.vitamina);
             imgUrl = (ImageView) itemView.findViewById(R.id.imgUrlFrutas);

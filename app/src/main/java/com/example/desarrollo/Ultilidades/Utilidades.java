@@ -240,6 +240,4 @@ public class Utilidades {
                     CAMPO_EsfuerzoVerdura + " REAL NOT NULL,"+
                     "FOREIGN KEY (" + CAMPO_idUsuarioN + ") REFERENCES Usuario (" + CAMPO_idUsuarioN + "))";
 
-
-
 }
