@@ -6,7 +6,7 @@ public class Utilidades {
     //Constantes para campos de la tabla Detalle Registro
     public static final String TABLA_DetalleRegistro = "DetalleReg";
     public static final String CAMPO_IdDetalleRegistro = "idRegis";
-    public static final String CAMPO_IdNino = "idNino";
+    public static final String CAMPO_idNinoDetalleRegistro = "idNino";
     public static final String CAMPO_IdAlimento = "idAlimento";
     public static final String CAMPO_Equivalencia = "equi";
     public static final String CAMPO_Cantidad = "cad";
@@ -17,14 +17,14 @@ public class Utilidades {
     public static final String CREAR_TABLA_DetalleConsumo =
             "CREATE TABLE " + "" + TABLA_DetalleRegistro + " (" +
                     CAMPO_IdDetalleRegistro + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    CAMPO_IdNino + " INTEGER NOT NULL, " +
+                    CAMPO_idNinoDetalleRegistro + " INTEGER NOT NULL, " +
                     CAMPO_IdAlimento + " INTEGER NOT NULL, " +
                     CAMPO_Equivalencia + " REAL NOT NULL, " +
                     CAMPO_Cantidad + " REAL NOT NULL, " +
                     CAMPO_UnidadMedida + " REAL NOT NULL, " +
                     CAMPO_NumeroRegistro + " INTEGER NOT NULL, " +
                     CAMPO_HoraRegistro + " TEXT NOT NULL, " +
-                    "FOREIGN KEY (" + CAMPO_IdNino + ") REFERENCES Nino (" + CAMPO_IdNino + ")," +
+                    "FOREIGN KEY (" + CAMPO_idNinoDetalleRegistro + ") REFERENCES Nino (" + CAMPO_idNinoDetalleRegistro + ")," +
                     "FOREIGN KEY (" + CAMPO_IdAlimento + ") REFERENCES Alimento (" + CAMPO_IdAlimento + "))";
 
 
@@ -132,9 +132,9 @@ public class Utilidades {
             "CREATE TABLE " + "" + TABLA_Cuestionario_Nutricion + " (" +
                     CAMPO_id_Cues_Nutri + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_id_Histo_Nutri + " INTEGER NOT NULL, " +
-                    CAMPO_Preg_Nutri + " TEXT NOT NULL,"+
-                    CAMPO_Res_Pre_Nutri + " TEXT NOT NULL,"+
-                    CAMPO_Msg + " INTEGER NOT NULL,"+
+                    CAMPO_Preg_Nutri + " TEXT NOT NULL," +
+                    CAMPO_Res_Pre_Nutri + " TEXT NOT NULL," +
+                    CAMPO_Msg + " INTEGER NOT NULL," +
                     "FOREIGN KEY (" + CAMPO_id_Histo_Nutri + ") REFERENCES Historial_Nutricion (" + CAMPO_id_Histo_Nutri + "))";
 
     //Constantes para campos de la tabla Historial_Nutricion
@@ -147,7 +147,7 @@ public class Utilidades {
             "CREATE TABLE " + "" + TABLA_Historial_Nutricion + " (" +
                     CAMPO_id_Histo_NutriH + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_id_Usuario + " INTEGER NOT NULL, " +
-                    CAMPO_Respuesta_Nutri + " INTEGER NOT NULL"+
+                    CAMPO_Respuesta_Nutri + " INTEGER NOT NULL" +
                     "FOREIGN KEY (" + CAMPO_id_Usuario + ") REFERENCES Usuario (" + CAMPO_id_Usuario + "))";
 
     //Constantes para campos de la tabla CanjeFi
@@ -161,9 +161,9 @@ public class Utilidades {
             "CREATE TABLE " + "" + TABLA_CanjeFi + " (" +
                     CAMPO_idCanjeFicha + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_idHijoC + " INTEGER NOT NULL, " +
-                    CAMPO_idrRecompensaC + " INTEGER NOT NULL,"+
-                    CAMPO_FechaCanje + " TEXT NOT NULL,"+
-                    "FOREIGN KEY (" + CAMPO_idHijoC + ") REFERENCES Nino (" + CAMPO_idHijoC + "),"+
+                    CAMPO_idrRecompensaC + " INTEGER NOT NULL," +
+                    CAMPO_FechaCanje + " TEXT NOT NULL," +
+                    "FOREIGN KEY (" + CAMPO_idHijoC + ") REFERENCES Nino (" + CAMPO_idHijoC + ")," +
                     "FOREIGN KEY (" + CAMPO_idrRecompensaC + ") REFERENCES Recompensas (" + CAMPO_idrRecompensaC + "))";
 
     //Constantes para campos de la tabla Registro
@@ -176,7 +176,7 @@ public class Utilidades {
             "CREATE TABLE " + "" + TABLA_Registro + " (" +
                     CAMPO_idRegistro + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_idHijoR + " INTEGER NOT NULL, " +
-                    CAMPO_FechaRegistro + " TEXT NOT NULL,"+
+                    CAMPO_FechaRegistro + " TEXT NOT NULL," +
                     "FOREIGN KEY (" + CAMPO_idHijoR + ") REFERENCES Nino (" + CAMPO_idHijoR + "))";
 
     //Constantes para campos de la tabla Usuario
@@ -192,18 +192,18 @@ public class Utilidades {
     public static final String CREAR_Tabla_Usuario =
             "CREATE TABLE " + "" + TABLA_Usuario + " (" +
                     CAMPO_idUsu + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    CAMPO_nombreUsuario + " TEXT NOT NULL,"+
-                    CAMPO_apellidoPaternoUsu + " TEXT NOT NULL,"+
-                    CAMPO_apellidoMaternoUsu + " TEXT NOT NULL,"+
-                    CAMPO_correoUsuario + " TEXT NOT NULL UNIQUE,"+
-                    CAMPO_passwordUsu + " TEXT NOT NULL,"+
-                    CAMPO_nivel + " INTEGER NOT NULL,"+
+                    CAMPO_nombreUsuario + " TEXT NOT NULL," +
+                    CAMPO_apellidoPaternoUsu + " TEXT NOT NULL," +
+                    CAMPO_apellidoMaternoUsu + " TEXT NOT NULL," +
+                    CAMPO_correoUsuario + " TEXT NOT NULL UNIQUE," +
+                    CAMPO_passwordUsu + " TEXT NOT NULL," +
+                    CAMPO_nivel + " INTEGER NOT NULL," +
                     "FOREIGN KEY (" + CAMPO_idUsu + ") REFERENCES Nino (" + CAMPO_idUsu + "))";
 
 
     //Constantes para campos de la tabla Nino
     public static final String TABLA_Nino = "Nino";
-    public static final String CAMPO_idHijo = "idnino";
+    public static final String CAMPO_idNino = "idNino";
     public static final String CAMPO_idUsuarioN = "idusu";
     public static final String CAMPO_NombreN = "nomn";
     public static final String CAMPO_ApellidoPaternoN = "appn";
@@ -222,22 +222,58 @@ public class Utilidades {
 
     public static final String CREAR_Tabla_Nino =
             "CREATE TABLE " + "" + TABLA_Nino + " (" +
-                    CAMPO_idHijo + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    CAMPO_idNino + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_idUsuarioN + " INTEGER NOT NULL, " +
-                    CAMPO_NombreN + " TEXT NOT NULL,"+
-                    CAMPO_ApellidoPaternoN + " TEXT NOT NULL,"+
-                    CAMPO_ApellidoMaternoN + " TEXT NOT NULL,"+
-                    CAMPO_Edad + " INT NOT NULL,"+
-                    CAMPO_Peso + " REAL NOT NULL,"+
-                    CAMPO_Estatura + " REAL NOT NULL,"+
-                    CAMPO_Medida + " REAL NOT NULL,"+
-                    CAMPO_LineaBaseUltraprocesado + " REAL NOT NULL,"+
-                    CAMPO_LineaBaseVerdura + " REAL NOT NULL,"+
-                    CAMPO_LIneaBaseFruta + " REAL NOT NULL,"+
-                    CAMPO_TotalFichas + " INTEGER NOT NULL,"+
-                    CAMPO_EsfuerzoUltraprocesado + " REAL NOT NULL,"+
-                    CAMPO_EsfuerzoFruta + " REAL NOT NULL,"+
-                    CAMPO_EsfuerzoVerdura + " REAL NOT NULL,"+
+                    CAMPO_NombreN + " TEXT NOT NULL," +
+                    CAMPO_ApellidoPaternoN + " TEXT NOT NULL," +
+                    CAMPO_ApellidoMaternoN + " TEXT NOT NULL," +
+                    CAMPO_Edad + " INT NOT NULL," +
+                    CAMPO_Peso + " REAL NOT NULL," +
+                    CAMPO_Estatura + " REAL NOT NULL," +
+                    CAMPO_Medida + " REAL NOT NULL," +
+                    CAMPO_LineaBaseUltraprocesado + " REAL NOT NULL," +
+                    CAMPO_LineaBaseVerdura + " REAL NOT NULL," +
+                    CAMPO_LIneaBaseFruta + " REAL NOT NULL," +
+                    CAMPO_TotalFichas + " INTEGER NOT NULL," +
+                    CAMPO_EsfuerzoUltraprocesado + " REAL NOT NULL," +
+                    CAMPO_EsfuerzoFruta + " REAL NOT NULL," +
+                    CAMPO_EsfuerzoVerdura + " REAL NOT NULL," +
                     "FOREIGN KEY (" + CAMPO_idUsuarioN + ") REFERENCES Usuario (" + CAMPO_idUsuarioN + "))";
+
+    public static final String TABLA_GustoFruta = "GustoFrutas";
+    public static final String CAMPO_idGustoFruta = "idGustoF";
+    public static final String CAMPO_NombreFruta = "nombreF";
+    public static final String CAMPO_siGustaFruta = "siGustaF";
+    public static final String CAMPO_noGustaFruta = "noGustaF";
+    public static final String CAMPO_conoscoFruta = "conoscoF";
+    public static final String CAMPO_idNinoGustosFruta = "idNino";
+
+    public static final String CREAR_Tabla_GustosFruta =
+            "CREATE TABLE " + "" + TABLA_GustoFruta + " (" +
+                    CAMPO_idGustoFruta + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    CAMPO_idNinoGustosFruta + "INTEGER NOT NULL, " +
+                    CAMPO_NombreFruta + " TEXT NOT NULL " +
+                    CAMPO_siGustaFruta + " INTEGER NOT NULL, " +
+                    CAMPO_noGustaFruta + " INTEGER NOT NULL, " +
+                    CAMPO_conoscoFruta + " INTEGER NOT NULL, " +
+                    "FOREIGN KEY (" + CAMPO_idNinoGustosFruta + ") REFERENCES " + TABLA_Nino + "(" + CAMPO_idNino + "))";
+
+    public static final String TABLA_GustoVerdura = "GustoVerdura";
+    public static final String CAMPO_idGustoVerdura = "idGustos";
+    public static final String CAMPO_NombreVerdura = "nombreV";
+    public static final String CAMPO_siGustaVerdura = "siGustaV";
+    public static final String CAMPO_noGustaVerdura = "noGustaV";
+    public static final String CAMPO_conoscoVerdura = "conoscoV";
+    public static final String CAMPO_idNinoGustosVerdura = "idNino";
+
+    public static final String CREAR_Tabla_GustosVerdura =
+            "CREATE TABLE " + "" + TABLA_GustoVerdura + " (" +
+                    CAMPO_idGustoVerdura + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    CAMPO_idNinoGustosVerdura + "INTEGER NOT NULL, " +
+                    CAMPO_NombreVerdura + " TEXT NOT NULL " +
+                    CAMPO_siGustaVerdura + " INTEGER NOT NULL, " +
+                    CAMPO_noGustaVerdura + " INTEGER NOT NULL, " +
+                    CAMPO_conoscoVerdura + " INTEGER NOT NULL, " +
+                    "FOREIGN KEY (" + CAMPO_idNinoGustosVerdura + ") REFERENCES " + TABLA_Nino + "(" + CAMPO_idNino + "))";
 
 }

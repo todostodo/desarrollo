@@ -1,13 +1,19 @@
 package com.example.desarrollo.Datos;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
+import com.example.desarrollo.Entidades.Preferencias;
 import com.example.desarrollo.Ultilidades.Utilidades;
+
+import java.sql.PreparedStatement;
 
 public class NinoDao {
     private static SQLiteDatabase database;
 
-    public static boolean addNino(Context context,int idUsuario, String nombre,String apPaterno, String apMaterno, int edad, Double peso, Double estatura, Double medida, Double lineabultra, Double lineabv, Double leneabf, int totfich, Double esfuerzoultra, Double esfuerzof, Double esfuerzov){
+    public static boolean addNino(String TAG, Context context, int idUsuario, String nombre, String apPaterno, String apMaterno, int edad, Double peso, Double estatura, Double medida, Double lineabultra, Double lineabv, Double leneabf, int totfich, Double esfuerzoultra, Double esfuerzof, Double esfuerzov){
 
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context, "basedatos", null, 1);
@@ -48,12 +54,22 @@ public class NinoDao {
                     esfuerzof + ", " +
                     esfuerzov + ")";
 
+
             database.execSQL(inset);
 
+            //String getId = "SELECT idnino FROM " + Utilidades.TABLA_Nino + " ORDER BY idnino DESC limit 1";
+            String getId = "SELECT last_insert_rowid();";
+            Cursor c = database.rawQuery(getId, null);
+            c.moveToFirst();
+            Preferencias gustos = new Preferencias();
+            gustos.setIdNino(c.getInt(0));
+            c.close();
+
+            //Log.i(TAG, "Id = " + gustos.getIdNino());
             return true;
 
         }catch (Exception e){
-
+            Log.e(TAG, "Erro " + e);
             return false;
         }finally {
             database.close();

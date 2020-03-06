@@ -42,12 +42,23 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
         db.execSQL(Utilidades.CREAR_Tabla_Registro);
 
          */
+
         db.execSQL(Utilidades.CREAR_Tabla_Nino);
+
+        db.execSQL(Utilidades.CREAR_Tabla_GustosFruta);
+
+        db.execSQL(Utilidades.CREAR_Tabla_GustosVerdura);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS Nino");
+        db.execSQL("DROP TABLE IF EXISTS DetalleReg");
+        db.execSQL("DROP TABLE IF EXISTS Tutor");
+        db.execSQL("DROP TABLE IF EXISTS GustoFrutas");
+        db.execSQL("DROP TABLE IF EXISTS GustoVerdura");
 
+        onCreate(db);
     }
 }
