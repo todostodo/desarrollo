@@ -16,7 +16,13 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+        //db.execSQL(Utilidades.CREAR_Tabla_GustosFruta);
+
+        //db.execSQL(Utilidades.CREAR_Tabla_GustosVerdura);
+
         db.execSQL(Utilidades.CREAR_Tabla_Usuario);
+
+        db.execSQL(Utilidades.CREAR_Tabla_Nino);
 
         db.execSQL(Utilidades.CREAR_TABLA_Tutor);
 
@@ -43,12 +49,6 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
 
          */
 
-        db.execSQL(Utilidades.CREAR_Tabla_Nino);
-
-        db.execSQL(Utilidades.CREAR_Tabla_GustosFruta);
-
-        db.execSQL(Utilidades.CREAR_Tabla_GustosVerdura);
-
     }
 
     @Override
@@ -62,3 +62,8 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 }
+
+/*
+CREATE TABLE GustoFruta (idGusto INTEGER PRIMARY KEY AUTOINCREMENT, idNino INTEGER NOT NULL, nombre TEXT NOT NULL, siGusta INTEGER NOT NULL, noGusta INTEGER NOT NULL, conosco INTEGER NOT NULL,
+FOREIGN KET idNino REFERENCES Nino idNino);
+ */

@@ -240,24 +240,28 @@ public class Utilidades {
                     CAMPO_EsfuerzoVerdura + " REAL NOT NULL," +
                     "FOREIGN KEY (" + CAMPO_idUsuarioN + ") REFERENCES Usuario (" + CAMPO_idUsuarioN + "))";
 
+
     public static final String TABLA_GustoFruta = "GustoFrutas";
     public static final String CAMPO_idGustoFruta = "idGustoF";
+    public static final String CAMPO_idNinoGustosFruta = "idNino";
     public static final String CAMPO_NombreFruta = "nombreF";
     public static final String CAMPO_siGustaFruta = "siGustaF";
     public static final String CAMPO_noGustaFruta = "noGustaF";
     public static final String CAMPO_conoscoFruta = "conoscoF";
-    public static final String CAMPO_idNinoGustosFruta = "idNino";
 
+    //public static final String CREAR_Tabla_GustosFruta = "";
+    /*
     public static final String CREAR_Tabla_GustosFruta =
             "CREATE TABLE " + "" + TABLA_GustoFruta + " (" +
                     CAMPO_idGustoFruta + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_idNinoGustosFruta + "INTEGER NOT NULL, " +
-                    CAMPO_NombreFruta + " TEXT NOT NULL " +
+                    CAMPO_NombreFruta + " TEXT NOT NULL, " +
                     CAMPO_siGustaFruta + " INTEGER NOT NULL, " +
                     CAMPO_noGustaFruta + " INTEGER NOT NULL, " +
                     CAMPO_conoscoFruta + " INTEGER NOT NULL, " +
-                    "FOREIGN KEY (" + CAMPO_idNinoGustosFruta + ") REFERENCES " + TABLA_Nino + "(" + CAMPO_idNino + "))";
+                    "FOREIGN KEY (" + CAMPO_idNinoGustosFruta + ") REFERENCES Nino (" + CAMPO_idNino + "))";
 
+     */
     public static final String TABLA_GustoVerdura = "GustoVerdura";
     public static final String CAMPO_idGustoVerdura = "idGustos";
     public static final String CAMPO_NombreVerdura = "nombreV";
@@ -270,10 +274,9 @@ public class Utilidades {
             "CREATE TABLE " + "" + TABLA_GustoVerdura + " (" +
                     CAMPO_idGustoVerdura + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_idNinoGustosVerdura + "INTEGER NOT NULL, " +
-                    CAMPO_NombreVerdura + " TEXT NOT NULL " +
+                    CAMPO_NombreVerdura + " TEXT NOT NULL, " +
                     CAMPO_siGustaVerdura + " INTEGER NOT NULL, " +
                     CAMPO_noGustaVerdura + " INTEGER NOT NULL, " +
                     CAMPO_conoscoVerdura + " INTEGER NOT NULL, " +
-                    "FOREIGN KEY (" + CAMPO_idNinoGustosVerdura + ") REFERENCES " + TABLA_Nino + "(" + CAMPO_idNino + "))";
-
+                    "FOREIGN KEY (" + CAMPO_idNinoGustosVerdura + ") REFERENCES Nino (" + CAMPO_idNino + "))";
 }
