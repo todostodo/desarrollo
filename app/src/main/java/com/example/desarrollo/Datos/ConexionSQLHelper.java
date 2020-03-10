@@ -16,38 +16,41 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL(Utilidades.CREAR_Tabla_GustosFruta);
-
-        db.execSQL(Utilidades.CREAR_Tabla_GustosVerdura);
-
         db.execSQL(Utilidades.CREAR_Tabla_Usuario);
 
-        db.execSQL(Utilidades.CREAR_Tabla_Nino);
+        db.execSQL(Utilidades.CREAR_TABLA_Alimento);
 
-        db.execSQL(Utilidades.CREAR_TABLA_Tutor);
-
-        db.execSQL(Utilidades.CREAR_TABLA_DetalleConsumo);
-
-        /*
         db.execSQL(Utilidades.CREAR_TABLA_Ultrap);
 
         db.execSQL(Utilidades.CREAR_TABLA_Frutas_Verduras);
 
-        db.execSQL(Utilidades.CREAR_TABLA_Alimento);
-
-        db.execSQL(Utilidades.CREAR_Tabla__Mensajes_Persuasivos);
-
-        db.execSQL(Utilidades.CREAR_Tabla_Recompensas);
-
-        db.execSQL(Utilidades.CREAR_Tabla_Cuestionario_Nutricion);
+        db.execSQL(Utilidades.CREAR_Tabla_Historial_Autoeficacia);
 
         db.execSQL(Utilidades.CREAR_Tabla_Historial_Nutricion);
 
+        db.execSQL(Utilidades.CREAR_Tabla_Cuestionario_Nutricion);
+
+        db.execSQL(Utilidades.CREAR_Tabla__Mensajes_Persuasivos);
+
+        db.execSQL(Utilidades.CREAR_Tabla_Envia_Msg);
+
+        db.execSQL(Utilidades.CREAR_Tabla_Recompensas);
+
+        db.execSQL(Utilidades.CREAR_Tabla_Nino);
+//******************
+//****************
         db.execSQL(Utilidades.CREAR_Tabla_CanjeFi);
 
         db.execSQL(Utilidades.CREAR_Tabla_Registro);
 
-         */
+        db.execSQL(Utilidades.CREAR_TABLA_DetalleRegistro);
+
+        db.execSQL(Utilidades.CREAR_TABLA_Tutor);
+
+        db.execSQL(Utilidades.CREAR_TABLA_GustoFruta);
+
+        db.execSQL(Utilidades.CREAR_TABLA_GustoVerdura);
+
 
     }
 
