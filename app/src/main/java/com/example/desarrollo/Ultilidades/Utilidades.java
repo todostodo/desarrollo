@@ -250,18 +250,18 @@ public class Utilidades {
     public static final String CAMPO_conoscoFruta = "conoscoF";
 
     //public static final String CREAR_Tabla_GustosFruta = "";
-    /*
+
     public static final String CREAR_Tabla_GustosFruta =
             "CREATE TABLE " + "" + TABLA_GustoFruta + " (" +
                     CAMPO_idGustoFruta + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    CAMPO_idNinoGustosFruta + "INTEGER NOT NULL, " +
+                    CAMPO_idNinoGustosFruta + " INTEGER NOT NULL, " +
                     CAMPO_NombreFruta + " TEXT NOT NULL, " +
                     CAMPO_siGustaFruta + " INTEGER NOT NULL, " +
                     CAMPO_noGustaFruta + " INTEGER NOT NULL, " +
                     CAMPO_conoscoFruta + " INTEGER NOT NULL, " +
                     "FOREIGN KEY (" + CAMPO_idNinoGustosFruta + ") REFERENCES Nino (" + CAMPO_idNino + "))";
 
-     */
+
     public static final String TABLA_GustoVerdura = "GustoVerdura";
     public static final String CAMPO_idGustoVerdura = "idGustos";
     public static final String CAMPO_NombreVerdura = "nombreV";
@@ -273,7 +273,7 @@ public class Utilidades {
     public static final String CREAR_Tabla_GustosVerdura =
             "CREATE TABLE " + "" + TABLA_GustoVerdura + " (" +
                     CAMPO_idGustoVerdura + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    CAMPO_idNinoGustosVerdura + "INTEGER NOT NULL, " +
+                    CAMPO_idNinoGustosVerdura + " INTEGER NOT NULL, " +
                     CAMPO_NombreVerdura + " TEXT NOT NULL, " +
                     CAMPO_siGustaVerdura + " INTEGER NOT NULL, " +
                     CAMPO_noGustaVerdura + " INTEGER NOT NULL, " +

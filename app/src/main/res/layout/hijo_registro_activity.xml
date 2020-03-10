@@ -378,7 +378,19 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/btnRegistrarPreferencias"
+                    android:visibility="visible"
+                    android:id="@+id/btnRegistrarPreferenciasFrutas"
+                    style="?android:borderlessButtonStyle"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rectangulo_azul_bajo"
+                    android:text="Guardar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/blanco"/>
+
+                <Button
+                    android:visibility="gone"
+                    android:id="@+id/btnRegistrarPreferenciasVerduras"
                     style="?android:borderlessButtonStyle"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
@@ -395,10 +407,18 @@
                 android:layout_marginTop="20dp">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/myRecyclerViewPreferencias"
+                    android:visibility="visible"
+                    android:id="@+id/myRecyclerViewPreferenciasFrutas"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:listitem="@layout/preferencias_items" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:visibility="gone"
+                    android:id="@+id/myRecyclerViewPreferenciasVerduras"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/preferencias_items"/>
 
             </LinearLayout>
 

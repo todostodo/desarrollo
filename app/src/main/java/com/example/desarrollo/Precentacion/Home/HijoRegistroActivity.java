@@ -1,7 +1,5 @@
 package com.example.desarrollo.Precentacion.Home;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +8,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.annotation.BoolRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -19,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Datos.PreferenciasDao;
-import com.example.desarrollo.Entidades.Preferencias;
 import com.example.desarrollo.ExportJSON.Model.ModelPreferencias;
 import com.example.desarrollo.ExportJSON.Reader.ReaderPreferencias;
 import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewPreferencias;
@@ -29,8 +27,10 @@ import java.util.ArrayList;
 
 public class HijoRegistroActivity extends AppCompatActivity implements RecyclerViewPreferencias.ChnageStatusListener, View.OnClickListener {
 
+    public static int idNino;
+    private Button _btnRegistrarPreferenciasVerduras, _btnRegistrarPreferenciasFrutas;
     private String gustos = "siGusta";
-    private boolean gustosAuxiliar = false;
+    private boolean gustosAuxiliar = false, updateVerdura = false;
     private Button _btnAddNino;
     private EditText
             _txtHijoNombre,
@@ -43,9 +43,10 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
     private NestedScrollView _registroNino, _preferenciasNino;
     private CardView _backgroundPreferencias;
     private RelativeLayout _lyt_checked;
+    private ArrayList<ReaderPreferencias> temp;
 
-    private ArrayList<ReaderPreferencias> frutasItem = new ArrayList<>();
-    private RecyclerView myRecyclerView;
+    private ArrayList<ReaderPreferencias> frutasItem;
+    private RecyclerView _myRecyclerViewFrutas, _myRecyclerViewVerduras;
     private ReaderPreferencias getItem;
     private RecyclerViewPreferencias mAdapter = null;
     private RecyclerView.LayoutManager layoutManager;
@@ -62,8 +63,10 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         setContentView(R.layout.hijo_registro_activity);
         init();
 
-        addItemsJSON();
-        addPreferecias();
+        addItemsJSON("Frutas");
+        addPreferecias(_myRecyclerViewFrutas);
+
+        findViewById(R.id.btnRegistrarPreferenciasFrutas).setOnClickListener(HijoRegistroActivity.this);
 
         _btnAddNino.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +128,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                                     Toast.makeText(this, "Ingrese la medida de cintura", Toast.LENGTH_SHORT).show();
                                 } else {
                                     _txtHijoMedidaCintura.setBackgroundResource(R.drawable.rectangulo_gris);
-                                    addPreferecias();
+                                    //addPreferecias(_myRecyclerViewFrutas);
                                     _registroNino.setVisibility(View.GONE);
                                     _preferenciasNino.setVisibility(View.VISIBLE);
 
@@ -164,100 +167,36 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         }
     }
 
-    private void addPreferecias() {
+    private void addPreferecias(RecyclerView recyclerView) {
 
         layoutManager = new GridLayoutManager(this, 3);
-        myRecyclerView.setLayoutManager(layoutManager);
-        myRecyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
 
-        //set data and list adapter
         mAdapter = new RecyclerViewPreferencias(frutasItem, getApplicationContext(), this);
-        myRecyclerView.setAdapter(mAdapter);
-
-
-        findViewById(R.id.btnRegistrarPreferencias).setOnClickListener(HijoRegistroActivity.this);
-
+        recyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
     }
 
-    private void addItemsJSON() {
-        modelFrutas.addItemsFromJSON(frutasItem, TAG, "Frutas", getApplicationContext());
+    private void addItemsJSON(String alimento) {
+        frutasItem = null;
+        frutasItem = new ArrayList<>();
+        modelFrutas.addItemsFromJSON(frutasItem, TAG, alimento, getApplicationContext());
     }
 
     @Override
     public void onClick(View v) {
 
-        ArrayList<ReaderPreferencias> temp = new ArrayList<>();
-        Preferencias gustoFruta = new Preferencias();
-        try {
-            for (int i = 0; i < frutasItem.size(); i++) {
+        switch (v.getId()) {
+            case R.id.btnRegistrarPreferenciasFrutas:
+                insertGustosFrutas();
+                break;
 
-                if (!frutasItem.get(i).isSelect()) {
-                    temp.add(frutasItem.get(i));
-                }
-                if (gustos.equals("siGusta")) {
-                    if (frutasItem.get(i).isSelect()) {
-                        preferenciasDao.addPreferenciasFrutas
-                                (
-                                        TAG,
-                                        getApplicationContext(),
-                                        gustoFruta.getIdNino(),
-                                        frutasItem.get(i).getNombreFruta(),
-                                        1,
-                                        0,
-                                        0
-                                );
-                        Log.v(TAG, "si me gusta registra");
-                    }
-                }
-                else if(gustos.equals("noGusta")){
-                    if (frutasItem.get(i).isSelect()) {
-                        preferenciasDao.addPreferenciasFrutas
-                                (
-                                        TAG,
-                                        getApplicationContext(),
-                                        gustoFruta.getIdNino(),
-                                        frutasItem.get(i).getNombreFruta(),
-                                        0,
-                                        1,
-                                        0
-                                );
-                        Log.v(TAG, "No me gusta registra");
-                    }
-                }
-                else if(gustos.equals("conosco")){
-                    if (frutasItem.get(i).isSelect()) {
-                        preferenciasDao.addPreferenciasFrutas
-                                (
-                                        TAG,
-                                        getApplicationContext(),
-                                        gustoFruta.getIdNino(),
-                                        frutasItem.get(i).getNombreFruta(),
-                                        0,
-                                        0,
-                                        1
-                                );
-                        Log.v(TAG, "Concosco registra");
-                    }
-                }
-            }
-        } catch (Exception e) {
+            case R.id.btnRegistrarPreferenciasVerduras:
+                insertGustosVerduras();
+                break;
 
         }
-        frutasItem = temp;
-        if (gustosAuxiliar == false) {
-            gustos = "noGusta";
-            gustosAuxiliar = true;
-        }
-        else {
-            gustos = "conosco";
-            gustosAuxiliar = false;
-        }
-
-        if (frutasItem.size() == 0) {
-            myRecyclerView.setVisibility(View.GONE);
-        }
-        mAdapter.setModel(frutasItem);
-        mAdapter.notifyDataSetChanged();
 
     }
 
@@ -270,15 +209,218 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         }
     }
 
+    public void insertGustosFrutas(){
+
+        temp = new ArrayList<>();
+
+        try {
+            for (int i = 0; i < frutasItem.size(); i++) {
+
+                if (!frutasItem.get(i).isSelect()) {
+                    temp.add(frutasItem.get(i));
+                }
+                if (gustos.equals("siGusta")) {
+                    if (frutasItem.get(i).isSelect()) {
+                        preferenciasDao.addPreferenciasFrutas
+                                (
+                                        TAG,
+                                        getApplicationContext(),
+                                        idNino,
+                                        frutasItem.get(i).getNombreFruta(),
+                                        1,
+                                        0,
+                                        0
+                                );
+                        Log.v(TAG, "si me gusta registra ID = " + idNino);
+                    }
+                } else if (gustos.equals("noGusta")) {
+                    if (frutasItem.get(i).isSelect()) {
+                        preferenciasDao.addPreferenciasFrutas
+                                (
+                                        TAG,
+                                        getApplicationContext(),
+                                        idNino,
+                                        frutasItem.get(i).getNombreFruta(),
+                                        0,
+                                        1,
+                                        0
+                                );
+                        Log.v(TAG, "No me gusta registra ID = " + idNino);
+                    }
+                } else if (gustos.equals("conosco")) {
+                    if (frutasItem.get(i).isSelect()) {
+                        preferenciasDao.addPreferenciasFrutas
+                                (
+                                        TAG,
+                                        getApplicationContext(),
+                                        idNino,
+                                        frutasItem.get(i).getNombreFruta(),
+                                        0,
+                                        0,
+                                        1
+                                );
+                        Log.v(TAG, "Concosco registra ID = " + idNino);
+                    }
+                    if (!frutasItem.get(i).isSelect()) {
+                        preferenciasDao.addPreferenciasFrutas
+                                (
+                                        TAG,
+                                        getApplicationContext(),
+                                        idNino,
+                                        frutasItem.get(i).getNombreFruta(),
+                                        0,
+                                        0,
+                                        0
+                                );
+                    }
+                   updateVerdura = true;
+                }
+            }
+
+            frutasItem = temp;
+            if (gustosAuxiliar == false) {
+                gustos = "noGusta";
+                gustosAuxiliar = true;
+            } else {
+                gustos = "conosco";
+                gustosAuxiliar = false;
+            }
+
+            if (frutasItem.size() == 0) {
+                _myRecyclerViewFrutas.setVisibility(View.GONE);
+            }
+            mAdapter.setModel(frutasItem);
+            mAdapter.notifyDataSetChanged();
+
+            if (updateVerdura == true){
+                UpdateVerduras();
+                gustos = "siGusta";
+                updateVerdura = false;
+                gustosAuxiliar = false;
+            }
+
+        } catch (Exception e) {
+            Log.e(TAG,"Error" + e );
+        }
+
+    }
+
+    public void insertGustosVerduras(){
+
+        temp = new ArrayList<>();
+
+        try {
+            for (int i = 0; i < frutasItem.size(); i++) {
+
+                if (!frutasItem.get(i).isSelect()) {
+                    temp.add(frutasItem.get(i));
+                }
+                if (gustos.equals("siGusta")) {
+                    if (frutasItem.get(i).isSelect()) {
+                        preferenciasDao.addPreferenciasVerduras
+                                (
+                                        TAG,
+                                        getApplicationContext(),
+                                        idNino,
+                                        frutasItem.get(i).getNombreFruta(),
+                                        1,
+                                        0,
+                                        0
+                                );
+                        Log.v(TAG, "si me gusta registra ID = " + idNino);
+                    }
+                } else if (gustos.equals("noGusta")) {
+                    if (frutasItem.get(i).isSelect()) {
+                        preferenciasDao.addPreferenciasVerduras
+                                (
+                                        TAG,
+                                        getApplicationContext(),
+                                        idNino,
+                                        frutasItem.get(i).getNombreFruta(),
+                                        0,
+                                        1,
+                                        0
+                                );
+                        Log.v(TAG, "No me gusta registra ID = " + idNino);
+                    }
+                } else if (gustos.equals("conosco")) {
+                    if (frutasItem.get(i).isSelect()) {
+                        preferenciasDao.addPreferenciasVerduras
+                                (
+                                        TAG,
+                                        getApplicationContext(),
+                                        idNino,
+                                        frutasItem.get(i).getNombreFruta(),
+                                        0,
+                                        0,
+                                        1
+                                );
+                        Log.v(TAG, "Concosco registra ID = " + idNino);
+                    }
+                    if (!frutasItem.get(i).isSelect()) {
+                        preferenciasDao.addPreferenciasVerduras
+                                (
+                                        TAG,
+                                        getApplicationContext(),
+                                        idNino,
+                                        frutasItem.get(i).getNombreFruta(),
+                                        0,
+                                        0,
+                                        0
+                                );
+                    }
+                    updateVerdura = true;
+                }
+            }
+
+            frutasItem = temp;
+            if (gustosAuxiliar == false) {
+                gustos = "noGusta";
+                gustosAuxiliar = true;
+            } else {
+                gustos = "conosco";
+                gustosAuxiliar = false;
+            }
+
+            if (frutasItem.size() == 0) {
+                _myRecyclerViewFrutas.setVisibility(View.GONE);
+            }
+            mAdapter.setModel(frutasItem);
+            mAdapter.notifyDataSetChanged();
+
+            if (updateVerdura == true){
+                finish();
+            }
+
+        } catch (Exception e) {
+            Log.e(TAG,"Error" + e );
+        }
+
+    }
+
+    private void UpdateVerduras() {
+        addItemsJSON("Verduras");
+        addPreferecias(_myRecyclerViewVerduras);
+        temp = frutasItem;
+        _myRecyclerViewFrutas.setVisibility(View.GONE);
+        _myRecyclerViewVerduras.setVisibility(View.VISIBLE);
+        _btnRegistrarPreferenciasFrutas.setVisibility(View.GONE);
+        _btnRegistrarPreferenciasVerduras.setVisibility(View.VISIBLE);
+
+        findViewById(R.id.btnRegistrarPreferenciasVerduras).setOnClickListener(HijoRegistroActivity.this);
+    }
+
     private void init() {
         _btnAddNino = (Button) findViewById(R.id.btnAddNino);
         _registroNino = (NestedScrollView) findViewById(R.id.registroNino);
         _preferenciasNino = (NestedScrollView) findViewById(R.id.preferenciasNino);
         _backgroundPreferencias = (CardView) findViewById(R.id.backgroundPreferencias);
         _lyt_checked = (RelativeLayout) findViewById(R.id.lyt_checked);
+        _btnRegistrarPreferenciasVerduras = (Button) findViewById(R.id.btnRegistrarPreferenciasVerduras);
+        _btnRegistrarPreferenciasFrutas = (Button) findViewById(R.id.btnRegistrarPreferenciasFrutas);
 
-        myRecyclerView = findViewById(R.id.myRecyclerViewPreferencias);
-
+        _myRecyclerViewFrutas = findViewById(R.id.myRecyclerViewPreferenciasFrutas);
+        _myRecyclerViewVerduras = findViewById(R.id.myRecyclerViewPreferenciasVerduras);
 
         _txtHijoNombre = (EditText) findViewById(R.id.txtHijoNombre);
         _txtHijoApellidoPaterno = (EditText) findViewById(R.id.txtHijoApellidoPaterno);

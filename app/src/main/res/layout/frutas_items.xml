@@ -81,6 +81,7 @@
                     </LinearLayout>
 
                     <RelativeLayout
+                        android:id="@+id/relativeVitamina"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
@@ -100,6 +101,17 @@
                             android:textSize="10sp" />
 
                     </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/favoritos"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_below="@+id/relativeVitamina"
+                        android:background="@drawable/corazon_fill"
+                        android:backgroundTint="@color/rojo"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_alignParentRight="true"/>
 
                 </RelativeLayout>
 

@@ -144,6 +144,170 @@
       "imgUrl": "f_zarzamora",
       "backgroud": "#797B9D"
     }
+  ],
+  "Verduras" : [
+    {
+      "nombre": "Apio",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina C",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_apio",
+      "backgroud": "#FAEDC8"
+    },
+    {
+      "nombre": "Berenjena",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_berenjena",
+      "backgroud": "#E6AFB0"
+    },
+    {
+      "nombre": "Betabel",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina C,A,B",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_betabel",
+      "backgroud": "#FECFAC"
+    },
+    {
+      "nombre": "Brocoli",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_brocoli",
+      "backgroud": "#F3EBBF"
+    },
+    {
+      "nombre": "Calabaza",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_calabaza",
+      "backgroud": "#BBB8C6"
+    },
+    {
+      "nombre": "Chayote",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_chayote",
+      "backgroud": "#F9998D"
+    },
+    {
+      "nombre": "Chicharo",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_chicharo",
+      "backgroud": "#FAAD77"
+    },
+    {
+      "nombre": "Coliflor",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_coliflor",
+      "backgroud": "#D8D9B1"
+    },
+    {
+      "nombre": "Ejote",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_ejote",
+      "backgroud": "#D2DFB9"
+    },
+    {
+      "nombre": "Espinacas",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_espinacas",
+      "backgroud": "#FBCCB4"
+    },
+    {
+      "nombre": "Jicama",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_jicama",
+      "backgroud": "#FADDBD"
+    },
+    {
+      "nombre": "Lechuga",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_lechuga",
+      "backgroud": "#FFD792"
+    },
+    {
+      "nombre": "Nopal",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_nopal",
+      "backgroud": "#F2C982"
+    },
+    {
+      "nombre": "Pepino",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_pepino",
+      "backgroud": "#F1BEBD"
+    },
+    {
+      "nombre": "Pimiento",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_pimiento",
+      "backgroud": "#797B9D"
+    },
+    {
+      "nombre": "Repollo",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_repollo",
+      "backgroud": "#797B9D"
+    },
+    {
+      "nombre": "Tomate",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_tomate",
+      "backgroud": "#797B9D"
+    },
+    {
+      "nombre": "Zanahoria",
+      "porcion": "1/2 prc",
+      "vitamina": "Vitamina A",
+      "descripcion": "Ricos en magnesio, potasio, ácido fólico y fibra. Son muy beneficiosos para los procesos estomacales y la presión arterial, además de ideales para la práctica del deporte. Asimismo, tienen propiedades astringentes y favorecen la absorción del calcio",
+      "beneficio": "Reduce la tensión arterial\nCombate el estreñimiento\nReduce la acidez\nArdor de estómago\nArtritis y gota\nNefritis",
+      "imgUrl": "v_zanahoria",
+      "backgroud": "#797B9D"
+    }
   ]
 }
 

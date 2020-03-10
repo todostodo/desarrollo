@@ -1,12 +1,13 @@
 package com.example.desarrollo.Datos;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.desarrollo.Ultilidades.Utilidades;
 
-import java.io.IOException;
+import java.util.ArrayList;
 
 public class PreferenciasDao {
 
@@ -42,5 +43,59 @@ public class PreferenciasDao {
         }finally {
             basedatos.close();
         }
+    }
+
+    public static boolean addPreferenciasVerduras (String TAG, Context context, int idNino, String nombreFruta, int siGusta, int noGusta, int conosco){
+
+        try{
+
+            ConexionSQLHelper connection = new ConexionSQLHelper(context, "basedatos",null,1);
+            basedatos = null;
+            basedatos = connection.getWritableDatabase();
+
+            String insert = "INSERT INTO " + Utilidades.TABLA_GustoVerdura + " ( " +
+                    Utilidades.CAMPO_idNinoGustosVerdura + ", " +
+                    Utilidades.CAMPO_NombreVerdura + ", " +
+                    Utilidades.CAMPO_siGustaVerdura + ", " +
+                    Utilidades.CAMPO_noGustaVerdura + ", " +
+                    Utilidades.CAMPO_conoscoVerdura + " )" +
+                    "VALUES ( " +
+                    idNino + ",'" +
+                    nombreFruta + "', " +
+                    siGusta + ", " +
+                    noGusta + ", " +
+                    conosco + ")";
+
+            basedatos.execSQL(insert);
+
+            return true;
+        }catch (Exception e){
+            Log.e(TAG, "ERROR " + e);
+            return false;
+        }finally {
+            basedatos.close();
+        }
+    }
+
+    public static ArrayList meGusta(String TAG, Context context, ArrayList arrayList){
+
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context, "basedatos",null, 1);
+
+            basedatos = null;
+            basedatos = connection.getReadableDatabase();
+
+            Cursor cursor = basedatos.rawQuery("SELECT nombreF FROM " + Utilidades.TABLA_GustoFruta + " WHERE siGustaF = 1 ", null);
+
+            while (cursor.moveToNext()){
+                arrayList.add(cursor.getString(0));
+            }
+        }catch (Exception e){
+            Log.e(TAG, "Error " + e);
+        }finally {
+            basedatos.close();
+        }
+
+        return arrayList;
     }
 }

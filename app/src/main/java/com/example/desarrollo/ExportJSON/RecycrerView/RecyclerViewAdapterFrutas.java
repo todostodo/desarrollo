@@ -2,6 +2,7 @@ package com.example.desarrollo.ExportJSON.RecycrerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.desarrollo.Datos.PreferenciasDao;
 import com.example.desarrollo.ExportJSON.Filter.FilterHelperFrutas;
 import com.example.desarrollo.ExportJSON.Reader.ReaderFrutas;
 import com.example.desarrollo.R;
@@ -28,8 +30,11 @@ import java.util.List;
 public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements Filterable {
     Context context;
     List<ReaderFrutas> readerFrutas;
+    ArrayList meGusta = new ArrayList();
     public ArrayList<ReaderFrutas> currentList;
     FilterHelperFrutas filterHelper;
+
+    private static final String TAG = "RecyclerViewAdapterFrut";
 
     public RecyclerViewAdapterFrutas(Context context, ArrayList<ReaderFrutas> readerFrutas) {
         this.context = context;
@@ -44,6 +49,7 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
         TextView vitamina;
         TextView descripcion;
         ImageView imgUrl;
+        ImageView favoritos;
         CardView view_container;
 
 
@@ -54,7 +60,7 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
             porcion = (TextView) itemView.findViewById(R.id.porcion);
             vitamina = (TextView) itemView.findViewById(R.id.vitamina);
             imgUrl = (ImageView) itemView.findViewById(R.id.imgUrlFrutas);
-
+            favoritos = (ImageView) itemView.findViewById(R.id.favoritos);
         }
     }
 
@@ -90,6 +96,25 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
 
         ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
         ReaderFrutas readerFrutas = (ReaderFrutas) this.readerFrutas.get(position);
+
+        PreferenciasDao preferenciasDao = new PreferenciasDao();
+
+        preferenciasDao.meGusta(TAG, context, meGusta);
+
+        Log.v(TAG, "Size " + meGusta.size());
+        /*
+
+        for (int i = 0; i < meGusta.size(); i++){
+            if (meGusta.get(i).equals(readerFrutas.getNombre())){
+                itemViewHolder.favoritos.setVisibility(View.VISIBLE);
+            }
+            else {
+                itemViewHolder.favoritos.setVisibility(View.GONE);
+            }
+        }
+
+         */
+
         itemViewHolder.nombre.setText(readerFrutas.getNombre());
         itemViewHolder.porcion.setText(readerFrutas.getPorcion());
         itemViewHolder.vitamina.setText(readerFrutas.getVitamina());
