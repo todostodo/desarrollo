@@ -1,11 +1,14 @@
 package com.example.desarrollo.Precentacion.Home;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.BoolRes;
@@ -21,7 +24,9 @@ import com.example.desarrollo.Datos.PreferenciasDao;
 import com.example.desarrollo.ExportJSON.Model.ModelPreferencias;
 import com.example.desarrollo.ExportJSON.Reader.ReaderPreferencias;
 import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewPreferencias;
+import com.example.desarrollo.Precentacion.Alimentos.Ultraprocesados.UltraprocesadosDialogFragment;
 import com.example.desarrollo.R;
+import com.example.desarrollo.Ultilidades.Utilidades;
 
 import java.util.ArrayList;
 
@@ -30,8 +35,10 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
     public static int idNino;
     private Button _btnRegistrarPreferenciasVerduras, _btnRegistrarPreferenciasFrutas;
     private String gustos = "siGusta";
-    private boolean gustosAuxiliar = false, updateVerdura = false;
+    private boolean updateVerdura = false;
+    private int gustosAuxiliar = 0;
     private Button _btnAddNino;
+    private TextView _txtAvisoPreferencia;
     private EditText
             _txtHijoNombre,
             _txtHijoApellidoPaterno,
@@ -71,6 +78,8 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         _btnAddNino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Seleccione la fruta que mas le gusta", Toast.LENGTH_SHORT).show();
+                _txtAvisoPreferencia.setText("Seleccione la fruta que mas le gusta a su hijo");
                 addNino();
             }
         });
@@ -209,7 +218,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         }
     }
 
-    public void insertGustosFrutas(){
+    public void insertGustosFrutas() {
 
         temp = new ArrayList<>();
 
@@ -273,17 +282,22 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                                         0
                                 );
                     }
-                   updateVerdura = true;
+                    updateVerdura = true;
                 }
             }
 
             frutasItem = temp;
-            if (gustosAuxiliar == false) {
+            if (gustosAuxiliar == 0) {
                 gustos = "noGusta";
-                gustosAuxiliar = true;
-            } else {
+                gustosAuxiliar = 1;
+                Toast.makeText(this, "Seleccione la fruta que no le gusta", Toast.LENGTH_SHORT).show();
+                _txtAvisoPreferencia.setText("Seleccione la fruta que no le gusta a su hijo");
+            }
+            else if (gustosAuxiliar == 1) {
                 gustos = "conosco";
-                gustosAuxiliar = false;
+                gustosAuxiliar = 2;
+                Toast.makeText(this, "Seleccione la fruta que no conoce", Toast.LENGTH_SHORT).show();
+                _txtAvisoPreferencia.setText("Seleccione la fruta que no conoce su hijo");
             }
 
             if (frutasItem.size() == 0) {
@@ -292,20 +306,20 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
             mAdapter.setModel(frutasItem);
             mAdapter.notifyDataSetChanged();
 
-            if (updateVerdura == true){
+            if (updateVerdura == true) {
                 UpdateVerduras();
                 gustos = "siGusta";
                 updateVerdura = false;
-                gustosAuxiliar = false;
+                gustosAuxiliar = 0;
             }
 
         } catch (Exception e) {
-            Log.e(TAG,"Error" + e );
+            Log.e(TAG, "Error" + e);
         }
 
     }
 
-    public void insertGustosVerduras(){
+    public void insertGustosVerduras() {
 
         temp = new ArrayList<>();
 
@@ -374,12 +388,17 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
             }
 
             frutasItem = temp;
-            if (gustosAuxiliar == false) {
+            if (gustosAuxiliar == 0) {
                 gustos = "noGusta";
-                gustosAuxiliar = true;
-            } else {
+                gustosAuxiliar = 1;
+                Toast.makeText(this, "Seleccione la verdura que no le gusta", Toast.LENGTH_SHORT).show();
+                _txtAvisoPreferencia.setText("Seleccione la verdura que no le gusta a su hijo");
+            }
+            else if (gustosAuxiliar == 1){
                 gustos = "conosco";
-                gustosAuxiliar = false;
+                gustosAuxiliar = 2;
+                Toast.makeText(this, "Seleccione la verdura que no conoce", Toast.LENGTH_SHORT).show();
+                _txtAvisoPreferencia.setText("Seleccione la verdura que no conoce su hijo");
             }
 
             if (frutasItem.size() == 0) {
@@ -388,12 +407,12 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
             mAdapter.setModel(frutasItem);
             mAdapter.notifyDataSetChanged();
 
-            if (updateVerdura == true){
+            if (updateVerdura == true) {
                 finish();
             }
 
         } catch (Exception e) {
-            Log.e(TAG,"Error" + e );
+            Log.e(TAG, "Error" + e);
         }
 
     }
@@ -407,6 +426,9 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         _btnRegistrarPreferenciasFrutas.setVisibility(View.GONE);
         _btnRegistrarPreferenciasVerduras.setVisibility(View.VISIBLE);
 
+        Toast.makeText(this, "Seleccione la verdura que mas le gusta", Toast.LENGTH_SHORT).show();
+        _txtAvisoPreferencia.setText("Seleccione la verdura que mas le gusta a su hijo");
+
         findViewById(R.id.btnRegistrarPreferenciasVerduras).setOnClickListener(HijoRegistroActivity.this);
     }
 
@@ -418,6 +440,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         _lyt_checked = (RelativeLayout) findViewById(R.id.lyt_checked);
         _btnRegistrarPreferenciasVerduras = (Button) findViewById(R.id.btnRegistrarPreferenciasVerduras);
         _btnRegistrarPreferenciasFrutas = (Button) findViewById(R.id.btnRegistrarPreferenciasFrutas);
+        _txtAvisoPreferencia = (TextView) findViewById(R.id.txtAvisoPreferencia);
 
         _myRecyclerViewFrutas = findViewById(R.id.myRecyclerViewPreferenciasFrutas);
         _myRecyclerViewVerduras = findViewById(R.id.myRecyclerViewPreferenciasVerduras);
@@ -431,5 +454,27 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         _txtHijoMedidaCintura = (EditText) findViewById(R.id.txtHijoMedidaCintura);
 
         _btnAddNino = (Button) findViewById(R.id.btnAddNino);
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("¿Realmente quiere salir?")
+                .setMessage("Al salir todos los datos registrados se eliminarán")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener(){
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                         boolean delte = preferenciasDao.deleteNino(TAG, getApplicationContext(), idNino);
+                         if (delte == true){
+                             Toast.makeText(getApplicationContext(), "Eliminado ", Toast.LENGTH_SHORT).show();
+                         }
+                         else{
+                             Toast.makeText(getApplicationContext(), "Error ", Toast.LENGTH_SHORT).show();
+                         }
+                        HijoRegistroActivity.super.onBackPressed();
+                    }
+
+                }).create().show();
     }
 }

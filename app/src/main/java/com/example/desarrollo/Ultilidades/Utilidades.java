@@ -142,14 +142,14 @@ public class Utilidades {
 
     //Constantes para campos de la tabla Recompensas
     public static final String TABLA_Recompensas = "Recompensas";
-    public static final String CAMPO_idrecom = "idrecom";
-    public static final String CAMPO_descrip = "descrip";
+    public static final String CAMPO_idRecompensa = "idrecom";
+    public static final String CAMPO_descripcion = "descrip";
     public static final String CAMPO_valor = "valor";
 
     public static final String CREAR_Tabla_Recompensas =
             "CREATE TABLE " + "" + TABLA_Recompensas + " (" +
-                    CAMPO_idrecom + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    CAMPO_descrip + " TEXT NOT NULL, " +
+                    CAMPO_idRecompensa + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    CAMPO_descripcion + " TEXT NOT NULL, " +
                     CAMPO_valor + " INTEGER NOT NULL)";
 
     //Constantes para campos de la tabla Nino
@@ -194,18 +194,20 @@ public class Utilidades {
     //Constantes para campos de la tabla CanjeFi
     public static final String TABLA_CanjeFi = "CanjeFi";
     public static final String CAMPO_idCanjeFicha = "idcanjefi";
-    public static final String CAMPO_idHijoC = "idNino";
-    public static final String CAMPO_idrRecompensaC = "idrecom";
+    public static final String CAMPO_idNinoCajeFi = "idNino";
+    public static final String CAMPO_idrRecompensaCanjeFi = "idrecom";
     public static final String CAMPO_FechaCanje = "fechacanje";
+    public static final String CAMPO_ActivoRecompensa = "Activo";
 
     public static final String CREAR_Tabla_CanjeFi =
             "CREATE TABLE " + "" + TABLA_CanjeFi + " (" +
                     CAMPO_idCanjeFicha + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    CAMPO_idHijoC + " INTEGER NOT NULL, " +
-                    CAMPO_idrRecompensaC + " INTEGER NOT NULL," +
-                    CAMPO_FechaCanje + " TEXT NOT NULL," +
-                    "FOREIGN KEY (" + CAMPO_idHijoC + ") REFERENCES Nino (" + CAMPO_idHijoC + ")," +
-                    "FOREIGN KEY (" + CAMPO_idrRecompensaC + ") REFERENCES Recompensas (" + CAMPO_idrRecompensaC + "))";
+                    CAMPO_idNinoCajeFi + " INTEGER NOT NULL, " +
+                    CAMPO_idrRecompensaCanjeFi + " INTEGER NOT NULL," +
+                    CAMPO_FechaCanje + " TEXT NULL," +
+                    CAMPO_ActivoRecompensa + " TINYINT NOT NULL," +
+                    "FOREIGN KEY (" + CAMPO_idNinoCajeFi + ") REFERENCES Nino (" + CAMPO_idNino + ")," +
+                    "FOREIGN KEY (" + CAMPO_idrRecompensaCanjeFi + ") REFERENCES Recompensas (" + CAMPO_idRecompensa + "))";
 
     //Constantes para campos de la tabla Registro
     public static final String TABLA_Registro = "Registro";

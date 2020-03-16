@@ -1,6 +1,8 @@
 package com.example.desarrollo.ExportJSON.RecycrerView;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +20,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Datos.PreferenciasDao;
 import com.example.desarrollo.ExportJSON.Filter.FilterHelperFrutas;
 import com.example.desarrollo.ExportJSON.Reader.ReaderFrutas;
@@ -49,7 +52,6 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
         TextView vitamina;
         TextView descripcion;
         ImageView imgUrl;
-        ImageView favoritos;
         CardView view_container;
 
 
@@ -60,7 +62,6 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
             porcion = (TextView) itemView.findViewById(R.id.porcion);
             vitamina = (TextView) itemView.findViewById(R.id.vitamina);
             imgUrl = (ImageView) itemView.findViewById(R.id.imgUrlFrutas);
-            favoritos = (ImageView) itemView.findViewById(R.id.favoritos);
         }
     }
 
@@ -69,7 +70,7 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View layout;
-        layout = LayoutInflater.from(context).inflate(R.layout.frutas_items, parent,false);
+        layout = LayoutInflater.from(context).inflate(R.layout.frutas_items, parent, false);
 
         final ItemViewHolder viewHolder = new ItemViewHolder(layout);
         viewHolder.view_container.setOnClickListener(new View.OnClickListener() {
@@ -97,24 +98,6 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
         ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
         ReaderFrutas readerFrutas = (ReaderFrutas) this.readerFrutas.get(position);
 
-        PreferenciasDao preferenciasDao = new PreferenciasDao();
-
-        preferenciasDao.meGusta(TAG, context, meGusta);
-
-        Log.v(TAG, "Size " + meGusta.size());
-        /*
-
-        for (int i = 0; i < meGusta.size(); i++){
-            if (meGusta.get(i).equals(readerFrutas.getNombre())){
-                itemViewHolder.favoritos.setVisibility(View.VISIBLE);
-            }
-            else {
-                itemViewHolder.favoritos.setVisibility(View.GONE);
-            }
-        }
-
-         */
-
         itemViewHolder.nombre.setText(readerFrutas.getNombre());
         itemViewHolder.porcion.setText(readerFrutas.getPorcion());
         itemViewHolder.vitamina.setText(readerFrutas.getVitamina());
@@ -136,11 +119,11 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
     }
 
 
-    public void setReaderFrutas(ArrayList<ReaderFrutas> filteredSpacecrafts)
-    {
+    public void setReaderFrutas(ArrayList<ReaderFrutas> filteredSpacecrafts) {
         this.readerFrutas = filteredSpacecrafts;
 
     }
+
     public int getImage(String imageName) {
 
         int drawableResourceId = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
@@ -150,9 +133,8 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
 
     @Override
     public Filter getFilter() {
-        if(filterHelper == null)
-        {
-            filterHelper = new FilterHelperFrutas(currentList,this, context);
+        if (filterHelper == null) {
+            filterHelper = new FilterHelperFrutas(currentList, this, context);
         }
 
         return filterHelper;

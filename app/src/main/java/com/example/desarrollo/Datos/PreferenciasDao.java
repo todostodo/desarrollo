@@ -1,13 +1,11 @@
 package com.example.desarrollo.Datos;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.desarrollo.Ultilidades.Utilidades;
 
-import java.util.ArrayList;
 
 public class PreferenciasDao {
 
@@ -17,7 +15,7 @@ public class PreferenciasDao {
 
         try{
 
-            ConexionSQLHelper connection = new ConexionSQLHelper(context, "basedatos",null,1);
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
             basedatos = null;
             basedatos = connection.getWritableDatabase();
 
@@ -49,7 +47,7 @@ public class PreferenciasDao {
 
         try{
 
-            ConexionSQLHelper connection = new ConexionSQLHelper(context, "basedatos",null,1);
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
             basedatos = null;
             basedatos = connection.getWritableDatabase();
 
@@ -77,25 +75,27 @@ public class PreferenciasDao {
         }
     }
 
-    public static ArrayList meGusta(String TAG, Context context, ArrayList arrayList){
-
+    public static boolean deleteNino(String TAG, Context context, int id){
         try {
-            ConexionSQLHelper connection = new ConexionSQLHelper(context, "basedatos",null, 1);
-
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
             basedatos = null;
-            basedatos = connection.getReadableDatabase();
+            basedatos = connection.getWritableDatabase();
 
-            Cursor cursor = basedatos.rawQuery("SELECT nombreF FROM " + Utilidades.TABLA_GustoFruta + " WHERE siGustaF = 1 ", null);
+            String deleteNino = "DELETE FROM " + Utilidades.TABLA_Nino + " WHERE idNino = " + id;
+            String deleteGustaF = "DELETE FROM " + Utilidades.TABLA_GustoFruta + " WHERE idNino = " + id;
+            String deleteGustaV = "DELETE FROM " + Utilidades.TABLA_GustoVerdura + " WHERE idNino = " + id;
 
-            while (cursor.moveToNext()){
-                arrayList.add(cursor.getString(0));
-            }
+            basedatos.execSQL(deleteGustaF);
+            basedatos.execSQL(deleteGustaV);
+            basedatos.execSQL(deleteNino);
+
         }catch (Exception e){
             Log.e(TAG, "Error " + e);
+            return false;
         }finally {
             basedatos.close();
         }
 
-        return arrayList;
+        return true;
     }
 }

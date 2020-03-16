@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.desarrollo.Datos.TutorDao;
@@ -43,7 +44,7 @@ public class RecyclerViewTutor extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         TextView nombre;
         TextView parentesco;
-        LinearLayout _btnTutorSelect;
+        CardView _btnTutorSelect;
         LinearLayout layoutDialogOptios;
 
         public ItemViewHolder(@NonNull View itemView) {
@@ -54,7 +55,7 @@ public class RecyclerViewTutor extends RecyclerView.Adapter<RecyclerView.ViewHol
 
             layoutDialogOptios = (LinearLayout) itemView.findViewById(R.id.tutorDialogOptions);
 
-            _btnTutorSelect = (LinearLayout) itemView.findViewById(R.id.btnTutorSelect);
+            _btnTutorSelect = (CardView) itemView.findViewById(R.id.btnTutorSelect);
 
         }
     }

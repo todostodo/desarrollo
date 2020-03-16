@@ -1,5 +1,6 @@
 package com.example.desarrollo.Precentacion.Alimentos.Verduras;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.ExportJSON.Model.ModelFrutas;
 import com.example.desarrollo.ExportJSON.Reader.ReaderFrutas;
 import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewAdapterFrutas;
@@ -21,11 +23,11 @@ import java.util.ArrayList;
 
 public class VerdurasFragment extends Fragment {
 
-    RecyclerView _myRecyclerViewVerduras;
+    private RecyclerView _myRecyclerViewVerduras;
 
 
-    ArrayList<ReaderFrutas> verdurasItem = new ArrayList<>();
-    RecyclerViewAdapterFrutas adapterFrutas;
+    private ArrayList<ReaderFrutas> verdurasItem = new ArrayList<>();
+    private RecyclerViewAdapterFrutas adapterFrutas;
 
     private RecyclerView.LayoutManager layoutManager;
 

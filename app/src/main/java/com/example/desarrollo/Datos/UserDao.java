@@ -13,7 +13,7 @@ public class UserDao {
 
     public static boolean addUsuario(String TAG, Context context, String nomUsuario, String apellidoPaternoUsu, String apellidoMaternoUsu, String correoUsu, String password, int nivel){
         try {
-            ConexionSQLHelper connection = new ConexionSQLHelper(context, "basedatos", null, 1);
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
             database = null;
             database = connection.getWritableDatabase();
 

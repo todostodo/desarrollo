@@ -19,7 +19,7 @@ public class NinoDao {
     public static boolean addNino(String TAG, Context context, int idUsuario, String nombre, String apPaterno, String apMaterno, int edad, Double peso, Double estatura, Double medida, Double lineabultra, Double lineabv, Double leneabf, int totfich, Double esfuerzoultra, Double esfuerzof, Double esfuerzov){
 
         try {
-            ConexionSQLHelper connection = new ConexionSQLHelper(context, "basedatos", null, 1);
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
             database = null;
             database = connection.getWritableDatabase();
 
@@ -64,11 +64,8 @@ public class NinoDao {
             Cursor c = database.rawQuery(getId, null);
             c.moveToFirst();
 
-            //gustos.setIdNino(c.getInt(0));
             gustos.idNino = c.getInt(0);
             c.close();
-
-            //Log.i(TAG, "Id = " + );
             return true;
 
         }catch (Exception e){
@@ -77,7 +74,30 @@ public class NinoDao {
         }finally {
             database.close();
         }
-
     }
 
+    public static int countNino(String TAG, Context context){
+        int count = 0;
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
+            database = null;
+            database = connection.getWritableDatabase();
+
+            Cursor cursor = database.rawQuery("Select COUNT("+Utilidades.CAMPO_idNino+") AS 'id' FROM " + Utilidades.TABLA_Nino , null);
+
+            while (cursor.moveToNext()){
+                count = cursor.getInt(cursor.getColumnIndex("id"));
+            }
+
+            Log.v(TAG, "Count: " + count);
+
+            cursor.close();
+        }catch (Exception e){
+            Log.e(TAG, "ERROR: " + e);
+        }finally {
+            database.close();
+        }
+
+        return count;
+    }
 }

@@ -18,16 +18,16 @@ import com.example.desarrollo.R;
 public class UltraprocesadosFragment extends Fragment {
 
 
-    BebidasFragment bebidasFragment = new BebidasFragment();
+    private BebidasFragment bebidasFragment = new BebidasFragment();
     /*
     FriturasFragment friturasFragment = new FriturasFragment();
     GolosinasFragment golosinasFragment = new GolosinasFragment();
     GalletasPanesillosFragment galletasPanesillosFragment = new GalletasPanesillosFragment();
     OtrosFragment otrosFragment = new OtrosFragment();
      */
-
-    FrameLayout _fragmentContainerUltraprocesador;
-    Button
+    private View view;
+    private FrameLayout _fragmentContainerUltraprocesador;
+    private Button
             _btnBebidas,
             _btnFrituras,
             _btnGolosinas,
@@ -38,22 +38,14 @@ public class UltraprocesadosFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.ultraprocesados_fragment, container, false);
+        view = inflater.inflate(R.layout.ultraprocesados_fragment, container, false);
 
-
+        init();
 
         //Manejo de los botones para mostrar los fragmentos correspondientes
         //de cada uno
 
-        _btnBebidas = (Button) view.findViewById(R.id.btnBebidas);
-        _btnFrituras = (Button) view.findViewById(R.id.btnFrituras);
-        _btnGolosinas = (Button) view.findViewById(R.id.btnGolosinas);
-        _btnGalletasPanesillos = (Button) view.findViewById(R.id.btnGalletasPanesillos);
-        _btnOtros = (Button) view.findViewById(R.id.btnOtros);
-
-        _fragmentContainerUltraprocesador = (FrameLayout) view.findViewById(R.id.fragmentContainerUltraprocesados);
-
-        if (savedInstanceState == null){
+        if (savedInstanceState == null) {
             _btnBebidas.setBackgroundResource(R.drawable.custom_bottom_background_azul);
             _btnBebidas.setTextColor(getResources().getColor(R.color.blanco));
 
@@ -179,17 +171,26 @@ public class UltraprocesadosFragment extends Fragment {
         return view;
     }
 
+    private void init() {
+        _btnBebidas = (Button) view.findViewById(R.id.btnBebidas);
+        _btnFrituras = (Button) view.findViewById(R.id.btnFrituras);
+        _btnGolosinas = (Button) view.findViewById(R.id.btnGolosinas);
+        _btnGalletasPanesillos = (Button) view.findViewById(R.id.btnGalletasPanesillos);
+        _btnOtros = (Button) view.findViewById(R.id.btnOtros);
+
+        _fragmentContainerUltraprocesador = (FrameLayout) view.findViewById(R.id.fragmentContainerUltraprocesados);
+    }
+
 
     private void loadFirstFragment() {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.add(R.id.fragmentContainerUltraprocesados, bebidasFragment, "bebidas");
+        transaction.replace(R.id.fragmentContainerUltraprocesados, bebidasFragment, "bebidas");
         transaction.commit();
     }
 
-    private void loadFragment(Fragment fragment){
+    private void loadFragment(Fragment fragment) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.fragmentContainerUltraprocesados, fragment);
-        //ft.addToBackStack(null);
         ft.commit();
     }
 

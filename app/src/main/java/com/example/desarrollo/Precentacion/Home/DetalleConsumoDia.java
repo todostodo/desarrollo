@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,22 +29,19 @@ import java.util.ArrayList;
 
 public class  DetalleConsumoDia extends Fragment {
 
-    View view;
-    ImageView _btnAddTutor;
-    Button _btnTutorVer, _btnTutorEliminar;
-    ImageButton  _btnAtivityNino;
+    private View view;
+    private CardView _btnAddTutor;
+    private CardView _btnAtivityNino;
 
-    ProgressBar _charFrutas, _chartVerduras;
-    Handler handler = new Handler();
-    int pStatus = 0;
+    private ProgressBar _charFrutas, _chartVerduras;
+    private Handler handler = new Handler();
+    private int pStatus = 0;
 
-    RecyclerView _recyclerViewTutor;
-    RecyclerViewTutor adapter;
-    ArrayList<Tutor> tutorList = new ArrayList<>();
+    private RecyclerView _recyclerViewTutor;
+    private RecyclerViewTutor adapter;
+    private ArrayList<Tutor> tutorList = new ArrayList<>();
 
     TutorDao consultar;
-
-    ConexionSQLHelper conexion;
 
     @Nullable
     @Override
@@ -63,6 +61,7 @@ public class  DetalleConsumoDia extends Fragment {
                 else{
                     Intent intent = new Intent(getContext(), TutorFragment.class);
                     startActivity(intent);
+                    adapter.notifyDataSetChanged();
                 }
             }
         });
@@ -74,7 +73,6 @@ public class  DetalleConsumoDia extends Fragment {
             }
         });
 
-        conexion = new ConexionSQLHelper(getContext(), "basedatos", null, 1);
         _recyclerViewTutor.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         consultarListaTutor();
@@ -138,13 +136,13 @@ public class  DetalleConsumoDia extends Fragment {
 
     private void init() {
 
-        _btnAddTutor = (ImageView) view.findViewById(R.id.btnNuevoTutor);
+        _btnAddTutor = (CardView) view.findViewById(R.id.btnNuevoTutor);
 
         _charFrutas = (ProgressBar) view.findViewById(R.id.chartFrutas);
         _chartVerduras = (ProgressBar) view.findViewById(R.id.chartVerduras);
 
         _recyclerViewTutor = (RecyclerView) view.findViewById(R.id.recyclerViewTutores);
 
-        _btnAtivityNino = (ImageButton) view.findViewById(R.id.btnAtivityNino);
+        _btnAtivityNino = (CardView) view.findViewById(R.id.btnAtivityNino);
     }
 }

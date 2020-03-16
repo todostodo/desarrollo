@@ -9,8 +9,11 @@ import androidx.annotation.Nullable;
 import com.example.desarrollo.Ultilidades.Utilidades;
 
 public class ConexionSQLHelper extends SQLiteOpenHelper {
-    public ConexionSQLHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+
+    private static final String TAG = "ConexionSQLHelper";
+
+    public ConexionSQLHelper(@Nullable Context context) {
+        super(context, "basedatos", null, 1);
     }
 
     @Override
@@ -37,8 +40,10 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
         db.execSQL(Utilidades.CREAR_Tabla_Recompensas);
 
         db.execSQL(Utilidades.CREAR_Tabla_Nino);
+
 //******************
 //****************
+
         db.execSQL(Utilidades.CREAR_Tabla_CanjeFi);
 
         db.execSQL(Utilidades.CREAR_Tabla_Registro);
@@ -51,6 +56,7 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
 
         db.execSQL(Utilidades.CREAR_TABLA_GustoVerdura);
 
+        insertMotivadoresDefault(db);
 
     }
 
@@ -63,6 +69,40 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS GustoVerdura");
 
         onCreate(db);
+    }
+
+    public void insertMotivadoresDefault(SQLiteDatabase db) {
+        try {
+
+            String uno = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Leer un cuento', 10 );";
+            String dos = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('1 Juego de mesa (loteria, memorama, pares) ', 15 );";
+            String tres = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Salir al parque', 25 );";
+            String cuatro = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Ver la television por media hora', 25 );";
+            String cinco = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Usar el celular por media hora ', 25 );";
+
+            String seis = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Jugar video juegos por media hora ', 30 );";
+            String ocho = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Pasear en bicicleta, patines o patineta por una hora', 35 );";
+            String siete = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Ir al cine', 50 );";
+            String nueve = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Comprar algun juguete sencillo ', 50 );";
+            String diez = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Permiso para visitar a primo o amigo una hora ', 60 );";
+
+            db.execSQL(uno);
+            db.execSQL(dos);
+            db.execSQL(tres);
+            db.execSQL(cuatro);
+            db.execSQL(cinco);
+            db.execSQL(seis);
+            db.execSQL(siete);
+            db.execSQL(ocho);
+            db.execSQL(nueve);
+            db.execSQL(diez);
+
+            onCreate(db);
+
+        }catch (Exception e){
+
+        }finally {
+        }
     }
 }
 

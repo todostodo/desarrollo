@@ -22,8 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="@color/blanco"
         app:labelVisibilityMode="unlabeled"
-        android:background="?android:attr/windowBackground"
         android:foreground="?android:attr/selectableItemBackground"
         app:itemIconTint="@drawable/custom_buttom_navigation_selected"
         app:itemTextColor="#D5DCE2"
@@ -34,3 +34,5 @@
 
 
 </RelativeLayout>
+
+<!--android:background="?android:attr/windowBackground" -->

@@ -3,6 +3,7 @@ package com.example.desarrollo.Precentacion;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
@@ -10,8 +11,10 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import java.text.DateFormat;
+import java.util.ArrayDeque;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.Deque;
 
 import android.content.Context;
 
@@ -23,17 +26,14 @@ import com.example.desarrollo.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
-public class MainActivity extends AppCompatActivity {
-    private int contador = 0, estado = 1;
-    HomeFragment homeFragment = new HomeFragment();
-    MotivadoresFragment motivadoresFragment = new MotivadoresFragment();
-    PerfilFragment perfilFragment = new PerfilFragment();
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+
     private String inicio = "";
+    private FrameLayout mMainFrame;
+    private Deque<Integer> mStack = new ArrayDeque<>();
+    private boolean isBackPressed  = false;
+    private BottomNavigationView bottomNavigationView;
 
-    FrameLayout mMainFrame;
-    private String currentTag = "home";
-
-    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,72 +45,44 @@ public class MainActivity extends AppCompatActivity {
         inicio = "" + hora.format(date);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.btmNavegacion);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setSelectedItemId(R.id.menu_home);
+
         mMainFrame = (FrameLayout) findViewById(R.id.fragmentContainer);
+    }
 
-        if (savedInstanceState == null) {
-            loadFirstFragment();
-        }
+    HomeFragment homeFragment = new HomeFragment();
+    MotivadoresFragment motivadoresFragment = new MotivadoresFragment();
+    PerfilFragment perfilFragment = new PerfilFragment();
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId()) {
-                    case R.id.menu_home:
-                        estado++;
-                        currentTag = "home";
-                        loadFragment(homeFragment, currentTag);
-                        break;
-                    case R.id.menu_motivadores:
-                        estado++;
-                        contador = 0;
-                        currentTag = "motivadores";
-                        loadFragment(motivadoresFragment, currentTag);
-                        break;
-                    case R.id.menu_perfil:
-                        estado++;
-                        contador = 0;
-                        currentTag = "perfil";
-                        loadFragment(perfilFragment, currentTag);
-                        break;
-                }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
 
+            case R.id.menu_home:
+                loadFragment(homeFragment);
                 return true;
-            }
-        });
+
+            case R.id.menu_motivadores:
+                loadFragment(motivadoresFragment);
+                return true;
+
+            case R.id.menu_perfil:
+                loadFragment(perfilFragment);
+                return true;
+
+        }
+        return true;
     }
 
-    //Desmadre
-    private void loadFirstFragment() {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.fragmentContainer, homeFragment, "home");
-        transaction.commit();
-    }
 
-    private void loadFragment(Fragment fragment, String tag) {
+    private void loadFragment(Fragment fragment) {
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragmentContainer, fragment);
-        //ft.addToBackStack(null);
+        ft.setCustomAnimations(R.anim.fade, R.anim.fade);
         ft.commit();
-    }
-
-    @Override
-    public void onBackPressed() {
-        contador++;
-        if (estado == 1) {
-            super.onBackPressed();
-            super.onBackPressed();
-        }
-
-        bottomNavigationView.setSelectedItemId(R.id.menu_home);
-
-
-        if (contador == 2) {
-            super.onBackPressed();
-            super.onBackPressed();
-        }
-
     }
 
     @Override
@@ -121,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
 
     }
+
 
     public static void hora(String inicio, Context con) {
         int inih = 0, inim = 0, inis = 0, finh = 0, finm = 0, fins = 0, segundos1 = 0, segundos2 = 0;

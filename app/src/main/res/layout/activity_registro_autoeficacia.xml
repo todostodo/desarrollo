@@ -273,7 +273,7 @@
                 android:max="10"
                 android:maxHeight="7dp"
                 android:min="0"
-                android:progress="0"
+                android:progress="5"
                 android:minHeight="7dp"
                 android:progressDrawable="@drawable/seek_bar_ruler_blanco"
                 android:thumb="@drawable/seek_bar_slider_verde"
