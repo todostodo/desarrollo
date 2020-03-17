@@ -120,4 +120,30 @@ public class TutorDao {
         }
         return tutorList;
     }
+    public static int consultaTotorCorreo(Context context, String correO,String contra){
+        int si=0;
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
+
+            database = null;
+            database = connection.getReadableDatabase();
+
+            Cursor cursor = database.rawQuery("SELECT "+Utilidades.CAMPO_correo+","+Utilidades.CAMPO_contrasena+" FROM " + Utilidades.TABLA_Tutor+" WHERE correo='"+correO+"'", null);
+
+            if(cursor.moveToFirst()){
+                String campo= cursor.getString(0);
+                String respuesta= cursor.getString(1);
+                if(correO.equals(campo) && contra.equals(respuesta)){
+                    si=1;
+                    return si;
+                }
+            }
+
+        }catch (Exception e){
+            Toast.makeText(context, "Error al visualizar tutor", Toast.LENGTH_SHORT).show();
+        }finally {
+            database.close();
+        }
+        return si;
+    }
 }

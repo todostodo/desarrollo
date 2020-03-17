@@ -1,8 +1,10 @@
 package com.example.desarrollo.Datos;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.bumptech.glide.util.Util;
 import com.example.desarrollo.Ultilidades.Utilidades;
@@ -41,5 +43,31 @@ public class UserDao {
         }finally {
             database.close();
         }
+    }
+    public static int consultaUser(Context context, String correO,String contra){
+        int si=0;
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
+
+            database = null;
+            database = connection.getReadableDatabase();
+
+            Cursor cursor = database.rawQuery("SELECT "+Utilidades.CAMPO_correoUsuario+","+Utilidades.CAMPO_passwordUsu+" FROM " + Utilidades.TABLA_Usuario+" WHERE correo='"+correO+"'", null);
+
+            if(cursor.moveToFirst()){
+                String campo= cursor.getString(0);
+                String respuesta= cursor.getString(1);
+                if(correO.equals(campo) && contra.equals(respuesta)){
+                    si=1;
+                    return si;
+                }
+            }
+
+        }catch (Exception e){
+            Toast.makeText(context, "Error al visualizar tutor", Toast.LENGTH_SHORT).show();
+        }finally {
+            database.close();
+        }
+        return si;
     }
 }

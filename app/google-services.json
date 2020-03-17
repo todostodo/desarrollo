@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "43136902276",
+    "firebase_url": "https://appmovilpersuasiva.firebaseio.com",
+    "project_id": "appmovilpersuasiva",
+    "storage_bucket": "appmovilpersuasiva.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43136902276:android:980f10864e5bcbdf758ed1",
+        "android_client_info": {
+          "package_name": "com.example.desarrollo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "43136902276-7qj6eflbg7fiq1pl8v2naabvmkp7013t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.desarrollo",
+            "certificate_hash": "3b5e75b7b1c24bf8e48fe59c317f33a5d21075cd"
+          }
+        },
+        {
+          "client_id": "43136902276-vqghk1p1q7p8ddm1h0u1b0ir2saktd3a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAM9Jbnb6E-cC-3Vvew-Tf_0zcyx3LKVTY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "43136902276-vqghk1p1q7p8ddm1h0u1b0ir2saktd3a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
