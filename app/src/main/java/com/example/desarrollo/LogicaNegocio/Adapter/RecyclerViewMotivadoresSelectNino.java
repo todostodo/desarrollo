@@ -15,10 +15,11 @@ import com.example.desarrollo.R;
 
 import java.util.List;
 
-public class RecyclerViewMotivadoresSelectNino extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class RecyclerViewMotivadoresSelectNino extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener{
 
     Context context;
     List<MotivadoresSelect.MotivadoresNinoDisponible> ninoDisponibleList;
+    View.OnClickListener listener;
 
     public RecyclerViewMotivadoresSelectNino(Context context, List<MotivadoresSelect.MotivadoresNinoDisponible> ninoDisponibleList) {
         this.context = context;
@@ -41,6 +42,9 @@ public class RecyclerViewMotivadoresSelectNino extends RecyclerView.Adapter<Recy
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.motivadores_select_nino_item, parent, false);
         ItemViewHolder viewHolder = new ItemViewHolder(view);
+
+        view.setOnClickListener(this);
+
         return viewHolder;
     }
 
@@ -56,4 +60,15 @@ public class RecyclerViewMotivadoresSelectNino extends RecyclerView.Adapter<Recy
     public int getItemCount() {
         return ninoDisponibleList.size();
     }
+
+    @Override
+    public void onClick(View v) {
+        if (listener != null){
+            listener.onClick(v);
+        }
+    }
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
 }

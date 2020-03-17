@@ -197,7 +197,7 @@ public class Utilidades {
     public static final String CAMPO_idNinoCajeFi = "idNino";
     public static final String CAMPO_idrRecompensaCanjeFi = "idrecom";
     public static final String CAMPO_FechaCanje = "fechacanje";
-    public static final String CAMPO_ActivoRecompensa = "Activo";
+    public static final String CAMPO_Activo = "Activo";
 
     public static final String CREAR_Tabla_CanjeFi =
             "CREATE TABLE " + "" + TABLA_CanjeFi + " (" +
@@ -205,7 +205,7 @@ public class Utilidades {
                     CAMPO_idNinoCajeFi + " INTEGER NOT NULL, " +
                     CAMPO_idrRecompensaCanjeFi + " INTEGER NOT NULL," +
                     CAMPO_FechaCanje + " TEXT NULL," +
-                    CAMPO_ActivoRecompensa + " TINYINT NOT NULL," +
+                    CAMPO_Activo + " TINYINT NOT NULL," +
                     "FOREIGN KEY (" + CAMPO_idNinoCajeFi + ") REFERENCES Nino (" + CAMPO_idNino + ")," +
                     "FOREIGN KEY (" + CAMPO_idrRecompensaCanjeFi + ") REFERENCES Recompensas (" + CAMPO_idRecompensa + "))";
 

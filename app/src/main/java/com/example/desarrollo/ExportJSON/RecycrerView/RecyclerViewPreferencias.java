@@ -77,9 +77,6 @@ public class RecyclerViewPreferencias extends RecyclerView.Adapter<RecyclerViewP
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
-        final ReaderPreferencias inbox = preferencias.get(position);
-
-        //ItemViewHolder viewHolder  = (ItemViewHolder) holder;
         final ReaderPreferencias model = (ReaderPreferencias) this.preferencias.get(position);
 
         if (model != null){

@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     HomeFragment homeFragment = new HomeFragment();
-    MotivadoresFragment motivadoresFragment = new MotivadoresFragment();
+    //MotivadoresFragment motivadoresFragment = new MotivadoresFragment();
     PerfilFragment perfilFragment = new PerfilFragment();
 
 
@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 
             case R.id.menu_motivadores:
+                MotivadoresFragment motivadoresFragment = new MotivadoresFragment();
                 loadFragment(motivadoresFragment);
                 return true;
 

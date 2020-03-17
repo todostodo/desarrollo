@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.bumptech.glide.util.Util;
+import com.example.desarrollo.Entidades.MotivadoresProceso;
 import com.example.desarrollo.Entidades.MotivadoresSelect;
 import com.example.desarrollo.Ultilidades.Utilidades;
 
@@ -22,7 +22,7 @@ public class MotivadoresDao {
     }
 
 
-    public static ArrayList cosultarMotivadores(String TAG, Context context, ArrayList list) {
+    public static void cosultarMotivadores(String TAG, Context context, ArrayList list) {
 
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
@@ -31,9 +31,7 @@ public class MotivadoresDao {
             MotivadoresSelect motivadores = null;
 
             Cursor cursor = database.rawQuery(
-                    "SELECT * FROM " + Utilidades.TABLA_Recompensas +
-                            " WHERE " + Utilidades.CAMPO_idRecompensa +
-                            " NOT IN (SELECT " + Utilidades.CAMPO_idRecompensa + " FROM " + Utilidades.TABLA_CanjeFi + ")",
+                    "SELECT * FROM " + Utilidades.TABLA_Recompensas,
                     null);
 
             while (cursor.moveToNext()) {
@@ -52,28 +50,53 @@ public class MotivadoresDao {
         } finally {
             database.close();
         }
-
-        return list;
     }
 
-    public static ArrayList consultarMotivadoresProceso(String TAG, Context context, ArrayList list){
+    public static void consultarMotivadoresProceso(String TAG, Context context, ArrayList list, int idNino) {
         try {
-
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
             database = null;
             database = connection.getReadableDatabase();
+            MotivadoresProceso proceso = null;
 
-            //Cursor cursor = database.rawQuery("SELECT * FROM " )
+            Cursor cursor = database.rawQuery("SELECT " +
+                    Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idCanjeFicha + ", " +
+                    Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idNinoCajeFi + ", " +
+                    Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idrRecompensaCanjeFi + ", " +
+                    Utilidades.TABLA_Recompensas + "." + Utilidades.CAMPO_descripcion + ", " +
+                    Utilidades.TABLA_Recompensas + "." + Utilidades.CAMPO_valor + ", " +
+                    Utilidades.TABLA_Nino + "." + Utilidades.CAMPO_TotalFichas +
+                    " FROM " + Utilidades.TABLA_CanjeFi +
+                    " INNER JOIN " + Utilidades.TABLA_Recompensas + " ON " +
+                    Utilidades.TABLA_Recompensas + "." + Utilidades.CAMPO_idRecompensa +
+                    " = " + Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idrRecompensaCanjeFi +
+                    " INNER JOIN " + Utilidades.TABLA_Nino + " ON " + Utilidades.TABLA_Nino + "." + Utilidades.CAMPO_idNino +
+                    " = " + Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idNino +
+                    " WHERE " + Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_Activo + " = " + "1" + " AND " +
+                    Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idNino + " = " + idNino
+                    , null);
 
-        }catch (Exception e){
-            Log.e(TAG,"Error " + e);
-        }finally {
+            while (cursor.moveToNext()) {
+                proceso = new MotivadoresProceso();
+                proceso.setIdCanjeFi(cursor.getInt(cursor.getColumnIndex("idcanjefi")));
+                proceso.setIdNino(cursor.getInt(cursor.getColumnIndex("idNino")));
+                proceso.setIdMotivador(cursor.getInt(cursor.getColumnIndex("idrecom")));
+                proceso.setDescripcion(cursor.getString(cursor.getColumnIndex("descrip")));
+                proceso.setValor(cursor.getInt(cursor.getColumnIndex("valor")));
+                proceso.setTotalFicha(cursor.getInt(cursor.getColumnIndex("totfich")));
+
+                list.add(proceso);
+            }
+            cursor.close();
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error " + e);
+        } finally {
             database.close();
         }
-        return list;
     }
 
-    public static ArrayList consultarNino(String TAG, Context context, ArrayList list) {
+    public static void consultarNino(String TAG, Context context, ArrayList list) {
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
             database = null;
@@ -97,7 +120,6 @@ public class MotivadoresDao {
         } finally {
             database.close();
         }
-        return list;
     }
 
     public static boolean insertMotivadoresProceso(String TAG, Context context, int idNino, int idRcompensa, int activo) {
@@ -109,7 +131,7 @@ public class MotivadoresDao {
             String insert = ("INSERT INTO " + Utilidades.TABLA_CanjeFi + "( " +
                     Utilidades.CAMPO_idNinoCajeFi + ", " +
                     Utilidades.CAMPO_idrRecompensaCanjeFi + ", " +
-                    Utilidades.CAMPO_ActivoRecompensa + ") " +
+                    Utilidades.CAMPO_Activo + ") " +
                     "VALUES (" +
                     idNino + ", " +
                     idRcompensa + ", " +
@@ -124,5 +146,85 @@ public class MotivadoresDao {
         } finally {
             database.close();
         }
+    }
+
+    public static int countMotivadoresProceso(String TAG, Context context) {
+        int cantidad = 0;
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
+            database = null;
+            database = connection.getReadableDatabase();
+
+
+            Cursor cursor = database.rawQuery("SELECT COUNT(" + Utilidades.CAMPO_idCanjeFicha + ") FROM " + Utilidades.TABLA_CanjeFi, null);
+            while (cursor.moveToNext()) {
+                cantidad = cursor.getInt(0);
+            }
+            cursor.close();
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error " + e);
+        } finally {
+            database.close();
+        }
+        return cantidad;
+    }
+
+    //Validacion
+
+    public static int countMotivadoresNino(String TAG, Context context, int idNino) {
+        int cantidad = 0;
+        try {
+            ConexionSQLHelper conection = new ConexionSQLHelper(context);
+            database = null;
+            database = conection.getReadableDatabase();
+
+            Cursor cursor = database.rawQuery("SELECT COUNT(" + Utilidades.CAMPO_idNino + ") FROM " +
+                    Utilidades.TABLA_CanjeFi + " WHERE " +
+                    Utilidades.CAMPO_idNino + " = " + idNino + " AND " +
+                    Utilidades.CAMPO_Activo + " = " + " 1"
+                    , null);
+
+            while (cursor.moveToNext()){
+                cantidad = cursor.getInt(0);
+            }
+
+            cursor.close();
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error " + e);
+        } finally {
+            database.close();
+        }
+
+        return cantidad;
+    }
+
+    public static int existeMotivadorNino(String TAG, Context context, int idNino, int idMotivador){
+        int existe = 0;
+        try {
+
+            ConexionSQLHelper conection = new ConexionSQLHelper(context);
+            database = null;
+            database = conection.getReadableDatabase();
+
+            Cursor cursor = database.rawQuery("SELECT COUNT(" + Utilidades.CAMPO_idNino + ") FROM " + Utilidades.TABLA_CanjeFi +
+                    " WHERE " + Utilidades.CAMPO_idNino + " = " + idNino + " AND " +
+                    Utilidades.CAMPO_idRecompensa + " = " + idMotivador
+                    , null);
+
+            while (cursor.moveToNext()){
+                existe = cursor.getInt(0);
+
+            }
+            cursor.close();
+
+
+        }catch (Exception e){
+            Log.e(TAG, "Error " + e);
+        }finally {
+            database.close();
+        }
+        return existe;
     }
 }

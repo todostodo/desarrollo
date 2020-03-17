@@ -1,20 +1,27 @@
 package com.example.desarrollo.Precentacion.Motivadores;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import android.view.View;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.desarrollo.Datos.MotivadoresDao;
+import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Entidades.MotivadoresSelect;
+import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewPreferencias;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresSelect;
+import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresSelectNino;
 import com.example.desarrollo.R;
 
 import java.util.ArrayList;
 
-public class MotivadoresSelectActivity extends FragmentActivity {
+public class MotivadoresSelectActivity extends AppCompatActivity {
 
     private RecyclerView _myRecyclerViewMotivadores;
     private RecyclerViewMotivadoresSelect adapter;
@@ -36,6 +43,7 @@ public class MotivadoresSelectActivity extends FragmentActivity {
 
         adapter = new RecyclerViewMotivadoresSelect(getApplicationContext(), motivadoresList);
         _myRecyclerViewMotivadores.setAdapter(adapter);
+
     }
 
     private void init() {
@@ -45,5 +53,4 @@ public class MotivadoresSelectActivity extends FragmentActivity {
     private void consultarListaMotivadoresDisponibles() {
         consultar.cosultarMotivadores(TAG, getApplicationContext(), motivadoresList);
     }
-
 }

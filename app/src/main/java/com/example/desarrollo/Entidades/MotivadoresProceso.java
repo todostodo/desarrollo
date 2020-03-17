@@ -1,6 +1,7 @@
 package com.example.desarrollo.Entidades;
 
 public class MotivadoresProceso {
+    private int idCanjeFi;
     private int idMotivador;
     private int idNino;
     private int totalFicha;
@@ -8,6 +9,14 @@ public class MotivadoresProceso {
     private int valor;
 
     public MotivadoresProceso(){}
+
+    public int getIdCanjeFi() {
+        return idCanjeFi;
+    }
+
+    public void setIdCanjeFi(int idCanjeFi) {
+        this.idCanjeFi = idCanjeFi;
+    }
 
     public int getIdMotivador() {
         return idMotivador;
