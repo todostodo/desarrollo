@@ -1,10 +1,13 @@
 package com.example.desarrollo.Datos;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.desarrollo.Ultilidades.Utilidades;
+
+import java.util.ArrayList;
 
 
 public class PreferenciasDao {
@@ -97,5 +100,26 @@ public class PreferenciasDao {
         }
 
         return true;
+    }
+    public static ArrayList meGusta(String TAG, Context context, ArrayList arrayList){
+
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
+
+            basedatos = null;
+            basedatos = connection.getReadableDatabase();
+
+            Cursor cursor = basedatos.rawQuery("SELECT nombreF FROM " + Utilidades.TABLA_GustoFruta + " WHERE siGustaF = 1 ", null);
+
+            while (cursor.moveToNext()){
+                arrayList.add(cursor.getString(0));
+            }
+        }catch (Exception e){
+            Log.e(TAG, "Error " + e);
+        }finally {
+            basedatos.close();
+        }
+
+        return arrayList;
     }
 }

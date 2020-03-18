@@ -1,5 +1,7 @@
 <resources>
 
+    <string name="facebook_app_id">203507240746681</string> <string name="fb_login_protocol_scheme">fb203507240746681</string>
+
     <!-- String para saber la CANTIDAD DE LOS HIJOS -->
     <string name="app_name">desarrollo</string>
     <string name="avisoRegistroHijos">Antes de comenzar debemos registrar algunos datos empezando con los de sus hijo(s)</string>
@@ -8,6 +10,7 @@
 
     <string name="btmAceptar">Aceptar</string>
     <string name="btmNumero">Cantidad</string>
+    <string name="new_notification">Notificacion</string>
 
     <!-- -->
 
