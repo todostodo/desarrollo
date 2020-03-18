@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import android.view.MenuItem;
 import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import com.example.desarrollo.Entidades.MotivadoresSelect;
 import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewPreferencias;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresSelect;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresSelectNino;
+import com.example.desarrollo.Precentacion.MainActivity;
 import com.example.desarrollo.R;
 
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
 
     MotivadoresDao consultar;
 
-    private static final String TAG = "MotivadoresSelectActivi";
+    private static final String TAG = "MotivadoresSelectActivity";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,7 +42,6 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
 
         _myRecyclerViewMotivadores.setLayoutManager(new LinearLayoutManager(this));
         consultarListaMotivadoresDisponibles();
-
         adapter = new RecyclerViewMotivadoresSelect(getApplicationContext(), motivadoresList);
         _myRecyclerViewMotivadores.setAdapter(adapter);
 
@@ -51,6 +52,7 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
     }
 
     private void consultarListaMotivadoresDisponibles() {
+        motivadoresList.clear();
         consultar.cosultarMotivadores(TAG, getApplicationContext(), motivadoresList);
     }
 }

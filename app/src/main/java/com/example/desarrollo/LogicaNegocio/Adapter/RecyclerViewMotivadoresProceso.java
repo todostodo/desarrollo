@@ -21,12 +21,10 @@ public class RecyclerViewMotivadoresProceso extends RecyclerView.Adapter<Recycle
     Context context;
     List<MotivadoresProceso> procesoList = new ArrayList<>();
 
-    public RecyclerViewMotivadoresProceso(Context context, List<MotivadoresProceso> procesoList) {
+    public RecyclerViewMotivadoresProceso(Context context, ArrayList<MotivadoresProceso> procesoList) {
         this.context = context;
         this.procesoList = procesoList;
     }
-
-    public RecyclerViewMotivadoresProceso(){}
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
 
@@ -65,17 +63,22 @@ public class RecyclerViewMotivadoresProceso extends RecyclerView.Adapter<Recycle
         ItemViewHolder viewHolder = (ItemViewHolder) holder;
         MotivadoresProceso proceso = this.procesoList.get(position);
 
-        viewHolder.txtTotalValor.setText(String.valueOf(proceso.getValor()));
-        viewHolder.txtDescripcion.setText(proceso.getDescripcion());
-        viewHolder.txtTotalValorProgreso.setText(String.valueOf(proceso.getValor()));
+        int TotalFichas = proceso.getTotalFicha();
+        int ValorMotivador = proceso.getValor();
 
-        if (proceso.getTotalFicha() > proceso.getValor()){
-            viewHolder.txtSumaValorProgeso.setText(String.valueOf(proceso.getValor()) + " de");
+        viewHolder.txtTotalValor.setText(String.valueOf(ValorMotivador));
+        viewHolder.txtDescripcion.setText(proceso.getDescripcion());
+        viewHolder.txtTotalValorProgreso.setText(String.valueOf(ValorMotivador));
+
+        if (TotalFichas >= ValorMotivador){
+            //viewHolder.txtSumaValorProgeso.setText(ValorMotivador + " de");
             viewHolder.relativeBtnCajearMotivador.setVisibility(View.VISIBLE);
             viewHolder.layoutProcesoMotivador.setVisibility(View.GONE);
         }
         else{
-            viewHolder.txtSumaValorProgeso.setText(String.valueOf(proceso.getValor()) + " de");
+            viewHolder.txtSumaValorProgeso.setText(TotalFichas + " de");
+            viewHolder.motivadorProgreso.setMax(ValorMotivador);
+            viewHolder.motivadorProgreso.setProgress(TotalFichas);
         }
 
         viewHolder.motivadorProgreso.setProgress(proceso.getTotalFicha());
@@ -87,7 +90,8 @@ public class RecyclerViewMotivadoresProceso extends RecyclerView.Adapter<Recycle
         return procesoList.size();
     }
 
-    public void addItem(){
+    public void addItemMotivadorProceso(MotivadoresProceso proceso) {
+        procesoList.add(proceso);
         notifyDataSetChanged();
     }
 }

@@ -1,6 +1,6 @@
 package com.example.desarrollo.Entidades;
 
-public class MotivadoresProceso {
+public class MotivadoresProceso  {
     private int idCanjeFi;
     private int idMotivador;
     private int idNino;

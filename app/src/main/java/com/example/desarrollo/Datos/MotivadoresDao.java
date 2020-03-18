@@ -1,5 +1,6 @@
 package com.example.desarrollo.Datos;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,6 +8,7 @@ import android.util.Log;
 
 import com.example.desarrollo.Entidades.MotivadoresProceso;
 import com.example.desarrollo.Entidades.MotivadoresSelect;
+import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresProceso;
 import com.example.desarrollo.Ultilidades.Utilidades;
 
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ public class MotivadoresDao {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
             database = null;
             database = connection.getReadableDatabase();
+            ContentValues cv = new ContentValues();
             MotivadoresSelect motivadores = null;
 
             Cursor cursor = database.rawQuery(

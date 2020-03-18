@@ -156,7 +156,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                                                     0.0,
                                                     0.0,
                                                     0.0,
-                                                    100,
+                                                    50,
                                                     0.25,
                                                     0.25,
                                                     0.25

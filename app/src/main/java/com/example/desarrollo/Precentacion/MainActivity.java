@@ -52,12 +52,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     HomeFragment homeFragment = new HomeFragment();
-    //MotivadoresFragment motivadoresFragment = new MotivadoresFragment();
+    MotivadoresFragment motivadoresFragment = new MotivadoresFragment();
     PerfilFragment perfilFragment = new PerfilFragment();
 
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull final MenuItem item) {
         switch (item.getItemId()) {
 
             case R.id.menu_home:
@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 
             case R.id.menu_motivadores:
-                MotivadoresFragment motivadoresFragment = new MotivadoresFragment();
                 loadFragment(motivadoresFragment);
                 return true;
 

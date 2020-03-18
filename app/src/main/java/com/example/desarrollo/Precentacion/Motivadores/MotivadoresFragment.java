@@ -1,5 +1,6 @@
 package com.example.desarrollo.Precentacion.Motivadores;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -47,6 +48,9 @@ public class MotivadoresFragment extends Fragment {
     private RecyclerView _myRecyclerViewProceso;
     private RecyclerViewMotivadoresProceso adapter;
     private ArrayList<MotivadoresProceso> procesoList = new ArrayList<>();
+
+    private ArrayAdapter<CharSequence> adapterSpinner;
+    private ArrayList totalFichas;
     private MotivadoresDao consultar;
     private NinoDao ninoDao;
 
@@ -58,7 +62,7 @@ public class MotivadoresFragment extends Fragment {
         view = inflater.inflate(R.layout.motivadores_fragment, container, false);
 
         init();
-
+        consultarListaMotivadoresProceso();
         consultarListaNino();
 
         _btnSelectMotivador.setOnClickListener(new View.OnClickListener() {
@@ -72,9 +76,7 @@ public class MotivadoresFragment extends Fragment {
         return view;
     }
 
-    private void consultarListaNino() {
-
-        final int[] idNino = new int[1];
+    public void consultarListaNino() {
 
         ninoDao.consultarNino(TAG, getContext(), ninoList);
 
@@ -84,19 +86,18 @@ public class MotivadoresFragment extends Fragment {
             listaNino.add(ninoList.get(i).getNombre());
         }
 
-        ArrayAdapter<CharSequence> adapterSpinner = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, listaNino);
+        adapterSpinner = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, listaNino);
         adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _spinnerMotivadoresNino.setAdapter(adapterSpinner);
 
         _spinnerMotivadoresNino.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                idNino[0] = ninoList.get(position).getIdNino();
                 ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
                 ((TextView) parent.getChildAt(0)).setTextSize(16);
                 ((TextView) parent.getChildAt(0)).setTypeface(ResourcesCompat.getFont(getContext(), R.font.roboto_regular));
-                consultarListaMotivadoresProceso(idNino[0]);
-                //Toast.makeText(getContext(), "ID " + idNino[0], Toast.LENGTH_SHORT).show();
+                cargarMotivadores(ninoList.get(position).getIdNino());
+                Toast.makeText(getContext(), "ID " + ninoList.get(position).getIdNino(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -106,7 +107,7 @@ public class MotivadoresFragment extends Fragment {
         });
     }
 
-    private void consultarListaMotivadoresProceso(int idNino) {
+    private void consultarListaMotivadoresProceso() {
 
         int cantidadNino = ninoDao.countNino(TAG, getContext());
 
@@ -114,7 +115,7 @@ public class MotivadoresFragment extends Fragment {
             _linearTotalFicha.setVisibility(View.GONE);
         } else {
             int cantidadMotivadoresProceso = consultar.countMotivadoresProceso(TAG, getContext());
-            ArrayList totalFichas = ninoDao.countFichasNino(TAG, getContext());
+            totalFichas = ninoDao.countFichasNino(TAG, getContext());
 
             _nombreNino1Motivador.setText(String.valueOf(totalFichas.get(1)));
             _fichasNino1Motivador.setText(String.valueOf(totalFichas.get(0)));
@@ -123,11 +124,7 @@ public class MotivadoresFragment extends Fragment {
                 _layoutMotivadoresVacio.setVisibility(View.GONE);
                 _myRecyclerViewProceso.setVisibility(View.VISIBLE);
 
-                _myRecyclerViewProceso.setLayoutManager(new LinearLayoutManager(getActivity()));
-                cargarMotivadores(idNino);
 
-                adapter = new RecyclerViewMotivadoresProceso(getContext(), procesoList);
-                _myRecyclerViewProceso.setAdapter(adapter);
             } else {
                 _myRecyclerViewProceso.setVisibility(View.GONE);
                 _layoutMotivadoresVacio.setVisibility(View.VISIBLE);
@@ -145,8 +142,14 @@ public class MotivadoresFragment extends Fragment {
     }
 
     public void cargarMotivadores(int idNino) {
+
         procesoList.clear();
+
+        _myRecyclerViewProceso.setLayoutManager(new LinearLayoutManager(getActivity()));
         consultar.consultarMotivadoresProceso(TAG, getContext(), procesoList, idNino);
+        adapter = new RecyclerViewMotivadoresProceso(getContext(), procesoList);
+        _myRecyclerViewProceso.setAdapter(adapter);
+        //Toast.makeText(getContext(), "Id " + idNino, Toast.LENGTH_SHORT).show();
     }
 
     private void init() {
