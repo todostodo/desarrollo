@@ -94,26 +94,6 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
     }
 
-    /*
-    @Override
-    public void onBackPressed() {
-        contador++;
-        if (estado == 1) {
-            super.onBackPressed();
-            super.onBackPressed();
-        }
-
-        bottomNavigationView.setSelectedItemId(R.id.menu_home);
-
-
-        if (contador == 2) {
-            super.onBackPressed();
-            super.onBackPressed();
-        }
-
-    }
-     */
-
     @Override
     protected void onDestroy() {
 

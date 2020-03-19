@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.ParcelUuid;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.desarrollo.Datos.MotivadoresDao;
 import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Entidades.MotivadoresProceso;
@@ -41,6 +44,7 @@ public class MotivadoresFragment extends Fragment {
     private LinearLayout _linearTotalFicha;
     private RelativeLayout _relativeSpinner;
     private Spinner _spinnerMotivadoresNino;
+    private SwipeRefreshLayout _refreshMotivadoresProceso;
 
     private ArrayList<String> listaNino;
     private ArrayList<Nino> ninoList = new ArrayList<>();
@@ -62,7 +66,6 @@ public class MotivadoresFragment extends Fragment {
         view = inflater.inflate(R.layout.motivadores_fragment, container, false);
 
         init();
-        consultarListaMotivadoresProceso();
         consultarListaNino();
 
         _btnSelectMotivador.setOnClickListener(new View.OnClickListener() {
@@ -73,11 +76,23 @@ public class MotivadoresFragment extends Fragment {
             }
         });
 
+
+        _refreshMotivadoresProceso.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                consultarListaNino();
+                _refreshMotivadoresProceso.setRefreshing(false);
+            }
+        });
+
+
+
         return view;
     }
 
     public void consultarListaNino() {
 
+        ninoList.clear();
         ninoDao.consultarNino(TAG, getContext(), ninoList);
 
         listaNino = new ArrayList<>();
@@ -93,11 +108,7 @@ public class MotivadoresFragment extends Fragment {
         _spinnerMotivadoresNino.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
-                ((TextView) parent.getChildAt(0)).setTextSize(16);
-                ((TextView) parent.getChildAt(0)).setTypeface(ResourcesCompat.getFont(getContext(), R.font.roboto_regular));
-                cargarMotivadores(ninoList.get(position).getIdNino());
-                Toast.makeText(getContext(), "ID " + ninoList.get(position).getIdNino(), Toast.LENGTH_SHORT).show();
+                consultarListaMotivadoresProceso(ninoList.get(position).getIdNino());
             }
 
             @Override
@@ -107,7 +118,7 @@ public class MotivadoresFragment extends Fragment {
         });
     }
 
-    private void consultarListaMotivadoresProceso() {
+    private void consultarListaMotivadoresProceso(int idNino) {
 
         int cantidadNino = ninoDao.countNino(TAG, getContext());
 
@@ -124,10 +135,15 @@ public class MotivadoresFragment extends Fragment {
                 _layoutMotivadoresVacio.setVisibility(View.GONE);
                 _myRecyclerViewProceso.setVisibility(View.VISIBLE);
 
+                _myRecyclerViewProceso.setLayoutManager(new LinearLayoutManager(getActivity()));
+                _myRecyclerViewProceso.setHasFixedSize(true);
+
+                cargarMotivadores(idNino);
 
             } else {
                 _myRecyclerViewProceso.setVisibility(View.GONE);
                 _layoutMotivadoresVacio.setVisibility(View.VISIBLE);
+
             }
 
             if (cantidadNino > 1) {
@@ -144,8 +160,6 @@ public class MotivadoresFragment extends Fragment {
     public void cargarMotivadores(int idNino) {
 
         procesoList.clear();
-
-        _myRecyclerViewProceso.setLayoutManager(new LinearLayoutManager(getActivity()));
         consultar.consultarMotivadoresProceso(TAG, getContext(), procesoList, idNino);
         adapter = new RecyclerViewMotivadoresProceso(getContext(), procesoList);
         _myRecyclerViewProceso.setAdapter(adapter);
@@ -154,7 +168,6 @@ public class MotivadoresFragment extends Fragment {
 
     private void init() {
         _btnSelectMotivador = (CardView) view.findViewById(R.id.btnSelectMotivador);
-        _myRecyclerViewProceso = (RecyclerView) view.findViewById(R.id.myRecyclerViewMotivadoresProceso);
         _layoutMotivadoresVacio = (LinearLayout) view.findViewById(R.id.layoutMotivadoresVacio);
         _fichasNino1Motivador = (TextView) view.findViewById(R.id.fichasNino1Motivador);
         _nombreNino1Motivador = (TextView) view.findViewById(R.id.nombreNino1Motivador);
@@ -162,9 +175,10 @@ public class MotivadoresFragment extends Fragment {
         _nombreNino2Motivador = (TextView) view.findViewById(R.id.nombreNino2Motivador);
         _spinnerMotivadoresNino = (Spinner) view.findViewById(R.id.spinnerMotivadoresNino);
         _relativeSpinner = (RelativeLayout) view.findViewById(R.id.relativeSpinner);
-
+        _myRecyclerViewProceso = (RecyclerView) view.findViewById(R.id.myRecyclerViewMotivadoresProceso);
         _imgCirculoMotivadores = (ImageView) view.findViewById(R.id.imgCirculoMotivadores);
         _layourMotivador2Nino = (LinearLayout) view.findViewById(R.id.layourMotivador2Nino);
         _linearTotalFicha = (LinearLayout) view.findViewById(R.id.linearTotalFicha);
+        _refreshMotivadoresProceso = (SwipeRefreshLayout) view.findViewById(R.id.refreshMotivadoresProceso);
     }
 }

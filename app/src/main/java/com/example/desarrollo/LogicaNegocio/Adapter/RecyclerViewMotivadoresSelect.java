@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,26 +19,29 @@ import com.example.desarrollo.Datos.MotivadoresDao;
 import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Entidades.MotivadoresProceso;
 import com.example.desarrollo.Entidades.MotivadoresSelect;
+import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewPreferencias;
 import com.example.desarrollo.Precentacion.Motivadores.MotivadoresFragment;
 import com.example.desarrollo.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
 
-    Context context;
-    List<MotivadoresSelect> motivadoresList;
-    Dialog dialogMotivadorSelectNino;
+    private Context context;
+    private List<MotivadoresSelect> motivadoresList;
+    private Dialog dialogMotivadorSelectNino;
+    private MotivadoresFragment fragment = new MotivadoresFragment();
 
-    RecyclerView _myRecyclerView;
-    RecyclerViewMotivadoresSelectNino adapterSelectNino;
 
-    ArrayList<MotivadoresSelect.MotivadoresNinoDisponible> ninoDisponibleArrayList;
-    MotivadoresDao motivadoresDao;
+    private RecyclerView _myRecyclerView;
+    private RecyclerViewMotivadoresSelectNino adapterSelectNino;
 
-    NinoDao ninoDao;
-    int countNino;
+    private ArrayList<MotivadoresSelect.MotivadoresNinoDisponible> ninoDisponibleArrayList;
+    private MotivadoresDao motivadoresDao;
+
+    private NinoDao ninoDao;
+    private int countNino;
 
     private static final String TAG = "RecyclerViewMotivadores";
 
@@ -47,11 +51,13 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
         this.motivadoresList = motivadoresList;
     }
 
+
     public class ItemViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtTotalValorMotivador;
         TextView txtDescripcionMotivador;
         Button btnMIniciarMotivador;
+        int posicion;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,6 +75,7 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
         final View view = LayoutInflater.from(context).inflate(R.layout.motivadores_select_item, parent, false);
         final ItemViewHolder viewHolder = new ItemViewHolder(view);
 
+
         dialogMotivadorSelectNino = new Dialog(parent.getContext());
         dialogMotivadorSelectNino.setContentView(R.layout.motivadores_select_nino);
         dialogMotivadorSelectNino.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -83,10 +90,10 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
         adapterSelectNino = new RecyclerViewMotivadoresSelectNino(parent.getContext(), ninoDisponibleArrayList);
         _myRecyclerView.setAdapter(adapterSelectNino);
 
-
         viewHolder.btnMIniciarMotivador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 TextView btnCancelarSelectNinoMotivador = (TextView) dialogMotivadorSelectNino.findViewById(R.id.btnCancelarSelectNinoMotivador);
 
                 if (countNino > 1) {
@@ -115,7 +122,7 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
                                     );
                                     if (asignarMotivador == true) {
                                         Toast.makeText(parent.getContext(), "Insertado", Toast.LENGTH_SHORT).show();
-                                        //addItemRecycler(ninoDisponibleArrayList.get(_myRecyclerView.getChildAdapterPosition(v)).getIdNino());
+
                                         dialogMotivadorSelectNino.dismiss();
                                     } else
                                         Toast.makeText(parent.getContext(), "Error", Toast.LENGTH_SHORT).show();
@@ -159,7 +166,6 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
                             if (asignarMotivador == true) {
                                 Toast.makeText(parent.getContext(), "Insertado", Toast.LENGTH_SHORT).show();
 
-                                //addItemRecycler(ninoDisponibleArrayList.get(0).getIdNino());
                             } else
                                 Toast.makeText(parent.getContext(), "Error", Toast.LENGTH_SHORT).show();
                         }
@@ -184,6 +190,7 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
         viewHolder.txtDescripcionMotivador.setText(motivadores.getDescripcion());
         viewHolder.txtTotalValorMotivador.setText(String.valueOf(motivadores.getValor()));
 
+
     }
 
     @Override
@@ -191,10 +198,6 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
         return motivadoresList.size();
     }
 
-    private void addItemRecycler(int idNino){
-        MotivadoresFragment motivadoresFragment = new MotivadoresFragment();
-        motivadoresFragment.cargarMotivadores(idNino);
-    }
 
     private boolean cantidadMotivadoresNino(int idNino) {
         int cantidad = motivadoresDao.countMotivadoresNino(TAG, context, idNino);

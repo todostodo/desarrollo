@@ -275,24 +275,38 @@
 
         </LinearLayout>
 
-
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/myRecyclerViewMotivadoresProceso"
-                android:visibility="gone"
+        <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/layouttxtAvisoProceso"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                tools:listitem="@layout/motivadores_proceso_item"/>
+                app:layout_constraintRight_toRightOf="parent">
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                    android:id="@+id/refreshMotivadoresProceso"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true">
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/myRecyclerViewMotivadoresProceso"
+                        android:visibility="visible"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="20dp"
+                        tools:listitem="@layout/motivadores_proceso_item"/>
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+        </RelativeLayout>
 
         <LinearLayout
                 android:id="@+id/layoutMotivadoresVacio"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layouttxtAvisoProceso"

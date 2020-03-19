@@ -1,16 +1,15 @@
 package com.example.desarrollo.LogicaNegocio.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.desarrollo.Entidades.MotivadoresProceso;
+import com.example.desarrollo.Precentacion.Motivadores.MotivadoresFragment;
 import com.example.desarrollo.R;
 
 import java.util.ArrayList;
@@ -71,7 +70,6 @@ public class RecyclerViewMotivadoresProceso extends RecyclerView.Adapter<Recycle
         viewHolder.txtTotalValorProgreso.setText(String.valueOf(ValorMotivador));
 
         if (TotalFichas >= ValorMotivador){
-            //viewHolder.txtSumaValorProgeso.setText(ValorMotivador + " de");
             viewHolder.relativeBtnCajearMotivador.setVisibility(View.VISIBLE);
             viewHolder.layoutProcesoMotivador.setVisibility(View.GONE);
         }
@@ -90,8 +88,5 @@ public class RecyclerViewMotivadoresProceso extends RecyclerView.Adapter<Recycle
         return procesoList.size();
     }
 
-    public void addItemMotivadorProceso(MotivadoresProceso proceso) {
-        procesoList.add(proceso);
-        notifyDataSetChanged();
-    }
+
 }

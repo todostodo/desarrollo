@@ -1,6 +1,7 @@
 package com.example.desarrollo.Precentacion.Motivadores;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -23,7 +24,7 @@ import com.example.desarrollo.R;
 
 import java.util.ArrayList;
 
-public class MotivadoresSelectActivity extends AppCompatActivity {
+public class MotivadoresSelectActivity extends AppCompatActivity  {
 
     private RecyclerView _myRecyclerViewMotivadores;
     private RecyclerViewMotivadoresSelect adapter;
@@ -45,6 +46,7 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
         adapter = new RecyclerViewMotivadoresSelect(getApplicationContext(), motivadoresList);
         _myRecyclerViewMotivadores.setAdapter(adapter);
 
+
     }
 
     private void init() {
@@ -55,4 +57,5 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
         motivadoresList.clear();
         consultar.cosultarMotivadores(TAG, getApplicationContext(), motivadoresList);
     }
+
 }
