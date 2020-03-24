@@ -11,7 +11,10 @@ import com.example.desarrollo.Precentacion.Home.HijoRegistroActivity;
 import com.example.desarrollo.Ultilidades.Utilidades;
 
 import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class NinoDao {
 
@@ -153,4 +156,5 @@ public class NinoDao {
             database.close();
         }
     }
+
 }

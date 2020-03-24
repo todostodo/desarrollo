@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,32 +24,58 @@ import java.util.ArrayList;
 
 public class VerdurasFragment extends Fragment {
 
+    private View view;
     private RecyclerView _myRecyclerViewVerduras;
-
+    private SearchView mySearchView;
+    private TextView _tituloVerduras;
 
     private ArrayList<ReaderFrutas> verdurasItem = new ArrayList<>();
     private RecyclerViewAdapterFrutas adapterFrutas;
 
     private RecyclerView.LayoutManager layoutManager;
 
-    ModelFrutas modelFrutas = new ModelFrutas();
+    private ModelFrutas modelFrutas = new ModelFrutas();
 
     private static final String TAG = "VerdurasFragment";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.verduras_fragment, container, false);
+        view = inflater.inflate(R.layout.verduras_fragment, container, false);
 
+        init();
+        cargarVerduras();
+        addItemsJSON();
 
-        _myRecyclerViewVerduras = view.findViewById(R.id.myRecyclerViewVerduras);
+        return view;
+    }
 
+    private void cargarVerduras(){
 
-        _myRecyclerViewVerduras.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
         _myRecyclerViewVerduras.setLayoutManager(layoutManager);
+        _myRecyclerViewVerduras.setHasFixedSize(true);
 
-        SearchView mySearchView = view.findViewById(R.id.mySearchViewVerduras);
+        mySearchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                _tituloVerduras.setVisibility(View.GONE);
+                ViewGroup.LayoutParams lp = mySearchView.getLayoutParams();
+                lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                mySearchView.setLayoutParams(lp);
+            }
+        });
+        mySearchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                _tituloVerduras.setVisibility(View.VISIBLE);
+                ViewGroup.LayoutParams lp = mySearchView.getLayoutParams();
+                lp.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+                mySearchView.setLayoutParams(lp);
+                return false;
+            }
+        });
+
         mySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -65,13 +92,16 @@ public class VerdurasFragment extends Fragment {
 
         adapterFrutas = new RecyclerViewAdapterFrutas(getContext(), verdurasItem);
         _myRecyclerViewVerduras.setAdapter(adapterFrutas);
-
-        addItemsJSON();
-
-        return view;
     }
 
     private void addItemsJSON() {
         modelFrutas.addItemsFromJSON(verdurasItem, TAG, "Verduras", getContext());
+    }
+
+    private void init(){
+        _myRecyclerViewVerduras = view.findViewById(R.id.myRecyclerViewVerduras);
+        mySearchView = view.findViewById(R.id.mySearchViewVerduras);
+        _tituloVerduras = (TextView) view.findViewById(R.id.tituloVerduras);
+
     }
 }

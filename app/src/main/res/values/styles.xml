@@ -8,10 +8,10 @@
         <!-- Customize your theme here. -->
     </style>
 
+
     <style name="AppSearchView" parent="Widget.AppCompat.SearchView">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">#AEAEAE</item>
-        <item name="android:colorBackground">@color/gris</item>
     </style>
 
     <!-- dialog -->

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/desliza_dialog" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="center"
+        android:text="Ingrese un motivador el cual no sea tan dificil de cumplir"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/relBackgroudDescripcionMotivador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangulo_gris">
+
+            <EditText
+                android:id="@+id/txtDescripcionNuevoMotivador"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="top|left"
+                android:padding="15dp"
+                android:scrollbars="vertical"
+                android:background="@android:color/transparent"
+                android:maxLength="50"
+                android:inputType="textMultiLine|textCapSentences"
+                android:maxLines="3"
+                android:lines="3"
+                android:textColor="@color/negro"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="16sp"
+                android:hint="Descripción"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/relBackgroudValorMotivador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rectangulo_gris">
+
+            <EditText
+                android:id="@+id/txtValorNuevoMotivador"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:paddingLeft="15dp"
+                android:hint="Valor"
+                android:inputType="number"
+                android:maxLength="3"
+                android:textColor="@color/negro"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="16sp"
+                android:background="@android:color/transparent"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnAddNuevoMotivador"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:text="Agregar"
+        android:textColor="@color/blanco"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:background="@drawable/rectangulo_verde_azul"
+        style="?attr/buttonBarButtonStyle"/>
+
+</LinearLayout>

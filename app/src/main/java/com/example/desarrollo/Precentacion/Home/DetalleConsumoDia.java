@@ -6,10 +6,15 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,7 +25,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.desarrollo.Datos.ConexionSQLHelper;
+import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Datos.TutorDao;
+import com.example.desarrollo.Entidades.Nino;
 import com.example.desarrollo.Entidades.Tutor;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewTutor;
 import com.example.desarrollo.R;
@@ -30,8 +37,9 @@ import java.util.ArrayList;
 public class  DetalleConsumoDia extends Fragment {
 
     private View view;
-    private CardView _btnAddTutor;
-    private CardView _btnAtivityNino;
+    private LinearLayout _btnAddTutor;
+    private RelativeLayout _btnAtivityNino;
+    private Spinner _spinnerDetalleConsumo;
 
     private ProgressBar _charFrutas, _chartVerduras;
     private Handler handler = new Handler();
@@ -40,8 +48,15 @@ public class  DetalleConsumoDia extends Fragment {
     private RecyclerView _recyclerViewTutor;
     private RecyclerViewTutor adapter;
     private ArrayList<Tutor> tutorList = new ArrayList<>();
+    private ArrayList<Nino> ninoList = new ArrayList<>();
+    private ArrayList<String> listaNino;
+    private ArrayAdapter<CharSequence> adapterSpinner;
+    private RelativeLayout mostrarAddNino, mostrarNino;
 
-    TutorDao consultar;
+    private NinoDao ninoDao;
+    private TutorDao consultar;
+
+    private static final String TAG = "DetalleConsumoDia";
 
     @Nullable
     @Override
@@ -50,6 +65,8 @@ public class  DetalleConsumoDia extends Fragment {
 
         init();
         startChart();
+        consultarNinos();
+        cargarTutores();
 
         //Add tutor
         _btnAddTutor.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +78,7 @@ public class  DetalleConsumoDia extends Fragment {
                 else{
                     Intent intent = new Intent(getContext(), TutorFragment.class);
                     startActivity(intent);
-                    adapter.notifyDataSetChanged();
+                    cargarTutores();
                 }
             }
         });
@@ -73,18 +90,55 @@ public class  DetalleConsumoDia extends Fragment {
             }
         });
 
-        _recyclerViewTutor.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-
-        consultarListaTutor();
-
-        adapter = new RecyclerViewTutor(getContext(), tutorList);
-        _recyclerViewTutor.setAdapter(adapter);
 
         return view;
     }
 
-    private void consultarListaTutor() {
+    public void consultarNinos(){
+        ninoList.clear();
+        ninoDao.consultarNino(TAG, getContext(), ninoList);
 
+        listaNino = new ArrayList<>();
+
+        for (int i = 0; i < ninoList.size(); i++) {
+            listaNino.add(ninoList.get(i).getNombre());
+        }
+
+        adapterSpinner = new ArrayAdapter(getContext(), R.layout.spinner_motivadores_item, listaNino);
+        adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        _spinnerDetalleConsumo.setAdapter(adapterSpinner);
+
+        _spinnerDetalleConsumo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                cargarDetalleConsumoNino(ninoList.get(position).getIdNino());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    public void cargarDetalleConsumoNino(int idNino){
+        int cantidadNino = ninoDao.countNino(TAG, getContext());
+
+        if (cantidadNino > 1){
+            mostrarAddNino.setVisibility(View.GONE);
+            mostrarNino.setVisibility(View.VISIBLE);
+        }
+
+    }
+
+    public void cargarTutores(){
+        _recyclerViewTutor.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        consultarListaTutor();
+        adapter = new RecyclerViewTutor(getContext(), tutorList);
+        _recyclerViewTutor.setAdapter(adapter);
+    }
+
+    private void consultarListaTutor() {
         consultar.consultaTutor(getContext(), tutorList);
     }
 
@@ -136,13 +190,13 @@ public class  DetalleConsumoDia extends Fragment {
 
     private void init() {
 
-        _btnAddTutor = (CardView) view.findViewById(R.id.btnNuevoTutor);
-
+        _btnAddTutor = (LinearLayout) view.findViewById(R.id.btnNuevoTutor);
         _charFrutas = (ProgressBar) view.findViewById(R.id.chartFrutas);
         _chartVerduras = (ProgressBar) view.findViewById(R.id.chartVerduras);
-
         _recyclerViewTutor = (RecyclerView) view.findViewById(R.id.recyclerViewTutores);
-
-        _btnAtivityNino = (CardView) view.findViewById(R.id.btnAtivityNino);
+        _btnAtivityNino = (RelativeLayout) view.findViewById(R.id.btnAtivityNino);
+        _spinnerDetalleConsumo = (Spinner) view.findViewById(R.id.spinnerDetalleConsumo);
+        mostrarAddNino = (RelativeLayout) view.findViewById(R.id.btnAtivityNino);
+        mostrarNino = (RelativeLayout) view.findViewById(R.id.relativeNinosAgregados);
     }
 }

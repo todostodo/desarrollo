@@ -1,168 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_marginBottom="10dp"
-        android:paddingTop="15dp"
-        android:orientation="vertical"
-        android:background="@drawable/rectangulo_blanco">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/rectangulo_blanco"
+    android:orientation="vertical"
+    android:paddingTop="15dp">
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="10"
-            android:layout_marginBottom="10dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
 
-        <RelativeLayout
-                android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
                 android:gravity="center">
 
-            <androidx.cardview.widget.CardView
+                <RelativeLayout
+                    android:id="@+id/cardViewValorMotivador"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    app:cardBackgroundColor="#9B79FF"
-                    app:cardElevation="0dp"
-                    app:cardCornerRadius="20dp">
-
-                <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center">
+                    android:gravity="center"
+                    android:background="@drawable/background_valor_motivadores">
 
                     <TextView
-                            android:id="@+id/txtTotalValorMotivadorProceso"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/blanco"
-                            android:fontFamily="@font/roboto_medium"
-                            android:text="100"
-                            android:textSize="20sp"/>
+                        android:id="@+id/txtTotalValorMotivadorProceso"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="100"
+                        android:textColor="#5D64A9"
+                        android:textSize="20sp"
+                        android:visibility="visible"/>
+
+                    <ImageView
+                        android:id="@+id/imgMotivadorTerminado"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/ic_done"
+                        android:backgroundTint="#178656"
+                        android:visibility="gone" />
 
                 </RelativeLayout>
 
-            </androidx.cardview.widget.CardView>
+            </RelativeLayout>
 
-        </RelativeLayout>
+        </LinearLayout>
 
-        <RelativeLayout
-                android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="7"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="7"
                 android:layout_gravity="center">
 
-            <TextView
+                <TextView
                     android:id="@+id/txtDescripcionMotivadorProceso"
                     android:layout_width="280dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="Pasear en bicicleta, patines o patineta por una hora "
-                    android:textColor="@color/negro"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/roboto_regular"/>
+                    android:textColor="#515151"
+                    android:textSize="16sp" />
 
-        </RelativeLayout>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:id="@+id/layoutProcesoMotivador"
-            android:visibility="visible"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="20dp">
-
-
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:gravity="center">
-
-            <TextView
-                    android:id="@+id/txtPocentajeMotivadorProceso"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="26sp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="20dp"
-                    android:fontFamily="@font/roboto_medium"
-                    android:textColor="@color/negro"
-                    android:text="60%"/>
+            </RelativeLayout>
 
             <LinearLayout
-                    android:layout_width="wrap_content"
+                android:id="@+id/layoutProcesoMotivador"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <SeekBar
+                    android:id="@+id/MotivadorProgreso"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="-15dp"
+                    android:max="10"
+                    android:maxHeight="10dp"
+                    android:minHeight="10dp"
+                    android:progress="5"
+                    android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                    android:thumb="@null" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_alignParentRight="true">
+                    android:gravity="end">
 
-                <TextView
-                        android:id="@+id/txtSumaValorMotivadorProceso"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="3 de"
-                        android:textColor="#CFCFCF"
-                        android:layout_marginRight="5dp"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/roboto_regular"/>
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="20dp"
+                        android:orientation="horizontal">
 
-                <TextView
-                        android:id="@+id/txtTotalValorMotivadorProceso2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="45 fichas"
-                        android:textColor="#CFCFCF"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/roboto_regular"/>
+                        <TextView
+                            android:id="@+id/txtSumaValorMotivadorProceso"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="3 de"
+                            android:textColor="#515151"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/txtTotalValorMotivadorProceso2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="45 fichas"
+                            android:textColor="#515151"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
 
             </LinearLayout>
 
-        </RelativeLayout>
-
-        <SeekBar
-                android:id="@+id/MotivadorProgreso"
+            <RelativeLayout
+                android:id="@+id/relativeBtnCajearMotivador"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:max="10"
-                android:progress="5"
-                android:maxHeight="10dp"
-                android:minHeight="10dp"
-                android:thumb="@null"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/btnMCanjear"
+                    style="?android:borderlessButtonStyle"
+                    android:layout_width="90dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/rectangulo_verde_azul"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Canjear"
+                    android:textAllCaps="false"
+                    android:textColor="@color/blanco"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <RelativeLayout
-            android:id="@+id/relativeBtnCajearMotivador"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp">
-
-        <Button
-                android:id="@+id/btnMCanjear"
-                android:layout_width="90dp"
-                android:layout_height="40dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/rectangulo_verde_azul"
-                android:textColor="@color/blanco"
-                android:fontFamily="@font/roboto_regular"
-                android:textAllCaps="false"
-                android:textSize="16sp"
-                android:text="Canjear"
-                style="?android:borderlessButtonStyle"
-                android:layout_alignParentRight="true"/>
-
-    </RelativeLayout>
 
 </LinearLayout>

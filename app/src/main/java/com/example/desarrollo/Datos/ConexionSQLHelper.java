@@ -21,11 +21,11 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
 
         db.execSQL(Utilidades.CREAR_Tabla_Usuario);
 
-        db.execSQL(Utilidades.CREAR_TABLA_Alimento);
+        //db.execSQL(Utilidades.CREAR_TABLA_Alimento);
 
-        db.execSQL(Utilidades.CREAR_TABLA_Ultrap);
+        //db.execSQL(Utilidades.CREAR_TABLA_Ultrap);
 
-        db.execSQL(Utilidades.CREAR_TABLA_Frutas_Verduras);
+        //db.execSQL(Utilidades.CREAR_TABLA_Frutas_Verduras);
 
         db.execSQL(Utilidades.CREAR_Tabla_Historial_Autoeficacia);
 
@@ -74,28 +74,16 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
     public void insertMotivadoresDefault(SQLiteDatabase db) {
         try {
 
-            String uno = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Leer un cuento', 10 );";
-            String dos = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('1 Juego de mesa (loteria, memorama, pares) ', 15 );";
-            String tres = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Salir al parque', 25 );";
-            String cuatro = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Ver la television por media hora', 25 );";
-            String cinco = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Usar el celular por media hora ', 25 );";
-
-            String seis = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Jugar video juegos por media hora ', 30 );";
-            String ocho = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Pasear en bicicleta, patines o patineta por una hora', 35 );";
-            String siete = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Ir al cine', 50 );";
-            String nueve = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Comprar algun juguete sencillo ', 50 );";
-            String diez = "INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Permiso para visitar a primo o amigo una hora ', 60 );";
-
-            db.execSQL(uno);
-            db.execSQL(dos);
-            db.execSQL(tres);
-            db.execSQL(cuatro);
-            db.execSQL(cinco);
-            db.execSQL(seis);
-            db.execSQL(siete);
-            db.execSQL(ocho);
-            db.execSQL(nueve);
-            db.execSQL(diez);
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Leer un cuento', 10 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('1 Juego de mesa (loteria, memorama, pares) ', 15 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Salir al parque', 25 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Ver la television por media hora', 25 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Usar el celular por media hora ', 25 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Jugar video juegos por media hora ', 30 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Pasear en bicicleta, patines o patineta por una hora', 35 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Ir al cine', 50 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Comprar algun juguete sencillo ', 50 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Permiso para visitar a primo o amigo una hora ', 60 );");
 
             onCreate(db);
 
@@ -105,8 +93,3 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
         }
     }
 }
-
-/*
-CREATE TABLE GustoFruta (idGusto INTEGER PRIMARY KEY AUTOINCREMENT, idNino INTEGER NOT NULL, nombre TEXT NOT NULL, siGusta INTEGER NOT NULL, noGusta INTEGER NOT NULL, conosco INTEGER NOT NULL,
-FOREIGN KET idNino REFERENCES Nino idNino);
- */

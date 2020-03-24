@@ -8,8 +8,15 @@ import android.os.Bundle;
 
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,14 +28,19 @@ import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresSelec
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresSelectNino;
 import com.example.desarrollo.Precentacion.MainActivity;
 import com.example.desarrollo.R;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class MotivadoresSelectActivity extends AppCompatActivity  {
+public class MotivadoresSelectActivity extends AppCompatActivity {
 
     private RecyclerView _myRecyclerViewMotivadores;
     private RecyclerViewMotivadoresSelect adapter;
     private ArrayList<MotivadoresSelect> motivadoresList = new ArrayList<>();
+    private Dialog addMotivadorDialog;
+    private LinearLayout _btnAddMotivador;
 
     MotivadoresDao consultar;
 
@@ -42,20 +54,74 @@ public class MotivadoresSelectActivity extends AppCompatActivity  {
         init();
 
         _myRecyclerViewMotivadores.setLayoutManager(new LinearLayoutManager(this));
+        _myRecyclerViewMotivadores.scrollToPosition(1);
         consultarListaMotivadoresDisponibles();
-        adapter = new RecyclerViewMotivadoresSelect(getApplicationContext(), motivadoresList);
-        _myRecyclerViewMotivadores.setAdapter(adapter);
 
+        _btnAddMotivador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertMotivador();
+            }
+        });
 
     }
 
     private void init() {
         _myRecyclerViewMotivadores = (RecyclerView) findViewById(R.id.myRecyclerViewMotivadoresDisponibles);
+        _btnAddMotivador = (LinearLayout) findViewById(R.id.btnAddMotivador);
     }
 
     private void consultarListaMotivadoresDisponibles() {
         motivadoresList.clear();
         consultar.cosultarMotivadores(TAG, getApplicationContext(), motivadoresList);
+        adapter = new RecyclerViewMotivadoresSelect(getApplicationContext(), motivadoresList);
+        _myRecyclerViewMotivadores.setAdapter(adapter);
     }
 
+    private void insertMotivador() {
+
+        addMotivadorDialog = new BottomSheetDialog(MotivadoresSelectActivity.this);
+        addMotivadorDialog.setContentView(R.layout.motivadores_add_dialog);
+        addMotivadorDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        final RelativeLayout backgroundDescripcion = (RelativeLayout) addMotivadorDialog.findViewById(R.id.relBackgroudDescripcionMotivador);
+        final RelativeLayout backgroundValor = (RelativeLayout) addMotivadorDialog.findViewById(R.id.relBackgroudValorMotivador);
+        final TextView txtDescripcion = (TextView) addMotivadorDialog.findViewById(R.id.txtDescripcionNuevoMotivador);
+        final TextView txtValor = (TextView) addMotivadorDialog.findViewById(R.id.txtValorNuevoMotivador);
+        Button btnAddMotivador = (Button) addMotivadorDialog.findViewById(R.id.btnAddNuevoMotivador);
+
+        btnAddMotivador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String descripcion = txtDescripcion.getText().toString();
+                String valor = txtValor.getText().toString().trim();
+
+                if (descripcion.equals("")) {
+                    backgroundDescripcion.setBackgroundResource(R.drawable.rectangulo_border_rojo);
+                    Toast.makeText(getApplicationContext(), "Ingrese la descripción del motivador", Toast.LENGTH_SHORT).show();
+                } else {
+                    backgroundDescripcion.setBackgroundResource(R.drawable.rectangulo_gris);
+                    if (valor.equals("")) {
+                        backgroundValor.setBackgroundResource(R.drawable.rectangulo_border_rojo);
+                        Toast.makeText(getApplicationContext(), "Ingrese el valor del motivador", Toast.LENGTH_SHORT).show();
+                    }else{
+                        backgroundValor.setBackgroundResource(R.drawable.rectangulo_gris);
+
+                        boolean insert = consultar.insertMotivador(TAG, getApplicationContext(), descripcion, Integer.valueOf(valor));
+
+                        if (insert == true){
+                            Toast.makeText(getApplicationContext(), "El motivador fue agregado con exito", Toast.LENGTH_SHORT).show();
+                            addMotivadorDialog.dismiss();
+                            consultarListaMotivadoresDisponibles();
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(), "Error al agregar el motivador", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            }
+        });
+
+        addMotivadorDialog.show();
+    }
 }

@@ -1,10 +1,10 @@
 package com.example.desarrollo.ExportJSON.RecycrerView;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.util.Log;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +13,15 @@ import android.view.animation.AnimationUtils;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.desarrollo.Datos.NinoDao;
-import com.example.desarrollo.Datos.PreferenciasDao;
 import com.example.desarrollo.ExportJSON.Filter.FilterHelperFrutas;
 import com.example.desarrollo.ExportJSON.Reader.ReaderFrutas;
 import com.example.desarrollo.R;
@@ -48,20 +48,19 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
     public class ItemViewHolder extends RecyclerView.ViewHolder {
 
         TextView nombre;
-        TextView porcion;
-        TextView vitamina;
         TextView descripcion;
         ImageView imgUrl;
         CardView view_container;
+        LinearLayout backgroundFrutas;
 
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
             view_container = (CardView) itemView.findViewById(R.id.containerFrutas);
             nombre = (TextView) itemView.findViewById(R.id.nombreFruta);
-            porcion = (TextView) itemView.findViewById(R.id.porcion);
-            vitamina = (TextView) itemView.findViewById(R.id.vitamina);
+            descripcion = (TextView) itemView.findViewById(R.id.descripcionFruta);
             imgUrl = (ImageView) itemView.findViewById(R.id.imgUrlFrutas);
+            backgroundFrutas = (LinearLayout) itemView.findViewById(R.id.backgroundFrutas);
         }
     }
 
@@ -79,10 +78,11 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
 
                 Intent i = new Intent(context, frutas_select_activity.class);
                 i.putExtra("fruta_nombre", readerFrutas.get(viewHolder.getAdapterPosition()).getNombre());
-                i.putExtra("fruta_vitamina", readerFrutas.get(viewHolder.getAdapterPosition()).getVitamina());
                 i.putExtra("fruta_descripcion", readerFrutas.get(viewHolder.getAdapterPosition()).getDescripcion());
-                i.putExtra("fruta_beneficio", readerFrutas.get(viewHolder.getAdapterPosition()).getBeneficio());
+                i.putExtra("fruta_recomendacion", readerFrutas.get(viewHolder.getAdapterPosition()).getRecomendacion());
+                //i.putExtra("fruta_beneficio", readerFrutas.get(viewHolder.getAdapterPosition()).getBeneficio());
                 i.putExtra("fruta_imagen", readerFrutas.get(viewHolder.getAdapterPosition()).getImgUrl());
+                i.putExtra("fruta_fondo", readerFrutas.get(viewHolder.getAdapterPosition()).getBackground());
 
 
                 context.startActivity(i);
@@ -92,6 +92,7 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
         return viewHolder;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
@@ -99,8 +100,8 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
         ReaderFrutas readerFrutas = (ReaderFrutas) this.readerFrutas.get(position);
 
         itemViewHolder.nombre.setText(readerFrutas.getNombre());
-        itemViewHolder.porcion.setText(readerFrutas.getPorcion());
-        itemViewHolder.vitamina.setText(readerFrutas.getVitamina());
+        itemViewHolder.descripcion.setText(readerFrutas.getDescripcion());
+        itemViewHolder.backgroundFrutas.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(readerFrutas.getBackground())));
 
         Glide
                 .with(itemViewHolder.imgUrl.getContext())

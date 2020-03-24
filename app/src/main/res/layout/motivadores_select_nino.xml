@@ -20,6 +20,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginTop="60dp"
             android:gravity="center"
+            android:textColor="#515151"
             android:fontFamily="@font/roboto_regular"
             android:textSize="18sp"
             android:text="Seleccione al niño que le asignara el motivador"/>
@@ -29,20 +30,19 @@
             android:id="@+id/myRecyclerViewMotivadoresSelectNino"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             tools:listitem="@layout/motivadores_select_nino_item"/>
 
         <TextView
             android:id="@+id/btnCancelarSelectNinoMotivador"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginTop="15dp"
-            android:textStyle=""
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto_regular"
             android:text="@string/cancelarSubrayado"
             android:layout_marginBottom="20dp"
-            android:textColor="@color/gris"
+            android:textColor="#515151"
             android:layout_gravity="center"/>
 
     </LinearLayout>
@@ -55,15 +55,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true">
 
-        <TextView
+        <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_centerInParent="true"
-            android:background="@drawable/circulo_blanco"/>
-
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
             android:src="@drawable/icon_nino"
             android:layout_centerInParent="true"/>
 

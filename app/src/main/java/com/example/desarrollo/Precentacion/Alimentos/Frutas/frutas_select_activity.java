@@ -3,14 +3,18 @@ package com.example.desarrollo.Precentacion.Alimentos.Frutas;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.desarrollo.R;
@@ -18,14 +22,16 @@ import com.example.desarrollo.R;
 
 public class frutas_select_activity extends AppCompatActivity {
 
-    Context context = this;
-    Button
-            _btm1_4,
-            _btm1_2,
-            _btm3_4,
-            _btmGuardarFruta;
+    private TextView f_nombre;
+    private TextView f_descripcion;
+    private TextView f_recomendacion;
+    private ImageView f_imagen;
+    private RelativeLayout f_fondo;
+    private Button _btnRegistrarFruta;
+    private Dialog reaccionHijoDialog;
+    private TextView _txtCantidadConsumo;
 
-    ImageButton _btmCerrarSelectFrutas;
+    private ImageButton _btmCerrarSelectFrutas;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -34,79 +40,58 @@ public class frutas_select_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.frutas_select_activity);
 
-
-
-        final String name = getIntent().getExtras().getString("fruta_nombre");
-        String vitamina = getIntent().getExtras().getString("fruta_vitamina");
-        String descripcion = getIntent().getExtras().getString("fruta_descripcion");
-        String beneficio = getIntent().getExtras().getString("fruta_beneficio");
-        String imagen = getIntent().getExtras().getString("fruta_imagen");
-        String backgroud = getIntent().getExtras().getString("fruta_background");
-
-        final TextView f_nombre = (TextView) findViewById(R.id.fruta_nombre);
-        TextView f_vitamina = (TextView) findViewById(R.id.fruta_vitamina);
-        TextView f_descripcion = (TextView) findViewById(R.id.fruta_descripcion);
-        TextView f_beneficio = (TextView) findViewById(R.id.fruta_beneficio);
-        ImageView f_imagen = (ImageView) findViewById(R.id.fruta_imagen);
-
-        f_nombre.setText(name);
-        f_vitamina.setText(vitamina);
-        f_descripcion.setText(descripcion);
-        f_beneficio.setText(beneficio);
-
-        int drawableResourceId = this.getResources().getIdentifier(imagen, "drawable", this.getPackageName());
-
-        Glide.with(this).load(drawableResourceId).into(f_imagen);
-
-        //Guardar Fruta en archivo JSON
-
-
-        /*
-        VALIDACIONES
-         */
-        _btm1_4 = (Button) findViewById(R.id.btm1_4);
-        _btm1_4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                _btm1_4.setBackgroundResource(R.drawable.custom_buttom_cantidad_select);
-
-                //DISABLE
-                _btm1_2.setBackgroundResource(R.drawable.custom_bottom_background_gris);
-                _btm3_4.setBackgroundResource(R.drawable.custom_bottom_background_gris);
-            }
-        });
-        _btm1_2 = (Button) findViewById(R.id.btm1_2);
-        _btm1_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                _btm1_2.setBackgroundResource(R.drawable.custom_buttom_cantidad_select);
-
-                //DISABBLE
-                _btm1_4.setBackgroundResource(R.drawable.custom_bottom_background_gris);
-                _btm3_4.setBackgroundResource(R.drawable.custom_bottom_background_gris);
-
-            }
-        });
-        _btm3_4 = (Button) findViewById(R.id.btm3_4);
-        _btm3_4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                _btm3_4.setBackgroundResource(R.drawable.custom_buttom_cantidad_select);
-
-                //DISABBLE
-                _btm1_4.setBackgroundResource(R.drawable.custom_bottom_background_gris);
-                _btm1_2.setBackgroundResource(R.drawable.custom_bottom_background_gris);
-            }
-        });
+        init();
+        cargarDatosFruta();
 
         //Salir del activity
-        _btmCerrarSelectFrutas = (ImageButton) findViewById(R.id.btmCerrarSelectFrutas);
         _btmCerrarSelectFrutas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+
+        //Registrar Frutas o verduras
+        _btnRegistrarFruta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (_txtCantidadConsumo.getText().toString().trim().equals("")){
+                    Toast.makeText(getApplicationContext(), "Ingrese la cantidad de consumo", Toast.LENGTH_SHORT).show();
+                }else{
+
+                    reaccionHijoDialog = new Dialog(frutas_select_activity.this);
+                    reaccionHijoDialog.setCanceledOnTouchOutside(false);
+                    reaccionHijoDialog.setContentView(R.layout.reaccion_consumo_dialog);
+                    reaccionHijoDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                    reaccionHijoDialog.show();
+
+                }
+            }
+        });
     }
 
+    public void cargarDatosFruta() {
+
+        f_nombre.setText(getIntent().getExtras().getString("fruta_nombre"));
+        f_descripcion.setText(getIntent().getExtras().getString("fruta_descripcion"));
+        f_recomendacion.setText(getIntent().getExtras().getString("fruta_recomendacion"));
+        f_fondo.setBackgroundColor(Color.parseColor(getIntent().getExtras().getString("fruta_fondo")));
+
+        int drawableResourceId = this.getResources().getIdentifier(getIntent().getExtras().getString("fruta_imagen"), "drawable", this.getPackageName());
+
+        Glide.with(this).load(drawableResourceId).into(f_imagen);
+    }
+
+    public void init() {
+        f_nombre = (TextView) findViewById(R.id.fruta_nombre);
+        f_descripcion = (TextView) findViewById(R.id.fruta_descripcion);
+        f_recomendacion = (TextView) findViewById(R.id.fruta_recomendacion);
+        f_imagen = (ImageView) findViewById(R.id.fruta_imagen);
+        f_fondo = (RelativeLayout) findViewById(R.id.backgroundSelectFruta);
+        _btmCerrarSelectFrutas = (ImageButton) findViewById(R.id.btmCerrarSelectFrutas);
+        _btnRegistrarFruta = (Button) findViewById(R.id.btnRegistrarFruta);
+        _txtCantidadConsumo = (TextView) findViewById(R.id.txtCantidadConsumo);
+    }
 }

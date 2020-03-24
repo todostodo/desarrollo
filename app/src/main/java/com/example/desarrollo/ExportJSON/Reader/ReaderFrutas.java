@@ -2,44 +2,46 @@ package com.example.desarrollo.ExportJSON.Reader;
 
 public class ReaderFrutas {
 
+    private final String id;
     private final String nombre;
-    private final String porcion;
-    private final String vitamina;
     private final String descripcion;
-    private final String beneficio;
+    private final String recomendacion;
+   // private final String beneficio;
     private final String imgUrl;
+    private final String background;
 
-    public ReaderFrutas(String nombre, String porcion, String vitamina, String descripcion, String beneficio, String imgUrl) {
+    public ReaderFrutas(String id, String nombre, String descripcion, String recomendacion, String imgUrl, String background) {
+        this.id = id;
         this.nombre = nombre;
-        this.porcion = porcion;
-        this.vitamina = vitamina;
         this.descripcion = descripcion;
-        this.beneficio = beneficio;
+        this.recomendacion = recomendacion;
+        //this.beneficio = beneficio;
         this.imgUrl = imgUrl;
+        this.background = background;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public String getPorcion() {
-        return porcion;
-    }
-
-    public String getVitamina() {
-        return vitamina;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
 
-    public String getBeneficio() {
-        return beneficio;
+    public String getRecomendacion() {
+        return recomendacion;
     }
 
     public String getImgUrl() {
         return imgUrl;
+    }
+
+    public String getBackground() {
+        return background;
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.bumptech.glide.util.Util;
 import com.example.desarrollo.Entidades.MotivadoresProceso;
 import com.example.desarrollo.Entidades.MotivadoresSelect;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresProceso;
@@ -19,10 +20,53 @@ public class MotivadoresDao {
 
     public static boolean insertMotivador(String TAG, Context context, String desc, int valor) {
 
-        ConexionSQLHelper connection = new ConexionSQLHelper(context);
-        return true;
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
+            database = null;
+            database = connection.getWritableDatabase();
+
+            String insert = ("INSERT INTO " + Utilidades.TABLA_Recompensas + " ( " +
+                    Utilidades.CAMPO_descripcion + ", " +
+                    Utilidades.CAMPO_valor + ") " +
+                    "VALUES ('" + desc + "'," + valor + ")");
+            database.execSQL(insert);
+
+            return true;
+        } catch (Exception e) {
+            Log.e(TAG, "Error " + e);
+            return false;
+        } finally {
+            database.close();
+        }
     }
 
+    public static boolean canjerMotivador(String TAG, Context context, int idNino, int idMotivador, int fichas, String fecha) {
+        try {
+
+            ConexionSQLHelper conection = new ConexionSQLHelper(context);
+            database = null;
+            database = conection.getWritableDatabase();
+
+            String updateMotivador = "UPDATE " + Utilidades.TABLA_CanjeFi + " SET " +
+                    Utilidades.CAMPO_Activo + " = " + 2 + ", " +
+                    Utilidades.CAMPO_FechaCanje + " = '" + fecha +
+                    "' WHERE " + Utilidades.CAMPO_idRecompensa + " = " + idMotivador + " AND " +
+                    Utilidades.CAMPO_idNino + " = " + idNino + " AND " +
+                    Utilidades.CAMPO_Activo + " = " + " 1 ";
+
+            String updateFicha = "UPDATE " + Utilidades.TABLA_Nino + " SET " + Utilidades.CAMPO_TotalFichas + " = " + fichas +
+                    " WHERE " + Utilidades.CAMPO_idNino + " = " + idNino;
+
+            database.execSQL(updateMotivador);
+            database.execSQL(updateFicha);
+            return true;
+        } catch (Exception e) {
+            Log.e(TAG, "Error " + e);
+            return false;
+        } finally {
+            database.close();
+        }
+    }
 
     public static void cosultarMotivadores(String TAG, Context context, ArrayList list) {
 
@@ -63,20 +107,22 @@ public class MotivadoresDao {
             MotivadoresProceso proceso = null;
 
             Cursor cursor = database.rawQuery("SELECT " +
-                    Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idCanjeFicha + ", " +
-                    Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idNinoCajeFi + ", " +
-                    Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idrRecompensaCanjeFi + ", " +
-                    Utilidades.TABLA_Recompensas + "." + Utilidades.CAMPO_descripcion + ", " +
-                    Utilidades.TABLA_Recompensas + "." + Utilidades.CAMPO_valor + ", " +
-                    Utilidades.TABLA_Nino + "." + Utilidades.CAMPO_TotalFichas +
-                    " FROM " + Utilidades.TABLA_CanjeFi +
-                    " INNER JOIN " + Utilidades.TABLA_Recompensas + " ON " +
-                    Utilidades.TABLA_Recompensas + "." + Utilidades.CAMPO_idRecompensa +
-                    " = " + Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idrRecompensaCanjeFi +
-                    " INNER JOIN " + Utilidades.TABLA_Nino + " ON " + Utilidades.TABLA_Nino + "." + Utilidades.CAMPO_idNino +
-                    " = " + Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idNino +
-                    " WHERE " + Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_Activo + " = " + "1" + " AND " +
-                    Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idNino + " = " + idNino
+                            Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idCanjeFicha + ", " +
+                            Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idNinoCajeFi + ", " +
+                            Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idrRecompensaCanjeFi + ", " +
+                            Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_Activo + ", " +
+                            Utilidades.TABLA_Recompensas + "." + Utilidades.CAMPO_descripcion + ", " +
+                            Utilidades.TABLA_Recompensas + "." + Utilidades.CAMPO_valor + ", " +
+                            Utilidades.TABLA_Nino + "." + Utilidades.CAMPO_TotalFichas +
+                            " FROM " + Utilidades.TABLA_CanjeFi +
+                            " INNER JOIN " + Utilidades.TABLA_Recompensas + " ON " +
+                            Utilidades.TABLA_Recompensas + "." + Utilidades.CAMPO_idRecompensa +
+                            " = " + Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idrRecompensaCanjeFi +
+                            " INNER JOIN " + Utilidades.TABLA_Nino + " ON " + Utilidades.TABLA_Nino + "." + Utilidades.CAMPO_idNino +
+                            " = " + Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idNino +
+                            " WHERE ( " + Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_Activo + " = " + "1" + " OR " +
+                            Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_Activo + " = " + "2 )" + " AND " +
+                            Utilidades.TABLA_CanjeFi + "." + Utilidades.CAMPO_idNino + " = " + idNino
                     , null);
 
             while (cursor.moveToNext()) {
@@ -87,6 +133,7 @@ public class MotivadoresDao {
                 proceso.setDescripcion(cursor.getString(cursor.getColumnIndex("descrip")));
                 proceso.setValor(cursor.getInt(cursor.getColumnIndex("valor")));
                 proceso.setTotalFicha(cursor.getInt(cursor.getColumnIndex("totfich")));
+                proceso.setActivo(cursor.getInt(cursor.getColumnIndex("Activo")));
 
                 list.add(proceso);
             }
@@ -151,7 +198,10 @@ public class MotivadoresDao {
         }
     }
 
-    public static int countMotivadoresProceso(String TAG, Context context) {
+
+    //Validacion
+
+    public static int countMotivadoresProceso(String TAG, Context context, int idNino) {
         int cantidad = 0;
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
@@ -159,7 +209,9 @@ public class MotivadoresDao {
             database = connection.getReadableDatabase();
 
 
-            Cursor cursor = database.rawQuery("SELECT COUNT(" + Utilidades.CAMPO_idCanjeFicha + ") FROM " + Utilidades.TABLA_CanjeFi, null);
+            Cursor cursor = database.rawQuery("SELECT COUNT(" + Utilidades.CAMPO_idCanjeFicha + ") FROM " + Utilidades.TABLA_CanjeFi +
+                    " WHERE (" + Utilidades.CAMPO_Activo + " = " + " 1 OR " + Utilidades.CAMPO_Activo  + " = " + " 2 )" +
+                    " AND " + Utilidades.CAMPO_idNino + " = " + idNino, null);
             while (cursor.moveToNext()) {
                 cantidad = cursor.getInt(0);
             }
@@ -173,8 +225,6 @@ public class MotivadoresDao {
         return cantidad;
     }
 
-    //Validacion
-
     public static int countMotivadoresNino(String TAG, Context context, int idNino) {
         int cantidad = 0;
         try {
@@ -183,12 +233,12 @@ public class MotivadoresDao {
             database = conection.getReadableDatabase();
 
             Cursor cursor = database.rawQuery("SELECT COUNT(" + Utilidades.CAMPO_idNino + ") FROM " +
-                    Utilidades.TABLA_CanjeFi + " WHERE " +
-                    Utilidades.CAMPO_idNino + " = " + idNino + " AND " +
-                    Utilidades.CAMPO_Activo + " = " + " 1"
+                            Utilidades.TABLA_CanjeFi + " WHERE " +
+                            Utilidades.CAMPO_idNino + " = " + idNino + " AND (" +
+                            Utilidades.CAMPO_Activo + " = " + " 1 " + " OR " + Utilidades.CAMPO_Activo + " = " + " 2 )"
                     , null);
 
-            while (cursor.moveToNext()){
+            while (cursor.moveToNext()) {
                 cantidad = cursor.getInt(0);
             }
 
@@ -203,7 +253,7 @@ public class MotivadoresDao {
         return cantidad;
     }
 
-    public static int existeMotivadorNino(String TAG, Context context, int idNino, int idMotivador){
+    public static int existeMotivadorNino(String TAG, Context context, int idNino, int idMotivador) {
         int existe = 0;
         try {
 
@@ -212,22 +262,54 @@ public class MotivadoresDao {
             database = conection.getReadableDatabase();
 
             Cursor cursor = database.rawQuery("SELECT COUNT(" + Utilidades.CAMPO_idNino + ") FROM " + Utilidades.TABLA_CanjeFi +
-                    " WHERE " + Utilidades.CAMPO_idNino + " = " + idNino + " AND " +
-                    Utilidades.CAMPO_idRecompensa + " = " + idMotivador
+                            " WHERE " + Utilidades.CAMPO_idNino + " = " + idNino + " AND " +
+                            Utilidades.CAMPO_idRecompensa + " = " + idMotivador +
+                    " AND ( " + Utilidades.CAMPO_Activo + " = " + " 1 OR " + Utilidades.CAMPO_Activo + " = " + " 2 )"
                     , null);
 
-            while (cursor.moveToNext()){
+            while (cursor.moveToNext()) {
                 existe = cursor.getInt(0);
 
             }
             cursor.close();
 
 
+        } catch (Exception e) {
+            Log.e(TAG, "Error " + e);
+        } finally {
+            database.close();
+        }
+        return existe;
+    }
+
+    public static int desbloquearMotivadores(String TAG, Context context, int idNino) {
+        int auxiliar = 0;
+        try {
+            ConexionSQLHelper conection = new ConexionSQLHelper(context);
+            database = null;
+            database = conection.getReadableDatabase();
+            int motivadoresCompletos = 0;
+
+            Cursor cursor = database.rawQuery("SELECT COUNT(" + Utilidades.CAMPO_idNino + ") FROM " + Utilidades.TABLA_CanjeFi +
+                    " WHERE " + Utilidades.CAMPO_idNino + " = " + idNino + " AND " + Utilidades.CAMPO_Activo + " = " + " 2 ", null);
+
+            while (cursor.moveToNext()){
+                motivadoresCompletos = cursor.getInt(0);
+            }
+
+            if (motivadoresCompletos > 3){
+                String activarMotivadores = "UPDATE " + Utilidades.TABLA_CanjeFi + " SET " + Utilidades.CAMPO_Activo + " = " + " 0 " +
+                        " WHERE " + Utilidades.CAMPO_idNino + " = " + idNino;
+                database.execSQL(activarMotivadores);
+                auxiliar = 2;
+            }
+            else
+                auxiliar = 1;
         }catch (Exception e){
             Log.e(TAG, "Error " + e);
         }finally {
             database.close();
         }
-        return existe;
+        return auxiliar;
     }
 }

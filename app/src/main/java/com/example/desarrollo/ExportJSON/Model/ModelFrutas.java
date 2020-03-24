@@ -32,14 +32,15 @@ public class ModelFrutas extends AppCompatActivity {
 
                 JSONObject itemObj = jsonArray.getJSONObject(i);
 
+                String id = itemObj.getString("id");
                 String nombre = itemObj.getString("nombre");
-                String porcion = itemObj.getString("porcion");
-                String vitamina = itemObj.getString("vitamina");
                 String descripcion = itemObj.getString("descripcion");
-                String beneficio = itemObj.getString("beneficio");
+                String recomendacion = itemObj.getString("recomendacion");
+                //String beneficio = itemObj.getString("beneficio");
                 String imgUrl = itemObj.getString("imgUrl");
+                String background = itemObj.getString("backgroud");
 
-                ReaderFrutas readerFrutas = new ReaderFrutas(nombre, porcion, vitamina, descripcion, beneficio, imgUrl);
+                ReaderFrutas readerFrutas = new ReaderFrutas(id, nombre, descripcion, recomendacion, imgUrl, background);
                 arrayList.add(readerFrutas);
             }
 

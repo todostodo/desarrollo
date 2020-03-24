@@ -7,6 +7,7 @@ public class MotivadoresProceso  {
     private int totalFicha;
     private String descripcion;
     private int valor;
+    private int Activo;
 
     public MotivadoresProceso(){}
 
@@ -58,4 +59,11 @@ public class MotivadoresProceso  {
         this.valor = valor;
     }
 
+    public int getActivo() {
+        return Activo;
+    }
+
+    public void setActivo(int activo) {
+        Activo = activo;
+    }
 }

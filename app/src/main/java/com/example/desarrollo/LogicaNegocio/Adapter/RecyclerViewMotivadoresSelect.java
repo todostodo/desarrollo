@@ -201,7 +201,7 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
 
     private boolean cantidadMotivadoresNino(int idNino) {
         int cantidad = motivadoresDao.countMotivadoresNino(TAG, context, idNino);
-        Toast.makeText(context, "cantidad " + cantidad, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "cantidad " + cantidad, Toast.LENGTH_SHORT).show();
         if (cantidad > 3)
             return true;
         else

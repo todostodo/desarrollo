@@ -24,6 +24,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/blanco"
         app:labelVisibilityMode="unlabeled"
+        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
         android:foreground="?android:attr/selectableItemBackground"
         app:itemIconTint="@drawable/custom_buttom_navigation_selected"
         app:itemTextColor="#D5DCE2"

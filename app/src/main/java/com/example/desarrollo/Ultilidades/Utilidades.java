@@ -2,6 +2,7 @@ package com.example.desarrollo.Ultilidades;
 
 public class Utilidades {
 
+    /*
     //Constantes para campos de la tabla Alimento
     public static final String TABLA_Alimento = "Alimento";
     public static final String CAMPO_idalimentoa = "idalimento";
@@ -43,6 +44,8 @@ public class Utilidades {
                     CAMPO_idAlimento + " INTEGER, " +
                     CAMPO_GrupoAlmacena_Fruta_O_Verdura + " TEXT NOT NULL, " +
                     "FOREIGN KEY (" + CAMPO_idAlimento + ") REFERENCES Alimento (" + CAMPO_idAlimento + "))";
+
+     */
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Constantes para campos de la tabla Usuario
     public static final String TABLA_Usuario = "Usuario";
@@ -243,8 +246,8 @@ public class Utilidades {
                     CAMPO_UnidadMedida + " REAL NOT NULL, " +
                     CAMPO_NumeroRegistro + " INTEGER NOT NULL, " +
                     CAMPO_HoraRegistro + " TEXT NOT NULL, " +
-                    "FOREIGN KEY (" + CAMPO_idNinoDetalleRegistro + ") REFERENCES Nino (" + CAMPO_idNinoDetalleRegistro + ")," +
-                    "FOREIGN KEY (" + CAMPO_IdAlimento + ") REFERENCES Alimento (" + CAMPO_IdAlimento + "))";
+                    "FOREIGN KEY (" + CAMPO_idNinoDetalleRegistro + ") REFERENCES Nino (" + CAMPO_idNinoDetalleRegistro + ")";
+                    //"FOREIGN KEY (" + CAMPO_IdAlimento + ") REFERENCES Alimento (" + CAMPO_IdAlimento + "))";
 
 
     //CONSTANTES PARA CAMPOS DE LA TABLA TUTORES
