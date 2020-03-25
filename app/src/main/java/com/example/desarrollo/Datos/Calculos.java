@@ -36,23 +36,23 @@ public class Calculos {
     //nombre: nombre de la fruta o verdura. Para que el metodo funcione enviar el nombre de la fruta o verdura igual al nombre,
     // que corresponde al nobre que tiene en el arreglo.
     //tipo: indica si es Fruta o verdura. si es fruta mande el nombre Fruta. si es verdura mande el nobre Verdura.
-    public static double Procesar(double cantidad,String nombre,String tipo){
-        double retorno=0;
+    public static double Procesar(double cantidad, String nombre, String tipo) {
+        double retorno = 0;
         String equiFruta[] = {"AguaCoco", "ArandanoFresco", "CanaAzucar", "Cereza", "CiruelaPasa", "DuraznoAmarillo", "Fresa", "FrutaPicada", "Granada", "Guanabana", "Guayaba", "JugoLimon", "JugoNaranja", "JugoToronja", "Kiwi", "Lima", "Mandarina", "MangoPicado", "Manzana", "MelonPicado", "Naranja", "PapayaPicada", "Pasas", "Pera", "PinaPicada", "Pitahaya", "Platano", "PlatanoDominico", "PlatanoMacho", "SandiaPicada", "Tamarindo", "Toronja", "Tuna", "Uva"};
         double valEquiFruta[] = {1.5, .125, .250, 20, 7, 2, 17, 1, 1, 1, 3, .75, .5, .5, 1.25, 3, 2, 1, 1, 1, 2, 1, 10, .25, 1, 2, .5, 3, .25, 1, .50, 1, 2, 18};
         String equiVerdura[] = {"AcelgaPicadaCocida", "ApioCrudo", "BetablelRayado", "BrocoliCocido", "CalabacitaCocida", "CebollaRebanada", "CebollaCambray", "ChampiñonCocidoEntero", "ChayoteCocidoPicado", "ChicharosCocidos", "ColCrudaPicada", "ColiflorCocida", "EjotesCocidosPicados", "EspinacaCocida", "FlorCalabazaCocida", "JicamaPicada", "JitomateBola", "JitomateSaladet", "JugoTomate", "JugoVerduras", "JugoZanaoria", "Lechuga", "NopalesCocidos", "PepinoRebanado", "PimientoColoresCrudo", "PimientoCocido", "PureTumate", "RabanoCrudo", "TomateVerde", "ZanahoriaCruda"};
         double valEquiVerdura[] = {0.5, 1.5, .5, .5, .5, .5, 3, .5, .5, .2, 1.5, .75, .5, .5, 1, .5, 1, 2, .5, .5, .25, 3, 1, 1.25, 1, .5, .25, 1.25, 5, .5};
 
-        if(tipo.equals("Fruta")){
-            for (int i=0; i<equiFruta.length; i++){
-                if(nombre.equals(equiFruta[i])){
-                    retorno=cantidad/valEquiFruta[i];
+        if (tipo.equals("Fruta")) {
+            for (int i = 0; i < equiFruta.length; i++) {
+                if (nombre.equals(equiFruta[i])) {
+                    retorno = cantidad / valEquiFruta[i];
                 }
             }
-        }else {
-            for (int i=0; i<equiVerdura.length; i++){
-                if(nombre.equals(equiVerdura[i])){
-                    retorno=cantidad/valEquiVerdura[i];
+        } else {
+            for (int i = 0; i < equiVerdura.length; i++) {
+                if (nombre.equals(equiVerdura[i])) {
+                    retorno = cantidad / valEquiVerdura[i];
                 }
             }
         }
@@ -60,7 +60,7 @@ public class Calculos {
         return retorno;
     }
 
-    public static void registrarDetalleReg(Context context, int idNino, int alimento, double equivalencia, double cantidad, double unidadMedida,int numeroRegistro,String Horaregistro){
+    public static void registrarDetalleReg(Context context, int idNino, int alimento, double equivalencia, double cantidad, double unidadMedida, int numeroRegistro, String Horaregistro) {
         ConexionSQLHelper connection = new ConexionSQLHelper(context);
 
         database = null;
@@ -70,11 +70,11 @@ public class Calculos {
             String inset = "INSERT INTO " + Utilidades.TABLA_DetalleRegistro + "( " +
                     Utilidades.CAMPO_idNinoDetalleRegistro + ", " +
                     Utilidades.CAMPO_IdAlimento + ", " +
-                    Utilidades.CAMPO_Equivalencia  + ", " +
+                    Utilidades.CAMPO_Equivalencia + ", " +
                     Utilidades.CAMPO_Cantidad + "," +
-                    Utilidades.CAMPO_UnidadMedida  + ", " +
+                    Utilidades.CAMPO_UnidadMedida + ", " +
                     Utilidades.CAMPO_NumeroRegistro + ", " +
-                    Utilidades.CAMPO_HoraRegistro+ " ) " +
+                    Utilidades.CAMPO_HoraRegistro + " ) " +
                     "VALUES ( " +
                     idNino + ", " +
                     alimento + ", " +
@@ -82,7 +82,7 @@ public class Calculos {
                     cantidad + ", " +
                     unidadMedida + ", " +
                     numeroRegistro + ", '" +
-                    Horaregistro+ "')";
+                    Horaregistro + "')";
 
             database.execSQL(inset);
 
