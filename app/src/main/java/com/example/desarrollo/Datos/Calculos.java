@@ -38,10 +38,11 @@ public class Calculos {
     //tipo: indica si es Fruta o verdura. si es fruta mande el nombre Fruta. si es verdura mande el nobre Verdura.
     public static double Procesar(double cantidad,String nombre,String tipo){
         double retorno=0;
-        String equiFruta[] = {"AguaCoco", "ArandanoFresco", "CanaAzucar", "Cereza", "CiruelaPasa", "DuraznoAmarillo", "Fresa", "FrutaPicada", "Granada", "Guanabana", "Guayaba", "JugoLimon", "JugoNaranja", "JugoToronja", "Kiwi", "Lima", "Mandarina", "MangoPicado", "Manzana", "MelonPicado", "Naranja", "PapayaPicada", "Pasas", "Pera", "PinaPicada", "Pitahaya", "Platano", "PlatanoDominico", "PlatanoMacho", "SandiaPicada", "Tamarindo", "Toronja", "Tuna", "Uva"};
-        double valEquiFruta[] = {1.5, .125, .250, 20, 7, 2, 17, 1, 1, 1, 3, .75, .5, .5, 1.25, 3, 2, 1, 1, 1, 2, 1, 10, .25, 1, 2, .5, 3, .25, 1, .50, 1, 2, 18};
-        String equiVerdura[] = {"AcelgaPicadaCocida", "ApioCrudo", "BetablelRayado", "BrocoliCocido", "CalabacitaCocida", "CebollaRebanada", "CebollaCambray", "ChampiñonCocidoEntero", "ChayoteCocidoPicado", "ChicharosCocidos", "ColCrudaPicada", "ColiflorCocida", "EjotesCocidosPicados", "EspinacaCocida", "FlorCalabazaCocida", "JicamaPicada", "JitomateBola", "JitomateSaladet", "JugoTomate", "JugoVerduras", "JugoZanaoria", "Lechuga", "NopalesCocidos", "PepinoRebanado", "PimientoColoresCrudo", "PimientoCocido", "PureTumate", "RabanoCrudo", "TomateVerde", "ZanahoriaCruda"};
-        double valEquiVerdura[] = {0.5, 1.5, .5, .5, .5, .5, 3, .5, .5, .2, 1.5, .75, .5, .5, 1, .5, 1, 2, .5, .5, .25, 3, 1, 1.25, 1, .5, .25, 1.25, 5, .5};
+        String equiFruta[] = {"AguaCoco", "ArandanoFresco", "CanaAzucar", "Cereza", "Ciruela", "Durazno", "Fresa", "FrutaPicada", "Granada", "Guanabana", "Guayaba", "JugoLimon", "JugoNaranja", "JugoToronja", "kiwi", "Lima", "Mandarina", "MangoPicado", "Manzana", "Melon", "Naranja", "Papaya", "Pasas", "Pera", "Piña", "Pitahaya", "Platano", "PlatanoDominico", "PlatanoMacho", "Sandia", "Tamarindo", "Toronja", "Tuna", "Uva","Zarzamora","Berenjena"};
+        double valEquiFruta[] = {1.5, .125, .250, 20, 7, 2, 17, 1, 1, 1, 3, .75, .5, .5, 1.25, 3, 2, 1, 1, 1, 2, 1, 10, .25, 1, 2, .5, 3, .25, 1, .50, 1, 2, 18,.75,.5};
+
+        String equiVerdura[] = {"AcelgaPicadaCocida", "Apio", "Betabel", "Brocoli", "Calabaza", "CebollaRebanada", "CebollaCambray", "ChampiñonCocidoEntero", "Chayote", "ChicharosCocidos", "ColCrudaPicada", "Coliflor", "Ejote", "Espinacas", "FlorCalabazaCocida", "Jicama", "JitomateBola", "JitomateSaladet", "JugoTomate", "JugoVerduras", "JugoZanaoria", "Lechuga", "Nopal", "Pepino", "Pimiento", "PimientoCocido", "PureTumate", "RabanoCrudo", "Tomate", "Zanahoria","Garbanzo","Repollo"};
+        double valEquiVerdura[] = {0.5, 1.5, .5, .5, .5, .5, 3, .5, .5, .2, 1.5, .75, .5, .5, 1, .5, 1, 2, .5, .5, .25, 3, 1, 1.25, 1, .5, .25, 1.25, 5, .5,.82,1};
 
         if(tipo.equals("Fruta")){
             for (int i=0; i<equiFruta.length; i++){
