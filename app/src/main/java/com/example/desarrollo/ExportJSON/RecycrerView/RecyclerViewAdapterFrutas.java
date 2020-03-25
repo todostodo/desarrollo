@@ -48,9 +48,11 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
     public class ItemViewHolder extends RecyclerView.ViewHolder {
 
         TextView nombre;
-        TextView descripcion;
+        TextView frase;
+        TextView ventaja;
         ImageView imgUrl;
         CardView view_container;
+        CardView backgroundVentaja;
         LinearLayout backgroundFrutas;
 
 
@@ -58,9 +60,11 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
             super(itemView);
             view_container = (CardView) itemView.findViewById(R.id.containerFrutas);
             nombre = (TextView) itemView.findViewById(R.id.nombreFruta);
-            descripcion = (TextView) itemView.findViewById(R.id.descripcionFruta);
+            frase = (TextView) itemView.findViewById(R.id.fraseFruta);
+            ventaja = (TextView) itemView.findViewById(R.id.fruta_ventaja);
             imgUrl = (ImageView) itemView.findViewById(R.id.imgUrlFrutas);
             backgroundFrutas = (LinearLayout) itemView.findViewById(R.id.backgroundFrutas);
+            backgroundVentaja = (CardView) itemView.findViewById(R.id.fruta_backgroundVentaja);
         }
     }
 
@@ -80,7 +84,11 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
                 i.putExtra("fruta_nombre", readerFrutas.get(viewHolder.getAdapterPosition()).getNombre());
                 i.putExtra("fruta_descripcion", readerFrutas.get(viewHolder.getAdapterPosition()).getDescripcion());
                 i.putExtra("fruta_recomendacion", readerFrutas.get(viewHolder.getAdapterPosition()).getRecomendacion());
-                //i.putExtra("fruta_beneficio", readerFrutas.get(viewHolder.getAdapterPosition()).getBeneficio());
+                i.putExtra("fruta_recomendacionDos", readerFrutas.get(viewHolder.getAdapterPosition()).getRecomendacionDos());
+                i.putExtra("fruta_frase", readerFrutas.get(viewHolder.getAdapterPosition()).getFrase());
+                i.putExtra("fruta_ventaja", readerFrutas.get(viewHolder.getAdapterPosition()).getVentaja());
+                i.putExtra("fruta_avisoTitulo", readerFrutas.get(viewHolder.getAdapterPosition()).getAvisoTitulo());
+                i.putExtra("fruta_aviso", readerFrutas.get(viewHolder.getAdapterPosition()).getAviso());
                 i.putExtra("fruta_imagen", readerFrutas.get(viewHolder.getAdapterPosition()).getImgUrl());
                 i.putExtra("fruta_fondo", readerFrutas.get(viewHolder.getAdapterPosition()).getBackground());
 
@@ -100,9 +108,47 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
         ReaderFrutas readerFrutas = (ReaderFrutas) this.readerFrutas.get(position);
 
         itemViewHolder.nombre.setText(readerFrutas.getNombre());
-        itemViewHolder.descripcion.setText(readerFrutas.getDescripcion());
+        itemViewHolder.frase.setText(readerFrutas.getFrase());
         itemViewHolder.backgroundFrutas.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(readerFrutas.getBackground())));
 
+        String ventaja = readerFrutas.getVentaja();
+
+        if (ventaja.equals("corazón") || ventaja.equals("sangre") || ventaja.equals("arterias")) {
+            itemViewHolder.backgroundVentaja.setCardBackgroundColor(Color.parseColor("#F7B3B5"));
+            itemViewHolder.ventaja.setTextColor(Color.parseColor("#9A1216"));
+        } else {
+            if (ventaja.equals("sistema nervioso") || ventaja.equals("infecciones")) {
+                itemViewHolder.backgroundVentaja.setCardBackgroundColor(Color.parseColor("#C2D5FD"));
+                itemViewHolder.ventaja.setTextColor(Color.parseColor("#4981F9"));
+            } else {
+                if (ventaja.equals("aparato digestivo") || ventaja.equals("aparato urinario") || ventaja.equals("aparato reproductor")) {
+                    itemViewHolder.backgroundVentaja.setCardBackgroundColor(Color.parseColor("#EBF5EF"));
+                    itemViewHolder.ventaja.setTextColor(Color.parseColor("#5C9076"));
+                } else {
+                    if (ventaja.equals("estómago") || ventaja.equals("intestino")){
+                        itemViewHolder.backgroundVentaja.setCardBackgroundColor(Color.parseColor("#F9DEC2"));
+                        itemViewHolder.ventaja.setTextColor(Color.parseColor("#EF9D49"));
+                    }else {
+                        if (ventaja.equals("ojos")){
+                            itemViewHolder.backgroundVentaja.setCardBackgroundColor(Color.parseColor("#EFE9FC"));
+                            itemViewHolder.ventaja.setTextColor(Color.parseColor("#7639EB"));
+                        }else{
+                            if (ventaja.equals("piel")){
+                                itemViewHolder.backgroundVentaja.setCardBackgroundColor(Color.parseColor("#FBEDEC"));
+                                itemViewHolder.ventaja.setTextColor(Color.parseColor("#ECC4B8"));
+                            }else{
+                                if (ventaja.equals("")){
+                                    itemViewHolder.backgroundVentaja.setVisibility(View.GONE);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        itemViewHolder.ventaja.setText(readerFrutas.getVentaja());
         Glide
                 .with(itemViewHolder.imgUrl.getContext())
                 .load(getImage(readerFrutas.getImgUrl()))

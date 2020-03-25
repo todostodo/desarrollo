@@ -36,11 +36,15 @@ public class ModelFrutas extends AppCompatActivity {
                 String nombre = itemObj.getString("nombre");
                 String descripcion = itemObj.getString("descripcion");
                 String recomendacion = itemObj.getString("recomendacion");
-                //String beneficio = itemObj.getString("beneficio");
+                String recomendacionDos = itemObj.getString("recomendacionDos");
+                String frase = itemObj.getString("frase");
+                String ventaja = itemObj.getString("ventaja");
+                String avisoTitulo = itemObj.getString("avisoTitulo");
+                String aviso = itemObj.getString("aviso");
                 String imgUrl = itemObj.getString("imgUrl");
                 String background = itemObj.getString("backgroud");
 
-                ReaderFrutas readerFrutas = new ReaderFrutas(id, nombre, descripcion, recomendacion, imgUrl, background);
+                ReaderFrutas readerFrutas = new ReaderFrutas(id, nombre, descripcion, recomendacion, recomendacionDos, frase, ventaja, avisoTitulo, aviso, imgUrl, background);
                 arrayList.add(readerFrutas);
             }
 

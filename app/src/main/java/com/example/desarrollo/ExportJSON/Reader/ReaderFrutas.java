@@ -6,16 +6,24 @@ public class ReaderFrutas {
     private final String nombre;
     private final String descripcion;
     private final String recomendacion;
-   // private final String beneficio;
+    private final String recomendacionDos;
+    private final String frase;
+    private final String ventaja;
+    private final String avisoTitulo;
+    private final String aviso;
     private final String imgUrl;
     private final String background;
 
-    public ReaderFrutas(String id, String nombre, String descripcion, String recomendacion, String imgUrl, String background) {
+    public ReaderFrutas(String id, String nombre, String descripcion, String recomendacion, String recomendacionDos, String frase, String ventaja, String avisoTitulo, String aviso, String imgUrl, String background) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.recomendacion = recomendacion;
-        //this.beneficio = beneficio;
+        this.recomendacionDos = recomendacionDos;
+        this.frase = frase;
+        this.ventaja = ventaja;
+        this.avisoTitulo = avisoTitulo;
+        this.aviso = aviso;
         this.imgUrl = imgUrl;
         this.background = background;
     }
@@ -34,6 +42,26 @@ public class ReaderFrutas {
 
     public String getRecomendacion() {
         return recomendacion;
+    }
+
+    public String getRecomendacionDos() {
+        return recomendacionDos;
+    }
+
+    public String getFrase() {
+        return frase;
+    }
+
+    public String getVentaja() {
+        return ventaja;
+    }
+
+    public String getAvisoTitulo() {
+        return avisoTitulo;
+    }
+
+    public String getAviso() {
+        return aviso;
     }
 
     public String getImgUrl() {

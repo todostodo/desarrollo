@@ -33,7 +33,7 @@
                        android:elevation="3dp"
                        android:layout_alignParentTop="true"
                        android:layout_alignParentRight="true"
-                       android:layout_marginTop="300dp"
+                       android:layout_marginTop="330dp"
                        android:layout_marginRight="50dp">
 
                        <TextView
@@ -53,7 +53,7 @@
                    <RelativeLayout
                        android:id="@+id/backgroundSelectFruta"
                        android:layout_width="match_parent"
-                       android:layout_height="350dp"
+                       android:layout_height="380dp"
                        android:background="@color/verde">
 
                        <ImageButton
@@ -108,11 +108,14 @@
                                android:layout_height="wrap_content"
                                android:orientation="horizontal">
 
+
                                <TextView
+                                   android:id="@+id/alimentoParaComplemento"
                                    android:layout_width="wrap_content"
                                    android:layout_height="wrap_content"
                                    android:text="Alimento para el"
                                    android:textSize="14sp"
+                                   android:visibility="gone"
                                    android:textColor="@color/blanco"
                                    android:fontFamily="@font/roboto_light"/>
 
@@ -124,7 +127,7 @@
                                    android:textSize="14sp"
                                    android:layout_marginLeft="5dp"
                                    android:textColor="@color/blanco"
-                                   android:fontFamily="@font/roboto_light"/>
+                                   android:fontFamily="@font/roboto_regular"/>
 
                            </LinearLayout>
 
@@ -150,7 +153,7 @@
                            android:orientation="vertical">
 
                            <TextView
-                               android:id="@+id/frase"
+                               android:id="@+id/fruta_frase"
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
                                android:layout_marginTop="20dp"
@@ -178,67 +181,164 @@
                                android:text="Beneficios"
                                android:textSize="14sp" />
 
-                           <TextView
+                           <LinearLayout
+                               android:id="@+id/btnExpandirFrutas"
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
-                               android:layout_marginTop="20dp"
-                               android:fontFamily="@font/roboto_medium"
-                               android:text="Recomendación para preparar este alimento"
-                               android:textColor="#515151"
-                               android:textSize="18sp" />
-
-                           <LinearLayout
-                               android:layout_width="match_parent"
-                               android:layout_height="wrap_content"
                                android:orientation="horizontal"
-                               android:layout_marginTop="10dp">
-
-                               <ImageView
-                                   android:layout_width="25dp"
-                                   android:layout_height="25dp"
-                                   android:background="@drawable/icon_uno"
-                                   android:layout_marginRight="15dp"
-                                   android:backgroundTint="#76C5BA"/>
+                               android:layout_marginTop="10dp"
+                               android:gravity="center">
 
                                <TextView
-                                   android:id="@+id/fruta_recomendacion"
                                    android:layout_width="wrap_content"
                                    android:layout_height="wrap_content"
-                                   android:fontFamily="@font/roboto_regular"
-                                   android:layout_gravity="center"
-                                   android:text="Beneficios"
-                                   android:textColor="#515151"
-                                   android:textSize="14sp" />
+                                   android:layout_marginRight="5dp"
+                                   android:text="Expandir"
+                                   android:textColor="#76C5BA"
+                                   android:textSize="16sp"
+                                   android:fontFamily="@font/roboto_medium"/>
+
+                               <ImageView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:background="@drawable/icon_flecha_abajo"
+                                   android:backgroundTint="#76C5BA"/>
 
                            </LinearLayout>
 
                            <LinearLayout
-                               android:id="@+id/fruta_linearRecomendacionDos"
+                               android:id="@+id/frutasExpandirSelect"
                                android:layout_width="match_parent"
                                android:layout_height="wrap_content"
-                               android:orientation="horizontal"
-                               android:layout_marginTop="15dp"
+                               android:orientation="vertical"
                                android:visibility="gone">
 
-                               <ImageView
-                                   android:layout_width="25dp"
-                                   android:layout_height="25dp"
-                                   android:background="@drawable/icon_dos"
-                                   android:layout_marginRight="15dp"
-                                   android:backgroundTint="#76C5BA"/>
-
                                <TextView
-                                   android:id="@+id/fruta_recomendacionDos"
                                    android:layout_width="wrap_content"
                                    android:layout_height="wrap_content"
-                                   android:fontFamily="@font/roboto_regular"
-                                   android:layout_gravity="center"
-                                   android:text="Beneficios"
+                                   android:layout_marginTop="20dp"
+                                   android:fontFamily="@font/roboto_medium"
+                                   android:text="Recomendación para preparar este alimento"
                                    android:textColor="#515151"
-                                   android:textSize="14sp" />
+                                   android:textSize="18sp" />
+
+                               <LinearLayout
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:orientation="horizontal"
+                                   android:layout_marginTop="10dp">
+
+                                   <ImageView
+                                       android:layout_width="25dp"
+                                       android:layout_height="25dp"
+                                       android:background="@drawable/icon_uno"
+                                       android:layout_marginRight="15dp"
+                                       android:backgroundTint="#76C5BA"/>
+
+                                   <TextView
+                                       android:id="@+id/fruta_recomendacion"
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content"
+                                       android:fontFamily="@font/roboto_regular"
+                                       android:layout_gravity="center"
+                                       android:text="Beneficios"
+                                       android:textColor="#515151"
+                                       android:textSize="14sp" />
+
+                               </LinearLayout>
+
+                               <LinearLayout
+                                   android:id="@+id/fruta_linearRecomendacionDos"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:orientation="horizontal"
+                                   android:layout_marginTop="15dp">
+
+                                   <ImageView
+                                       android:layout_width="25dp"
+                                       android:layout_height="25dp"
+                                       android:background="@drawable/icon_dos"
+                                       android:layout_marginRight="15dp"
+                                       android:backgroundTint="#76C5BA"/>
+
+                                   <TextView
+                                       android:id="@+id/fruta_recomendacionDos"
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content"
+                                       android:fontFamily="@font/roboto_regular"
+                                       android:layout_gravity="center"
+                                       android:text="Beneficios"
+                                       android:textColor="#515151"
+                                       android:textSize="14sp" />
+
+                               </LinearLayout>
+
+                               <RelativeLayout
+                                   android:id="@+id/fruta_relativeAviso"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginTop="20dp"
+                                   android:visibility="gone">
+
+                                   <LinearLayout
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:orientation="vertical"
+                                       android:layout_marginTop="10dp"
+                                       android:layout_marginStart="10dp"
+                                       android:layout_marginEnd="10dp"
+                                       android:layout_alignParentTop="true"
+                                       android:layout_alignParentLeft="true"
+                                       android:layout_alignParentRight="true">
+
+                                       <RelativeLayout
+                                           android:layout_width="match_parent"
+                                           android:layout_height="wrap_content"
+                                           android:padding="10dp"
+                                           android:background="#FAE19F">
+
+                                           <TextView
+                                               android:id="@+id/fruta_avisoTitulo"
+                                               android:layout_width="wrap_content"
+                                               android:layout_height="wrap_content"
+                                               android:layout_centerInParent="true"
+                                               android:gravity="center"
+                                               android:layout_marginStart="20dp"
+                                               android:layout_marginEnd="20dp"
+                                               android:textColor="@color/negro"
+                                               android:textSize="18sp"
+                                               android:fontFamily="@font/roboto_medium"/>
+
+                                       </RelativeLayout>
+
+                                       <RelativeLayout
+                                           android:layout_width="match_parent"
+                                           android:layout_height="wrap_content"
+                                           android:background="#E7E4F4"
+                                           android:padding="10dp">
+
+                                           <TextView
+                                               android:id="@+id/fruta_aviso"
+                                               android:layout_width="wrap_content"
+                                               android:layout_height="wrap_content"
+                                               android:text=""
+                                               android:textColor="@color/negro"
+                                               android:fontFamily="@font/roboto_regular"
+                                               android:textSize="14sp"/>
+                                       </RelativeLayout>
+
+                                   </LinearLayout>
+
+                                   <ImageView
+                                       android:layout_width="40dp"
+                                       android:layout_height="40dp"
+                                       android:layout_alignParentTop="true"
+                                       android:layout_alignParentLeft="true"
+                                       android:src="@drawable/icon_aviso"/>
+
+                               </RelativeLayout>
 
                            </LinearLayout>
-
 
                        </LinearLayout>
 
