@@ -112,10 +112,12 @@ public class TutorDao {
 
                 tutorList.add(tutor);
             }
+            cursor.close();
 
         }catch (Exception e){
             //Toast.makeText(context, "Error al visualizar tutor", Toast.LENGTH_SHORT).show();
         }finally {
+
             database.close();
         }
         return tutorList;

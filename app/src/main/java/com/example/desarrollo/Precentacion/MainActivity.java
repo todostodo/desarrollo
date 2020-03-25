@@ -27,6 +27,9 @@ import java.util.TimeZone;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.example.desarrollo.Datos.Calculos;
+import com.example.desarrollo.Datos.ConexionSQLHelper;
+import com.example.desarrollo.Datos.TutorDao;
 import com.example.desarrollo.Precentacion.Home.HomeFragment;
 
 import com.example.desarrollo.Precentacion.Motivadores.MotivadoresFragment;
@@ -50,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        proceso();
+
+
         Date date = new Date();
         DateFormat hora = new SimpleDateFormat("HH:mm:ss");
         inicio = "" + hora.format(date);

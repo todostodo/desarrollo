@@ -244,9 +244,9 @@ public class Utilidades {
                     CAMPO_Equivalencia + " REAL NOT NULL, " +
                     CAMPO_Cantidad + " REAL NOT NULL, " +
                     CAMPO_UnidadMedida + " REAL NOT NULL, " +
-                    CAMPO_NumeroRegistro + " INTEGER NOT NULL, " +
-                    CAMPO_HoraRegistro + " TEXT NOT NULL, " +
-                    "FOREIGN KEY (" + CAMPO_idNinoDetalleRegistro + ") REFERENCES Nino (" + CAMPO_idNinoDetalleRegistro + ")";
+                    CAMPO_NumeroRegistro + " INTEGER NOT NULL, "+
+                    CAMPO_HoraRegistro + " TEXT NOT NULL)";// +
+                   // "FOREIGN KEY (" + CAMPO_idNinoDetalleRegistro + ") REFERENCES Nino (" + CAMPO_idNinoDetalleRegistro + "))";
                     //"FOREIGN KEY (" + CAMPO_IdAlimento + ") REFERENCES Alimento (" + CAMPO_IdAlimento + "))";
 
 
