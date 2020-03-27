@@ -246,7 +246,7 @@ public class Utilidades {
                     CAMPO_Cantidad + " REAL NOT NULL, " +
                     CAMPO_UnidadMedida + " REAL NOT NULL, " +
                     CAMPO_NumeroRegistro + " INTEGER NULL, '"+
-                    CAMPO_Tipo + "' INTEGER NULL, "+
+                    CAMPO_Tipo + "' INTEGER NOT NULL, "+
                     CAMPO_HoraRegistro + " TEXT NOT NULL)";// +
                    // "FOREIGN KEY (" + CAMPO_idNinoDetalleRegistro + ") REFERENCES Nino (" + CAMPO_idNinoDetalleRegistro + "))";
                     //"FOREIGN KEY (" + CAMPO_IdAlimento + ") REFERENCES Alimento (" + CAMPO_IdAlimento + "))";
