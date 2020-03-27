@@ -23,6 +23,7 @@ import static com.example.desarrollo.Ultilidades.Utilidades.CAMPO_Equivalencia;
 import static com.example.desarrollo.Ultilidades.Utilidades.CAMPO_HoraRegistro;
 import static com.example.desarrollo.Ultilidades.Utilidades.CAMPO_IdAlimento;
 import static com.example.desarrollo.Ultilidades.Utilidades.CAMPO_NumeroRegistro;
+import static com.example.desarrollo.Ultilidades.Utilidades.CAMPO_Tipo;
 import static com.example.desarrollo.Ultilidades.Utilidades.CAMPO_UnidadMedida;
 import static com.example.desarrollo.Ultilidades.Utilidades.CAMPO_idNinoDetalleRegistro;
 import static com.example.desarrollo.Ultilidades.Utilidades.TABLA_DetalleRegistro;
@@ -45,7 +46,7 @@ public class Calculos {
         return (double) round / factor;
     }
 
-    public static boolean registrarDetalleReg(String TAG, Context context, int idNino, int alimento, double equivalencia, double cantidad, String Horaregistro, String fecha) {
+    public static boolean registrarDetalleReg(String TAG, Context context, int idNino, int alimento, double equivalencia, double cantidad, String Horaregistro, String fecha, String Tipo) {
 
         try {
 
@@ -62,6 +63,7 @@ public class Calculos {
                     Utilidades.CAMPO_Equivalencia + ", " +
                     Utilidades.CAMPO_Cantidad + ", " +
                     Utilidades.CAMPO_UnidadMedida + ", " +
+                    Utilidades.CAMPO_Tipo + ", " +
                     Utilidades.CAMPO_HoraRegistro + " ) " +
                     "VALUES ( " +
                     idNino + ", " +
@@ -69,6 +71,7 @@ public class Calculos {
                     equivalencia + ", " +
                     cantidad + ", " +
                     unidadMedida + ", '" +
+                    Tipo + "', '" +
                     Horaregistro + "')";
 
             String insertRegistro = "INSERT INTO " + Utilidades.TABLA_Registro + " (" +
@@ -88,4 +91,67 @@ public class Calculos {
             database.close();
         }
     }
+
+    public static String Fecha(){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        Date date = new Date();
+
+        String fecha = dateFormat.format(date);
+
+        return fecha;
+    }
+
+    public static double ProgresoEsfuerzoFruta(Context context,int idNino){
+        double avaceEsfuerzoFruta=0;
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
+
+            String fecha=Fecha();
+            database = null;
+            database = connection.getReadableDatabase();
+
+            Cursor cur = database.rawQuery( "SELECT "+CAMPO_Cantidad+" FROM DetalleReg WHERE "+CAMPO_idNinoDetalleRegistro+"="+idNino+" AND "+CAMPO_Tipo+"='Fruta' AND "+CAMPO_HoraRegistro+"='"+fecha+"'", null);
+
+            if (cur.moveToFirst()) {
+                do {
+                    avaceEsfuerzoFruta+=cur.getDouble(0);
+                } while (cur.moveToNext());
+            }
+
+        } catch (Exception e) {
+            Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
+        } finally {
+            database.close();
+        }
+        return avaceEsfuerzoFruta;
+    }
+
+    //***********************************************************************
+    public static double ProgresoEsfuerzoVerdura(Context context,int idNino){
+        double avaceEsfuerzoVerdura=0;
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
+
+            String fecha=Fecha();
+            database = null;
+            database = connection.getReadableDatabase();
+
+            Cursor cur = database.rawQuery( "SELECT "+CAMPO_Cantidad+" FROM DetalleReg WHERE "+CAMPO_idNinoDetalleRegistro+"="+idNino+" AND "+CAMPO_Tipo+"='Verdura' AND "+CAMPO_HoraRegistro+"='"+fecha+"'", null);
+
+            if (cur.moveToFirst()) {
+                do {
+                    avaceEsfuerzoVerdura+=cur.getDouble(0);
+                } while (cur.moveToNext());
+            }
+
+        } catch (Exception e) {
+            Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
+        } finally {
+            database.close();
+        }
+        return avaceEsfuerzoVerdura;
+    }
+
+
+
 }

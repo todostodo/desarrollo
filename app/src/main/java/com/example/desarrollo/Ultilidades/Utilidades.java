@@ -235,6 +235,7 @@ public class Utilidades {
     public static final String CAMPO_UnidadMedida = "umedr";
     public static final String CAMPO_NumeroRegistro = "noReg";
     public static final String CAMPO_HoraRegistro = "hora";
+    public static final String CAMPO_Tipo = "Tipo";
 
     public static final String CREAR_TABLA_DetalleRegistro =
             "CREATE TABLE " + "" + TABLA_DetalleRegistro + " (" +
@@ -244,7 +245,8 @@ public class Utilidades {
                     CAMPO_Equivalencia + " REAL NOT NULL, " +
                     CAMPO_Cantidad + " REAL NOT NULL, " +
                     CAMPO_UnidadMedida + " REAL NOT NULL, " +
-                    CAMPO_NumeroRegistro + " INTEGER NULL, "+
+                    CAMPO_NumeroRegistro + " INTEGER NULL, '"+
+                    CAMPO_Tipo + "' INTEGER NULL, "+
                     CAMPO_HoraRegistro + " TEXT NOT NULL)";// +
                    // "FOREIGN KEY (" + CAMPO_idNinoDetalleRegistro + ") REFERENCES Nino (" + CAMPO_idNinoDetalleRegistro + "))";
                     //"FOREIGN KEY (" + CAMPO_IdAlimento + ") REFERENCES Alimento (" + CAMPO_IdAlimento + "))";
