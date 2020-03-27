@@ -3,6 +3,7 @@
     {
       "id": "1",
       "nombre": "Platano",
+      "equivalencia": "0.5",
       "descripcion": "En la composición del plátano destaca su riqueza en hidrátos de carbono,(hata un 21%).  Destaca por su contenido en vitamina B6, vitamina C, B1, B2 y vitamina E, así como de Folatos. Es también bastante rico en minerales como el potasio, magnesio y hierro.",
       "recomendacion": "Crudo es la forma ideal de consumirlo, madurado en la planta asegura que se conserven todas sus vitaminas. Se puede consumir cocinado, aunque esto hace pe pueda perder la mayor parte de sus vitaminas, pero conserva los hidrátos de carbono, minerales y demás nutrientes.",
       "recomendacionDos": "Cocinado de diversas formas: Con ello se pierden la mayor parte de sus vitaminas, aunque persisten los hidratos de carbono, minerales y demás nutrientes. Se cocinan sobre todo el plátano macho, muy rico en fécula (almidón).",
@@ -16,6 +17,7 @@
     {
       "id": "2",
       "nombre": "Manzana",
+      "equivalencia": "1.0",
       "descripcion": "Entre las vitaminas que se pueden mencionar de la mazana, están la C y la E, además del potasio y el hierro. Contiene una considerable cantidad de fibra dietética(pectina), y parte de ella se encuentra en la cascara",
       "recomendacion": "Cruda: Recomendamos pelarla, pues en contra de lo que algunos creen, la escasa cantidad de pectina y de vitaminas que se encuentran en la piel no justifican su consumo. La piel puede contener restos de plaguicidas, y además es de difícil digestión.",
       "recomendacionDos": "Cocinada: Conviene tomarla con el líquido de la decocción. Resulta muy fácilmente digerible y apropiada para los niños.",
@@ -28,20 +30,22 @@
     },
     {
       "id": "3",
-      "nombre": "Naranja",
+      "nombre": "Naranja", 
+      "equivalencia": "2.0",
       "descripcion": "En la naranja destacan las siguientes sustancias: azucares, minerales como el potasio, calcio, hierro y magnesio, vitaminas como la C, carotenoides, B1 y B2, ácido fólico, fibra vegetal en forma de pectina, ácidos orgánicos que potencian la acción de la vitamina C, carotenoides que actúan como antioxidantes y numerosos elementos fitoquímicos",
       "recomendacion": "La naranja conviene consumirla con una parte de la corteza blanca interior y no desechando la pulpa fibrosa, siempre que no sea demasiado dura. Cuando es el jugo, conviene tomarlo recién exprimido, pues la vitamina C pierde su actividad con la luz solar y con el paso del tiempo.",
       "recomendacionDos": "Cura de naranjas: Se debe seguir durante uno o dos días por semana, durante tres o cuatro semanas. Consiste en comer solamente naranjas durante el día, y tomar como única bebida su zumo fresco. Pueden tomarse entre 10 Y 12 naranjas diarias y de dos a cuatro vasos de zumo. Si las naranjas son muy ácidas, se puede añadir al zumo una o dos cucharaditas de miel por vaso. ",
       "frase": "Mucho más que vitamina C", 
       "ventaja": "infecciones",
       "avisoTitulo": "Las naranjas verdes pueden estar maduras",
-      "aviso": "Para que las naranjas adquieran su típico color anaranjado, se precisa que mientras están en el árbol sufran varias noches consecutivas de frío, lo cual no suele ser raro en los países templados.\n\nEl punto de maduración de la naranja no se reconoce por su color exterior, sino por la proporción entre el azúcar y el ácido de su jugo. En los frutos maduros esta proporción es aproximadamente de 6:1, es decir, seis veces más cantidad de azúcar que de ácido. ",
+      "aviso": "Para que las naranjas adquieran su típico color anaranjado, se precisa que mientras están en el árbol sufran varias noches consecutivas de frío, lo cual no suele ser raro en los países templados.<br><br>El punto de maduración de la naranja no se reconoce por su color exterior, sino por la proporción entre el azúcar y el ácido de su jugo. En los frutos maduros esta proporción es aproximadamente de 6:1, es decir, seis veces más cantidad de azúcar que de ácido. ",
       "imgUrl": "f_naranja",
       "backgroud": "#FECFAC"
     },
     {
       "id": "4",
       "nombre": "Pera",
+      "equivalencia": "0.25",
       "descripcion": "De la pera, destaca su contenido en azucares (12.7%), contiene una pequeña cantidad de vitamina C, E, y B. Los minerales más importantes son el potasio, el magnesio y el hierro. Tanto en vitaminas como en minerales, la pera supera a la manzana",
       "recomendacion": "Cruda : Conviene masticarla bien, especialmente las que presentan una pulpa dura o con textura arenosa. Generalmente recomendamos que las frutas se coman peladas (debido a los contaminantes que suele haber en la piel). Sin embargo, en el caso de la pera es conveniente comer también su piel, pues así se obtiene un mayor efecto diurético. Por supuesto que debe lavarse bien, y a ser posible, proceder de cultivo biológico. ",
       "recomendacionDos": "Cocinada: Así la pera resulta de más fácil digestión a quienes tienen el aparato digestivo debilitado. El inconveniente es que, al someterla a cocción, se pierden la mayor parte de sus vitaminas, aunque no los azúcares y minerales. ",
@@ -55,6 +59,7 @@
     {
       "id": "5",
       "nombre": "Ciruela",
+      "equivalencia": "7.0",
       "descripcion": "La ciruela es muy pobre en proteínas y en grasas (menos del 1% de ambos nutrientes). En cuanto a vitaminas y minerales, contiene una proporción equilibrada de todos ellos (excepto la BI2), aunque en pequeñas cantidades",
       "recomendacion": "Frescas: Para que las ciruelas crudas sean bien toleradas por el estómago, deben haber alcanzado su punto óptimo de maduración. ",
       "recomendacionDos": "Ciruelas pasas (desecadas): Se toman tal cual o puestas previamente a remojo la noche anterior. La dosis habitual es de 6 a 12 ciruelas pasas, preferiblemente por la mañana.",
@@ -68,6 +73,7 @@
     {
       "id": "6",
       "nombre": "Durazno",
+      "equivalencia": "2.0",
       "descripcion": "La composición del durazno es una equilibrada combinación de provitamina A. vitaminas del grupo B, vitamina C, vitamina E. potasio, magnesio y fibra vegetal. Todo ello en cantidades moderadas, pero con prácticamente nada de sodio y de grasa. Contiene además un 9% de fructosa y otros azúcares, y menos del 1% de proteínas. ",
       "recomendacion": "Fresco: Su piel aterciopelada puede provocar alergias cutáneas en personas sensibles. Esta es una buena razón para mondarlo. Además, puede contener restos de plaguicidas. Es cierto que la piel contiene vitaminas, pero la pérdida se compensa fácilmente comiendo una cantidad un poco mayor de melocotón pelado. ",
       "recomendacionDos": "En conserva: Su contenido en vitaminas y minerales es algo inferior que el del melocotón fresco, pero tiene la ventaja de poderse consumir en cualquier época del año. Son preferibles las conservas con almíbar de bajo contenido en azúcar",
@@ -81,6 +87,7 @@
     {
       "id": "7",
       "nombre": "Fresa",
+      "equivalencia": "17.0",
       "descripcion": "La fresa es una de las frutas más bajas en calorías (30 kcal/100g), por debajo, el pigmento que le da color se conoce como Antocianinas, que actúan como poderosos antioxidantes, a que ayudan a de reducir el colesterol en el hígado",
       "recomendacion": "Las fresas frescas se recomienda lavarlas justo antes de consumirlas, combinadas con manzana, en el jugo de naranja, con los cereales y con el yogur. Otra opción es consumirla licuadas con jugo de naranja, con leche o lecha de soya.",
       "recomendacionDos": "",
@@ -94,6 +101,7 @@
     {
       "id": "8",
       "nombre": "Guayaba",
+      "equivalencia": "3.0",
       "descripcion": "La guayaba destaca por su aporte en vitamina C con 183mg/100g, contiene también carotenoides que en el organismo se transforman en vitamina A y que ejercen una poderosa acción antioxidante en las células, las guayabas con color rojizo contienen más carotenoides, también encontrados en el jitomate.",
       "recomendacion": "Fresca: La parte interior de la guayaba, donde se encuentran las semillas, debe masticarse bien o pasarse por un pasapuré. La parte externa del fruto carece de semillas y es más suave. Los frutos demasiado maduros pierden vitamina C y fibra. ",
       "recomendacionDos": "Productos elaborados: Con la guayaba se producen deliciosos jarabes, jaleas y mermeladas.",
@@ -107,6 +115,7 @@
     {
       "id": "9",
       "nombre": "kiwi",
+      "equivalencia": "1.25",
       "descripcion": "El kiwi contiene una cantidad moderada de hidratos de carbono en forma de azúcares (11 ,5%), el l% de proteínas y menos del 0.5% de grasa",
       "recomendacion": " Al natural: Es la forma habitual de consumirlo. El kiwi es un fruto muy resistente, que soporta largos desplazamientos. Normalmente se recolecta cuando todavía está verde, y madura bien fuera del árbol. ",
       "recomendacionDos": "",
@@ -120,19 +129,21 @@
     {
       "id": "10",
       "nombre": "Mandarina",
+      "equivalencia": "2.0",
       "descripcion": "La Mandarina tiene las mismas propiedades de la naranja, aunque en menor intensidad, por su facilidad de uso y buena tolerancia digestiva, resulta especialmente apropiada para los niños y ancianos.",
       "recomendacion": "Es una verdadera delicia pelar una mandarina, mientras se disfruta de su esencia. Para obtener efectos terapéuticos, se recomienda tomar entre 6 y 8 diarias. ",
       "recomendacionDos": "Cura de mandarinas: Al igual que la cura de naranjas, se realiza durante uno o dos días por semana, durante un mes. Consiste en tomar de 1,5 a 2 kilos de mandarinas como único alimento. Con esa cantidad de fruta, no suele hacer falta beber líquidos, pues esta cura se suele hacer en otoño o invierno",
       "frase": "Resulta difícil tomar una sola",
       "ventaja": "infecciones",
       "avisoTitulo": "Los cítricos previenen el cancer",
-      "aviso": "Todas las frutas poseen propiedades anticancerígenas, y su consumo habitual contribuye a prevenir el cáncer. Sin embargo, las frutas pertenecientes al grupo de los cítricos destacan por contener una equilibrada combinación de sustancias anticancerígenas: vitamina C, flavonoides, Iimonoides y pectina\n\nTodas estas sustancias se potencian mutuamente para lograr un marcado efecto protector frente al cáncer. Esto significa que cada una de ellas tomada de forma aislada y purificada, no es tan eficaz como cuando se la ingiere formando parte de una naranja o de un limón, por ejemplo. ",
+      "aviso": "Todas las frutas poseen propiedades anticancerígenas, y su consumo habitual contribuye a prevenir el cáncer. Sin embargo, las frutas pertenecientes al grupo de los cítricos destacan por contener una equilibrada combinación de sustancias anticancerígenas: vitamina C, flavonoides, Iimonoides y pectina<br><br>Todas estas sustancias se potencian mutuamente para lograr un marcado efecto protector frente al cáncer. Esto significa que cada una de ellas tomada de forma aislada y purificada, no es tan eficaz como cuando se la ingiere formando parte de una naranja o de un limón, por ejemplo. ",
       "imgUrl": "f_mandarina",
       "backgroud": "#FBCCB4"
     },
     {
       "id": "11",
       "nombre": "Melon",
+      "equivalencia": "1.0",
       "descripcion": "El melón contiene entre 90% y 95% de agua, pero no debe considerarse como el agua de garrafón si no como un agua viva que ha estado en intimo contacto con el protoplasma de las células vegetales.",
       "recomendacion": "Fresco: Es la mejor forma de consumirlo. No es aconsejable como postre, pues el abundante líquido que aporta, dificulta la digestión.",
       "recomendacionDos": "En conserva: Con el melón se elaboran deliciosas confituras y mermeladas.",
@@ -146,6 +157,7 @@
     {
       "id": "12",
       "nombre": "Papaya",
+      "equivalencia": "1.0",
       "descripcion": "De la papaya destacan el contenido vitamínico, ya que, por cada 100g de pulpa de papaya, aporta el 103% de vitamina C y el 18% de vitamina A. También es rica en potasio y contiene cantidades apreciables de calcio, magnesio, fosfato y hierro.",
       "recomendacion": "Fresca: Es la mejor forma de consumirla. Las papayas que se venden en los países no tropicales normalmente se recolectan verdes para que soporten el transporte, con lo cual pierden algo de sabor y calidad. La papaya es muy apreciada como desayuno y como postre, aunque también se sirve en ensalada, con lechuga y jugo de limón. ",
       "recomendacionDos": "Preparaciones culinarias: La papaya se presta muy bien para realizar refrescos, batidos, helados y la jalea de papaya, postre popular en las regiones tropicales de América. ",
@@ -159,6 +171,7 @@
     {
       "id": "13",
       "nombre": "Piña",
+      "equivalencia": "1.0",
       "descripcion": "Las vitaminas más abundantes en la piña son la C, B1 y B6, es también una buena fuente de fosfato, entre los minerales destacan el magnesio, el cobre, potasio, manganeso y hierro.",
       "recomendacion": "Al natural: Es ideal como postre, para favorecer la digestión, y también como aperitivo, para preparar el estómago",
       "recomendacionDos": "Conserva: Contiene todavía la mayor parte de sus vitaminas, minerales y fibra, pero sin embargo es pobre en su enzima bromelina, que se degrada con facilidad . Por ello, la piña en conserva apenas actúa como estimulante digestivo. ",
@@ -172,6 +185,7 @@
     {
       "id": "14",
       "nombre": "Sandia",
+      "equivalencia": "1.0",
       "descripcion": "La sandía es una fruta hidratante, remineralizante, alcanizante, diurético y laxante, contiene vitamina C, beta-caroteno, vitamina B1 y B6.",
       "recomendacion": "Fresca: Es la forma habitual de consumirla. No es recomendable tomarla como postre, ya que puede resultar indigesta debido a la gran cantidad de agua que aporta. ",
       "recomendacionDos": "Jugo: Es más recomendable para aquellos que tienen el estómago delicado, pues no contiene la fibra de la pulpa que puede resultar indigesta.",
@@ -185,6 +199,7 @@
     {
       "id": "15",
       "nombre": "Uva",
+      "equivalencia": "18.0",
       "descripcion": "La uva tiene diversas propiedades, de las más importantes de mencionar son los monosacáridos, la vitamina B1, B2, B3, lo que hace que las azucares que contiene se puedan metabolizar y quemar fácilmente. Contiene minerales como el potasio, cobre y el hierro, aunque contiene también calcio, fósforo, magnesio y cobre.",
       "recomendacion": "Se recomienda consumirlas frescas. Entera o en jugo tratando de retirar la semilla para mejorar su sabor, pero sin retirar la cascara. También se puede consumir como frutas secas",
       "recomendacionDos": "",
@@ -198,6 +213,7 @@
     {
       "id": "16",
       "nombre": "Zarzamora",
+      "equivalencia": "0.75",
       "descripcion": " ",
       "recomendacion": "",
       "recomendacionDos": "",
@@ -213,6 +229,7 @@
     {
       "id": "17",
       "nombre": "Apio",
+      "equivalencia": "1.5",
       "descripcion": "El apio resulta pobre desde el punto de vista nutritivo, lo que lo hace atractivo son sus aceites esenciales que provocan un efecto diurético.",
       "recomendacion": "Jugo fresco: Se prepara a partir de los tallos y las hojas. Se recomienda tomar medio vaso con cada comida, añadiendo unas gotas de limón a gusto del consumidor",
       "recomendacionDos": "Crudo en ensaladas: Se consumen los tallos tiernos y crujientes. ",
@@ -226,19 +243,21 @@
     {
       "id": "18",
       "nombre": "Berenjena",
+      "equivalencia": "0.5",
       "descripcion": "La pulpa de la berenjena, que es un fruto desde el punto de vista botánico, contiene cierta cantidad de hidratos de carbono, muy pocas proteínas y apenas grasas. Los minerales y vitaminas se encuentran en cantidades pequeñas, pero destacan el potasio, calcio, el azufre , el hierro y las vitaminas B y C.",
       "recomendacion": "Cocinada (nunca cruda). De sus muchas preparaciones culinaria, la berenjena frita es la forma menos digerible de comer esta hortaliza. La forma más sana es asada al horno y aliñada con aceite y ajo. Se puede acompañar con pimientos, como la escalivada, típico plato catalán.",
       "recomendacionDos": "",
       "frase": "Diurética y digestiva",
       "ventaja": "aparato urinario",
       "avisoTitulo": "Precauciones",
-      "aviso": "Las berenjenas contienen una cierta cantidad de solanina, que desaparece casi por completo con la maduración.\n\nLa solanina es un alcaloide tóxico que produce trastornos digestivos, pero que desaparece con el calor.\n\nPor ello las berenjenas se deben tomar siempre bien maduras y cocinadas.",
+      "aviso": "Las berenjenas contienen una cierta cantidad de solanina, que desaparece casi por completo con la maduración.<br><br>La solanina es un alcaloide tóxico que produce trastornos digestivos, pero que desaparece con el calor.<br><br>Por ello las berenjenas se deben tomar siempre bien maduras y cocinadas.",
       "imgUrl": "v_berenjena",
       "backgroud": "#7C6567"
     },
     {
       "id": "19", 
       "nombre": "Betabel",
+      "equivalencia": "0.5",
       "descripcion": "En su composición destaca el elevado nivel de hidratos de carbono, hierro y vitamina C, y en una menor cantidad el potasio",
       "recomendacion": "Jugo fresco: Su sabor no es muy agradable, por lo que se recomienda mezclarlo con otros jugos o endulzarlo con miel. Para evitar que resulte indigesto, no se deben tomar más de 50 o 100 mi cada vez.",
       "recomendacionDos": "Hervida: Sometida a cocción es como resulta más digerible. Debe hervir al menos durante una hora. Para pelarla fácilmente se sumerge en agua fría, cuando está todavía caliente.",
@@ -252,6 +271,7 @@
     {
       "id": "20",
       "nombre": "Brocoli (brécol)",
+      "equivalencia": "0.5",
       "descripcion": "De la familia de las coles, el brócoli destaca por ser una de las más ricas en proteínas, calcio y provitamina A (beta-carotenos) y vitamina C. Es también rica en potasio y bajo en sodio. Contiene elementos fitoquímicos sulfurados de acción anticancerígena.",
       "recomendacion": "Cocinado de diversas formas, al igual que la coliflor. Debe hervir lo menos posible, con el fin de evitar la pérdida de sus propiedades durante la cocción. ",
       "recomendacionDos": "Los tallos tiernos se pueden comer crudos o ligeramente hervidos, en ensalada. Son muy sabrosos, recordando un poco a los espárragos. ",
@@ -265,6 +285,7 @@
     {
       "id": "21",
       "nombre": "Calabaza (zapallo)",
+      "equivalencia": "0.5",
       "descripcion": "La calabaza contiene beta-carotenos.",
       "recomendacion": "Asada al horno: Se parte por la mitad o en varios rodajas, y se hornea hasta que adquiere un bello color dorado. Se toma con miel o combinada con fruta",
       "recomendacionDos": "Puré: Después de someterla a cocción, se tritura y se mezcla con leche o bebida de soja. Se puede endulzar al gusto, aunque preferiblemente con miel.",
@@ -278,6 +299,7 @@
     {
       "id": "22",
       "nombre": "Chayote",
+      "equivalencia": "0.5",
       "descripcion": " ",
       "recomendacion": "",
       "recomendacionDos": "",
@@ -291,6 +313,7 @@
     {
       "id": "23",
       "nombre": "Garbanzo (chícharo)",
+      "equivalencia": "0.82",
       "descripcion": "Los chicharos o guisantes crudos contienen 78.9% de agua. Contiene un 9.36% de hidratos de carbono y 5.42% de proteínas.",
       "recomendacion": "Cocinados: Es la forma más común de consumir los garbanzos en Occidente. Se pueden añadir a sopas y guisos. Combinan muy bien con los platos de arroz. ",
       "recomendacionDos": "Tostados al horno o fritos: Resultan un poco indigestos, pues una parte de su almidón se hace resistente a los jugos digestivos.",
@@ -304,6 +327,7 @@
     {
       "id": "24",
       "nombre": "Coliflor",
+      "equivalencia": "0.75",
       "descripcion": "La coliflor contiene pequeñas cantidades de hidratos de carbono y de proteínas, y prácticamente nada de grasas. Contiene provitamina A (beta-carotena), vitaminas B, C y E, destacando especialmente la e con 46,4 mg/l 00 g. En cuanto a minerales, es muy rica en potasio y baja en sodio; contiene cantidades significativas de calcio, magnesio, fósforo y hierro. ",
       "recomendacion": "Cruda en ensalada, cuando está tierna.",
       "recomendacionDos": "Cocinada en sus muchas preparaciones culinarias: hervida, cocinada al vapor (estas dos son las formas más sanas de prepararla), asada, frita, estofada, gratinada.",
@@ -317,6 +341,7 @@
     {
       "id": "25",
       "nombre": "Ejote",
+      "equivalencia": "0.5",
       "descripcion": "",
       "recomendacion": "",
       "recomendacionDos": "",
@@ -330,6 +355,7 @@
     {
       "id": "26",
       "nombre": "Espinacas",
+      "equivalencia": "0.5",
       "descripcion": " ",
       "recomendacion": "",
       "recomendacionDos": "",
@@ -343,6 +369,7 @@
     {
       "id": "27",
       "nombre": "Jicama",
+      "equivalencia": "0.5",
       "descripcion": "",
       "recomendacion": "",
       "recomendacionDos": "",
@@ -356,6 +383,7 @@
     {
       "id": "28",
       "nombre": "Lechuga",
+      "equivalencia": "3.0",
       "descripcion": "La lechuga es uno de los alimentos más ricos en agua (94.9%). Sin embargo, sorprende por su aporte de proteínas (1.62%) y vitaminas de grupo B. Además, tiene un bajo aporte energético (16 kcal/100g), las hojas verdes son mucho más nutritivas que las blancas.",
       "recomendacion": "Cruda: Es la mejor forma de disfrutar de su frescura y su agradable sabor. Se aliña con un poco de aceite (preferiblemente de oliva) y unas gotas de limón. Las hojas verdes son mucho más nutritivas que las blancas del interior",
       "recomendacionDos": "Cocinada: Las hojas más duras se pueden someter a cocción como cualquier otra verdura. ",
@@ -369,6 +397,7 @@
     {
       "id": "29",
       "nombre": "Nopal",
+      "equivalencia": "1.0",
       "descripcion": " ",
       "recomendacion": "",
       "recomendacionDos": "",
@@ -382,6 +411,7 @@
     {
       "id": "30",
       "nombre": "Pepino",
+      "equivalencia": "1.25",
       "descripcion": "El pepino es un alimento muy rico en agua, por lo que solamente aporta 13kcal/100g. Contiene potasio, calcio hierro, fosforo, magnesio y azufre.",
       "recomendacion": "Crudo: Es la forma ideal de consumir el pepino. Puesto que se recolecta estando aún inmaduro, debe masticarse a conciencia para evitar que resulte indigesto. Puede tomarse en ensalada con aceite y limón, o triturado junto con tomate y otras hortalizas, como en el gazpacho andaluz. Conviene pelarlo para evitar los residuos de pesticidas, en caso de que no proceda de cultivo biológico.",
       "recomendacionDos": "Cocinado: Se puede presentar gratinado al horno, en sopas o sometido a cocción juntamente con otras hortalizas y con diversas verduras.",
@@ -395,6 +425,7 @@
     {
       "id": "31",
       "nombre": "Pimiento (chile dulce)",
+      "equivalencia": "1.0",
       "descripcion": "Los pimientos contienen un porcentaje escaso de proteínas (0,89%) e hidratos de carbono (4,43%), y apenas grasa (0 ,19%). Por ello aportan tan solo 27 kcal/100 g. Contienen pequeñas cantidades de vitaminas del grupo B, de vitamina E y de todos los minerales",
       "recomendacion": "Crudo: Cuando es tierno el pimiento puede servirse crudo en ensalada; en cuyo caso hay que cortarlo finamente y masticarlo bien. De esta forma se aprovecha al máximo su riqueza vitamínica.",
       "recomendacionDos": "Cocinado: La forma más sana de cocinarlo es el asado al horno. Frito resulta bastante indigesto por la gran cantidad de aceite que absorbe. El pimiento forma parte de numerosas recetas culinarias, especialmente de salsas y pistos (con tomate y calabacín).",
@@ -408,6 +439,7 @@
     {
       "id": "32",
       "nombre": "Repollo (col)",
+      "equivalencia": "0.8",
       "descripcion": " Las hojas de las coles contienen una gran variedad de nutrientes:\nProteínas, en porcentaje nada desdeñable que oscila entre el 3,38% de las coles de Bruselas, y el 1,39% de la lombarda\nHidratos de carbono: La mayor parte de las coles contienen entre un 3% y un 5%\nVitaminas: Son especialmente ricas en beta-caroteno (provitamina A) y vitamina C\nMinerales y oligoelementos ",
       "recomendacion": "Cruda: Las hojas tiernas en ensalada, picadas bien finas, y aderezadas con aceite (a ser posible de oliva) y limón. ",
       "recomendacionDos": "Jugo fresco: Se elabora con una licuadora. Tomar de dos cucharadas a medio vaso antes de cada comida (con el estómago vacío), 3 o 4 veces diarias. ",
@@ -421,19 +453,21 @@
     {
       "id": "33",
       "nombre": "Tomate",
+      "equivalencia": "5.0",
       "descripcion": "El jitomate fresco es muy rico en agua (casi un 94% de su peso). Su valor nutritivo reside en su riqueza vitamínica y mineral, así como en las sustancias no nutritivas que contiene. En conjunto contiene 21 kcal/100g",
       "recomendacion": "Crudo: Constituye la forma más saludable de consumir el tomate. ",
       "recomendacionDos": "Jugo y salsa de tomate: Son muy ricos en vitamina C y sales minerales, pero los preparados comercialmente contienen mucha sal y bastantes aditivos que pueden provocar reacciones alérgicas. ",
       "frase": "Protege la próstata",
       "ventaja": "aparato reproductor",
       "avisoTitulo": "El tomate y el ácido oxálico",
-      "aviso": "Durante muchos años se ha estado prohibiendo el tomate a los que padecen cálculos renales, debido a su contenido en ácido oxálico. Esta sustancia junto con el calcio forma sales insolubles (oxalato cálcico), las cuales precipitan en forma de cálculos o piedras.\n\nSin embargo, no hay razón para eliminar el tomate de la dieta de los enfermos renales. Su contenido en ácido oxálico es muy bajo, similar al de muchos otros alimentos e inferior al de la lechuga, el té o las espinacas.\n\nAdemás, el tomate es un buen diurético y depurativo que facilita la función renal. ",
+      "aviso": "Durante muchos años se ha estado prohibiendo el tomate a los que padecen cálculos renales, debido a su contenido en ácido oxálico. Esta sustancia junto con el calcio forma sales insolubles (oxalato cálcico), las cuales precipitan en forma de cálculos o piedras.<br><br>Sin embargo, no hay razón para eliminar el tomate de la dieta de los enfermos renales. Su contenido en ácido oxálico es muy bajo, similar al de muchos otros alimentos e inferior al de la lechuga, el té o las espinacas.<br><br>Además, el tomate es un buen diurético y depurativo que facilita la función renal. ",
       "imgUrl": "v_tomate",
       "backgroud": "#D46A5C"
     },
     {
       "id": "34",
       "nombre": "Zanahoria",
+      "equivalencia": "0.5",
       "descripcion": "La zanahoria contiene una pequeña pero significativa proporción de proteínas, la mitad aproximadamente que la papa o patata. Las grasas están prácticamente ausentes, y los hidratos de carbono suponen el 7,14% de su peso. Es una fuente bastante buena de vitaminas del grupo B, así como de vitaminas e y E",
       "recomendacion": "Cruda: Se presenta en ensalada, entera o rallada y aliñada con limón. Conviene a los niños para fortalecer su dentadura",
       "recomendacionDos": " Cocinada: La zanahoria combina muy bien con las papas (patatas) y con otras hortalizas. Al someterla a cocción adquiere un sabor más dulce. Su riqueza en beta-caroteno se mantiene después de la cocción",

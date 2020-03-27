@@ -4,6 +4,7 @@ public class ReaderFrutas {
 
     private final String id;
     private final String nombre;
+    private final String equivalencia;
     private final String descripcion;
     private final String recomendacion;
     private final String recomendacionDos;
@@ -14,9 +15,10 @@ public class ReaderFrutas {
     private final String imgUrl;
     private final String background;
 
-    public ReaderFrutas(String id, String nombre, String descripcion, String recomendacion, String recomendacionDos, String frase, String ventaja, String avisoTitulo, String aviso, String imgUrl, String background) {
+    public ReaderFrutas(String id, String nombre, String equivalencia, String descripcion, String recomendacion, String recomendacionDos, String frase, String ventaja, String avisoTitulo, String aviso, String imgUrl, String background) {
         this.id = id;
         this.nombre = nombre;
+        this.equivalencia = equivalencia;
         this.descripcion = descripcion;
         this.recomendacion = recomendacion;
         this.recomendacionDos = recomendacionDos;
@@ -34,6 +36,10 @@ public class ReaderFrutas {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public String getEquivalencia() {
+        return equivalencia;
     }
 
     public String getDescripcion() {

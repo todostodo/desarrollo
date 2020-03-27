@@ -81,7 +81,9 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
             public void onClick(View v) {
 
                 Intent i = new Intent(context, frutas_select_activity.class);
+                i.putExtra("fruta_idAlimentos", readerFrutas.get(viewHolder.getAdapterPosition()).getId());
                 i.putExtra("fruta_nombre", readerFrutas.get(viewHolder.getAdapterPosition()).getNombre());
+                i.putExtra("fruta_equivalencia", readerFrutas.get(viewHolder.getAdapterPosition()).getEquivalencia());
                 i.putExtra("fruta_descripcion", readerFrutas.get(viewHolder.getAdapterPosition()).getDescripcion());
                 i.putExtra("fruta_recomendacion", readerFrutas.get(viewHolder.getAdapterPosition()).getRecomendacion());
                 i.putExtra("fruta_recomendacionDos", readerFrutas.get(viewHolder.getAdapterPosition()).getRecomendacionDos());

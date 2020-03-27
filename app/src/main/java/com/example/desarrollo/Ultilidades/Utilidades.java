@@ -216,7 +216,7 @@ public class Utilidades {
     public static final String TABLA_Registro = "Registro";
     public static final String CAMPO_idRegistro = "idreg";
     public static final String CAMPO_idHijoR = "idNino";
-    public static final String CAMPO_FechaRegistro = "fecha";
+    public static final String CAMPO_FechaRegistro = "fechar";
 
     public static final String CREAR_Tabla_Registro =
             "CREATE TABLE " + "" + TABLA_Registro + " (" +
@@ -244,7 +244,7 @@ public class Utilidades {
                     CAMPO_Equivalencia + " REAL NOT NULL, " +
                     CAMPO_Cantidad + " REAL NOT NULL, " +
                     CAMPO_UnidadMedida + " REAL NOT NULL, " +
-                    CAMPO_NumeroRegistro + " INTEGER NOT NULL, "+
+                    CAMPO_NumeroRegistro + " INTEGER NULL, "+
                     CAMPO_HoraRegistro + " TEXT NOT NULL)";// +
                    // "FOREIGN KEY (" + CAMPO_idNinoDetalleRegistro + ") REFERENCES Nino (" + CAMPO_idNinoDetalleRegistro + "))";
                     //"FOREIGN KEY (" + CAMPO_IdAlimento + ") REFERENCES Alimento (" + CAMPO_IdAlimento + "))";

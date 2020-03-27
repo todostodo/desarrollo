@@ -2,6 +2,8 @@ package com.example.desarrollo.Precentacion.Alimentos.Frutas;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.graphics.Color;
@@ -19,9 +21,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.desarrollo.Datos.Calculos;
+import com.example.desarrollo.Datos.MotivadoresDao;
+import com.example.desarrollo.Datos.NinoDao;
+import com.example.desarrollo.Entidades.MotivadoresSelect;
+import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresSelectNino;
 import com.example.desarrollo.R;
 
-import org.w3c.dom.Text;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class frutas_select_activity extends AppCompatActivity {
@@ -35,18 +45,35 @@ public class frutas_select_activity extends AppCompatActivity {
             f_ventaja,
             f_avisoTitulo,
             f_aviso;
-
+    private String
+            f_idAlimento,
+            f_equivalencia,
+            hora,
+            fecha;
+    private int idNino;
     private ImageView f_imagen;
     private RelativeLayout f_fondo;
     private Button _btnRegistrarFruta;
-    private Dialog reaccionHijoDialog;
+    private Dialog reaccionHijoDialog, ninosDialog;
     private TextView _txtCantidadConsumo;
-    private LinearLayout _btnExpandirFrutas;
-    private LinearLayout _frutasExpandirSelect;
-    private LinearLayout _fruta_linearRecomendacionDos;
+    private LinearLayout
+            _btnExpandirFrutas,
+            _frutasExpandirSelect,
+            _fruta_linearRecomendacionDos,
+            _btnTerrible,
+            _btnEstaBien,
+            _btnGenia;
     private RelativeLayout _fruta_relativeAviso;
     private ImageButton _btmCerrarSelectFrutas;
 
+    private Calculos calculos;
+    private NinoDao ninoDao;
+    private MotivadoresDao motivadoresDao;
+    private ArrayList<MotivadoresSelect.MotivadoresNinoDisponible> ninoDisponibleArrayList;
+    private RecyclerView _myRecyclerViewNino;
+    private RecyclerViewMotivadoresSelectNino adapterSelectNino;
+
+    private static final String TAG = "frutas_select_activity";
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -69,19 +96,7 @@ public class frutas_select_activity extends AppCompatActivity {
         _btnRegistrarFruta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (_txtCantidadConsumo.getText().toString().trim().equals("")) {
-                    Toast.makeText(getApplicationContext(), "Ingrese la cantidad de consumo", Toast.LENGTH_SHORT).show();
-                } else {
-
-                    reaccionHijoDialog = new Dialog(frutas_select_activity.this);
-                    reaccionHijoDialog.setCanceledOnTouchOutside(false);
-                    reaccionHijoDialog.setContentView(R.layout.reaccion_consumo_dialog);
-                    reaccionHijoDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                    reaccionHijoDialog.show();
-
-                }
+                registrarFrutaNino();
             }
         });
 
@@ -95,14 +110,122 @@ public class frutas_select_activity extends AppCompatActivity {
         });
     }
 
-    public void cargarDatosFruta() {
+    private void registrarFrutaNino() {
+
+        ninoDisponibleArrayList = new ArrayList<>();
+        motivadoresDao.consultarNino(TAG, this, ninoDisponibleArrayList);
+
+        if (_txtCantidadConsumo.getText().toString().trim().equals("")) {
+            Toast.makeText(getApplicationContext(), "Ingrese la cantidad de consumo", Toast.LENGTH_SHORT).show();
+        } else {
+            int countNino = ninoDao.countNino(TAG, getApplicationContext());
+            Toast.makeText(getApplicationContext(), "Cantidad = " + countNino, Toast.LENGTH_SHORT).show();
+            if (countNino > 1) {
+                ninosDialog = new Dialog(frutas_select_activity.this);
+                ninosDialog.setContentView(R.layout.motivadores_select_nino);
+                ninosDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                ninosDialog.setCanceledOnTouchOutside(false);
+
+                _myRecyclerViewNino = (RecyclerView) ninosDialog.findViewById(R.id.myRecyclerViewMotivadoresSelectNino);
+
+                _myRecyclerViewNino.setLayoutManager(new LinearLayoutManager(this));
+                adapterSelectNino = new RecyclerViewMotivadoresSelectNino(this, ninoDisponibleArrayList);
+                _myRecyclerViewNino.setAdapter(adapterSelectNino);
+
+                final TextView cancelar = (TextView) ninosDialog.findViewById(R.id.btnCancelarSelectNinoMotivador);
+                adapterSelectNino.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        idNino = ninoDisponibleArrayList.get(_myRecyclerViewNino.getChildAdapterPosition(v)).getIdNino();
+                        ninosDialog.dismiss();
+                        cargarReaccionHijoDialog();
+                    }
+                });
+
+                cancelar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ninosDialog.dismiss();
+                    }
+                });
+
+                ninosDialog.show();
+            } else {
+                idNino = ninoDisponibleArrayList.get(0).getIdNino();
+                cargarReaccionHijoDialog();
+            }
+        }
+    }
+
+    private void cargarReaccionHijoDialog() {
+
+        reaccionHijoDialog = new Dialog(frutas_select_activity.this);
+        reaccionHijoDialog.setCanceledOnTouchOutside(false);
+        reaccionHijoDialog.setContentView(R.layout.reaccion_consumo_dialog);
+        reaccionHijoDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        _btnTerrible = (LinearLayout) reaccionHijoDialog.findViewById(R.id.btnTerrible);
+        _btnEstaBien = (LinearLayout) reaccionHijoDialog.findViewById(R.id.btnEstaBien);
+        _btnGenia = (LinearLayout) reaccionHijoDialog.findViewById(R.id.btnGenial);
+
+        _btnTerrible.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registrarAlimento();
+                reaccionHijoDialog.dismiss();
+            }
+        });
+        _btnEstaBien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registrarAlimento();
+                reaccionHijoDialog.dismiss();
+            }
+        });
+        _btnGenia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registrarAlimento();
+                reaccionHijoDialog.dismiss();
+            }
+        });
+
+        reaccionHijoDialog.show();
+    }
+
+    private void registrarAlimento() {
+
+        setHoraFecha();
+
+        boolean insert = calculos.registrarDetalleReg(
+                TAG,
+                this,
+                idNino,
+                Integer.valueOf(f_idAlimento),
+                Double.valueOf(f_equivalencia),
+                Double.valueOf(_txtCantidadConsumo.getText().toString().trim()),
+                hora,
+                fecha
+        );
+        if (insert == true) {
+            _txtCantidadConsumo.setText("");
+            Toast.makeText(this, "Alimento registrado", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void cargarDatosFruta() {
 
         String complemento = "Alimento para";
         String recomendacionDos;
         String ventaja;
         String avisoTitulo;
 
+        f_idAlimento = getIntent().getExtras().getString("fruta_idAlimentos");
         f_nombre.setText(getIntent().getExtras().getString("fruta_nombre"));
+        f_equivalencia = getIntent().getExtras().getString("fruta_equivalencia");
         f_descripcion.setText(getIntent().getExtras().getString("fruta_descripcion"));
         f_recomendacion.setText(getIntent().getExtras().getString("fruta_recomendacion"));
         f_recomendacionDos.setText(getIntent().getExtras().getString("fruta_recomendacionDos"));
@@ -134,7 +257,7 @@ public class frutas_select_activity extends AppCompatActivity {
         if (recomendacionDos.equals("")) {
             _fruta_linearRecomendacionDos.setVisibility(View.GONE);
         }
-        if (!avisoTitulo.equals("")){
+        if (!avisoTitulo.equals("")) {
             f_avisoTitulo.setText(avisoTitulo);
             f_aviso.setText(Html.fromHtml(getIntent().getExtras().getString("fruta_aviso")));
             _fruta_relativeAviso.setVisibility(View.VISIBLE);
@@ -145,7 +268,16 @@ public class frutas_select_activity extends AppCompatActivity {
         Glide.with(this).load(drawableResourceId).into(f_imagen);
     }
 
-    public void init() {
+    private void setHoraFecha() {
+        Date date = new Date();
+        SimpleDateFormat getFecha = new SimpleDateFormat("EEEE d 'de' MMMM 'del' yyyy", Locale.getDefault());
+        SimpleDateFormat getHora = new SimpleDateFormat("h:mm a", Locale.US);
+
+        hora = getHora.format(date);
+        fecha = getFecha.format(date);
+    }
+
+    private void init() {
         f_nombre = (TextView) findViewById(R.id.fruta_nombre);
         f_descripcion = (TextView) findViewById(R.id.fruta_descripcion);
         f_recomendacion = (TextView) findViewById(R.id.fruta_recomendacion);

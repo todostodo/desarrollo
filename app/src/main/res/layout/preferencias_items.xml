@@ -58,13 +58,14 @@
 
     <TextView
         android:id="@+id/nombreFrutaPreferencias"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="@font/roboto_medium"
-        android:text="Fresa"
+        android:text="Calabaza (zapallo)"
         android:textColor="@color/negro"
         android:textSize="18sp"
+        android:gravity="center"
         android:layout_marginTop="110dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

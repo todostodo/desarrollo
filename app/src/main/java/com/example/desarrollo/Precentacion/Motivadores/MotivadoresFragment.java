@@ -228,7 +228,7 @@ public class MotivadoresFragment extends Fragment {
                 .create().show();
     }
 
-    public void cargarMotivadores(int idNino) {
+    private void cargarMotivadores(int idNino) {
 
         procesoList.clear();
         motivadoresDao.consultarMotivadoresProceso(TAG, getContext(), procesoList, idNino);
@@ -246,14 +246,14 @@ public class MotivadoresFragment extends Fragment {
 
     }
 
-    public void setFechayHora(){
+    private void setFechayHora(){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         Date date = new Date();
 
         fecha = dateFormat.format(date);
     }
 
-    public void consultarFichar(int cantidad){
+    private void consultarFichar(int cantidad){
 
         totalFichas = ninoDao.countFichasNino(TAG, getContext());
         if (cantidad < 1) { }

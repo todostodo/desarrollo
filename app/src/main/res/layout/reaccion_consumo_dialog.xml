@@ -32,6 +32,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/btnTerrible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -55,6 +56,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/btnEstaBien"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
@@ -78,6 +80,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/btnGenial"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
