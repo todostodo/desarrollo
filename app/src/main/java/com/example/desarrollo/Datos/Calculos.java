@@ -1,32 +1,17 @@
 package com.example.desarrollo.Datos;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.provider.Settings;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.desarrollo.Ultilidades.Utilidades;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Locale;
-import java.util.TimeZone;
 
-import static com.example.desarrollo.Ultilidades.Utilidades.CAMPO_Cantidad;
-import static com.example.desarrollo.Ultilidades.Utilidades.CAMPO_Equivalencia;
 //import static com.example.desarrollo.Ultilidades.Utilidades.CAMPO_HoraRegistro;
-import static com.example.desarrollo.Ultilidades.Utilidades.CAMPO_HoraRegistro;
-import static com.example.desarrollo.Ultilidades.Utilidades.CAMPO_IdAlimento;
-import static com.example.desarrollo.Ultilidades.Utilidades.CAMPO_NumeroRegistro;
-import static com.example.desarrollo.Ultilidades.Utilidades.CAMPO_Tipo;
-import static com.example.desarrollo.Ultilidades.Utilidades.CAMPO_UnidadMedida;
-import static com.example.desarrollo.Ultilidades.Utilidades.CAMPO_idNinoDetalleRegistro;
-import static com.example.desarrollo.Ultilidades.Utilidades.TABLA_DetalleRegistro;
 
 
 public class Calculos {
@@ -92,34 +77,46 @@ public class Calculos {
         }
     }
 
-    public static String Fecha(){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    public static String getFecha() {
+        SimpleDateFormat getFecha = new SimpleDateFormat("EEEE d 'de' MMMM 'del' yyyy", Locale.getDefault());
         Date date = new Date();
 
-        String fecha = dateFormat.format(date);
+        String fecha = getFecha.format(date);
 
         return fecha;
     }
+    public static String getHora(){
+        SimpleDateFormat getHora = new SimpleDateFormat("h:mm a", Locale.US);
+        Date date = new Date();
+        String hora = getHora.format(date);
+        return hora;
+    }
 
-    public static double ProgresoEsfuerzoFruta(Context context,int idNino){
-        double avaceEsfuerzoFruta=0;
+    public static double progresoEsfuerzoFruta(String TAG, Context context, int idNino) {
+
+        double avaceEsfuerzoFruta = 0;
+
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
 
-            String fecha=Fecha();
+            String fecha = getFecha();
             database = null;
             database = connection.getReadableDatabase();
 
-            Cursor cur = database.rawQuery( "SELECT "+CAMPO_Cantidad+" FROM DetalleReg WHERE "+CAMPO_idNinoDetalleRegistro+"="+idNino+" AND "+CAMPO_Tipo+"='Fruta' AND "+CAMPO_HoraRegistro+"='"+fecha+"'", null);
+            Cursor cur = database.rawQuery("SELECT " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_UnidadMedida + " FROM " + Utilidades.TABLA_DetalleRegistro +
+                    " INNER JOIN " + Utilidades.TABLA_Registro + " ON " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_IdDetalleRegistro +
+                    " WHERE " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idNino + " = " + idNino +
+                    " AND " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + "='Fruta'" +
+                    " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " = '" + fecha + "' ", null);
 
             if (cur.moveToFirst()) {
                 do {
-                    avaceEsfuerzoFruta+=cur.getDouble(0);
+                    avaceEsfuerzoFruta += cur.getDouble(0);
                 } while (cur.moveToNext());
             }
 
         } catch (Exception e) {
-            Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "Error " + e);
         } finally {
             database.close();
         }
@@ -127,31 +124,34 @@ public class Calculos {
     }
 
     //***********************************************************************
-    public static double ProgresoEsfuerzoVerdura(Context context,int idNino){
-        double avaceEsfuerzoVerdura=0;
+    public static double progresoEsfuerzoVerdura(String TAG, Context context, int idNino) {
+        double avaceEsfuerzoVerdura = 0;
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
 
-            String fecha=Fecha();
+            String fecha = getFecha();
             database = null;
             database = connection.getReadableDatabase();
 
-            Cursor cur = database.rawQuery( "SELECT "+CAMPO_Cantidad+" FROM DetalleReg WHERE "+CAMPO_idNinoDetalleRegistro+"="+idNino+" AND "+CAMPO_Tipo+"='Verdura' AND "+CAMPO_HoraRegistro+"='"+fecha+"'", null);
+            Cursor cur = database.rawQuery("SELECT " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_UnidadMedida + " FROM " + Utilidades.TABLA_DetalleRegistro +
+                    " INNER JOIN " + Utilidades.TABLA_Registro + " ON " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_IdDetalleRegistro +
+                    " WHERE " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idNino + " = " + idNino +
+                    " AND " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + "='Verdura'" +
+                    " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " = '" + fecha + "' ", null);
 
             if (cur.moveToFirst()) {
                 do {
-                    avaceEsfuerzoVerdura+=cur.getDouble(0);
+                    avaceEsfuerzoVerdura += cur.getDouble(0);
                 } while (cur.moveToNext());
             }
 
         } catch (Exception e) {
-            Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "Error " + e);
         } finally {
             database.close();
         }
         return avaceEsfuerzoVerdura;
     }
-
 
 
 }

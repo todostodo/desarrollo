@@ -20,6 +20,7 @@ import com.example.desarrollo.R;
 
 
 public class HomeFragment extends Fragment {
+
     private static final String TAG = "HomeFragment";
 
     @Nullable
@@ -33,6 +34,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
 
 
         getView().findViewById(R.id.btmFrutas).setOnClickListener(new View.OnClickListener() {

@@ -5,12 +5,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.example.desarrollo.Entidades.HistorialConsumo;
 import com.example.desarrollo.Entidades.Nino;
-import com.example.desarrollo.Entidades.Preferencias;
+import com.example.desarrollo.ExportJSON.Model.ModelFrutas;
+import com.example.desarrollo.ExportJSON.Reader.ReaderFrutas;
 import com.example.desarrollo.Precentacion.Home.HijoRegistroActivity;
 import com.example.desarrollo.Ultilidades.Utilidades;
 
-import java.sql.PreparedStatement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,6 +21,7 @@ public class NinoDao {
 
     private static SQLiteDatabase database;
     private static HijoRegistroActivity gustos;
+    private static final String TAG = "NinoDao";
 
     public static boolean addNino(String TAG, Context context, int idUsuario, String nombre, String apPaterno, String apMaterno, int edad, Double peso, Double estatura, Double medida, Double lineabultra, Double lineabv, Double leneabf, int totfich, Double esfuerzoultra, Double esfuerzof, Double esfuerzov) {
 
@@ -150,9 +152,55 @@ public class NinoDao {
 
             cursor.close();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.e(TAG, "Error " + e);
-        }finally {
+        } finally {
+            database.close();
+        }
+    }
+
+    public static void consultarItemsHistorialDetalleConsumo(String TAG, Context context, int idNino, ArrayList consumoList) {
+        try {
+            ConexionSQLHelper conection = new ConexionSQLHelper(context);
+            database = null;
+            database = conection.getReadableDatabase();
+            Calculos calculos = new Calculos();
+            HistorialConsumo historialConsumo;
+            ModelFrutas modelFrutas = new ModelFrutas();
+            ArrayList<ReaderFrutas> frutasList;
+
+            String fecha = calculos.getFecha();
+
+            Cursor cursor = database.rawQuery("SELECT " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_IdAlimento + ", " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Cantidad + ", " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + ", " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_HoraRegistro + ", " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_UnidadMedida +
+                    " FROM " + Utilidades.TABLA_DetalleRegistro +
+                    " INNER JOIN " + Utilidades.TABLA_Registro + " ON " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_IdDetalleRegistro +
+                    " WHERE " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idNino + " = " + idNino +
+                    " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " = '" + fecha + "' ", null);
+
+            while (cursor.moveToNext()) {
+                historialConsumo = new HistorialConsumo();
+                frutasList = new ArrayList();
+                modelFrutas.addItemsFromJSONHistorial(frutasList, TAG, cursor.getString(cursor.getColumnIndex("Tipo")), context);
+
+
+                for (int i = 0; i < frutasList.size(); i++) {
+                    if (frutasList.get(i).getId().equals(String.valueOf(cursor.getInt(cursor.getColumnIndex("idalimento"))))) {
+                        historialConsumo.setNombreAlimentos(frutasList.get(i).getNombre());
+                        historialConsumo.setBackgroundAlimento(frutasList.get(i).getBackground());
+                        historialConsumo.setImgUrl(frutasList.get(i).getImgUrl());
+                    }
+                }
+
+                historialConsumo.setCantidadAlimento(cursor.getDouble(cursor.getColumnIndex("cad")));
+                historialConsumo.setHora(cursor.getString(cursor.getColumnIndex("hora")));
+                historialConsumo.setUnidadMedida(cursor.getDouble(cursor.getColumnIndex("umedr")));
+
+                consumoList.add(historialConsumo);
+            }
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error " + e);
+        } finally {
             database.close();
         }
     }

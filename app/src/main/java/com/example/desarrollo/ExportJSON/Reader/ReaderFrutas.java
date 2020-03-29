@@ -2,18 +2,18 @@ package com.example.desarrollo.ExportJSON.Reader;
 
 public class ReaderFrutas {
 
-    private final String id;
-    private final String nombre;
-    private final String equivalencia;
-    private final String descripcion;
-    private final String recomendacion;
-    private final String recomendacionDos;
-    private final String frase;
-    private final String ventaja;
-    private final String avisoTitulo;
-    private final String aviso;
-    private final String imgUrl;
-    private final String background;
+    private String id;
+    private String nombre;
+    private String equivalencia;
+    private String descripcion;
+    private String recomendacion;
+    private String recomendacionDos;
+    private String frase;
+    private String ventaja;
+    private String avisoTitulo;
+    private String aviso;
+    private String imgUrl;
+    private String background;
 
     public ReaderFrutas(String id, String nombre, String equivalencia, String descripcion, String recomendacion, String recomendacionDos, String frase, String ventaja, String avisoTitulo, String aviso, String imgUrl, String background) {
         this.id = id;
@@ -29,6 +29,14 @@ public class ReaderFrutas {
         this.imgUrl = imgUrl;
         this.background = background;
     }
+
+   public ReaderFrutas(String id, String nombre, String equivalencia, String imgUrl, String background){
+        this.id = id;
+        this.nombre = nombre;
+        this.equivalencia = equivalencia;
+        this.imgUrl = imgUrl;
+        this.background = background;
+   }
 
     public String getId() {
         return id;
@@ -79,7 +87,7 @@ public class ReaderFrutas {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return nombre;
     }
 }

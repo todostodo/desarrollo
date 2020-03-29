@@ -46,7 +46,6 @@ public class FrutasFragment extends Fragment {
         init();
         cargarFrutas();
         addItemsJSON();
-
         return view;
     }
 
@@ -90,11 +89,11 @@ public class FrutasFragment extends Fragment {
         });
 
 
-        adapterFrutas = new RecyclerViewAdapterFrutas(getContext(), frutasItem);
+        adapterFrutas = new RecyclerViewAdapterFrutas(getContext(), frutasItem, "Fruta");
         myRecyclerView.setAdapter(adapterFrutas);
     }
     private void addItemsJSON() {
-        modelFrutas.addItemsFromJSON(frutasItem, TAG, "Frutas", getContext());
+        modelFrutas.addItemsFromJSON(frutasItem, TAG, "Fruta", getContext());
     }
 
     private void init(){

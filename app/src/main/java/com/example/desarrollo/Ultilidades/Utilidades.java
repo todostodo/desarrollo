@@ -78,7 +78,7 @@ public class Utilidades {
             "CREATE TABLE " + "" + TABLA_Historial_Autoeficacia + " (" +
                     CAMPO_id_Histo_Auto + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_Id_Usuario + " INTEGER NOT NULL, " +
-                    Respuesta_Auto + " TEXT NOT NULL,"+
+                    Respuesta_Auto + " TEXT NOT NULL," +
                     "FOREIGN KEY (" + CAMPO_Id_Usuario + ") REFERENCES  Usuario(" + CAMPO_Id_Usuario + "))";
     //************************************************************************************************
 
@@ -139,7 +139,7 @@ public class Utilidades {
                     CAMPO_idmsgE + " INTEGER NOT NULL," +
                     CAMPO_Hora_Em + " TEXT NOT NULL," +
                     CAMPO_Fecha_EM + " TEXT NOT NULL," +
-                    "FOREIGN KEY (" + CAMPO_idusu + ") REFERENCES Usuario (" + CAMPO_idusu + "),"+
+                    "FOREIGN KEY (" + CAMPO_idusu + ") REFERENCES Usuario (" + CAMPO_idusu + ")," +
                     "FOREIGN KEY (" + CAMPO_idmsgE + ") REFERENCES Mensajes_Persuasivos (" + CAMPO_idmsgE + "))";
     //*********************************************************************************************************************
 
@@ -191,7 +191,7 @@ public class Utilidades {
                     CAMPO_TotalFichas + " INTEGER NOT NULL," +
                     CAMPO_EsfuerzoUltraprocesado + " REAL NOT NULL," +
                     CAMPO_EsfuerzoFruta + " REAL NOT NULL," +
-                    CAMPO_EsfuerzoVerdura + " REAL NOT NULL,"+
+                    CAMPO_EsfuerzoVerdura + " REAL NOT NULL," +
                     "FOREIGN KEY (" + CAMPO_idUsuarioN + ") REFERENCES Usuario(" + CAMPO_idUsuarioN + "))";
 
     //Constantes para campos de la tabla CanjeFi
@@ -245,11 +245,9 @@ public class Utilidades {
                     CAMPO_Equivalencia + " REAL NOT NULL, " +
                     CAMPO_Cantidad + " REAL NOT NULL, " +
                     CAMPO_UnidadMedida + " REAL NOT NULL, " +
-                    CAMPO_NumeroRegistro + " INTEGER NULL, "+
-                    CAMPO_Tipo + " INTEGER NOT NULL, "+
-                    CAMPO_HoraRegistro + " TEXT NOT NULL)";// +
-                   // "FOREIGN KEY (" + CAMPO_idNinoDetalleRegistro + ") REFERENCES Nino (" + CAMPO_idNinoDetalleRegistro + "))";
-                    //"FOREIGN KEY (" + CAMPO_IdAlimento + ") REFERENCES Alimento (" + CAMPO_IdAlimento + "))";
+                    CAMPO_NumeroRegistro + " INTEGER NULL, " +
+                    CAMPO_Tipo + " TEXT NOT NULL, " +
+                    CAMPO_HoraRegistro + " TEXT NOT NULL)";
 
 
     //CONSTANTES PARA CAMPOS DE LA TABLA TUTORES

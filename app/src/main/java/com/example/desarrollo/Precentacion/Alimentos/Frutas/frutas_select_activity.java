@@ -49,7 +49,8 @@ public class frutas_select_activity extends AppCompatActivity {
             f_idAlimento,
             f_equivalencia,
             hora,
-            fecha;
+            fecha,
+            tipoAlimento;
     private int idNino;
     private ImageView f_imagen;
     private RelativeLayout f_fondo;
@@ -206,7 +207,8 @@ public class frutas_select_activity extends AppCompatActivity {
                 Double.valueOf(f_equivalencia),
                 Double.valueOf(_txtCantidadConsumo.getText().toString().trim()),
                 hora,
-                fecha
+                fecha,
+                tipoAlimento
         );
         if (insert == true) {
             _txtCantidadConsumo.setText("");
@@ -234,6 +236,7 @@ public class frutas_select_activity extends AppCompatActivity {
         f_fondo.setBackgroundColor(Color.parseColor(getIntent().getExtras().getString("fruta_fondo")));
         f_frase.setText(getIntent().getExtras().getString("fruta_frase"));
         recomendacionDos = getIntent().getExtras().getString("fruta_recomendacionDos");
+        tipoAlimento = getIntent().getExtras().getString("fruta_tipoAlimento");
 
         if (ventaja.equals("corazón") || ventaja.equals("intestino") || ventaja.equals("aparato urinario") || ventaja.equals("aparato digestivo") || ventaja.equals("estómago") || ventaja.equals("sistema nervioso") || ventaja.equals("aparato reproductor")) {
             f_ventaja.setText(complemento + " el " + ventaja);
@@ -269,12 +272,9 @@ public class frutas_select_activity extends AppCompatActivity {
     }
 
     private void setHoraFecha() {
-        Date date = new Date();
-        SimpleDateFormat getFecha = new SimpleDateFormat("EEEE d 'de' MMMM 'del' yyyy", Locale.getDefault());
-        SimpleDateFormat getHora = new SimpleDateFormat("h:mm a", Locale.US);
-
-        hora = getHora.format(date);
-        fecha = getFecha.format(date);
+        Calculos calculos = new Calculos();
+        hora = calculos.getHora();
+        fecha = calculos.getFecha();
     }
 
     private void init() {

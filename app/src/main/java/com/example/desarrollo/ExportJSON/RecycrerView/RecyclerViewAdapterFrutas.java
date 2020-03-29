@@ -31,18 +31,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements Filterable {
-    Context context;
-    List<ReaderFrutas> readerFrutas;
-    ArrayList meGusta = new ArrayList();
-    public ArrayList<ReaderFrutas> currentList;
-    FilterHelperFrutas filterHelper;
+    private Context context;
+    private List<ReaderFrutas> readerFrutas;
+    private String tipoAlimento;
+    private ArrayList meGusta = new ArrayList();
+    private ArrayList<ReaderFrutas> currentList;
+    private FilterHelperFrutas filterHelper;
 
     private static final String TAG = "RecyclerViewAdapterFrut";
 
-    public RecyclerViewAdapterFrutas(Context context, ArrayList<ReaderFrutas> readerFrutas) {
+    public RecyclerViewAdapterFrutas(Context context, ArrayList<ReaderFrutas> readerFrutas, String tipoAlimento) {
         this.context = context;
         this.readerFrutas = readerFrutas;
         this.currentList = readerFrutas;
+        this.tipoAlimento = tipoAlimento;
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
@@ -93,6 +95,7 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
                 i.putExtra("fruta_aviso", readerFrutas.get(viewHolder.getAdapterPosition()).getAviso());
                 i.putExtra("fruta_imagen", readerFrutas.get(viewHolder.getAdapterPosition()).getImgUrl());
                 i.putExtra("fruta_fondo", readerFrutas.get(viewHolder.getAdapterPosition()).getBackground());
+                i.putExtra("fruta_tipoAlimento", tipoAlimento);
 
 
                 context.startActivity(i);

@@ -18,6 +18,7 @@ import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.ExportJSON.Model.ModelFrutas;
 import com.example.desarrollo.ExportJSON.Reader.ReaderFrutas;
 import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewAdapterFrutas;
+import com.example.desarrollo.Precentacion.Alimentos.Frutas.frutas_select_activity;
 import com.example.desarrollo.R;
 
 import java.util.ArrayList;
@@ -90,12 +91,12 @@ public class VerdurasFragment extends Fragment {
             }
         });
 
-        adapterFrutas = new RecyclerViewAdapterFrutas(getContext(), verdurasItem);
+        adapterFrutas = new RecyclerViewAdapterFrutas(getContext(), verdurasItem, "Verdura");
         _myRecyclerViewVerduras.setAdapter(adapterFrutas);
     }
 
     private void addItemsJSON() {
-        modelFrutas.addItemsFromJSON(verdurasItem, TAG, "Verduras", getContext());
+        modelFrutas.addItemsFromJSON(verdurasItem, TAG, "Verdura", getContext());
     }
 
     private void init(){

@@ -8,15 +8,6 @@ public class Tutor {
     private String parentesto;
     private int contraTutor;
 
-    public Tutor(int idTutor, String nombreTutor, String apellidoPTutor, String apellidoMTutor, String parentesto, int contraTutor) {
-        this.idTutor = idTutor;
-        this.nombreTutor = nombreTutor;
-        this.apellidoPTutor = apellidoPTutor;
-        this.apellidoMTutor = apellidoMTutor;
-        this.parentesto = parentesto;
-        this.contraTutor = contraTutor;
-    }
-
     public Tutor(){}
 
     public int getIdTutor() {

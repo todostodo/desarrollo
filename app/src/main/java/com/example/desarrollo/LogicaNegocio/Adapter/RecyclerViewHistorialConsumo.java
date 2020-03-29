@@ -1,14 +1,22 @@
 package com.example.desarrollo.LogicaNegocio.Adapter;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.os.Build;
+import android.print.PrinterId;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.desarrollo.Entidades.HistorialConsumo;
 import com.example.desarrollo.R;
 
@@ -24,12 +32,14 @@ public class RecyclerViewHistorialConsumo extends RecyclerView.Adapter<RecyclerV
         this.consumoList = consumoList;
     }
 
-    public class ItemViewHolder extends RecyclerView.ViewHolder{
+    public class ItemViewHolder extends RecyclerView.ViewHolder {
 
         TextView nombre;
         TextView consumo;
         TextView hora;
-        TextView verMas;
+        TextView porciones;
+        LinearLayout backgroundAlimento;
+        ImageView imgUrlAlimento;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -37,8 +47,9 @@ public class RecyclerViewHistorialConsumo extends RecyclerView.Adapter<RecyclerV
             nombre = (TextView) itemView.findViewById(R.id.txtHrNombre);
             consumo = (TextView) itemView.findViewById(R.id.txtHrConsumo);
             hora = (TextView) itemView.findViewById(R.id.txtHRHora);
-
-            verMas = (TextView) itemView.findViewById(R.id.btnHrMasDetalle);
+            porciones = (TextView) itemView.findViewById(R.id.txtHrPorciones);
+            backgroundAlimento = (LinearLayout) itemView.findViewById(R.id.backgroundHrFrutas);
+            imgUrlAlimento = (ImageView) itemView.findViewById(R.id.imgUrlHrFrutas);
 
         }
     }
@@ -56,6 +67,7 @@ public class RecyclerViewHistorialConsumo extends RecyclerView.Adapter<RecyclerV
         return viewHolder;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
@@ -63,13 +75,27 @@ public class RecyclerViewHistorialConsumo extends RecyclerView.Adapter<RecyclerV
         HistorialConsumo historialConsumo = this.consumoList.get(position);
 
         viewHolder.nombre.setText(historialConsumo.getNombreAlimentos());
-        viewHolder.consumo.setText(historialConsumo.getConsumo());
+        viewHolder.consumo.setText("Cantidad cosumido: " + String.valueOf(historialConsumo.getCantidadAlimento()));
+        viewHolder.porciones.setText("Equivalente a porciones: " + String.valueOf(historialConsumo.getUnidadMedida()));
         viewHolder.hora.setText(historialConsumo.getHora());
+
+        viewHolder.backgroundAlimento.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(historialConsumo.getBackgroundAlimento())));
+        Glide
+                .with(viewHolder.imgUrlAlimento.getContext())
+                .load(getImage(historialConsumo.getImgUrl()))
+                .into(viewHolder.imgUrlAlimento);
 
     }
 
     @Override
     public int getItemCount() {
         return consumoList.size();
+    }
+
+    private int getImage(String imageName) {
+
+        int drawableResourceId = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
+
+        return drawableResourceId;
     }
 }

@@ -3,9 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="110dp"
+    android:layout_height="wrap_content"
     app:cardElevation="1dp"
-    android:background="@color/blanco"
+    android:background="@color/BackgroundColorGris"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
     android:layout_marginBottom="10dp">
 
     <LinearLayout
@@ -18,16 +20,22 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/rectangulo_morado"
-                android:layout_marginTop="15dp"
-                android:text="+2"
-                android:textSize="20sp"
-                android:textColor="@color/blanco"
-                android:gravity="center"
-                android:fontFamily="@font/roboto_medium"/>
+            <LinearLayout
+                android:id="@+id/backgroundHrFrutas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/background_valor_motivadores"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/imgUrlHrFrutas"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/f_platano" />
+
+            </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -42,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
+                    android:textColor="#515151"
                     android:fontFamily="@font/roboto_regular"
                     android:text="6:00 AM"
                     android:textSize="16sp" />
@@ -53,7 +61,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:layout_alignParentBottom="true"
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
@@ -63,31 +70,29 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
                         android:text="Frutas"
-                        android:textColor="@color/negro"
-                        android:textSize="18sp"/>
+                        android:textColor="#515151"
+                        android:textSize="16sp"/>
 
                     <TextView
                         android:id="@+id/txtHrConsumo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:singleLine="true"
-                        android:fontFamily="@font/roboto_medium"
+                        android:fontFamily="@font/roboto_regular"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="20dp"
                         android:text="Manzana, Platano, Pera, Manzana, Platano man"
-                        android:textColor="@color/gris"
-                        android:textSize="16sp" />
+                        android:textColor="#B3B3B3"
+                        android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/btnHrMasDetalle"
+                        android:id="@+id/txtHrPorciones"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_medium"
-                        android:layout_marginTop="5dp"
-                        android:text="Mas detalle"
-                        android:textColor="#9C7BFE"
-                        android:textSize="16sp"/>
+                        android:fontFamily="@font/roboto_regular"
+                        android:layout_marginRight="20dp"
+                        android:text="Manzana, Platano, Pera, Manzana, Platano man"
+                        android:textColor="#B3B3B3"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 

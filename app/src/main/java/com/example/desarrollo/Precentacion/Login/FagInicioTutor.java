@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.desarrollo.Datos.TutorDao;
-import com.example.desarrollo.Datos.UserDao;
 import com.example.desarrollo.Precentacion.MainActivity;
 import com.example.desarrollo.R;
 
@@ -85,7 +84,7 @@ public class FagInicioTutor extends Fragment {
             @Override
             public void onClick(View v) {
 
-                int res= TutorDao.consultaTotorCorreo(getContext(),_txtUsuario.getText().toString(),_txtPassword.getText().toString());
+                int res= TutorDao.consultaTutorCorreo(getContext(),_txtUsuario.getText().toString(),_txtPassword.getText().toString());
                 if(res == 1){
                     Intent intent = new Intent(getContext(), MainActivity.class);
                     startActivity(intent);

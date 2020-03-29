@@ -22,11 +22,11 @@ import java.util.ArrayList;
 public class ModelFrutas extends AppCompatActivity {
 
 
-    public void addItemsFromJSON(ArrayList arrayList, String TAG, String nombreChatarra, Context context) {
+    public void addItemsFromJSON(ArrayList arrayList, String TAG, String nombreAlimento, Context context) {
         try {
             String jsonDataString = readJSONDataFromFile(context);
             JSONObject object = new JSONObject(jsonDataString);
-            JSONArray jsonArray = object.optJSONArray(nombreChatarra);
+            JSONArray jsonArray = object.optJSONArray(nombreAlimento);
 
             for (int i=0; i<jsonArray.length(); ++i) {
 
@@ -52,6 +52,32 @@ public class ModelFrutas extends AppCompatActivity {
         } catch (JSONException | IOException e) {
             Log.d(TAG, "addItemsFromJSON: ", e);
         }
+    }
+
+    public void addItemsFromJSONHistorial(ArrayList arrayList, String TAG, String nombreAlimento, Context context){
+        try {
+            String jsonDataString = readJSONDataFromFile(context);
+            JSONObject object = new JSONObject(jsonDataString);
+            JSONArray jsonArray = object.optJSONArray(nombreAlimento);
+
+            for (int i=0; i<jsonArray.length(); ++i) {
+
+                JSONObject itemObj = jsonArray.getJSONObject(i);
+
+                String id = itemObj.getString("id");
+                String nombre = itemObj.getString("nombre");
+                String equivalencia = itemObj.getString("equivalencia");
+                String imgUrl = itemObj.getString("imgUrl");
+                String background = itemObj.getString("backgroud");
+
+                ReaderFrutas readerFrutas = new ReaderFrutas(id, nombre, equivalencia, imgUrl, background);
+                arrayList.add(readerFrutas);
+            }
+
+        } catch (JSONException | IOException e) {
+            Log.d(TAG, "addItemsFromJSON: ", e);
+        }
+        ///return arrayList;
     }
 
     private String readJSONDataFromFile(Context context) throws IOException {
