@@ -1,6 +1,7 @@
 package com.example.desarrollo.Datos;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -14,8 +15,11 @@ import com.example.desarrollo.Ultilidades.Utilidades;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class NinoDao {
 
@@ -66,6 +70,42 @@ public class NinoDao {
 
 
             database.execSQL(inset);
+
+            SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
+            int inpre = preferenc.getInt("instalacion", 0);
+            if(inpre ==0){
+                TimeZone timezone = TimeZone.getDefault();
+                Calendar calendar = new GregorianCalendar(timezone);
+                int dias = calendar.get(Calendar.DAY_OF_WEEK);
+                String fecha=Calculos.getFecha();
+                SharedPreferences.Editor editor = preferenc.edit();
+                editor.putInt("instalacion", 1);
+                editor.putInt("dia", dias);
+                editor.putInt("llave", 0);
+                editor.putInt("queEs", 0);
+                editor.putInt("LB", 0);
+                editor.putInt("pase", 1);
+                editor.putInt("seguro", 0);
+                editor.putInt("llaveLBF1", 0);
+                editor.putInt("llaveLBF2", 0);
+                editor.putInt("llaveLBV1", 0);
+                editor.putInt("llaveLBV2", 0);
+                editor.putString("FechaInicio",fecha);
+                editor.putString("FechaFin","");
+                editor.putString("valLBF1","");
+                editor.putString("valLBF2","");
+                editor.putString("esfuerzoF1","");
+                editor.putString("esfuerzoF2","");
+                editor.putString("valLBV1","");
+                editor.putString("valLBV2","");
+                editor.putString("esfuerzoV1","");
+                editor.putString("esfuerzoV2","");
+                editor.putInt("llaveESF1", 0);
+                editor.putInt("llaveESF2", 0);
+                editor.putInt("llaveESV1", 0);
+                editor.putInt("llaveESV 2", 0);
+                editor.commit();
+            }
 
             String getId = "SELECT last_insert_rowid();";
             Cursor c = database.rawQuery(getId, null);
