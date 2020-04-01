@@ -16,9 +16,6 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
-//import static com.example.desarrollo.Ultilidades.Utilidades.CAMPO_HoraRegistro;
-
-
 public class Calculos {
 
     private static SQLiteDatabase database;
@@ -90,7 +87,8 @@ public class Calculos {
 
         return fecha;
     }
-    public static String getHora(){
+
+    public static String getHora() {
         SimpleDateFormat getHora = new SimpleDateFormat("h:mm a", Locale.US);
         Date date = new Date();
         String hora = getHora.format(date);
@@ -158,7 +156,7 @@ public class Calculos {
         return avaceEsfuerzoVerdura;
     }
 
-    public static double generaLBF(Context context,int idNino) {
+    public static double generaLBF(Context context, int idNino) {
 
         double retorno = 0;
         double sumatoria = 0;
@@ -171,8 +169,8 @@ public class Calculos {
         Calendar calendar = new GregorianCalendar(timezone);
         int dias = calendar.get(Calendar.DAY_OF_WEEK);
 
-        int a= dia-dias;
-        if(a==1) {
+        int a = dia - dias;
+        if (a == 1) {
             int inpre = 7;
             if (idNino == 1) {
                 inpre = preferenc.getInt("llaveLBF1", 0);
@@ -217,7 +215,7 @@ public class Calculos {
                             editor.putString("esfuerzoF1", "" + sumatoria);
                             int llave1 = preferenc.getInt("llaveLBF1", 0);
                             int llave2 = preferenc.getInt("llaveLBF2", 0);
-                            if(llave1==1 && llave2 ==1){
+                            if (llave1 == 1 && llave2 == 1) {
                                 editor.remove("FechaInicio");
                                 editor.putString("FechaInicio", "" + fecha);
                             }
@@ -234,7 +232,7 @@ public class Calculos {
                             editor.putString("esfuerzoF2", "" + sumatoria);
                             int llave1 = preferenc.getInt("llaveLBF1", 0);
                             int llave2 = preferenc.getInt("llaveLBF2", 0);
-                            if(llave1==1 && llave2 ==1){
+                            if (llave1 == 1 && llave2 == 1) {
                                 editor.remove("FechaInicio");
                                 editor.putString("FechaInicio", "" + fecha);
                             }
@@ -255,20 +253,20 @@ public class Calculos {
                 }
 
             }
-        }else{
-            String che="";
+        } else {
+            String che = "";
             if (idNino == 1) {
                 che = preferenc.getString("valLBF1", "");
             } else if (idNino == 2) {
                 che = preferenc.getString("valLBF2", "");
             }
-            double resultado=Double.parseDouble(che);
-            retorno=resultado;
+            double resultado = Double.parseDouble(che);
+            retorno = resultado;
         }
         return retorno;
     }
 
-    public static double generaLBV(Context context,int idNino) {
+    public static double generaLBV(Context context, int idNino) {
 
         double retorno = 0;
         double sumatoria = 0;
@@ -281,8 +279,8 @@ public class Calculos {
         Calendar calendar = new GregorianCalendar(timezone);
         int dias = calendar.get(Calendar.DAY_OF_WEEK);
 
-        int a= dia-dias;
-        if(a==1) {
+        int a = dia - dias;
+        if (a == 1) {
             int inpre = 7;
             if (idNino == 1) {
                 inpre = preferenc.getInt("llaveLBV1", 0);
@@ -325,7 +323,7 @@ public class Calculos {
                             editor.putString("esfuerzoV1", "" + sumatoria);
                             int llave1 = preferenc.getInt("llaveLBV1", 0);
                             int llave2 = preferenc.getInt("llaveLBV2", 0);
-                            if(llave1==1 && llave2 ==1){
+                            if (llave1 == 1 && llave2 == 1) {
                                 editor.remove("FechaInicio");
                                 editor.putString("FechaInicio", "" + fecha);
                             }
@@ -340,7 +338,7 @@ public class Calculos {
                             editor.putString("esfuerzoV2", "" + sumatoria);
                             int llave1 = preferenc.getInt("llaveLBV1", 0);
                             int llave2 = preferenc.getInt("llaveLBV2", 0);
-                            if(llave1==1 && llave2 ==1){
+                            if (llave1 == 1 && llave2 == 1) {
                                 editor.remove("FechaInicio");
                                 editor.putString("FechaInicio", "" + fecha);
                             }
@@ -360,21 +358,22 @@ public class Calculos {
                 }
 
             }
-        }else{
-            String che="";
+        } else {
+            String che = "";
             if (idNino == 1) {
                 che = preferenc.getString("valLBV1", "");
             } else if (idNino == 2) {
                 che = preferenc.getString("valLBV2", "");
             }
-            double resultado=Double.parseDouble(che);
-            retorno=resultado;
+            double resultado = Double.parseDouble(che);
+            retorno = resultado;
         }
         return retorno;
     }
 
-    public static double EsfuerzoF(Context context,int idNino){
-        double retorno=0;
+    public static double EsfuerzoF(Context context, int idNino) {
+
+        double lineaBaseFruta = 0;
         double sumatoria = 0;
 
         SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
@@ -384,22 +383,21 @@ public class Calculos {
         Calendar calendar = new GregorianCalendar(timezone);
         int dias = calendar.get(Calendar.DAY_OF_WEEK);
 
-        if(dia!=dias){
+        if (dia != dias) {
             SharedPreferences.Editor editor = preferenc.edit();
             editor.remove("pase");
             editor.putInt("pase", 0);
             editor.commit();
         }
         int pase = preferenc.getInt("pase", 0);
-        if(pase==0){
-            int a=dias-dia;
-            if(dia==dias){
+        if (pase == 0) {
+            int a = dias - dia;
+            if (dia == dias) {
                 SharedPreferences.Editor editor = preferenc.edit();
                 editor.remove("FechaFin");
                 editor.putString("FechaFin", getFecha());
                 editor.commit();
-            }
-            else if(a==1){
+            } else if (a == 1) {
                 SharedPreferences.Editor editor = preferenc.edit();
                 editor.remove("pase");
                 editor.putInt("pase", 1);
@@ -446,7 +444,7 @@ public class Calculos {
                         editor.remove("FechaInicio");
                         editor.putString("FechaInicio", "" + getFecha());
                         editor.commit();
-                        retorno = sumatoria;
+                        lineaBaseFruta = sumatoria;
 
 
                     } else {
@@ -459,33 +457,34 @@ public class Calculos {
                     database.close();
                 }
 
-            }else{
-                String che="";
+            } else {
+                String che = "";
                 if (idNino == 1) {
                     che = preferenc.getString("esfuerzoF1", "");
                 } else if (idNino == 2) {
                     che = preferenc.getString("esfuerzoF2", "");
                 }
-                double resultado=Double.parseDouble(che);
-                retorno=resultado;
+                double resultado = Double.parseDouble(che);
+                lineaBaseFruta = resultado;
             }
-        }else{
-            String che="";
+        } else {
+            String che = "";
             if (idNino == 1) {
                 che = preferenc.getString("esfuerzoF1", "");
             } else if (idNino == 2) {
                 che = preferenc.getString("esfuerzoF2", "");
             }
-            double resultado=Double.parseDouble(che);
-            retorno=resultado;
+            double resultado = Double.parseDouble(che);
+            lineaBaseFruta = resultado;
         }
 
 
-        return retorno;
+        return lineaBaseFruta;
     }
 
-    public static double EsfuerzoV(Context context,int idNino){
-        double retorno=0;
+    public static double EsfuerzoV(Context context, int idNino) {
+
+        double retorno = 0;
         double sumatoria = 0;
 
         SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
@@ -495,22 +494,21 @@ public class Calculos {
         Calendar calendar = new GregorianCalendar(timezone);
         int dias = calendar.get(Calendar.DAY_OF_WEEK);
 
-        if(dia!=dias){
+        if (dia != dias) {
             SharedPreferences.Editor editor = preferenc.edit();
             editor.remove("pase");
             editor.putInt("pase", 0);
             editor.commit();
         }
         int pase = preferenc.getInt("pase", 0);
-        if(pase==0){
-            int a=dias-dia;
-            if(dia==dias){
+        if (pase == 0) {
+            int a = dias - dia;
+            if (dia == dias) {
                 SharedPreferences.Editor editor = preferenc.edit();
                 editor.remove("FechaFin");
                 editor.putString("FechaFin", getFecha());
                 editor.commit();
-            }
-            else if(a==1){
+            } else if (a == 1) {
                 SharedPreferences.Editor editor = preferenc.edit();
                 editor.remove("pase");
                 editor.putInt("pase", 1);
@@ -570,30 +568,28 @@ public class Calculos {
                     database.close();
                 }
 
-            }else{
-                String che="";
+            } else {
+                String che = "";
                 if (idNino == 1) {
                     che = preferenc.getString("esfuerzoV1", "");
                 } else if (idNino == 2) {
                     che = preferenc.getString("esfuerzoV2", "");
                 }
-                double resultado=Double.parseDouble(che);
-                retorno=resultado;
+                double resultado = Double.parseDouble(che);
+                retorno = resultado;
             }
-        }else{
-            String che="";
+        } else {
+            String che = "";
             if (idNino == 1) {
                 che = preferenc.getString("esfuerzoV1", "");
             } else if (idNino == 2) {
                 che = preferenc.getString("esfuerzoV2", "");
             }
-            double resultado=Double.parseDouble(che);
-            retorno=resultado;
+            double resultado = Double.parseDouble(che);
+            retorno = resultado;
         }
 
 
         return retorno;
     }
-
-
 }

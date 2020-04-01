@@ -26,9 +26,10 @@
         app:labelVisibilityMode="unlabeled"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
         android:foreground="?android:attr/selectableItemBackground"
-        app:itemIconTint="@drawable/custom_buttom_navigation_selected"
-        app:itemTextColor="#D5DCE2"
-        app:menu="@menu/menu_navegacion">
+        app:menu="@menu/menu_navegacion"
+        app:itemIconTint="@drawable/buttom_navigation_selected"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
@@ -36,4 +37,5 @@
 
 </RelativeLayout>
 
-<!--android:background="?android:attr/windowBackground" -->
+<!--android:background="?android:attr/windowBackground"
+ app:itemIconTint="@drawable/buttom_navigation_selected"-->

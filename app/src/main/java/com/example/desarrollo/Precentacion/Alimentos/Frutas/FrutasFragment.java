@@ -47,6 +47,7 @@ public class FrutasFragment extends Fragment {
         cargarFrutas();
         addItemsJSON();
         return view;
+
     }
 
     private void cargarFrutas(){
@@ -101,4 +102,5 @@ public class FrutasFragment extends Fragment {
         mySearchView = (SearchView) view.findViewById(R.id.mySearchView);
         _tituloFrutas = (TextView) view.findViewById(R.id.tituloFrutas);
     }
+
 }

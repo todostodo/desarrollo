@@ -105,7 +105,6 @@ public class HomeFragment extends Fragment {
     private void loadFragment(Fragment fragment) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.fragmentContainer, fragment);
-        ft.addToBackStack(null);
         ft.commit();
     }
 }

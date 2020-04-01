@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
         Date date = new Date();
         DateFormat hora = new SimpleDateFormat("HH:mm:ss");
         inicio = "" + hora.format(date);
@@ -72,29 +71,26 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()) {
 
-                case R.id.menu_home:
-                    loadFragment(homeFragment);
-                    return true;
+                        case R.id.menu_home:
+                            loadFragment(homeFragment);
+                            return true;
 
-                case R.id.menu_motivadores:
-                    loadFragment(motivadoresFragment);
-                    return true;
-            }
-            return false;
-        }
-    };
-
-    //Desmadre
+                        case R.id.menu_motivadores:
+                            loadFragment(motivadoresFragment);
+                            return true;
+                    }
+                    return false;
+                }
+            };
 
     private void loadFragment(Fragment fragment) {
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragmentContainer, fragment);
-        //ft.addToBackStack(null);
         ft.commit();
     }
 
