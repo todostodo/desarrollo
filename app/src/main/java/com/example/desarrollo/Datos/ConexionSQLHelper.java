@@ -54,7 +54,7 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
 
         db.execSQL(Utilidades.CREAR_TABLA_GustoFruta);
 
-        db.execSQL(Utilidades.CREAR_TABLA_GustoVerdura);
+       db.execSQL(Utilidades.CREAR_TABLA_GustoVerdura);
 
         insertMotivadoresDefault(db);
 

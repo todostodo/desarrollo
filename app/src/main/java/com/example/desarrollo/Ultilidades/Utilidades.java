@@ -245,7 +245,7 @@ public class Utilidades {
                     CAMPO_Equivalencia + " REAL NOT NULL, " +
                     CAMPO_Cantidad + " REAL NOT NULL, " +
                     CAMPO_UnidadMedida + " REAL NOT NULL, " +
-                    CAMPO_NumeroRegistro + " INTEGER NULL, " +
+                    //CAMPO_NumeroRegistro + " INTEGER NULL, " +
                     CAMPO_Tipo + " TEXT NOT NULL, " +
                     CAMPO_HoraRegistro + " TEXT NOT NULL)";
 
