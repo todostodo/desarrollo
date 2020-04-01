@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import com.example.desarrollo.Datos.Calculos;
 import com.example.desarrollo.Datos.ConexionSQLHelper;
+import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Datos.TutorDao;
 import com.example.desarrollo.Precentacion.Home.HomeFragment;
 
@@ -54,6 +55,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        Calculos.EsfuerzoF(this,1);
+        Calculos.EsfuerzoF(this,2);
+        Calculos.EsfuerzoV(this,1);
+        Calculos.EsfuerzoV(this,2);
+        Calculos.EsfuerzoUP(this,1);
+        Calculos.EsfuerzoUP(this,2);
+        Calculos.generaLBUlPro(this,1);
+        Calculos.generaLBUlPro(this,2);
+        Calculos.generaLBF(this,1);
+        Calculos.generaLBF(this,2);
+        Calculos.generaLBV(this,1);
+        Calculos.generaLBV(this,2);
+
+
+     //   System.out.println("Cambio : "+Calculos.KaloriaCambio(this,1));
+      //  System.out.println("Fijo : "+Calculos.KaloriaFija(this,1));
 
         Date date = new Date();
         DateFormat hora = new SimpleDateFormat("HH:mm:ss");

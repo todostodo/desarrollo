@@ -64,13 +64,13 @@ public class Calculos {
                     Tipo + "', '" +
                     Horaregistro + "')";
 
-            String insertRegistro = "INSERT INTO " + Utilidades.TABLA_Registro + " (" +
+          /*  String insertRegistro = "INSERT INTO " + Utilidades.TABLA_Registro + " (" +
                     Utilidades.CAMPO_idNino + ", " +
                     Utilidades.CAMPO_FechaRegistro + ") " +
-                    "VALUES (" + idNino + ", '" + fecha + "')";
+                    "VALUES (" + idNino + ", '" + fecha + "')";*/
 
             database.execSQL(insetDetalleRegistro);
-            database.execSQL(insertRegistro);
+           // database.execSQL(insertRegistro);
 
             return true;
 
@@ -158,21 +158,28 @@ public class Calculos {
         return avaceEsfuerzoVerdura;
     }
 
-    public static double generaLBF(Context context,int idNino) {
+    public static void generaLBF(Context context,int idNino) {
 
         double retorno = 0;
         double sumatoria = 0;
 
         SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
-        int llave = preferenc.getInt("llave", 0);
+        int llave = preferenc.getInt("llave1", 0);
         int dia = preferenc.getInt("dia", 0);
 
         TimeZone timezone = TimeZone.getDefault();
         Calendar calendar = new GregorianCalendar(timezone);
         int dias = calendar.get(Calendar.DAY_OF_WEEK);
 
-        int a= dia-dias;
-        if(a==1) {
+
+        if (dia == dias) {
+            int pase = preferenc.getInt("pase1", 0);
+            if(pase==0) {
+                if(llave==0){
+                    SharedPreferences.Editor edito = preferenc.edit();
+                    edito.remove("llave1");
+                    edito.putInt("llave1", 1);
+                    edito.commit();
             int inpre = 7;
             if (idNino == 1) {
                 inpre = preferenc.getInt("llaveLBF1", 0);
@@ -211,16 +218,6 @@ public class Calculos {
                             editor.putInt("llaveLBF1", 1);
                             editor.remove("llaveESF1");
                             editor.putInt("llaveESF1", 1);
-                            editor.remove("valLBF1");
-                            editor.putString("valLBF1", "" + sumatoria);
-                            editor.remove("esfuerzoF1");
-                            editor.putString("esfuerzoF1", "" + sumatoria);
-                            int llave1 = preferenc.getInt("llaveLBF1", 0);
-                            int llave2 = preferenc.getInt("llaveLBF2", 0);
-                            if(llave1==1 && llave2 ==1){
-                                editor.remove("FechaInicio");
-                                editor.putString("FechaInicio", "" + fecha);
-                            }
                             editor.commit();
                         } else if (idNino == 2) {
                             SharedPreferences.Editor editor = preferenc.edit();
@@ -228,21 +225,11 @@ public class Calculos {
                             editor.putInt("llaveLBF2", 1);
                             editor.remove("llaveESF2");
                             editor.putInt("llaveESF2", 1);
-                            editor.remove("valLBF2");
-                            editor.putString("valLBF2", "" + sumatoria);
-                            editor.remove("esfuerzoF2");
-                            editor.putString("esfuerzoF2", "" + sumatoria);
-                            int llave1 = preferenc.getInt("llaveLBF1", 0);
-                            int llave2 = preferenc.getInt("llaveLBF2", 0);
-                            if(llave1==1 && llave2 ==1){
-                                editor.remove("FechaInicio");
-                                editor.putString("FechaInicio", "" + fecha);
-                            }
                             editor.commit();
                         }
 
                         retorno = sumatoria;
-
+                        editarNiño(context, idNino, retorno, 1);
 
                     } else {
                         Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
@@ -255,39 +242,41 @@ public class Calculos {
                 }
 
             }
-        }else{
-            String che="";
-            if (idNino == 1) {
-                che = preferenc.getString("valLBF1", "");
-            } else if (idNino == 2) {
-                che = preferenc.getString("valLBF2", "");
-            }
-            double resultado=Double.parseDouble(che);
-            retorno=resultado;
         }
-        return retorno;
     }
 
-    public static double generaLBV(Context context,int idNino) {
+        }
+
+    }
+
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    public static void generaLBUlPro(Context context,int idNino) {
 
         double retorno = 0;
         double sumatoria = 0;
 
         SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
-        int llave = preferenc.getInt("llave", 0);
+        int llave = preferenc.getInt("llave3", 0);
         int dia = preferenc.getInt("dia", 0);
 
         TimeZone timezone = TimeZone.getDefault();
         Calendar calendar = new GregorianCalendar(timezone);
         int dias = calendar.get(Calendar.DAY_OF_WEEK);
 
-        int a= dia-dias;
-        if(a==1) {
+
+        if (dia == dias) {
+            int pase = preferenc.getInt("pase3", 0);
+            if(pase==0) {
+                if(llave==0){
+                    SharedPreferences.Editor edito = preferenc.edit();
+                    edito.remove("llave3");
+                    edito.putInt("llave3", 1);
+                    edito.commit();
             int inpre = 7;
             if (idNino == 1) {
-                inpre = preferenc.getInt("llaveLBV1", 0);
+                inpre = preferenc.getInt("llaveLBUP1", 0);
             } else if (idNino == 2) {
-                inpre = preferenc.getInt("llaveLBV2", 0);
+                inpre = preferenc.getInt("llaveLBUP2", 0);
             }
             if (inpre == 0) {
 
@@ -301,7 +290,7 @@ public class Calculos {
 
                     String inicio = preferenc.getString("FechaInicio", "");
                     String fecha = getFecha();
-                    Cursor cursor = database.rawQuery("SELECT DetalleReg.cad FROM DetalleReg,Registro WHERE DetalleReg.idreg=Registro.idreg AND Registro.idNino=" + idNino + " AND DetalleReg.Tipo='Verdura' AND Registro.fechar BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
+                    Cursor cursor = database.rawQuery("SELECT DetalleReg.cad FROM DetalleReg,Registro WHERE DetalleReg.idreg=Registro.idreg AND Registro.idNino=" + idNino + " AND DetalleReg.Tipo='ULtraProcesado' AND Registro.fechar BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
                     // Cursor cursor = database.rawQuery("SELECT * FROM Registro",null);
                     if (cursor.moveToFirst()) {
 
@@ -317,37 +306,22 @@ public class Calculos {
                         sumatoria = sumatoria / 7;//sumatoria tiene el resultado de la linea base de frutas.
                         if (idNino == 1) {
                             SharedPreferences.Editor editor = preferenc.edit();
-                            editor.remove("llaveLBV1");
-                            editor.putInt("llaveLBV1", 1);
-                            editor.remove("valLBV1");
-                            editor.putString("valLBV1", "" + sumatoria);
-                            editor.remove("esfuerzoV1");
-                            editor.putString("esfuerzoV1", "" + sumatoria);
-                            int llave1 = preferenc.getInt("llaveLBV1", 0);
-                            int llave2 = preferenc.getInt("llaveLBV2", 0);
-                            if(llave1==1 && llave2 ==1){
-                                editor.remove("FechaInicio");
-                                editor.putString("FechaInicio", "" + fecha);
-                            }
+                            editor.remove("llaveLBUP1");
+                            editor.putInt("llaveLBUP1", 1);
+                            editor.remove("llaveESUP1");
+                            editor.putInt("llaveESUP1", 1);
                             editor.commit();
                         } else if (idNino == 2) {
                             SharedPreferences.Editor editor = preferenc.edit();
-                            editor.remove("llaveLBV2");
-                            editor.putInt("llaveLBV2", 1);
-                            editor.remove("valLBV2");
-                            editor.putString("valLBV2", "" + sumatoria);
-                            editor.remove("esfuerzoV2");
-                            editor.putString("esfuerzoV2", "" + sumatoria);
-                            int llave1 = preferenc.getInt("llaveLBV1", 0);
-                            int llave2 = preferenc.getInt("llaveLBV2", 0);
-                            if(llave1==1 && llave2 ==1){
-                                editor.remove("FechaInicio");
-                                editor.putString("FechaInicio", "" + fecha);
-                            }
+                            editor.remove("llaveLBUP2");
+                            editor.putInt("llaveLBUP2", 1);
+                            editor.remove("llaveESUP2");
+                            editor.putInt("llaveESUP2", 1);
                             editor.commit();
                         }
-                        retorno = sumatoria;
 
+                        retorno = sumatoria;
+                        editarNiño(context, idNino, retorno, 2);
 
                     } else {
                         Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
@@ -360,20 +334,102 @@ public class Calculos {
                 }
 
             }
-        }else{
-            String che="";
-            if (idNino == 1) {
-                che = preferenc.getString("valLBV1", "");
-            } else if (idNino == 2) {
-                che = preferenc.getString("valLBV2", "");
-            }
-            double resultado=Double.parseDouble(che);
-            retorno=resultado;
         }
-        return retorno;
+    }
+        }
+
+    }
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    public static void generaLBV(Context context,int idNino) {
+
+        double retorno = 0;
+        double sumatoria = 0;
+
+        SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
+        int llave = preferenc.getInt("llave2", 0);
+        int dia = preferenc.getInt("dia", 0);
+
+        TimeZone timezone = TimeZone.getDefault();
+        Calendar calendar = new GregorianCalendar(timezone);
+        int dias = calendar.get(Calendar.DAY_OF_WEEK);
+
+
+        if (dia == dias) {
+            int pase = preferenc.getInt("pase2", 0);
+            if(pase==0) {
+                if(llave==0){
+                    SharedPreferences.Editor edito = preferenc.edit();
+                    edito.remove("llave2");
+                    edito.putInt("llave2", 1);
+                    edito.commit();
+                int inpre = 7;
+                if (idNino == 1) {
+                    inpre = preferenc.getInt("llaveLBV1", 0);
+                } else if (idNino == 2) {
+                    inpre = preferenc.getInt("llaveLBV2", 0);
+                }
+                if (inpre == 0) {
+
+                    try {
+
+                        ConexionSQLHelper connection = new ConexionSQLHelper(context);
+
+                        database = null;
+                        database = connection.getReadableDatabase();
+
+
+                        String inicio = preferenc.getString("FechaInicio", "");
+                        String fecha = getFecha();
+                        Cursor cursor = database.rawQuery("SELECT DetalleReg.cad FROM DetalleReg,Registro WHERE DetalleReg.idreg=Registro.idreg AND Registro.idNino=" + idNino + " AND DetalleReg.Tipo='Verdura' AND Registro.fechar BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
+                        // Cursor cursor = database.rawQuery("SELECT * FROM Registro",null);
+                        if (cursor.moveToFirst()) {
+
+                            do {
+                                // System.out.println("SUMATORIA: "+cursor.getInt(0));
+                                sumatoria = sumatoria + cursor.getDouble(0);
+
+                                // Toast.makeText(context, ""+cursor.getDouble(0), Toast.LENGTH_SHORT).show();
+                            } while (cursor.moveToNext());
+
+                            //System.out.println("SUMATORIA: "+sumatoria);
+
+                            sumatoria = sumatoria / 7;//sumatoria tiene el resultado de la linea base de frutas.
+                            if (idNino == 1) {
+                                SharedPreferences.Editor editor = preferenc.edit();
+                                editor.remove("llaveLBV1");
+                                editor.putInt("llaveLBV1", 1);
+                                editor.remove("llaveESV1");
+                                editor.putInt("llaveESV1", 1);
+                            } else if (idNino == 2) {
+                                SharedPreferences.Editor editor = preferenc.edit();
+                                editor.remove("llaveLBV2");
+                                editor.putInt("llaveLBV2", 1);
+                                editor.remove("llaveESV2");
+                                editor.putInt("llaveESV2", 1);
+                                editor.commit();
+                            }
+
+                            retorno = sumatoria;
+                            editarNiño(context, idNino, retorno, 1);
+
+                        } else {
+                            Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
+                        }
+
+                    } catch (Exception e) {
+                        Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
+                    } finally {
+                        database.close();
+                    }
+
+                }
+            }
+        }
+    }
     }
 
-    public static double EsfuerzoF(Context context,int idNino){
+    public static void EsfuerzoF(Context context,int idNino){
         double retorno=0;
         double sumatoria = 0;
 
@@ -386,23 +442,24 @@ public class Calculos {
 
         if(dia!=dias){
             SharedPreferences.Editor editor = preferenc.edit();
-            editor.remove("pase");
-            editor.putInt("pase", 0);
+            editor.remove("pase1");
+            editor.putInt("pase1", 0);
             editor.commit();
+
         }
-        int pase = preferenc.getInt("pase", 0);
+        int pase = preferenc.getInt("pase1", 0);
         if(pase==0){
             int a=dias-dia;
-            if(dia==dias){
+            if(a==1){
                 SharedPreferences.Editor editor = preferenc.edit();
-                editor.remove("FechaFin");
-                editor.putString("FechaFin", getFecha());
+                editor.remove("FechaInicio");
+                editor.putString("FechaInicio", "" + getFecha());
                 editor.commit();
             }
-            else if(a==1){
+            else if(dia==dias){
                 SharedPreferences.Editor editor = preferenc.edit();
-                editor.remove("pase");
-                editor.putInt("pase", 1);
+                editor.remove("pase1");
+                editor.putInt("pase1", 1);
                 editor.commit();
 
 
@@ -415,7 +472,7 @@ public class Calculos {
 
 
                     String inicio = preferenc.getString("FechaInicio", "");
-                    String fecha = preferenc.getString("FechaFin", "");
+                    String fecha = getFecha();
                     Cursor cursor = database.rawQuery("SELECT DetalleReg.cad FROM DetalleReg,Registro WHERE DetalleReg.idreg=Registro.idreg AND Registro.idNino=" + idNino + " AND DetalleReg.Tipo='Fruta' AND Registro.fechar BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
                     // Cursor cursor = database.rawQuery("SELECT * FROM Registro",null);
 
@@ -431,22 +488,37 @@ public class Calculos {
                         //System.out.println("SUMATORIA: "+sumatoria);
 
                         sumatoria = sumatoria / 7;//sumatoria tiene el resultado de la linea base de frutas.
+
+
                         if (idNino == 1) {
-                            SharedPreferences.Editor edito = preferenc.edit();
-                            editor.remove("esfuerzoF1");
-                            editor.putString("esfuerzoF1", "" + sumatoria);
-                            editor.commit();
+                            double res= consultarNiño(context,idNino,1);
+                            double com=res*(.80);
+                            if(com>=sumatoria){
+                                res=res+(0.25);
+                                //registra
+                                actualizaNiño(context,idNino,res,1);
+                            }
+                            else if((res*.59)<=sumatoria){
+                                res=res-(0.25);
+                                //registra
+                                actualizaNiño(context,idNino,res,1);
+                            }
                         } else if (idNino == 2) {
-                            SharedPreferences.Editor edito = preferenc.edit();
-                            editor.remove("esfuerzoF2");
-                            editor.putString("esfuerzoF2", "" + sumatoria);
-                            editor.commit();
+                            double res= consultarNiño(context,idNino,1);
+                            double com=res*(.80);
+                            if(com>=sumatoria){
+                                res=res+(0.25);
+                                //registra
+                                actualizaNiño(context,idNino,res,1);
+                            }
+                            else if((res*.59)<=sumatoria){
+                                res=res-(0.25);
+                                //registra
+                                actualizaNiño(context,idNino,res,1);
+                            }
                         }
-                        SharedPreferences.Editor edito = preferenc.edit();
-                        editor.remove("FechaInicio");
-                        editor.putString("FechaInicio", "" + getFecha());
-                        editor.commit();
-                        retorno = sumatoria;
+
+
 
 
                     } else {
@@ -459,32 +531,14 @@ public class Calculos {
                     database.close();
                 }
 
-            }else{
-                String che="";
-                if (idNino == 1) {
-                    che = preferenc.getString("esfuerzoF1", "");
-                } else if (idNino == 2) {
-                    che = preferenc.getString("esfuerzoF2", "");
-                }
-                double resultado=Double.parseDouble(che);
-                retorno=resultado;
             }
-        }else{
-            String che="";
-            if (idNino == 1) {
-                che = preferenc.getString("esfuerzoF1", "");
-            } else if (idNino == 2) {
-                che = preferenc.getString("esfuerzoF2", "");
-            }
-            double resultado=Double.parseDouble(che);
-            retorno=resultado;
         }
 
-
-        return retorno;
     }
 
-    public static double EsfuerzoV(Context context,int idNino){
+    //----------------------------------------------------------------------------------------------------------------
+
+    public static void EsfuerzoUP(Context context,int idNino){
         double retorno=0;
         double sumatoria = 0;
 
@@ -497,11 +551,119 @@ public class Calculos {
 
         if(dia!=dias){
             SharedPreferences.Editor editor = preferenc.edit();
-            editor.remove("pase");
-            editor.putInt("pase", 0);
+            editor.remove("pase3");
+            editor.putInt("pase3", 0);
+            editor.commit();
+
+        }
+        int pase = preferenc.getInt("pase3", 0);
+        if(pase==0){
+            int a=dias-dia;
+            if(a==1){
+                SharedPreferences.Editor editor = preferenc.edit();
+                editor.remove("FechaInicio");
+                editor.putString("FechaInicio", "" + getFecha());
+                editor.commit();
+            }
+            else if(dia==dias){
+                SharedPreferences.Editor editor = preferenc.edit();
+                editor.remove("pase3");
+                editor.putInt("pase3", 1);
+                editor.commit();
+
+
+                try {
+
+                    ConexionSQLHelper connection = new ConexionSQLHelper(context);
+
+                    database = null;
+                    database = connection.getReadableDatabase();
+
+
+                    String inicio = preferenc.getString("FechaInicio", "");
+                    String fecha = getFecha();
+                    Cursor cursor = database.rawQuery("SELECT DetalleReg.cad FROM DetalleReg,Registro WHERE DetalleReg.idreg=Registro.idreg AND Registro.idNino=" + idNino + " AND DetalleReg.Tipo='ULtraProcesado' AND Registro.fechar BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
+                    // Cursor cursor = database.rawQuery("SELECT * FROM Registro",null);
+
+                    if (cursor.moveToFirst()) {
+
+                        do {
+                            // System.out.println("SUMATORIA: "+cursor.getInt(0));
+                            sumatoria = sumatoria + cursor.getDouble(0);
+
+                            // Toast.makeText(context, ""+cursor.getDouble(0), Toast.LENGTH_SHORT).show();
+                        } while (cursor.moveToNext());
+
+                        //System.out.println("SUMATORIA: "+sumatoria);
+
+                        sumatoria = sumatoria / 7;//sumatoria tiene el resultado de la linea base de frutas.
+
+
+                        if (idNino == 1) {
+                            double res= consultarNiño(context,idNino,2);
+                            double com=res*(.80);
+                            if(com>=sumatoria){
+                                res=res+(0.25);
+                                //registra
+                                actualizaNiño(context,idNino,res,2);
+                            }
+                            else if((res*.59)<=sumatoria){
+                                res=res-(0.25);
+                                //registra
+                                actualizaNiño(context,idNino,res,2);
+                            }
+                        } else if (idNino == 2) {
+                            double res= consultarNiño(context,idNino,2);
+                            double com=res*(.80);
+                            if(com>=sumatoria){
+                                res=res+(0.25);
+                                //registra
+                                actualizaNiño(context,idNino,res,2);
+                            }
+                            else if((res*.59)<=sumatoria){
+                                res=res-(0.25);
+                                //registra
+                                actualizaNiño(context,idNino,res,2);
+                            }
+                        }
+
+
+
+
+                    } else {
+                        Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (Exception e) {
+                    Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
+                } finally {
+                    database.close();
+                }
+
+            }
+        }
+
+    }
+
+    //----------------------------------------------------------------------------------------------------------------
+    public static void EsfuerzoV(Context context,int idNino){
+        double retorno=0;
+        double sumatoria = 0;
+
+        SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
+        int dia = preferenc.getInt("dia", 0);
+
+        TimeZone timezone = TimeZone.getDefault();
+        Calendar calendar = new GregorianCalendar(timezone);
+        int dias = calendar.get(Calendar.DAY_OF_WEEK);
+
+        if(dia!=dias){
+            SharedPreferences.Editor editor = preferenc.edit();
+            editor.remove("pase2");
+            editor.putInt("pase2", 0);
             editor.commit();
         }
-        int pase = preferenc.getInt("pase", 0);
+        int pase = preferenc.getInt("pase2", 0);
         if(pase==0){
             int a=dias-dia;
             if(dia==dias){
@@ -512,8 +674,8 @@ public class Calculos {
             }
             else if(a==1){
                 SharedPreferences.Editor editor = preferenc.edit();
-                editor.remove("pase");
-                editor.putInt("pase", 1);
+                editor.remove("pase2");
+                editor.putInt("pase2", 1);
                 editor.commit();
 
 
@@ -543,21 +705,32 @@ public class Calculos {
 
                         sumatoria = sumatoria / 7;//sumatoria tiene el resultado de la linea base de frutas.
                         if (idNino == 1) {
-                            SharedPreferences.Editor edito = preferenc.edit();
-                            editor.remove("esfuerzoV1");
-                            editor.putString("esfuerzoV1", "" + sumatoria);
-                            editor.commit();
+                            double res= consultarNiño(context,idNino,0);
+                            double com=res*(.80);
+                            if(com>=sumatoria){
+                                res=res+(0.25);
+                                //registra
+                                actualizaNiño(context,idNino,res,0);
+                            }
+                            else if((res*.59)<=sumatoria){
+                                res=res-(0.25);
+                                //registra
+                                actualizaNiño(context,idNino,res,0);
+                            }
                         } else if (idNino == 2) {
-                            SharedPreferences.Editor edito = preferenc.edit();
-                            editor.remove("esfuerzoV2");
-                            editor.putString("esfuerzoV2", "" + sumatoria);
-                            editor.commit();
+                            double res= consultarNiño(context,idNino,0);
+                            double com=res*(.80);
+                            if(com>=sumatoria){
+                                res=res+(0.25);
+                                //registra
+                                actualizaNiño(context,idNino,res,0);
+                            }
+                            else if((res*.59)<=sumatoria){
+                                res=res-(0.25);
+                                //registra
+                                actualizaNiño(context,idNino,res,0);
+                            }
                         }
-                        SharedPreferences.Editor edito = preferenc.edit();
-                        editor.remove("FechaInicio");
-                        editor.putString("FechaInicio", "" + getFecha());
-                        editor.commit();
-                        retorno = sumatoria;
 
 
                     } else {
@@ -577,23 +750,192 @@ public class Calculos {
                 } else if (idNino == 2) {
                     che = preferenc.getString("esfuerzoV2", "");
                 }
-                double resultado=Double.parseDouble(che);
-                retorno=resultado;
+
             }
-        }else{
-            String che="";
-            if (idNino == 1) {
-                che = preferenc.getString("esfuerzoV1", "");
-            } else if (idNino == 2) {
-                che = preferenc.getString("esfuerzoV2", "");
-            }
-            double resultado=Double.parseDouble(che);
-            retorno=resultado;
         }
 
-
-        return retorno;
     }
 
+
+    public static boolean editarNiño(Context context, int id, double cantidad,int tipo) {
+
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
+            database = null;
+            database = connection.getWritableDatabase();
+
+            String editar="";
+            if(tipo==1){
+                editar = "UPDATE " + Utilidades.TABLA_Nino + " " +
+                        "SET " + Utilidades.CAMPO_LIneaBaseFruta + " = " +
+                        cantidad + " WHERE " + Utilidades.CAMPO_idNino + " = " + id;
+                actualizaNiño(context,id,cantidad,1);
+            }else if(tipo==0){
+                editar = "UPDATE " + Utilidades.TABLA_Nino + " " +
+                        "SET " + Utilidades.CAMPO_LineaBaseVerdura + " = " +
+                        cantidad + " WHERE " + Utilidades.CAMPO_idNino + " = " + id;
+                actualizaNiño(context,id,cantidad,0);
+            } else if(tipo==2){
+                editar = "UPDATE " + Utilidades.TABLA_Nino + " " +
+                        "SET " + Utilidades.CAMPO_LineaBaseUltraprocesado + " = " +
+                        cantidad + " WHERE " + Utilidades.CAMPO_idNino + " = " + id;
+                actualizaNiño(context,id,cantidad,2);
+            }
+
+            database.execSQL(editar);
+
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        } finally {
+            database.close();
+        }
+    }
+
+    public static double consultarNiño(Context context, int idNino,int tipo) {
+
+        double a=0.0;
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
+            database = null;
+            database = connection.getWritableDatabase();
+            Cursor cursor;
+            String esf="";
+            if(tipo==1){
+                esf="esfuerzof";
+            }
+            else if(tipo==0){
+                esf="esfuerzov";
+            }else if(tipo==2){
+                esf="esfuerzoultra";
+            }
+            cursor = database.rawQuery("SELECT "+esf+" FROM Nino WHERE idNino="+idNino, null);
+
+            if (cursor.moveToFirst()) {
+                a=cursor.getDouble(0);
+            }
+
+        } catch (Exception e) {
+
+        } finally {
+            database.close();
+        }
+        return a;
+    }
+
+    public static boolean actualizaNiño(Context context, int id, double cantidad,int tipo) {
+
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
+            database = null;
+            database = connection.getWritableDatabase();
+
+            String editar="";
+            if(tipo==1){
+                editar = "UPDATE " + Utilidades.TABLA_Nino + " " +
+                        "SET " + Utilidades.CAMPO_EsfuerzoFruta + " = " +
+                        cantidad + " WHERE " + Utilidades.CAMPO_idNino + " = " + id;
+            }else if(tipo==0){
+                editar = "UPDATE " + Utilidades.TABLA_Nino + " " +
+                        "SET " + Utilidades.CAMPO_EsfuerzoVerdura + " = " +
+                        cantidad + " WHERE " + Utilidades.CAMPO_idNino + " = " + id;
+            }else if(tipo==2){
+                editar = "UPDATE " + Utilidades.TABLA_Nino + " " +
+                        "SET " + Utilidades.CAMPO_EsfuerzoUltraprocesado + " = " +
+                        cantidad + " WHERE " + Utilidades.CAMPO_idNino + " = " + id;
+            }
+
+            database.execSQL(editar);
+
+            return true;
+
+        } catch (Exception e) {
+            return false;
+        } finally {
+            database.close();
+        }
+    }
+
+
+
+    public static double KaloriaCambio(Context context, int idNino) {
+
+        double sumatoria=0.0;
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
+            database = null;
+            database = connection.getWritableDatabase();
+
+            SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
+
+            String inicio = preferenc.getString("FechaInicio", "");
+            String fecha = getFecha();
+            Cursor cursor = database.rawQuery("SELECT cad FROM DetalleReg WHERE idNino=" + idNino + " AND Tipo='ULtraProcesado' AND Registro.fechar BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    // System.out.println("SUMATORIA: "+cursor.getInt(0));
+                    sumatoria = sumatoria + cursor.getDouble(0);
+
+                    // Toast.makeText(context, ""+cursor.getDouble(0), Toast.LENGTH_SHORT).show();
+                } while (cursor.moveToNext());
+                int pase = preferenc.getInt("pase4", 0);
+                int dia = preferenc.getInt("dia", 0);
+
+                TimeZone timezone = TimeZone.getDefault();
+                Calendar calendar = new GregorianCalendar(timezone);
+                int dias = calendar.get(Calendar.DAY_OF_WEEK);
+
+                if(dia!=dias){
+                    SharedPreferences.Editor editor = preferenc.edit();
+                    editor.remove("pase4");
+                    editor.putInt("pase4", 0);
+                    editor.commit();
+                }
+                if(pase==0) {
+                    if(dia==dias) {
+                        if (idNino == 1) {
+                            SharedPreferences.Editor editor = preferenc.edit();
+                            editor.remove("ValorUltra1");
+                            editor.putString("ValorUltra1", "" + sumatoria);
+                            editor.commit();
+                        } else if (idNino == 2) {
+                            SharedPreferences.Editor editor = preferenc.edit();
+                            editor.remove("ValorUltra2");
+                            editor.putString("ValorUltra2", "" + sumatoria);
+                            editor.commit();
+                        }
+                        SharedPreferences.Editor editor = preferenc.edit();
+                        editor.remove("pase4");
+                        editor.putInt("pase4", 1);
+                        editor.commit();
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+
+        } finally {
+            database.close();
+        }
+        return sumatoria;
+    }
+
+    public static double KaloriaFija(Context context, int idNino){
+        double resultado=0.0;
+        if (idNino == 1) {
+            SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
+
+            String inicio = preferenc.getString("ValorUltra1", "");
+            resultado=Double.parseDouble(inicio);
+        } else if (idNino == 2) {
+            SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
+
+            String inicio = preferenc.getString("ValorUltra2", "");
+            resultado=Double.parseDouble(inicio);
+        }
+        return resultado;
+    }
 
 }
