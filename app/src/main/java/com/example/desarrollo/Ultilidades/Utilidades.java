@@ -191,7 +191,7 @@ public class Utilidades {
                     CAMPO_TotalFichas + " INTEGER NOT NULL," +
                     CAMPO_EsfuerzoUltraprocesado + " REAL NOT NULL," +
                     CAMPO_EsfuerzoFruta + " REAL NOT NULL," +
-                    CAMPO_EsfuerzoVerdura + " REAL NOT NULL," +
+                    CAMPO_EsfuerzoVerdura + " REAL NOT NULL)" +
                     "FOREIGN KEY (" + CAMPO_idUsuarioN + ") REFERENCES Usuario(" + CAMPO_idUsuarioN + "))";
 
     //Constantes para campos de la tabla CanjeFi
