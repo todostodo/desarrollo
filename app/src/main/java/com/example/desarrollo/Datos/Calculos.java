@@ -1177,4 +1177,35 @@ public class Calculos {
         return sumatoria;
     }
 
+    public static boolean ConsiguioFicha(Context context, int idNino){
+        boolean vari=false;
+
+        SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
+        int  llave = preferenc.getInt("llave1", 0);
+
+        if(llave ==0){
+            double valor=KaloriaCambio(context,idNino);
+            valor =valor/7;
+            double consuDia=KaloriaDia(context,idNino);
+            if(valor<consuDia){
+                vari=true;
+            }
+            else
+                vari=false;
+
+        }
+        else{
+            double valor=KaloriaFija(context,idNino);
+            valor =valor/7;
+            double consuDia=KaloriaDia(context,idNino);
+            if(valor<consuDia){
+                vari=true;
+            }
+            else
+                vari=false;
+        }
+
+        return vari;
+    }
+
 }
