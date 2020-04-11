@@ -38,7 +38,7 @@ public class RecyclerViewHistorialConsumo extends RecyclerView.Adapter<RecyclerV
         TextView consumo;
         TextView hora;
         TextView porciones;
-        LinearLayout backgroundAlimento;
+        TextView backgroundAlimento;
         ImageView imgUrlAlimento;
 
         public ItemViewHolder(@NonNull View itemView) {
@@ -48,7 +48,7 @@ public class RecyclerViewHistorialConsumo extends RecyclerView.Adapter<RecyclerV
             consumo = (TextView) itemView.findViewById(R.id.txtHrConsumo);
             hora = (TextView) itemView.findViewById(R.id.txtHRHora);
             porciones = (TextView) itemView.findViewById(R.id.txtHrPorciones);
-            backgroundAlimento = (LinearLayout) itemView.findViewById(R.id.backgroundHrFrutas);
+            backgroundAlimento = (TextView) itemView.findViewById(R.id.backgroundHrFrutas);
             imgUrlAlimento = (ImageView) itemView.findViewById(R.id.imgUrlHrFrutas);
 
         }
@@ -75,7 +75,7 @@ public class RecyclerViewHistorialConsumo extends RecyclerView.Adapter<RecyclerV
         HistorialConsumo historialConsumo = this.consumoList.get(position);
 
         viewHolder.nombre.setText(historialConsumo.getNombreAlimentos());
-        viewHolder.consumo.setText("Cantidad cosumido: " + String.valueOf(historialConsumo.getCantidadAlimento()));
+        viewHolder.consumo.setText("Cantidad cosumida: " + String.valueOf(historialConsumo.getCantidadAlimento()));
         viewHolder.porciones.setText("Equivalente a porciones: " + String.valueOf(historialConsumo.getUnidadMedida()));
         viewHolder.hora.setText(historialConsumo.getHora());
 

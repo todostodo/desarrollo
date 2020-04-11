@@ -159,6 +159,7 @@ public class Utilidades {
     public static final String TABLA_Nino = "Nino";
     public static final String CAMPO_idNino = "idNino";
     public static final String CAMPO_idUsuarioN = "idusu";
+    public static final String CAMPO_GeneroN = "genero";
     public static final String CAMPO_NombreN = "nomn";
     public static final String CAMPO_ApellidoPaternoN = "appn";
     public static final String CAMPO_ApellidoMaternoN = "apmn";
@@ -179,6 +180,7 @@ public class Utilidades {
                     CAMPO_idNino + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_idUsuarioN + " INTEGER NOT NULL," +
                     CAMPO_NombreN + " TEXT NOT NULL," +
+                    CAMPO_GeneroN + " TEXT NOT NULL," +
                     CAMPO_ApellidoPaternoN + " TEXT NOT NULL," +
                     CAMPO_ApellidoMaternoN + " TEXT NOT NULL," +
                     CAMPO_Edad + " INT NOT NULL," +
@@ -235,7 +237,7 @@ public class Utilidades {
     public static final String CAMPO_UnidadMedida = "umedr";
     public static final String CAMPO_NumeroRegistro = "noReg";
     public static final String CAMPO_HoraRegistro = "hora";
-    public static final String CAMPO_Tipo = "Tipo";
+    public static final String CAMPO_Tipo = "tipo";
 
     public static final String CREAR_TABLA_DetalleRegistro =
             "CREATE TABLE " + "" + TABLA_DetalleRegistro + " (" +

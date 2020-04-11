@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,7 +41,8 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
     private RecyclerViewMotivadoresSelect adapter;
     private ArrayList<MotivadoresSelect> motivadoresList = new ArrayList<>();
     private Dialog addMotivadorDialog;
-    private LinearLayout _btnAddMotivador;
+    private RelativeLayout _btnAddMotivador;
+    private RelativeLayout _btnCerrarMotivadoresSelect;
 
     MotivadoresDao consultar;
 
@@ -57,6 +59,7 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
         _myRecyclerViewMotivadores.scrollToPosition(1);
         consultarListaMotivadoresDisponibles();
 
+
         _btnAddMotivador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,11 +67,12 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void init() {
-        _myRecyclerViewMotivadores = (RecyclerView) findViewById(R.id.myRecyclerViewMotivadoresDisponibles);
-        _btnAddMotivador = (LinearLayout) findViewById(R.id.btnAddMotivador);
+        _btnCerrarMotivadoresSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void consultarListaMotivadoresDisponibles() {
@@ -123,5 +127,11 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
         });
 
         addMotivadorDialog.show();
+    }
+
+    private void init() {
+        _myRecyclerViewMotivadores = (RecyclerView) findViewById(R.id.myRecyclerViewMotivadoresDisponibles);
+        _btnAddMotivador = (RelativeLayout) findViewById(R.id.btnAddMotivador);
+        _btnCerrarMotivadoresSelect = (RelativeLayout) findViewById(R.id.btnCerrarMotivadoresSelect);
     }
 }

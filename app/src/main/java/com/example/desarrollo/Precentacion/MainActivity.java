@@ -313,6 +313,5 @@ public class MainActivity extends AppCompatActivity {
         alarmIntent.setData((Uri.parse("custom://" + System.currentTimeMillis())));
         alarmManager.set(AlarmManager.RTC_WAKEUP, timestamp, pendingIntent);
     }
-
 }
 

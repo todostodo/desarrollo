@@ -27,7 +27,7 @@ public class NinoDao {
     private static HijoRegistroActivity gustos;
     private static final String TAG = "NinoDao";
 
-    public static boolean addNino(String TAG, Context context, int idUsuario, String nombre, String apPaterno, String apMaterno, int edad, Double peso, Double estatura, Double medida, Double lineabultra, Double lineabv, Double leneabf, int totfich, Double esfuerzoultra, Double esfuerzof, Double esfuerzov) {
+    public static boolean addNino(String TAG, Context context, int idUsuario, String nombre, String genero, String apPaterno, String apMaterno, int edad, Double peso, Double estatura, Double medida, Double lineabultra, Double lineabv, Double leneabf, int totfich, Double esfuerzoultra, Double esfuerzof, Double esfuerzov) {
 
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
@@ -38,6 +38,7 @@ public class NinoDao {
             String inset = "INSERT INTO " + Utilidades.TABLA_Nino + "( " +
                     Utilidades.CAMPO_idUsuarioN + ", " +
                     Utilidades.CAMPO_NombreN + ", " +
+                    Utilidades.CAMPO_GeneroN + ", " +
                     Utilidades.CAMPO_ApellidoPaternoN + "," +
                     Utilidades.CAMPO_ApellidoMaternoN + ", " +
                     Utilidades.CAMPO_Edad + ", " +
@@ -54,6 +55,7 @@ public class NinoDao {
                     "VALUES ( " +
                     idUsuario + ", '" +
                     nombre + "', '" +
+                    genero + "', '" +
                     apPaterno + "', '" +
                     apMaterno + "', " +
                     edad + ", " +
@@ -73,11 +75,11 @@ public class NinoDao {
 
             SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
             int inpre = preferenc.getInt("instalacion", 0);
-            if(inpre ==0){
+            if (inpre == 0) {
                 TimeZone timezone = TimeZone.getDefault();
                 Calendar calendar = new GregorianCalendar(timezone);
                 int dias = calendar.get(Calendar.DAY_OF_WEEK);
-                String fecha=Calculos.getFecha();
+                String fecha = Calculos.getFecha();
                 SharedPreferences.Editor editor = preferenc.edit();
                 editor.putInt("instalacion", 1);
                 editor.putInt("dia", dias);
@@ -97,8 +99,8 @@ public class NinoDao {
                 editor.putInt("llaveLBUP2", 0);
                 editor.putInt("llaveLBV1", 0);
                 editor.putInt("llaveLBV2", 0);
-                editor.putString("FechaInicio",fecha);
-                editor.putString("FechaFin","");
+                editor.putString("FechaInicio", fecha);
+                editor.putString("FechaFin", "");
                 editor.putString("ValorUltra1", "");
                 editor.putString("ValorUltra2", "");
                 editor.putInt("llaveESF1", 0);
@@ -111,11 +113,11 @@ public class NinoDao {
             }
 
             String getId = "SELECT last_insert_rowid();";
-            Cursor c = database.rawQuery(getId, null);
-            c.moveToFirst();
+            Cursor cursor = database.rawQuery(getId, null);
+            cursor.moveToFirst();
 
-            gustos.idNino = c.getInt(0);
-            c.close();
+            gustos.idNino = cursor.getInt(0);
+            cursor.close();
             return true;
 
         } catch (Exception e) {
@@ -182,13 +184,18 @@ public class NinoDao {
             database = null;
             database = conection.getReadableDatabase();
 
-            Cursor cursor = database.rawQuery("SELECT " + Utilidades.CAMPO_idNino + ", " + Utilidades.CAMPO_NombreN + " FROM " +
-                    Utilidades.TABLA_Nino, null);
+            Cursor cursor = database.rawQuery("SELECT " + Utilidades.CAMPO_idNino + ", " +
+                    Utilidades.CAMPO_NombreN + ", " +
+                    Utilidades.CAMPO_GeneroN +  ", " +
+                    Utilidades.CAMPO_TotalFichas +
+                    " FROM " + Utilidades.TABLA_Nino, null);
 
             while (cursor.moveToNext()) {
                 nino = new Nino();
                 nino.setIdNino(cursor.getInt(0));
                 nino.setNombre(cursor.getString(1));
+                nino.setGenero(cursor.getString(2));
+                nino.setFichas(cursor.getInt(3));
 
                 ninoList.add(nino);
             }
@@ -248,4 +255,67 @@ public class NinoDao {
         }
     }
 
+    public static double consultarProgresoConsumoFrutas(String TAG, Context context, int idNino) {
+        double progresoFruta = 0;
+        try {
+
+            ConexionSQLHelper conection = new ConexionSQLHelper(context);
+            database = null;
+            database = conection.getReadableDatabase();
+
+            //Cursor cursor = database.rawQuery("SELECT ")
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error " + e);
+        } finally {
+            database.close();
+        }
+        return progresoFruta;
+    }
+
+    public static boolean consultarPreferencias(String TAG, Context context, int idNino, String alimento, String tipoAlimento) {
+
+        int countId = 0;
+        boolean existePreferencia = false;
+        try {
+            ConexionSQLHelper conection = new ConexionSQLHelper(context);
+            database = null;
+            database = conection.getReadableDatabase();
+
+            if (tipoAlimento.equals("Fruta")) {
+
+                Cursor cursor = database.rawQuery("SELECT COUNT(" + Utilidades.CAMPO_idNino + ") FROM " + Utilidades.TABLA_GustoFruta +
+                        " WHERE " + Utilidades.CAMPO_idNino + " = " + idNino +
+                        " AND (" + Utilidades.CAMPO_noGustaFruta + " = " + " 1 OR " + Utilidades.CAMPO_conoscoFruta + " = " + " 1 )" +
+                        " AND " + Utilidades.CAMPO_NombreFruta + " = '" + alimento + "'", null);
+
+                while (cursor.moveToNext()) {
+                    countId = cursor.getInt(0);
+                }
+            }
+            if (tipoAlimento.equals("Verdura")) {
+
+                Cursor cursor = database.rawQuery("SELECT COUNT(" + Utilidades.CAMPO_idNino + ") FROM " + Utilidades.TABLA_GustoVerdura +
+                        " WHERE " + Utilidades.CAMPO_idNino + " = " + idNino +
+                        " AND (" + Utilidades.CAMPO_noGustaVerdura + " = " + " 1 OR " + Utilidades.CAMPO_conoscoVerdura + " = " + " 1 )" +
+                        " AND " + Utilidades.CAMPO_NombreVerdura + " = '" + alimento + "'", null);
+
+                while (cursor.moveToNext()) {
+                    countId = cursor.getInt(0);
+                }
+            }
+
+            if (countId != 0)
+                existePreferencia = true;
+            else
+                existePreferencia = false;
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error " + e);
+        } finally {
+            database.close();
+        }
+
+        return existePreferencia;
+    }
 }

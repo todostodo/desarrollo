@@ -1,168 +1,272 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/backgroundMotivadoresProgreso"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
-    android:background="@drawable/rectangulo_blanco"
-    android:orientation="vertical"
-    android:paddingTop="15dp">
+    android:background="@drawable/rectangulo_custom_background"
+    android:backgroundTint="#8A87FF"
+    android:paddingBottom="20dp">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/txtDescripcionMotivadorProceso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Pasear en bicicleta, patines o patineta por una hora"
+        android:textColor="@color/blanco"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/layoutPorcentaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:orientation="horizontal"
-        android:weightSum="10">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescripcionMotivadorProceso">
+
+        <TextView
+            android:id="@+id/txtPorcentajeMotivadoresProceso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="45"
+            android:textColor="@color/blanco"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="/ 100 %"
+            android:textColor="#80000000"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnMCanjear"
+        style="?android:borderlessButtonStyle"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rectangulo_custom_background"
+        android:backgroundTint="#80000000"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Canjear"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescripcionMotivadorProceso" />
+
+
+    <LinearLayout
+        android:id="@+id/layoutProcesoMotivador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutPorcentaje">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3">
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:text="Valor"
+                android:textColor="@color/blanco"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtTotalValorMotivadorProceso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:text="100"
+                android:textColor="@color/blanco"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="fichas"
+                android:textColor="@color/blanco"
+                android:textSize="14sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
+                android:layout_height="match_parent">
 
-                <RelativeLayout
-                    android:id="@+id/cardViewValorMotivador"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:gravity="center"
-                    android:background="@drawable/background_valor_motivadores">
+                <TextView
+                    android:id="@+id/txtSumaValorMotivadorProceso"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_toStartOf="@+id/txtTotalValorMotivadorProceso2"
+                    android:layout_toLeftOf="@+id/txtTotalValorMotivadorProceso2"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="3 de"
+                    android:textColor="@color/blanco"
+                    android:textSize="14sp" />
 
-                    <TextView
-                        android:id="@+id/txtTotalValorMotivadorProceso"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="100"
-                        android:textColor="#5D64A9"
-                        android:textSize="20sp"
-                        android:visibility="visible"/>
-
-                    <ImageView
-                        android:id="@+id/imgMotivadorTerminado"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:background="@drawable/ic_done"
-                        android:backgroundTint="#178656"
-                        android:visibility="gone" />
-
-                </RelativeLayout>
+                <TextView
+                    android:id="@+id/txtTotalValorMotivadorProceso2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="45"
+                    android:textColor="@color/blanco"
+                    android:textSize="14sp" />
 
             </RelativeLayout>
+
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="0dp"
+        <SeekBar
+            android:id="@+id/MotivadorProgreso"
+            android:layout_width="match_parent"
+            android:layout_height="7dp"
+            android:layout_marginTop="3dp"
+            android:max="10"
+            android:maxHeight="10dp"
+            android:minHeight="10dp"
+            android:progress="5"
+            android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+            android:thumb="@null" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--
+     <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="7"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-
-                <TextView
-                    android:id="@+id/txtDescripcionMotivadorProceso"
-                    android:layout_width="280dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="Pasear en bicicleta, patines o patineta por una hora "
-                    android:textColor="#515151"
-                    android:textSize="16sp" />
-
-            </RelativeLayout>
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
 
             <LinearLayout
-                android:id="@+id/layoutProcesoMotivador"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="visible">
-
-                <SeekBar
-                    android:id="@+id/MotivadorProgreso"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="-15dp"
-                    android:max="10"
-                    android:maxHeight="10dp"
-                    android:minHeight="10dp"
-                    android:progress="5"
-                    android:progressDrawable="@drawable/seek_bar_ruler_blanco"
-                    android:thumb="@null" />
+                android:layout_weight="3">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="end">
+                    android:gravity="center">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="20dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/txtSumaValorMotivadorProceso"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="5dp"
-                            android:fontFamily="@font/roboto_regular"
-                            android:text="3 de"
-                            android:textColor="#515151"
-                            android:textSize="14sp" />
+                    <RelativeLayout
+                        android:id="@+id/cardViewValorMotivador"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/background_valor_motivadores"
+                        android:gravity="center">
 
                         <TextView
-                            android:id="@+id/txtTotalValorMotivadorProceso2"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_regular"
-                            android:text="45 fichas"
-                            android:textColor="#515151"
-                            android:textSize="14sp" />
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="100"
+                            android:textColor="#5D64A9"
+                            android:textSize="20sp"
+                            android:visibility="visible" />
 
-                    </LinearLayout>
+                        <ImageView
+                            android:id="@+id/imgMotivadorTerminado"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/ic_done"
+                            android:backgroundTint="#178656"
+                            android:visibility="gone" />
+
+                    </RelativeLayout>
 
                 </RelativeLayout>
 
             </LinearLayout>
 
-            <RelativeLayout
-                android:id="@+id/relativeBtnCajearMotivador"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:visibility="gone">
+                android:layout_weight="7"
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/btnMCanjear"
-                    style="?android:borderlessButtonStyle"
-                    android:layout_width="90dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="30dp"
-                    android:background="@drawable/rectangulo_verde_azul"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="Canjear"
-                    android:textAllCaps="false"
-                    android:textColor="@color/blanco"
-                    android:textSize="16sp" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
 
-            </RelativeLayout>
+                    <TextView
+
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Pasear en bicicleta, patines o patineta por una hora "
+                        android:textColor="#515151"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <SeekBar
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="-15dp"
+                        android:layout_marginTop="15dp"
+                        android:max="10"
+                        android:maxHeight="10dp"
+                        android:minHeight="10dp"
+                        android:progress="5"
+                        android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                        android:thumb="@null" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end">
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
 
         </LinearLayout>
-
-    </LinearLayout>
-
-
-</LinearLayout>
+    -->

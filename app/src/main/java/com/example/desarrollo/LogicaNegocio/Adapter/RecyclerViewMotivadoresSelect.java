@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.*;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -56,7 +57,7 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
 
         TextView txtTotalValorMotivador;
         TextView txtDescripcionMotivador;
-        Button btnMIniciarMotivador;
+        ConstraintLayout btnMIniciarMotivador;
         int posicion;
 
         public ItemViewHolder(@NonNull View itemView) {
@@ -64,7 +65,7 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
 
             txtTotalValorMotivador = (TextView) itemView.findViewById(R.id.txtTotalValorMotivadorSelect);
             txtDescripcionMotivador = (TextView) itemView.findViewById(R.id.txtDescripcionMotivadorSelect);
-            btnMIniciarMotivador = (Button) itemView.findViewById(R.id.btnMIniciarMotivador);
+            btnMIniciarMotivador = (ConstraintLayout) itemView.findViewById(R.id.btnMIniciarMotivador);
 
         }
     }

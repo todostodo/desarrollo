@@ -23,7 +23,7 @@
             android:type="sweep"
             android:useLevel="true">
 
-            <solid android:color="#39C9CE"/>
+            <solid android:color="#FDA2C1"/>
             <corners android:radius="50dp"/>
         </shape>
     </rotate>

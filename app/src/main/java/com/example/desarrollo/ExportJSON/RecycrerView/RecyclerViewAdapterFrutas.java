@@ -8,12 +8,10 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,7 +23,7 @@ import com.bumptech.glide.Glide;
 import com.example.desarrollo.ExportJSON.Filter.FilterHelperFrutas;
 import com.example.desarrollo.ExportJSON.Reader.ReaderFrutas;
 import com.example.desarrollo.R;
-import com.example.desarrollo.Precentacion.Alimentos.Frutas.frutas_select_activity;
+import com.example.desarrollo.Precentacion.Alimentos.AlimentoRegistroactivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +53,8 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
         ImageView imgUrl;
         CardView view_container;
         CardView backgroundVentaja;
-        LinearLayout backgroundFrutas;
+        //LinearLayout backgroundFrutas;
+        RelativeLayout backgroundFrutas;
 
 
         public ItemViewHolder(@NonNull View itemView) {
@@ -65,24 +64,24 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
             frase = (TextView) itemView.findViewById(R.id.fraseFruta);
             ventaja = (TextView) itemView.findViewById(R.id.fruta_ventaja);
             imgUrl = (ImageView) itemView.findViewById(R.id.imgUrlFrutas);
-            backgroundFrutas = (LinearLayout) itemView.findViewById(R.id.backgroundFrutas);
+            backgroundFrutas = (RelativeLayout) itemView.findViewById(R.id.backgroundFrutas);
             backgroundVentaja = (CardView) itemView.findViewById(R.id.fruta_backgroundVentaja);
         }
     }
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
 
         View layout;
-        layout = LayoutInflater.from(context).inflate(R.layout.frutas_items, parent, false);
+        layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.frutas_items, parent, false);
 
         final ItemViewHolder viewHolder = new ItemViewHolder(layout);
         viewHolder.view_container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(context, frutas_select_activity.class);
+                Intent i = new Intent(parent.getContext(), AlimentoRegistroactivity.class);
                 i.putExtra("fruta_idAlimentos", readerFrutas.get(viewHolder.getAdapterPosition()).getId());
                 i.putExtra("fruta_nombre", readerFrutas.get(viewHolder.getAdapterPosition()).getNombre());
                 i.putExtra("fruta_equivalencia", readerFrutas.get(viewHolder.getAdapterPosition()).getEquivalencia());
@@ -98,7 +97,7 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
                 i.putExtra("fruta_tipoAlimento", tipoAlimento);
 
 
-                context.startActivity(i);
+                parent.getContext().startActivity(i);
             }
         });
 
@@ -118,27 +117,27 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
 
         String ventaja = readerFrutas.getVentaja();
 
-        if (ventaja.equals("corazón") || ventaja.equals("sangre") || ventaja.equals("arterias")) {
+        if (ventaja.equals("Alimento para el corazón") || ventaja.equals("Alimento para la sangre") || ventaja.equals("Alimento para las arterias")) {
             itemViewHolder.backgroundVentaja.setCardBackgroundColor(Color.parseColor("#F7B3B5"));
             itemViewHolder.ventaja.setTextColor(Color.parseColor("#9A1216"));
         } else {
-            if (ventaja.equals("sistema nervioso") || ventaja.equals("infecciones")) {
+            if (ventaja.equals("Alimento para el sistema nervioso") || ventaja.equals("Alimento para las infecciones")) {
                 itemViewHolder.backgroundVentaja.setCardBackgroundColor(Color.parseColor("#C2D5FD"));
                 itemViewHolder.ventaja.setTextColor(Color.parseColor("#4981F9"));
             } else {
-                if (ventaja.equals("aparato digestivo") || ventaja.equals("aparato urinario") || ventaja.equals("aparato reproductor")) {
+                if (ventaja.equals("Alimento para el aparato digestivo") || ventaja.equals("Alimento para el aparato urinario") || ventaja.equals("Alimento para el aparato reproductor")) {
                     itemViewHolder.backgroundVentaja.setCardBackgroundColor(Color.parseColor("#EBF5EF"));
                     itemViewHolder.ventaja.setTextColor(Color.parseColor("#5C9076"));
                 } else {
-                    if (ventaja.equals("estómago") || ventaja.equals("intestino")){
+                    if (ventaja.equals("Alimento para el estómago") || ventaja.equals("Alimento para el intestino")){
                         itemViewHolder.backgroundVentaja.setCardBackgroundColor(Color.parseColor("#F9DEC2"));
                         itemViewHolder.ventaja.setTextColor(Color.parseColor("#EF9D49"));
                     }else {
-                        if (ventaja.equals("ojos")){
+                        if (ventaja.equals("Alimento para los ojos")){
                             itemViewHolder.backgroundVentaja.setCardBackgroundColor(Color.parseColor("#EFE9FC"));
                             itemViewHolder.ventaja.setTextColor(Color.parseColor("#7639EB"));
                         }else{
-                            if (ventaja.equals("piel")){
+                            if (ventaja.equals("Alimento para la piel")){
                                 itemViewHolder.backgroundVentaja.setCardBackgroundColor(Color.parseColor("#FBEDEC"));
                                 itemViewHolder.ventaja.setTextColor(Color.parseColor("#ECC4B8"));
                             }else{
@@ -160,8 +159,8 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
                 .into(itemViewHolder.imgUrl);
 
 
-        Animation animation = AnimationUtils.loadAnimation(context, R.anim.item_transition_animation);
-        holder.itemView.startAnimation(animation);
+        //Animation animation = AnimationUtils.loadAnimation(context, R.anim.item_transition_animation);
+        //holder.itemView.startAnimation(animation);
 
     }
 

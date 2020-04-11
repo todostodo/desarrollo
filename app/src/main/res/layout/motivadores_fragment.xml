@@ -16,11 +16,11 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="190dp"
-            android:elevation="6dp"
             android:background="@android:color/transparent"
+            android:elevation="6dp"
             android:src="@drawable/epic_recompensa"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/overbox" />
 
         <LinearLayout
@@ -34,10 +34,10 @@
             android:gravity="center"
             android:orientation="vertical"
             android:paddingTop="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="@+id/overbox">
 
             <TextView
@@ -78,50 +78,241 @@
             android:layout_height="match_parent"
             android:background="@drawable/overbox"
             android:elevation="3dp"
-            android:orientation="vertical"></LinearLayout>
+            android:orientation="vertical" />
 
-        <RelativeLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:background="@color/BackgroundColorGris"
                 android:orientation="vertical">
 
-                <androidx.core.widget.NestedScrollView
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
                     <LinearLayout
+                        android:id="@+id/lblMotivadores"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Motivadores"
+                            android:textColor="@color/negro"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="canjea tus fichas por rempensas"
+                            android:textColor="#B8C2CD"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imgFondo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/icon_fondo_motivadores"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lblMotivadores"
+                        app:layout_constraintWidth_percent="0.55" />
+
+                    <LinearLayout
+                        android:id="@+id/layoutFichas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="85dp"
+                        android:orientation="vertical"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/imgFondo">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="FICHAS ACUMULADAS"
+                            android:textColor="#C0C0C0"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/txtFichasNino"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="100"
+                            android:textColor="@color/negro"
+                            android:textColorHighlight="@color/negro"
+                            android:textSize="35sp" />
+
+                        <Spinner
+                            android:id="@+id/spinnerMotivadoresNino"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="5dp"
+                            android:backgroundTint="#9FA2AA"
+                            android:gravity="center"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="30dp"
+                            android:paddingBottom="5dp" />
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/btnSelectMotivador"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/circulo_custom_border"
+                        android:padding="7dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layoutFichas">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:background="@drawable/circulo_custom_background"
+                            android:backgroundTint="#CAD9FF"
+                            android:paddingLeft="27dp"
+                            android:paddingTop="17dp"
+                            android:paddingRight="27dp"
+                            android:paddingBottom="17dp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:background="@drawable/icon_mas"
+                            android:backgroundTint="#432FBF"
+                            android:padding="20dp" />
+
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/myRecyclerViewMotivadoresProceso"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="60dp"
+                        android:visibility="visible"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnSelectMotivador"
+                        tools:listitem="@layout/motivadores_proceso_item" />
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
+                    <LinearLayout
+                        android:id="@+id/layoutMotivadoresVacio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnSelectMotivador">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@color/blanco">
+                            android:layout_gravity="center"
+                            android:layout_marginTop="50dp"
+                            android:src="@drawable/regalo_fondo" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginTop="25dp"
-                                android:layout_marginEnd="20dp"
-                                android:layout_marginBottom="10dp"
-                                android:fontFamily="@font/roboto_medium"
-                                android:text="Motivadores"
-                                android:textColor="#3A47B0"
-                                android:textSize="22sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center_horizontal"
+                            android:text="No tienes ningun motivador seleccionado, inserta uno nuevo para que puedas recibir las recompensas"
+                            android:textAlignment="center"
+                            android:textColor="@color/gris"
+                            android:textSize="16sp" />
 
-                        </RelativeLayout>
+                    </LinearLayout>
 
-                        <HorizontalScrollView
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <!--
+
+    <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/blanco">
+
+                    <LinearLayout
+                        android:id="@+id/btnSelectMotivador"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerInParent="true"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/icon_mas"
+                            android:backgroundTint="#3D47A9" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="Seleccionar motivador"
+                            android:textColor="#3D47A9"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+    -->
+
+
+    <!--
+<HorizontalScrollView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:scrollbars="none">
@@ -318,151 +509,4 @@
                             </LinearLayout>
 
                         </HorizontalScrollView>
-
-
-                        <LinearLayout
-                            android:id="@+id/layouttxtAvisoProceso"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/linearTotalFicha"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="30dp"
-                            android:layout_marginEnd="20dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/txtAvisoEnProceso"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:fontFamily="@font/roboto_medium"
-                                android:text="En proceso"
-                                android:textColor="#515151"
-                                android:textSize="20sp" />
-
-                            <RelativeLayout
-                                android:id="@+id/relativeSpinner"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="end"
-                                android:visibility="invisible">
-
-                                <RelativeLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentRight="true"
-                                    android:background="@drawable/rectangulo_border_gris">
-
-                                    <Spinner
-                                        android:id="@+id/spinnerMotivadoresNino"
-                                        android:layout_width="200dp"
-                                        android:layout_height="35dp"
-                                        android:layout_alignParentTop="true"
-                                        android:backgroundTint="#9FA2AA"
-                                        android:padding="5dp" />
-
-                                </RelativeLayout>
-
-                            </RelativeLayout>
-
-                        </LinearLayout>
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/myRecyclerViewMotivadoresProceso"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_below="@+id/layouttxtAvisoProceso"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:layout_marginBottom="60dp"
-                            android:visibility="visible"
-                            tools:listitem="@layout/motivadores_proceso_item" />
-
-                        <LinearLayout
-                            android:id="@+id/layoutMotivadoresVacio"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/layouttxtAvisoProceso"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:orientation="vertical"
-                            android:visibility="gone">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="50dp"
-                                android:src="@drawable/regalo_fondo" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:fontFamily="@font/roboto_regular"
-                                android:gravity="center_horizontal"
-                                android:text="No tienes ningun motivador seleccionado, inserta uno nuevo para que puedas recibir las recompensas"
-                                android:textAlignment="center"
-                                android:textColor="@color/gris"
-                                android:textSize="16sp" />
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
-
-                </androidx.core.widget.NestedScrollView>
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:background="@color/blanco">
-
-                <LinearLayout
-                    android:id="@+id/btnSelectMotivador"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerInParent="true"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/icon_mas"
-                        android:backgroundTint="#3D47A9" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_bold"
-                        android:text="Seleccionar motivador"
-                        android:textColor="#3D47A9"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-        </RelativeLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    <!--
-
     -->
