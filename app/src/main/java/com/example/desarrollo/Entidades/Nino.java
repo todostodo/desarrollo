@@ -3,11 +3,8 @@ package com.example.desarrollo.Entidades;
 public class Nino {
     private int idNino;
     private String nombre;
-
-    public Nino(int idNino, String nombre) {
-        this.idNino = idNino;
-        this.nombre = nombre;
-    }
+    private String genero;
+    private int fichas;
 
     public Nino(){}
 
@@ -25,5 +22,21 @@ public class Nino {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public int getFichas() {
+        return fichas;
+    }
+
+    public void setFichas(int fichas) {
+        this.fichas = fichas;
     }
 }

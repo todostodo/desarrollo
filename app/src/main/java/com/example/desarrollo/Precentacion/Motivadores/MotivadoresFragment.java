@@ -37,15 +37,9 @@ import java.util.Locale;
 public class MotivadoresFragment extends Fragment {
 
     private View view;
-    private LinearLayout _btnSelectMotivador;
+    private RelativeLayout _btnSelectMotivador;
     private LinearLayout _layoutMotivadoresVacio;
-    private TextView _fichasNino1Motivador;
-    private TextView _nombreNino1Motivador;
-    private TextView _fichasNino2Motivador;
-    private TextView _nombreNino2Motivador;
-    private CardView _layourMotivador2Nino;
-    private LinearLayout _linearTotalFicha;
-    private RelativeLayout _relativeSpinner;
+    private TextView _txtFichasNino;
     private Spinner _spinnerMotivadoresNino;
     private SwipeRefreshLayout _refreshMotivadoresProceso;
     private String fecha;
@@ -53,8 +47,8 @@ public class MotivadoresFragment extends Fragment {
 
     //Open dialog
     Button _btnSalirRecompensa;
-    LinearLayout myKonten, overbox;
-    ImageView locicon;
+    LinearLayout myContenedor, overbox;
+    ImageView iconoRecompensa;
     Animation fromsmall, fromnothing, forloci, togo;
     //-----------------------------[
 
@@ -96,9 +90,9 @@ public class MotivadoresFragment extends Fragment {
             }
         });
 
-        myKonten.setAlpha(0);
+        myContenedor.setAlpha(0);
         overbox.setAlpha(0);
-        locicon.setVisibility(View.GONE);
+        iconoRecompensa.setVisibility(View.GONE);
 
         return view;
     }
@@ -122,6 +116,7 @@ public class MotivadoresFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 consultarListaMotivadoresProceso(ninoList.get(position).getIdNino());
+                consultarFichas(ninoList.get(position).getFichas());
             }
 
             @Override
@@ -133,35 +128,20 @@ public class MotivadoresFragment extends Fragment {
 
     private void consultarListaMotivadoresProceso(int idNino) {
 
-        int cantidadNino = ninoDao.countNino(TAG, getContext());
+        int cantidadMotivadoresProceso = motivadoresDao.countMotivadoresProceso(TAG, getContext(), idNino);
 
-        if (cantidadNino < 1) {
-            _linearTotalFicha.setVisibility(View.GONE);
+        if (cantidadMotivadoresProceso > 0) {
+            _layoutMotivadoresVacio.setVisibility(View.GONE);
+            _myRecyclerViewProceso.setVisibility(View.VISIBLE);
+
+            _myRecyclerViewProceso.setLayoutManager(new LinearLayoutManager(getActivity()));
+            _myRecyclerViewProceso.setHasFixedSize(true);
+
+            cargarMotivadores(idNino);
+
         } else {
-            int cantidadMotivadoresProceso = motivadoresDao.countMotivadoresProceso(TAG, getContext(), idNino);
-
-            consultarFichar(cantidadNino);
-
-            if (cantidadMotivadoresProceso > 0) {
-                _layoutMotivadoresVacio.setVisibility(View.GONE);
-                _myRecyclerViewProceso.setVisibility(View.VISIBLE);
-
-                _myRecyclerViewProceso.setLayoutManager(new LinearLayoutManager(getActivity()));
-                _myRecyclerViewProceso.setHasFixedSize(true);
-
-                cargarMotivadores(idNino);
-
-            } else {
-                _myRecyclerViewProceso.setVisibility(View.GONE);
-                _layoutMotivadoresVacio.setVisibility(View.VISIBLE);
-            }
-
-            if (cantidadNino > 1) {
-                _layourMotivador2Nino.setVisibility(View.VISIBLE);
-                _relativeSpinner.setVisibility(View.VISIBLE);
-                consultarFichar(cantidadNino);
-
-            }
+            _myRecyclerViewProceso.setVisibility(View.GONE);
+            _layoutMotivadoresVacio.setVisibility(View.VISIBLE);
         }
     }
 
@@ -174,28 +154,28 @@ public class MotivadoresFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        locicon.setVisibility(View.VISIBLE);
-                        locicon.startAnimation(forloci);
+                        iconoRecompensa.setVisibility(View.VISIBLE);
+                        iconoRecompensa.startAnimation(forloci);
 
                         overbox.setAlpha(1);
                         overbox.startAnimation(fromnothing);
 
-                        myKonten.setAlpha(1);
-                        myKonten.startAnimation(fromsmall);
+                        myContenedor.setAlpha(1);
+                        myContenedor.startAnimation(fromsmall);
 
                         _btnSalirRecompensa.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 overbox.startAnimation(togo);
-                                myKonten.startAnimation(togo);
-                                locicon.startAnimation(togo);
-                                locicon.setVisibility(View.GONE);
+                                myContenedor.startAnimation(togo);
+                                iconoRecompensa.startAnimation(togo);
+                                iconoRecompensa.setVisibility(View.GONE);
 
-                                ViewCompat.animate(myKonten).setStartDelay(1000).alpha(0).start();
+                                ViewCompat.animate(myContenedor).setStartDelay(1000).alpha(0).start();
                                 ViewCompat.animate(overbox).setStartDelay(1000).alpha(0).start();
 
                                 setFechayHora();
-                                int fichas = (procesoList.get(posicion).getTotalFicha() -  procesoList.get(posicion).getValor());
+                                int fichas = (procesoList.get(posicion).getTotalFicha() - procesoList.get(posicion).getValor());
 
                                 motivadoresDao.canjerMotivador(TAG,
                                         getContext(),
@@ -204,17 +184,15 @@ public class MotivadoresFragment extends Fragment {
                                         fichas,
                                         fecha);
 
-                                int cantidadNino = ninoDao.countNino(TAG, getContext());
-                                consultarFichar(cantidadNino);
+                                consultarListaNino();
 
-                                int desbloaquearMotvadores = motivadoresDao.desbloquearMotivadores(TAG,
+                                int desbloaquearMotivadores = motivadoresDao.desbloquearMotivadores(TAG,
                                         getContext(),
                                         procesoList.get(posicion).getIdNino());
 
-                                if (desbloaquearMotvadores == 2){
+                                if (desbloaquearMotivadores == 2) {
                                     _layoutMotivadoresVacio.setVisibility(View.VISIBLE);
-                                }
-                                else{
+                                } else {
                                     _layoutMotivadoresVacio.setVisibility(View.GONE);
                                 }
 
@@ -246,49 +224,33 @@ public class MotivadoresFragment extends Fragment {
 
     }
 
-    private void setFechayHora(){
+    private void setFechayHora() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         Date date = new Date();
 
         fecha = dateFormat.format(date);
     }
 
-    private void consultarFichar(int cantidad){
 
-        totalFichas = ninoDao.countFichasNino(TAG, getContext());
-        if (cantidad < 1) { }
-        else{
-            _nombreNino1Motivador.setText(String.valueOf(totalFichas.get(1)));
-            _fichasNino1Motivador.setText(String.valueOf(totalFichas.get(0)));
-        }
-        if (cantidad > 1){
-            _nombreNino2Motivador.setText(String.valueOf(totalFichas.get(3)));
-            _fichasNino2Motivador.setText(String.valueOf(totalFichas.get(2)));
-        }
-
+    private void consultarFichas(int cantidad) {
+        _txtFichasNino.setText(String.valueOf(cantidad));
     }
 
-    private void init() {
-        _btnSelectMotivador = (LinearLayout) view.findViewById(R.id.btnSelectMotivador);
-        _layoutMotivadoresVacio = (LinearLayout) view.findViewById(R.id.layoutMotivadoresVacio);
-        _fichasNino1Motivador = (TextView) view.findViewById(R.id.fichasNino1Motivador);
-        _nombreNino1Motivador = (TextView) view.findViewById(R.id.nombreNino1Motivador);
-        _fichasNino2Motivador = (TextView) view.findViewById(R.id.fichasNino2Motivador);
-        _nombreNino2Motivador = (TextView) view.findViewById(R.id.nombreNino2Motivador);
-        _spinnerMotivadoresNino = (Spinner) view.findViewById(R.id.spinnerMotivadoresNino);
-        _relativeSpinner = (RelativeLayout) view.findViewById(R.id.relativeSpinner);
-        _myRecyclerViewProceso = (RecyclerView) view.findViewById(R.id.myRecyclerViewMotivadoresProceso);
-        _layourMotivador2Nino = (CardView) view.findViewById(R.id.layourMotivador2Nino);
-        _linearTotalFicha = (LinearLayout) view.findViewById(R.id.linearTotalFicha);
-        _refreshMotivadoresProceso = (SwipeRefreshLayout) view.findViewById(R.id.refreshMotivadoresProceso);
 
+    private void init() {
+        _btnSelectMotivador = (RelativeLayout) view.findViewById(R.id.btnSelectMotivador);
+        _layoutMotivadoresVacio = (LinearLayout) view.findViewById(R.id.layoutMotivadoresVacio);
+        _txtFichasNino = (TextView) view.findViewById(R.id.txtFichasNino);
+        _spinnerMotivadoresNino = (Spinner) view.findViewById(R.id.spinnerMotivadoresNino);
+        _myRecyclerViewProceso = (RecyclerView) view.findViewById(R.id.myRecyclerViewMotivadoresProceso);
+        _refreshMotivadoresProceso = (SwipeRefreshLayout) view.findViewById(R.id.refreshMotivadoresProceso);
 
         //Open Dialog
 
         _btnSalirRecompensa = (Button) view.findViewById(R.id.btnSalirRecompensa);
-        myKonten = (LinearLayout) view.findViewById(R.id.mykonten);
+        myContenedor = (LinearLayout) view.findViewById(R.id.mykonten);
         overbox = (LinearLayout) view.findViewById(R.id.overbox);
-        locicon = (ImageView) view.findViewById(R.id.locicon);
+        iconoRecompensa = (ImageView) view.findViewById(R.id.locicon);
 
         fromsmall = AnimationUtils.loadAnimation(getContext(), R.anim.fromsmall);
         fromnothing = AnimationUtils.loadAnimation(getContext(), R.anim.fromnothing);

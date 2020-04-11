@@ -1,14 +1,12 @@
 package com.example.desarrollo.ExportJSON.RecycrerView;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.LinearLayout;
@@ -22,7 +20,6 @@ import com.example.desarrollo.ExportJSON.Filter.FilteredHelperUltraprocesados;
 import com.example.desarrollo.ExportJSON.Reader.ReaderUltraprocesados;
 import com.example.desarrollo.R;
 
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
@@ -35,7 +32,7 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
     public ArrayList<ReaderUltraprocesados> currentList;
     FilteredHelperUltraprocesados filterHelper;
 
-    BottomSheetDialog dialog;
+    BottomSheetDialog dialogUltraprocesados;
 
     public RecyclerViewAdapterUltraprocesados(Context context, ArrayList<ReaderUltraprocesados> readerUltraprocesados) {
         this.context = context;
@@ -49,7 +46,7 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
         TextView caloriasBebida;
         CardView view_container;
         TextView nombre;
-        LinearLayout layout;
+        //LinearLayout layout;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,7 +58,7 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
 
             nombre = (TextView) itemView.findViewById(R.id.nombreDialog);
 
-            layout = (LinearLayout) itemView.findViewById(R.id.ultraprocesadosDialog);
+            //layout = (LinearLayout) itemView.findViewById(R.id.ultraprocesadosDialog);
 
         }
     }
@@ -75,21 +72,28 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
 
         final ItemViewHolder viewHolder = new ItemViewHolder(view);
 
-        //Dialog
-        dialog = new BottomSheetDialog(context);
-        dialog.setContentView(R.layout.ultraprocesados_dialog);
-
-
         viewHolder.view_container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                TextView nombreDialog = (TextView) dialog.findViewById(R.id.nombreDialog);
+                dialogUltraprocesados = new BottomSheetDialog(parent.getContext());
+                dialogUltraprocesados.setContentView(R.layout.ultraprocesados_dialog);
+                dialogUltraprocesados.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                TextView nombreDialog = (TextView) dialogUltraprocesados.findViewById(R.id.nombreDialog);
+                Button btnRegistrarAlimento = (Button) dialogUltraprocesados.findViewById(R.id.btnRegistrarUltraprocesado);
                 nombreDialog.setText(readerUltraprocesados.get(viewHolder.getAdapterPosition()).getNombre());
+
+                btnRegistrarAlimento.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogUltraprocesados.dismiss();
+                    }
+                });
 
                 //Toast.makeText(context, "select: " + String.valueOf(viewHolder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
 
-                dialog.show();
+                dialogUltraprocesados.show();
 
             }
         });
@@ -106,8 +110,8 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
         itemViewHolder.nombreBebida.setText(readerUltraprocesados.getNombre());
         itemViewHolder.caloriasBebida.setText(readerUltraprocesados.getCalorias());
 
-        Animation animation = AnimationUtils.loadAnimation(context, R.anim.item_transition_animation);
-        holder.itemView.startAnimation(animation);
+        //Animation animation = AnimationUtils.loadAnimation(context, R.anim.item_transition_animation);
+        //holder.itemView.startAnimation(animation);
 
     }
 

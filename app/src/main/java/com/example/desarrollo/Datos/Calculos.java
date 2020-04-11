@@ -20,7 +20,7 @@ public class Calculos {
 
     private static SQLiteDatabase database;
 
-    public static double convertirAPorciones(double cantidad, double equivalencia) {
+    public static double obtenerUnidadMedida(double cantidad, double equivalencia) {
 
         double porcion = 0;
 
@@ -42,7 +42,7 @@ public class Calculos {
             database = null;
             database = connection.getReadableDatabase();
 
-            double unidadMedida = convertirAPorciones(cantidad, equivalencia);
+            double unidadMedida = obtenerUnidadMedida(cantidad, equivalencia);
 
             String insetDetalleRegistro = "INSERT INTO " + Utilidades.TABLA_DetalleRegistro + "( " +
                     Utilidades.CAMPO_idNino + ", " +
@@ -156,7 +156,7 @@ public class Calculos {
         return avaceEsfuerzoVerdura;
     }
 
-    public static void generaLBF(Context context,int idNino) {
+    public static void generaLBF(Context context, int idNino) {
 
         double retorno = 0,entro=0;
         double sumatoria = 0;
@@ -186,26 +186,26 @@ public class Calculos {
             }
             if (inpre == 0) {
 
-                try {
+                        try {
 
-                    ConexionSQLHelper connection = new ConexionSQLHelper(context);
+                            ConexionSQLHelper connection = new ConexionSQLHelper(context);
 
-                    database = null;
-                    database = connection.getReadableDatabase();
+                            database = null;
+                            database = connection.getReadableDatabase();
 
 
-                    String inicio = preferenc.getString("FechaInicio", "");
-                    String fecha = getFecha();
-                    Cursor cursor = database.rawQuery("SELECT DetalleReg.cad FROM DetalleReg,Registro WHERE DetalleReg.idreg=Registro.idreg AND Registro.idNino=" + idNino + " AND DetalleReg.Tipo='Fruta' AND Registro.fechar BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
-                    // Cursor cursor = database.rawQuery("SELECT * FROM Registro",null);
-                    if (cursor.moveToFirst()) {
+                            String inicio = preferenc.getString("FechaInicio", "");
+                            String fecha = getFecha();
+                            Cursor cursor = database.rawQuery("SELECT DetalleReg.cad FROM DetalleReg,Registro WHERE DetalleReg.idreg=Registro.idreg AND Registro.idNino=" + idNino + " AND DetalleReg.Tipo='Fruta' AND Registro.fechar BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
+                            // Cursor cursor = database.rawQuery("SELECT * FROM Registro",null);
+                            if (cursor.moveToFirst()) {
 
                         do {
                              //System.out.println("SUMATORIA: "+cursor.getInt(0));
                             sumatoria = sumatoria + cursor.getDouble(0);
 
-                            // Toast.makeText(context, ""+cursor.getDouble(0), Toast.LENGTH_SHORT).show();
-                        } while (cursor.moveToNext());
+                                    // Toast.makeText(context, ""+cursor.getDouble(0), Toast.LENGTH_SHORT).show();
+                                } while (cursor.moveToNext());
 
                        // System.out.println("SUMATORIA: "+sumatoria);
 
@@ -247,19 +247,19 @@ public class Calculos {
                         retorno = sumatoria;
 
 
-                    } else {
-                        Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
+                            }
+
+                        } catch (Exception e) {
+                            Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
+                        } finally {
+                            database.close();
+                        }
+
                     }
-
-                } catch (Exception e) {
-                    Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
-                } finally {
-                    database.close();
                 }
-
             }
-        }
-    }
 
         }
         else if (dia != dias) {
@@ -303,7 +303,7 @@ public class Calculos {
     ///////////////////////////////////////////////////////////////////////
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    public static void generaLBUlPro(Context context,int idNino) {
+    public static void generaLBUlPro(Context context, int idNino) {
 
         double retorno = 0,entro=0;
         double sumatoria = 0;
@@ -332,28 +332,28 @@ public class Calculos {
             }
             if (inpre == 0) {
 
-                try {
+                        try {
 
-                    ConexionSQLHelper connection = new ConexionSQLHelper(context);
+                            ConexionSQLHelper connection = new ConexionSQLHelper(context);
 
-                    database = null;
-                    database = connection.getReadableDatabase();
+                            database = null;
+                            database = connection.getReadableDatabase();
 
 
-                    String inicio = preferenc.getString("FechaInicio", "");
-                    String fecha = getFecha();
-                    Cursor cursor = database.rawQuery("SELECT DetalleReg.cad FROM DetalleReg,Registro WHERE DetalleReg.idreg=Registro.idreg AND Registro.idNino=" + idNino + " AND DetalleReg.Tipo='ULtraProcesado' AND Registro.fechar BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
-                    // Cursor cursor = database.rawQuery("SELECT * FROM Registro",null);
-                    if (cursor.moveToFirst()) {
+                            String inicio = preferenc.getString("FechaInicio", "");
+                            String fecha = getFecha();
+                            Cursor cursor = database.rawQuery("SELECT DetalleReg.cad FROM DetalleReg,Registro WHERE DetalleReg.idreg=Registro.idreg AND Registro.idNino=" + idNino + " AND DetalleReg.Tipo='ULtraProcesado' AND Registro.fechar BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
+                            // Cursor cursor = database.rawQuery("SELECT * FROM Registro",null);
+                            if (cursor.moveToFirst()) {
 
-                        do {
-                            // System.out.println("SUMATORIA: "+cursor.getInt(0));
-                            sumatoria = sumatoria + cursor.getDouble(0);
+                                do {
+                                    // System.out.println("SUMATORIA: "+cursor.getInt(0));
+                                    sumatoria = sumatoria + cursor.getDouble(0);
 
-                            // Toast.makeText(context, ""+cursor.getDouble(0), Toast.LENGTH_SHORT).show();
-                        } while (cursor.moveToNext());
+                                    // Toast.makeText(context, ""+cursor.getDouble(0), Toast.LENGTH_SHORT).show();
+                                } while (cursor.moveToNext());
 
-                        //System.out.println("SUMATORIA: "+sumatoria);
+                                //System.out.println("SUMATORIA: "+sumatoria);
 
                         sumatoria = sumatoria / 7;//sumatoria tiene el resultado de la linea base de frutas.
                         if (idNino == 1) {
@@ -397,9 +397,9 @@ public class Calculos {
                         retorno = sumatoria;
 
 
-                    } else {
-                        Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
-                    }
+                            } else {
+                                Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
+                            }
 
                 } catch (Exception e) {
                     Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
@@ -439,7 +439,7 @@ public class Calculos {
     }
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-    public static void generaLBV(Context context,int idNino) {
+    public static void generaLBV(Context context, int idNino) {
 
         double retorno = 0,entro=0;
         double sumatoria = 0;
@@ -471,23 +471,23 @@ public class Calculos {
                 if (inpre == 0) {
                     System.out.println("Consultar");
 
-                    try {
+                        try {
 
-                        ConexionSQLHelper connection = new ConexionSQLHelper(context);
+                            ConexionSQLHelper connection = new ConexionSQLHelper(context);
 
-                        database = null;
-                        database = connection.getReadableDatabase();
+                            database = null;
+                            database = connection.getReadableDatabase();
 
 
-                        String inicio = preferenc.getString("FechaInicio", "");
-                        String fecha = getFecha();
-                        Cursor cursor = database.rawQuery("SELECT DetalleReg.cad FROM DetalleReg,Registro WHERE DetalleReg.idreg=Registro.idreg AND Registro.idNino=" + idNino + " AND DetalleReg.Tipo='Verdura' AND Registro.fechar BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
-                        // Cursor cursor = database.rawQuery("SELECT * FROM Registro",null);
-                        if (cursor.moveToFirst()) {
+                            String inicio = preferenc.getString("FechaInicio", "");
+                            String fecha = getFecha();
+                            Cursor cursor = database.rawQuery("SELECT DetalleReg.cad FROM DetalleReg,Registro WHERE DetalleReg.idreg=Registro.idreg AND Registro.idNino=" + idNino + " AND DetalleReg.Tipo='Verdura' AND Registro.fechar BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
+                            // Cursor cursor = database.rawQuery("SELECT * FROM Registro",null);
+                            if (cursor.moveToFirst()) {
 
-                            do {
-                                // System.out.println("SUMATORIA: "+cursor.getInt(0));
-                                sumatoria = sumatoria + cursor.getDouble(0);
+                                do {
+                                    // System.out.println("SUMATORIA: "+cursor.getInt(0));
+                                    sumatoria = sumatoria + cursor.getDouble(0);
 
                                 // Toast.makeText(context, ""+cursor.getDouble(0), Toast.LENGTH_SHORT).show();
                             } while (cursor.moveToNext());
@@ -538,16 +538,13 @@ public class Calculos {
                             retorno = sumatoria;
 
 
-                        } else {
-                            Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
+                        } finally {
+                            database.close();
                         }
 
-                    } catch (Exception e) {
-                        Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
-                    } finally {
-                        database.close();
                     }
-
                 }
             }
         }
@@ -574,8 +571,8 @@ public class Calculos {
         }
     }
 
-    public static void EsfuerzoF(Context context,int idNino){
-        double retorno=0;
+    public static void EsfuerzoF(Context context, int idNino) {
+        double retorno = 0;
         double sumatoria = 0;
         int consulta=CuantosNinos(context);
 
@@ -638,6 +635,7 @@ public class Calculos {
                             if(com>=sumatoria){
                                 res=res+(0.25);
                                 //registra
+
                                 if(retorno>=3.0){
                                     actualizaNiño(context,idNino,3.0,1);
                                 }
@@ -650,7 +648,7 @@ public class Calculos {
                             else if((res*.59)<=sumatoria){
                                 res=res-(0.25);
                                 //registra
-                                actualizaNiño(context,idNino,res,1);
+                                actualizaNiño(context, idNino, res, 1);
                             }
                         } else if (idNino == 2) {
                             SharedPreferences.Editor editor = preferenc.edit();
@@ -671,8 +669,9 @@ public class Calculos {
                             }
                             else if((res*.59)<=sumatoria){
                                 res=res-(0.25);
+
                                 //registra
-                                actualizaNiño(context,idNino,res,1);
+                                actualizaNiño(context, idNino, res, 1);
                             }
                         }
 
@@ -692,8 +691,6 @@ public class Calculos {
                                 edit.commit();
                             }
                         }
-
-
 
 
                     } else {
@@ -716,8 +713,8 @@ public class Calculos {
 
     //----------------------------------------------------------------------------------------------------------------
 
-    public static void EsfuerzoUP(Context context,int idNino){
-        double retorno=0;
+    public static void EsfuerzoUP(Context context, int idNino) {
+        double retorno = 0;
         double sumatoria = 0;
         int consulta=CuantosNinos(context);
 
@@ -728,7 +725,7 @@ public class Calculos {
         Calendar calendar = new GregorianCalendar(timezone);
         int dias = calendar.get(Calendar.DAY_OF_WEEK);
 
-        if(dia!=dias){
+        if (dia != dias) {
             SharedPreferences.Editor editor = preferenc.edit();
             editor.remove("pase3");
             editor.putInt("pase3", 0);
@@ -783,7 +780,7 @@ public class Calculos {
                             if(res<=sumatoria){
                                 res=res-(0.25);
                                 //registra
-                                actualizaNiño(context,idNino,res,2);
+                                actualizaNiño(context, idNino, res, 2);
                             }
                         } else if (idNino == 2) {
                             System.out.println("llave up 2");
@@ -795,7 +792,7 @@ public class Calculos {
                             if(res<=sumatoria){
                                 res=res-(0.25);
                                 //registra
-                                actualizaNiño(context,idNino,res,2);
+                                actualizaNiño(context, idNino, res, 2);
                             }
                         }
 
@@ -842,8 +839,8 @@ public class Calculos {
     }
 
     //----------------------------------------------------------------------------------------------------------------
-    public static void EsfuerzoV(Context context,int idNino){
-        double retorno=0;
+    public static void EsfuerzoV(Context context, int idNino) {
+        double retorno = 0;
         double sumatoria = 0;
         int consulta=CuantosNinos(context);
 
@@ -905,12 +902,11 @@ public class Calculos {
                             if(com>=sumatoria){
                                 res=res+(0.25);
                                 //registra
-                                actualizaNiño(context,idNino,res,0);
-                            }
-                            else if((res*.59)<=sumatoria){
-                                res=res-(0.25);
+                                actualizaNiño(context, idNino, res, 0);
+                            } else if ((res * .59) <= sumatoria) {
+                                res = res - (0.25);
                                 //registra
-                                actualizaNiño(context,idNino,res,0);
+                                actualizaNiño(context, idNino, res, 0);
                             }
                         } else if (idNino == 2) {
                             SharedPreferences.Editor editor = preferenc.edit();
@@ -922,12 +918,11 @@ public class Calculos {
                             if(com>=sumatoria){
                                 res=res+(0.25);
                                 //registra
-                                actualizaNiño(context,idNino,res,0);
-                            }
-                            else if((res*.59)<=sumatoria){
-                                res=res-(0.25);
+                                actualizaNiño(context, idNino, res, 0);
+                            } else if ((res * .59) <= sumatoria) {
+                                res = res - (0.25);
                                 //registra
-                                actualizaNiño(context,idNino,res,0);
+                                actualizaNiño(context, idNino, res, 0);
                             }
                         }
 
@@ -962,8 +957,7 @@ public class Calculos {
 
     }
 
-
-    public static boolean editarNiño(Context context, int id, double cantidad,int tipo) {
+    public static boolean editarNiño(Context context, int id, double cantidad, int tipo) {
 
         System.out.println("entre al niño");
         int quefue=0;
@@ -1012,27 +1006,26 @@ public class Calculos {
         }
     }
 
-    public static double consultarNiño(Context context, int idNino,int tipo) {
+    public static double consultarNiño(Context context, int idNino, int tipo) {
 
-        double a=0.0;
+        double a = 0.0;
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
             database = null;
             database = connection.getWritableDatabase();
             Cursor cursor;
-            String esf="";
-            if(tipo==1){
-                esf="esfuerzof";
+            String esf = "";
+            if (tipo == 1) {
+                esf = "esfuerzof";
+            } else if (tipo == 0) {
+                esf = "esfuerzov";
+            } else if (tipo == 2) {
+                esf = "esfuerzoultra";
             }
-            else if(tipo==0){
-                esf="esfuerzov";
-            }else if(tipo==2){
-                esf="esfuerzoultra";
-            }
-            cursor = database.rawQuery("SELECT "+esf+" FROM Nino WHERE idNino="+idNino, null);
+            cursor = database.rawQuery("SELECT " + esf + " FROM Nino WHERE idNino=" + idNino, null);
 
             if (cursor.moveToFirst()) {
-                a=cursor.getDouble(0);
+                a = cursor.getDouble(0);
             }
 
         } catch (Exception e) {
@@ -1043,7 +1036,7 @@ public class Calculos {
         return a;
     }
 
-    public static boolean actualizaNiño(Context context, int id, double cantidad,int tipo) {
+    public static boolean actualizaNiño(Context context, int id, double cantidad, int tipo) {
 
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
@@ -1077,10 +1070,9 @@ public class Calculos {
     }
 
 
-
     public static int KaloriaCambio(Context context, int idNino) {
 
-        double sumatoria=0.0;
+        double sumatoria = 0.0;
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
             database = null;

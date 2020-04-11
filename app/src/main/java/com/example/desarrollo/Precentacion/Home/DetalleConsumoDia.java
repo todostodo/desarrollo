@@ -1,6 +1,9 @@
 package com.example.desarrollo.Precentacion.Home;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -8,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -17,6 +21,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,18 +37,20 @@ import com.example.desarrollo.Entidades.Tutor;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewHistorialConsumo;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewTutor;
 import com.example.desarrollo.R;
+import com.example.desarrollo.Ultilidades.Toastp;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-public class DetalleConsumoDia extends Fragment {
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+public class DetalleConsumoDia extends AppCompatActivity {
 
-    private View view;
     private LinearLayout _btnAddTutor;
-    private RelativeLayout _btnAtivityNino;
+    private RelativeLayout _btnAtivityNino, _backgroundGeneroNino;
     private Spinner _spinnerDetalleConsumo;
     private TextView _txtAvanceFrutas, _txtAvanceVerduras;
-
+    private ImageView _imgGeneroNino;
+    private RelativeLayout _btmCerrarDetalleConsumo;
     private ProgressBar _charFrutas, _chartVerduras;
     private Handler handler = new Handler();
     private int pStatus = 0;
@@ -55,7 +64,6 @@ public class DetalleConsumoDia extends Fragment {
     private ArrayList<HistorialConsumo> consumoList = new ArrayList<>();
     private ArrayList<String> listaNino;
     private ArrayAdapter<CharSequence> adapterSpinner;
-    private RelativeLayout mostrarAddNino, mostrarNino;
 
     private NinoDao ninoDao;
     private TutorDao tutorDao;
@@ -63,10 +71,10 @@ public class DetalleConsumoDia extends Fragment {
 
     private static final String TAG = "DetalleConsumoDia";
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.detalle_consumo_dia_fragment, container, false);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.detalle_consumo_dia_fragment);
 
         init();
         consultarNinos();
@@ -77,9 +85,9 @@ public class DetalleConsumoDia extends Fragment {
             @Override
             public void onClick(View v) {
                 if (adapterTutor.getItemCount() == 3) {
-                    Toast.makeText(getContext(), "Alcanzo el numero maximo de tutores", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Alcanzo el numero maximo de tutores", Toast.LENGTH_SHORT).show();
                 } else {
-                    Intent intent = new Intent(getContext(), TutorFragment.class);
+                    Intent intent = new Intent(getApplicationContext(), TutorFragment.class);
                     startActivity(intent);
                     cargarTutores();
                 }
@@ -88,26 +96,32 @@ public class DetalleConsumoDia extends Fragment {
         _btnAtivityNino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), HijoRegistroActivity.class);
+                Intent intent = new Intent(getApplicationContext(), HijoRegistroActivity.class);
                 startActivity(intent);
             }
         });
 
+        //Salir del activity
+        _btmCerrarDetalleConsumo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
-        return view;
     }
+
 
     public void consultarNinos() {
 
-        int cantidadNino = ninoDao.countNino(TAG, getContext());
+        int cantidadNino = ninoDao.countNino(TAG, getApplicationContext());
 
         if (cantidadNino > 1) {
-            mostrarAddNino.setVisibility(View.GONE);
-            mostrarNino.setVisibility(View.VISIBLE);
+            _btnAtivityNino.setVisibility(View.GONE);
         }
 
         ninoList.clear();
-        ninoDao.consultarNino(TAG, getContext(), ninoList);
+        ninoDao.consultarNino(TAG, getApplicationContext(), ninoList);
 
         listaNino = new ArrayList<>();
 
@@ -115,7 +129,7 @@ public class DetalleConsumoDia extends Fragment {
             listaNino.add(ninoList.get(i).getNombre());
         }
 
-        adapterSpinner = new ArrayAdapter(getContext(), R.layout.spinner_motivadores_item, listaNino);
+        adapterSpinner = new ArrayAdapter(getApplicationContext(), R.layout.spinner_motivadores_item, listaNino);
         adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _spinnerDetalleConsumo.setAdapter(adapterSpinner);
 
@@ -123,7 +137,7 @@ public class DetalleConsumoDia extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 cargarHistorialConsumo(ninoList.get(position).getIdNino());
-                startChart(ninoList.get(position).getIdNino());
+                startChart(ninoList.get(position).getIdNino(), ninoList.get(position).getGenero());
             }
 
             @Override
@@ -134,23 +148,33 @@ public class DetalleConsumoDia extends Fragment {
     }
 
     public void cargarHistorialConsumo(int idNino) {
-        _recyclerViewHistorialConsumo.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ninoDao.consultarItemsHistorialDetalleConsumo(TAG, getContext(), idNino, consumoList);
-        adapterHistorialConsumo = new RecyclerViewHistorialConsumo(getContext(), consumoList);
+        _recyclerViewHistorialConsumo.setLayoutManager(new LinearLayoutManager(this));
+        ninoDao.consultarItemsHistorialDetalleConsumo(TAG, getApplicationContext(), idNino, consumoList);
+        adapterHistorialConsumo = new RecyclerViewHistorialConsumo(getApplicationContext(), consumoList);
         _recyclerViewHistorialConsumo.setAdapter(adapterHistorialConsumo);
     }
 
     public void cargarTutores() {
-        _recyclerViewTutor.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        tutorDao.consultaTutor(getContext(), tutorList);
-        adapterTutor = new RecyclerViewTutor(getContext(), tutorList);
+        _recyclerViewTutor.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        tutorDao.consultaTutor(getApplicationContext(), tutorList);
+        adapterTutor = new RecyclerViewTutor(getApplicationContext(), tutorList);
         _recyclerViewTutor.setAdapter(adapterTutor);
     }
 
-    private void startChart(int idNino) {
+    private void startChart(int idNino, String genero) {
 
-        double avanceEsfuerzoFrutas = calculos.progresoEsfuerzoFruta(TAG, getContext(), idNino);
-        double avanceEsfuerzoVerdura = calculos.progresoEsfuerzoVerdura(TAG, getContext(), idNino);
+        if (genero.equals("hombre")) {
+            _backgroundGeneroNino.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#E36B5E")));
+            _imgGeneroNino.setBackgroundResource(R.drawable.icon_genero_hombre);
+        }
+        if (genero.equals("mujer")) {
+            _backgroundGeneroNino.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#B8C2CD")));
+            _imgGeneroNino.setBackgroundResource(R.drawable.icon_genero_mujer);
+        }
+
+
+        double avanceEsfuerzoFrutas = calculos.progresoEsfuerzoFruta(TAG, getApplicationContext(), idNino);
+        double avanceEsfuerzoVerdura = calculos.progresoEsfuerzoVerdura(TAG, getApplicationContext(), idNino);
         final int progresoFrutas = (int) avanceEsfuerzoFrutas * 10;
         final int progresoVerduras = (int) avanceEsfuerzoVerdura * 10;
 
@@ -205,16 +229,17 @@ public class DetalleConsumoDia extends Fragment {
 
     private void init() {
 
-        _btnAddTutor = (LinearLayout) view.findViewById(R.id.btnNuevoTutor);
-        _charFrutas = (ProgressBar) view.findViewById(R.id.chartFrutas);
-        _chartVerduras = (ProgressBar) view.findViewById(R.id.chartVerduras);
-        _recyclerViewTutor = (RecyclerView) view.findViewById(R.id.recyclerViewTutores);
-        _btnAtivityNino = (RelativeLayout) view.findViewById(R.id.btnAtivityNino);
-        _spinnerDetalleConsumo = (Spinner) view.findViewById(R.id.spinnerDetalleConsumo);
-        mostrarAddNino = (RelativeLayout) view.findViewById(R.id.btnAtivityNino);
-        mostrarNino = (RelativeLayout) view.findViewById(R.id.relativeNinosAgregados);
-        _recyclerViewHistorialConsumo = (RecyclerView) view.findViewById(R.id.recyclerViewHistorial);
-        _txtAvanceFrutas = (TextView) view.findViewById(R.id.txtAvanceFrutas);
-        _txtAvanceVerduras = (TextView) view.findViewById(R.id.txtAvanceVerduras);
+        _btnAddTutor = (LinearLayout) findViewById(R.id.btnNuevoTutor);
+        _charFrutas = (ProgressBar) findViewById(R.id.chartFrutas);
+        _chartVerduras = (ProgressBar) findViewById(R.id.chartVerduras);
+        _recyclerViewTutor = (RecyclerView) findViewById(R.id.recyclerViewTutores);
+        _btnAtivityNino = (RelativeLayout) findViewById(R.id.btnAtivityNino);
+        _spinnerDetalleConsumo = (Spinner) findViewById(R.id.spinnerDetalleConsumo);
+        _recyclerViewHistorialConsumo = (RecyclerView) findViewById(R.id.recyclerViewHistorial);
+        _txtAvanceFrutas = (TextView) findViewById(R.id.txtAvanceFrutas);
+        _txtAvanceVerduras = (TextView) findViewById(R.id.txtAvanceVerduras);
+        _btmCerrarDetalleConsumo = (RelativeLayout) findViewById(R.id.btmCerrarDetalleConsumo);
+        _backgroundGeneroNino = (RelativeLayout) findViewById(R.id.backgroundGeneroNino);
+        _imgGeneroNino = (ImageView) findViewById(R.id.imgGeneroNino);
     }
 }

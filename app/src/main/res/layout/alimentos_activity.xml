@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Top toolbar-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/relLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blanco">
+
+            <LinearLayout
+                android:id="@+id/tituloAlimentos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RelativeLayout
+                    android:id="@+id/btmCerrarAlimentos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_marginRight="10dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/flecha_regresar"
+                        android:backgroundTint="#B8C2CD"
+                        android:padding="10dp" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="7"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Alimentos"
+                    android:textColor="@color/negro"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/mySearchViewFrutas"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerInParent="true"
+                    android:background="@android:color/transparent"
+                    android:elevation="0dp"
+                    android:inputType="text"
+                    android:theme="@style/AppSearchView"
+                    android:visibility="visible"
+                    app:queryBackground="@android:color/transparent"
+                    app:queryHint="¿Qué comiste hoy?"
+                    app:searchIcon="@drawable/buscar" />
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/mySearchViewVerduras2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerInParent="true"
+                    android:background="@android:color/transparent"
+                    android:elevation="0dp"
+                    android:inputType="text"
+                    android:theme="@style/AppSearchView"
+                    android:visibility="gone"
+                    app:queryBackground="@android:color/transparent"
+                    app:queryHint="¿Qué comiste hoy?"
+                    app:searchIcon="@drawable/buscar" />
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/mySearchViewUltraProcesados"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerInParent="true"
+                    android:background="@android:color/transparent"
+                    android:elevation="0dp"
+                    android:inputType="text"
+                    android:theme="@style/AppSearchView"
+                    android:visibility="gone"
+                    app:queryBackground="@android:color/transparent"
+                    app:queryHint="¿Qué comiste hoy?"
+                    app:searchIcon="@drawable/buscar" />
+
+            </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Middle section (body) -->
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/relLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/relLayout1"
+            android:background="@color/blanco">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="15dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnFrutas"
+                        style="?attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/custom_button_gris"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Frutas"
+                        android:textAllCaps="false"
+                        android:textColor="#B8C2CD"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.27" />
+
+                    <Button
+                        android:id="@+id/btnVerduras"
+                        style="?attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_button_gris"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Verduras"
+                        android:textAllCaps="false"
+                        android:textColor="#B8C2CD"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toStartOf="@+id/btnUltraProcesados"
+                        app:layout_constraintStart_toEndOf="@+id/btnFrutas"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.27" />
+
+                    <Button
+                        android:id="@+id/btnUltraProcesados"
+                        style="?attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_button_gris"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Ultra procesados"
+                        android:textAllCaps="false"
+                        android:textColor="#B8C2CD"
+                        android:textSize="14sp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.4" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnSubUltraProcesados"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnBebidas2"
+                            style="?attr/buttonBarButtonStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/custom_button_gris"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Bebidas"
+                            android:textAllCaps="false"
+                            android:textColor="#B8C2CD"
+                            android:textSize="14sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent="0.3" />
+
+                        <Button
+                            android:id="@+id/btnFrituras2"
+                            style="?attr/buttonBarButtonStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/custom_button_gris"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Frituras"
+                            android:textAllCaps="false"
+                            android:textColor="#B8C2CD"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@+id/btnGolosinas2"
+                            app:layout_constraintStart_toEndOf="@+id/btnBebidas2"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent="0.3" />
+
+                        <Button
+                            android:id="@+id/btnGolosinas2"
+                            style="?attr/buttonBarButtonStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/custom_button_gris"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Golosinas"
+                            android:textAllCaps="false"
+                            android:textColor="#B8C2CD"
+                            android:textSize="14sp"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent="0.3" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnGalletasPanesillos2"
+                            style="?attr/buttonBarButtonStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/custom_button_gris"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Galletas y panesillos"
+                            android:textAllCaps="false"
+                            android:textColor="#B8C2CD"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@+id/btnOtros2"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent="0.45"
+                            app:layout_constraintVertical_chainStyle="packed"/>
+
+                        <Button
+                            android:id="@+id/btnOtros2"
+                            style="?attr/buttonBarButtonStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/custom_button_gris"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Otros"
+                            android:textAllCaps="false"
+                            android:textColor="#B8C2CD"
+                            android:textSize="14sp"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btnGalletasPanesillos2"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent="0.23"/>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="10dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/myRecyclerViewFrutas"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scrollbars="none"
+                        android:visibility="visible"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:listitem="@layout/frutas_items" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/myRecyclerViewVerduras2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scrollbars="none"
+                        android:visibility="gone"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:listitem="@layout/frutas_items" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/myRecyclerViewUltraProcesados"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:scrollbars="none"
+                        android:visibility="gone"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:listitem="layout/ultraprocesados_items" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
+
+    <!--
+
+    -->
