@@ -81,6 +81,7 @@ public class NinoDao {
                 SharedPreferences.Editor editor = preferenc.edit();
                 editor.putInt("instalacion", 1);
                 editor.putInt("dia", dias);
+                editor.putInt("anterior", dias);
                 editor.putInt("llave1", 0);
                 editor.putInt("llave2", 0);
                 editor.putInt("llave3", 0);
@@ -108,6 +109,9 @@ public class NinoDao {
                 editor.putInt("llaveESUP2", 0);
                 editor.putInt("llaveESV1", 0);
                 editor.putInt("llaveESV2", 0);
+                editor.putBoolean("fichaNino1",false);
+                editor.putBoolean("fichaNino2",false);
+                editor.putBoolean("seguir",true);
                 editor.commit();
             }
 

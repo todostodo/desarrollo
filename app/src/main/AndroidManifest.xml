@@ -36,15 +36,6 @@
         <activity android:name=".Precentacion.Home.TutorFragment"/>
         <activity android:name=".Precentacion.Home.HijoRegistroActivity"/>
         <activity android:name=".Precentacion.Motivadores.MotivadoresSelectActivity"/>
-        <receiver android:name="com.example.desarrollo.Precentacion.AlarmReceiver" android:exported="true" android:enabled="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </receiver>
-        <service
-            android:name="com.example.desarrollo.Precentacion.Servicio"
-            android:enabled="true" />
     </application>
 
 </manifest>

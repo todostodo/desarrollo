@@ -56,6 +56,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        // NinoDao.addNino("fff",this,1,"mig","jac","jac",1,1.1,1.1,1.1,1.1,1.1,1.1,3,1.1,1.1,1.1);
+       // NinoDao.addNino("fff",this,2,"cyn","mej","car",1,1.1,1.1,1.1,1.1,1.1,1.1,3,1.1,1.1,1.1);
+
+        String fecha=Calculos.getFecha();
+        Calculos.registrarDetalleReg("fff",this,1,1,1.1,1.1,"rrr",fecha,"Fruta");
+        Calculos.registrarDetalleReg("fff",this,1,1,1.1,1.1,"rrr",fecha,"Fruta");
+        Calculos.registrarDetalleReg("fff",this,1,1,1.1,1.1,"rrr",fecha,"Verdura");
+        Calculos.registrarDetalleReg("fff",this,1,1,1.1,1.1,"rrr",fecha,"Verdura");
+        Calculos.registrarDetalleReg("fff",this,1,1,1.1,1.1,"rrr",fecha,"ULtraProcesado");
+        Calculos.registrarDetalleReg("fff",this,1,1,1.1,1.1,"rrr",fecha,"ULtraProcesado");
+
+
+        Calculos.registrarDetalleReg("fff",this,2,1,1.1,1.1,"rrr",fecha,"Fruta");
+        Calculos.registrarDetalleReg("fff",this,2,1,1.1,1.1,"rrr",fecha,"Fruta");
+        Calculos.registrarDetalleReg("fff",this,2,1,1.1,1.1,"rrr",fecha,"Verdura");
+        Calculos.registrarDetalleReg("fff",this,2,1,1.1,1.1,"rrr",fecha,"Verdura");
+        Calculos.registrarDetalleReg("fff",this,2,1,1.1,1.1,"rrr",fecha,"ULtraProcesado");
+        Calculos.registrarDetalleReg("fff",this,2,1,1.1,1.1,"rrr",fecha,"ULtraProcesado");
+
 
         SharedPreferences preferenc = getSharedPreferences("Calculo", MODE_PRIVATE);
         int llave1 = preferenc.getInt("llave1", 0);
@@ -79,14 +98,19 @@ public class MainActivity extends AppCompatActivity {
             Calculos.EsfuerzoUP(this, 2);
         }
 
+
         Date date = new Date();
         DateFormat hora = new SimpleDateFormat("HH:mm:ss");
         inicio = "" + hora.format(date);
+
+        Calculos.ConsiguioFicha(this,1);
+        Calculos.ConsiguioFicha(this,2);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.btmNavegacion);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
         bottomNavigationView.setSelectedItemId(R.id.menu_home);
         mMainFrame = (FrameLayout) findViewById(R.id.fragmentContainer);
+
 
     }
 
