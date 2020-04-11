@@ -99,10 +99,11 @@ public class NinoDao {
                 editor.putInt("llaveLBUP2", 0);
                 editor.putInt("llaveLBV1", 0);
                 editor.putInt("llaveLBV2", 0);
-                editor.putString("FechaInicio", fecha);
-                editor.putString("FechaFin", "");
-                editor.putString("ValorUltra1", "");
-                editor.putString("ValorUltra2", "");
+                editor.putString("FechaInicio",fecha);
+                editor.putString("FechaIni",fecha);
+                editor.putString("FechaFin","");
+                editor.putString("ValorUltra1", "nada");
+                editor.putString("ValorUltra2", "nada");
                 editor.putInt("llaveESF1", 0);
                 editor.putInt("llaveESF2", 0);
                 editor.putInt("llaveESUP1", 0);
