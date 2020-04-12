@@ -84,9 +84,11 @@ public class NinoDao {
                 editor.putInt("instalacion", 1);
                 editor.putInt("dia", dias);
                 editor.putInt("anterior", dias);
+                editor.putInt("curso", dias);
                 editor.putInt("llave1", 0);
                 editor.putInt("llave2", 0);
                 editor.putInt("llave3", 0);
+                editor.putInt("llave4", 1);
                 editor.putInt("queEs", 0);
                 editor.putInt("LB", 0);
                 editor.putInt("pase1", 1);
@@ -114,6 +116,14 @@ public class NinoDao {
                 editor.putBoolean("fichaNino1",false);
                 editor.putBoolean("fichaNino2",false);
                 editor.putBoolean("seguir",true);
+                editor.putBoolean("fichaFruta1",false);
+                editor.putBoolean("fichaVerdura1",false);
+                editor.putBoolean("primerIntento1",false);
+                editor.putBoolean("nuevoAlimento1",false);
+                editor.putBoolean("fichaFruta2",false);
+                editor.putBoolean("fichaVerdura2",false);
+                editor.putBoolean("primerIntento2",false);
+                editor.putBoolean("nuevoAlimento2",false);
                 editor.commit();
             }
 

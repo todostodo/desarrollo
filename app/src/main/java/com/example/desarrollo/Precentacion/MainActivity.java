@@ -39,6 +39,8 @@ import com.example.desarrollo.Precentacion.Perfil.PerfilFragment;
 import com.example.desarrollo.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class MainActivity extends AppCompatActivity {
     private int contador = 0, estado = 1;
@@ -87,6 +89,36 @@ public class MainActivity extends AppCompatActivity {
 
         Calculos.ConsiguioFicha(this,1);
         Calculos.ConsiguioFicha(this,2);
+        SharedPreferences.Editor edito = preferenc.edit();
+        edito.remove("fichaFruta1");
+        edito.putBoolean("fichaFruta1", true);
+        edito.remove("fichaVerdura1");
+        edito.putBoolean("fichaVerdura1", true);
+        edito.remove("primerIntento1");
+        edito.putBoolean("primerIntento1", true);
+        edito.remove("nuevoAlimento1");
+        edito.putBoolean("nuevoAlimento1", true);
+        edito.remove("fichaFruta2");
+        edito.putBoolean("fichaFruta2", true);
+        edito.remove("fichaVerdura2");
+        edito.putBoolean("fichaVerdura2", true);
+        edito.remove("primerIntento2");
+        edito.putBoolean("primerIntento2", true);
+        edito.remove("nuevoAlimento2");
+        edito.putBoolean("nuevoAlimento2", true);
+        edito.commit();
+
+        boolean resultado1 = preferenc.getBoolean("fichaFruta1", false);
+        boolean resultado2 = preferenc.getBoolean("fichaFruta2", false);
+        boolean resultado3 = preferenc.getBoolean("fichaVerdura1", false);
+        boolean resultado4 = preferenc.getBoolean("fichaVerdura2", false);
+        boolean resultado5 = preferenc.getBoolean("primerIntento1", false);
+        boolean resultado6 = preferenc.getBoolean("primerIntento2", false);
+        boolean resultado7 = preferenc.getBoolean("nuevoAlimento1", false);
+        boolean resultado8 = preferenc.getBoolean("nuevoAlimento2", false);
+        System.out.println(resultado1+" , "+resultado2+" , "+resultado3+" , "+resultado4+" , "+resultado5+" , "+resultado6+" , "+resultado7+" , "+resultado8);
+        Calculos.ficha_Fruta_Verdura_PrimerIntento_newAlimento(this);
+        System.out.println(resultado1+" , "+resultado2+" , "+resultado3+" , "+resultado4+" , "+resultado5+" , "+resultado6+" , "+resultado7+" , "+resultado8);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.btmNavegacion);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);

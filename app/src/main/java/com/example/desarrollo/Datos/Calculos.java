@@ -489,62 +489,62 @@ public class Calculos {
                                     // System.out.println("SUMATORIA: "+cursor.getInt(0));
                                     sumatoria = sumatoria + cursor.getDouble(0);
 
-                                // Toast.makeText(context, ""+cursor.getDouble(0), Toast.LENGTH_SHORT).show();
-                            } while (cursor.moveToNext());
-                            //System.out.println("SUMATORIA: "+sumatoria);
+                                    // Toast.makeText(context, ""+cursor.getDouble(0), Toast.LENGTH_SHORT).show();
+                                } while (cursor.moveToNext());
+                                //System.out.println("SUMATORIA: "+sumatoria);
 
-                            sumatoria = sumatoria / 7;//sumatoria tiene el resultado de la linea base de frutas.
-                            System.out.println("SUMATORIA: "+sumatoria);
-                            if (idNino == 1) {
-                                System.out.println("llaves 1");
-                                SharedPreferences.Editor editor = preferenc.edit();
-                                editor.remove("llaveLBV1");
-                                editor.putInt("llaveLBV1", 1);
-                                editor.remove("llaveESV1");
-                                editor.putInt("llaveESV1", 1);
-                                editor.commit();
-                            } else if (idNino == 2) {
-                                System.out.println("LLaves 2");
-                                SharedPreferences.Editor editor = preferenc.edit();
-                                editor.remove("llaveLBV2");
-                                editor.putInt("llaveLBV2", 1);
-                                editor.commit();
-                            }
+                                sumatoria = sumatoria / 7;//sumatoria tiene el resultado de la linea base de frutas.
+                                System.out.println("SUMATORIA: " + sumatoria);
+                                if (idNino == 1) {
+                                    System.out.println("llaves 1");
+                                    SharedPreferences.Editor editor = preferenc.edit();
+                                    editor.remove("llaveLBV1");
+                                    editor.putInt("llaveLBV1", 1);
+                                    editor.remove("llaveESV1");
+                                    editor.putInt("llaveESV1", 1);
+                                    editor.commit();
+                                } else if (idNino == 2) {
+                                    System.out.println("LLaves 2");
+                                    SharedPreferences.Editor editor = preferenc.edit();
+                                    editor.remove("llaveLBV2");
+                                    editor.putInt("llaveLBV2", 1);
+                                    editor.commit();
+                                }
 
-                            int llave1 = preferenc.getInt("llaveLBV1", 0);
-                            int llave2 = preferenc.getInt("llaveLBV2", 0);
+                                int llave1 = preferenc.getInt("llaveLBV1", 0);
+                                int llave2 = preferenc.getInt("llaveLBV2", 0);
 
-                            System.out.println("CONSU: "+consulta);
-                            if(consulta==1){
-                                System.out.println("ES SOLO 1");
-                                SharedPreferences.Editor edit = preferenc.edit();
-                                edit.remove("llave2");
-                                edit.putInt("llave2", 1);
-                                edit.remove("pase2");
-                                edit.putInt("pase2", 1);
-                                edit.commit();
-                            }else if(consulta==2){
-                                System.out.println("ES SOLO 2");
-                                System.out.println("LLAVE1 "+llave1+" , "+llave2+",");
-                                if(llave1==1&&llave2==1) {
+                                System.out.println("CONSU: " + consulta);
+                                if (consulta == 1) {
+                                    System.out.println("ES SOLO 1");
                                     SharedPreferences.Editor edit = preferenc.edit();
                                     edit.remove("llave2");
                                     edit.putInt("llave2", 1);
+                                    edit.remove("pase2");
+                                    edit.putInt("pase2", 1);
                                     edit.commit();
+                                } else if (consulta == 2) {
+                                    System.out.println("ES SOLO 2");
+                                    System.out.println("LLAVE1 " + llave1 + " , " + llave2 + ",");
+                                    if (llave1 == 1 && llave2 == 1) {
+                                        SharedPreferences.Editor edit = preferenc.edit();
+                                        edit.remove("llave2");
+                                        edit.putInt("llave2", 1);
+                                        edit.commit();
+                                    }
                                 }
+
+                                entro = 1;
+                                retorno = sumatoria;
+
                             }
-
-                            entro=1;
-                            retorno = sumatoria;
-
-
                         } catch (Exception e) {
                             Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
                         } finally {
                             database.close();
                         }
 
-                    }
+
                 }
             }
         }
@@ -1358,4 +1358,44 @@ public class Calculos {
         }
     }
 
+    public static void ficha_Fruta_Verdura_PrimerIntento_newAlimento(Context context){
+        SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
+        int dia = preferenc.getInt("curso", 0);
+        int llave = preferenc.getInt("llave4", 0);
+
+        TimeZone timezone = TimeZone.getDefault();
+        Calendar calendar = new GregorianCalendar(timezone);
+        int dias = calendar.get(Calendar.DAY_OF_WEEK);
+
+        if(dia!=dias){
+            SharedPreferences.Editor edito = preferenc.edit();
+            edito.remove("llave4");
+            edito.putInt("llave4", 0);
+            edito.remove("curso");
+            edito.putInt("curso", dias);
+            edito.commit();
+        }
+        if(llave ==0){
+            SharedPreferences.Editor edito = preferenc.edit();
+            edito.remove("llave4");
+            edito.putInt("llave4", 1);
+            edito.remove("fichaFruta1");
+            edito.putBoolean("fichaFruta1", false);
+            edito.remove("fichaVerdura1");
+            edito.putBoolean("fichaVerdura1", false);
+            edito.remove("primerIntento1");
+            edito.putBoolean("primerIntento1", false);
+            edito.remove("nuevoAlimento1");
+            edito.putBoolean("nuevoAlimento1", false);
+            edito.remove("fichaFruta2");
+            edito.putBoolean("fichaFruta2", false);
+            edito.remove("fichaVerdura2");
+            edito.putBoolean("fichaVerdura2", false);
+            edito.remove("primerIntento2");
+            edito.putBoolean("primerIntento2", false);
+            edito.remove("nuevoAlimento2");
+            edito.putBoolean("nuevoAlimento2", false);
+            edito.commit();
+        }
+    }
 }
