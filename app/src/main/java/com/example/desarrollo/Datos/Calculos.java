@@ -1358,7 +1358,7 @@ public class Calculos {
         }
     }
 
-    public static void ficha_Fruta_Verdura_PrimerIntento_newAlimento(Context context){
+    public static void inicializarFichasAlimento(Context context){
         SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
         int dia = preferenc.getInt("curso", 0);
         int llave = preferenc.getInt("llave4", 0);
@@ -1385,16 +1385,16 @@ public class Calculos {
             edito.putBoolean("fichaVerdura1", false);
             edito.remove("primerIntento1");
             edito.putBoolean("primerIntento1", false);
-            edito.remove("nuevoAlimento1");
-            edito.putBoolean("nuevoAlimento1", false);
+            edito.remove("FichaNoConoseAlimento1");
+            edito.putBoolean("FichaNoConoseAlimento1", false);
             edito.remove("fichaFruta2");
             edito.putBoolean("fichaFruta2", false);
             edito.remove("fichaVerdura2");
             edito.putBoolean("fichaVerdura2", false);
             edito.remove("primerIntento2");
             edito.putBoolean("primerIntento2", false);
-            edito.remove("nuevoAlimento2");
-            edito.putBoolean("nuevoAlimento2", false);
+            edito.remove("FichaNoConoseAlimento2");
+            edito.putBoolean("FichaNoConoseAlimento2", false);
             edito.commit();
         }
     }

@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         DateFormat hora = new SimpleDateFormat("HH:mm:ss");
         inicio = "" + hora.format(date);
 
-        Calculos.ficha_Fruta_Verdura_PrimerIntento_newAlimento(this);
+        Calculos.inicializarFichasAlimento(this);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.btmNavegacion);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
