@@ -39,6 +39,8 @@ import com.example.desarrollo.Precentacion.Perfil.PerfilFragment;
 import com.example.desarrollo.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class MainActivity extends AppCompatActivity {
     private int contador = 0, estado = 1;
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
 
@@ -79,14 +82,18 @@ public class MainActivity extends AppCompatActivity {
             Calculos.EsfuerzoUP(this, 2);
         }
 
+
         Date date = new Date();
         DateFormat hora = new SimpleDateFormat("HH:mm:ss");
         inicio = "" + hora.format(date);
+
+        Calculos.inicializarFichasAlimento(this);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.btmNavegacion);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
         bottomNavigationView.setSelectedItemId(R.id.menu_home);
         mMainFrame = (FrameLayout) findViewById(R.id.fragmentContainer);
+
 
     }
 
@@ -182,143 +189,4 @@ public class MainActivity extends AppCompatActivity {
         fins = segundos1 - ((finh * 3600) + (finm * 60));
 
     }
-
-    public void proceso() {
-        Context con = this;
-        SharedPreferences preferences = getSharedPreferences("Bayern", con.MODE_PRIVATE);
-        int inpref = preferences.getInt("dia", 0);
-        //Toast.makeText(this,""+inpref, Toast.LENGTH_SHORT).show();
-
-        if (inpref == 0) {
-            SharedPreferences preference = getSharedPreferences("Bayern", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preference.edit();
-            editor.putInt("dia", 1);
-            editor.putInt("cambio", 0);
-
-
-            TimeZone timezone = TimeZone.getDefault();
-            Calendar calendar = new GregorianCalendar(timezone);
-            int nD = calendar.get(Calendar.DAY_OF_WEEK);
-            switch (nD) {
-                case 1:
-                    editor.putInt("alerma", 1);
-                    break;
-                case 2:
-                    editor.putInt("alerma", 2);
-                    break;
-                case 3:
-                    editor.putInt("alerma", 3);
-                    break;
-                case 4:
-                    editor.putInt("alerma", 4);
-                    break;
-                case 5:
-                    editor.putInt("alerma", 5);
-                    break;
-                case 6:
-                    editor.putInt("alerma", 6);
-                    break;
-                case 7:
-                    editor.putInt("alerma", 7);
-                    break;
-            }
-            editor.commit();
-
-        } else {
-            TimeZone timezone = TimeZone.getDefault();
-            Calendar calendar = new GregorianCalendar(timezone);
-            int nD = calendar.get(Calendar.DAY_OF_WEEK);
-            Context cont = this;
-            SharedPreferences preferenc = getSharedPreferences("Bayern", cont.MODE_PRIVATE);
-            int inpre = preferences.getInt("alerma", 0);
-
-            int cam = preferenc.getInt("cambio", 0);
-            int van = 0;
-            switch (nD) {
-                case 1:
-                    if (1 == inpre) {
-                        van = 1;
-                        llamada();
-                    }
-                    break;
-                case 2:
-                    if (2 == inpre) {
-                        van = 1;
-                        llamada();
-                    }
-                    break;
-                case 3:
-                    if (3 == inpre) {
-                        van = 1;
-                        llamada();
-                    }
-                    break;
-                case 4:
-                    if (4 == inpre) {
-                        van = 1;
-                        llamada();
-                    }
-                    break;
-                case 5:
-                    if (5 == inpre) {
-                        van = 1;
-                        llamada();
-                    }
-                    break;
-                case 6:
-                    if (6 == inpre) {
-                        van = 1;
-                        llamada();
-                    }
-                    break;
-                case 7:
-                    if (7 == inpre) {
-                        van = 1;
-                        llamada();
-                    }
-                    break;
-            }
-
-            if (van == 0) {
-                SharedPreferences.Editor editor = preferenc.edit();
-                editor.remove("cambio");
-                editor.putInt("cambio", 1);
-                editor.remove("dia");
-                editor.putInt("dia", 0);
-                editor.commit();
-            }
-
-        }
-    }
-
-    public void llamada() {
-        Context cont = this;
-        SharedPreferences preferenc = getSharedPreferences("Bayern", cont.MODE_PRIVATE);
-        int di = preferenc.getInt("dia", 0);
-        int cam = preferenc.getInt("cambio", 0);
-        if (di == 1 && cam == 1) {
-            SharedPreferences.Editor editor = preferenc.edit();
-            editor.remove("dia");
-            editor.putInt("dia", 0);
-            editor.commit();
-            Context context = this;
-            Calendar today = Calendar.getInstance();
-            int hour = today.get(Calendar.HOUR_OF_DAY);
-            int minute = today.get(Calendar.MINUTE);
-            today.set(Calendar.HOUR_OF_DAY, hour);
-            today.set(Calendar.MINUTE, minute);
-            today.set(Calendar.SECOND, 0);
-            alarma(MainActivity.this, alarmID, today.getTimeInMillis());
-        }
-    }
-
-    public void alarma(Context context, int i, Long timestamp) {
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-        Intent alarmIntent = new Intent(context, AlarmReceiver.class);
-        PendingIntent pendingIntent;
-        pendingIntent = PendingIntent.getBroadcast(context, i, alarmIntent, PendingIntent.FLAG_ONE_SHOT);
-        alarmIntent.setData((Uri.parse("custom://" + System.currentTimeMillis())));
-        alarmManager.set(AlarmManager.RTC_WAKEUP, timestamp, pendingIntent);
-    }
 }
-

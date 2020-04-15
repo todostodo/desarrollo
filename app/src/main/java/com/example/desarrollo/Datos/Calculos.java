@@ -412,8 +412,7 @@ public class Calculos {
             }
         } else if (dia != dias) {
 
-            if (pase == 1) {
-                System.out.println("cai al eLse lbf");
+            if(pase==1){
                 SharedPreferences.Editor edito = preferenc.edit();
                 edito.remove("pase3");
                 edito.putInt("pase3", 0);
@@ -423,9 +422,18 @@ public class Calculos {
             System.out.println("cai al eLse lbf : " + pase);
         }
 
-        if (entro == 1) {
-            System.out.println("Entre a ejecucion");
+        if(entro==1){
+
             editarNiño(context, idNino, retorno, 2);
+
+            double fruta= consultarNiño(context,idNino,1);
+            double verdura= consultarNiño(context,idNino,0);
+            if(retorno==0.0 && fruta>=2.0 && verdura>=3.0){
+                SharedPreferences.Editor edito = preferenc.edit();
+                edito.remove("seguir");
+                edito.putBoolean("seguir", false);
+                edito.commit();
+            }
         }
 
     }
@@ -536,7 +544,7 @@ public class Calculos {
                             database.close();
                         }
 
-                    }
+
                 }
             }
         } else if (dia != dias) {
@@ -551,8 +559,13 @@ public class Calculos {
             System.out.println("cai al eLse lbf : " + pase);
         }
 
-        if (entro == 1) {
-            editarNiño(context, idNino, retorno, 0);
+        if(entro==1){
+            if(retorno>=3.0){
+                editarNiño(context, idNino, 2.0, 0);
+            }
+            else {
+                editarNiño(context, idNino, retorno, 0);
+            }
         }
     }
 
@@ -620,9 +633,18 @@ public class Calculos {
                             if (com >= sumatoria) {
                                 res = res + (0.25);
                                 //registra
-                                actualizaNiño(context, idNino, res, 1);
-                            } else if ((res * .59) <= sumatoria) {
-                                res = res - (0.25);
+
+                                if(retorno>=3.0){
+                                    actualizaNiño(context,idNino,3.0,1);
+                                }
+                                else {
+                                    actualizaNiño(context,idNino,res,1);
+                                }
+
+                                actualizaNiño(context,idNino,res,1);
+                            }
+                            else if((res*.59)<=sumatoria){
+                                res=res-(0.25);
                                 //registra
                                 actualizaNiño(context, idNino, res, 1);
                             }
@@ -636,9 +658,16 @@ public class Calculos {
                             if (com >= sumatoria) {
                                 res = res + (0.25);
                                 //registra
-                                actualizaNiño(context, idNino, res, 1);
-                            } else if ((res * .59) <= sumatoria) {
-                                res = res - (0.25);
+                                if(retorno>=3.0){
+                                    actualizaNiño(context,idNino,3.0,1);
+                                }
+                                else {
+                                    actualizaNiño(context,idNino,res,1);
+                                }
+                            }
+                            else if((res*.59)<=sumatoria){
+                                res=res-(0.25);
+
                                 //registra
                                 actualizaNiño(context, idNino, res, 1);
                             }
@@ -1037,7 +1066,8 @@ public class Calculos {
         }
     }
 
-    public static double KaloriaCambio(Context context, int idNino) {
+
+    public static int KaloriaCambio(Context context, int idNino) {
 
         double sumatoria = 0.0;
         try {
@@ -1105,7 +1135,8 @@ public class Calculos {
         } finally {
             database.close();
         }
-        return sumatoria;
+        int suma=(int)sumatoria;
+        return suma;
     }
 
     public static double KaloriaFija(Context context, int idNino) {
@@ -1127,10 +1158,11 @@ public class Calculos {
                 resultado = Double.parseDouble(inicio);
             }
         }
-        return resultado;
+        int suma=(int)resultado;
+        return suma;
     }
 
-    public static double KaloriaDia(Context context, int idNino) {
+    public static int KaloriaDia(Context context, int idNino) {
 
         double sumatoria = 0.0;
         try {
@@ -1158,35 +1190,209 @@ public class Calculos {
         } finally {
             database.close();
         }
-        return sumatoria;
+        int suma=(int)sumatoria;
+        return suma;
     }
 
-    public static boolean ConsiguioFicha(Context context, int idNino) {
-        boolean vari = false;
+
+
+
+
+    //Para consultar
+    //SharedPreferences preferenc = getSharedPreferences("Calculo", MODE_PRIVATE);  crea conexion con el archivo preferences
+    //boolean resultado1 = preferenc.getBoolean("fichaNino1", false);  bariable que tiene true o false para el niño 1
+    //boolean resultado2 = preferenc.getBoolean("fichaNino2", false);  si hay dos niños entonces consulte tambien esta bariable el resultado del segundo niño, bariable que tiene true o false para el niño 2
+    // ambos resultados son guardados en una bariable de tipo boolean que en ste caso se guardan en 'resultado1' y 'resultado2'
+
+    public static void ConsiguioFicha(Context context, int idNino){
+        boolean vari=false;
 
         SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
-        int llave = preferenc.getInt("llave1", 0);
+        int  llave = preferenc.getInt("llave1", 0);
+        boolean ficha = preferenc.getBoolean("ficha", false);
 
-        if (llave == 0) {
-            double valor = KaloriaCambio(context, idNino);
-            valor = valor / 7;
-            double consuDia = KaloriaDia(context, idNino);
-            if (valor < consuDia) {
-                vari = true;
-            } else
-                vari = false;
+        int dia = preferenc.getInt("anterior", 0);
 
-        } else {
-            double valor = KaloriaFija(context, idNino);
-            valor = valor / 7;
-            double consuDia = KaloriaDia(context, idNino);
-            if (valor < consuDia) {
-                vari = true;
-            } else
-                vari = false;
+        TimeZone timezone = TimeZone.getDefault();
+        Calendar calendar = new GregorianCalendar(timezone);
+        int dias = calendar.get(Calendar.DAY_OF_WEEK);
+
+        int compara=dias-dia;
+        if(compara==1) {
+            SharedPreferences.Editor edit = preferenc.edit();
+            edit.remove("anterior");
+            edit.putInt("anterior", dias);
+            edit.commit();
+            if (llave == 0) {
+                double valor = KaloriaCambio(context, idNino);
+                valor = valor / 7;
+                double consuDia = KaloriaDia(context, idNino);
+                if (valor < consuDia) {
+                    if(idNino==1){
+                        SharedPreferences.Editor edito = preferenc.edit();
+                        edito.remove("fichaNino1");
+                        edito.putBoolean("fichaNino1", true);
+                        edito.commit();
+                    } else if(idNino==2){
+                        SharedPreferences.Editor edito = preferenc.edit();
+                        edito.remove("fichaNino2");
+                        edito.putBoolean("fichaNino2", true);
+                        edito.commit();
+                    }
+
+                } else {
+                    if(idNino==1){
+                        SharedPreferences.Editor edito = preferenc.edit();
+                        edito.remove("fichaNino1");
+                        edito.putBoolean("fichaNino1", false);
+                        edito.commit();
+                    }
+                    else if(idNino==2){
+                        SharedPreferences.Editor edito = preferenc.edit();
+                        edito.remove("fichaNino2");
+                        edito.putBoolean("fichaNino2", false);
+                        edito.commit();
+                    }
+                }
+            } else {
+                double valor = KaloriaFija(context, idNino);
+                valor = valor / 7;
+                double consuDia = KaloriaDia(context, idNino);
+                if (valor < consuDia) {
+                    if(idNino==1){
+                        SharedPreferences.Editor edito = preferenc.edit();
+                        edito.remove("fichaNino1");
+                        edito.putBoolean("fichaNino1", true);
+                        edito.commit();
+                    } else if(idNino==2){
+                        SharedPreferences.Editor edito = preferenc.edit();
+                        edito.remove("fichaNino2");
+                        edito.putBoolean("fichaNino2", true);
+                        edito.commit();
+                    }
+
+                } else {
+                    if(idNino==1){
+                        SharedPreferences.Editor edito = preferenc.edit();
+                        edito.remove("fichaNino1");
+                        edito.putBoolean("fichaNino1", false);
+                        edito.commit();
+                    } else if(idNino==2){
+                        SharedPreferences.Editor edito = preferenc.edit();
+                        edito.remove("fichaNino2");
+                        edito.putBoolean("fichaNino2", false);
+                        edito.commit();
+                    }
+
+                }
+            }
+        }  else if(dia==7 && dias==1){
+            SharedPreferences.Editor edit = preferenc.edit();
+            edit.remove("anterior");
+            edit.putInt("anterior", dias);
+            if (llave == 0) {
+                double valor = KaloriaCambio(context, idNino);
+                valor = valor / 7;
+                double consuDia = KaloriaDia(context, idNino);
+                if (valor < consuDia) {
+                    if(idNino==1){
+                        SharedPreferences.Editor edito = preferenc.edit();
+                        edito.remove("fichaNino1");
+                        edito.putBoolean("fichaNino1", true);
+                        edito.commit();
+                    } else if(idNino==2){
+                        SharedPreferences.Editor edito = preferenc.edit();
+                        edito.remove("fichaNino2");
+                        edito.putBoolean("fichaNino2", true);
+                        edito.commit();
+                    }
+
+                } else {
+                    if(idNino==1){
+                        SharedPreferences.Editor edito = preferenc.edit();
+                        edito.remove("fichaNino1");
+                        edito.putBoolean("fichaNino1", false);
+                        edito.commit();
+                    } else if(idNino==2){
+                        SharedPreferences.Editor edito = preferenc.edit();
+                        edito.remove("fichaNino2");
+                        edito.putBoolean("fichaNino2", false);
+                        edito.commit();
+                    }
+                }
+            } else {
+                double valor = KaloriaFija(context, idNino);
+                valor = valor / 7;
+                double consuDia = KaloriaDia(context, idNino);
+                if (valor < consuDia) {
+                    if(idNino==1){
+                        SharedPreferences.Editor edito = preferenc.edit();
+                        edito.remove("fichaNino1");
+                        edito.putBoolean("fichaNino1", true);
+                        edito.commit();
+                    } else if(idNino==2){
+                        SharedPreferences.Editor edito = preferenc.edit();
+                        edito.remove("fichaNino2");
+                        edito.putBoolean("fichaNino2", true);
+                        edito.commit();
+                    }
+
+                } else {
+                    if(idNino==1){
+                        SharedPreferences.Editor edito = preferenc.edit();
+                        edito.remove("fichaNino1");
+                        edito.putBoolean("fichaNino1", false);
+                        edito.commit();
+                    } else if(idNino==2){
+                        SharedPreferences.Editor edito = preferenc.edit();
+                        edito.remove("fichaNino2");
+                        edito.putBoolean("fichaNino2", false);
+                        edito.commit();
+                    }
+
+                }
+            }
         }
-
-        return vari;
     }
 
+    public static void inicializarFichasAlimento(Context context){
+        SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
+        int dia = preferenc.getInt("curso", 0);
+        int llave = preferenc.getInt("llave4", 0);
+
+        TimeZone timezone = TimeZone.getDefault();
+        Calendar calendar = new GregorianCalendar(timezone);
+        int dias = calendar.get(Calendar.DAY_OF_WEEK);
+
+        if(dia!=dias){
+            SharedPreferences.Editor edito = preferenc.edit();
+            edito.remove("llave4");
+            edito.putInt("llave4", 0);
+            edito.remove("curso");
+            edito.putInt("curso", dias);
+            edito.commit();
+        }
+        if(llave ==0){
+            SharedPreferences.Editor edito = preferenc.edit();
+            edito.remove("llave4");
+            edito.putInt("llave4", 1);
+            edito.remove("fichaFruta1");
+            edito.putBoolean("fichaFruta1", false);
+            edito.remove("fichaVerdura1");
+            edito.putBoolean("fichaVerdura1", false);
+            edito.remove("primerIntento1");
+            edito.putBoolean("primerIntento1", false);
+            edito.remove("FichaNoConoseAlimento1");
+            edito.putBoolean("FichaNoConoseAlimento1", false);
+            edito.remove("fichaFruta2");
+            edito.putBoolean("fichaFruta2", false);
+            edito.remove("fichaVerdura2");
+            edito.putBoolean("fichaVerdura2", false);
+            edito.remove("primerIntento2");
+            edito.putBoolean("primerIntento2", false);
+            edito.remove("FichaNoConoseAlimento2");
+            edito.putBoolean("FichaNoConoseAlimento2", false);
+            edito.commit();
+        }
+    }
 }
