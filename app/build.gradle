@@ -17,7 +17,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        pickFirst 'META-INF/LICENSE.txt' // Selecciona el archivo de licensia de JavaMail
+    }
 }
+
+apply plugin: 'com.google.gms.google-services'
+repositories {
+    mavenCentral()
+    //JavaMail
+    jcenter()
+    maven {
+        url "https://maven.java.net/content/groups/public/"
+    }
+}
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -35,7 +50,7 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'com.balysv:material-ripple:1.0.2'
+    //implementation 'com.balysv:material-ripple:1.0.2'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
 
@@ -43,8 +58,10 @@ dependencies {
 
 
     //Chart
-}
-apply plugin: 'com.google.gms.google-services'
-repositories {
-    mavenCentral()
+
+    //JavaMaik Informacion
+    //https://javaee.github.io/javamail/ -- Documentacion de JavaMail Api (Oracle)
+    //https://javaee.github.io/javamail/Android -- Pagina para hacer el llamado de JavaMail API
+    implementation 'com.sun.mail:android-mail:1.6.2'
+    implementation 'com.sun.mail:android-activation:1.6.2'
 }

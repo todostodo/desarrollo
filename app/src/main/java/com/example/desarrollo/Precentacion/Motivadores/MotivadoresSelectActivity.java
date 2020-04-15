@@ -1,37 +1,26 @@
 package com.example.desarrollo.Precentacion.Motivadores;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.desarrollo.Datos.MotivadoresDao;
-import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Entidades.MotivadoresSelect;
-import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewPreferencias;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresSelect;
-import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresSelectNino;
-import com.example.desarrollo.Precentacion.MainActivity;
 import com.example.desarrollo.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -132,6 +121,6 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
     private void init() {
         _myRecyclerViewMotivadores = (RecyclerView) findViewById(R.id.myRecyclerViewMotivadoresDisponibles);
         _btnAddMotivador = (RelativeLayout) findViewById(R.id.btnAddMotivador);
-        _btnCerrarMotivadoresSelect = (RelativeLayout) findViewById(R.id.btnCerrarMotivadoresSelect);
+        _btnCerrarMotivadoresSelect = (RelativeLayout) findViewById(R.id.btnCerrarLogin);
     }
 }

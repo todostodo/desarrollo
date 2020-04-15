@@ -9,6 +9,7 @@ import android.app.Dialog;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.nfc.Tag;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -16,7 +17,6 @@ import android.text.InputFilter;
 import android.text.Spanned;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -31,6 +31,7 @@ import com.example.desarrollo.Entidades.MotivadoresSelect;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresSelectNino;
 import com.example.desarrollo.R;
 import com.example.desarrollo.Ultilidades.Toastp;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
     private ImageView f_imagen;
     private RelativeLayout f_fondo;
     private Button _btnRegistrarFruta;
-    private Dialog reaccionHijoDialog, ninosDialog;
+    private Dialog reaccionHijoDialog, ninosDialog, epicFichaDialog;
     private TextView _txtCantidadConsumo;
     private LinearLayout _fruta_linearRecomendacionDos, _btnTerrible, _btnEstaBien, _btnGenia;
     private RelativeLayout _fruta_relativeAviso;
@@ -171,7 +172,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
         _btnTerrible.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                primerIntento();
+                fichaPrimerIntento();
 
                 //registrarAlimento();
                 reaccionHijoDialog.dismiss();
@@ -180,39 +181,79 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
         _btnEstaBien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                primerIntento();
-               // registrarAlimento();
+                fichaPrimerIntento();
+                // registrarAlimento();
                 reaccionHijoDialog.dismiss();
             }
         });
         _btnGenia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                primerIntento();
-                noConoceGusta();
+                fichaNoConoceAlimento();
                 //registrarAlimento();
                 reaccionHijoDialog.dismiss();
+                //dialog();
             }
         });
 
         reaccionHijoDialog.show();
     }
 
+    private void dialog() {
+        epicFichaDialog = new BottomSheetDialog(AlimentoRegistroactivity.this);
+        epicFichaDialog.setContentView(R.layout.epic_fichas_dialog);
+        epicFichaDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        epicFichaDialog.show();
+
+    }
+
     //Metodos para la recoleccion de fichas
-    private void primerIntento() {
-        double cantidadConsumo = Double.valueOf(_txtCantidadConsumo.getText().toString().trim());
-        double unidadMedida = calculos.obtenerUnidadMedida(cantidadConsumo, Double.valueOf(f_equivalencia));
-        if ( unidadMedida >= 1){
-            toast.toastp(getApplicationContext(), "porciones: " + unidadMedida + " Equivalencia " + Double.valueOf(f_equivalencia));
+    private void fichaFruta() {
+
+        double baseEsfuerzoFrutas = ninoDao.consultarEsfuerzoConsumoFrutas(TAG, getApplicationContext(), idNino);
+        double progresoEsfuerzoFrutas = calculos.progresoEsfuerzoFruta(TAG, getApplicationContext(), idNino);
+
+        if (progresoEsfuerzoFrutas >= baseEsfuerzoFrutas) {
+            toast.toastp(getApplicationContext(), "Has conseguido lograr el cosumo de frutas del dia " + Double.valueOf(f_equivalencia));
         }
     }
-    private void noConoceGusta(){
-        String nombreAlimento = f_nombre.getText().toString();
 
-        boolean preferencias =  ninoDao.consultarPreferencias(TAG, getApplicationContext(), idNino, nombreAlimento, tipoAlimento);
+    private void fichaVerdura() {
 
-        if (preferencias == true){
-            toast.toastp(getApplicationContext(), "Has consumido una frutas que no te gusta");
+        double baseEsfuerzoVerduras = ninoDao.consultarEsfuerzoConsumoVerduras(TAG, getApplicationContext(), idNino);
+        double progresoEsfuerzoVerduas = calculos.progresoEsfuerzoVerdura(TAG, getApplicationContext(), idNino);
+
+        if (progresoEsfuerzoVerduas >= baseEsfuerzoVerduras) {
+            toast.toastp(getApplicationContext(), "Has conseguido lograr el cosumo de verduras del dia " + Double.valueOf(f_equivalencia));
+        }
+    }
+
+    private void fichaPrimerIntento() {
+
+        double baseEsfuerzoVerduras = ninoDao.consultarEsfuerzoConsumoVerduras(TAG, getApplicationContext(), idNino);
+        double cantidadConsumo = Double.valueOf(_txtCantidadConsumo.getText().toString().trim());
+        double unidadMedida = calculos.obtenerUnidadMedida(cantidadConsumo, Double.valueOf(f_equivalencia));
+
+        if (unidadMedida >= baseEsfuerzoVerduras) {
+            toast.toastp(getApplicationContext(), "Has logrado consumir las porciones del dia en el primer inteneto" + Double.valueOf(f_equivalencia));
+        }
+    }
+
+    private void fichaNoConoceAlimento() {
+
+        double cantidad = Double.valueOf(_txtCantidadConsumo.getText().toString());
+
+        if (cantidad >= 1.0) {
+
+            String nombreAlimento = f_nombre.getText().toString();
+
+            boolean preferencias = ninoDao.consultarPreferencias(TAG, getApplicationContext(), idNino, nombreAlimento, tipoAlimento);
+
+            if (preferencias == true) {
+                toast.toastp(getApplicationContext(), "Has consumido una frutas que no te gusta");
+            }
+
         }
     }
     //-----------------------------------------------------------

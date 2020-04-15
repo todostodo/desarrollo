@@ -154,30 +154,6 @@ public class NinoDao {
         return count;
     }
 
-    public static ArrayList countFichasNino(String TAG, Context context) {
-        //int totalFichas = 0;
-        ArrayList datosNino = new ArrayList();
-        try {
-            ConexionSQLHelper conection = new ConexionSQLHelper(context);
-            database = null;
-            database = conection.getReadableDatabase();
-
-            Cursor cursor = database.rawQuery("SELECT " + Utilidades.CAMPO_TotalFichas + ", " +
-                    Utilidades.CAMPO_NombreN + " FROM " + Utilidades.TABLA_Nino, null);
-            while (cursor.moveToNext()) {
-                datosNino.add(cursor.getInt(0));
-                datosNino.add(cursor.getString(1));
-            }
-            cursor.close();
-        } catch (Exception e) {
-            Log.e(TAG, "ERROR " + e);
-        } finally {
-            database.close();
-        }
-
-        return datosNino;
-    }
-
     public static void consultarNino(String TAG, Context context, ArrayList ninoList) {
         try {
             ConexionSQLHelper conection = new ConexionSQLHelper(context);
@@ -256,7 +232,7 @@ public class NinoDao {
         }
     }
 
-    public static double consultarProgresoConsumoFrutas(String TAG, Context context, int idNino) {
+    public static double consultarEsfuerzoConsumoFrutas(String TAG, Context context, int idNino) {
         double progresoFruta = 0;
         try {
 
@@ -264,7 +240,37 @@ public class NinoDao {
             database = null;
             database = conection.getReadableDatabase();
 
-            //Cursor cursor = database.rawQuery("SELECT ")
+            Cursor cursor = database.rawQuery("SELECT " + Utilidades.CAMPO_EsfuerzoFruta +
+                    " FROM " + Utilidades.TABLA_Nino +
+                    " WHERE " + Utilidades.CAMPO_idNino + " = " + idNino, null);
+
+            while (cursor.moveToNext()){
+                progresoFruta = cursor.getDouble(0);
+            }
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error " + e);
+        } finally {
+            database.close();
+        }
+        return progresoFruta;
+    }
+
+    public static double consultarEsfuerzoConsumoVerduras(String TAG, Context context, int idNino) {
+        double progresoFruta = 0;
+        try {
+
+            ConexionSQLHelper conection = new ConexionSQLHelper(context);
+            database = null;
+            database = conection.getReadableDatabase();
+
+            Cursor cursor = database.rawQuery("SELECT " + Utilidades.CAMPO_EsfuerzoVerdura +
+                    " FROM " + Utilidades.TABLA_Nino +
+                    " WHERE " + Utilidades.CAMPO_idNino + " = " + idNino, null);
+
+            while (cursor.moveToNext()){
+                progresoFruta = cursor.getDouble(0);
+            }
 
         } catch (Exception e) {
             Log.e(TAG, "Error " + e);
