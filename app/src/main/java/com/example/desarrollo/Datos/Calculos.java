@@ -243,6 +243,11 @@ public class Calculos {
                             }
                         }
 
+                         if(sumatoria<=0.25){
+                             sumatoria=0.0;
+                             sumatoria=0.25;
+                        }
+
                         entro=1;
                         retorno = sumatoria;
 
@@ -272,7 +277,11 @@ public class Calculos {
         }
 
         if(entro==1){
+            if(retorno>=2.0){
+                editarNiño(context, idNino, 2.0, 0);
+            }else {
                 editarNiño(context, idNino, retorno, 1);
+            }
         }
 
     }
@@ -432,6 +441,8 @@ public class Calculos {
                 SharedPreferences.Editor edito = preferenc.edit();
                 edito.remove("seguir");
                 edito.putBoolean("seguir", false);
+                edito.remove("LineaBaseGenerada");
+                edito.putBoolean("LineaBaseGenerada", true);
                 edito.commit();
             }
         }
@@ -534,6 +545,11 @@ public class Calculos {
                                     }
                                 }
 
+                                if(sumatoria<=0.25){
+                                    sumatoria=0.0;
+                                    sumatoria=0.25;
+                                }
+
                                 entro = 1;
                                 retorno = sumatoria;
 
@@ -563,7 +579,7 @@ public class Calculos {
 
         if(entro==1){
             if(retorno>=3.0){
-                editarNiño(context, idNino, 2.0, 0);
+                editarNiño(context, idNino, 3.0, 0);
             }
             else {
                 editarNiño(context, idNino, retorno, 0);
