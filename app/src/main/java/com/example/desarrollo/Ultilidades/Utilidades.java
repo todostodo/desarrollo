@@ -53,7 +53,7 @@ public class Utilidades {
     public static final String CAMPO_nombreUsuario = "nomu";
     public static final String CAMPO_apellidoMaternoUsu = "apmu";
     public static final String CAMPO_apellidoPaternoUsu = "appu";
-    public static final String CAMPO_correoUsuario = "correo";
+    public static final String CAMPO_correo = "correo";
     public static final String CAMPO_passwordUsu = "pwdu";
     public static final String CAMPO_nivel = "nivel";
 
@@ -63,7 +63,7 @@ public class Utilidades {
                     CAMPO_nombreUsuario + " TEXT NOT NULL," +
                     CAMPO_apellidoPaternoUsu + " TEXT NOT NULL," +
                     CAMPO_apellidoMaternoUsu + " TEXT NOT NULL," +
-                    CAMPO_correoUsuario + " TEXT NOT NULL UNIQUE," +
+                    CAMPO_correo + " TEXT NOT NULL UNIQUE," +
                     CAMPO_passwordUsu + " TEXT NOT NULL," +
                     CAMPO_nivel + " INTEGER NOT NULL)";
 
@@ -261,8 +261,7 @@ public class Utilidades {
     public static final String CAMPO_apellidoMaterno = "appmt";
     public static final String CAMPO_parentesco = "parent";
     public static final String CAMPO_mensaje = "msg";
-    public static final String CAMPO_correo = "correo";
-    public static final String CAMPO_contrasena = "pwdt";
+    public static final String CAMPO_passwordTutor = "pwdt";
 
     public static final String CREAR_TABLA_Tutor =
             "CREATE TABLE " + "" + TABLA_Tutor + " (" +
@@ -274,7 +273,7 @@ public class Utilidades {
                     CAMPO_parentesco + " TEXT, " +
                     CAMPO_mensaje + " TINYINT, " +
                     CAMPO_correo + " TEXT NOR NULL UNIQUE, " +
-                    CAMPO_contrasena + " INTEGER NOT NULL," +
+                    CAMPO_passwordTutor + " INTEGER NOT NULL," +
                     "FOREIGN KEY (" + CAMPO_idUsuario + ") REFERENCES Usuario (" + CAMPO_idUsuario + "))";
 
 //****************************************************************************************************ya

@@ -33,8 +33,8 @@
                     android:id="@+id/btmCerrarAlimentos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
                     android:layout_marginRight="10dp"
+                    android:padding="10dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -136,11 +136,18 @@
                     android:layout_marginEnd="15dp"
                     android:orientation="horizontal">
 
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                     <Button
                         android:id="@+id/btnFrutas"
                         style="?attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/custom_button_gris"
                         android:fontFamily="@font/roboto_regular"
@@ -148,6 +155,8 @@
                         android:textAllCaps="false"
                         android:textColor="#B8C2CD"
                         android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHeight_percent="0.9"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintWidth_percent="0.27" />
@@ -156,14 +165,16 @@
                         android:id="@+id/btnVerduras"
                         style="?attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:background="@drawable/custom_button_gris"
                         android:fontFamily="@font/roboto_regular"
                         android:text="Verduras"
                         android:textAllCaps="false"
                         android:textColor="#B8C2CD"
                         android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/btnUltraProcesados"
+                        app:layout_constraintHeight_percent="0.9"
                         app:layout_constraintStart_toEndOf="@+id/btnFrutas"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintWidth_percent="0.27" />
@@ -172,13 +183,15 @@
                         android:id="@+id/btnUltraProcesados"
                         style="?attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:background="@drawable/custom_button_gris"
                         android:fontFamily="@font/roboto_regular"
                         android:text="Ultra procesados"
                         android:textAllCaps="false"
                         android:textColor="#B8C2CD"
                         android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHeight_percent="0.9"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintWidth_percent="0.4" />
@@ -201,11 +214,18 @@
                         android:layout_marginEnd="20dp"
                         android:orientation="horizontal">
 
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
                         <Button
                             android:id="@+id/btnBebidas2"
                             style="?attr/buttonBarButtonStyle"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
                             android:layout_marginRight="10dp"
                             android:background="@drawable/custom_button_gris"
                             android:fontFamily="@font/roboto_regular"
@@ -213,6 +233,7 @@
                             android:textAllCaps="false"
                             android:textColor="#B8C2CD"
                             android:textSize="14sp"
+                            app:layout_constraintHeight_percent="0.9"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintWidth_percent="0.3" />
@@ -221,7 +242,7 @@
                             android:id="@+id/btnFrituras2"
                             style="?attr/buttonBarButtonStyle"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
                             android:layout_marginStart="10dp"
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/custom_button_gris"
@@ -231,6 +252,7 @@
                             android:textColor="#B8C2CD"
                             android:textSize="14sp"
                             app:layout_constraintEnd_toStartOf="@+id/btnGolosinas2"
+                            app:layout_constraintHeight_percent="0.9"
                             app:layout_constraintStart_toEndOf="@+id/btnBebidas2"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintWidth_percent="0.3" />
@@ -239,7 +261,7 @@
                             android:id="@+id/btnGolosinas2"
                             style="?attr/buttonBarButtonStyle"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
                             android:layout_marginRight="10dp"
                             android:background="@drawable/custom_button_gris"
                             android:fontFamily="@font/roboto_regular"
@@ -247,6 +269,7 @@
                             android:textAllCaps="false"
                             android:textColor="#B8C2CD"
                             android:textSize="14sp"
+                            app:layout_constraintHeight_percent="0.9"
                             app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintWidth_percent="0.3" />
@@ -262,28 +285,36 @@
                         android:layout_marginEnd="20dp"
                         android:orientation="horizontal">
 
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
                         <Button
                             android:id="@+id/btnGalletasPanesillos2"
                             style="?attr/buttonBarButtonStyle"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
                             android:background="@drawable/custom_button_gris"
                             android:fontFamily="@font/roboto_regular"
                             android:text="Galletas y panesillos"
                             android:textAllCaps="false"
                             android:textColor="#B8C2CD"
                             android:textSize="14sp"
+                            app:layout_constraintHeight_percent="0.9"
                             app:layout_constraintEnd_toStartOf="@+id/btnOtros2"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintWidth_percent="0.45"
-                            app:layout_constraintVertical_chainStyle="packed"/>
+                            app:layout_constraintVertical_chainStyle="packed"
+                            app:layout_constraintWidth_percent="0.45" />
 
                         <Button
                             android:id="@+id/btnOtros2"
                             style="?attr/buttonBarButtonStyle"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
                             android:layout_marginLeft="10dp"
                             android:background="@drawable/custom_button_gris"
                             android:fontFamily="@font/roboto_regular"
@@ -291,10 +322,11 @@
                             android:textAllCaps="false"
                             android:textColor="#B8C2CD"
                             android:textSize="14sp"
+                            app:layout_constraintHeight_percent="0.9"
                             app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/btnGalletasPanesillos2"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintWidth_percent="0.23"/>
+                            app:layout_constraintWidth_percent="0.23" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,5 @@
 package com.example.desarrollo.Datos;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -29,7 +28,7 @@ public class TutorDao {
                     Utilidades.CAMPO_parentesco + ", " +
                     Utilidades.CAMPO_mensaje + ", " +
                     Utilidades.CAMPO_correo + ", " +
-                    Utilidades.CAMPO_contrasena + ") " +
+                    Utilidades.CAMPO_passwordTutor + ") " +
                     "VALUES ( " +
                     idUsuario + ", '" +
                     nombre + "', '" +
@@ -59,7 +58,7 @@ public class TutorDao {
             database = connection.getWritableDatabase();
 
             String editar = "UPDATE " + Utilidades.TABLA_Tutor + " " +
-                    "SET " + Utilidades.CAMPO_contrasena + " = " +
+                    "SET " + Utilidades.CAMPO_passwordTutor + " = " +
                     password + " WHERE " + Utilidades.CAMPO_idTutor + " = " + id;
             database.execSQL(editar);
 
@@ -121,32 +120,5 @@ public class TutorDao {
             database.close();
         }
         return tutorList;
-    }
-
-    public static int consultaTutorCorreo(Context context, String correo, String contra) {
-        int si = 0;
-        try {
-            ConexionSQLHelper connection = new ConexionSQLHelper(context);
-
-            database = null;
-            database = connection.getReadableDatabase();
-
-            Cursor cursor = database.rawQuery("SELECT " + Utilidades.CAMPO_correo + "," + Utilidades.CAMPO_contrasena + " FROM " + Utilidades.TABLA_Tutor + " WHERE correo='" + correo + "'", null);
-
-            if (cursor.moveToFirst()) {
-                String campo = cursor.getString(0);
-                String respuesta = cursor.getString(1);
-                if (correo.equals(campo) && contra.equals(respuesta)) {
-                    si = 1;
-                    return si;
-                }
-            }
-
-        } catch (Exception e) {
-            Toast.makeText(context, "Error al visualizar tutor", Toast.LENGTH_SHORT).show();
-        } finally {
-            database.close();
-        }
-        return si;
     }
 }

@@ -6,9 +6,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -19,12 +17,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,9 +32,7 @@ import com.example.desarrollo.Entidades.Tutor;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewHistorialConsumo;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewTutor;
 import com.example.desarrollo.R;
-import com.example.desarrollo.Ultilidades.Toastp;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -48,7 +41,7 @@ public class DetalleConsumoDia extends AppCompatActivity {
     private LinearLayout _btnAddTutor;
     private RelativeLayout _btnAtivityNino, _backgroundGeneroNino;
     private Spinner _spinnerDetalleConsumo;
-    private TextView _txtAvanceFrutas, _txtAvanceVerduras;
+    private TextView _txtAvanceFrutas, _txtAvanceVerduras, _txtCaloriasSemanaPasada, _txtCaloriasSemanaActual, _txtCaloriasHoy;
     private ImageView _imgGeneroNino;
     private RelativeLayout _btmCerrarDetalleConsumo;
     private ProgressBar _charFrutas, _chartVerduras;
@@ -137,7 +130,7 @@ public class DetalleConsumoDia extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 cargarHistorialConsumo(ninoList.get(position).getIdNino());
-                startChart(ninoList.get(position).getIdNino(), ninoList.get(position).getGenero());
+                cargarDetalleConsumoNino(ninoList.get(position).getIdNino(), ninoList.get(position).getGenero());
             }
 
             @Override
@@ -161,7 +154,7 @@ public class DetalleConsumoDia extends AppCompatActivity {
         _recyclerViewTutor.setAdapter(adapterTutor);
     }
 
-    private void startChart(int idNino, String genero) {
+    private void cargarDetalleConsumoNino(int idNino, String genero) {
 
         if (genero.equals("hombre")) {
             _backgroundGeneroNino.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#E36B5E")));
@@ -175,12 +168,13 @@ public class DetalleConsumoDia extends AppCompatActivity {
 
         double avanceEsfuerzoFrutas = calculos.progresoEsfuerzoFruta(TAG, getApplicationContext(), idNino);
         double avanceEsfuerzoVerdura = calculos.progresoEsfuerzoVerdura(TAG, getApplicationContext(), idNino);
+        double constultarEsfuerzoCosumoFruta = ninoDao.consultarEsfuerzoConsumoFrutas(TAG, getApplicationContext(), idNino);
+        double consultarEsfuerzoConsumoVerduras = ninoDao.consultarEsfuerzoConsumoVerduras(TAG, getApplicationContext(), idNino);
         final int progresoFrutas = (int) avanceEsfuerzoFrutas * 10;
         final int progresoVerduras = (int) avanceEsfuerzoVerdura * 10;
 
-        _txtAvanceFrutas.setText(String.valueOf(avanceEsfuerzoFrutas));
-        _txtAvanceVerduras.setText(String.valueOf(avanceEsfuerzoVerdura));
-
+        _txtAvanceFrutas.setText(String.valueOf(constultarEsfuerzoCosumoFruta) + "/" + String.valueOf(avanceEsfuerzoFrutas));
+        _txtAvanceVerduras.setText(String.valueOf(consultarEsfuerzoConsumoVerduras) + "/" + String.valueOf(avanceEsfuerzoVerdura));
 
         new Thread(new Runnable() {
             @Override
@@ -225,6 +219,14 @@ public class DetalleConsumoDia extends AppCompatActivity {
                 }
             }
         }).start();
+
+        //double caloriasSemanaPasada = calculos.KaloriaFija(getApplicationContext(), idNino);
+        double caloriasSemanaActual = calculos.KaloriaCambio(getApplicationContext(), idNino);
+        double caloriasHoy = calculos.KaloriaDia(getApplicationContext(), idNino);
+
+        //_txtCaloriasSemanaPasada.setText(String.valueOf(caloriasSemanaPasada));
+        _txtCaloriasSemanaActual.setText(String.valueOf(caloriasSemanaActual));
+        _txtCaloriasHoy.setText(String.valueOf(caloriasHoy));
     }
 
     private void init() {
@@ -241,5 +243,8 @@ public class DetalleConsumoDia extends AppCompatActivity {
         _btmCerrarDetalleConsumo = (RelativeLayout) findViewById(R.id.btmCerrarDetalleConsumo);
         _backgroundGeneroNino = (RelativeLayout) findViewById(R.id.backgroundGeneroNino);
         _imgGeneroNino = (ImageView) findViewById(R.id.imgGeneroNino);
+        _txtCaloriasSemanaPasada = (TextView) findViewById(R.id.txtDetalleCaloriasFija);
+        _txtCaloriasSemanaActual = (TextView) findViewById(R.id.txtDetalleCaloriasCambio);
+        _txtCaloriasHoy = (TextView) findViewById(R.id.txtDetalleCaloriasHoy);
     }
 }

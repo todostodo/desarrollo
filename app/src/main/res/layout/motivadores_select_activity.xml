@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
-                    android:id="@+id/btnCerrarMotivadoresSelect"
+                    android:id="@+id/btnCerrarLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -48,7 +48,7 @@
                     android:textColor="@color/negro"
                     android:textSize="24sp"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/btnCerrarMotivadoresSelect"
+                    app:layout_constraintStart_toEndOf="@+id/btnCerrarLogin"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -60,7 +60,7 @@
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="50dp"
                     tools:listitem="@layout/motivadores_select_item"
-                    app:layout_constraintTop_toBottomOf="@+id/btnCerrarMotivadoresSelect"
+                    app:layout_constraintTop_toBottomOf="@+id/btnCerrarLogin"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
