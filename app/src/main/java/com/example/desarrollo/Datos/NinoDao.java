@@ -121,7 +121,9 @@ public class NinoDao {
                 editor.putBoolean("fichaFruta2",false);
                 editor.putBoolean("fichaVerdura2",false);
                 editor.putBoolean("primerIntento2",false);
-                editor.putBoolean("noConoceAlimento2",false);
+                editor.putBoolean("nuevoAlimento2",false);
+                editor.putBoolean("LineaBaseGenerada1",false);
+                editor.putBoolean("LineaBaseGenerada2",false);
                 editor.commit();
             }
 

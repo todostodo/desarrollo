@@ -67,7 +67,7 @@ public class Utilidades {
                     CAMPO_Res_Pre_Nutri + " TEXT NOT NULL," +
                     CAMPO_Msg + " INTEGER NOT NULL," +
                     "FOREIGN KEY (" + CAMPO_id_Histo_Nutri + ") REFERENCES Historial_Nutricion (" + CAMPO_id_Histo_Nutri + "))";
-
+//****************************************************************************************************ya
     //Constantes para campos de la tabla Mensajes_Persuasivos
     public static final String TABLA_Mensajes_Persuasivos = "Mensajes_Persuasivos";
     public static final String CAMPO_idMensage = "idmsg";
@@ -79,7 +79,7 @@ public class Utilidades {
                     CAMPO_idMensage + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_tipoMensage + " TEXT NOT NULL, " +
                     CAMPO_Mensage + " TEXT NOT NULL)";
-    //*********************************************************************************************************************
+    //*************************************************************************************************ya
     //Constantes para campos de la tabla Envia_Msg
     public static final String TABLA_Envia_Msg = "Envia_Msg";
     public static final String CAMPO_idenvmdg = "idenvmdg";
@@ -97,7 +97,7 @@ public class Utilidades {
                     CAMPO_Fecha_EM + " TEXT NOT NULL," +
                     "FOREIGN KEY (" + CAMPO_idUsuario + ") REFERENCES Usuario (" + CAMPO_idUsuario + ")," +
                     "FOREIGN KEY (" + CAMPO_idmsgE + ") REFERENCES Mensajes_Persuasivos (" + CAMPO_idmsgE + "))";
-    //*********************************************************************************************************************
+    //**************************************************************************************************ya
 
     //Constantes para campos de la tabla Recompensas
     public static final String TABLA_Recompensas = "Recompensas";
@@ -110,7 +110,7 @@ public class Utilidades {
                     CAMPO_idRecompensa + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_descripcion + " TEXT NOT NULL, " +
                     CAMPO_valor + " INTEGER NOT NULL)";
-
+//****************************************************************************************************ya
     //Constantes para campos de la tabla Nino
     public static final String TABLA_Nino = "Nino";
     public static final String CAMPO_idNino = "idNino";
@@ -166,7 +166,7 @@ public class Utilidades {
                     CAMPO_Activo + " TINYINT NOT NULL," +
                     "FOREIGN KEY (" + CAMPO_idNinoCajeFi + ") REFERENCES Nino (" + CAMPO_idNino + ")," +
                     "FOREIGN KEY (" + CAMPO_idrRecompensaCanjeFi + ") REFERENCES Recompensas (" + CAMPO_idRecompensa + "))";
-
+//*****************************************************************************************************ya
     //Constantes para campos de la tabla Registro
     public static final String TABLA_Registro = "Registro";
     public static final String CAMPO_idRegistro = "idreg";
@@ -179,7 +179,7 @@ public class Utilidades {
                     CAMPO_idHijoR + " INTEGER NOT NULL, " +
                     CAMPO_FechaRegistro + " TEXT NOT NULL," +
                     "FOREIGN KEY (" + CAMPO_idHijoR + ") REFERENCES Nino (" + CAMPO_idHijoR + "))";
-
+//****************************************************************************************************ya
     //Constantes para campos de la tabla Detalle Registro
     public static final String TABLA_DetalleRegistro = "DetalleReg";
     public static final String CAMPO_IdDetalleRegistro = "idreg";
@@ -203,7 +203,7 @@ public class Utilidades {
                     //CAMPO_NumeroRegistro + " INTEGER NULL, " +
                     CAMPO_Tipo + " TEXT NOT NULL, " +
                     CAMPO_HoraRegistro + " TEXT NOT NULL)";
-
+//***************************************************************************************************ya
 
     //CONSTANTES PARA CAMPOS DE LA TABLA TUTORES
     public static final String TABLA_Tutor = "Tutor";
@@ -229,6 +229,8 @@ public class Utilidades {
                     CAMPO_passwordTutor + " INTEGER NOT NULL," +
                     "FOREIGN KEY (" + CAMPO_idUsuario + ") REFERENCES Usuario (" + CAMPO_idUsuario + "))";
 
+//****************************************************************************************************ya
+
     public static final String TABLA_GustoFruta = "GustoFrutas";
     public static final String CAMPO_idGustoFruta = "idGustoF";
     public static final String CAMPO_idNinoGustosFruta = "idNino";
@@ -249,6 +251,7 @@ public class Utilidades {
                     CAMPO_conoscoFruta + " INTEGER NOT NULL," +
                     "FOREIGN KEY (" + CAMPO_idNinoGustosFruta + ") REFERENCES Nino (" + CAMPO_idNinoGustosFruta + "))";
 
+//***************************************************************************************************ya
 
     public static final String TABLA_GustoVerdura = "GustoVerdura";
     public static final String CAMPO_idGustoVerdura = "idGustos";
