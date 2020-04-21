@@ -27,7 +27,7 @@ public class NinoDao {
     private static HijoRegistroActivity gustos;
     private static final String TAG = "NinoDao";
 
-    public static boolean addNino(String TAG, Context context, int idUsuario, String nombre, String genero, String apPaterno, String apMaterno, int edad, Double peso, Double estatura, Double medida, Double lineabultra, Double lineabv, Double leneabf, int totfich, Double esfuerzoultra, Double esfuerzof, Double esfuerzov) {
+    public static boolean addNino(String TAG, Context context, int idUsuario, String nombre, String genero, String apPaterno, String apMaterno, int edad, Double peso, Double estatura, Double lineabultra, Double lineabv, Double leneabf, int totfich, Double esfuerzoultra, Double esfuerzof, Double esfuerzov) {
 
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
@@ -36,7 +36,7 @@ public class NinoDao {
 
 
             String inset = "INSERT INTO " + Utilidades.TABLA_Nino + "( " +
-                    Utilidades.CAMPO_idUsuarioN + ", " +
+                    Utilidades.CAMPO_idUsuario + ", " +
                     Utilidades.CAMPO_NombreN + ", " +
                     Utilidades.CAMPO_GeneroN + ", " +
                     Utilidades.CAMPO_ApellidoPaternoN + "," +
@@ -44,7 +44,6 @@ public class NinoDao {
                     Utilidades.CAMPO_Edad + ", " +
                     Utilidades.CAMPO_Peso + ", " +
                     Utilidades.CAMPO_Estatura + ", " +
-                    Utilidades.CAMPO_Medida + ", " +
                     Utilidades.CAMPO_LineaBaseUltraprocesado + ", " +
                     Utilidades.CAMPO_LineaBaseVerdura + ", " +
                     Utilidades.CAMPO_LIneaBaseFruta + ", " +
@@ -61,7 +60,6 @@ public class NinoDao {
                     edad + ", " +
                     peso + ", " +
                     estatura + ", " +
-                    medida + ", " +
                     lineabultra + ", " +
                     lineabv + ", " +
                     leneabf + ", " +
@@ -119,11 +117,11 @@ public class NinoDao {
                 editor.putBoolean("fichaFruta1",false);
                 editor.putBoolean("fichaVerdura1",false);
                 editor.putBoolean("primerIntento1",false);
-                editor.putBoolean("nuevoAlimento1",false);
+                editor.putBoolean("noConoceAlimento1",false);
                 editor.putBoolean("fichaFruta2",false);
                 editor.putBoolean("fichaVerdura2",false);
                 editor.putBoolean("primerIntento2",false);
-                editor.putBoolean("nuevoAlimento2",false);
+                editor.putBoolean("noConoceAlimento2",false);
                 editor.commit();
             }
 
@@ -139,6 +137,25 @@ public class NinoDao {
             Log.e(TAG, "Error " + e);
             return false;
         } finally {
+            database.close();
+        }
+    }
+
+    public static void acumularFichas(String TAG, Context context, int idNino, int cantidadFichas){
+        try {
+            ConexionSQLHelper conection = new ConexionSQLHelper(context);
+            database = null;
+
+            database = conection.getWritableDatabase();
+            String agregarFichar = "UPDATE " + Utilidades.TABLA_Nino +
+                    " SET " + Utilidades.CAMPO_TotalFichas + " = (" + Utilidades.CAMPO_TotalFichas + " + " + cantidadFichas + ") " +
+                    " WHERE " + Utilidades.CAMPO_idNino + " = " + idNino;
+
+            database.execSQL(agregarFichar);
+
+        }catch (Exception e){
+            Log.e(TAG, "Error" + e);
+        }finally {
             database.close();
         }
     }
@@ -212,7 +229,11 @@ public class NinoDao {
 
             String fecha = calculos.getFecha();
 
-            Cursor cursor = database.rawQuery("SELECT " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_IdAlimento + ", " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Cantidad + ", " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + ", " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_HoraRegistro + ", " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_UnidadMedida +
+            Cursor cursor = database.rawQuery("SELECT " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_IdAlimento + ", " +
+                    Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Cantidad + ", " +
+                    Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + ", " +
+                    Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_HoraRegistro + ", " +
+                    Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_UnidadMedida +
                     " FROM " + Utilidades.TABLA_DetalleRegistro +
                     " INNER JOIN " + Utilidades.TABLA_Registro + " ON " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_IdDetalleRegistro +
                     " WHERE " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idNino + " = " + idNino +
@@ -221,7 +242,8 @@ public class NinoDao {
             while (cursor.moveToNext()) {
                 historialConsumo = new HistorialConsumo();
                 frutasList = new ArrayList();
-                modelFrutas.addItemsFromJSONHistorial(frutasList, TAG, cursor.getString(cursor.getColumnIndex("Tipo")), context);
+
+                modelFrutas.addItemsFromJSONHistorial(frutasList, TAG, cursor.getString(cursor.getColumnIndex("tipo")), context);
 
 
                 for (int i = 0; i < frutasList.size(); i++) {
@@ -229,18 +251,26 @@ public class NinoDao {
                         historialConsumo.setNombreAlimentos(frutasList.get(i).getNombre());
                         historialConsumo.setBackgroundAlimento(frutasList.get(i).getBackground());
                         historialConsumo.setImgUrl(frutasList.get(i).getImgUrl());
+
+                        Log.e(TAG, frutasList.get(i).getNombre());
                     }
                 }
+
+
 
                 historialConsumo.setCantidadAlimento(cursor.getDouble(cursor.getColumnIndex("cad")));
                 historialConsumo.setHora(cursor.getString(cursor.getColumnIndex("hora")));
                 historialConsumo.setUnidadMedida(cursor.getDouble(cursor.getColumnIndex("umedr")));
 
                 consumoList.add(historialConsumo);
+
+                Log.v(TAG, String.valueOf(cursor.getDouble(cursor.getColumnIndex("cad"))));
+                Log.v(TAG, String.valueOf(cursor.getDouble(cursor.getColumnIndex("umedr"))));
+                Log.v(TAG, cursor.getString(cursor.getColumnIndex("hora")));
             }
 
         } catch (Exception e) {
-            Log.e(TAG, "Error " + e);
+            Log.e(TAG, "Error" + e);
         } finally {
             database.close();
         }
@@ -305,6 +335,7 @@ public class NinoDao {
 
             if (tipoAlimento.equals("Fruta")) {
 
+
                 Cursor cursor = database.rawQuery("SELECT COUNT(" + Utilidades.CAMPO_idNino + ") FROM " + Utilidades.TABLA_GustoFruta +
                         " WHERE " + Utilidades.CAMPO_idNino + " = " + idNino +
                         " AND (" + Utilidades.CAMPO_noGustaFruta + " = " + " 1 OR " + Utilidades.CAMPO_conoscoFruta + " = " + " 1 )" +
@@ -313,6 +344,7 @@ public class NinoDao {
                 while (cursor.moveToNext()) {
                     countId = cursor.getInt(0);
                 }
+
             }
             if (tipoAlimento.equals("Verdura")) {
 

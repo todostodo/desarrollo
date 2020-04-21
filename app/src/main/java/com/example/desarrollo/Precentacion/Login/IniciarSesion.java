@@ -19,6 +19,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.desarrollo.Datos.InicioSesionDao;
+import com.example.desarrollo.Datos.UserDao;
 import com.example.desarrollo.Precentacion.MainActivity;
 import com.example.desarrollo.R;
 import com.example.desarrollo.Ultilidades.Toastp;
@@ -45,6 +46,7 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
     private boolean inicioSesionUsuario = true;
     private Toastp toastp;
     private InicioSesionDao inicioSesionDao;
+    private UserDao userDao;
 
     private GoogleApiClient googleApiClient;
     private CallbackManager callbackManager;
@@ -54,19 +56,11 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //iniciarSesionGoogle();
+        //iniciarSesionFacebook();
+
         setContentView(R.layout.inicio_sesion_activity);
-
         init();
-        iniciarSesionGoogle();
-        iniciarSesionFacebook();
-
-        SharedPreferences preferences = getSharedPreferences("Archivo", getApplicationContext().MODE_PRIVATE);
-        int inpref = preferences.getInt("volor", 0);
-
-        if (inpref == 1) {
-            Intent activityPrincipal = new Intent(this, MainActivity.class);
-            startActivity(activityPrincipal);
-        }
 
         _btnLoginUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,14 +128,20 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
 
                     if (existeUsuario == true) {
 
-                        Intent activityPrincipal = new Intent(this, MainActivity.class);
-                        startActivity(activityPrincipal);
 
-                        SharedPreferences preferences = this.getSharedPreferences("Archivo", getApplicationContext().MODE_PRIVATE);
-                        //SharedPreferences preferences1=getActivity().getPreferences(getContext().MODE_PRIVATE);
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.putInt("volor", 1);
-                        editor.commit();
+                        boolean estadoUsuario = userDao.estadoUsuario(TAG, getApplicationContext());
+                        if (estadoUsuario == true) {
+
+                            Intent activityPrincipal = new Intent(this, MainActivity.class);
+                            startActivity(activityPrincipal);
+
+                        } else {
+
+                            Intent introduccion = new Intent(getApplicationContext(), IntroduccionActivity.class);
+                            startActivity(introduccion);
+
+                            savePreferencesDato();
+                        }
 
                     } else {
                         toastp.toastp(getApplicationContext(), "El correo o contraseña son incorrectos");
@@ -166,10 +166,7 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
                         Intent activityPrincipal = new Intent(this, MainActivity.class);
                         startActivity(activityPrincipal);
 
-                        SharedPreferences preferences1 = this.getPreferences(getApplicationContext().MODE_PRIVATE);
-                        SharedPreferences.Editor editor = preferences1.edit();
-                        editor.putInt("volor", 1);
-                        editor.commit();
+                        savePreferencesDato();
 
                     } else {
                         toastp.toastp(getApplicationContext(), "El correo o contraseña son incorrectos");
@@ -177,6 +174,13 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
                 }
             }
         }
+    }
+
+    private void savePreferencesDato() {
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences("Archivo", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("inicioAutomatico", true);
+        editor.commit();
     }
 
     private void iniciarSesionGoogle() {
@@ -263,7 +267,7 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
             goMainScreen();
 
         } else {
-            Toast.makeText(this, "No se pudo", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "No se pudo", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -271,7 +275,8 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
         SharedPreferences preferences = getSharedPreferences("Archivo", this.MODE_PRIVATE);
         //SharedPreferences preferences1=getActivity().getPreferences(getContext().MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("volor", 1);
+        //editor.putInt("volor", 1);
+        editor.putBoolean("inicioAutomatico", true);
         editor.commit();
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

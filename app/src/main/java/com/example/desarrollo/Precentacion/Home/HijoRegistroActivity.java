@@ -1,27 +1,35 @@
 package com.example.desarrollo.Precentacion.Home;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Datos.PreferenciasDao;
+import com.example.desarrollo.Datos.UserDao;
 import com.example.desarrollo.ExportJSON.Model.ModelPreferencias;
 import com.example.desarrollo.ExportJSON.Reader.ReaderPreferencias;
 import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewPreferencias;
+import com.example.desarrollo.Precentacion.MainActivity;
 import com.example.desarrollo.R;
 import com.example.desarrollo.Ultilidades.Toastp;
 
@@ -33,7 +41,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
     private Button _btnRegistrarPreferenciasVerduras, _btnRegistrarPreferenciasFrutas;
     private String gustos = "siGusta";
     private boolean updateVerdura = false;
-    private int gustosAuxiliar = 0;
+    private int gustosAuxiliar = 0, regresar = 1;
     private Button _btnAddNino;
     private TextView _txtAvisoPreferencia, txtToast;
     private TextView _edadTres, _edadCuatro, _edadCinco, _edadSeis, _edadSiete, _edadOcho, _edadNueve, _edadDiez, _edadOnce, _edadDoce;
@@ -43,11 +51,16 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
             _txtHijoApellidoPaterno,
             _txtHijoApellidoMaterno,
             _txtHijoPeso,
-            _txtHijoEstatura,
-            _txtHijoMedidaCintura;
+            _txtHijoEstatura;
+            //_txtHijoMedidaCintura;
+
+    private ConstraintLayout _registroNinoGenero, _registroDatosNino, _registroMedidasNino, _registroNino;
+    private Button _btnRegistraGenero, _btnRegistrarDatosNino;
+    private ImageView _imgGeneroNinoRegistroDatos;
+    private RelativeLayout _fondoGeneroNino, _btnRegresarGeneroNino, _btnRegresarDatosNino;
 
     // todo: variable para almacenar todo lo que el usuario ingresa antes de ser almacenado a la base de datos
-    private String nombreNino, apellidoPNino, apellidoMNino, generoNino = "", pesoNino, estaturaNino, mCinturaNino;
+    private String nombreNino, apellidoPNino, apellidoMNino, generoNino = "", pesoNino, estaturaNino;
     private int auxEdad = 0;
     private ArrayList<String> siGustaFruta = new ArrayList<>();
     private ArrayList<String> noGustaFruta = new ArrayList<>();
@@ -59,7 +72,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
     private ArrayList<String> conoscoVerdura = new ArrayList<>();
     private ArrayList<String> noSelectVerdura = new ArrayList<>();
     //--------------------------------------------------
-    private NestedScrollView _registroNino, _preferenciasNino;
+    private NestedScrollView _preferenciasNino;
     private RelativeLayout _checkGeneroHombre, _checkGeneroMujer;
     private LinearLayout _btnGeneroHombre, _btnGeneroMujer;
     private ArrayList<ReaderPreferencias> temp;
@@ -71,6 +84,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
     PreferenciasDao preferenciasDao;
     NinoDao ninoDao;
     Toastp toast;
+    UserDao userDao;
 
     ModelPreferencias modelFrutas = new ModelPreferencias();
 
@@ -84,12 +98,32 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
 
         addItemsJSON("Fruta");
         addPreferecias(_myRecyclerViewFrutas);
+        _txtAvisoPreferencia.setText("Seleccione la fruta que le gusta");
 
         findViewById(R.id.btnRegistrarPreferenciasFrutas).setOnClickListener(HijoRegistroActivity.this);
 
+        _btnRegresarGeneroNino.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                _registroNinoGenero.setVisibility(View.VISIBLE);
+                _registroDatosNino.setVisibility(View.GONE);
+                regresar = 1;
+            }
+        });
+
+        _btnRegresarDatosNino.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                _registroDatosNino.setVisibility(View.GONE);
+                _registroDatosNino.setVisibility(View.VISIBLE);
+                regresar = 2;
+            }
+        });
+
         validacionEdadNino();
         validacionGeneroNino();
-        addNinoNombreEdad();
+        registrarGenero();
+        //addNinoNombreEdad();
     }
 
     //Validad la primera pantalla que se le precenta al usuario al momento de registra a un niño (Genero, Nombre y Edad)
@@ -221,74 +255,66 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         }
     }
 
-    private void addNinoNombreEdad() {
-
-        _btnAddNino.setOnClickListener(new View.OnClickListener() {
-
+    //Primera parte -- Registrar genereo
+    private void registrarGenero() {
+        _btnRegistraGenero.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
-
-                String nombre = _txtHijoNombre.getText().toString();
-                String apellidoPaterno = _txtHijoApellidoPaterno.getText().toString();
-                String apellidoMaterno = _txtHijoApellidoMaterno.getText().toString();
-                String peso = _txtHijoPeso.getText().toString().trim();
-                String estatura = _txtHijoEstatura.getText().toString().trim();
-                String mCintura = _txtHijoMedidaCintura.getText().toString().trim();
 
                 if (generoNino.equals("")) {
                     toast.toastp(getApplicationContext(), "Seleccione el genero del niño");
                 } else {
-                    if (nombre.isEmpty()) {
-                        _txtHijoNombre.setBackgroundResource(R.drawable.rectangulo_border_rojo);
-                        toast.toastp(getApplicationContext(), "Ingrese el nombre del niño");
+                    _registroNinoGenero.setVisibility(View.GONE);
+                    _registroDatosNino.setVisibility(View.VISIBLE);
+
+                    if (generoNino.equals("hombre")) {
+                        _imgGeneroNinoRegistroDatos.setBackgroundResource(R.drawable.icon_genero_hombre);
+                        _fondoGeneroNino.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.rojo)));
                     } else {
-                        nombreNino = nombre;
-                        _txtHijoNombre.setBackgroundResource(R.drawable.rectangulo_gris);
+                        _imgGeneroNinoRegistroDatos.setBackgroundResource(R.drawable.icon_genero_mujer);
+                        _fondoGeneroNino.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.gris_genero)));
+                    }
 
-                        if (apellidoPaterno.isEmpty()) {
-                            _txtHijoApellidoPaterno.setBackgroundResource(R.drawable.rectangulo_border_rojo);
-                            toast.toastp(getApplicationContext(), "Ingrese su apellido paterno");
+                    regresar = 2;
+                    registrarDatosNino();
+                }
+            }
+        });
+    }
+
+    //Segunta parte -- registrar datos personales
+    private void registrarDatosNino() {
+
+        _btnRegistrarDatosNino.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nombre = _txtHijoNombre.getText().toString();
+                String apellidoPaterno = _txtHijoApellidoPaterno.getText().toString();
+                String apellidoMaterno = _txtHijoApellidoMaterno.getText().toString();
+
+                if (nombre.isEmpty()) {
+                    toast.toastp(getApplicationContext(), "Ingrese el nombre del niño");
+                } else {
+                    nombreNino = nombre;
+
+                    if (apellidoPaterno.isEmpty()) {
+                        toast.toastp(getApplicationContext(), "Ingrese su apellido paterno");
+                    } else {
+                        apellidoPNino = apellidoPaterno;
+
+                        if (apellidoMaterno.isEmpty()) {
+                            toast.toastp(getApplicationContext(), "Ingrese su apellido materno");
                         } else {
-                            apellidoPNino = apellidoPaterno;
-                            _txtHijoApellidoPaterno.setBackgroundResource(R.drawable.rectangulo_gris);
+                            apellidoMNino = apellidoMaterno;
 
-                            if (apellidoMaterno.isEmpty()) {
-                                _txtHijoApellidoMaterno.setBackgroundResource(R.drawable.rectangulo_border_rojo);
-                                toast.toastp(getApplicationContext(), "Ingrese su apellido materno");
+                            if (auxEdad == 0) {
+                                toast.toastp(getApplicationContext(), "Seleccione la edad del niño");
                             } else {
-                                apellidoMNino = apellidoMaterno;
-                                _txtHijoApellidoMaterno.setBackgroundResource(R.drawable.rectangulo_gris);
-
-                                if (auxEdad == 0) {
-                                    toast.toastp(getApplicationContext(), "Seleccione la edad del niño");
-                                } else {
-                                    if (peso.isEmpty()) {
-                                        _txtHijoPeso.setBackgroundResource(R.drawable.rectangulo_border_rojo);
-                                        toast.toastp(getApplicationContext(), "Ingrese su peso");
-                                    } else {
-                                        pesoNino = peso;
-                                        _txtHijoPeso.setBackgroundResource(R.drawable.rectangulo_gris);
-
-                                        if (estatura.isEmpty()) {
-                                            _txtHijoEstatura.setBackgroundResource(R.drawable.rectangulo_border_rojo);
-                                            toast.toastp(getApplicationContext(), "Ingrese su estatura");
-                                        } else {
-                                            estaturaNino = estatura;
-                                            _txtHijoEstatura.setBackgroundResource(R.drawable.rectangulo_gris);
-
-                                            if (mCintura.isEmpty()) {
-                                                _txtHijoMedidaCintura.setBackgroundResource(R.drawable.rectangulo_border_rojo);
-                                                toast.toastp(getApplicationContext(), "Ingrese su medida de cintura");
-                                            } else {
-                                                mCinturaNino = mCintura;
-                                                _txtHijoMedidaCintura.setBackgroundResource(R.drawable.rectangulo_gris);
-
-                                                _registroNino.setVisibility(View.GONE);
-                                                _preferenciasNino.setVisibility(View.VISIBLE);
-                                            }
-                                        }
-                                    }
-                                }
+                                _registroDatosNino.setVisibility(View.GONE);
+                                _registroMedidasNino.setVisibility(View.VISIBLE);
+                                regresar = 3;
+                                registrarMedidasNino();
                             }
                         }
                     }
@@ -297,6 +323,40 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         });
     }
 
+    //Tercera parte -- registrar medidas corporales
+    private void registrarMedidasNino() {
+
+        _btnAddNino.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                String peso = _txtHijoPeso.getText().toString().trim();
+                String estatura = _txtHijoEstatura.getText().toString().trim();
+                //String mCintura = _txtHijoMedidaCintura.getText().toString().trim();
+
+
+                if (peso.isEmpty()) {
+                    toast.toastp(getApplicationContext(), "Ingrese su peso");
+                } else {
+                    pesoNino = peso;
+
+                    if (estatura.isEmpty()) {
+                        toast.toastp(getApplicationContext(), "Ingrese su estatura");
+                    } else {
+                        estaturaNino = estatura;
+
+                        _registroNino.setVisibility(View.GONE);
+                        _preferenciasNino.setVisibility(View.VISIBLE);
+                        regresar = 4;
+                    }
+                }
+            }
+
+        });
+    }
+
+    //Cuarta parte -- preferencias
     private void addPreferecias(RecyclerView recyclerView) {
 
         layoutManager = new GridLayoutManager(this, 3);
@@ -444,7 +504,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
             } else if (gustosAuxiliar == 1) {
                 gustos = "conosco";
                 gustosAuxiliar = 2;
-                toast.toastp(getApplicationContext(),  "Seleccione la verdura que no conoce");
+                toast.toastp(getApplicationContext(), "Seleccione la verdura que no conoce");
                 _txtAvisoPreferencia.setText("Seleccione la verdura que no conoce su hijo");
             }
 
@@ -474,14 +534,13 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         _btnRegistrarPreferenciasFrutas.setVisibility(View.GONE);
         _btnRegistrarPreferenciasVerduras.setVisibility(View.VISIBLE);
 
-        //Toast.makeText(this, "Seleccione la verdura que mas le gusta", Toast.LENGTH_SHORT).show();
         toast.toastp(getApplicationContext(), "Seleccione la verdura que mas le gusta");
         _txtAvisoPreferencia.setText("Seleccione la verdura que mas le gusta a su hijo");
 
         findViewById(R.id.btnRegistrarPreferenciasVerduras).setOnClickListener(HijoRegistroActivity.this);
     }
 
-    private void registrarNino(){
+    private void registrarNino() {
         //Agregar datos generales
         ninoDao.addNino
                 (
@@ -495,7 +554,6 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                         auxEdad,
                         Double.parseDouble(pesoNino),
                         Double.parseDouble(estaturaNino),
-                        Double.parseDouble(mCinturaNino),
                         0.0,
                         0.0,
                         0.0,
@@ -506,7 +564,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                 );
 
         //Agregar preferencias frutas
-        for (int i = 0; i < siGustaFruta.size(); i++){
+        for (int i = 0; i < siGustaFruta.size(); i++) {
             preferenciasDao.addPreferenciasFrutas
                     (
                             TAG,
@@ -518,7 +576,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                             0
                     );
         }
-        for (int i = 0; i < noGustaFruta.size(); i++){
+        for (int i = 0; i < noGustaFruta.size(); i++) {
             preferenciasDao.addPreferenciasFrutas
                     (
                             TAG,
@@ -530,7 +588,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                             0
                     );
         }
-        for (int i = 0; i < conoscoFruta.size(); i++){
+        for (int i = 0; i < conoscoFruta.size(); i++) {
             preferenciasDao.addPreferenciasFrutas
                     (
                             TAG,
@@ -542,7 +600,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                             1
                     );
         }
-        for (int i = 0; i < noSelectFruta.size(); i++){
+        for (int i = 0; i < noSelectFruta.size(); i++) {
             preferenciasDao.addPreferenciasFrutas
                     (
                             TAG,
@@ -557,7 +615,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
 
         //Agregar preferencias verduras
 
-        for (int i = 0; i < siGustaVerdura.size(); i++){
+        for (int i = 0; i < siGustaVerdura.size(); i++) {
             preferenciasDao.addPreferenciasVerduras
                     (
                             TAG,
@@ -569,7 +627,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                             0
                     );
         }
-        for (int i = 0; i < noGustaVerdura.size(); i++){
+        for (int i = 0; i < noGustaVerdura.size(); i++) {
             preferenciasDao.addPreferenciasVerduras
                     (
                             TAG,
@@ -581,7 +639,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                             0
                     );
         }
-        for (int i = 0; i < conoscoVerdura.size(); i++){
+        for (int i = 0; i < conoscoVerdura.size(); i++) {
             preferenciasDao.addPreferenciasVerduras
                     (
                             TAG,
@@ -593,7 +651,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                             1
                     );
         }
-        for (int i = 0; i < noSelectVerdura.size(); i++){
+        for (int i = 0; i < noSelectVerdura.size(); i++) {
             preferenciasDao.addPreferenciasVerduras
                     (
                             TAG,
@@ -607,11 +665,26 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         }
 
         toast.toastp(getApplicationContext(), "Se ha registrado conrrectamenta el niño");
-        finish();
+
+        boolean estadoRegistroUsuario = userDao.estadoUsuario(TAG, getApplicationContext());
+        if (estadoRegistroUsuario == true) {
+            Intent detalleConsumo = new Intent(getApplicationContext(), DetalleConsumoDia.class);
+            startActivity(detalleConsumo);
+            finish();
+        } else {
+            SharedPreferences preferences = getApplicationContext().getSharedPreferences("Archivo", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("inicioAutomatico", true);
+            editor.commit();
+            userDao.updateEstadoUsaurio(TAG, getApplicationContext());
+            finish();
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        }
     }
 
     private void init() {
-        _registroNino = (NestedScrollView) findViewById(R.id.registroNino);
+        _registroNino = (ConstraintLayout) findViewById(R.id.registroNino);
         _preferenciasNino = (NestedScrollView) findViewById(R.id.preferenciasNino);
         _btnRegistrarPreferenciasVerduras = (Button) findViewById(R.id.btnRegistrarPreferenciasVerduras);
         _btnRegistrarPreferenciasFrutas = (Button) findViewById(R.id.btnRegistrarPreferenciasFrutas);
@@ -627,7 +700,20 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
 
         _txtHijoPeso = (EditText) findViewById(R.id.txtHijoPeso);
         _txtHijoEstatura = (EditText) findViewById(R.id.txtHijoEstatura);
-        _txtHijoMedidaCintura = (EditText) findViewById(R.id.txtHijoMedidaCintura);
+        //_txtHijoMedidaCintura = (EditText) findViewById(R.id.txtHijoMedidaCintura);
+
+        //Primera pare - Registrar Genero
+        _registroNinoGenero = (ConstraintLayout) findViewById(R.id.RegistroNinoGenero);
+        _btnRegistraGenero = (Button) findViewById(R.id.btnRegistrarGenero);
+
+        //Segunda parte - Datos del nino
+        _registroDatosNino = (ConstraintLayout) findViewById(R.id.RegistroDatosNino);
+        _btnRegistrarDatosNino = (Button) findViewById(R.id.btnRegistrarDatosNino);
+        _imgGeneroNinoRegistroDatos = (ImageView) findViewById(R.id.imgGeneroNinoRegistroDatos);
+        _fondoGeneroNino = (RelativeLayout) findViewById(R.id.fondoGeneroNino);
+
+        //Tercera parte - medidas corporales
+        _registroMedidasNino = (ConstraintLayout) findViewById(R.id.registroNino);
 
         //Botones para seleccionar la edad
         _edadTres = (TextView) findViewById(R.id.edadTres);
@@ -640,11 +726,33 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         _edadDiez = (TextView) findViewById(R.id.edadDiez);
         _edadOnce = (TextView) findViewById(R.id.edadOnce);
         _edadDoce = (TextView) findViewById(R.id.edadDoce);
+
         //Seleccionar genero (Hombre, mujer)
         _btnGeneroHombre = (LinearLayout) findViewById(R.id.btmGeneroHombre);
         _btnAddNino = (Button) findViewById(R.id.btnAddNino);
         _btnGeneroMujer = (LinearLayout) findViewById(R.id.btmGeneroMujer);
         _checkGeneroHombre = (RelativeLayout) findViewById(R.id.checkGeneroHombre);
         _checkGeneroMujer = (RelativeLayout) findViewById(R.id.checkGeneroMujer);
+
+        //Regresar
+        _btnRegresarGeneroNino = (RelativeLayout) findViewById(R.id.btmRegresarGeneroNino);
+        _btnRegresarDatosNino = (RelativeLayout) findViewById(R.id.btmRegresarDatosNino);
+    }
+
+    //Regresar
+
+    @Override
+    public void onBackPressed() {
+        if (regresar == 3) {
+            _btnRegresarDatosNino.performClick();
+        } else {
+            if (regresar == 2) {
+                _btnRegresarGeneroNino.performClick();
+            }else{
+                if (regresar == 1 || regresar == 4){
+                    super.onBackPressed();
+                }
+            }
+        }
     }
 }

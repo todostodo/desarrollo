@@ -1,6 +1,7 @@
 package com.example.desarrollo.Precentacion;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -11,6 +12,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -56,9 +58,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
 
         SharedPreferences preferenc = getSharedPreferences("Calculo", MODE_PRIVATE);
         int llave1 = preferenc.getInt("llave1", 0);
@@ -188,5 +187,12 @@ public class MainActivity extends AppCompatActivity {
         finm = (segundos1 - (3600 * finh)) / 60;
         fins = segundos1 - ((finh * 3600) + (finm * 60));
 
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finishAffinity();
     }
 }

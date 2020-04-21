@@ -56,8 +56,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="5dp"
                     android:fontFamily="@font/roboto_regular"
-                    android:text="6:00 AM"
-                    android:textColor="#515151"
+                    android:text="@string/textview"
+                    android:textColor="@color/gris_oscuro_subTitulos"
                     android:textSize="16sp" />
 
 
@@ -74,8 +74,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="Frutas"
-                        android:textColor="#515151"
+                        android:text="@string/textview"
+                        android:textColor="@color/gris_oscuro_subTitulos"
                         android:textSize="16sp" />
 
                     <TextView
@@ -85,8 +85,8 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="20dp"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="Cantidad consumida: 2"
-                        android:textColor="#B3B3B3"
+                        android:text="@string/textview"
+                        android:textColor="@color/gris"
                         android:textSize="14sp" />
 
                     <TextView
@@ -95,8 +95,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="Equivalente a porciones: 0.5"
-                        android:textColor="#B3B3B3"
+                        android:text="@string/textview"
+                        android:textColor="@color/gris"
                         android:textSize="14sp" />
 
                 </LinearLayout>

@@ -33,7 +33,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:background="@drawable/flecha_regresar"
-                        android:backgroundTint="#B8C2CD"
+                        android:backgroundTint="@color/gris_opaco"
                         android:padding="10dp" />
 
                 </RelativeLayout>
@@ -44,7 +44,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Motivadores disponibles"
+                    android:text="@string/motivadores_disponibles"
                     android:textColor="@color/negro"
                     android:textSize="24sp"
                     app:layout_constraintRight_toRightOf="parent"
@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:background="@drawable/circulo_custom_background"
-            android:backgroundTint="#4F46C2"
+            android:backgroundTint="@color/azul_button"
             android:paddingLeft="30dp"
             android:paddingTop="20dp"
             android:paddingRight="30dp"
@@ -103,44 +103,3 @@
     </RelativeLayout>
 
 </RelativeLayout>
-
-    <!--
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:background="@color/blanco">
-
-            <LinearLayout
-                android:id="@+id/btnAddMotivador"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerInParent="true"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/icon_mas"
-                    android:backgroundTint="#3D47A9" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="Agregar motivador"
-                    android:textColor="#3D47A9"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-    -->

@@ -17,7 +17,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="30dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="Pasear en bicicleta, patines o patineta por una hora"
+        android:text="@string/textview"
         android:textColor="@color/blanco"
         android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
-            android:text="45"
+            android:text="@string/textview"
             android:textColor="@color/blanco"
             android:textSize="20sp" />
 
@@ -97,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="5dp"
-                android:text="Valor"
+                android:text="@string/valor"
                 android:textColor="@color/blanco"
                 android:textSize="14sp" />
 
@@ -106,14 +106,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
-                android:text="100"
+                android:text="@string/textview"
                 android:textColor="@color/blanco"
                 android:textSize="14sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="fichas"
+                android:text="@string/fichas"
                 android:textColor="@color/blanco"
                 android:textSize="14sp" />
 
@@ -129,7 +129,7 @@
                     android:layout_toStartOf="@+id/txtTotalValorMotivadorProceso2"
                     android:layout_toLeftOf="@+id/txtTotalValorMotivadorProceso2"
                     android:fontFamily="@font/roboto_regular"
-                    android:text="3 de"
+                    android:text="@string/textview"
                     android:textColor="@color/blanco"
                     android:textSize="14sp" />
 
@@ -139,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:fontFamily="@font/roboto_regular"
-                    android:text="45"
+                    android:text="@string/textview"
                     android:textColor="@color/blanco"
                     android:textSize="14sp" />
 

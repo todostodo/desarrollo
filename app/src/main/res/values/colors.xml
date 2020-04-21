@@ -3,21 +3,41 @@
     <color name="gris">#AEAEAE</color>
     <color name="azul">#2B496B</color>
     <color name="blanco">#FFFFFF</color>
-    <color name="morado">#6366A6</color>
     <color name="negro">#000000</color>
-    <color name="verde">#178656</color>
     <color name="borde_azul">#3867F9</color>
-    <color name="rojo">#F10000</color>
+    <color name="morado">#6366A6</color>
 
-    <!--<color name="BackgroundColorGris">#EBEEF1</color>-->
     <color name="BackgroundColorGris">#F8F8FA</color>
+    <color name="dorado_ficha">#F9BC3A</color>
+    <color name="gris_button">#B8C2CD</color>
+    <color name="gris_oscuro_subTitulos">#515151</color>
 
-    <color name="moradoCajaMotivador">#9B79FF</color>
-    
-    <color name="azul_alimentos">#2BACCB</color>
-    <color name="gris_alimentos">#F7F6FB</color>
+    <!-- Alimento registro -->
+    <color name="gris_opaco">#B8C2CD</color>
+    <color name="verde_secundario">#76C5BA</color>
+    <color name="amarillo_aviso_titulo">#FAE19F</color>
+    <color name="morado_aviso_contenido">#E7E4F4</color>
 
-    <color name="color1">#424549</color>
-    <color name="color2">#7e455e</color>
-    <color name="color3">#796e25</color>
+    <!-- consumo dia -->
+    <color name="rojo">#E36B5E</color>
+    <color name="gris_genero">#B8C2CD</color>
+    <color name="verde">#76C5BA</color>
+    <color name="ultraprocesados_calorias">#494F5F</color>
+    <color name="transparencias_calorias">#66000000</color>
+
+    <!-- Registro Nino -->
+    <color name="gris_registro">#475369</color>
+    <color name="gris_edad">#DEDFE1</color>
+
+    <!-- Login -->
+    <color name="morado_login">#8646FF</color>
+    <color name="gris_login">#A4A5AA</color>
+
+    <!-- Ultraprocesados -->
+    <color name="azul_registro">#22283C</color>
+
+    <!-- Motivadores -->
+    <color name="azul_button">#4F46C2</color>
+    <color name="azul_item">#8A87FF</color>
+
 </resources>

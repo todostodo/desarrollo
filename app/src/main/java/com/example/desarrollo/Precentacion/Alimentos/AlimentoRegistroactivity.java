@@ -2,20 +2,25 @@ package com.example.desarrollo.Precentacion.Alimentos;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.nfc.Tag;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,11 +36,11 @@ import com.example.desarrollo.Entidades.MotivadoresSelect;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresSelectNino;
 import com.example.desarrollo.R;
 import com.example.desarrollo.Ultilidades.Toastp;
+import com.google.android.gms.auth.api.signin.internal.SignInHubActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 
 public class AlimentoRegistroactivity extends AppCompatActivity {
@@ -52,7 +57,16 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
     private LinearLayout _fruta_linearRecomendacionDos, _btnTerrible, _btnEstaBien, _btnGenia;
     private RelativeLayout _fruta_relativeAviso;
     private RelativeLayout _btmCerrarSelectFrutas;
-    private Pattern mPattern;
+    private boolean ganoFinaPrimerIntento = false;
+
+    //Open dialog
+    private Button _btnEpicFichaSalir;
+    private TextView _txtEpicFichaTitulo, _txtEpicFichaMensaje, _txtEpicFichaCantidad;
+    private ConstraintLayout _epicFichaContenido;
+    private LinearLayout _epicFichaFondoNegro;
+    private ImageView _epicFichaImg;
+    private Animation fromsmall, fromnothing, forloci, togo;
+    //---------------------
 
     private Toastp toast;
     private Calculos calculos;
@@ -72,6 +86,10 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
 
         init();
         cargarDatosFruta();
+
+        _epicFichaContenido.setAlpha(0);
+        _epicFichaFondoNegro.setAlpha(0);
+        _epicFichaImg.setVisibility(View.GONE);
 
         //Salir del activity
         _btmCerrarSelectFrutas.setOnClickListener(new View.OnClickListener() {
@@ -118,7 +136,9 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
             toast.toastp(getApplicationContext(), "Ingrese la cantidad de consumo");
         } else {
             int countNino = ninoDao.countNino(TAG, getApplicationContext());
+
             if (countNino > 1) {
+
                 ninosDialog = new Dialog(AlimentoRegistroactivity.this);
                 ninosDialog.setContentView(R.layout.motivadores_select_nino);
                 ninosDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -160,6 +180,8 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
 
     private void cargarReaccionHijoDialog() {
 
+        final SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("Calculo", MODE_PRIVATE);
+
         reaccionHijoDialog = new Dialog(AlimentoRegistroactivity.this);
         reaccionHijoDialog.setCanceledOnTouchOutside(false);
         reaccionHijoDialog.setContentView(R.layout.reaccion_consumo_dialog);
@@ -172,71 +194,153 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
         _btnTerrible.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                registrarAlimento();
                 fichaPrimerIntento();
-
-                //registrarAlimento();
                 reaccionHijoDialog.dismiss();
             }
         });
         _btnEstaBien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                registrarAlimento();
                 fichaPrimerIntento();
-                // registrarAlimento();
                 reaccionHijoDialog.dismiss();
             }
         });
         _btnGenia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fichaNoConoceAlimento();
-                //registrarAlimento();
+                registrarAlimento();
+                fichaPrimerIntento();
                 reaccionHijoDialog.dismiss();
-                //dialog();
             }
         });
 
         reaccionHijoDialog.show();
     }
 
-    private void dialog() {
-        epicFichaDialog = new BottomSheetDialog(AlimentoRegistroactivity.this);
-        epicFichaDialog.setContentView(R.layout.epic_fichas_dialog);
-        epicFichaDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    //Manejo de los dialogos
+    private void showDialogFicha(int cantidadFicha, String titulo, String mensaje) {
 
-        epicFichaDialog.show();
+        _epicFichaImg.setVisibility(View.VISIBLE);
+        _epicFichaImg.startAnimation(forloci);
 
+        _epicFichaFondoNegro.setAlpha(1);
+        _epicFichaFondoNegro.startAnimation(fromnothing);
+
+        _epicFichaContenido.setAlpha(1);
+        _epicFichaContenido.startAnimation(fromsmall);
+
+        _txtEpicFichaTitulo.setText(titulo);
+        _txtEpicFichaMensaje.setText(mensaje);
+        _txtEpicFichaCantidad.setText("+" + String.valueOf(cantidadFicha));
+
+        _btnEpicFichaSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (ganoFinaPrimerIntento == true) {
+
+                    ganoFinaPrimerIntento = false;
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            fichaNoConoceAlimento();
+                        }
+                    }, 1000);
+
+                }
+                _epicFichaFondoNegro.startAnimation(togo);
+                _epicFichaContenido.startAnimation(togo);
+                _epicFichaImg.startAnimation(togo);
+                _epicFichaImg.setVisibility(View.GONE);
+
+                ViewCompat.animate(_epicFichaContenido).setStartDelay(350).alpha(0).start();
+                ViewCompat.animate(_epicFichaFondoNegro).setStartDelay(350).alpha(0).start();
+            }
+        });
     }
 
     //Metodos para la recoleccion de fichas
-    private void fichaFruta() {
 
-        double baseEsfuerzoFrutas = ninoDao.consultarEsfuerzoConsumoFrutas(TAG, getApplicationContext(), idNino);
-        double progresoEsfuerzoFrutas = calculos.progresoEsfuerzoFruta(TAG, getApplicationContext(), idNino);
-
-        if (progresoEsfuerzoFrutas >= baseEsfuerzoFrutas) {
-            toast.toastp(getApplicationContext(), "Has conseguido lograr el cosumo de frutas del dia " + Double.valueOf(f_equivalencia));
-        }
+    private void fichaPrimerIntentoFruta() {
+        showDialogFicha(2, "Buen trabajo", "lograste consumir las porciones de frutas del día en el primer intento");
     }
 
-    private void fichaVerdura() {
-
-        double baseEsfuerzoVerduras = ninoDao.consultarEsfuerzoConsumoVerduras(TAG, getApplicationContext(), idNino);
-        double progresoEsfuerzoVerduas = calculos.progresoEsfuerzoVerdura(TAG, getApplicationContext(), idNino);
-
-        if (progresoEsfuerzoVerduas >= baseEsfuerzoVerduras) {
-            toast.toastp(getApplicationContext(), "Has conseguido lograr el cosumo de verduras del dia " + Double.valueOf(f_equivalencia));
-        }
+    private void fichaPrimerIntentoVerdura() {
+        showDialogFicha(2, "Buen trabajo", "lograste consumir las porciones de verduras del día en el primer intento");
     }
 
     private void fichaPrimerIntento() {
 
+        SharedPreferences sharedPreferences = getSharedPreferences("Calculo", MODE_PRIVATE);
         double baseEsfuerzoVerduras = ninoDao.consultarEsfuerzoConsumoVerduras(TAG, getApplicationContext(), idNino);
         double cantidadConsumo = Double.valueOf(_txtCantidadConsumo.getText().toString().trim());
         double unidadMedida = calculos.obtenerUnidadMedida(cantidadConsumo, Double.valueOf(f_equivalencia));
 
         if (unidadMedida >= baseEsfuerzoVerduras) {
-            toast.toastp(getApplicationContext(), "Has logrado consumir las porciones del dia en el primer inteneto" + Double.valueOf(f_equivalencia));
+
+            if (idNino == 1) {
+                if (!sharedPreferences.getBoolean("primerIntento1", true)) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("primerIntento1", true);
+                    editor.commit();
+                    ganoFinaPrimerIntento = true;
+                    ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 2);
+
+                    if (tipoAlimento.equals("Fruta"))
+                        fichaPrimerIntentoFruta();
+                    else
+                        fichaPrimerIntentoVerdura();
+
+                } else {
+                    ganoFinaPrimerIntento = false;
+                    fichaNoConoceAlimento();
+                }
+            }
+            if (idNino == 2) {
+                if (!sharedPreferences.getBoolean("primerIntento2", true)) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("primerIntento2", true);
+                    editor.commit();
+                    ganoFinaPrimerIntento = true;
+                    ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 2);
+
+                    if (tipoAlimento.equals("Fruta"))
+                        fichaPrimerIntentoFruta();
+                    else
+                        fichaPrimerIntentoVerdura();
+
+                } else {
+                    ganoFinaPrimerIntento = false;
+                    fichaNoConoceAlimento();
+                }
+            }
+
+        } else {
+            if (idNino == 1) {
+                if (!sharedPreferences.getBoolean("primerIntento1", true)) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("primerIntento1", true);
+                    fichaNoConoceAlimento();
+                    editor.commit();
+                } else {
+                    ganoFinaPrimerIntento = false;
+                    fichaNoConoceAlimento();
+                }
+            }
+            if (idNino == 2) {
+                if (!sharedPreferences.getBoolean("primerIntento2", true)) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("primerIntento2", true);
+                    fichaNoConoceAlimento();
+                    editor.commit();
+                } else {
+                    ganoFinaPrimerIntento = false;
+                    fichaNoConoceAlimento();
+                }
+            }
         }
     }
 
@@ -245,22 +349,40 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
         double cantidad = Double.valueOf(_txtCantidadConsumo.getText().toString());
 
         if (cantidad >= 1.0) {
-
             String nombreAlimento = f_nombre.getText().toString();
-
             boolean preferencias = ninoDao.consultarPreferencias(TAG, getApplicationContext(), idNino, nombreAlimento, tipoAlimento);
 
             if (preferencias == true) {
+                SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("Calculo", MODE_PRIVATE);
+                if (idNino == 1) {
+                    if (!sharedPreferences.getBoolean("noConoceAlimento1", true)) {
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("noConoceAlimento1", true);
+                        editor.commit();
+                        ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 4);
+                        showDialogFicha(4, "Buen esfuerzo", "Te has esforzado al consumir un alimentos que no te gusta");
+                    }
+                }
+                if (idNino == 2) {
+                    if (!sharedPreferences.getBoolean("noConoceAlimento2", true)) {
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("noConoceAlimento2", true);
+                        editor.commit();
+                        ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 4);
+                        showDialogFicha(4, "Buen esfuerzo", "Te has esforzado al consumir un alimentos que no te gusta");
+                    }
+                }
                 toast.toastp(getApplicationContext(), "Has consumido una frutas que no te gusta");
             }
-
         }
+
+        _txtCantidadConsumo.setText("");
     }
     //-----------------------------------------------------------
 
     private void registrarAlimento() {
 
-        setHoraFecha();
+        getHoraFecha();
 
         boolean insert = calculos.registrarDetalleReg(
                 TAG,
@@ -274,8 +396,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
                 tipoAlimento
         );
         if (insert == true) {
-            _txtCantidadConsumo.setText("");
-            toast.toastp(getApplicationContext(), "Alimento registrado");
+            //toast.toastp(getApplicationContext(), "Alimento registrado");
         } else {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
         }
@@ -314,7 +435,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
         Glide.with(this).load(drawableResourceId).into(f_imagen);
     }
 
-    private void setHoraFecha() {
+    private void getHoraFecha() {
         Calculos calculos = new Calculos();
         hora = calculos.getHora();
         fecha = calculos.getFecha();
@@ -336,5 +457,19 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
         _txtCantidadConsumo = (TextView) findViewById(R.id.txtCantidadConsumo);
         _fruta_linearRecomendacionDos = (LinearLayout) findViewById(R.id.fruta_linearRecomendacionDos);
         _fruta_relativeAviso = (RelativeLayout) findViewById(R.id.fruta_relativeAviso);
+
+        //Open dialog
+        _btnEpicFichaSalir = (Button) findViewById(R.id.btnEpicFichaSalir);
+        _txtEpicFichaTitulo = (TextView) findViewById(R.id.txtEpicFichaTitulo);
+        _txtEpicFichaMensaje = (TextView) findViewById(R.id.txtEpicFichaMensaje);
+        _txtEpicFichaCantidad = (TextView) findViewById(R.id.txtEpicFichaCantidad);
+        _epicFichaContenido = (ConstraintLayout) findViewById(R.id.epicFichaContenido);
+        _epicFichaFondoNegro = (LinearLayout) findViewById(R.id.epicFichaFondoNegro);
+        _epicFichaImg = (ImageView) findViewById(R.id.epicFichaImg);
+
+        fromsmall = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fromsmall);
+        fromnothing = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fromnothing);
+        forloci = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.forloci);
+        togo = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.togo);
     }
 }

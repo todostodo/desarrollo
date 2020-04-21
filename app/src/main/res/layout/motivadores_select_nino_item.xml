@@ -13,7 +13,7 @@
         android:layout_gravity="center"
         android:layout_marginLeft="20dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="Marco Antonio"
+        android:text="@string/textview"
         android:textColor="#515151"
         android:textSize="18sp" />
 

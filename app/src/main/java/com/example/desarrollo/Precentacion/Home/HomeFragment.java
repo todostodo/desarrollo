@@ -1,7 +1,9 @@
 package com.example.desarrollo.Precentacion.Home;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,17 +15,31 @@ import androidx.fragment.app.Fragment;
 
 
 import com.example.desarrollo.Datos.NinoDao;
+import com.example.desarrollo.Datos.UserDao;
 import com.example.desarrollo.Precentacion.Alimentos.AlimentosActivity;
+import com.example.desarrollo.Precentacion.Login.IntroduccionActivity;
+import com.example.desarrollo.Precentacion.MainActivity;
 import com.example.desarrollo.R;
 
 
 public class HomeFragment extends Fragment {
+
+    UserDao userDao;
 
     private static final String TAG = "HomeFragment";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        boolean estadoUsuario = userDao.estadoUsuario(TAG, getContext());
+        if (estadoUsuario != true) {
+
+            Intent introduccion = new Intent(getActivity(), IntroduccionActivity.class);
+            startActivity(introduccion);
+        }
+
+
         final View view = inflater.inflate(R.layout.home_fragment, container, false);
 
         return view;
@@ -32,7 +48,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
 
 
         getView().findViewById(R.id.btmFrutas).setOnClickListener(new View.OnClickListener() {
@@ -60,7 +75,7 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void openDialog(){
+    private void openDialog() {
         new AlertDialog.Builder(getContext())
                 .setTitle("Aviso")
                 .setMessage("Para poder hacer el registro de consumo debe tener por lo menos a un niño registrado")

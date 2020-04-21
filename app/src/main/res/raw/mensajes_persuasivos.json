@@ -1,0 +1,56 @@
+{
+  "consumoPlaneadoFruta": [
+    {
+      "id": "1",
+      "titulo": "Bien hecho",
+      "mensaje": "Lograste consumir las porciones de frutas del día."
+    },
+    {
+      "id": "2",
+      "titulo": "Buen trabajo",
+      "mensaje": "Pudiste completar las porciones de frutas del día."
+    },
+    {
+      "id": "3",
+      "titulo": "Te has esforzado",
+      "mensaje": "Al consumir las porciones de frutas del dia y por consecuencia tienes buenos resultados."
+    },
+    {
+      "id": "4",
+      "titulo": "Veo que te has esforzado",
+      "mensaje": "Mucho al consumir las porciones de frutas del día, sigue así"
+    },
+    {
+      "id": "5",
+      "titulo": "Tus esfuerzos",
+      "mensaje": "Se han visto recompensados con un buen resultado, te felicito por lograr consumir las porciones de frutas del día"
+    }
+  ],
+  "consumoPlaneadoVerduras": [
+    {
+      "id": "6",
+      "titulo": "Bien hecho",
+      "mensaje": "Lograste consumir las porciones de verduras del día."
+    },
+    {
+      "id": "7",
+      "titulo": "Buen trabajo",
+      "mensaje": "Pudiste completar las porciones de verduras del día."
+    },
+    {
+      "id": "8",
+      "titulo": "Te has esforzado",
+      "mensaje": "Al consumir las porciones de verduras del dia y por consecuencia tienes buenos resultados."
+    },
+    {
+      "id": "9",
+      "titulo": "Veo que te has esforzado",
+      "mensaje": "Mucho al consumir las porciones de verduras del día, sigue así"
+    },
+    {
+      "id": "10",
+      "titulo": "Tus esfuerzos",
+      "mensaje": "Se han visto recompensados con un buen resultado, te felicito por lograr consumir las porciones de verduras del día"
+    }
+  ]
+}

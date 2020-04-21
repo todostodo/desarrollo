@@ -12,7 +12,7 @@
         android:id="@+id/imgIniciar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="#8A87FF"
+        app:cardBackgroundColor="@color/azul_item"
         app:cardCornerRadius="20dp"
         app:cardElevation="0dp"
         app:cardUseCompatPadding="true"
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text="Costo"
+                android:text="@string/costo"
                 android:textColor="@color/negro"
                 android:textSize="20sp" />
 
@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text="fichas"
+                android:text="@string/fichas"
                 android:textColor="@color/negro"
                 android:textSize="20sp" />
 
@@ -79,8 +79,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
-            android:text="Pasear en bicicleta, patines o patineta por una hora"
-            android:textColor="#A4A5AA"
+            android:text="@string/textview"
+            android:textColor="@color/gris_login"
             android:textSize="16sp" />
 
         <View

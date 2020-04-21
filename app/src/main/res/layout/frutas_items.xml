@@ -23,7 +23,7 @@
             android:id="@+id/backgroundFrutas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangulo_verde"
+            android:background="@drawable/rectangulo_custom_background"
             android:paddingTop="30dp"
             android:paddingBottom="30dp">
 
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
-            android:text="Cura tanto la diarrea como el estreñimiento"
+            android:text="@string/textview"
             android:textColor="@color/negro"
             android:layout_marginTop="5dp"
             android:textSize="16sp" />
@@ -57,10 +57,10 @@
                 android:id="@+id/nombreFruta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Platano"
+                android:text="@string/textview"
                 android:textSize="16sp"
                 android:layout_alignParentLeft="true"
-                android:textColor="#B8C2CD"/>
+                android:textColor="@color/gris_opaco"/>
 
 
             <androidx.cardview.widget.CardView
@@ -84,8 +84,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="aparato digestivo"
-                        android:textColor="#4C80F5"
+                        android:text="@string/textview"
                         android:textSize="14sp" />
 
                 </RelativeLayout>

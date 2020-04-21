@@ -21,7 +21,7 @@
     <string name="edad">Edad</string>
     <string name="estatura">Estatura</string>
     <string name="peso">Peso</string>
-    <string name="medida">Medida de cintura</string>
+    <string name="medida_de_cintura">Medida de cintura</string>
     <string name="txtRegistro">Registro</string>
     <string name="btmRegresar">Regresar</string>
     <!-- -->
@@ -306,10 +306,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cancelarSubrayado"><u>Cancelar</u></string>
 
-
-    <!-- LOGIN -->
-
-
     <!-- STRINGS PARA EL TUTOR -->
 
     <string-array name="parentesco">
@@ -321,5 +317,120 @@
         <item>Primo</item>
         <item>Prima</item>
     </string-array>
+
+    <!-- String para Alimentos -->
+
+    <string name="titulo_registro_alimento">Información del alimento</string>
+    <string name="description_imagen_alimento">Imagen del alimento</string>
+    <string name="nombre_alimento">Manzana</string>
+    <string name="description_imagen_beneficio_alimento">Imagen de beneficio del alimento</string>
+    <string name="textview">TextView</string>
+    <string name="description_imagen_numero_receta">Numero de receta</string>
+    <string name="description_imagen_aviso_alimento">aviso del alimento</string>
+    <string name="hint_cantidad">Catidad</string>
+    <string name="registrar">Registrar</string>
+    <string name="salir">Salir</string>
+    <string name="titulo_alimentos">Alimentos</string>
+    <string name="frutas">Frutas</string>
+    <string name="verduras">Verduras</string>
+    <string name="ultra_procesados">Ultra procesados</string>
+    <string name="bebidas">Bebidas</string>
+    <string name="frituras">Frituras</string>
+    <string name="golosinas">Golosinas</string>
+    <string name="galletas_y_panesillos">Galletas y panesillos</string>
+    <string name="otros">Otros</string>
+    <string name="formas_de_como_prepara_el_alimento">Formas de cómo preparar el alimento</string>
+    <string name="beneficio">Beneficio</string>
+    <string name="qu_reacci_n_tuvo_su_hijo_al_consumir_este_alimento">¿Qué reacción tuvo su hijo al consumir este alimento?</string>
+    <string name="terrible">Terrible</string>
+    <string name="esta_bien">Está bien</string>
+    <string name="genial">Genial</string>
+
+
+    <!-- Bienbenida, introduccion y login -->
+    <string name="alimentaci_n">ALIMENTACIÓN</string>
+    <string name="s_a_n_a">S A N A</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="nueva_contrasena">Nueva contraseña</string>
+    <string name="nueva_constrasena_mensaje">Cambiaremos su contraseña para que pueda recuperar su cuenta y tenga una mayor seguridad</string>
+    <string name="ingrese_una_nueva_constrasena">Ingrese una nueva constraseña</string>
+    <string name="nueva_constrasena">Nueva constraseña</string>
+    <string name="reescribir_nueva_ontrasena">Reescribir nueva ontraseña</string>
+    <string name="reescriba_la_nueva_contrasena">Reescriba la nueva contraseña</string>
+    <string name="cambiar_contrasena">Cambiar contraseña</string>
+    <string name="description_imagen_gana_fichas">Gana fichas</string>
+
+
+    <!--  Detalle de consumo del dia-->
+    <string name="consumo">Consumo</string>
+    <string name="en_porciones_del_dia">en porciones del día</string>
+    <string name="porciones">porciones</string>
+    <string name="calorias">calorias</string>
+    <string name="consumidas_la_semana_anterior">Consumidas la semana anterior</string>
+    <string name="consumidas_esta_semana">Consumidas esta semana</string>
+    <string name="consumidas_hoy">Consumidas hoy</string>
+    <string name="frutas_consumidas">Frutas consumidas</string>
+
+
+    <!-- Registro Nino -->
+    <string name="cual_es_su_genero">¿Cuál es su género?</string>
+    <string name="hombre">Hombre</string>
+    <string name="mujer">Mujer</string>
+    <string name="cual_es_su_nombre">¿Cuál es su nombre?</string>
+    <string name="apellido_paterno">Apellido paterno</string>
+    <string name="apellido_materno">Apellido materno</string>
+    <string name="cual_es_su_edad">¿Cuál es su edad?</string>
+    <string name="cuales_son_sus_medias_corporales">¿Cuáles son sus medias corporales?</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="preferencias">Preferencias</string>
+    <string name="guardar">Guardar</string>
+    <string name="ingrese_su_peso">Ingrese su peso</string>
+    <string name="ingrese_su_estatura">Ingrese su estatura</string>
+    <string name="ingrese_su_medida_de_cintura">Ingrese su medida de cintura</string>
+
+
+    <!-- LOGIN -->
+    <string name="usuario">Usuario</string>
+
+    <!-- Home -->
+    <string name="como_va_la_alimentacion_de_tu_hijo">¿Cómo va la alimentación de tu hijo?</string>
+    <string name="alimentos">Alimentos</string>
+    <string name="detalle_de_consumo_del_dia">Detalle de consumo del día</string>
+    <string name="reporte_de_la_semana">Reporte de la semana</string>
+    <string name="foro">Foro</string>
+
+    <string name="tutor">Tutor</string>
+    <string name="ingrese_su_correo_electronico">Ingrese su correo electrónico</string>
+    <string name="correo">Correo</string>
+    <string name="ingrese_la_contrasena">Ingrese la contraseña</string>
+    <string name="olvidaste_tu_contrasena">¿Olvidaste tu contraseña?</string>
+    <string name="iniciar_sesion_con">Iniciar sesión con</string>
+    <string name="registrate">Regístrate</string>
+    <string name="ingrese_su_nombre">Ingrese su nombre</string>
+    <string name="ingrese_su_apellido_paterno">Ingrese su apellido paterno</string>
+    <string name="ingrese_su_apellido_materno">Ingrese su apellido materno</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="ya_tienes_una_cuenta_inicia_sesion">¿Ya tienes una cuenta? Inicia sesión</string>
+    <string name="a_un_nino">a un niño</string>
+
+    <!-- MOTIVADORES -->
+    <string name="mensaje_add_motivador">Ingrese un motivador el cual no sea tan dificil de cumplir</string>
+    <string name="descripcion">Descripción</string>
+    <string name="valor">Valor</string>
+    <string name="agregar">Agregar</string>
+    <string name="fichas_acumuladas">FICHAS ACUMULADAS</string>
+    <string name="motivadores">Motivadores</string>
+    <string name="canjea_tus_fichas_por_recompensas">canjea tus fichas por recompensas</string>
+    <string name="fichas">fichas</string>
+    <string name="motivadores_disponibles">Motivadores disponibles</string>
+    <string name="costo">Costo</string>
+    <string name="mesaje_seleccion_nino">Seleccione al niño que le asignara el motivador</string>
+
+
+    <string name="ingresa_tu_correo">Ingresa tu correo</string>
+    <string name="mensaje_registro_usuario">Ingrese la dirección de correo electrónico para obtener el codigó y pueda restablecer la contraseña</string>
+    <string name="enviar_codigo">Enviar código</string>
+
 
 </resources>

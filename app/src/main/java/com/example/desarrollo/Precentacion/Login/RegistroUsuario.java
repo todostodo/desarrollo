@@ -1,6 +1,7 @@
 package com.example.desarrollo.Precentacion.Login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -11,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.desarrollo.Datos.UserDao;
+import com.example.desarrollo.Precentacion.Home.HijoRegistroActivity;
 import com.example.desarrollo.R;
 import com.example.desarrollo.Ultilidades.Toastp;
 
@@ -93,6 +95,12 @@ public class RegistroUsuario extends AppCompatActivity {
                                     toastp.toastp(getApplicationContext(), "La contraseña debe de contener más de 8 caracteres");
                                 } else {
 
+                                     /*
+                                        Guardar id generada de la base de datos (WEB SERVIDE) antes de crear la cuenta localmente
+                                        enviar la id de la web service a la base de datos local
+                                        despues almacenar el correo y la id en sharepreferences
+                                     */
+
                                     boolean addUser = userDao.addUsuario(
                                             TAG,
                                             getApplicationContext(),
@@ -101,12 +109,14 @@ public class RegistroUsuario extends AppCompatActivity {
                                             apellidoMaterno,
                                             correo,
                                             password,
+                                            0,
                                             0
                                     );
 
                                     if (addUser == true) {
 
-                                        toastp.toastp(getApplicationContext(), "La cuenta ha sido creada correctamente");
+                                        Intent introduccion = new Intent(getApplicationContext(), IntroduccionActivity.class);
+                                        startActivity(introduccion);
                                     }
                                 }
                             }

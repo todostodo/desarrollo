@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/backgroundTransparentUProcesados"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -12,8 +13,7 @@
         android:elevation="0dp"
         app:cardBackgroundColor="@color/blanco"
         app:cardCornerRadius="20dp"
-        app:cardElevation="0dp"
-        app:cardUseCompatPadding="true">
+        app:cardElevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,8 +35,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Coca cola versión clasica"
-                android:textColor="#22283C"
+                android:text="@string/textview"
+                android:textColor="@color/azul_registro"
                 android:textSize="26sp" />
 
             <TextView
@@ -45,7 +45,7 @@
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="Descripción"
-                android:textColor="#22283C"
+                android:textColor="@color/azul_registro"
                 android:textSize="20sp" />
 
             <TextView
@@ -66,53 +66,60 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:padding="20dp"
         app:cardBackgroundColor="@color/blanco"
         app:cardCornerRadius="20dp"
-        app:cardElevation="0dp"
-        app:cardUseCompatPadding="true">
+        app:cardElevation="0dp">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="20dp">
 
+            <View
+                android:layout_width="1dp"
+                android:layout_height="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <EditText
                 android:id="@+id/txtCantidadConsumo"
-                android:layout_width="120dp"
-                android:layout_height="50dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:background="@drawable/background_valor_motivadores"
                 android:backgroundTint="@color/BackgroundColorGris"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="center"
-                android:hint="Catidad"
+                android:hint="@string/hint_cantidad"
                 android:inputType="numberDecimal"
-                android:textColor="#515151"
-                android:textSize="16sp" />
+                android:textColor="@color/gris_oscuro_subTitulos"
+                android:textSize="16sp"
+                app:layout_constraintHeight_percent="0.9"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.3" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center|end">
+            <Button
+                android:id="@+id/btnRegistrarUltraprocesado"
+                style="?android:borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_button_verde"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/registrar"
+                android:textAllCaps="false"
+                android:textColor="@color/blanco"
+                android:textSize="16sp"
+                app:layout_constraintHeight_percent="0.9"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.5" />
 
-                <Button
-                    android:id="@+id/btnRegistrarUltraprocesado"
-                    style="?android:borderlessButtonStyle"
-                    android:layout_width="200dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/rectangulo_verde_azul"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="Registrar"
-                    android:textAllCaps="false"
-                    android:textColor="@color/blanco"
-                    android:textSize="16sp" />
 
-            </RelativeLayout>
-
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 

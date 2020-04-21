@@ -45,7 +45,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="Regístrate"
+        android:text="@string/registrate"
         android:textColor="@color/negro"
         android:textSize="26sp"
         app:layout_constraintHeight_percent="0.05"
@@ -69,8 +69,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
-            android:backgroundTint="#F5F4F9">
+            android:layout_weight="2">
 
 
             <EditText
@@ -82,7 +81,7 @@
                 android:layout_marginTop="13dp"
                 android:background="@drawable/rectangulo_border_gris"
                 android:fontFamily="@font/roboto_regular"
-                android:hint="Ingrese su nombre"
+                android:hint="@string/ingrese_su_nombre"
                 android:inputType="textCapWords"
                 android:paddingLeft="30dp"
                 android:textColor="@color/negro"
@@ -98,57 +97,55 @@
                 android:fontFamily="@font/roboto_regular"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="Nombre"
+                android:text="@string/nombre"
                 android:textColor="#A4A5AA"
                 android:textSize="16sp" />
 
         </RelativeLayout>
 
         <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        android:layout_weight="2">
+
+
+        <EditText
+            android:id="@+id/txtApellidoPaternoRegistro"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:layout_marginTop="15dp"
-            android:backgroundTint="#F5F4F9">
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/rectangulo_border_gris"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/ingrese_su_apellido_paterno"
+            android:inputType="textCapWords"
+            android:paddingLeft="30dp"
+            android:textColor="@color/negro"
+            android:textSize="16sp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="30dp"
+            android:background="@color/blanco"
+            android:fontFamily="@font/roboto_regular"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/apellido_paterno"
+            android:textColor="@color/gris_login"
+            android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/txtApellidoPaternoRegistro"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="13dp"
-                android:background="@drawable/rectangulo_border_gris"
-                android:fontFamily="@font/roboto_regular"
-                android:hint="Ingrese su apellido paterno"
-                android:inputType="textCapWords"
-                android:paddingLeft="30dp"
-                android:textColor="@color/negro"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="30dp"
-                android:background="@color/blanco"
-                android:fontFamily="@font/roboto_regular"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="Apellido paterno"
-                android:textColor="#A4A5AA"
-                android:textSize="16sp" />
-
-        </RelativeLayout>
+    </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="15dp"
-            android:layout_weight="2"
-            android:backgroundTint="#F5F4F9">
+            android:layout_weight="2">
 
 
             <EditText
@@ -160,7 +157,7 @@
                 android:layout_marginTop="13dp"
                 android:background="@drawable/rectangulo_border_gris"
                 android:fontFamily="@font/roboto_regular"
-                android:hint="Ingrese su apellido materno"
+                android:hint="@string/ingrese_su_apellido_materno"
                 android:inputType="textCapWords"
                 android:paddingLeft="30dp"
                 android:textColor="@color/negro"
@@ -176,8 +173,8 @@
                 android:fontFamily="@font/roboto_regular"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="Apellido materno"
-                android:textColor="#A4A5AA"
+                android:text="@string/apellido_materno"
+                android:textColor="@color/gris_login"
                 android:textSize="16sp" />
 
         </RelativeLayout>
@@ -185,9 +182,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
             android:layout_marginTop="15dp"
-            android:backgroundTint="#F5F4F9">
+            android:layout_weight="2">
 
 
             <EditText
@@ -199,7 +195,7 @@
                 android:layout_marginTop="13dp"
                 android:background="@drawable/rectangulo_border_gris"
                 android:fontFamily="@font/roboto_regular"
-                android:hint="Ingrese su correo electrónico"
+                android:hint="@string/ingrese_su_correo_electronico"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="30dp"
                 android:textColor="@color/negro"
@@ -215,8 +211,8 @@
                 android:fontFamily="@font/roboto_regular"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="Correo"
-                android:textColor="#A4A5AA"
+                android:text="@string/correo"
+                android:textColor="@color/gris"
                 android:textSize="16sp" />
 
         </RelativeLayout>
@@ -246,7 +242,7 @@
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/roboto_regular"
-                    android:hint="Ingrese la contraseña"
+                    android:hint="@string/ingrese_la_contrasena"
                     android:inputType="textPassword"
                     android:paddingLeft="30dp"
                     android:textColor="@color/negro"
@@ -265,8 +261,8 @@
                 android:fontFamily="@font/roboto_regular"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="Contraseña"
-                android:textColor="#A4A5AA"
+                android:text="@string/contrasena"
+                android:textColor="@color/gris_login"
                 android:textSize="16sp" />
 
         </RelativeLayout>
@@ -280,7 +276,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/circulo_custom_background"
-        android:backgroundTint="#8646FF"
+        android:backgroundTint="@color/morado_login"
         app:layout_constraintHeight_percent="0.10"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutDatosRegistro"
@@ -302,16 +298,16 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="30dp"
-        app:layout_constraintTop_toBottomOf="@+id/btnIniciarSesion"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:text="@string/ya_tienes_una_cuenta_inicia_sesion"
+        android:textColor="@color/negro"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_percent="0.05"
-        android:textColor="@color/negro"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:text="¿Ya tienes una cuenta? Inicia sesión"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnIniciarSesion" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

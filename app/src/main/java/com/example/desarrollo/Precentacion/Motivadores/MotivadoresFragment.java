@@ -14,7 +14,7 @@ import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 
@@ -43,13 +43,13 @@ public class MotivadoresFragment extends Fragment {
     private Spinner _spinnerMotivadoresNino;
     private SwipeRefreshLayout _refreshMotivadoresProceso;
     private String fecha;
-    private RelativeLayout mostrarAddNino, mostrarNinos;
 
     //Open dialog
-    Button _btnSalirRecompensa;
-    LinearLayout myContenedor, overbox;
-    ImageView iconoRecompensa;
-    Animation fromsmall, fromnothing, forloci, togo;
+    private Button _btnEpicMotivadorSalir;
+    private ConstraintLayout _epicMotivadorContenido;
+    private LinearLayout _epicMotivadorFondoNegro;
+    private ImageView _epicMotivadorImg;
+    private Animation fromsmall, fromnothing, forloci, togo;
     //-----------------------------[
 
     private ArrayList<String> listaNino;
@@ -90,9 +90,9 @@ public class MotivadoresFragment extends Fragment {
             }
         });
 
-        myContenedor.setAlpha(0);
-        overbox.setAlpha(0);
-        iconoRecompensa.setVisibility(View.GONE);
+        _epicMotivadorContenido.setAlpha(0);
+        _epicMotivadorFondoNegro.setAlpha(0);
+        _epicMotivadorImg.setVisibility(View.GONE);
 
         return view;
     }
@@ -154,25 +154,25 @@ public class MotivadoresFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        iconoRecompensa.setVisibility(View.VISIBLE);
-                        iconoRecompensa.startAnimation(forloci);
+                        _epicMotivadorImg.setVisibility(View.VISIBLE);
+                        _epicMotivadorImg.startAnimation(forloci);
 
-                        overbox.setAlpha(1);
-                        overbox.startAnimation(fromnothing);
+                        _epicMotivadorFondoNegro.setAlpha(1);
+                        _epicMotivadorFondoNegro.startAnimation(fromnothing);
 
-                        myContenedor.setAlpha(1);
-                        myContenedor.startAnimation(fromsmall);
+                        _epicMotivadorContenido.setAlpha(1);
+                        _epicMotivadorContenido.startAnimation(fromsmall);
 
-                        _btnSalirRecompensa.setOnClickListener(new View.OnClickListener() {
+                        _btnEpicMotivadorSalir.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                overbox.startAnimation(togo);
-                                myContenedor.startAnimation(togo);
-                                iconoRecompensa.startAnimation(togo);
-                                iconoRecompensa.setVisibility(View.GONE);
+                                _epicMotivadorFondoNegro.startAnimation(togo);
+                                _epicMotivadorContenido.startAnimation(togo);
+                                _epicMotivadorImg.startAnimation(togo);
+                                _epicMotivadorImg.setVisibility(View.GONE);
 
-                                ViewCompat.animate(myContenedor).setStartDelay(1000).alpha(0).start();
-                                ViewCompat.animate(overbox).setStartDelay(1000).alpha(0).start();
+                                ViewCompat.animate(_epicMotivadorContenido).setStartDelay(1000).alpha(0).start();
+                                ViewCompat.animate(_epicMotivadorFondoNegro).setStartDelay(1000).alpha(0).start();
 
                                 setFechayHora();
                                 int fichas = (procesoList.get(posicion).getTotalFicha() - procesoList.get(posicion).getValor());
@@ -247,10 +247,10 @@ public class MotivadoresFragment extends Fragment {
 
         //Open Dialog
 
-        _btnSalirRecompensa = (Button) view.findViewById(R.id.btnSalirRecompensa);
-        myContenedor = (LinearLayout) view.findViewById(R.id.mykonten);
-        overbox = (LinearLayout) view.findViewById(R.id.overbox);
-        iconoRecompensa = (ImageView) view.findViewById(R.id.locicon);
+        _btnEpicMotivadorSalir = (Button) view.findViewById(R.id.btnEpicMotivadorSalir);
+        _epicMotivadorContenido = (ConstraintLayout) view.findViewById(R.id.epicMotivadorContenido);
+        _epicMotivadorFondoNegro = (LinearLayout) view.findViewById(R.id.epicMotivadorFondoNegro);
+        _epicMotivadorImg = (ImageView) view.findViewById(R.id.epicMotivadorImg);
 
         fromsmall = AnimationUtils.loadAnimation(getContext(), R.anim.fromsmall);
         fromnothing = AnimationUtils.loadAnimation(getContext(), R.anim.fromnothing);

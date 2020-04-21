@@ -412,7 +412,7 @@ public class Calculos {
             }
         } else if (dia != dias) {
 
-            if(pase==1){
+            if (pase == 1) {
                 SharedPreferences.Editor edito = preferenc.edit();
                 edito.remove("pase3");
                 edito.putInt("pase3", 0);
@@ -422,13 +422,13 @@ public class Calculos {
             System.out.println("cai al eLse lbf : " + pase);
         }
 
-        if(entro==1){
+        if (entro == 1) {
 
             editarNiño(context, idNino, retorno, 2);
 
-            double fruta= consultarNiño(context,idNino,1);
-            double verdura= consultarNiño(context,idNino,0);
-            if(retorno==0.0 && fruta>=2.0 && verdura>=3.0){
+            double fruta = consultarNiño(context, idNino, 1);
+            double verdura = consultarNiño(context, idNino, 0);
+            if (retorno == 0.0 && fruta >= 2.0 && verdura >= 3.0) {
                 SharedPreferences.Editor edito = preferenc.edit();
                 edito.remove("seguir");
                 edito.putBoolean("seguir", false);
@@ -545,26 +545,26 @@ public class Calculos {
                         }
 
 
+                    }
                 }
-            }
-        } else if (dia != dias) {
-            if (pase == 1) {
-                System.out.println("cai al eLse lbf");
-                SharedPreferences.Editor edito = preferenc.edit();
-                edito.remove("pase2");
-                edito.putInt("pase2", 0);
-                edito.commit();
+            } else if (dia != dias) {
+                if (pase == 1) {
+                    System.out.println("cai al eLse lbf");
+                    SharedPreferences.Editor edito = preferenc.edit();
+                    edito.remove("pase2");
+                    edito.putInt("pase2", 0);
+                    edito.commit();
+                }
+
+                System.out.println("cai al eLse lbf : " + pase);
             }
 
-            System.out.println("cai al eLse lbf : " + pase);
-        }
-
-        if(entro==1){
-            if(retorno>=3.0){
-                editarNiño(context, idNino, 2.0, 0);
-            }
-            else {
-                editarNiño(context, idNino, retorno, 0);
+            if (entro == 1) {
+                if (retorno >= 3.0) {
+                    editarNiño(context, idNino, 2.0, 0);
+                } else {
+                    editarNiño(context, idNino, retorno, 0);
+                }
             }
         }
     }
@@ -634,17 +634,15 @@ public class Calculos {
                                 res = res + (0.25);
                                 //registra
 
-                                if(retorno>=3.0){
-                                    actualizaNiño(context,idNino,3.0,1);
-                                }
-                                else {
-                                    actualizaNiño(context,idNino,res,1);
+                                if (retorno >= 3.0) {
+                                    actualizaNiño(context, idNino, 3.0, 1);
+                                } else {
+                                    actualizaNiño(context, idNino, res, 1);
                                 }
 
-                                actualizaNiño(context,idNino,res,1);
-                            }
-                            else if((res*.59)<=sumatoria){
-                                res=res-(0.25);
+                                actualizaNiño(context, idNino, res, 1);
+                            } else if ((res * .59) <= sumatoria) {
+                                res = res - (0.25);
                                 //registra
                                 actualizaNiño(context, idNino, res, 1);
                             }
@@ -658,15 +656,13 @@ public class Calculos {
                             if (com >= sumatoria) {
                                 res = res + (0.25);
                                 //registra
-                                if(retorno>=3.0){
-                                    actualizaNiño(context,idNino,3.0,1);
+                                if (retorno >= 3.0) {
+                                    actualizaNiño(context, idNino, 3.0, 1);
+                                } else {
+                                    actualizaNiño(context, idNino, res, 1);
                                 }
-                                else {
-                                    actualizaNiño(context,idNino,res,1);
-                                }
-                            }
-                            else if((res*.59)<=sumatoria){
-                                res=res-(0.25);
+                            } else if ((res * .59) <= sumatoria) {
+                                res = res - (0.25);
 
                                 //registra
                                 actualizaNiño(context, idNino, res, 1);
@@ -1066,7 +1062,6 @@ public class Calculos {
         }
     }
 
-
     public static int KaloriaCambio(Context context, int idNino) {
 
         double sumatoria = 0.0;
@@ -1135,31 +1130,42 @@ public class Calculos {
         } finally {
             database.close();
         }
-        int suma=(int)sumatoria;
+        int suma = (int) sumatoria;
         return suma;
     }
 
-    public static double KaloriaFija(Context context, int idNino) {
-        double resultado = 0.0;
+    public static int KaloriaFija(Context context, int idNino) {
+        //double resultado = 0.0;
+        int resultado = 0;
         SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
         if (idNino == 1) {
             String inicio = preferenc.getString("ValorUltra1", "nada");
             if (inicio.equals("nada")) {
-                resultado = 0.0;
+                //resultado = 0.0;
+                resultado = 0;
             } else {
                 // System.out.println("ciclico: "+inicio);
-                resultado = Double.parseDouble(inicio);
+                //resultado = Double.parseDouble(inicio);
+                if (inicio.isEmpty())
+                    resultado = 0;
+                else
+                    resultado = Integer.parseInt(inicio);
             }
         } else if (idNino == 2) {
             String inicio = preferenc.getString("ValorUltra2", "nada");
             if (inicio.equals("nada")) {
-                resultado = 0.0;
+                //resultado = 0.0;
+                resultado = 0;
             } else {
-                resultado = Double.parseDouble(inicio);
+                //resultado = Double.parseDouble(inicio);
+                if (inicio.isEmpty())
+                    resultado = 0;
+                else
+                    resultado = Integer.parseInt(inicio);
             }
         }
-        int suma=(int)resultado;
-        return suma;
+        //int suma = (int) resultado;
+        return resultado;
     }
 
     public static int KaloriaDia(Context context, int idNino) {
@@ -1190,13 +1196,9 @@ public class Calculos {
         } finally {
             database.close();
         }
-        int suma=(int)sumatoria;
+        int suma = (int) sumatoria;
         return suma;
     }
-
-
-
-
 
     //Para consultar
     //SharedPreferences preferenc = getSharedPreferences("Calculo", MODE_PRIVATE);  crea conexion con el archivo preferences
@@ -1204,11 +1206,11 @@ public class Calculos {
     //boolean resultado2 = preferenc.getBoolean("fichaNino2", false);  si hay dos niños entonces consulte tambien esta bariable el resultado del segundo niño, bariable que tiene true o false para el niño 2
     // ambos resultados son guardados en una bariable de tipo boolean que en ste caso se guardan en 'resultado1' y 'resultado2'
 
-    public static void ConsiguioFicha(Context context, int idNino){
-        boolean vari=false;
+    public static void ConsiguioFicha(Context context, int idNino) {
+        boolean vari = false;
 
         SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
-        int  llave = preferenc.getInt("llave1", 0);
+        int llave = preferenc.getInt("llave1", 0);
         boolean ficha = preferenc.getBoolean("ficha", false);
 
         int dia = preferenc.getInt("anterior", 0);
@@ -1217,8 +1219,8 @@ public class Calculos {
         Calendar calendar = new GregorianCalendar(timezone);
         int dias = calendar.get(Calendar.DAY_OF_WEEK);
 
-        int compara=dias-dia;
-        if(compara==1) {
+        int compara = dias - dia;
+        if (compara == 1) {
             SharedPreferences.Editor edit = preferenc.edit();
             edit.remove("anterior");
             edit.putInt("anterior", dias);
@@ -1228,12 +1230,12 @@ public class Calculos {
                 valor = valor / 7;
                 double consuDia = KaloriaDia(context, idNino);
                 if (valor < consuDia) {
-                    if(idNino==1){
+                    if (idNino == 1) {
                         SharedPreferences.Editor edito = preferenc.edit();
                         edito.remove("fichaNino1");
                         edito.putBoolean("fichaNino1", true);
                         edito.commit();
-                    } else if(idNino==2){
+                    } else if (idNino == 2) {
                         SharedPreferences.Editor edito = preferenc.edit();
                         edito.remove("fichaNino2");
                         edito.putBoolean("fichaNino2", true);
@@ -1241,13 +1243,12 @@ public class Calculos {
                     }
 
                 } else {
-                    if(idNino==1){
+                    if (idNino == 1) {
                         SharedPreferences.Editor edito = preferenc.edit();
                         edito.remove("fichaNino1");
                         edito.putBoolean("fichaNino1", false);
                         edito.commit();
-                    }
-                    else if(idNino==2){
+                    } else if (idNino == 2) {
                         SharedPreferences.Editor edito = preferenc.edit();
                         edito.remove("fichaNino2");
                         edito.putBoolean("fichaNino2", false);
@@ -1259,12 +1260,12 @@ public class Calculos {
                 valor = valor / 7;
                 double consuDia = KaloriaDia(context, idNino);
                 if (valor < consuDia) {
-                    if(idNino==1){
+                    if (idNino == 1) {
                         SharedPreferences.Editor edito = preferenc.edit();
                         edito.remove("fichaNino1");
                         edito.putBoolean("fichaNino1", true);
                         edito.commit();
-                    } else if(idNino==2){
+                    } else if (idNino == 2) {
                         SharedPreferences.Editor edito = preferenc.edit();
                         edito.remove("fichaNino2");
                         edito.putBoolean("fichaNino2", true);
@@ -1272,12 +1273,12 @@ public class Calculos {
                     }
 
                 } else {
-                    if(idNino==1){
+                    if (idNino == 1) {
                         SharedPreferences.Editor edito = preferenc.edit();
                         edito.remove("fichaNino1");
                         edito.putBoolean("fichaNino1", false);
                         edito.commit();
-                    } else if(idNino==2){
+                    } else if (idNino == 2) {
                         SharedPreferences.Editor edito = preferenc.edit();
                         edito.remove("fichaNino2");
                         edito.putBoolean("fichaNino2", false);
@@ -1286,7 +1287,7 @@ public class Calculos {
 
                 }
             }
-        }  else if(dia==7 && dias==1){
+        } else if (dia == 7 && dias == 1) {
             SharedPreferences.Editor edit = preferenc.edit();
             edit.remove("anterior");
             edit.putInt("anterior", dias);
@@ -1295,12 +1296,12 @@ public class Calculos {
                 valor = valor / 7;
                 double consuDia = KaloriaDia(context, idNino);
                 if (valor < consuDia) {
-                    if(idNino==1){
+                    if (idNino == 1) {
                         SharedPreferences.Editor edito = preferenc.edit();
                         edito.remove("fichaNino1");
                         edito.putBoolean("fichaNino1", true);
                         edito.commit();
-                    } else if(idNino==2){
+                    } else if (idNino == 2) {
                         SharedPreferences.Editor edito = preferenc.edit();
                         edito.remove("fichaNino2");
                         edito.putBoolean("fichaNino2", true);
@@ -1308,12 +1309,12 @@ public class Calculos {
                     }
 
                 } else {
-                    if(idNino==1){
+                    if (idNino == 1) {
                         SharedPreferences.Editor edito = preferenc.edit();
                         edito.remove("fichaNino1");
                         edito.putBoolean("fichaNino1", false);
                         edito.commit();
-                    } else if(idNino==2){
+                    } else if (idNino == 2) {
                         SharedPreferences.Editor edito = preferenc.edit();
                         edito.remove("fichaNino2");
                         edito.putBoolean("fichaNino2", false);
@@ -1325,12 +1326,12 @@ public class Calculos {
                 valor = valor / 7;
                 double consuDia = KaloriaDia(context, idNino);
                 if (valor < consuDia) {
-                    if(idNino==1){
+                    if (idNino == 1) {
                         SharedPreferences.Editor edito = preferenc.edit();
                         edito.remove("fichaNino1");
                         edito.putBoolean("fichaNino1", true);
                         edito.commit();
-                    } else if(idNino==2){
+                    } else if (idNino == 2) {
                         SharedPreferences.Editor edito = preferenc.edit();
                         edito.remove("fichaNino2");
                         edito.putBoolean("fichaNino2", true);
@@ -1338,24 +1339,23 @@ public class Calculos {
                     }
 
                 } else {
-                    if(idNino==1){
+                    if (idNino == 1) {
                         SharedPreferences.Editor edito = preferenc.edit();
                         edito.remove("fichaNino1");
                         edito.putBoolean("fichaNino1", false);
                         edito.commit();
-                    } else if(idNino==2){
+                    } else if (idNino == 2) {
                         SharedPreferences.Editor edito = preferenc.edit();
                         edito.remove("fichaNino2");
                         edito.putBoolean("fichaNino2", false);
                         edito.commit();
                     }
-
                 }
             }
         }
     }
 
-    public static void inicializarFichasAlimento(Context context){
+    public static void inicializarFichasAlimento(Context context) {
         SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
         int dia = preferenc.getInt("curso", 0);
         int llave = preferenc.getInt("llave4", 0);
@@ -1364,7 +1364,7 @@ public class Calculos {
         Calendar calendar = new GregorianCalendar(timezone);
         int dias = calendar.get(Calendar.DAY_OF_WEEK);
 
-        if(dia!=dias){
+        if (dia != dias) {
             SharedPreferences.Editor edito = preferenc.edit();
             edito.remove("llave4");
             edito.putInt("llave4", 0);
@@ -1372,7 +1372,7 @@ public class Calculos {
             edito.putInt("curso", dias);
             edito.commit();
         }
-        if(llave ==0){
+        if (llave == 0) {
             SharedPreferences.Editor edito = preferenc.edit();
             edito.remove("llave4");
             edito.putInt("llave4", 1);
@@ -1395,4 +1395,5 @@ public class Calculos {
             edito.commit();
         }
     }
+
 }

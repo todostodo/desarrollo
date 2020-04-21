@@ -1,14 +1,19 @@
 package com.example.desarrollo.Precentacion.Home;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -20,6 +25,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,12 +34,16 @@ import com.example.desarrollo.Datos.Calculos;
 import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Datos.TutorDao;
 import com.example.desarrollo.Entidades.HistorialConsumo;
+import com.example.desarrollo.Entidades.MensajesPersuasivos;
 import com.example.desarrollo.Entidades.Nino;
 import com.example.desarrollo.Entidades.Tutor;
+import com.example.desarrollo.ExportJSON.Model.ModelMsgPersuasivos;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewHistorialConsumo;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewTutor;
 import com.example.desarrollo.R;
+import com.example.desarrollo.Ultilidades.Toastp;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -46,7 +57,10 @@ public class DetalleConsumoDia extends AppCompatActivity {
     private RelativeLayout _btmCerrarDetalleConsumo;
     private ProgressBar _charFrutas, _chartVerduras;
     private Handler handler = new Handler();
-    private int pStatus = 0;
+    private int pStatusFrutas = 0;
+    private boolean ganoFichaDialogFruta = false, ganoFichaDialogVerdura = false;
+    private double avanceEsfuerzoVerdura, consultarEsfuerzoConsumoVerduras;
+    private DecimalFormat reducirDigitosProciones = new DecimalFormat("#.##");
 
     private RecyclerView _recyclerViewTutor, _recyclerViewHistorialConsumo;
     private RecyclerViewTutor adapterTutor;
@@ -58,9 +72,19 @@ public class DetalleConsumoDia extends AppCompatActivity {
     private ArrayList<String> listaNino;
     private ArrayAdapter<CharSequence> adapterSpinner;
 
+    //Open dialog
+    private Button _btnEpicFichaSalirDetalle;
+    private TextView _txtEpicFichaTituloDetalle, _txtEpicFichaMensajeDetalle, _txtEpicFichaCantidadDetalle;
+    private ConstraintLayout _epicFichaContenidoDetalle;
+    private LinearLayout _epicFichaFondoNegroDetalle;
+    private ImageView _epicFichaImgDetalle;
+    private Animation fromsmall, fromnothing, forloci, togo;
+    //------------------
+
     private NinoDao ninoDao;
     private TutorDao tutorDao;
     private Calculos calculos;
+    private Toastp toastp;
 
     private static final String TAG = "DetalleConsumoDia";
 
@@ -70,6 +94,11 @@ public class DetalleConsumoDia extends AppCompatActivity {
         setContentView(R.layout.detalle_consumo_dia_fragment);
 
         init();
+
+        _epicFichaContenidoDetalle.setAlpha(0);
+        _epicFichaFondoNegroDetalle.setAlpha(0);
+        _epicFichaImgDetalle.setVisibility(View.GONE);
+
         consultarNinos();
         cargarTutores();
 
@@ -91,6 +120,7 @@ public class DetalleConsumoDia extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), HijoRegistroActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -141,6 +171,7 @@ public class DetalleConsumoDia extends AppCompatActivity {
     }
 
     public void cargarHistorialConsumo(int idNino) {
+        consumoList.clear();
         _recyclerViewHistorialConsumo.setLayoutManager(new LinearLayoutManager(this));
         ninoDao.consultarItemsHistorialDetalleConsumo(TAG, getApplicationContext(), idNino, consumoList);
         adapterHistorialConsumo = new RecyclerViewHistorialConsumo(getApplicationContext(), consumoList);
@@ -156,6 +187,9 @@ public class DetalleConsumoDia extends AppCompatActivity {
 
     private void cargarDetalleConsumoNino(int idNino, String genero) {
 
+        _charFrutas.setProgress(0);
+        _chartVerduras.setProgress(0);
+
         if (genero.equals("hombre")) {
             _backgroundGeneroNino.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#E36B5E")));
             _imgGeneroNino.setBackgroundResource(R.drawable.icon_genero_hombre);
@@ -167,25 +201,37 @@ public class DetalleConsumoDia extends AppCompatActivity {
 
 
         double avanceEsfuerzoFrutas = calculos.progresoEsfuerzoFruta(TAG, getApplicationContext(), idNino);
-        double avanceEsfuerzoVerdura = calculos.progresoEsfuerzoVerdura(TAG, getApplicationContext(), idNino);
-        double constultarEsfuerzoCosumoFruta = ninoDao.consultarEsfuerzoConsumoFrutas(TAG, getApplicationContext(), idNino);
-        double consultarEsfuerzoConsumoVerduras = ninoDao.consultarEsfuerzoConsumoVerduras(TAG, getApplicationContext(), idNino);
-        final int progresoFrutas = (int) avanceEsfuerzoFrutas * 10;
-        final int progresoVerduras = (int) avanceEsfuerzoVerdura * 10;
+        avanceEsfuerzoVerdura = calculos.progresoEsfuerzoVerdura(TAG, getApplicationContext(), idNino);
+        double consultarEsfuerzoConsumoFruta = ninoDao.consultarEsfuerzoConsumoFrutas(TAG, getApplicationContext(), idNino);
+        consultarEsfuerzoConsumoVerduras = ninoDao.consultarEsfuerzoConsumoVerduras(TAG, getApplicationContext(), idNino);
+        final int progresoFrutas = (int) Math.round((avanceEsfuerzoFrutas * 100) / 2);
+        final int progresoVerduras = (int) Math.round((avanceEsfuerzoVerdura * 100) / 2);
+        int metaPorcionesFruta = (int) Math.round((consultarEsfuerzoConsumoFruta * 100) / 2);
+        int metaPorcionesVerduras = (int) Math.round((consultarEsfuerzoConsumoVerduras * 100) / 2);
 
-        _txtAvanceFrutas.setText(String.valueOf(constultarEsfuerzoCosumoFruta) + "/" + String.valueOf(avanceEsfuerzoFrutas));
-        _txtAvanceVerduras.setText(String.valueOf(consultarEsfuerzoConsumoVerduras) + "/" + String.valueOf(avanceEsfuerzoVerdura));
+        if (avanceEsfuerzoFrutas >= consultarEsfuerzoConsumoFruta)
+            avanceEsfuerzoFrutas = consultarEsfuerzoConsumoFruta;
+        if (avanceEsfuerzoVerdura >= consultarEsfuerzoConsumoVerduras)
+            avanceEsfuerzoVerdura = consultarEsfuerzoConsumoVerduras;
+
+        _txtAvanceFrutas.setText(String.valueOf(reducirDigitosProciones.format(consultarEsfuerzoConsumoFruta)) + "/" + String.valueOf(reducirDigitosProciones.format(avanceEsfuerzoFrutas)));
+        _txtAvanceVerduras.setText(String.valueOf(reducirDigitosProciones.format(consultarEsfuerzoConsumoVerduras)) + "/" + String.valueOf(reducirDigitosProciones.format(avanceEsfuerzoVerdura)));
+
+        _charFrutas.setMax(metaPorcionesFruta);
+        _chartVerduras.setMax(metaPorcionesVerduras);
+
+        fichaFrutas(idNino, avanceEsfuerzoFrutas, consultarEsfuerzoConsumoFruta);
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (pStatus < progresoFrutas) {
-                    pStatus += 1;
+                while (pStatusFrutas < progresoFrutas) {
+                    pStatusFrutas += 1;
 
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            _charFrutas.setProgress(pStatus);
+                            _charFrutas.setProgress(pStatusFrutas);
 
                         }
                     });
@@ -201,13 +247,13 @@ public class DetalleConsumoDia extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (pStatus < progresoVerduras) {
-                    pStatus += 1;
+                while (pStatusFrutas < progresoVerduras) {
+                    pStatusFrutas += 1;
 
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            _chartVerduras.setProgress(pStatus);
+                            _chartVerduras.setProgress((int) pStatusFrutas);
 
                         }
                     });
@@ -220,13 +266,148 @@ public class DetalleConsumoDia extends AppCompatActivity {
             }
         }).start();
 
-        //double caloriasSemanaPasada = calculos.KaloriaFija(getApplicationContext(), idNino);
+        pStatusFrutas = 0;
+
+        int caloriasSemanaPasada = calculos.KaloriaFija(getApplicationContext(), idNino);
         double caloriasSemanaActual = calculos.KaloriaCambio(getApplicationContext(), idNino);
         double caloriasHoy = calculos.KaloriaDia(getApplicationContext(), idNino);
 
-        //_txtCaloriasSemanaPasada.setText(String.valueOf(caloriasSemanaPasada));
+        _txtCaloriasSemanaPasada.setText(String.valueOf(caloriasSemanaPasada));
         _txtCaloriasSemanaActual.setText(String.valueOf(caloriasSemanaActual));
         _txtCaloriasHoy.setText(String.valueOf(caloriasHoy));
+    }
+
+    private void mensajeFichas(int idNino, String alimento) {
+
+        ArrayList<MensajesPersuasivos> list = new ArrayList<>();
+        ModelMsgPersuasivos msgPersuasivos = new ModelMsgPersuasivos();
+
+        int selectMsg = (int) (Math.random() * 5);
+
+        if (alimento.equals("frutas")) {
+
+            msgPersuasivos.addItemsFromJSONMsgPersuasivos(list, TAG, "consumoPlaneadoFruta", getApplicationContext());
+            showDialogFicha(1, idNino, list.get(selectMsg).getTitulo(), list.get(selectMsg).getMensaje());
+        }
+        if (alimento.equals("verduras")){
+
+            msgPersuasivos.addItemsFromJSONMsgPersuasivos(list, TAG, "consumoPlaneadoVerduras", getApplicationContext());
+            showDialogFicha(1, idNino, list.get(selectMsg).getTitulo(), list.get(selectMsg).getMensaje());
+        }
+
+        Log.v(TAG, "Size list -----------------------------------------" + list.size() + " Random " + selectMsg);
+
+    }
+
+    private void fichaFrutas(int idNino, double avanceEsfuerzoConsumoFruta, double baseEsfuerzoFrutas) {
+
+        if (avanceEsfuerzoConsumoFruta >= baseEsfuerzoFrutas) {
+            SharedPreferences sharedPreferences = getSharedPreferences("Calculo", MODE_PRIVATE);
+            if (idNino == 1) {
+
+                if (!sharedPreferences.getBoolean("fichaFruta1", true)) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("fichaFruta1", true);
+                    editor.commit();
+                    ganoFichaDialogFruta = true;
+                    ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 1);
+
+                    mensajeFichas(idNino, "frutas");
+                } else {
+                    ganoFichaDialogFruta = false;
+                    fichaVerdura(idNino);
+                }
+            }
+            if (idNino == 2) {
+                if (!sharedPreferences.getBoolean("fichaFruta2", true)) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("fichaFruta2", true);
+                    editor.commit();
+                    ganoFichaDialogFruta = true;
+                    ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 1);
+
+                    mensajeFichas(idNino, "frutas");
+                } else {
+                    ganoFichaDialogFruta = false;
+                    fichaVerdura(idNino);
+                }
+            }
+        } else {
+            ganoFichaDialogFruta = false;
+            fichaVerdura(idNino);
+        }
+    }
+
+    private void fichaVerdura(int idNino) {
+
+        if (avanceEsfuerzoVerdura >= consultarEsfuerzoConsumoVerduras) {
+            SharedPreferences sharedPreferences = getSharedPreferences("Calculo", MODE_PRIVATE);
+            if (idNino == 1) {
+                if (!sharedPreferences.getBoolean("fichaVerdura1", true)) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("fichaVerdura1", true);
+                    editor.commit();
+                    ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 1);
+
+                    mensajeFichas(idNino, "verduras");
+                }
+            }
+            if (idNino == 2) {
+                if (!sharedPreferences.getBoolean("fichaVerdura2", true)) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("fichaVerdura2", true);
+                    editor.commit();
+                    ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 1);
+
+                    mensajeFichas(idNino, "verduras");
+                }
+            }
+        }
+    }
+
+    private void fichaUltraprocesados(int idNino){
+
+    }
+
+    private void showDialogFicha(final int fichas, final int idNino, String titulo, String mensaje) {
+
+        _epicFichaImgDetalle.setVisibility(View.VISIBLE);
+        _epicFichaImgDetalle.startAnimation(forloci);
+
+        _epicFichaFondoNegroDetalle.setAlpha(1);
+        _epicFichaFondoNegroDetalle.startAnimation(fromnothing);
+
+        _epicFichaContenidoDetalle.setAlpha(1);
+        _epicFichaContenidoDetalle.startAnimation(fromsmall);
+
+        _txtEpicFichaTituloDetalle.setText(titulo);
+        _txtEpicFichaMensajeDetalle.setText(mensaje);
+        _txtEpicFichaCantidadDetalle.setText("+" + String.valueOf(fichas));
+
+        _btnEpicFichaSalirDetalle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                _epicFichaFondoNegroDetalle.startAnimation(togo);
+                _epicFichaContenidoDetalle.startAnimation(togo);
+                _epicFichaImgDetalle.startAnimation(togo);
+                _epicFichaImgDetalle.setVisibility(View.GONE);
+
+                ViewCompat.animate(_epicFichaContenidoDetalle).setStartDelay(1000).alpha(0).start();
+                ViewCompat.animate(_epicFichaFondoNegroDetalle).setStartDelay(1000).alpha(0).start();
+
+                if (ganoFichaDialogFruta == true) {
+
+                    ganoFichaDialogFruta = false;
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            fichaVerdura(idNino);
+                        }
+                    }, 1000);
+
+                }
+            }
+        });
     }
 
     private void init() {
@@ -246,5 +427,19 @@ public class DetalleConsumoDia extends AppCompatActivity {
         _txtCaloriasSemanaPasada = (TextView) findViewById(R.id.txtDetalleCaloriasFija);
         _txtCaloriasSemanaActual = (TextView) findViewById(R.id.txtDetalleCaloriasCambio);
         _txtCaloriasHoy = (TextView) findViewById(R.id.txtDetalleCaloriasHoy);
+
+        //Open dialog
+        _btnEpicFichaSalirDetalle = (Button) findViewById(R.id.btnEpicFichaSalirDetalle);
+        _txtEpicFichaTituloDetalle = (TextView) findViewById(R.id.txtEpicFichaTituloDetalle);
+        _txtEpicFichaMensajeDetalle = (TextView) findViewById(R.id.txtEpicFichaMensajeDetalle);
+        _txtEpicFichaCantidadDetalle = (TextView) findViewById(R.id.txtEpicFichaCantidadDetalle);
+        _epicFichaContenidoDetalle = (ConstraintLayout) findViewById(R.id.epicFichaContenidoDetalle);
+        _epicFichaFondoNegroDetalle = (LinearLayout) findViewById(R.id.epicFichaFondoNegroDetalle);
+        _epicFichaImgDetalle = (ImageView) findViewById(R.id.epicFichaImgDetalle);
+
+        fromsmall = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fromsmall);
+        fromnothing = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fromnothing);
+        forloci = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.forloci);
+        togo = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.togo);
     }
 }

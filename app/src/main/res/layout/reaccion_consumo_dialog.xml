@@ -14,11 +14,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¿Qué reacción tuvo su hijo al consumir este alimento?"
             android:fontFamily="@font/roboto_medium"
-            android:textColor="#515151"
-            android:textSize="18sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="@string/qu_reacci_n_tuvo_su_hijo_al_consumir_este_alimento"
+            android:textColor="@color/gris_oscuro_subTitulos"
+            android:textSize="18sp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -35,23 +35,23 @@
                     android:id="@+id/btnTerrible"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_marginLeft="20dp"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/icon_cara_terrible"/>
+                        android:src="@drawable/icon_cara_terrible" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/roboto_regular"
-                        android:textSize="14sp"
-                        android:textColor="#515151"
-                        android:text="Terrible"/>
+                        android:text="@string/terrible"
+                        android:textColor="@color/gris_oscuro_subTitulos"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -60,22 +60,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/icon_cara_estabien"/>
+                        android:src="@drawable/icon_cara_estabien" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/roboto_regular"
-                        android:textSize="14sp"
-                        android:textColor="#515151"
-                        android:text="Está bien"/>
+                        android:text="@string/esta_bien"
+                        android:textColor="@color/gris_oscuro_subTitulos"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -84,22 +84,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/icon_cara_genial"/>
+                        android:src="@drawable/icon_cara_genial" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/roboto_regular"
-                        android:textSize="14sp"
-                        android:textColor="#515151"
-                        android:text="Genial"/>
+                        android:text="@string/genial"
+                        android:textColor="@color/gris_oscuro_subTitulos"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 

@@ -4,444 +4,777 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blanco"
     android:orientation="vertical">
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/registroNino"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/RegistroNinoGenero"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon_fondo_login"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.45"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:id="@+id/layoutAvisoRegistraNino"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="visible">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/registrar"
+                android:textColor="@color/negro"
+                android:textSize="24sp" />
 
-                <TextView
-                    android:id="@+id/tituloGenero"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="¿Cuál es su género?"
-                    android:textColor="#515151"
-                    android:textSize="16sp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <LinearLayout
-                    android:id="@+id/layoutGenero"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tituloGenero">
-
-                    <LinearLayout
-                        android:id="@+id/btmGeneroHombre"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:layout_width="150dp"
-                            android:layout_height="150dp">
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerInParent="true"
-                                android:background="@drawable/circulo_custom_background"
-                                android:backgroundTint="#E36B5E">
-
-                                <ImageView
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp"
-                                    android:layout_centerInParent="true"
-                                    android:src="@drawable/icon_genero_hombre" />
-
-                            </RelativeLayout>
-
-                            <RelativeLayout
-                                android:id="@+id/checkGeneroHombre"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_alignParentRight="true"
-                                android:visibility="gone">
-
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_centerInParent="true"
-                                    android:src="@drawable/circulo_verde" />
-
-                                <ImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:layout_centerInParent="true"
-                                    android:src="@drawable/ic_done" />
-                            </RelativeLayout>
-
-                        </RelativeLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/roboto_medium"
-                            android:text="Hombre"
-                            android:textColor="#515151"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/btmGeneroMujer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:layout_width="150dp"
-                            android:layout_height="150dp">
-
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerInParent="true"
-                                android:background="@drawable/circulo_custom_background"
-                                android:backgroundTint="#B8C2CD">
-
-                                <ImageView
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp"
-                                    android:layout_centerInParent="true"
-                                    android:src="@drawable/icon_genero_mujer" />
-
-                            </RelativeLayout>
-
-                            <RelativeLayout
-                                android:id="@+id/checkGeneroMujer"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_alignParentRight="true"
-                                android:visibility="gone">
-
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_centerInParent="true"
-                                    android:src="@drawable/circulo_verde" />
-
-                                <ImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:layout_centerInParent="true"
-                                    android:src="@drawable/ic_done" />
-                            </RelativeLayout>
-
-                        </RelativeLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/roboto_medium"
-                            android:text="Mujer"
-                            android:textColor="#515151"
-                            android:textSize="16sp" />
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/layourDatosGenerales"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginEnd="20dp"
-                    android:orientation="vertical"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layoutGenero">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="¿Cuál es su nombre?"
-                        android:textColor="#515151"
-                        android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/txtHijoNombre"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="@drawable/rectangulo_gris"
-                        android:fontFamily="@font/roboto_regular"
-                        android:hint="Nombre"
-                        android:inputType="textCapWords"
-                        android:paddingLeft="30dp"
-                        android:textColor="#475369"
-                        android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/txtHijoApellidoPaterno"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="@drawable/rectangulo_gris"
-                        android:fontFamily="@font/roboto_regular"
-                        android:hint="Apellido paterno"
-                        android:inputType="textCapWords"
-                        android:paddingLeft="30dp"
-                        android:textColor="#475369"
-                        android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/txtHijoApellidoMaterno"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="@drawable/rectangulo_gris"
-                        android:fontFamily="@font/roboto_regular"
-                        android:hint="Apellido materno"
-                        android:inputType="textCapWords"
-                        android:paddingLeft="30dp"
-                        android:textColor="#475369"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="¿Cuál es su edad?"
-                        android:textColor="#515151"
-                        android:textSize="16sp" />
-
-                    <HorizontalScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:scrollbars="none">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/edadTres"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="25dp"
-                                android:clickable="true"
-                                android:text="3"
-                                android:textColor="#DEDFE1"
-                                android:textSize="40sp" />
-
-                            <TextView
-                                android:id="@+id/edadCuatro"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="25dp"
-                                android:text="4"
-                                android:textColor="#DEDFE1"
-                                android:textSize="40sp" />
-
-                            <TextView
-                                android:id="@+id/edadCinco"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="25dp"
-                                android:text="5"
-                                android:textColor="#DEDFE1"
-                                android:textSize="40sp" />
-
-                            <TextView
-                                android:id="@+id/edadSeis"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="25dp"
-                                android:text="6"
-                                android:textColor="#DEDFE1"
-                                android:textSize="40sp" />
-
-                            <TextView
-                                android:id="@+id/edadSiete"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="25dp"
-                                android:text="7"
-                                android:textColor="#DEDFE1"
-                                android:textSize="40sp" />
-
-                            <TextView
-                                android:id="@+id/edadOcho"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="25dp"
-                                android:text="8"
-                                android:textColor="#DEDFE1"
-                                android:textSize="40sp" />
-
-                            <TextView
-                                android:id="@+id/edadNueve"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="25dp"
-                                android:text="9"
-                                android:textColor="#DEDFE1"
-                                android:textSize="40sp" />
-
-                            <TextView
-                                android:id="@+id/edadDiez"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="25dp"
-                                android:text="10"
-                                android:textColor="#DEDFE1"
-                                android:textSize="40sp" />
-
-                            <TextView
-                                android:id="@+id/edadOnce"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="25dp"
-                                android:text="11"
-                                android:textColor="#DEDFE1"
-                                android:textSize="40sp" />
-
-                            <TextView
-                                android:id="@+id/edadDoce"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="25dp"
-                                android:text="12"
-                                android:textColor="#DEDFE1"
-                                android:textSize="40sp" />
-
-                        </LinearLayout>
-
-                    </HorizontalScrollView>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/layoutMedidas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:orientation="vertical"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layourDatosGenerales">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="¿Cuáles son sus medias corporales?"
-                        android:textColor="#515151"
-                        android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/txtHijoPeso"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="@drawable/rectangulo_gris"
-                        android:fontFamily="@font/roboto_regular"
-                        android:hint="Peso"
-                        android:inputType="numberDecimal"
-                        android:paddingLeft="30dp"
-                        android:textColor="#475369"
-                        android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/txtHijoEstatura"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="@drawable/rectangulo_gris"
-                        android:fontFamily="@font/roboto_regular"
-                        android:hint="Estatura"
-                        android:inputType="numberDecimal"
-                        android:paddingLeft="30dp"
-                        android:textColor="#475369"
-                        android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/txtHijoMedidaCintura"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="@drawable/rectangulo_gris"
-                        android:fontFamily="@font/roboto_regular"
-                        android:hint="Medida de cintura"
-                        android:inputType="numberDecimal"
-                        android:paddingLeft="30dp"
-                        android:textColor="#475369"
-                        android:textSize="16sp" />
-
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/btnAddNino"
-                    style="?attr/buttonBarButtonStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginBottom="30dp"
-                    android:background="@drawable/custom_button_verde"
-                    android:text="Siguiente"
-                    android:textColor="@color/blanco"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layoutMedidas" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/a_un_nino"
+                android:textColor="@color/gris_opaco"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+        <TextView
+            android:id="@+id/tituloGenero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/cual_es_su_genero"
+            android:textColor="@color/gris_oscuro_subTitulos"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutAvisoRegistraNino" />
+
+        <LinearLayout
+            android:id="@+id/btmGeneroHombre"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintHeight_percent="0.32"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tituloGenero">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/circulo_custom_background"
+                    android:backgroundTint="@color/rojo"
+                    android:paddingLeft="40dp"
+                    android:paddingTop="30dp"
+                    android:paddingRight="40dp"
+                    android:paddingBottom="30dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/icon_genero_hombre"
+                        android:paddingLeft="40dp"
+                        android:paddingTop="50dp"
+                        android:paddingRight="40dp"
+                        android:paddingBottom="50dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/checkGeneroHombre"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/circulo_verde" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_done" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/hombre"
+                android:textColor="@color/gris_oscuro_subTitulos"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btmGeneroMujer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintHeight_percent="0.32"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btmGeneroHombre">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/circulo_custom_background"
+                    android:backgroundTint="@color/gris_genero"
+                    android:paddingLeft="40dp"
+                    android:paddingTop="30dp"
+                    android:paddingRight="40dp"
+                    android:paddingBottom="30dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/icon_genero_mujer"
+                        android:paddingLeft="40dp"
+                        android:paddingTop="50dp"
+                        android:paddingRight="40dp"
+                        android:paddingBottom="50dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/checkGeneroMujer"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/circulo_verde" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_done" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/mujer"
+                android:textColor="@color/gris_oscuro_subTitulos"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnRegistrarGenero"
+            style="?attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/custom_button_verde"
+            android:backgroundTint="@color/morado_login"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/siguiente"
+            android:textAllCaps="false"
+            android:textColor="@color/blanco"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.07"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btmGeneroMujer"
+            app:layout_constraintWidth_percent="0.5" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/RegistroDatosNino"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/btmRegresarGeneroNino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/flecha_regresar"
+                android:backgroundTint="@color/gris_opaco"
+                android:padding="10dp" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon_fondo_login"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.45"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+
+        <RelativeLayout
+            android:id="@+id/layoutGenero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:id="@+id/fondoGeneroNino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/circulo_custom_background"
+                android:backgroundTint="@color/rojo"
+                android:paddingLeft="40dp"
+                android:paddingTop="30dp"
+                android:paddingRight="40dp"
+                android:paddingBottom="30dp">
+
+                <ImageView
+                    android:id="@+id/imgGeneroNinoRegistroDatos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/icon_genero_hombre"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="40dp"
+                    android:paddingRight="30dp"
+                    android:paddingBottom="40dp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/textNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/cual_es_su_nombre"
+            android:textColor="@color/gris_oscuro_subTitulos"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutGenero" />
+
+        <LinearLayout
+            android:id="@+id/layourDatosGenerales"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical"
+            android:weightSum="10"
+            app:layout_constraintHeight_percent="0.33"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textNombre">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3">
+
+                <EditText
+                    android:id="@+id/txtHijoNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/rectangulo_border_gris"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="@string/ingrese_su_nombre"
+                    android:inputType="textCapWords"
+                    android:paddingLeft="30dp"
+                    android:textColor="@color/negro"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="30dp"
+                    android:background="@color/blanco"
+                    android:fontFamily="@font/roboto_regular"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/nombre"
+                    android:textColor="#A4A5AA"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="3">
+
+                <EditText
+                    android:id="@+id/txtHijoApellidoPaterno"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/rectangulo_border_gris"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="@string/ingrese_su_apellido_paterno"
+                    android:inputType="textCapWords"
+                    android:paddingLeft="30dp"
+                    android:textColor="@color/negro"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="30dp"
+                    android:background="@color/blanco"
+                    android:fontFamily="@font/roboto_regular"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/apellido_paterno"
+                    android:textColor="@color/gris_login"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="3">
+
+                <EditText
+                    android:id="@+id/txtHijoApellidoMaterno"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/rectangulo_border_gris"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="@string/ingrese_su_apellido_materno"
+                    android:inputType="textCapWords"
+                    android:paddingLeft="30dp"
+                    android:textColor="@color/negro"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="30dp"
+                    android:background="@color/blanco"
+                    android:fontFamily="@font/roboto_regular"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/apellido_materno"
+                    android:textColor="@color/gris_login"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutEdadNino"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layourDatosGenerales">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/cual_es_su_edad"
+                android:textColor="@color/gris_oscuro_subTitulos"
+                android:textSize="16sp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/edadTres"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:clickable="true"
+                        android:text="3"
+                        android:textColor="@color/gris_edad"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/edadCuatro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:text="4"
+                        android:textColor="@color/gris_edad"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/edadCinco"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:text="5"
+                        android:textColor="@color/gris_edad"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/edadSeis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:text="6"
+                        android:textColor="@color/gris_edad"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/edadSiete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:text="7"
+                        android:textColor="@color/gris_edad"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/edadOcho"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:text="8"
+                        android:textColor="@color/gris_edad"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/edadNueve"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:text="9"
+                        android:textColor="@color/gris_edad"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/edadDiez"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:text="10"
+                        android:textColor="@color/gris_edad"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/edadOnce"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:text="11"
+                        android:textColor="@color/gris_edad"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/edadDoce"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:text="12"
+                        android:textColor="@color/gris_edad"
+                        android:textSize="40sp" />
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnRegistrarDatosNino"
+            style="?attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/custom_button_verde"
+            android:backgroundTint="@color/morado_login"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/siguiente"
+            android:textAllCaps="false"
+            android:textColor="@color/blanco"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.07"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEdadNino"
+            app:layout_constraintWidth_percent="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/registroNino"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/btmRegresarDatosNino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/flecha_regresar"
+                android:backgroundTint="@color/gris_opaco"
+                android:padding="10dp" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon_fondo_login"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.45"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgCintaMilimetrica"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="100dp"
+            android:src="@drawable/icon_cinta_milimetrica"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.7" />
+
+        <TextView
+            android:id="@+id/txtMedidas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/cuales_son_sus_medias_corporales"
+            android:textColor="#515151"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgCintaMilimetrica" />
+
+        <LinearLayout
+            android:id="@+id/layourMedidasCorporales"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical"
+            android:weightSum="10"
+            app:layout_constraintHeight_percent="0.30"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtMedidas">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3">
+
+                <EditText
+                    android:id="@+id/txtHijoPeso"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/rectangulo_border_gris"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="@string/ingrese_su_peso"
+                    android:inputType="numberDecimal"
+                    android:paddingLeft="30dp"
+                    android:textColor="@color/negro"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="30dp"
+                    android:background="@color/blanco"
+                    android:fontFamily="@font/roboto_regular"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/peso"
+                    android:textColor="#A4A5AA"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="15dp"
+                android:layout_weight="3">
+
+                <EditText
+                    android:id="@+id/txtHijoEstatura"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/rectangulo_border_gris"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="@string/ingrese_su_estatura"
+                    android:inputType="numberDecimal"
+                    android:paddingLeft="30dp"
+                    android:textColor="@color/negro"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="30dp"
+                    android:background="@color/blanco"
+                    android:fontFamily="@font/roboto_regular"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/estatura"
+                    android:textColor="@color/gris_login"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnAddNino"
+            style="?attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/custom_button_verde"
+            android:backgroundTint="@color/morado_login"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/siguiente"
+            android:textAllCaps="false"
+            android:textColor="@color/blanco"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.07"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layourMedidasCorporales"
+            app:layout_constraintWidth_percent="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/preferenciasNino"
@@ -468,8 +801,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="Preferencias"
-                    android:textColor="#2C344C"
+                    android:text="@string/preferencias"
+                    android:textColor="@color/negro"
                     android:textSize="30sp" />
 
                 <TextView
@@ -478,45 +811,59 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center_horizontal"
-                    android:text="Seleccione la fruta que mas le gusta asu hijo"
+                    android:text="@string/textview"
                     android:textAlignment="center"
-                    android:textColor="@color/gris"
+                    android:textColor="@color/gris_oscuro_subTitulos"
                     android:textSize="16sp" />
 
             </LinearLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:gravity="center|end"
-                android:orientation="vertical">
+                android:layout_marginEnd="20dp">
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
                     android:id="@+id/btnRegistrarPreferenciasFrutas"
                     style="?android:borderlessButtonStyle"
-                    android:layout_width="150dp"
-                    android:layout_height="50dp"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:background="@drawable/custom_button_verde"
-                    android:text="Guardar"
+                    android:backgroundTint="@color/morado_login"
+                    android:text="@string/guardar"
                     android:textAllCaps="false"
                     android:textColor="@color/blanco"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    app:layout_constraintHeight_percent="0.8"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.4" />
 
                 <Button
                     android:id="@+id/btnRegistrarPreferenciasVerduras"
                     style="?android:borderlessButtonStyle"
-                    android:layout_width="150dp"
-                    android:layout_height="50dp"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:background="@drawable/custom_button_verde"
+                    android:backgroundTint="@color/morado_login"
                     android:text="Guardar"
                     android:textAllCaps="false"
                     android:textColor="@color/blanco"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    app:layout_constraintHeight_percent="0.8"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.4" />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -547,4 +894,6 @@
 
 </LinearLayout>
 
-
+    <!--
+     android:id="@+id/txtHijoMedidaCintura"
+    -->

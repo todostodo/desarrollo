@@ -21,10 +21,10 @@
             android:layout_marginEnd="20dp"
             android:layout_marginTop="60dp"
             android:gravity="center"
-            android:textColor="#515151"
+            android:textColor="@color/gris_oscuro_subTitulos"
             android:fontFamily="@font/roboto_regular"
             android:textSize="18sp"
-            android:text="Seleccione al niño que le asignara el motivador"/>
+            android:text="@string/mesaje_seleccion_nino"/>
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -43,7 +43,7 @@
             android:fontFamily="@font/roboto_regular"
             android:text="@string/cancelarSubrayado"
             android:layout_marginBottom="20dp"
-            android:textColor="#515151"
+            android:textColor="@color/gris_oscuro_subTitulos"
             android:layout_gravity="center"/>
 
     </LinearLayout>

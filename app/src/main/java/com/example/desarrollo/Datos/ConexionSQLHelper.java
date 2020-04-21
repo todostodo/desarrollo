@@ -3,6 +3,7 @@ package com.example.desarrollo.Datos;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -13,19 +14,13 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
     private static final String TAG = "ConexionSQLHelper";
 
     public ConexionSQLHelper(@Nullable Context context) {
-        super(context, "basedatos", null, 1);
+        super(context, "basedatos.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL(Utilidades.CREAR_Tabla_Usuario);
-
-        //db.execSQL(Utilidades.CREAR_TABLA_Alimento);
-
-        //db.execSQL(Utilidades.CREAR_TABLA_Ultrap);
-
-        //db.execSQL(Utilidades.CREAR_TABLA_Frutas_Verduras);
 
         db.execSQL(Utilidades.CREAR_Tabla_Historial_Autoeficacia);
 
@@ -54,7 +49,7 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
 
         db.execSQL(Utilidades.CREAR_TABLA_GustoFruta);
 
-       db.execSQL(Utilidades.CREAR_TABLA_GustoVerdura);
+        db.execSQL(Utilidades.CREAR_TABLA_GustoVerdura);
 
         insertMotivadoresDefault(db);
 
@@ -62,6 +57,8 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+        db.execSQL("DROP TABLE IF EXISTS Usuario");
         db.execSQL("DROP TABLE IF EXISTS Nino");
         db.execSQL("DROP TABLE IF EXISTS DetalleReg");
         db.execSQL("DROP TABLE IF EXISTS Tutor");
@@ -69,6 +66,7 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS GustoVerdura");
 
         onCreate(db);
+
     }
 
     public void insertMotivadoresDefault(SQLiteDatabase db) {
@@ -87,9 +85,9 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
 
             onCreate(db);
 
-        }catch (Exception e){
+        } catch (Exception e) {
 
-        }finally {
+        } finally {
         }
     }
 }

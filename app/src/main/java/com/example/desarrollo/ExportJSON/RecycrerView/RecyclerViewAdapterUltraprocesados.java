@@ -78,6 +78,7 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
 
                 dialogUltraprocesados = new BottomSheetDialog(parent.getContext());
                 dialogUltraprocesados.setContentView(R.layout.ultraprocesados_dialog);
+
                 dialogUltraprocesados.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
                 TextView nombreDialog = (TextView) dialogUltraprocesados.findViewById(R.id.nombreDialog);
@@ -90,8 +91,6 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
                         dialogUltraprocesados.dismiss();
                     }
                 });
-
-                //Toast.makeText(context, "select: " + String.valueOf(viewHolder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
 
                 dialogUltraprocesados.show();
 

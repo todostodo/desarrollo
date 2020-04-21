@@ -1,6 +1,7 @@
 package com.example.desarrollo.Precentacion.Login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,7 +9,10 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.desarrollo.Precentacion.MainActivity;
 import com.example.desarrollo.R;
+
+import java.io.File;
 
 public class BienbenidaActivity extends AppCompatActivity {
 
@@ -17,10 +21,15 @@ public class BienbenidaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (restorePreferenceData()){
+            Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(mainActivity);
+        }
+
         setContentView(R.layout.bienbenida_activity);
 
         init();
-
 
         _btnOptionLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,9 +46,16 @@ public class BienbenidaActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
-    private void init(){
+    private boolean restorePreferenceData() {
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences("Archivo", MODE_PRIVATE);
+        Boolean isIntroActivityOpenBefore = preferences.getBoolean("inicioAutomatico", false);
+        return isIntroActivityOpenBefore;
+    }
+
+    private void init() {
         _btnOptionLogin = (Button) findViewById(R.id.btnOptionLogin);
         _btnOptionSignUp = (Button) findViewById(R.id.btnOptionSignUp);
     }

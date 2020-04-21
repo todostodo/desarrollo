@@ -35,14 +35,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:fontFamily="@font/roboto_regular"
-                    android:text="Coca cola en versión regular"
+                    android:text="@string/textview"
                     android:textColor="@color/negro"
                     android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nocivo para la salud"
+                    android:text="@string/textview"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:textSize="14sp"
@@ -68,7 +68,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
                         android:padding="3dp"
-                        android:text="321 calorias"
+                        android:text="@string/textview"
                         android:textColor="#FF503F"
                         android:textSize="10sp" />
 
