@@ -27,7 +27,7 @@ import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
 import android.content.Context;
-import android.widget.Toast;
+import com.example.desarrollo.ConexionApi.ConexionApi;
 
 import com.example.desarrollo.Datos.Calculos;
 import com.example.desarrollo.Datos.ConexionSQLHelper;
@@ -85,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
         Date date = new Date();
         DateFormat hora = new SimpleDateFormat("HH:mm:ss");
         inicio = "" + hora.format(date);
+
+
 
         Calculos.inicializarFichasAlimento(this);
 
