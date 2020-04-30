@@ -110,10 +110,17 @@ public class RegistroUsuario extends AppCompatActivity {
                                             correo,
                                             password,
                                             0,
+                                            0,
                                             0
                                     );
 
                                     if (addUser == true) {
+
+                                        SharedPreferences preferences = getApplicationContext().getSharedPreferences("Usuario", MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = preferences.edit();
+                                        editor.putBoolean("inicioAutomatico", true);
+                                        editor.putString("correoUsuario", correo);
+                                        editor.commit();
 
                                         Intent introduccion = new Intent(getApplicationContext(), IntroduccionActivity.class);
                                         startActivity(introduccion);

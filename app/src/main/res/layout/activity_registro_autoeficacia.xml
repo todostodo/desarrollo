@@ -275,7 +275,7 @@
                 android:min="0"
                 android:progress="5"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -581,7 +581,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -887,7 +887,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -1193,7 +1193,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -1499,7 +1499,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -1805,7 +1805,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -2111,7 +2111,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -2417,7 +2417,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -2723,7 +2723,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -3029,7 +3029,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -3335,7 +3335,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -3641,7 +3641,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -3947,7 +3947,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -4253,7 +4253,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -4559,7 +4559,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -4865,7 +4865,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -5171,7 +5171,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -5477,7 +5477,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -5783,7 +5783,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -6089,7 +6089,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>
@@ -6396,7 +6396,7 @@
                 android:min="0"
                 android:progress="0"
                 android:minHeight="7dp"
-                android:progressDrawable="@drawable/seek_bar_ruler_blanco"
+                android:progressDrawable="@drawable/seek_bar_motivadores"
                 android:thumb="@drawable/seek_bar_slider_verde"
                 ></SeekBar>
         </LinearLayout>

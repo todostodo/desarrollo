@@ -43,10 +43,11 @@ public class IntroduccionActivity extends AppCompatActivity {
         //getSupportActionBar().hide();
 
         final List<IntroduccionScreenItem> listScreemItem = new ArrayList<>();
-        listScreemItem.add(new IntroduccionScreenItem("Antes de comenzar", "Te mostraremos algunas indicaciones de la funcionalidad de la aplicación para que pueda entender la dinámica.", R.drawable.introducion_img_4));
-        listScreemItem.add(new IntroduccionScreenItem("Frutas", "El niño deberá de consumir las porciones de frutas que el sistema le indica por día, este se aumentara cada 7 días de acuerdo a su desempeño, el objetivo es llegar a 3 porciones de consumo diarios.", R.drawable.introducion_img_1));
-        listScreemItem.add(new IntroduccionScreenItem("Verduras", "Al igual que las frutas deberá consumir las porciones que el sistema le indica el objetivo es llegar a 2 porciones de consumo diario.", R.drawable.introducion_img_2));
-        listScreemItem.add(new IntroduccionScreenItem("Fichas y motivadores", "Se le darán fichas al niño si logra consumir las porciones de frutas y verduras del día al igual si logra consumir uno que no le gusta o no conoce también se le darán fichas por disminuir el consumo de comida ultra procesada, máximo de niños a registrar 2.", R.drawable.introducion_img_3));
+        listScreemItem.add(new IntroduccionScreenItem("Antes de comenzar", "Te mostraremos algunas indicaciones de la funcionalidad de la aplicación para que pueda entender la dinámica.", R.drawable.introduccion_img_4));
+        listScreemItem.add(new IntroduccionScreenItem("Frutas", "El niño deberá de consumir las porciones de frutas que el sistema le indica por día, este se aumentara cada 7 días de acuerdo a su desempeño, el objetivo es llegar a 2 porciones de consumo diarios.", R.drawable.introduccion_img_1));
+        listScreemItem.add(new IntroduccionScreenItem("Verduras", "Al igual que las frutas deberá consumir las porciones que el sistema le indica el objetivo es llegar a 3 porciones de consumo diario.", R.drawable.introduccion_img_2));
+        listScreemItem.add(new IntroduccionScreenItem("Fichas y motivadores", "Se le darán fichas al niño si logra consumir las porciones de frutas y verduras del día al igual si logra consumir uno que no le gusta o no conoce también se le darán fichas por disminuir el consumo de comida ultra procesada, máximo de niños a registrar 2.", R.drawable.introduccion_img_3));
+        listScreemItem.add(new IntroduccionScreenItem("¡¡Importante!!", "Los primero 7 días el niño no podrá generar fichas ya que mediremos su línea base de frutas y verduras para poder asignarle las porciones a consumir en el día", R.drawable.introduccion_img_5));
 
         screenPager = findViewById(R.id.screen_viewpager);
         introduccionViewPagerAdapter = new IntroduccionViewPagerAdapter(this, listScreemItem);
@@ -67,7 +68,6 @@ public class IntroduccionActivity extends AppCompatActivity {
                 }
             }
         });
-
 
         tabIndicador.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

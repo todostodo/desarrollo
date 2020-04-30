@@ -1,6 +1,6 @@
-package com.example.desarrollo.ExportJSON.Reader;
+package com.example.desarrollo.Entidades;
 
-public class ReaderFrutas {
+public class Frutas {
 
     private String id;
     private String nombre;
@@ -15,7 +15,7 @@ public class ReaderFrutas {
     private String imgUrl;
     private String background;
 
-    public ReaderFrutas(String id, String nombre, String equivalencia, String descripcion, String recomendacion, String recomendacionDos, String frase, String ventaja, String avisoTitulo, String aviso, String imgUrl, String background) {
+    public Frutas(String id, String nombre, String equivalencia, String descripcion, String recomendacion, String recomendacionDos, String frase, String ventaja, String avisoTitulo, String aviso, String imgUrl, String background) {
         this.id = id;
         this.nombre = nombre;
         this.equivalencia = equivalencia;
@@ -30,7 +30,7 @@ public class ReaderFrutas {
         this.background = background;
     }
 
-   public ReaderFrutas(String id, String nombre, String equivalencia, String imgUrl, String background){
+   public Frutas(String id, String nombre, String equivalencia, String imgUrl, String background){
         this.id = id;
         this.nombre = nombre;
         this.equivalencia = equivalencia;

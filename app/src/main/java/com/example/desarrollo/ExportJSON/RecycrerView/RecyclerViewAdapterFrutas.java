@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.desarrollo.ExportJSON.Filter.FilterHelperFrutas;
-import com.example.desarrollo.ExportJSON.Reader.ReaderFrutas;
+import com.example.desarrollo.Entidades.Frutas;
 import com.example.desarrollo.R;
 import com.example.desarrollo.Precentacion.Alimentos.AlimentoRegistroactivity;
 
@@ -30,18 +30,18 @@ import java.util.List;
 
 public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements Filterable {
     private Context context;
-    private List<ReaderFrutas> readerFrutas;
+    private List<Frutas> frutas;
     private String tipoAlimento;
     private ArrayList meGusta = new ArrayList();
-    private ArrayList<ReaderFrutas> currentList;
+    private ArrayList<Frutas> currentList;
     private FilterHelperFrutas filterHelper;
 
     private static final String TAG = "RecyclerViewAdapterFrut";
 
-    public RecyclerViewAdapterFrutas(Context context, ArrayList<ReaderFrutas> readerFrutas, String tipoAlimento) {
+    public RecyclerViewAdapterFrutas(Context context, ArrayList<Frutas> frutas, String tipoAlimento) {
         this.context = context;
-        this.readerFrutas = readerFrutas;
-        this.currentList = readerFrutas;
+        this.frutas = frutas;
+        this.currentList = frutas;
         this.tipoAlimento = tipoAlimento;
     }
 
@@ -82,18 +82,18 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
             public void onClick(View v) {
 
                 Intent i = new Intent(parent.getContext(), AlimentoRegistroactivity.class);
-                i.putExtra("fruta_idAlimentos", readerFrutas.get(viewHolder.getAdapterPosition()).getId());
-                i.putExtra("fruta_nombre", readerFrutas.get(viewHolder.getAdapterPosition()).getNombre());
-                i.putExtra("fruta_equivalencia", readerFrutas.get(viewHolder.getAdapterPosition()).getEquivalencia());
-                i.putExtra("fruta_descripcion", readerFrutas.get(viewHolder.getAdapterPosition()).getDescripcion());
-                i.putExtra("fruta_recomendacion", readerFrutas.get(viewHolder.getAdapterPosition()).getRecomendacion());
-                i.putExtra("fruta_recomendacionDos", readerFrutas.get(viewHolder.getAdapterPosition()).getRecomendacionDos());
-                i.putExtra("fruta_frase", readerFrutas.get(viewHolder.getAdapterPosition()).getFrase());
-                i.putExtra("fruta_ventaja", readerFrutas.get(viewHolder.getAdapterPosition()).getVentaja());
-                i.putExtra("fruta_avisoTitulo", readerFrutas.get(viewHolder.getAdapterPosition()).getAvisoTitulo());
-                i.putExtra("fruta_aviso", readerFrutas.get(viewHolder.getAdapterPosition()).getAviso());
-                i.putExtra("fruta_imagen", readerFrutas.get(viewHolder.getAdapterPosition()).getImgUrl());
-                i.putExtra("fruta_fondo", readerFrutas.get(viewHolder.getAdapterPosition()).getBackground());
+                i.putExtra("fruta_idAlimentos", frutas.get(viewHolder.getAdapterPosition()).getId());
+                i.putExtra("fruta_nombre", frutas.get(viewHolder.getAdapterPosition()).getNombre());
+                i.putExtra("fruta_equivalencia", frutas.get(viewHolder.getAdapterPosition()).getEquivalencia());
+                i.putExtra("fruta_descripcion", frutas.get(viewHolder.getAdapterPosition()).getDescripcion());
+                i.putExtra("fruta_recomendacion", frutas.get(viewHolder.getAdapterPosition()).getRecomendacion());
+                i.putExtra("fruta_recomendacionDos", frutas.get(viewHolder.getAdapterPosition()).getRecomendacionDos());
+                i.putExtra("fruta_frase", frutas.get(viewHolder.getAdapterPosition()).getFrase());
+                i.putExtra("fruta_ventaja", frutas.get(viewHolder.getAdapterPosition()).getVentaja());
+                i.putExtra("fruta_avisoTitulo", frutas.get(viewHolder.getAdapterPosition()).getAvisoTitulo());
+                i.putExtra("fruta_aviso", frutas.get(viewHolder.getAdapterPosition()).getAviso());
+                i.putExtra("fruta_imagen", frutas.get(viewHolder.getAdapterPosition()).getImgUrl());
+                i.putExtra("fruta_fondo", frutas.get(viewHolder.getAdapterPosition()).getBackground());
                 i.putExtra("fruta_tipoAlimento", tipoAlimento);
 
 
@@ -109,13 +109,13 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
-        ReaderFrutas readerFrutas = (ReaderFrutas) this.readerFrutas.get(position);
+        Frutas frutas = (Frutas) this.frutas.get(position);
 
-        itemViewHolder.nombre.setText(readerFrutas.getNombre());
-        itemViewHolder.frase.setText(readerFrutas.getFrase());
-        itemViewHolder.backgroundFrutas.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(readerFrutas.getBackground())));
+        itemViewHolder.nombre.setText(frutas.getNombre());
+        itemViewHolder.frase.setText(frutas.getFrase());
+        itemViewHolder.backgroundFrutas.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(frutas.getBackground())));
 
-        String ventaja = readerFrutas.getVentaja();
+        String ventaja = frutas.getVentaja();
 
         if (ventaja.equals("Alimento para el corazón") || ventaja.equals("Alimento para la sangre") || ventaja.equals("Alimento para las arterias")) {
             itemViewHolder.backgroundVentaja.setCardBackgroundColor(Color.parseColor("#F7B3B5"));
@@ -152,10 +152,10 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
         }
 
 
-        itemViewHolder.ventaja.setText(readerFrutas.getVentaja());
+        itemViewHolder.ventaja.setText(frutas.getVentaja());
         Glide
                 .with(itemViewHolder.imgUrl.getContext())
-                .load(getImage(readerFrutas.getImgUrl()))
+                .load(getImage(frutas.getImgUrl()))
                 .into(itemViewHolder.imgUrl);
 
 
@@ -166,12 +166,12 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
 
     @Override
     public int getItemCount() {
-        return readerFrutas.size();
+        return frutas.size();
     }
 
 
-    public void setReaderFrutas(ArrayList<ReaderFrutas> filteredSpacecrafts) {
-        this.readerFrutas = filteredSpacecrafts;
+    public void setFrutas(ArrayList<Frutas> filteredSpacecrafts) {
+        this.frutas = filteredSpacecrafts;
 
     }
 

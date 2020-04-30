@@ -113,6 +113,10 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.menu_motivadores:
                             loadFragment(motivadoresFragment);
                             return true;
+
+                        case  R.id.menu_perfil:
+                            loadFragment(perfilFragment);
+                            return true;
                     }
                     return false;
                 }
@@ -122,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragmentContainer, fragment);
+        ft.detach(fragment);
+        ft.attach(fragment);
         ft.commit();
     }
 

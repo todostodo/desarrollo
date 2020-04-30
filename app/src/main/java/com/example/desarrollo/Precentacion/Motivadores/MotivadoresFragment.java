@@ -43,6 +43,7 @@ public class MotivadoresFragment extends Fragment {
     private Spinner _spinnerMotivadoresNino;
     private SwipeRefreshLayout _refreshMotivadoresProceso;
     private String fecha;
+    private ImageView _imgPerfilNinoMotivador;
 
     //Open dialog
     private Button _btnEpicMotivadorSalir;
@@ -115,6 +116,11 @@ public class MotivadoresFragment extends Fragment {
         _spinnerMotivadoresNino.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (ninoList.get(position).getGenero().equals("hombre"))
+                    _imgPerfilNinoMotivador.setImageResource(R.drawable.icon_genero_hombre);
+                else
+                    _imgPerfilNinoMotivador.setImageResource(R.drawable.icon_genero_mujer);
+
                 consultarListaMotivadoresProceso(ninoList.get(position).getIdNino());
                 consultarFichas(ninoList.get(position).getFichas());
             }
@@ -244,6 +250,7 @@ public class MotivadoresFragment extends Fragment {
         _spinnerMotivadoresNino = (Spinner) view.findViewById(R.id.spinnerMotivadoresNino);
         _myRecyclerViewProceso = (RecyclerView) view.findViewById(R.id.myRecyclerViewMotivadoresProceso);
         _refreshMotivadoresProceso = (SwipeRefreshLayout) view.findViewById(R.id.refreshMotivadoresProceso);
+        _imgPerfilNinoMotivador = (ImageView) view.findViewById(R.id.imgPerfilNinoMotivador);
 
         //Open Dialog
 

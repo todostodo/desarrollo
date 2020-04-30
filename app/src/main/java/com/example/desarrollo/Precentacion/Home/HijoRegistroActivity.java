@@ -1,7 +1,6 @@
 package com.example.desarrollo.Precentacion.Home;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build;
@@ -27,7 +26,7 @@ import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Datos.PreferenciasDao;
 import com.example.desarrollo.Datos.UserDao;
 import com.example.desarrollo.ExportJSON.Model.ModelPreferencias;
-import com.example.desarrollo.ExportJSON.Reader.ReaderPreferencias;
+import com.example.desarrollo.Entidades.PreferenciasNino;
 import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewPreferencias;
 import com.example.desarrollo.Precentacion.MainActivity;
 import com.example.desarrollo.R;
@@ -52,12 +51,12 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
             _txtHijoApellidoMaterno,
             _txtHijoPeso,
             _txtHijoEstatura;
-            //_txtHijoMedidaCintura;
+    //_txtHijoMedidaCintura;
 
     private ConstraintLayout _registroNinoGenero, _registroDatosNino, _registroMedidasNino, _registroNino;
     private Button _btnRegistraGenero, _btnRegistrarDatosNino;
     private ImageView _imgGeneroNinoRegistroDatos;
-    private RelativeLayout _fondoGeneroNino, _btnRegresarGeneroNino, _btnRegresarDatosNino;
+    private RelativeLayout _btnRegresarGeneroNino, _btnRegresarDatosNino;
 
     // todo: variable para almacenar todo lo que el usuario ingresa antes de ser almacenado a la base de datos
     private String nombreNino, apellidoPNino, apellidoMNino, generoNino = "", pesoNino, estaturaNino;
@@ -75,9 +74,9 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
     private NestedScrollView _preferenciasNino;
     private RelativeLayout _checkGeneroHombre, _checkGeneroMujer;
     private LinearLayout _btnGeneroHombre, _btnGeneroMujer;
-    private ArrayList<ReaderPreferencias> temp;
+    private ArrayList<PreferenciasNino> temp;
 
-    private ArrayList<ReaderPreferencias> frutasItem;
+    private ArrayList<PreferenciasNino> frutasItem;
     private RecyclerView _myRecyclerViewFrutas, _myRecyclerViewVerduras;
     private RecyclerViewPreferencias mAdapter = null;
     private RecyclerView.LayoutManager layoutManager;
@@ -269,11 +268,11 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                     _registroDatosNino.setVisibility(View.VISIBLE);
 
                     if (generoNino.equals("hombre")) {
-                        _imgGeneroNinoRegistroDatos.setBackgroundResource(R.drawable.icon_genero_hombre);
-                        _fondoGeneroNino.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.rojo)));
+                        _imgGeneroNinoRegistroDatos.setImageResource(R.drawable.icon_genero_hombre);
+                        //_fondoGeneroNino.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.rojo)));
                     } else {
-                        _imgGeneroNinoRegistroDatos.setBackgroundResource(R.drawable.icon_genero_mujer);
-                        _fondoGeneroNino.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.gris_genero)));
+                        _imgGeneroNinoRegistroDatos.setImageResource(R.drawable.icon_genero_mujer);
+                        //_fondoGeneroNino.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.gris_genero)));
                     }
 
                     regresar = 2;
@@ -389,7 +388,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
     }
 
     @Override
-    public void onItemChangeListener(int position, ReaderPreferencias model) {
+    public void onItemChangeListener(int position, PreferenciasNino model) {
         try {
             frutasItem.set(position, model);
         } catch (Exception e) {
@@ -557,10 +556,10 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                         0.0,
                         0.0,
                         0.0,
-                        100,
-                        0.25,
-                        0.25,
-                        0.25
+                        0,
+                        0.0,
+                        0.0,
+                        0.0
                 );
 
         //Agregar preferencias frutas
@@ -672,10 +671,10 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
             startActivity(detalleConsumo);
             finish();
         } else {
-            SharedPreferences preferences = getApplicationContext().getSharedPreferences("Archivo", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean("inicioAutomatico", true);
-            editor.commit();
+            //SharedPreferences preferences = getApplicationContext().getSharedPreferences("Usuario", MODE_PRIVATE);
+            //SharedPreferences.Editor editor = preferences.edit();
+            //editor.putBoolean("inicioAutomatico", true);
+            //editor.commit();
             userDao.updateEstadoUsaurio(TAG, getApplicationContext());
             finish();
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -710,7 +709,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         _registroDatosNino = (ConstraintLayout) findViewById(R.id.RegistroDatosNino);
         _btnRegistrarDatosNino = (Button) findViewById(R.id.btnRegistrarDatosNino);
         _imgGeneroNinoRegistroDatos = (ImageView) findViewById(R.id.imgGeneroNinoRegistroDatos);
-        _fondoGeneroNino = (RelativeLayout) findViewById(R.id.fondoGeneroNino);
+        //_fondoGeneroNino = (RelativeLayout) findViewById(R.id.fondoGeneroNino);
 
         //Tercera parte - medidas corporales
         _registroMedidasNino = (ConstraintLayout) findViewById(R.id.registroNino);
@@ -748,8 +747,8 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         } else {
             if (regresar == 2) {
                 _btnRegresarGeneroNino.performClick();
-            }else{
-                if (regresar == 1 || regresar == 4){
+            } else {
+                if (regresar == 1 || regresar == 4) {
                     super.onBackPressed();
                 }
             }

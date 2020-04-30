@@ -3,18 +3,18 @@ package com.example.desarrollo.ExportJSON.Filter;
 import android.content.Context;
 import android.widget.Filter;
 
-import com.example.desarrollo.ExportJSON.Reader.ReaderFrutas;
+import com.example.desarrollo.Entidades.Frutas;
 import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewAdapterFrutas;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FilterHelperFrutas extends Filter {
-    List<ReaderFrutas> currentList;
+    List<Frutas> currentList;
     RecyclerViewAdapterFrutas adapter;
     Context context;
 
-    public FilterHelperFrutas(List<ReaderFrutas> currentList, RecyclerViewAdapterFrutas adapter, Context context) {
+    public FilterHelperFrutas(List<Frutas> currentList, RecyclerViewAdapterFrutas adapter, Context context) {
         this.currentList = currentList;
         this.adapter = adapter;
         this.context = context;
@@ -31,9 +31,9 @@ public class FilterHelperFrutas extends Filter {
             constraint = constraint.toString().toUpperCase();
 
             //HOLD FILTERS WE FIND
-            List<ReaderFrutas> foundFilters = new ArrayList<>();
+            List<Frutas> foundFilters = new ArrayList<>();
 
-            ReaderFrutas holidays = null;
+            Frutas holidays = null;
 
             //ITERATE CURRENT LIST
             for (int i = 0;i < currentList.size(); i++)
@@ -65,7 +65,7 @@ public class FilterHelperFrutas extends Filter {
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
 
-        adapter.setReaderFrutas((ArrayList<ReaderFrutas>) results.values);
+        adapter.setFrutas((ArrayList<Frutas>) results.values);
         adapter.notifyDataSetChanged();
     }
 }

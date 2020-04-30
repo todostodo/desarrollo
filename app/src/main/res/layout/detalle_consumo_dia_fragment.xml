@@ -11,6 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:elevation="4dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -21,10 +22,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
+            android:contentDescription="@string/description_imagen_gana_fichas"
             android:elevation="6dp"
             android:src="@drawable/epic_ficha"
             android:visibility="visible"
-            android:contentDescription="@string/description_imagen_gana_fichas"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -77,12 +78,12 @@
                 android:id="@+id/txtEpicFichaCantidadDetalle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/overpass_bold"
+                android:gravity="center"
+                android:text="@string/textview"
                 android:textColor="@color/dorado_ficha"
                 android:textSize="30sp"
-                android:layout_marginTop="5dp"
-                android:text="@string/textview"
-                android:gravity="center"
-                android:fontFamily="@font/overpass_bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtEpicFichaMensajeDetalle" />
@@ -198,28 +199,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <RelativeLayout
-                        android:id="@+id/backgroundGeneroNino"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:background="@drawable/circulo_custom_background"
-                        android:backgroundTint="@color/rojo"
-                        android:gravity="center"
+                    <ImageView
+                        android:id="@+id/imgGeneroNino"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginBottom="20dp"
+                        android:src="@drawable/icon_genero_hombre"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                        <ImageView
-                            android:id="@+id/imgGeneroNino"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_marginLeft="25dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginRight="25dp"
-                            android:layout_marginBottom="20dp" />
-
-                    </RelativeLayout>
 
                     <Spinner
                         android:id="@+id/spinnerDetalleConsumo"
@@ -232,7 +224,7 @@
                         android:gravity="center"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/backgroundGeneroNino" />
+                        app:layout_constraintTop_toBottomOf="@+id/imgGeneroNino" />
 
                     <RelativeLayout
                         android:id="@+id/btnAtivityNino"
@@ -290,6 +282,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:orientation="vertical"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -339,14 +332,15 @@
                             android:progressDrawable="@drawable/custom_progress_bar_verduras"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintWidth_percent="0.95" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:gravity="center"
                             android:orientation="vertical"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -376,7 +370,6 @@
                         </LinearLayout>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
                 </LinearLayout>
 

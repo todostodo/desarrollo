@@ -48,7 +48,6 @@ dependencies {
     implementation 'com.getbase:floatingactionbutton:1.10.1'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
 
-
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     //implementation 'com.balysv:material-ripple:1.0.2'
@@ -56,8 +55,6 @@ dependencies {
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
 
     implementation "com.android.support:support-core-utils:29.0.0"
-
-
     //JavaMaik Informacion
     //https://javaee.github.io/javamail/ -- Documentacion de JavaMail Api (Oracle)
     //https://javaee.github.io/javamail/Android -- Pagina para hacer el llamado de JavaMail API

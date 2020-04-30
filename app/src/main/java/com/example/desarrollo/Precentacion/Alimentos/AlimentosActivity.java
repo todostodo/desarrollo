@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -18,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.desarrollo.ExportJSON.Model.ModelFrutas;
 import com.example.desarrollo.ExportJSON.Model.ModelUltraprocesados;
-import com.example.desarrollo.ExportJSON.Reader.ReaderFrutas;
-import com.example.desarrollo.ExportJSON.Reader.ReaderUltraprocesados;
+import com.example.desarrollo.Entidades.Frutas;
+import com.example.desarrollo.Entidades.UltraProcesados;
 import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewAdapterFrutas;
 import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewAdapterUltraprocesados;
 import com.example.desarrollo.R;
@@ -33,13 +32,13 @@ public class AlimentosActivity extends AppCompatActivity {
     private LinearLayout _tituloAlimentos, _btnSubUltraProcesados;
     private RelativeLayout _btmCerrarAlimentos;
     private Button _btnFrutas, _btnVerduras, _btnUltraProcesados;
-    private Button _btnBebidas, _btnFrituras, _btnGolosinas, _btnGalletasPanesillos, _btnOtros;
+    private Button _btnBebidas, _btnFrituras, _btnGolosinas, _btnGalletasPanesillos;
     private ArrayList<Button> listButton = new ArrayList<>();
     private ArrayList<Button> listButtonUltra = new ArrayList<>();
     private boolean activoSearchFruta = false, activoSearchVerduras = false, activoSearchUltralProcesados = false;
 
     //todo: Variables para mostrar las frutas
-    private ArrayList<ReaderFrutas> frutasItem = new ArrayList<>();
+    private ArrayList<Frutas> frutasItem = new ArrayList<>();
     private RecyclerView myRecyclerViewFrutas;
     private RecyclerViewAdapterFrutas adapterFrutas;
     private SearchView mySearchViewFrutas;
@@ -48,13 +47,13 @@ public class AlimentosActivity extends AppCompatActivity {
     //todo: Variables para mostrar la verduras
     private RecyclerView _myRecyclerViewVerduras;
     private SearchView mySearchViewVerduras;
-    private ArrayList<ReaderFrutas> verdurasItem = new ArrayList<>();
+    private ArrayList<Frutas> verdurasItem = new ArrayList<>();
     private RecyclerViewAdapterFrutas adapterVerduras;
     private RecyclerView.LayoutManager layoutManagerVerduras;
 
     //todo: Variables para mostrar los alimentos ultra procesados
     private RecyclerView _myRecyclerViewUltraProcesados;
-    private ArrayList<ReaderUltraprocesados> ultraprocesadosItem = new ArrayList<>();
+    private ArrayList<UltraProcesados> ultraProcesadosItem = new ArrayList<>();
     private SearchView mySearchViewUltraProcesados;
     RecyclerViewAdapterUltraprocesados adapterUltraprocesados;
     ModelUltraprocesados modelUltraprocesados = new ModelUltraprocesados();
@@ -86,7 +85,6 @@ public class AlimentosActivity extends AppCompatActivity {
                 selectButton(_btnFrutas);
                 undeselectButton(_btnFrutas);
                 mostrarFrutas();
-                undeselectButtonUltra(_btnOtros);
                 myRecyclerViewFrutas.setVisibility(View.VISIBLE);
                 _myRecyclerViewVerduras.setVisibility(View.GONE);
                 mySearchViewFrutas.setVisibility(View.VISIBLE);
@@ -103,7 +101,6 @@ public class AlimentosActivity extends AppCompatActivity {
                 selectButton(_btnVerduras);
                 undeselectButton(_btnVerduras);
                 mostrarVerduras();
-                undeselectButtonUltra(_btnOtros);
                 myRecyclerViewFrutas.setVisibility(View.GONE);
                 _myRecyclerViewVerduras.setVisibility(View.VISIBLE);
                 mySearchViewFrutas.setVisibility(View.GONE);
@@ -167,15 +164,6 @@ public class AlimentosActivity extends AppCompatActivity {
                 selectButtonUltra(_btnGalletasPanesillos);
                 undeselectButtonUltra(_btnGalletasPanesillos);
                 cargarUltraProcesados("Galletas y panesillos");
-            }
-        });
-        _btnOtros.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectButtonUltra(_btnOtros);
-                undeselectButtonUltra(_btnOtros);
-                cargarUltraProcesados("Otros");
-
             }
         });
     }
@@ -293,16 +281,16 @@ public class AlimentosActivity extends AppCompatActivity {
 
     private void activarSearch(SearchView searchView) {
         _tituloAlimentos.setVisibility(View.GONE);
-        ViewGroup.LayoutParams lp = searchView.getLayoutParams();
-        lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        searchView.setLayoutParams(lp);
+        ViewGroup.LayoutParams params = searchView.getLayoutParams();
+        params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        searchView.setLayoutParams(params);
     }
 
     private void desactivarSearch(SearchView searchView) {
         _tituloAlimentos.setVisibility(View.VISIBLE);
-        ViewGroup.LayoutParams lp = searchView.getLayoutParams();
-        lp.width = ViewGroup.LayoutParams.WRAP_CONTENT;
-        searchView.setLayoutParams(lp);
+        ViewGroup.LayoutParams params = searchView.getLayoutParams();
+        params.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+        searchView.setLayoutParams(params);
     }
 
     private void cargarAlimentos() {
@@ -330,7 +318,7 @@ public class AlimentosActivity extends AppCompatActivity {
     }
 
     private void cargarUltraProcesados(String alimento){
-        ultraprocesadosItem.clear();
+        ultraProcesadosItem.clear();
 
         if (activoSearchUltralProcesados == true)
             activarSearch(mySearchViewUltraProcesados);
@@ -368,10 +356,10 @@ public class AlimentosActivity extends AppCompatActivity {
             }
         });
 
-        adapterUltraprocesados = new RecyclerViewAdapterUltraprocesados(getApplicationContext(), ultraprocesadosItem);
+        adapterUltraprocesados = new RecyclerViewAdapterUltraprocesados(getApplicationContext(), ultraProcesadosItem, alimento);
         _myRecyclerViewUltraProcesados.setAdapter(adapterUltraprocesados);
 
-        modelUltraprocesados.addItemsFromJSON(ultraprocesadosItem, TAG, alimento, getApplicationContext());
+        modelUltraprocesados.addItemsFromJSON(ultraProcesadosItem, TAG, alimento, getApplicationContext());
 
     }
 
@@ -397,7 +385,6 @@ public class AlimentosActivity extends AppCompatActivity {
         _btnFrituras = (Button) findViewById(R.id.btnFrituras2);
         _btnGolosinas = (Button) findViewById(R.id.btnGolosinas2);
         _btnGalletasPanesillos = (Button) findViewById(R.id.btnGalletasPanesillos2);
-        _btnOtros = (Button) findViewById(R.id.btnOtros2);
         mySearchViewUltraProcesados = findViewById(R.id.mySearchViewUltraProcesados);
     }
 }

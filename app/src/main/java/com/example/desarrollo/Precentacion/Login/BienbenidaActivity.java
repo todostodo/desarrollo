@@ -1,7 +1,9 @@
 package com.example.desarrollo.Precentacion.Login;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +23,7 @@ public class BienbenidaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 
         if (restorePreferenceData()){
             Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
@@ -50,7 +53,7 @@ public class BienbenidaActivity extends AppCompatActivity {
     }
 
     private boolean restorePreferenceData() {
-        SharedPreferences preferences = getApplicationContext().getSharedPreferences("Archivo", MODE_PRIVATE);
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences("Usuario", MODE_PRIVATE);
         Boolean isIntroActivityOpenBefore = preferences.getBoolean("inicioAutomatico", false);
         return isIntroActivityOpenBefore;
     }

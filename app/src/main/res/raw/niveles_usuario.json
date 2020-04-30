@@ -1,0 +1,44 @@
+{
+  "Niveles": [
+    {
+      "nivel": 0,
+      "experiencia": 0
+    },
+    {
+      "nivel": 1,
+      "experiencia": 20
+    },
+    {
+      "nivel": 2,
+      "experiencia": 150
+    },
+    {
+      "nivel": 3,
+      "experiencia": 380
+    },
+    {
+      "nivel": 4,
+      "experiencia": 1650
+    },
+    {
+      "nivel": 5,
+      "experiencia": 2880
+    },
+    {
+      "nivel": 7,
+      "experiencia": 4250
+    },
+    {
+      "nivel": 8,
+      "experiencia": 8080
+    },
+    {
+      "nivel": 9,
+      "experiencia": 13650
+    },
+    {
+      "nivel": 10,
+      "experiencia": 16110
+    }
+  ]
+}

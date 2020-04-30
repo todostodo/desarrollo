@@ -3,6 +3,7 @@ package com.example.desarrollo.LogicaNegocio.Adapter;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
@@ -23,17 +24,17 @@ import com.example.desarrollo.Entidades.MotivadoresSelect;
 import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewPreferencias;
 import com.example.desarrollo.Precentacion.Motivadores.MotivadoresFragment;
 import com.example.desarrollo.R;
+import com.example.desarrollo.Ultilidades.Toastp;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
+public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
     private List<MotivadoresSelect> motivadoresList;
     private Dialog dialogMotivadorSelectNino;
     private MotivadoresFragment fragment = new MotivadoresFragment();
-
 
     private RecyclerView _myRecyclerView;
     private RecyclerViewMotivadoresSelectNino adapterSelectNino;
@@ -43,6 +44,7 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
 
     private NinoDao ninoDao;
     private int countNino;
+    private Toastp toastp;
 
     private static final String TAG = "RecyclerViewMotivadores";
 
@@ -52,13 +54,11 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
         this.motivadoresList = motivadoresList;
     }
 
-
     public class ItemViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtTotalValorMotivador;
         TextView txtDescripcionMotivador;
         ConstraintLayout btnMIniciarMotivador;
-        int posicion;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -101,40 +101,50 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
 
                     adapterSelectNino.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(View v) {
+                        public void onClick(final View v) {
 
-                            boolean diponible = cantidadMotivadoresNino(ninoDisponibleArrayList.get(_myRecyclerView.getChildAdapterPosition(v)).getIdNino());
+                            AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
+                            builder.setCancelable(false);
+                            builder.setMessage("Una ves asigne este motivador no podrá cambiarlo por otro, deberá terminarlo para poder hacerlo ¿Quiere asignar este motivador? ");
+                            builder.setNegativeButton("Cancelar", null);
+                            builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
 
-                            if (diponible == false) {
-                                boolean existeMotivador = motivadoresRepetidos(ninoDisponibleArrayList.get(_myRecyclerView.getChildAdapterPosition(v)).getIdNino(),
-                                        motivadoresList.get(viewHolder.getAdapterPosition()).getIdMotivador());
+                                    boolean diponible = cantidadMotivadoresNino(ninoDisponibleArrayList.get(_myRecyclerView.getChildAdapterPosition(v)).getIdNino());
 
-                                if (existeMotivador == true) {
-                                    String mensaje = " ya tiene asignado ese motivador";
-                                    dialogAviso(parent.getContext(), mensaje, ninoDisponibleArrayList.get(_myRecyclerView.getChildAdapterPosition(v)).getNombre());
-                                } else {
+                                    if (diponible == false) {
+                                        boolean existeMotivador = motivadoresRepetidos(ninoDisponibleArrayList.get(_myRecyclerView.getChildAdapterPosition(v)).getIdNino(),
+                                                motivadoresList.get(viewHolder.getAdapterPosition()).getIdMotivador());
 
-                                    boolean asignarMotivador = motivadoresDao.insertMotivadoresProceso(
-                                            TAG,
-                                            parent.getContext(),
-                                            ninoDisponibleArrayList.get(_myRecyclerView.getChildAdapterPosition(v)).getIdNino(),
-                                            motivadoresList.get(viewHolder.getAdapterPosition()).getIdMotivador(),
-                                            1
-                                    );
-                                    if (asignarMotivador == true) {
-                                        Toast.makeText(parent.getContext(), "Insertado", Toast.LENGTH_SHORT).show();
+                                        if (existeMotivador == true) {
+                                            String mensaje = "ya tiene asignado este motivador, elige otro";
+                                            dialogAviso(parent.getContext(), mensaje, ninoDisponibleArrayList.get(_myRecyclerView.getChildAdapterPosition(v)).getNombre());
+                                        } else {
 
-                                        dialogMotivadorSelectNino.dismiss();
-                                    } else
-                                        Toast.makeText(parent.getContext(), "Error", Toast.LENGTH_SHORT).show();
+                                            boolean asignarMotivador = motivadoresDao.insertMotivadoresProceso(
+                                                    TAG,
+                                                    parent.getContext(),
+                                                    ninoDisponibleArrayList.get(_myRecyclerView.getChildAdapterPosition(v)).getIdNino(),
+                                                    motivadoresList.get(viewHolder.getAdapterPosition()).getIdMotivador(),
+                                                    1
+                                            );
+                                            if (asignarMotivador == true) {
+                                                toastp.toastp(parent.getContext(), "Motivador asignado");
 
+                                                dialogMotivadorSelectNino.dismiss();
+                                            } else
+                                                Toast.makeText(parent.getContext(), "Error", Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    } else {
+                                        String mensaje = " alcanzo el limite de motivadores debera espera hasta que termine los que tiene en proceso para poder elegir otros";
+                                        dialogAviso(parent.getContext(), mensaje, ninoDisponibleArrayList.get(_myRecyclerView.getChildAdapterPosition(v)).getNombre());
+                                    }
                                 }
-                            } else {
-                                String mensaje = " alcanzo el limite de motivadores debera espera hasta que termine los que tiene en proceso para poder elegir otros";
-                                dialogAviso(parent.getContext(), mensaje, ninoDisponibleArrayList.get(_myRecyclerView.getChildAdapterPosition(v)).getNombre());
-                            }
+                            });
+                            builder.show();
                         }
-
                     });
 
                     btnCancelarSelectNinoMotivador.setOnClickListener(new View.OnClickListener() {
@@ -147,35 +157,44 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
                     dialogMotivadorSelectNino.show();
 
                 } else {
-                    boolean diponible = cantidadMotivadoresNino(ninoDisponibleArrayList.get(0).getIdNino());
-                    if (diponible == false) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
+                    builder.setCancelable(false);
+                    builder.setMessage("Una ves asigne este motivador no podrá cambiarlo por otro, deberá terminarlo para poder hacerlo ¿Quiere asignar este motivador? ");
+                    builder.setNegativeButton("Cancelar", null);
+                    builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            boolean diponible = cantidadMotivadoresNino(ninoDisponibleArrayList.get(0).getIdNino());
+                            if (diponible == false) {
 
-                        boolean existeMotivador = motivadoresRepetidos(ninoDisponibleArrayList.get(0).getIdNino(), motivadoresList.get(viewHolder.getAdapterPosition()).getIdMotivador());
+                                boolean existeMotivador = motivadoresRepetidos(ninoDisponibleArrayList.get(0).getIdNino(), motivadoresList.get(viewHolder.getAdapterPosition()).getIdMotivador());
 
-                        if (existeMotivador == true) {
-                            String mensaje = " ya tiene asignado ese motivador";
-                            dialogAviso(parent.getContext(), mensaje, ninoDisponibleArrayList.get(0).getNombre());
-                        } else {
+                                if (existeMotivador == true) {
+                                    String mensaje = "ya tiene asignado este motivador, elige otro";
+                                    dialogAviso(parent.getContext(), mensaje, ninoDisponibleArrayList.get(0).getNombre());
+                                } else {
 
-                            boolean asignarMotivador = motivadoresDao.insertMotivadoresProceso(
-                                    TAG,
-                                    parent.getContext(),
-                                    ninoDisponibleArrayList.get(0).getIdNino(),
-                                    motivadoresList.get(viewHolder.getAdapterPosition()).getIdMotivador(),
-                                    1
-                            );
-                            if (asignarMotivador == true) {
-                                Toast.makeText(parent.getContext(), "Insertado", Toast.LENGTH_SHORT).show();
+                                    boolean asignarMotivador = motivadoresDao.insertMotivadoresProceso(
+                                            TAG,
+                                            parent.getContext(),
+                                            ninoDisponibleArrayList.get(0).getIdNino(),
+                                            motivadoresList.get(viewHolder.getAdapterPosition()).getIdMotivador(),
+                                            1
+                                    );
+                                    if (asignarMotivador == true) {
+                                        Toast.makeText(parent.getContext(), "Insertado", Toast.LENGTH_SHORT).show();
 
-                            } else
-                                Toast.makeText(parent.getContext(), "Error", Toast.LENGTH_SHORT).show();
+                                    } else
+                                        Toast.makeText(parent.getContext(), "Error", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                String mensaje = " alcanzo el limite de motivadores debera espera hasta que termine los que tiene en proceso para poder elegir otros";
+                                dialogAviso(parent.getContext(), mensaje, ninoDisponibleArrayList.get(0).getNombre());
+                            }
                         }
-                    } else {
-                        String mensaje = " alcanzo el limite de motivadores debera espera hasta que termine los que tiene en proceso para poder elegir otros";
-                        dialogAviso(parent.getContext(), mensaje, ninoDisponibleArrayList.get(0).getNombre());
-                    }
+                    });
+                    builder.show();
                 }
-
             }
         });
 
@@ -189,8 +208,7 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
         final MotivadoresSelect motivadores = this.motivadoresList.get(position);
 
         viewHolder.txtDescripcionMotivador.setText(motivadores.getDescripcion());
-        viewHolder.txtTotalValorMotivador.setText(String.valueOf(motivadores.getValor()));
-
+        viewHolder.txtTotalValorMotivador.setText(String.valueOf(motivadores.getValor()) + " fichas");
 
     }
 
@@ -202,7 +220,6 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
 
     private boolean cantidadMotivadoresNino(int idNino) {
         int cantidad = motivadoresDao.countMotivadoresNino(TAG, context, idNino);
-        //Toast.makeText(context, "cantidad " + cantidad, Toast.LENGTH_SHORT).show();
         if (cantidad > 3)
             return true;
         else
@@ -219,9 +236,10 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
     }
 
     private void dialogAviso(Context context, String mensaje, String nombre) {
-        new AlertDialog.Builder(context)
-                .setTitle("Aviso")
-                .setMessage(nombre + " " + mensaje)
-                .setPositiveButton(android.R.string.yes, null).create().show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setCancelable(false);
+        builder.setMessage(mensaje);
+        builder.setPositiveButton("Aceptar", null);
+        builder.show();
     }
 }

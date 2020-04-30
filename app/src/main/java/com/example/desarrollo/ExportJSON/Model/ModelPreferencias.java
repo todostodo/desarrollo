@@ -5,8 +5,7 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.desarrollo.ExportJSON.Reader.ReaderFrutas;
-import com.example.desarrollo.ExportJSON.Reader.ReaderPreferencias;
+import com.example.desarrollo.Entidades.PreferenciasNino;
 import com.example.desarrollo.R;
 
 import org.json.JSONArray;
@@ -36,7 +35,7 @@ public class ModelPreferencias extends AppCompatActivity {
                 String imgUrl = itemObj.getString("imgUrl");
                 String background = itemObj.getString("backgroud");
 
-                ReaderPreferencias readerFrutas = new ReaderPreferencias(nombre,  imgUrl, background);
+                PreferenciasNino readerFrutas = new PreferenciasNino(nombre,  imgUrl, background);
                 arrayList.add(readerFrutas);
             }
 

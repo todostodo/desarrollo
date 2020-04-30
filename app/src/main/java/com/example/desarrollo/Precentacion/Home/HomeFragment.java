@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,10 +22,16 @@ import com.example.desarrollo.Precentacion.Login.IntroduccionActivity;
 import com.example.desarrollo.Precentacion.MainActivity;
 import com.example.desarrollo.R;
 
+import org.w3c.dom.Text;
+
+import java.util.Calendar;
+
 
 public class HomeFragment extends Fragment {
 
-    UserDao userDao;
+    private TextView _txtSaludo;
+    private UserDao userDao;
+    private View view;
 
     private static final String TAG = "HomeFragment";
 
@@ -39,8 +46,9 @@ public class HomeFragment extends Fragment {
             startActivity(introduccion);
         }
 
-
-        final View view = inflater.inflate(R.layout.home_fragment, container, false);
+        view = inflater.inflate(R.layout.home_fragment, container, false);
+        init();
+        saludoUsuario();
 
         return view;
     }
@@ -65,7 +73,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
         getView().findViewById(R.id.btnDetalleConsumoDia).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +80,24 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+    }
+
+    private void init() {
+        _txtSaludo = (TextView) view.findViewById(R.id.txtSaludo);
+    }
+
+    private void saludoUsuario() {
+        Calendar calendar = Calendar.getInstance();
+        String saludo = null;
+        int timeOfDay = calendar.get(Calendar.HOUR_OF_DAY);
+        if (timeOfDay >= 0 && timeOfDay < 12) {
+            saludo = "Buenos días.";
+        } else if (timeOfDay >= 12 && timeOfDay < 18) {
+            saludo = "Buenas tardes.";
+        } else if (timeOfDay >= 18 && timeOfDay < 24) {
+            saludo = "Buenas noches.";
+        }
+        _txtSaludo.setText(saludo);
     }
 
     private void openDialog() {

@@ -3,7 +3,7 @@ package com.example.desarrollo.ExportJSON.Filter;
 import android.content.Context;
 import android.widget.Filter;
 
-import com.example.desarrollo.ExportJSON.Reader.ReaderUltraprocesados;
+import com.example.desarrollo.Entidades.UltraProcesados;
 import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewAdapterUltraprocesados;
 
 import java.util.ArrayList;
@@ -11,11 +11,11 @@ import java.util.List;
 
 public class FilteredHelperUltraprocesados extends Filter {
 
-    List<ReaderUltraprocesados> currentList;
+    List<UltraProcesados> currentList;
     RecyclerViewAdapterUltraprocesados adapter;
     Context context;
 
-    public FilteredHelperUltraprocesados(List<ReaderUltraprocesados> currentList, RecyclerViewAdapterUltraprocesados adapter, Context context) {
+    public FilteredHelperUltraprocesados(List<UltraProcesados> currentList, RecyclerViewAdapterUltraprocesados adapter, Context context) {
         this.currentList = currentList;
         this.adapter = adapter;
         this.context = context;
@@ -32,9 +32,9 @@ public class FilteredHelperUltraprocesados extends Filter {
             constraint = constraint.toString().toUpperCase();
 
             //HOLD FILTERS WE FIND
-            List<ReaderUltraprocesados> foundFilters = new ArrayList<>();
+            List<UltraProcesados> foundFilters = new ArrayList<>();
 
-            ReaderUltraprocesados holidays = null;
+            UltraProcesados holidays = null;
 
             //ITERATE CURRENT LIST
             for (int i = 0;i < currentList.size(); i++)
@@ -66,7 +66,7 @@ public class FilteredHelperUltraprocesados extends Filter {
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
 
-        adapter.setReaderUltraprocesados((ArrayList<ReaderUltraprocesados>) results.values);
+        adapter.setListUltraprocesados((ArrayList<UltraProcesados>) results.values);
         adapter.notifyDataSetChanged();
     }
 }
