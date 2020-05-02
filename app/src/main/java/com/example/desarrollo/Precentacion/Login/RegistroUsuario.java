@@ -2,6 +2,8 @@ package com.example.desarrollo.Precentacion.Login;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.desarrollo.ConexionApi.ConexionApi;
 import com.example.desarrollo.Datos.UserDao;
 import com.example.desarrollo.Precentacion.Home.HijoRegistroActivity;
 import com.example.desarrollo.R;
@@ -59,6 +62,7 @@ public class RegistroUsuario extends AppCompatActivity {
     }
 
     private void registrarUsuario() {
+
         String nombre = _txtNombre.getText().toString();
         String apellidoPaterno = _txtApellidoPaterno.getText().toString();
         String apellidoMaterno = _txtApellidoMaterno.getText().toString();
@@ -101,23 +105,29 @@ public class RegistroUsuario extends AppCompatActivity {
                                         despues almacenar el correo y la id en sharepreferences
                                      */
 
-                                    boolean addUser = userDao.addUsuario(
-                                            TAG,
-                                            getApplicationContext(),
-                                            nombre,
-                                            apellidoPaterno,
-                                            apellidoMaterno,
-                                            correo,
-                                            password,
-                                            0,
-                                            0
-                                    );
+                                    ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(getApplicationContext().CONNECTIVITY_SERVICE);
+                                    NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 
-                                    if (addUser == true) {
+                                    if(networkInfo != null && networkInfo.isConnected()){
+                                        boolean addUser =  ConexionApi.InsertarUsuarioNuevo(
+                                                getApplicationContext(),
+                                                nombre,
+                                                apellidoMaterno,
+                                                apellidoPaterno,
+                                                correo,
+                                                password,
+                                                0,
+                                                0);
 
-                                        Intent introduccion = new Intent(getApplicationContext(), IntroduccionActivity.class);
-                                        startActivity(introduccion);
+                                        if (addUser == true) {
+                                            Intent introduccion = new Intent(getApplicationContext(), IntroduccionActivity.class);
+                                            startActivity(introduccion);
+                                        }
+                                    } else {
+                                        toastp.toastp(getApplicationContext(), "Conexion no valida: Revisa tu conexion a internet.");
+
                                     }
+
                                 }
                             }
                         }

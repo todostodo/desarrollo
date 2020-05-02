@@ -2,6 +2,10 @@ package com.example.desarrollo.ConexionApi;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,9 +19,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import  com.example.desarrollo.Datos.UserDao;
+import com.example.desarrollo.Precentacion.Login.IntroduccionActivity;
 
-public class ConexionApi {
+import static com.facebook.FacebookSdk.getApplicationContext;
+
+public class ConexionApi extends AppCompatActivity {
 
     public static RequestQueue queue;
 
@@ -164,9 +174,22 @@ public class ConexionApi {
     }
 
     ///////////////////////***********[Insertar un usuario nuevo]***************
-    public static void InsertarUsuarioNuevo(Context context,String nomu,String apmu,String appu, String correo, String pwdu, int nivel, int experiencia){
+    public static boolean InsertarUsuarioNuevo(Context context, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int estadoReg){
+
+        boolean respuesta=true;
         String url = "http://68.183.148.243/Persuhabit/usuarios";
         RequestQueue queue = Volley.newRequestQueue(context);
+        final String nomu1, apmu1,  appu1, correo1, pwdu1;
+        final int nivel1,  estadoReg1;
+        final Context context1;
+        nomu1 = nomu;
+        apmu1 = apmu;
+        appu1 = appu;
+        correo1 = correo;
+        pwdu1 = pwdu;
+        nivel1 = nivel;
+        estadoReg1 = estadoReg;
+        context1=context;
 
 // POST parameters
         Map<String, Object> params = new HashMap<String, Object>();
@@ -176,7 +199,7 @@ public class ConexionApi {
         params.put("correo", correo);
         params.put("pwdu", pwdu);
         params.put("nivel", nivel);
-        params.put("experiencia", experiencia);
+        params.put("experiencia", estadoReg);
 
         JSONObject jsonObj = new JSONObject(params);
 
@@ -184,9 +207,19 @@ public class ConexionApi {
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
                 (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
                 {
+
                     @Override
                     public void onResponse(JSONObject response)
                     {
+                        try {
+                                int resultado = response.getInt("data");
+                                System.out.println("el valor del id: "+resultado);
+                            llegue(response,nomu1, apmu1,appu1,correo1,pwdu1,nivel1,estadoReg1,context1);
+                            // registrar(resultado);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 },
                         new Response.ErrorListener()
@@ -199,7 +232,17 @@ public class ConexionApi {
 
 // Add the request to the RequestQueue.
         queue.add(jsonObjRequest);
+        return respuesta;
     }
+
+
+    public static void llegue(JSONObject response, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int estadoReg, Context context) throws JSONException {
+        int resultado = response.getInt("data");
+        UserDao.addUsuario("add",context,nomu,appu,apmu,correo,pwdu,nivel,estadoReg,resultado);
+    }
+
+
+
 
     ////////////////////////****************[Actualizar Correo del Usuario]
     public static void ActualizarCorreoUsuario(Context context, String correo, int id){
