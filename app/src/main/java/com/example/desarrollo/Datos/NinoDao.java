@@ -9,16 +9,13 @@ import android.util.Log;
 import com.example.desarrollo.Entidades.HistorialConsumo;
 import com.example.desarrollo.Entidades.Nino;
 import com.example.desarrollo.ExportJSON.Model.ModelFrutas;
-import com.example.desarrollo.ExportJSON.Reader.ReaderFrutas;
+import com.example.desarrollo.Entidades.Frutas;
 import com.example.desarrollo.Precentacion.Home.HijoRegistroActivity;
 import com.example.desarrollo.Ultilidades.Utilidades;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Locale;
 import java.util.TimeZone;
 
 public class NinoDao {
@@ -227,7 +224,7 @@ public class NinoDao {
             Calculos calculos = new Calculos();
             HistorialConsumo historialConsumo;
             ModelFrutas modelFrutas = new ModelFrutas();
-            ArrayList<ReaderFrutas> frutasList;
+            ArrayList<Frutas> frutasList;
 
             String fecha = calculos.getFecha();
 
@@ -239,14 +236,15 @@ public class NinoDao {
                     " FROM " + Utilidades.TABLA_DetalleRegistro +
                     " INNER JOIN " + Utilidades.TABLA_Registro + " ON " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_IdDetalleRegistro +
                     " WHERE " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idNino + " = " + idNino +
-                    " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " = '" + fecha + "' ", null);
+                    " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " = '" + fecha + "' " +
+                    " AND (" + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " = " + "'Fruta'" +
+                    " OR " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " = " + "'Verdura')", null);
 
             while (cursor.moveToNext()) {
                 historialConsumo = new HistorialConsumo();
                 frutasList = new ArrayList();
 
                 modelFrutas.addItemsFromJSONHistorial(frutasList, TAG, cursor.getString(cursor.getColumnIndex("tipo")), context);
-
 
                 for (int i = 0; i < frutasList.size(); i++) {
                     if (frutasList.get(i).getId().equals(String.valueOf(cursor.getInt(cursor.getColumnIndex("idalimento"))))) {
@@ -258,17 +256,12 @@ public class NinoDao {
                     }
                 }
 
-
-
                 historialConsumo.setCantidadAlimento(cursor.getDouble(cursor.getColumnIndex("cad")));
                 historialConsumo.setHora(cursor.getString(cursor.getColumnIndex("hora")));
                 historialConsumo.setUnidadMedida(cursor.getDouble(cursor.getColumnIndex("umedr")));
 
                 consumoList.add(historialConsumo);
 
-                Log.v(TAG, String.valueOf(cursor.getDouble(cursor.getColumnIndex("cad"))));
-                Log.v(TAG, String.valueOf(cursor.getDouble(cursor.getColumnIndex("umedr"))));
-                Log.v(TAG, cursor.getString(cursor.getColumnIndex("hora")));
             }
 
         } catch (Exception e) {

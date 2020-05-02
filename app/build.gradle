@@ -57,8 +57,6 @@ dependencies {
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
 
     implementation "com.android.support:support-core-utils:29.0.0"
-
-
     //JavaMaik Informacion
     //https://javaee.github.io/javamail/ -- Documentacion de JavaMail Api (Oracle)
     //https://javaee.github.io/javamail/Android -- Pagina para hacer el llamado de JavaMail API

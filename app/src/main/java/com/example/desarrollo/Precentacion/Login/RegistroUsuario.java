@@ -19,6 +19,8 @@ import com.example.desarrollo.Precentacion.Home.HijoRegistroActivity;
 import com.example.desarrollo.R;
 import com.example.desarrollo.Ultilidades.Toastp;
 
+import static com.android.volley.Request.Method.HEAD;
+
 public class RegistroUsuario extends AppCompatActivity {
 
     private TextView _txtNombre, _txtApellidoPaterno, _txtApellidoMaterno, _txtCorreo, _txtPassword, _btnIrLogin;
@@ -105,11 +107,12 @@ public class RegistroUsuario extends AppCompatActivity {
                                         despues almacenar el correo y la id en sharepreferences
                                      */
 
+
                                     ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(getApplicationContext().CONNECTIVITY_SERVICE);
                                     NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 
-                                    if(networkInfo != null && networkInfo.isConnected()){
-                                        boolean addUser =  ConexionApi.InsertarUsuarioNuevo(
+                                    if (networkInfo != null && networkInfo.isConnected()) {
+                                        boolean addUser = ConexionApi.InsertarUsuarioNuevo(
                                                 getApplicationContext(),
                                                 nombre,
                                                 apellidoMaterno,
@@ -125,9 +128,7 @@ public class RegistroUsuario extends AppCompatActivity {
                                         }
                                     } else {
                                         toastp.toastp(getApplicationContext(), "Conexion no valida: Revisa tu conexion a internet.");
-
                                     }
-
                                 }
                             }
                         }

@@ -1,12 +1,12 @@
-package com.example.desarrollo.ExportJSON.Reader;
+package com.example.desarrollo.Entidades;
 
-public class ReaderPreferencias {
+public class PreferenciasNino {
      private String nombreFruta;
      private String imgUrlFruta;
      private String background;
      private boolean isSelect;
 
-    public ReaderPreferencias(String nombreFruta, String imgUrlFruta, String background) {
+    public PreferenciasNino(String nombreFruta, String imgUrlFruta, String background) {
         this.nombreFruta = nombreFruta;
         this.imgUrlFruta = imgUrlFruta;
         this.background = background;

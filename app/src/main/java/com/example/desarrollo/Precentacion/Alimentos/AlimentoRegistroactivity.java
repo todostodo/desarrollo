@@ -32,12 +32,11 @@ import com.bumptech.glide.Glide;
 import com.example.desarrollo.Datos.Calculos;
 import com.example.desarrollo.Datos.MotivadoresDao;
 import com.example.desarrollo.Datos.NinoDao;
+import com.example.desarrollo.Datos.UserDao;
 import com.example.desarrollo.Entidades.MotivadoresSelect;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresSelectNino;
 import com.example.desarrollo.R;
 import com.example.desarrollo.Ultilidades.Toastp;
-import com.google.android.gms.auth.api.signin.internal.SignInHubActivity;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
@@ -47,12 +46,12 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
 
     private TextView f_nombre, f_descripcion, f_recomendacion, f_recomendacionDos, f_frase, f_ventaja, f_avisoTitulo, f_aviso;
     private TextView _txtMensajeDialog;
-    private String f_idAlimento, f_equivalencia, hora, fecha, tipoAlimento;
+    private String f_idAlimento, f_unidadMedida, hora, fecha, tipoAlimento;
     private int idNino;
     private ImageView f_imagen;
     private RelativeLayout f_fondo;
     private Button _btnRegistrarFruta;
-    private Dialog reaccionHijoDialog, ninosDialog, epicFichaDialog;
+    private Dialog reaccionHijoDialog, ninosDialog;
     private TextView _txtCantidadConsumo;
     private LinearLayout _fruta_linearRecomendacionDos, _btnTerrible, _btnEstaBien, _btnGenia;
     private RelativeLayout _fruta_relativeAviso;
@@ -71,6 +70,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
     private Toastp toast;
     private Calculos calculos;
     private NinoDao ninoDao;
+    private UserDao userDao;
     private MotivadoresDao motivadoresDao;
     private ArrayList<MotivadoresSelect.MotivadoresNinoDisponible> ninoDisponibleArrayList;
     private RecyclerView _myRecyclerViewNino;
@@ -180,7 +180,6 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
 
     private void cargarReaccionHijoDialog() {
 
-        final SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("Calculo", MODE_PRIVATE);
 
         reaccionHijoDialog = new Dialog(AlimentoRegistroactivity.this);
         reaccionHijoDialog.setCanceledOnTouchOutside(false);
@@ -211,12 +210,39 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 registrarAlimento();
+                experienciaUsuario();
                 fichaPrimerIntento();
                 reaccionHijoDialog.dismiss();
             }
         });
 
         reaccionHijoDialog.show();
+    }
+
+    //Suma de experiencia al usuario
+    private void experienciaUsuario() {
+
+        double cantidadConsumo = Double.valueOf(_txtCantidadConsumo.getText().toString());
+        int experiencia = 0;
+
+        if (cantidadConsumo >= 1.0) {
+            experiencia = 10;
+        } else if (cantidadConsumo >= 0.5 && cantidadConsumo < 1) {
+            experiencia = 8;
+        } else if (cantidadConsumo < 0.5) {
+            experiencia = 5;
+        }
+
+        if (idNino == 1){
+            if (lineaBaseGeneradaNinoUno()){
+                userDao.sumarExpUsuarario(TAG, getApplicationContext(), experiencia);
+            }
+        } else if (idNino == 2){
+            if (lineaBaseGeneradaNinoDos()){
+                userDao.sumarExpUsuarario(TAG, getApplicationContext(), experiencia);
+            }
+        }
+
     }
 
     //Manejo de los dialogos
@@ -277,43 +303,51 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("Calculo", MODE_PRIVATE);
         double baseEsfuerzoVerduras = ninoDao.consultarEsfuerzoConsumoVerduras(TAG, getApplicationContext(), idNino);
         double cantidadConsumo = Double.valueOf(_txtCantidadConsumo.getText().toString().trim());
-        double unidadMedida = calculos.obtenerUnidadMedida(cantidadConsumo, Double.valueOf(f_equivalencia));
+        double unidadMedida = calculos.obtenerEquivalencia(cantidadConsumo, Double.valueOf(f_unidadMedida));
 
         if (unidadMedida >= baseEsfuerzoVerduras) {
 
             if (idNino == 1) {
-                if (!sharedPreferences.getBoolean("primerIntento1", true)) {
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putBoolean("primerIntento1", true);
-                    editor.commit();
-                    ganoFinaPrimerIntento = true;
-                    ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 2);
+                if (lineaBaseGeneradaNinoUno()) {
+                    if (!sharedPreferences.getBoolean("primerIntento1", true)) {
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("primerIntento1", true);
+                        editor.commit();
+                        ganoFinaPrimerIntento = true;
+                        ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 2);
 
-                    if (tipoAlimento.equals("Fruta"))
-                        fichaPrimerIntentoFruta();
-                    else
-                        fichaPrimerIntentoVerdura();
+                        if (tipoAlimento.equals("Fruta"))
+                            fichaPrimerIntentoFruta();
+                        else
+                            fichaPrimerIntentoVerdura();
 
+                    } else {
+                        ganoFinaPrimerIntento = false;
+                        fichaNoConoceAlimento();
+                    }
                 } else {
-                    ganoFinaPrimerIntento = false;
                     fichaNoConoceAlimento();
                 }
             }
             if (idNino == 2) {
-                if (!sharedPreferences.getBoolean("primerIntento2", true)) {
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putBoolean("primerIntento2", true);
-                    editor.commit();
-                    ganoFinaPrimerIntento = true;
-                    ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 2);
+                if (lineaBaseGeneradaNinoDos()) {
+                    if (!sharedPreferences.getBoolean("primerIntento2", true)) {
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("primerIntento2", true);
+                        editor.commit();
+                        ganoFinaPrimerIntento = true;
+                        ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 2);
 
-                    if (tipoAlimento.equals("Fruta"))
-                        fichaPrimerIntentoFruta();
-                    else
-                        fichaPrimerIntentoVerdura();
+                        if (tipoAlimento.equals("Fruta"))
+                            fichaPrimerIntentoFruta();
+                        else
+                            fichaPrimerIntentoVerdura();
 
+                    } else {
+                        ganoFinaPrimerIntento = false;
+                        fichaNoConoceAlimento();
+                    }
                 } else {
-                    ganoFinaPrimerIntento = false;
                     fichaNoConoceAlimento();
                 }
             }
@@ -355,24 +389,27 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
             if (preferencias == true) {
                 SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("Calculo", MODE_PRIVATE);
                 if (idNino == 1) {
-                    if (!sharedPreferences.getBoolean("noConoceAlimento1", true)) {
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putBoolean("noConoceAlimento1", true);
-                        editor.commit();
-                        ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 4);
-                        showDialogFicha(4, "Buen esfuerzo", "Te has esforzado al consumir un alimentos que no te gusta");
+                    if (lineaBaseGeneradaNinoUno()) {
+                        if (!sharedPreferences.getBoolean("noConoceAlimento1", true)) {
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putBoolean("noConoceAlimento1", true);
+                            editor.commit();
+                            ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 4);
+                            showDialogFicha(4, "Buen esfuerzo", "Te has esforzado al consumir un alimentos que no te gusta");
+                        }
                     }
                 }
                 if (idNino == 2) {
-                    if (!sharedPreferences.getBoolean("noConoceAlimento2", true)) {
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putBoolean("noConoceAlimento2", true);
-                        editor.commit();
-                        ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 4);
-                        showDialogFicha(4, "Buen esfuerzo", "Te has esforzado al consumir un alimentos que no te gusta");
+                    if (lineaBaseGeneradaNinoDos()) {
+                        if (!sharedPreferences.getBoolean("noConoceAlimento2", true)) {
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putBoolean("noConoceAlimento2", true);
+                            editor.commit();
+                            ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 4);
+                            showDialogFicha(4, "Buen esfuerzo", "Te has esforzado al consumir un alimentos que no te gusta");
+                        }
                     }
                 }
-                toast.toastp(getApplicationContext(), "Has consumido una frutas que no te gusta");
             }
         }
 
@@ -383,14 +420,16 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
     private void registrarAlimento() {
 
         getHoraFecha();
+        double equivalencia = calculos.obtenerEquivalencia(Double.valueOf(_txtCantidadConsumo.getText().toString().trim()), Double.valueOf(f_unidadMedida));
 
         boolean insert = calculos.registrarDetalleReg(
                 TAG,
                 this,
                 idNino,
                 Integer.valueOf(f_idAlimento),
-                Double.valueOf(f_equivalencia),
+                Double.valueOf(f_unidadMedida),
                 Double.valueOf(_txtCantidadConsumo.getText().toString().trim()),
+                equivalencia,
                 hora,
                 fecha,
                 tipoAlimento
@@ -410,7 +449,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
 
         f_idAlimento = getIntent().getExtras().getString("fruta_idAlimentos");
         f_nombre.setText(getIntent().getExtras().getString("fruta_nombre"));
-        f_equivalencia = getIntent().getExtras().getString("fruta_equivalencia");
+        f_unidadMedida = getIntent().getExtras().getString("fruta_equivalencia");
         f_descripcion.setText(getIntent().getExtras().getString("fruta_descripcion"));
         f_recomendacion.setText(getIntent().getExtras().getString("fruta_recomendacion"));
         f_recomendacionDos.setText(getIntent().getExtras().getString("fruta_recomendacionDos"));
@@ -439,6 +478,18 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
         Calculos calculos = new Calculos();
         hora = calculos.getHora();
         fecha = calculos.getFecha();
+    }
+
+    private boolean lineaBaseGeneradaNinoUno() {
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("Calculo", MODE_PRIVATE);
+        Boolean lineaBaseGeneradaNino1 = sharedPreferences.getBoolean("LineaBaseGenerada1", false);
+        return lineaBaseGeneradaNino1;
+    }
+
+    private boolean lineaBaseGeneradaNinoDos() {
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("Calculo", MODE_PRIVATE);
+        Boolean lineaBaseGeneradaNino2 = sharedPreferences.getBoolean("LineaBaseGenerada2", false);
+        return lineaBaseGeneradaNino2;
     }
 
     private void init() {

@@ -13,7 +13,7 @@
     <color name="gris_oscuro_subTitulos">#515151</color>
 
     <!-- Alimento registro -->
-    <color name="gris_opaco">#B8C2CD</color>
+    <color name="gris_opaco">#A5AEB7</color>
     <color name="verde_secundario">#76C5BA</color>
     <color name="amarillo_aviso_titulo">#FAE19F</color>
     <color name="morado_aviso_contenido">#E7E4F4</color>
@@ -30,7 +30,7 @@
     <color name="gris_edad">#DEDFE1</color>
 
     <!-- Login -->
-    <color name="morado_login">#8646FF</color>
+    <color name="morado_login">#32ADCE</color>
     <color name="gris_login">#A4A5AA</color>
 
     <!-- Ultraprocesados -->

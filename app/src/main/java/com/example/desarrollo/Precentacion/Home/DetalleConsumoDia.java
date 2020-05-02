@@ -2,8 +2,6 @@ package com.example.desarrollo.Precentacion.Home;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -50,7 +48,7 @@ import java.util.ArrayList;
 public class DetalleConsumoDia extends AppCompatActivity {
 
     private LinearLayout _btnAddTutor;
-    private RelativeLayout _btnAtivityNino, _backgroundGeneroNino;
+    private RelativeLayout _btnAtivityNino; //_backgroundGeneroNino;
     private Spinner _spinnerDetalleConsumo;
     private TextView _txtAvanceFrutas, _txtAvanceVerduras, _txtCaloriasSemanaPasada, _txtCaloriasSemanaActual, _txtCaloriasHoy;
     private ImageView _imgGeneroNino;
@@ -92,8 +90,8 @@ public class DetalleConsumoDia extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detalle_consumo_dia_fragment);
-
         init();
+
 
         _epicFichaContenidoDetalle.setAlpha(0);
         _epicFichaFondoNegroDetalle.setAlpha(0);
@@ -191,31 +189,45 @@ public class DetalleConsumoDia extends AppCompatActivity {
         _chartVerduras.setProgress(0);
 
         if (genero.equals("hombre")) {
-            _backgroundGeneroNino.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#E36B5E")));
-            _imgGeneroNino.setBackgroundResource(R.drawable.icon_genero_hombre);
+            _imgGeneroNino.setImageResource(R.drawable.icon_genero_hombre);
         }
         if (genero.equals("mujer")) {
-            _backgroundGeneroNino.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#B8C2CD")));
-            _imgGeneroNino.setBackgroundResource(R.drawable.icon_genero_mujer);
+            _imgGeneroNino.setImageResource(R.drawable.icon_genero_mujer);
         }
 
 
         double avanceEsfuerzoFrutas = calculos.progresoEsfuerzoFruta(TAG, getApplicationContext(), idNino);
         avanceEsfuerzoVerdura = calculos.progresoEsfuerzoVerdura(TAG, getApplicationContext(), idNino);
+
         double consultarEsfuerzoConsumoFruta = ninoDao.consultarEsfuerzoConsumoFrutas(TAG, getApplicationContext(), idNino);
         consultarEsfuerzoConsumoVerduras = ninoDao.consultarEsfuerzoConsumoVerduras(TAG, getApplicationContext(), idNino);
+
         final int progresoFrutas = (int) Math.round((avanceEsfuerzoFrutas * 100) / 2);
         final int progresoVerduras = (int) Math.round((avanceEsfuerzoVerdura * 100) / 2);
         int metaPorcionesFruta = (int) Math.round((consultarEsfuerzoConsumoFruta * 100) / 2);
         int metaPorcionesVerduras = (int) Math.round((consultarEsfuerzoConsumoVerduras * 100) / 2);
 
-        if (avanceEsfuerzoFrutas >= consultarEsfuerzoConsumoFruta)
-            avanceEsfuerzoFrutas = consultarEsfuerzoConsumoFruta;
-        if (avanceEsfuerzoVerdura >= consultarEsfuerzoConsumoVerduras)
-            avanceEsfuerzoVerdura = consultarEsfuerzoConsumoVerduras;
-
         _txtAvanceFrutas.setText(String.valueOf(reducirDigitosProciones.format(consultarEsfuerzoConsumoFruta)) + "/" + String.valueOf(reducirDigitosProciones.format(avanceEsfuerzoFrutas)));
         _txtAvanceVerduras.setText(String.valueOf(reducirDigitosProciones.format(consultarEsfuerzoConsumoVerduras)) + "/" + String.valueOf(reducirDigitosProciones.format(avanceEsfuerzoVerdura)));
+
+
+        if (idNino == 1) {
+            if (!lineaBaseGeneradaNinoUno()) {
+                if (avanceEsfuerzoFrutas >= consultarEsfuerzoConsumoFruta)
+                    avanceEsfuerzoFrutas = consultarEsfuerzoConsumoFruta;
+                if (avanceEsfuerzoVerdura >= consultarEsfuerzoConsumoVerduras)
+                    avanceEsfuerzoVerdura = consultarEsfuerzoConsumoVerduras;
+            }
+        } else {
+            if (idNino == 2) {
+                if (!lineaBaseGeneradaNinoDos()) {
+                    if (avanceEsfuerzoFrutas >= consultarEsfuerzoConsumoFruta)
+                        avanceEsfuerzoFrutas = consultarEsfuerzoConsumoFruta;
+                    if (avanceEsfuerzoVerdura >= consultarEsfuerzoConsumoVerduras)
+                        avanceEsfuerzoVerdura = consultarEsfuerzoConsumoVerduras;
+                }
+            }
+        }
 
         _charFrutas.setMax(metaPorcionesFruta);
         _chartVerduras.setMax(metaPorcionesVerduras);
@@ -268,9 +280,10 @@ public class DetalleConsumoDia extends AppCompatActivity {
 
         pStatusFrutas = 0;
 
-        int caloriasSemanaPasada = calculos.KaloriaFija(getApplicationContext(), idNino);
-        double caloriasSemanaActual = calculos.KaloriaCambio(getApplicationContext(), idNino);
-        double caloriasHoy = calculos.KaloriaDia(getApplicationContext(), idNino);
+
+        int caloriasSemanaPasada = calculos.caloriaFija(getApplicationContext(), idNino);
+        int caloriasSemanaActual = calculos.caloriaCambio(getApplicationContext(), idNino);
+        int caloriasHoy = calculos.caloriaDia(getApplicationContext(), idNino);
 
         _txtCaloriasSemanaPasada.setText(String.valueOf(caloriasSemanaPasada));
         _txtCaloriasSemanaActual.setText(String.valueOf(caloriasSemanaActual));
@@ -289,7 +302,7 @@ public class DetalleConsumoDia extends AppCompatActivity {
             msgPersuasivos.addItemsFromJSONMsgPersuasivos(list, TAG, "consumoPlaneadoFruta", getApplicationContext());
             showDialogFicha(1, idNino, list.get(selectMsg).getTitulo(), list.get(selectMsg).getMensaje());
         }
-        if (alimento.equals("verduras")){
+        if (alimento.equals("verduras")) {
 
             msgPersuasivos.addItemsFromJSONMsgPersuasivos(list, TAG, "consumoPlaneadoVerduras", getApplicationContext());
             showDialogFicha(1, idNino, list.get(selectMsg).getTitulo(), list.get(selectMsg).getMensaje());
@@ -304,31 +317,38 @@ public class DetalleConsumoDia extends AppCompatActivity {
         if (avanceEsfuerzoConsumoFruta >= baseEsfuerzoFrutas) {
             SharedPreferences sharedPreferences = getSharedPreferences("Calculo", MODE_PRIVATE);
             if (idNino == 1) {
+                if (lineaBaseGeneradaNinoUno()) {
+                    if (!sharedPreferences.getBoolean("fichaFruta1", true)) {
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("fichaFruta1", true);
+                        editor.commit();
+                        ganoFichaDialogFruta = true;
+                        ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 1);
 
-                if (!sharedPreferences.getBoolean("fichaFruta1", true)) {
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putBoolean("fichaFruta1", true);
-                    editor.commit();
-                    ganoFichaDialogFruta = true;
-                    ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 1);
-
-                    mensajeFichas(idNino, "frutas");
-                } else {
-                    ganoFichaDialogFruta = false;
+                        mensajeFichas(idNino, "frutas");
+                    } else {
+                        ganoFichaDialogFruta = false;
+                        fichaVerdura(idNino);
+                    }
+                } else{
                     fichaVerdura(idNino);
                 }
             }
             if (idNino == 2) {
-                if (!sharedPreferences.getBoolean("fichaFruta2", true)) {
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putBoolean("fichaFruta2", true);
-                    editor.commit();
-                    ganoFichaDialogFruta = true;
-                    ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 1);
+                if (lineaBaseGeneradaNinoDos()) {
+                    if (!sharedPreferences.getBoolean("fichaFruta2", true)) {
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("fichaFruta2", true);
+                        editor.commit();
+                        ganoFichaDialogFruta = true;
+                        ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 1);
 
-                    mensajeFichas(idNino, "frutas");
-                } else {
-                    ganoFichaDialogFruta = false;
+                        mensajeFichas(idNino, "frutas");
+                    } else {
+                        ganoFichaDialogFruta = false;
+                        fichaVerdura(idNino);
+                    }
+                }else {
                     fichaVerdura(idNino);
                 }
             }
@@ -343,30 +363,42 @@ public class DetalleConsumoDia extends AppCompatActivity {
         if (avanceEsfuerzoVerdura >= consultarEsfuerzoConsumoVerduras) {
             SharedPreferences sharedPreferences = getSharedPreferences("Calculo", MODE_PRIVATE);
             if (idNino == 1) {
-                if (!sharedPreferences.getBoolean("fichaVerdura1", true)) {
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putBoolean("fichaVerdura1", true);
-                    editor.commit();
-                    ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 1);
+                if (lineaBaseGeneradaNinoUno()) {
+                    if (!sharedPreferences.getBoolean("fichaVerdura1", true)) {
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("fichaVerdura1", true);
+                        editor.commit();
+                        ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 1);
 
-                    mensajeFichas(idNino, "verduras");
+                        mensajeFichas(idNino, "verduras");
+                    }
                 }
             }
             if (idNino == 2) {
-                if (!sharedPreferences.getBoolean("fichaVerdura2", true)) {
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putBoolean("fichaVerdura2", true);
-                    editor.commit();
-                    ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 1);
+                if (lineaBaseGeneradaNinoDos()) {
+                    if (!sharedPreferences.getBoolean("fichaVerdura2", true)) {
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("fichaVerdura2", true);
+                        editor.commit();
+                        ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 1);
 
-                    mensajeFichas(idNino, "verduras");
+                        mensajeFichas(idNino, "verduras");
+                    }
                 }
             }
         }
     }
 
-    private void fichaUltraprocesados(int idNino){
+    private boolean lineaBaseGeneradaNinoUno() {
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("Calculo", MODE_PRIVATE);
+        Boolean lineaBaseGeneradaNino1 = sharedPreferences.getBoolean("LineaBaseGenerada1", false);
+        return lineaBaseGeneradaNino1;
+    }
 
+    private boolean lineaBaseGeneradaNinoDos() {
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("Calculo", MODE_PRIVATE);
+        Boolean lineaBaseGeneradaNino2 = sharedPreferences.getBoolean("LineaBaseGenerada2", false);
+        return lineaBaseGeneradaNino2;
     }
 
     private void showDialogFicha(final int fichas, final int idNino, String titulo, String mensaje) {
@@ -422,7 +454,7 @@ public class DetalleConsumoDia extends AppCompatActivity {
         _txtAvanceFrutas = (TextView) findViewById(R.id.txtAvanceFrutas);
         _txtAvanceVerduras = (TextView) findViewById(R.id.txtAvanceVerduras);
         _btmCerrarDetalleConsumo = (RelativeLayout) findViewById(R.id.btmCerrarDetalleConsumo);
-        _backgroundGeneroNino = (RelativeLayout) findViewById(R.id.backgroundGeneroNino);
+        //_backgroundGeneroNino = (RelativeLayout) findViewById(R.id.backgroundGeneroNino);
         _imgGeneroNino = (ImageView) findViewById(R.id.imgGeneroNino);
         _txtCaloriasSemanaPasada = (TextView) findViewById(R.id.txtDetalleCaloriasFija);
         _txtCaloriasSemanaActual = (TextView) findViewById(R.id.txtDetalleCaloriasCambio);

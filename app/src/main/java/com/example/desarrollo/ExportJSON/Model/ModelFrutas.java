@@ -5,10 +5,7 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.desarrollo.Datos.Mensajeria;
-import com.example.desarrollo.Entidades.MensajesPersuasivos;
-import com.example.desarrollo.ExportJSON.Reader.ReaderFrutas;
-import com.example.desarrollo.ExportJSON.Reader.ReaderUltraprocesados;
+import com.example.desarrollo.Entidades.Frutas;
 import com.example.desarrollo.R;
 
 import org.json.JSONArray;
@@ -47,8 +44,8 @@ public class ModelFrutas extends AppCompatActivity {
                 String imgUrl = itemObj.getString("imgUrl");
                 String background = itemObj.getString("backgroud");
 
-                ReaderFrutas readerFrutas = new ReaderFrutas(id, nombre, equivalencia, descripcion, recomendacion, recomendacionDos, frase, ventaja, avisoTitulo, aviso, imgUrl, background);
-                arrayList.add(readerFrutas);
+                Frutas frutas = new Frutas(id, nombre, equivalencia, descripcion, recomendacion, recomendacionDos, frase, ventaja, avisoTitulo, aviso, imgUrl, background);
+                arrayList.add(frutas);
             }
 
         } catch (JSONException | IOException e) {
@@ -72,8 +69,8 @@ public class ModelFrutas extends AppCompatActivity {
                 String imgUrl = itemObj.getString("imgUrl");
                 String background = itemObj.getString("backgroud");
 
-                ReaderFrutas readerFrutas = new ReaderFrutas(id, nombre, equivalencia, imgUrl, background);
-                arrayList.add(readerFrutas);
+                Frutas frutas = new Frutas(id, nombre, equivalencia, imgUrl, background);
+                arrayList.add(frutas);
             }
 
         } catch (JSONException | IOException e) {

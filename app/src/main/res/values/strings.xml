@@ -345,7 +345,10 @@
     <string name="terrible">Terrible</string>
     <string name="esta_bien">Está bien</string>
     <string name="genial">Genial</string>
-
+    <string-array name="unidad_medida">
+        <item>Paquete</item>
+        <item>Pieza</item>
+    </string-array>
 
     <!-- Bienbenida, introduccion y login -->
     <string name="alimentaci_n">ALIMENTACIÓN</string>
@@ -385,8 +388,8 @@
     <string name="siguiente">Siguiente</string>
     <string name="preferencias">Preferencias</string>
     <string name="guardar">Guardar</string>
-    <string name="ingrese_su_peso">Ingrese su peso</string>
-    <string name="ingrese_su_estatura">Ingrese su estatura</string>
+    <string name="ingrese_su_peso">Ingrese su peso en kilogramos</string>
+    <string name="ingrese_su_estatura">Ingrese su estatura en centímetros</string>
     <string name="ingrese_su_medida_de_cintura">Ingrese su medida de cintura</string>
 
 
@@ -416,7 +419,7 @@
 
     <!-- MOTIVADORES -->
     <string name="mensaje_add_motivador">Ingrese un motivador el cual no sea tan dificil de cumplir</string>
-    <string name="descripcion">Descripción</string>
+    <string name="escribe_el_nombre_del_motivador">Escribe el nombre del motivador</string>
     <string name="valor">Valor</string>
     <string name="agregar">Agregar</string>
     <string name="fichas_acumuladas">FICHAS ACUMULADAS</string>

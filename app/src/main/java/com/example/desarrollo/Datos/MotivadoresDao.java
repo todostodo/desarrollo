@@ -153,7 +153,7 @@ public class MotivadoresDao {
             database = connection.getReadableDatabase();
             MotivadoresSelect.MotivadoresNinoDisponible motivadoresNinoDisponible = null;
 
-            Cursor cursor = database.rawQuery("SELECT idNino, nomn FROM " + Utilidades.TABLA_Nino, null);
+            Cursor cursor = database.rawQuery("SELECT "+ Utilidades.CAMPO_idNino + ", " + Utilidades.CAMPO_NombreN + " FROM " + Utilidades.TABLA_Nino, null);
 
             while (cursor.moveToNext()) {
                 motivadoresNinoDisponible = new MotivadoresSelect.MotivadoresNinoDisponible();

@@ -4,161 +4,68 @@
     android:id="@+id/btnMIniciarMotivador"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="#ECF0FD"
-    android:paddingTop="15dp"
-    android:paddingBottom="10dp">
+    android:backgroundTint="#ECF0FD">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/imgIniciar"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/imgRegaloMotivador"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/azul_item"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="0dp"
-        app:cardUseCompatPadding="true"
+        android:src="@drawable/icon_regalo_gris"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/icon_iniciar"
-            android:backgroundTint="@color/blanco"
-            android:padding="20dp" />
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.15" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:orientation="vertical"
+        android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/imgRegaloMotivador"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/imgIniciar"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/layoutValorMotivador"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/txtDescripcionMotivadorSelect"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Ir de paseo en bicicleta"
+            android:textColor="@color/negro"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="@string/costo"
-                android:textColor="@color/negro"
-                android:textSize="20sp" />
+                android:text="Costo" />
 
             <TextView
                 android:id="@+id/txtTotalValorMotivadorSelect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_medium"
-                android:text="100"
-                android:textColor="@color/negro"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="@string/fichas"
-                android:textColor="@color/negro"
-                android:textSize="20sp" />
+                android:text="126 fichas" />
 
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/txtDescripcionMotivadorSelect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_regular"
-            android:text="@string/textview"
-            android:textColor="@color/gris_login"
-            android:textSize="16sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#F3F3F6"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:background="#F3F3F6" />
 
     </LinearLayout>
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!--
-     <RelativeLayout
-            android:id="@+id/cardViewValorMotivador"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/background_valor_motivadores"
-            android:backgroundTint="#CAD9FF"
-            android:gravity="center"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.15">
-
-            <TextView
-                android:id="@+id/txtTotalValorMotivadorSelect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_bold"
-                android:text="100"
-                android:textColor="#4A77EB"
-                android:textSize="20sp"
-                android:visibility="visible" />
-
-            <ImageView
-                android:id="@+id/imgMotivadorTerminado"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/ic_done"
-                android:backgroundTint="#178656"
-                android:visibility="gone" />
-
-        </RelativeLayout>
-
-
-        <TextView
-            android:id="@+id/txtDescripcionMotivadorSelect"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="Pasear en bicicleta, patines o patineta por una hora "
-            android:textColor="@color/negro"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cardViewValorMotivador"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <Button
-            android:id="@+id/btnMIniciarMotivador"
-            style="?android:borderlessButtonStyle"
-            android:layout_width="90dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/rectangulo_custom_background"
-            android:backgroundTint="#DEE3FA"
-            android:fontFamily="@font/roboto_regular"
-            android:text="Iniciar"
-            android:textAllCaps="false"
-            android:textColor="#6375C5"
-            android:textSize="16sp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDescripcionMotivadorSelect" />
-    -->

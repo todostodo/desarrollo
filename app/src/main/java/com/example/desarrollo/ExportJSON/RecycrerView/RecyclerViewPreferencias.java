@@ -2,8 +2,6 @@ package com.example.desarrollo.ExportJSON.RecycrerView;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.provider.Telephony;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.desarrollo.ExportJSON.Reader.ReaderPreferencias;
+import com.example.desarrollo.Entidades.PreferenciasNino;
 import com.example.desarrollo.R;
 
 import java.util.ArrayList;
@@ -25,18 +23,18 @@ import java.util.List;
 public class RecyclerViewPreferencias extends RecyclerView.Adapter<RecyclerViewPreferencias.ViewHolder> {
 
     private Context context;
-    private List<ReaderPreferencias> preferencias;
+    private List<PreferenciasNino> preferencias;
     ChnageStatusListener chnageStatusListener;
 
     public interface ChnageStatusListener{
-        void onItemChangeListener(int position, ReaderPreferencias model);
+        void onItemChangeListener(int position, PreferenciasNino model);
     }
 
-    public void setModel(ArrayList<ReaderPreferencias> models){
+    public void setModel(ArrayList<PreferenciasNino> models){
         this.preferencias = models;
     }
 
-    public RecyclerViewPreferencias(List<ReaderPreferencias> preferencias, Context context, ChnageStatusListener chnageStatusListener) {
+    public RecyclerViewPreferencias(List<PreferenciasNino> preferencias, Context context, ChnageStatusListener chnageStatusListener) {
         this.context = context;
         this.preferencias = preferencias;
         this.chnageStatusListener = chnageStatusListener;
@@ -77,7 +75,7 @@ public class RecyclerViewPreferencias extends RecyclerView.Adapter<RecyclerViewP
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
-        final ReaderPreferencias model = (ReaderPreferencias) this.preferencias.get(position);
+        final PreferenciasNino model = (PreferenciasNino) this.preferencias.get(position);
 
         if (model != null){
             holder.nombre.setText(model.getNombreFruta());

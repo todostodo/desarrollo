@@ -11,6 +11,7 @@ public class Utilidades {
     public static final String CAMPO_correo = "correo";
     public static final String CAMPO_passwordUsu = "pwdu";
     public static final String CAMPO_nivel = "nivel";
+    public static final String CAMPO_experiencia = "exp";
     public static final String CAMPO_estadoRegistro = "estadoReg";
     public static final String CAMPO_idGlobal = "idglobal";
 

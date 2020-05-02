@@ -1,126 +1,370 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/backgroundTransparentUProcesados"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layout_gravity="center"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp">
 
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constDatosUltraprocesado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="0dp"
-        app:cardBackgroundColor="@color/blanco"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="0dp">
+        android:layout_gravity="center"
+        android:background="@drawable/background_registro_ultraprocesados"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txtNombreAlimentoUltraProcesado"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:orientation="vertical">
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:text="Galletas emperador sabores"
+            android:textColor="@color/azul_registro"
+            android:textSize="22sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/desliza_dialog" />
+        <View
+            android:id="@+id/lineTitulo"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="#EDEDED"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtNombreAlimentoUltraProcesado" />
+
+        <LinearLayout
+            android:id="@+id/layoutPorcionesEnvase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/layoutContenido"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lineTitulo">
 
             <TextView
-                android:id="@+id/nombreDialog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="@string/textview"
-                android:textColor="@color/azul_registro"
-                android:textSize="26sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Descripción"
-                android:textColor="@color/azul_registro"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Consumir alimentos chatarra frecuentemente, no sólo provoca obesidad; existen otros factores de riesgo que surgen como consecuencia de este mal hábito."
-                android:textColor="@color/gris"
-                android:textSize="16sp" />
+                android:gravity="center"
+                android:text="Porcion"
+                android:textColor="@color/gris_opaco"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtPorcionUltrap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="1.5"
+                android:textColor="@color/negro"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:id="@+id/layoutContenido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/layoutKCalorias"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/layoutPorcionesEnvase"
+            app:layout_constraintTop_toBottomOf="@+id/lineTitulo">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:text="Contenido"
+                android:textColor="@color/gris_opaco"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtContenidoUltrap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="1.5"
+                android:textColor="@color/negro"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutKCalorias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/layoutContenido"
+            app:layout_constraintTop_toBottomOf="@+id/lineTitulo">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:text="KCalorias"
+                android:textColor="@color/gris_opaco"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtKcaloriasUltrap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="1.5"
+                android:textColor="@color/negro"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textRegistrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Registrar"
+            android:textColor="@color/gris_oscuro_subTitulos"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutPorcionesEnvase" />
+
+        <EditText
+            android:id="@+id/txtCantidadConsumoUltrap"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/background_valor_motivadores"
+            android:backgroundTint="@color/BackgroundColorGris"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:hint="@string/hint_cantidad"
+            android:inputType="numberDecimal"
+            android:textColor="@color/gris_oscuro_subTitulos"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.13"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textRegistrar"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toRightOf="@+id/txtCantidadConsumoUltrap"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutPorcionesEnvase"
+            app:layout_constraintWidth_percent="0.45">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Unidad de medida"
+                android:textColor="@color/gris_opaco"
+                android:textSize="16sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rectangulo_border_gris_spinner"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <Spinner
+                    android:id="@+id/spinnerUnidadMedida"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:entries="@array/unidad_medida"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/txtUnidadMedida"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textSize="16sp"
+                    android:text="Pieza"
+                    android:textColor="@color/negro" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btnRegistrarUltrap"
+        style="?attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/rectangulo_azul"
+        android:backgroundTint="#A5EFD3"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Registrar calorias"
+        android:textColor="@color/negro"
+        app:layout_constraintHeight_percent="0.12"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constDatosUltraprocesado" />
+
+    <Button
+        android:id="@+id/btnCancelarUltrap"
+        style="?attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        app:cardBackgroundColor="@color/blanco"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="0dp">
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Cancelar"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrarUltrap" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="20dp">
+            android:elevation="0dp"
+            app:cardBackgroundColor="@color/blanco"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp">
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="50dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/txtCantidadConsumo"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:background="@drawable/background_valor_motivadores"
-                android:backgroundTint="@color/BackgroundColorGris"
-                android:fontFamily="@font/roboto_bold"
-                android:gravity="center"
-                android:hint="@string/hint_cantidad"
-                android:inputType="numberDecimal"
-                android:textColor="@color/gris_oscuro_subTitulos"
-                android:textSize="16sp"
-                app:layout_constraintHeight_percent="0.9"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.3" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/desliza_dialog" />
 
-            <Button
-                android:id="@+id/btnRegistrarUltraprocesado"
-                style="?android:borderlessButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:background="@drawable/custom_button_verde"
-                android:fontFamily="@font/roboto_regular"
-                android:text="@string/registrar"
-                android:textAllCaps="false"
-                android:textColor="@color/blanco"
-                android:textSize="16sp"
-                app:layout_constraintHeight_percent="0.9"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.5" />
+                <TextView
+                    android:id="@+id/nombreDialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/textview"
+                    android:textColor="@color/azul_registro"
+                    android:textSize="26sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardBackgroundColor="@color/blanco"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/txtCantidadConsumo"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/background_valor_motivadores"
+                    android:backgroundTint="@color/BackgroundColorGris"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:hint="@string/hint_cantidad"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/gris_oscuro_subTitulos"
+                    android:textSize="16sp"
+                    app:layout_constraintHeight_percent="0.9"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.3" />
+
+                <Button
+                    android:id="@+id/btnRegistrarUltraprocesado"
+                    style="?android:borderlessButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/custom_button_verde"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/registrar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/blanco"
+                    android:textSize="16sp"
+                    app:layout_constraintHeight_percent="0.9"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.5" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-</LinearLayout>
+    </LinearLayout>-->

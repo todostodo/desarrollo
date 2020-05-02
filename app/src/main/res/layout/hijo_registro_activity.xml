@@ -78,65 +78,64 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tituloGenero">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/circulo_custom_background"
-                    android:backgroundTint="@color/rojo"
-                    android:paddingLeft="40dp"
-                    android:paddingTop="30dp"
-                    android:paddingRight="40dp"
-                    android:paddingBottom="30dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:background="@drawable/icon_genero_hombre"
-                        android:paddingLeft="40dp"
-                        android:paddingTop="50dp"
-                        android:paddingRight="40dp"
-                        android:paddingBottom="50dp" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/checkGeneroHombre"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:visibility="gone">
+                    android:id="@+id/relativeGeneroHombre"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHeight_percent="0.7"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.4">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/circulo_verde" />
+                        android:src="@drawable/icon_genero_hombre" />
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/ic_done" />
+                    <RelativeLayout
+                        android:id="@+id/checkGeneroHombre"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/circulo_verde" />
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_done" />
+                    </RelativeLayout>
+
                 </RelativeLayout>
 
-            </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/hombre"
+                    android:textColor="@color/gris_oscuro_subTitulos"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/relativeGeneroHombre" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="@string/hombre"
-                android:textColor="@color/gris_oscuro_subTitulos"
-                android:textSize="16sp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
@@ -151,66 +150,66 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btmGeneroHombre">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/circulo_custom_background"
-                    android:backgroundTint="@color/gris_genero"
-                    android:paddingLeft="40dp"
-                    android:paddingTop="30dp"
-                    android:paddingRight="40dp"
-                    android:paddingBottom="30dp">
+                    android:id="@+id/relativeGeneroMujer"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHeight_percent="0.7"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.4">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:background="@drawable/icon_genero_mujer"
-                        android:paddingLeft="40dp"
-                        android:paddingTop="50dp"
-                        android:paddingRight="40dp"
-                        android:paddingBottom="50dp" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/checkGeneroMujer"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:visibility="gone">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/circulo_verde" />
+                        android:src="@drawable/icon_genero_mujer" />
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/ic_done" />
+                    <RelativeLayout
+                        android:id="@+id/checkGeneroMujer"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/circulo_verde" />
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_done" />
+                    </RelativeLayout>
+
                 </RelativeLayout>
 
-            </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/mujer"
+                    android:textColor="@color/gris_oscuro_subTitulos"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/relativeGeneroMujer" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="@string/mujer"
-                android:textColor="@color/gris_oscuro_subTitulos"
-                android:textSize="16sp" />
-
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
@@ -272,43 +271,19 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
 
-
-        <RelativeLayout
-            android:id="@+id/layoutGenero"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+        <ImageView
+            android:id="@+id/imgGeneroNinoRegistroDatos"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/icon_genero_hombre"
+            app:layout_constraintHeight_percent="0.19"
+            app:layout_constraintWidth_percent="0.4"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <RelativeLayout
-                android:id="@+id/fondoGeneroNino"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:background="@drawable/circulo_custom_background"
-                android:backgroundTint="@color/rojo"
-                android:paddingLeft="40dp"
-                android:paddingTop="30dp"
-                android:paddingRight="40dp"
-                android:paddingBottom="30dp">
-
-                <ImageView
-                    android:id="@+id/imgGeneroNinoRegistroDatos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/icon_genero_hombre"
-                    android:paddingLeft="30dp"
-                    android:paddingTop="40dp"
-                    android:paddingRight="30dp"
-                    android:paddingBottom="40dp" />
-
-            </RelativeLayout>
-
-        </RelativeLayout>
-
+            app:layout_constraintBottom_toTopOf="@+id/textNombre"
+            android:layout_marginTop="50dp"/>
 
         <TextView
             android:id="@+id/textNombre"
@@ -322,7 +297,7 @@
             android:textSize="16sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutGenero" />
+            app:layout_constraintTop_toBottomOf="@+id/imgGeneroNinoRegistroDatos" />
 
         <LinearLayout
             android:id="@+id/layourDatosGenerales"
@@ -695,6 +670,7 @@
                     android:fontFamily="@font/roboto_regular"
                     android:hint="@string/ingrese_su_peso"
                     android:inputType="numberDecimal"
+                    android:maxLength="4"
                     android:paddingLeft="30dp"
                     android:textColor="@color/negro"
                     android:textSize="16sp" />
@@ -732,6 +708,7 @@
                     android:fontFamily="@font/roboto_regular"
                     android:hint="@string/ingrese_su_estatura"
                     android:inputType="numberDecimal"
+                    android:maxLength="3"
                     android:paddingLeft="30dp"
                     android:textColor="@color/negro"
                     android:textSize="16sp" />

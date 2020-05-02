@@ -24,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rectangulo_custom_background"
+            android:backgroundTint="@color/verde"
             android:paddingTop="30dp"
             android:paddingBottom="30dp">
 
@@ -42,10 +43,10 @@
             android:id="@+id/fraseFruta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/textview"
             android:textColor="@color/negro"
-            android:layout_marginTop="5dp"
             android:textSize="16sp" />
 
         <RelativeLayout
@@ -57,20 +58,20 @@
                 android:id="@+id/nombreFruta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/textview"
-                android:textSize="16sp"
                 android:layout_alignParentLeft="true"
-                android:textColor="@color/gris_opaco"/>
+                android:text="@string/textview"
+                android:textColor="@color/gris_opaco"
+                android:textSize="16sp" />
 
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/fruta_backgroundVentaja"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                app:cardBackgroundColor="#EAF4FE"
+                android:layout_alignParentRight="true"
                 android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="#EAF4FE"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="0dp">
 

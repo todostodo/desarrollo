@@ -26,6 +26,11 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <!-- Switch -->
 
-
+    <style name="MySwitchCompat" parent="">
+        <item name="colorControlActivated">#4151C8</item>
+        <item name="colorSwitchThumbNormal">#f1f1f1</item>
+        <item name="android:colorForeground">#42221f1f</item>
+    </style>
 </resources>

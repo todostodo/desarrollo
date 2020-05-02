@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="false"
+    android:background="@color/blanco">
+
+    <RelativeLayout
+        android:id="@+id/btnCerrarEditarPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/flecha_regresar"
+            android:backgroundTint="@color/gris_opaco"
+            android:padding="10dp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textEditarPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Editar perfil"
+        android:textColor="@color/negro"
+        android:textSize="26sp"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnCerrarEditarPerfil" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/imgPerfilUsuarioEdit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textEditarPerfil">
+
+        <ImageView
+            android:id="@+id/imgPerfilEdit"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/icon_perfil_user"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.7"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/circulo_azul"
+            android:backgroundTint="@color/blanco"
+            android:padding="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.22"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintWidth_percent="0.1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="@drawable/circulo_azul" />
+
+            <ImageView
+                android:id="@+id/btnEditarTutorDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/editar" />
+
+        </RelativeLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutDatosUsuarioEdit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        android:weightSum="10"
+        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgPerfilUsuarioEdit">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.5">
+
+
+            <EditText
+                android:id="@+id/txtNombreUsuarioEdit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/rectangulo_border_gris"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/ingrese_su_nombre"
+                android:inputType="textCapWords"
+                android:paddingLeft="30dp"
+                android:textColor="@color/negro"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="30dp"
+                android:background="@color/blanco"
+                android:fontFamily="@font/roboto_regular"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/nombre"
+                android:textColor="#A4A5AA"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="2.5">
+
+
+            <EditText
+                android:id="@+id/txtApellidoPaternoUsuarioEdit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/rectangulo_border_gris"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/ingrese_su_apellido_paterno"
+                android:inputType="textCapWords"
+                android:paddingLeft="30dp"
+                android:textColor="@color/negro"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="30dp"
+                android:background="@color/blanco"
+                android:fontFamily="@font/roboto_regular"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/apellido_paterno"
+                android:textColor="@color/gris_login"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="2.5">
+
+
+            <EditText
+                android:id="@+id/txtApellidoMaternoUsuarioEdit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/rectangulo_border_gris"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/ingrese_su_apellido_materno"
+                android:inputType="textCapWords"
+                android:paddingLeft="30dp"
+                android:textColor="@color/negro"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="30dp"
+                android:background="@color/blanco"
+                android:fontFamily="@font/roboto_regular"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/apellido_materno"
+                android:textColor="@color/gris_login"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="2.5">
+
+
+            <EditText
+                android:id="@+id/txtCorreoUsuarioEdit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/rectangulo_border_gris"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/ingrese_su_correo_electronico"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="30dp"
+                android:textColor="@color/negro"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="30dp"
+                android:background="@color/blanco"
+                android:fontFamily="@font/roboto_regular"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/correo"
+                android:textColor="@color/gris"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnEditarPerfilUsuario"
+        style="?attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/rectangulo_custom_background"
+        android:backgroundTint="@color/morado_login"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Editar"
+        android:textAllCaps="false"
+        android:textColor="@color/blanco"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutDatosUsuarioEdit"
+        app:layout_constraintWidth_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,776 @@
+{
+  "Bebidas": [
+    {
+      "id": 35,
+      "nombre": "Gatorade",
+      "porcion": 3,
+      "contenido": "600 ml",
+      "Kcalorias": 144
+    },
+    {  
+      "id": 36,
+      "nombre": "Gatorade",
+      "porcion": 1.5,
+      "contenido": "350 ml",
+      "Kcalorias": 84
+    },
+    {  
+      "id": 37,
+      "nombre": "Jugo jumex cartón",
+      "porcion": 1,
+      "contenido": "200 ml",
+      "Kcalorias": 96
+    },
+    {  
+      "id": 38,
+      "nombre": "Unico fresco granada",
+      "porcion": 2,
+      "contenido": "500 ml",
+      "Kcalorias": 116
+    },
+    {  
+      "id": 39,
+      "nombre": "Nectar de uva",
+      "porcion": 1.8,
+      "contenido": "450 ml",
+      "Kcalorias": 116
+    },
+    {  
+      "id": 40,
+      "nombre": "Jumex lata botella",
+      "porcion": 2,
+      "contenido": "450 ml",
+      "Kcalorias": 120
+    },
+    {  
+      "id": 41,
+      "nombre": "Jumex lata sabores",
+      "porcion": 1,
+      "contenido": "335 ml",
+      "Kcalorias": 150
+    },
+    { 
+      "id": 42, 
+      "nombre": "Jugo frutsi",
+      "porcion": 1.6,
+      "contenido": "400 ml",
+      "Kcalorias": 96
+    },
+    { 
+      "id": 43, 
+      "nombre": "Jugo pau pau de uva",
+      "porcion": 1.25,
+      "contenido": "250 ml",
+      "Kcalorias": 4
+    },
+    {  
+      "id": 44,
+      "nombre": "Del valle nectar de durazno",
+      "porcion": 4,
+      "contenido": "1 litro",
+      "Kcalorias": 104
+    },
+    {  
+      "id": 45,
+      "nombre": "Del valle nectar sabores",
+      "porcion": 4,
+      "contenido": "1 litro",
+      "Kcalorias": 108
+    },
+    {  
+      "id": 46,
+      "nombre": "Del valle nectar sabores",
+      "porcion": 1.65,
+      "contenido": "413 ml",
+      "Kcalorias": 108
+    },
+    {  
+      "id": 47,
+      "nombre": "Jugo antiox arandano",
+      "porcion": 1,
+      "contenido": "300 ml",
+      "Kcalorias": 156
+    },
+    {  
+      "id": 48,
+      "nombre": "Coca cola",
+      "porcion": 2.5,
+      "contenido": "250 ml",
+      "Kcalorias": 42
+    },
+    {  
+      "id": 49, 
+      "nombre": "Coca cola",
+      "porcion": 3.5,
+      "contenido": "350 ml",
+      "Kcalorias": 47
+    },
+    {  
+      "id": 50,
+      "nombre": "Coca cola",
+      "porcion": 6,
+      "contenido": "600 ml",
+      "Kcalorias": 258
+    },
+    {  
+      "id": 51,
+      "nombre": "Coca cola zero",
+      "porcion": 2.4,
+      "contenido": "355 ml",
+      "Kcalorias": 7
+    },
+    {  
+      "id": 52,
+      "nombre": "Sprite lata",
+      "porcion": 3.3,
+      "contenido": "330 ml",
+      "Kcalorias": 34
+    },
+    {  
+      "id": 53,
+      "nombre": "Fresca lata",
+      "porcion": 3.3,
+      "contenido": "330 ml",
+      "Kcalorias": 34
+    },
+    {  
+      "id": 54,
+      "nombre": "Fanta lata",
+      "porcion": 3.3,
+      "contenido": "330 ml",
+      "Kcalorias": 34
+    },
+    {  
+      "id": 55,
+      "nombre": "Fanta",
+      "porcion": 1,
+      "contenido": "200 ml",
+      "Kcalorias": 99
+    },
+    {  
+      "id": 56,
+      "nombre": "Sprite",
+      "porcion": 1,
+      "contenido": "200 ml",
+      "Kcalorias": 99
+    },
+    {  
+      "id": 57,
+      "nombre": "Fresca",
+      "porcion": 1,
+      "contenido": "200 ml",
+      "Kcalorias": 99
+    },
+    {  
+      "id": 58,
+      "nombre": "Arizona",
+      "porcion": 2.8,
+      "contenido": "670 ml",
+      "Kcalorias": 77
+    },
+    {  
+      "id": 59,
+      "nombre": "Fuze tea",
+      "porcion": 3,
+      "contenido": "600 ml",
+      "Kcalorias": 52
+    },
+    {  
+      "id": 60,
+      "nombre": "Leche gansito",
+      "porcion": 1,
+      "contenido": "236 ml",
+      "Kcalorias": 160
+    }
+    
+
+  ],
+  "Frituras": [
+    {
+      "id": 61,
+      "nombre": "Sabritas Original",
+      "porcion": 1.5,
+      "contenido": "45 g",
+      "Kcalorias": 230
+    },
+    {
+      "id": 62,
+      "nombre": "Sabritas adobadas",
+      "porcion": 1.5,
+      "contenido": "45 g",
+      "Kcalorias": 224
+    },
+    {
+      "id": 63,
+      "nombre": "Rufles queso",
+      "porcion": 1.8,
+      "contenido": "53 g",
+      "Kcalorias": 556
+    },
+    {
+      "id": 64,
+      "nombre": "Rufles original",
+      "porcion": 1.8,
+      "contenido": "53 g",
+      "Kcalorias": 271
+    },
+    {
+      "id": 65,
+      "nombre": "Dorito nachos",
+      "porcion": 2.1,
+      "contenido": "62 g",
+      "Kcalorias": 279
+    },
+    {
+      "id": 66,
+      "nombre": "Crujientes Flamin Hot",
+      "porcion": 1.6,
+      "contenido": "49 g",
+      "Kcalorias": 250
+    },
+    {
+      "id": 67,
+      "nombre": "Crujientes jalapeño",
+      "porcion": 1.6,
+      "contenido": "49 g",
+      "Kcalorias": 235
+    },
+    {
+      "id": 68,
+      "nombre": "Sabrita crema y especias",
+      "porcion": 1.5,
+      "contenido": "45 g",
+      "Kcalorias": 231
+    },
+    {
+      "id": 69,
+      "nombre": "Doritos pitzerola",
+      "porcion": 2.1,
+      "contenido": "62 g",
+      "Kcalorias": 271
+    },
+    {
+      "id": 70,
+      "nombre": "Doritos xtra Flamin Hot",
+      "porcion": 2.1,
+      "contenido": "62 g",
+      "Kcalorias": 287
+    },
+    {
+      "id": 71,
+      "nombre": "Doritos",
+      "porcion": 2.1,
+      "contenido": "62 g",
+      "Kcalorias": 279
+    },
+    {
+      "id": 72,
+      "nombre": "Doritos Diablos",
+      "porcion": 2.1,
+      "contenido": "62 g",
+      "Kcalorias": 271
+    },
+    {
+      "id": 73,
+      "nombre": "Doritos 3D",
+      "porcion": 1.5,
+      "contenido": "45 g",
+      "Kcalorias": 201
+    },
+    {
+      "id": 74,
+      "nombre": "Doritos Dinamita",
+      "porcion": 2.4,
+      "contenido": "72 g",
+      "Kcalorias": 347
+    },
+    {
+      "id": 75,
+      "nombre": "Tostitos salsa Verde",
+      "porcion": 2.1,
+      "contenido": "62 g",
+      "Kcalorias": 279
+    },
+    {
+      "id": 76,
+      "nombre": "Tostitos xtra Flamin Hot",
+      "porcion": 2.1,
+      "contenido": "62 g",
+      "Kcalorias": 287
+    },
+    {
+      "id": 77,
+      "nombre": "Rancheritos",
+      "porcion": 2,
+      "contenido": "60 g",
+      "Kcalorias": 278
+    },
+    {
+      "id": 78,
+      "nombre": "Fritos chorizo",
+      "porcion": 2.1,
+      "contenido": "62 g",
+      "Kcalorias": 361
+    },
+    {
+      "id": 79,
+      "nombre": "Cheetos xtra Flamin Hot",
+      "porcion": 1.7,
+      "contenido": "52 g",
+      "Kcalorias": 248
+    },
+    {
+      "id": 80,
+      "nombre": "Cheetos torciditos",
+      "porcion": 1.7,
+      "contenido": "52 g",
+      "Kcalorias": 282
+    },
+    {
+      "id": 81,
+      "nombre": "Crujitos",
+      "porcion": 1.4,
+      "contenido": "43 g",
+      "Kcalorias": 186
+    },
+    {
+      "id": 82,
+      "nombre": "Fritos limon y sal",
+      "porcion": 2.1,
+      "contenido": "62 g",
+      "Kcalorias": 345
+    },
+    {
+      "id": 83,
+      "nombre": "Cheetos noche",
+      "porcion": 1.7,
+      "contenido": "52 g",
+      "Kcalorias": 281
+    },
+    {
+      "id": 84,
+      "nombre": "Cheetos poffs",
+      "porcion": 1.3,
+      "contenido": "38 g",
+      "Kcalorias": 195
+    },
+    {
+      "id": 85,
+      "nombre": "Cheetos bolitas",
+      "porcion": 1.4,
+      "contenido": "42 g",
+      "Kcalorias": 223
+    },
+    {
+      "id": 86,
+      "nombre": "Cheetos palomitas",
+      "porcion": 1,
+      "contenido": "29 g",
+      "Kcalorias": 156
+    },
+    {
+      "id": 87,
+      "nombre": "Cheetos colmillos",
+      "porcion": 1,
+      "contenido": "27 g",
+      "Kcalorias": 141
+    }
+  ],
+  "Galletas y panesillos":[
+    {
+      "id": 88,
+      "nombre": "Galleta gansito",
+      "porcion": 2,
+      "contenido": "2 Pza",
+      "Kcalorias": 103
+    },
+    {
+      "id": 89,
+      "nombre": "Gansito",
+      "porcion": 1,
+      "contenido": "1 Pza",
+      "Kcalorias": 196
+    },
+    {
+      "id": 90,
+      "nombre": "Pingüino",
+      "porcion": 4,
+      "contenido": "4 Pza",
+      "Kcalorias": 158
+    },
+    {
+      "id": 91,
+      "nombre": "Choco roles",
+      "porcion": 4,
+      "contenido": "4 Pza",
+      "Kcalorias": 143
+    },
+    {
+      "id": 92,
+      "nombre": "Submarinos",
+      "porcion": 3,
+      "contenido": "3 Pza",
+      "Kcalorias": 120
+    },
+    {
+      "id": 93,
+      "nombre": "Mini barritas de sabores",
+      "porcion": 15,
+      "contenido": "15 Pza",
+      "Kcalorias": 50
+    },
+    {
+      "id": 94,
+      "nombre": "Barritas marinela sabores",
+      "porcion": 2,
+      "contenido": "2 Pza",
+      "Kcalorias": 175
+    },
+    {
+      "id": 95,
+      "nombre": "Latte creme",
+      "porcion": 1,
+      "contenido": "1 Pza",
+      "Kcalorias": 165
+    },
+    {
+      "id": 96,
+      "nombre": "Napolitano naranja",
+      "porcion": 2,
+      "contenido": "1 Pza",
+      "Kcalorias": 239
+    },
+    {
+      "id": 97,
+      "nombre": "Pay de Piña",
+      "porcion": 1,
+      "contenido": "1 Pza",
+      "Kcalorias": 328
+    },
+    {
+      "id": 98,
+      "nombre": "Kinder delice",
+      "porcion": 1,
+      "contenido": "1 Pza",
+      "Kcalorias": 180
+    },
+    {
+      "id": 99,
+      "nombre": "Mantecadas Bimbo",
+      "porcion": 4,
+      "contenido": "4 Pza",
+      "Kcalorias": 136
+    },
+    {
+      "id": 100,
+      "nombre": "Roles bimbo sabores",
+      "porcion": 6,
+      "contenido": "6 Pza",
+      "Kcalorias": 181
+    },
+    {
+      "id": 101,
+      "nombre": "Donas bimbo",
+      "porcion": 4,
+      "contenido": "4 Pza",
+      "Kcalorias": 110
+    },
+    {
+      "id": 102,
+      "nombre": "Donitas espolvoreadas",
+      "porcion": 6,
+      "contenido": "6 Pza",
+      "Kcalorias": 71
+    },
+    {
+      "id": 103,
+      "nombre": "Panque bimbo",
+      "porcion": 8,
+      "contenido": "8 Pza",
+      "Kcalorias": 121
+    },
+    {
+      "id": 104,
+      "nombre": "Rebanadas bimbo",
+      "porcion": 2,
+      "contenido": "2 Pza",
+      "Kcalorias": 139
+    },
+    {
+      "id": 105,
+      "nombre": "Colchones bimbo",
+      "porcion": 6,
+      "contenido": "6 Pza",
+      "Kcalorias": 66
+    },
+    {
+      "id": 106,
+      "nombre": "Buñuelos bimbo",
+      "porcion": 4,
+      "contenido": "4 Pza",
+      "Kcalorias": 63
+    },
+    {
+      "id": 107,
+      "nombre": "Nito",
+      "porcion": 1,
+      "contenido": "1 Pza",
+      "Kcalorias": 246
+    },
+    {
+      "id": 108,
+      "nombre": "Doraditas tia rosa",
+      "porcion": 3,
+      "contenido": "3 Pza",
+      "Kcalorias": 194
+    },
+    {
+      "id": 109,
+      "nombre": "Bigote con relleno",
+      "porcion": 1,
+      "contenido": "1 Pza",
+      "Kcalorias": 229
+    },
+    {
+      "id": 110,
+      "nombre": "Cuernitos tia rosa",
+      "porcion": 2,
+      "contenido": "2 Pza",
+      "Kcalorias": 193
+    },
+    {
+      "id": 111,
+      "nombre": "Mamut",
+      "porcion": 1,
+      "contenido": "1 Pza",
+      "Kcalorias": 200
+    },
+    {
+      "id": 112,
+      "nombre": "Mamut flipy",
+      "porcion": 1,
+      "contenido": "1 Pza",
+      "Kcalorias": 196
+    },
+    {
+      "id": 113,
+      "nombre": "Rocko",
+      "porcion": 1,
+      "contenido": "1 Pza",
+      "Kcalorias": 191
+    },
+    {
+      "id": 114,
+      "nombre": "Galletas emperador sabores",
+      "porcion": 3.4,
+      "contenido": "8 Pza",
+      "Kcalorias": 142
+    },
+    {
+      "id": 115,
+      "nombre": "Galletas Cremax sabores",
+      "porcion": 3.4,
+      "contenido": "8 Pza",
+      "Kcalorias": 172
+    },
+    {
+      "id": 116,
+      "nombre": "Galleta fruts/Arcoiris",
+      "porcion": 4,
+      "contenido": "8 Pza",
+      "Kcalorias": 91
+    },
+    {
+      "id": 117,
+      "nombre": "Galleta Marias",
+      "porcion": 14.4,
+      "contenido": "30 Pza",
+      "Kcalorias": 120
+    },
+    {
+      "id": 118,
+      "nombre": "Galleta Dorada paketon",
+      "porcion": 7.5,
+      "contenido": "30 Pza",
+      "Kcalorias": 132
+    },
+    {
+      "id": 119,
+      "nombre": "Galletas chokis",
+      "porcion": 2,
+      "contenido": "6 Pza",
+      "Kcalorias": 138
+    },
+    {
+      "id": 120,
+      "nombre": "Galleta flor de naranjo",
+      "porcion": 4,
+      "contenido": "4 Pza",
+      "Kcalorias": 122
+    },
+    {
+      "id": 121,
+      "nombre": "Galletas maravillas",
+      "porcion": 3.75,
+      "contenido": "20 Pza",
+      "Kcalorias": 132
+    },
+    {
+      "id": 122,
+      "nombre": "Galleta triki trakets",
+      "porcion": 10,
+      "contenido": "10 Pza",
+      "Kcalorias": 42
+    },
+    {
+      "id": 123,
+      "nombre": "Galleta crackets",
+      "porcion": 3,
+      "contenido": "30 Pza",
+      "Kcalorias": 138
+    },
+    {
+      "id": 124,
+      "nombre": "Galleta canelitas",
+      "porcion": 3,
+      "contenido": "9 Pza",
+      "Kcalorias": 50
+    },
+    {
+      "id": 125,
+      "nombre": "Galleta principe sabores",
+      "porcion": 10,
+      "contenido": "10 Pza",
+      "Kcalorias": 50
+    },
+    {
+      "id": 126,
+      "nombre": "Galleta oreo",
+      "porcion": 10,
+      "contenido": "10 Pza",
+      "Kcalorias": 46
+    }
+  ],
+
+  "Golosinas":[
+    {
+      "id": 127,
+      "nombre": "Panditas",
+      "porcion": 1,
+      "contenido": "55 g",
+      "Kcalorias": 175
+    },
+    {
+      "id": 128,
+      "nombre": "Chocoretas",
+      "porcion": 1,
+      "contenido": "44 g",
+      "Kcalorias": 203
+    },
+    {
+      "id": 129,
+      "nombre": "Kranky",
+      "porcion": 1,
+      "contenido": "15 g",
+      "Kcalorias": 71
+    },
+    {
+      "id": 130,
+      "nombre": "Bubulubu",
+      "porcion": 1,
+      "contenido": "35 g",
+      "Kcalorias": 131
+    },
+    {
+      "id": 131,
+      "nombre": "Paleta payaso",
+      "porcion": 1,
+      "contenido": "25 g",
+      "Kcalorias": 95
+    },
+    {
+      "id": 132,
+      "nombre": "Moritas",
+      "porcion": 1,
+      "contenido": "55 g",
+      "Kcalorias": 181
+    },
+    {
+      "id": 133,
+      "nombre": "Dulcigomas",
+      "porcion": 1,
+      "contenido": "55 g",
+      "Kcalorias": 187
+    },
+    {
+      "id": 134,
+      "nombre": "Gomilocas dientes",
+      "porcion": 1,
+      "contenido": "60 g",
+      "Kcalorias": 161
+    },
+    {
+      "id": 135,
+      "nombre": "Pelón pelo rico",
+      "porcion": 1,
+      "contenido": "13 g",
+      "Kcalorias": 44
+    },
+    {
+      "id": 136,
+      "nombre": "Pasitas",
+      "porcion": 1,
+      "contenido": "44 g",
+      "Kcalorias": 202
+    },
+    {
+      "id": 137,
+      "nombre": "Pecositas",
+      "porcion": 1,
+      "contenido": "13 g",
+      "Kcalorias": 48
+    },
+    {
+      "id": 138,
+      "nombre": "Pikaros",
+      "porcion": 1,
+      "contenido": "17 g",
+      "Kcalorias": 60
+    },
+    {
+      "id": 139,
+      "nombre": "Pulparindo",
+      "porcion": 1,
+      "contenido": "10 g",
+      "Kcalorias": 37
+    },
+    {
+      "id": 140,
+      "nombre": "Mazapan",
+      "porcion": 1,
+      "contenido": "25 g",
+      "Kcalorias": 113
+    },
+    {
+      "id": 141,
+      "nombre": "Malvabon",
+      "porcion": 1,
+      "contenido": "22 g",
+      "Kcalorias": 80
+    },
+    {
+      "id": 142,
+      "nombre": "Ranitas",
+      "porcion": 1,
+      "contenido": "16 g",
+      "Kcalorias": 81
+    },
+    {
+      "id": 143,
+      "nombre": "Carlos V",
+      "porcion": 1,
+      "contenido": "18 g",
+      "Kcalorias": 94
+    }
+  ]
+}

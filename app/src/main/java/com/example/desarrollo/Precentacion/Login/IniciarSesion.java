@@ -134,13 +134,14 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
 
                             Intent activityPrincipal = new Intent(this, MainActivity.class);
                             startActivity(activityPrincipal);
+                            savePreferencesDato(correo);
 
                         } else {
 
                             Intent introduccion = new Intent(getApplicationContext(), IntroduccionActivity.class);
                             startActivity(introduccion);
 
-                            savePreferencesDato();
+                            savePreferencesDato(correo);
                         }
 
                     } else {
@@ -166,7 +167,7 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
                         Intent activityPrincipal = new Intent(this, MainActivity.class);
                         startActivity(activityPrincipal);
 
-                        savePreferencesDato();
+                        savePreferencesDato(correo);
 
                     } else {
                         toastp.toastp(getApplicationContext(), "El correo o contraseña son incorrectos");
@@ -176,10 +177,11 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
         }
     }
 
-    private void savePreferencesDato() {
-        SharedPreferences preferences = getApplicationContext().getSharedPreferences("Archivo", MODE_PRIVATE);
+    private void savePreferencesDato(String correo) {
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences("Usuario", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("inicioAutomatico", true);
+        editor.putString("correoUsuario", correo);
         editor.commit();
     }
 
@@ -272,10 +274,8 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
     }
 
     private void goMainScreen() {
-        SharedPreferences preferences = getSharedPreferences("Archivo", this.MODE_PRIVATE);
-        //SharedPreferences preferences1=getActivity().getPreferences(getContext().MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("Usuario", this.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        //editor.putInt("volor", 1);
         editor.putBoolean("inicioAutomatico", true);
         editor.commit();
         Intent intent = new Intent(this, MainActivity.class);

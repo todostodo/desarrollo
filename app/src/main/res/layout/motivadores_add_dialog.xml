@@ -46,7 +46,7 @@
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/roboto_regular"
                 android:gravity="top|left"
-                android:hint="@string/descripcion"
+                android:hint="@string/escribe_el_nombre_del_motivador"
                 android:inputType="textMultiLine|textCapSentences"
                 android:lines="3"
                 android:maxLength="50"

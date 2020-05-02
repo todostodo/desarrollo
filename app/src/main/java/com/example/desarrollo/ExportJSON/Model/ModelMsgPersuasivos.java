@@ -6,7 +6,6 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.desarrollo.Entidades.MensajesPersuasivos;
-import com.example.desarrollo.ExportJSON.Reader.ReaderFrutas;
 import com.example.desarrollo.R;
 
 import org.json.JSONArray;

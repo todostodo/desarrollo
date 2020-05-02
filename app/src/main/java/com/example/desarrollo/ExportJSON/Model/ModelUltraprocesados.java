@@ -5,7 +5,7 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.desarrollo.ExportJSON.Reader.ReaderUltraprocesados;
+import com.example.desarrollo.Entidades.UltraProcesados;
 import com.example.desarrollo.R;
 
 import org.json.JSONArray;
@@ -31,11 +31,14 @@ public class ModelUltraprocesados extends AppCompatActivity {
 
                 JSONObject itemObj = jsonArray.getJSONObject(i);
 
+                int idAlimentoUltrap = itemObj.getInt("id");
                 String nombre = itemObj.getString("nombre");
-                String calorias = itemObj.getString("calorias");
+                double porcion = itemObj.getDouble("porcion");
+                String contenido = itemObj.getString("contenido");
+                int kcalorias = itemObj.getInt("Kcalorias");
 
-                ReaderUltraprocesados readerUltraprocesados = new ReaderUltraprocesados(nombre, calorias);
-                arrayList.add(readerUltraprocesados);
+                UltraProcesados readerUltraProcesados = new UltraProcesados(idAlimentoUltrap, nombre, porcion, contenido, kcalorias);
+                arrayList.add(readerUltraProcesados);
             }
         } catch (JSONException | IOException e) {
             Log.d(TAG, "addItemFromJSON", e);
@@ -49,7 +52,7 @@ public class ModelUltraprocesados extends AppCompatActivity {
         try {
 
             String jsonString = null;
-            inputStream = context.getResources().openRawResource(R.raw.alimentos_registro);
+            inputStream = context.getResources().openRawResource(R.raw.alimentos_ultra_procesados);
             BufferedReader bufferedReader = new BufferedReader(
                     new InputStreamReader(inputStream, "UTF-8"));
 
