@@ -13,6 +13,7 @@ public class Utilidades {
     public static final String CAMPO_nivel = "nivel";
     public static final String CAMPO_experiencia = "exp";
     public static final String CAMPO_estadoRegistro = "estadoReg";
+    public static final String CAMPO_idGlobal = "idglobal";
 
     public static final String CREAR_Tabla_Usuario =
             "CREATE TABLE " + "" + TABLA_Usuario + " (" +
@@ -23,8 +24,8 @@ public class Utilidades {
                     CAMPO_correo + " TEXT NOT NULL UNIQUE," +
                     CAMPO_passwordUsu + " TEXT NOT NULL," +
                     CAMPO_nivel + " INTEGER NOT NULL, " +
-                    CAMPO_experiencia + " INTEGER NOT NULL, " +
-                    CAMPO_estadoRegistro + " TINYINT NOT NULL)";
+                    CAMPO_estadoRegistro + " TINYINT NOT NULL, "+
+                    CAMPO_idGlobal + " INTEGER NOT NULL)";
 
     //************************************************************************************************
     //Constantes para campos de la tabla Historial_Autoeficacia

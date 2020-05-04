@@ -11,11 +11,13 @@ import com.example.desarrollo.Ultilidades.Utilidades;
 
 import java.util.ArrayList;
 
+import static com.android.volley.Request.Method.HEAD;
+
 public class UserDao {
 
     private static SQLiteDatabase database;
 
-    public static boolean addUsuario(String TAG, Context context, String nomUsuario, String apellidoPaternoUsu, String apellidoMaternoUsu, String correoUsu, String password, int nivel, int exp, int estadoRegistro) {
+    public static boolean addUsuario(String TAG, Context context, String nomUsuario, String apellidoPaternoUsu, String apellidoMaternoUsu, String correoUsu, String password, int nivel, int estadoRegistro,int idGlobal) {
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
             database = null;
@@ -28,8 +30,8 @@ public class UserDao {
                     Utilidades.CAMPO_correo + ", " +
                     Utilidades.CAMPO_passwordUsu + ", " +
                     Utilidades.CAMPO_nivel + ", " +
-                    Utilidades.CAMPO_experiencia + ", " +
-                    Utilidades.CAMPO_estadoRegistro + ") " +
+                    Utilidades.CAMPO_estadoRegistro + ","+
+                    Utilidades.CAMPO_idGlobal+") " +
                     "VALUES ('" +
                     nomUsuario + "', '" +
                     apellidoPaternoUsu + "', '" +
@@ -37,8 +39,8 @@ public class UserDao {
                     correoUsu + "' , '" +
                     password + "', " +
                     nivel + ", " +
-                    exp + ", " +
-                    estadoRegistro + ")";
+                    estadoRegistro + ", "+
+                    idGlobal+")";
 
             database.execSQL(agregar);
 

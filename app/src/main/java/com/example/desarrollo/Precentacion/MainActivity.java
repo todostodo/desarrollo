@@ -82,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+
+
         Date date = new Date();
         DateFormat hora = new SimpleDateFormat("HH:mm:ss");
         inicio = "" + hora.format(date);
