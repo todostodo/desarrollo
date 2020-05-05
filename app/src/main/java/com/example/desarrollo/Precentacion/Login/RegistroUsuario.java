@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.desarrollo.ConexionApi.ConexionApi;
+import com.example.desarrollo.Datos.Mensajeria;
 import com.example.desarrollo.Datos.UserDao;
 import com.example.desarrollo.Precentacion.Home.HijoRegistroActivity;
 import com.example.desarrollo.R;
@@ -28,6 +29,7 @@ public class RegistroUsuario extends AppCompatActivity {
 
     private Toastp toastp;
     private UserDao userDao;
+    private Mensajeria estadoConexion;
 
     private static final String TAG = "RegistroUsuario";
 
@@ -107,11 +109,10 @@ public class RegistroUsuario extends AppCompatActivity {
                                         despues almacenar el correo y la id en sharepreferences
                                      */
 
+                                    estadoConexion = new Mensajeria();
+                                    boolean networkInfo = estadoConexion.estadoConexion(getApplicationContext());
 
-                                    ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(getApplicationContext().CONNECTIVITY_SERVICE);
-                                    NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-
-                                    if (networkInfo != null && networkInfo.isConnected()) {
+                                    if (networkInfo == true) {
                                         boolean addUser = ConexionApi.InsertarUsuarioNuevo(
                                                 getApplicationContext(),
                                                 nombre,

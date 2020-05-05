@@ -127,6 +127,7 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
                                                     parent.getContext(),
                                                     ninoDisponibleArrayList.get(_myRecyclerView.getChildAdapterPosition(v)).getIdNino(),
                                                     motivadoresList.get(viewHolder.getAdapterPosition()).getIdMotivador(),
+                                                    1,
                                                     1
                                             );
                                             if (asignarMotivador == true) {
@@ -179,6 +180,7 @@ public class RecyclerViewMotivadoresSelect extends RecyclerView.Adapter<Recycler
                                             parent.getContext(),
                                             ninoDisponibleArrayList.get(0).getIdNino(),
                                             motivadoresList.get(viewHolder.getAdapterPosition()).getIdMotivador(),
+                                            1,
                                             1
                                     );
                                     if (asignarMotivador == true) {

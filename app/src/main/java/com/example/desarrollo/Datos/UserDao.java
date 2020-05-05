@@ -17,7 +17,7 @@ public class UserDao {
 
     private static SQLiteDatabase database;
 
-    public static boolean addUsuario(String TAG, Context context, String nomUsuario, String apellidoPaternoUsu, String apellidoMaternoUsu, String correoUsu, String password, int nivel, int estadoRegistro,int idGlobal, int registroNubeUsuario) {
+    public static boolean addUsuario(String TAG, Context context, String nomUsuario, String apellidoPaternoUsu, String apellidoMaternoUsu, String correoUsu, String password, int nivel, int estadoRegistro, int idGlobal, int registroNubeUsuario) {
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
             database = null;
@@ -30,9 +30,9 @@ public class UserDao {
                     Utilidades.CAMPO_correo + ", " +
                     Utilidades.CAMPO_passwordUsu + ", " +
                     Utilidades.CAMPO_nivel + ", " +
-                    Utilidades.CAMPO_estadoRegistro + ","+
-                    Utilidades.CAMPO_idGlobal+") " +
-                    Utilidades.CAMPO_registroNubeUsu+") " +
+                    Utilidades.CAMPO_estadoRegistro + "," +
+                    Utilidades.CAMPO_idGlobal + ") " +
+                    Utilidades.CAMPO_registroNube + ") " +
                     "VALUES ('" +
                     nomUsuario + "', '" +
                     apellidoPaternoUsu + "', '" +
@@ -40,9 +40,9 @@ public class UserDao {
                     correoUsu + "' , '" +
                     password + "', " +
                     nivel + ", " +
-                    estadoRegistro + ", "+
-                    idGlobal+", "+
-                    registroNubeUsuario+")";
+                    estadoRegistro + ", " +
+                    idGlobal + ", " +
+                    registroNubeUsuario + ")";
 
             database.execSQL(agregar);
 
@@ -144,7 +144,7 @@ public class UserDao {
         }
     }
 
-    public static void sumarExpUsuarario(String TAG, Context context, int exp){
+    public static void sumarExpUsuarario(String TAG, Context context, int exp) {
 
         try {
             ConexionSQLHelper conection = new ConexionSQLHelper(context);
@@ -155,14 +155,14 @@ public class UserDao {
 
             database.execSQL(sumExp);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.e(TAG, "Error" + e);
-        }finally {
+        } finally {
             database.close();
         }
     }
 
-    public static void suvirNivelUsuario(String TAG, Context context, int nivel){
+    public static void suvirNivelUsuario(String TAG, Context context, int nivel) {
 
         try {
             ConexionSQLHelper conection = new ConexionSQLHelper(context);
@@ -172,9 +172,9 @@ public class UserDao {
             String subitNivel = "UPDATE " + Utilidades.TABLA_Usuario + " SET " + Utilidades.CAMPO_nivel + " = (" + Utilidades.CAMPO_nivel + " + " + nivel + ")";
             database.execSQL(subitNivel);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.e(TAG, "Error " + e);
-        }finally {
+        } finally {
             database.close();
         }
     }

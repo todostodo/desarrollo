@@ -432,7 +432,8 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
                 equivalencia,
                 hora,
                 fecha,
-                tipoAlimento
+                tipoAlimento,
+                1
         );
         if (insert == true) {
             //toast.toastp(getApplicationContext(), "Alimento registrado");

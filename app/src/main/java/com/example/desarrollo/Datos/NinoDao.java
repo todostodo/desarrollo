@@ -24,7 +24,7 @@ public class NinoDao {
     private static HijoRegistroActivity gustos;
     private static final String TAG = "NinoDao";
 
-    public static boolean addNino(String TAG, Context context, int idUsuario, String nombre, String genero, String apPaterno, String apMaterno, int edad, Double peso, Double estatura, Double lineabultra, Double lineabv, Double leneabf, int totfich, Double esfuerzoultra, Double esfuerzof, Double esfuerzov, int registroNubeNino) {
+    public static boolean addNino(String TAG, Context context, int idUsuario, String nombre, String genero, String apPaterno, String apMaterno, int edad, Double peso, Double estatura, Double lineabultra, Double lineabv, Double leneabf, int totfich, Double esfuerzoultra, Double esfuerzof, Double esfuerzov, int registroNube) {
 
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
@@ -47,8 +47,8 @@ public class NinoDao {
                     Utilidades.CAMPO_TotalFichas + ", " +
                     Utilidades.CAMPO_EsfuerzoUltraprocesado + ", " +
                     Utilidades.CAMPO_EsfuerzoFruta + ", " +
-                    Utilidades.CAMPO_EsfuerzoVerdura + ", "+
-                    Utilidades.CAMPO_registroNubeNino+") " +
+                    Utilidades.CAMPO_EsfuerzoVerdura + ", " +
+                    Utilidades.CAMPO_registroNube + ") " +
                     "VALUES ( " +
                     idUsuario + ", '" +
                     nombre + "', '" +
@@ -64,8 +64,8 @@ public class NinoDao {
                     totfich + ", " +
                     esfuerzoultra + ", " +
                     esfuerzof + ", " +
-                    esfuerzov + ", "+
-                    registroNubeNino+")";
+                    esfuerzov + ", " +
+                    registroNube + ")";
 
 
             database.execSQL(inset);
@@ -99,9 +99,9 @@ public class NinoDao {
                 editor.putInt("llaveLBUP2", 0);
                 editor.putInt("llaveLBV1", 0);
                 editor.putInt("llaveLBV2", 0);
-                editor.putString("FechaInicio",fecha);
-                editor.putString("FechaIni",fecha);
-                editor.putString("FechaFin","");
+                editor.putString("FechaInicio", fecha);
+                editor.putString("FechaIni", fecha);
+                editor.putString("FechaFin", "");
                 editor.putString("ValorUltra1", "nada");
                 editor.putString("ValorUltra2", "nada");
                 editor.putInt("llaveESF1", 0);
@@ -110,19 +110,19 @@ public class NinoDao {
                 editor.putInt("llaveESUP2", 0);
                 editor.putInt("llaveESV1", 0);
                 editor.putInt("llaveESV2", 0);
-                editor.putBoolean("fichaNino1",false);
-                editor.putBoolean("fichaNino2",false);
-                editor.putBoolean("seguir",true);
-                editor.putBoolean("fichaFruta1",false);
-                editor.putBoolean("fichaVerdura1",false);
-                editor.putBoolean("primerIntento1",false);
-                editor.putBoolean("noConoceAlimento1",false);
-                editor.putBoolean("fichaFruta2",false);
-                editor.putBoolean("fichaVerdura2",false);
-                editor.putBoolean("primerIntento2",false);
-                editor.putBoolean("nuevoAlimento2",false);
-                editor.putBoolean("LineaBaseGenerada1",false);
-                editor.putBoolean("LineaBaseGenerada2",false);
+                editor.putBoolean("fichaNino1", false);
+                editor.putBoolean("fichaNino2", false);
+                editor.putBoolean("seguir", true);
+                editor.putBoolean("fichaFruta1", false);
+                editor.putBoolean("fichaVerdura1", false);
+                editor.putBoolean("primerIntento1", false);
+                editor.putBoolean("noConoceAlimento1", false);
+                editor.putBoolean("fichaFruta2", false);
+                editor.putBoolean("fichaVerdura2", false);
+                editor.putBoolean("primerIntento2", false);
+                editor.putBoolean("nuevoAlimento2", false);
+                editor.putBoolean("LineaBaseGenerada1", false);
+                editor.putBoolean("LineaBaseGenerada2", false);
                 editor.commit();
             }
 
@@ -142,7 +142,7 @@ public class NinoDao {
         }
     }
 
-    public static void acumularFichas(String TAG, Context context, int idNino, int cantidadFichas){
+    public static void acumularFichas(String TAG, Context context, int idNino, int cantidadFichas) {
         try {
             ConexionSQLHelper conection = new ConexionSQLHelper(context);
             database = null;
@@ -154,9 +154,9 @@ public class NinoDao {
 
             database.execSQL(agregarFichar);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.e(TAG, "Error" + e);
-        }finally {
+        } finally {
             database.close();
         }
     }
@@ -195,7 +195,7 @@ public class NinoDao {
 
             Cursor cursor = database.rawQuery("SELECT " + Utilidades.CAMPO_idNino + ", " +
                     Utilidades.CAMPO_NombreN + ", " +
-                    Utilidades.CAMPO_GeneroN +  ", " +
+                    Utilidades.CAMPO_GeneroN + ", " +
                     Utilidades.CAMPO_TotalFichas +
                     " FROM " + Utilidades.TABLA_Nino, null);
 
@@ -285,7 +285,7 @@ public class NinoDao {
                     " FROM " + Utilidades.TABLA_Nino +
                     " WHERE " + Utilidades.CAMPO_idNino + " = " + idNino, null);
 
-            while (cursor.moveToNext()){
+            while (cursor.moveToNext()) {
                 progresoFruta = cursor.getDouble(0);
             }
 
@@ -309,7 +309,7 @@ public class NinoDao {
                     " FROM " + Utilidades.TABLA_Nino +
                     " WHERE " + Utilidades.CAMPO_idNino + " = " + idNino, null);
 
-            while (cursor.moveToNext()){
+            while (cursor.moveToNext()) {
                 progresoFruta = cursor.getDouble(0);
             }
 
