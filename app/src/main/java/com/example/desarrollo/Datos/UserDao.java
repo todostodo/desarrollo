@@ -17,7 +17,7 @@ public class UserDao {
 
     private static SQLiteDatabase database;
 
-    public static boolean addUsuario(String TAG, Context context, String nomUsuario, String apellidoPaternoUsu, String apellidoMaternoUsu, String correoUsu, String password, int nivel, int estadoRegistro,int idGlobal, int registroNubeUsuario) {
+    public static boolean addUsuario(String TAG, Context context, String nomUsuario, String apellidoPaternoUsu, String apellidoMaternoUsu, String correoUsu, String password, int nivel, int experiencia,int estadoRegistro,int idGlobal) {
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
             database = null;
@@ -30,9 +30,9 @@ public class UserDao {
                     Utilidades.CAMPO_correo + ", " +
                     Utilidades.CAMPO_passwordUsu + ", " +
                     Utilidades.CAMPO_nivel + ", " +
-                    Utilidades.CAMPO_estadoRegistro + ","+
-                    Utilidades.CAMPO_idGlobal+") " +
-                    Utilidades.CAMPO_registroNubeUsu+") " +
+                    Utilidades.CAMPO_experiencia + ","+
+                    Utilidades.CAMPO_estadoRegistro+", "+
+                    Utilidades.CAMPO_idGlobal+")" +
                     "VALUES ('" +
                     nomUsuario + "', '" +
                     apellidoPaternoUsu + "', '" +
@@ -40,9 +40,9 @@ public class UserDao {
                     correoUsu + "' , '" +
                     password + "', " +
                     nivel + ", " +
+                    experiencia + ", " +
                     estadoRegistro + ", "+
-                    idGlobal+", "+
-                    registroNubeUsuario+")";
+                    idGlobal+")";
 
             database.execSQL(agregar);
 

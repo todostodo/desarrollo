@@ -559,7 +559,8 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                         0,
                         0.0,
                         0.0,
-                        0.0
+                        0.0,
+                        1
                 );
 
         //Agregar preferencias frutas
@@ -572,7 +573,8 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                             siGustaFruta.get(i),
                             1,
                             0,
-                            0
+                            0,
+                            1
                     );
         }
         for (int i = 0; i < noGustaFruta.size(); i++) {
@@ -584,7 +586,8 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                             noGustaFruta.get(i),
                             0,
                             1,
-                            0
+                            0,
+                            1
                     );
         }
         for (int i = 0; i < conoscoFruta.size(); i++) {
@@ -596,6 +599,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                             conoscoFruta.get(i),
                             0,
                             0,
+                            1,
                             1
                     );
         }
@@ -608,7 +612,8 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                             noSelectFruta.get(i),
                             0,
                             0,
-                            0
+                            0,
+                            1
                     );
         }
 
@@ -623,7 +628,8 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                             siGustaVerdura.get(i),
                             1,
                             0,
-                            0
+                            0,
+                            1
                     );
         }
         for (int i = 0; i < noGustaVerdura.size(); i++) {
@@ -635,7 +641,8 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                             noGustaVerdura.get(i),
                             0,
                             1,
-                            0
+                            0,
+                            1
                     );
         }
         for (int i = 0; i < conoscoVerdura.size(); i++) {
@@ -647,6 +654,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                             conoscoVerdura.get(i),
                             0,
                             0,
+                            1,
                             1
                     );
         }
@@ -659,7 +667,8 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                             noSelectVerdura.get(i),
                             0,
                             0,
-                            0
+                            0,
+                            1
                     );
         }
 
