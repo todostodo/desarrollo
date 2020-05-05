@@ -122,7 +122,7 @@ public class RegistroUsuario extends AppCompatActivity {
                                                 password,
                                                 0,
                                                 0,
-                                                1);
+                                                0);
 
                                         if (addUser == true) {
                                             Intent introduccion = new Intent(getApplicationContext(), IntroduccionActivity.class);

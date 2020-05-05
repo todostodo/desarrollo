@@ -288,7 +288,7 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
                 horaRegistro,
                 fechaRegistro,
                 "ULtraProcesado",
-                0);
+                1);
     }
 
     private void getHoraFecha() {
