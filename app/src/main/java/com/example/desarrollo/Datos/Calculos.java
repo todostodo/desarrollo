@@ -51,7 +51,7 @@ public class Calculos {
         return round;
     }
 
-    public static boolean registrarDetalleReg(String TAG, Context context, int idNino, int alimento, double unidadMedida, double cantidad, double equivalencia, String Horaregistro, String fecha, String tipo) {
+    public static boolean registrarDetalleReg(String TAG, Context context, int idNino, int alimento, double unidadMedida, double cantidad, double equivalencia, String Horaregistro, String fecha, String tipo, int registroNubeDetGeg) {
 
         try {
 
@@ -69,7 +69,8 @@ public class Calculos {
                     Utilidades.CAMPO_Cantidad + ", " +
                     Utilidades.CAMPO_UnidadMedida + ", " +
                     Utilidades.CAMPO_Tipo + ", " +
-                    Utilidades.CAMPO_HoraRegistro + " ) " +
+                    Utilidades.CAMPO_HoraRegistro + ", "+
+                    Utilidades.CAMPO_registroNubeDetGeg+") " +
                     "VALUES ( " +
                     idNino + ", " +
                     alimento + ", " +
@@ -77,12 +78,14 @@ public class Calculos {
                     cantidad + ", " +
                     unidadMedida + ", '" +
                     tipo + "', '" +
-                    Horaregistro + "')";
+                    Horaregistro + "', "+
+                    registroNubeDetGeg+")";
 
             String insertRegistro = "INSERT INTO " + Utilidades.TABLA_Registro + " (" +
                     Utilidades.CAMPO_idNino + ", " +
-                    Utilidades.CAMPO_FechaRegistro + ") " +
-                    "VALUES (" + idNino + ", '" + fecha + "')";
+                    Utilidades.CAMPO_FechaRegistro + ", "+
+                    Utilidades.CAMPO_registroNubeReg+") " +
+                    "VALUES (" + idNino + ", '" + fecha + "', "+registroNubeDetGeg+")";
 
             database.execSQL(insetDetalleRegistro);
             database.execSQL(insertRegistro);

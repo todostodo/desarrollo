@@ -18,7 +18,7 @@ public class MotivadoresDao {
 
     private static SQLiteDatabase database;
 
-    public static boolean insertMotivador(String TAG, Context context, String desc, int valor) {
+    public static boolean insertMotivador(String TAG, Context context, String desc, int valor, int registroNubeRecom) {
 
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
@@ -27,8 +27,9 @@ public class MotivadoresDao {
 
             String insert = ("INSERT INTO " + Utilidades.TABLA_Recompensas + " ( " +
                     Utilidades.CAMPO_descripcion + ", " +
-                    Utilidades.CAMPO_valor + ") " +
-                    "VALUES ('" + desc + "'," + valor + ")");
+                    Utilidades.CAMPO_valor + ", "+
+                    Utilidades.CAMPO_registroNubeRecom+") " +
+                    "VALUES ('" + desc + "', " + valor + ", "+registroNubeRecom+")");
             database.execSQL(insert);
 
             return true;
@@ -172,7 +173,7 @@ public class MotivadoresDao {
         }
     }
 
-    public static boolean insertMotivadoresProceso(String TAG, Context context, int idNino, int idRcompensa, int activo) {
+    public static boolean insertMotivadoresProceso(String TAG, Context context, int idNino, int idRcompensa, int activo, int registroNubeCanje) {
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
             database = null;
@@ -181,11 +182,13 @@ public class MotivadoresDao {
             String insert = ("INSERT INTO " + Utilidades.TABLA_CanjeFi + "( " +
                     Utilidades.CAMPO_idNinoCajeFi + ", " +
                     Utilidades.CAMPO_idrRecompensaCanjeFi + ", " +
-                    Utilidades.CAMPO_Activo + ") " +
+                    Utilidades.CAMPO_Activo + ", "+
+                    Utilidades.CAMPO_registroNubeCanje+") " +
                     "VALUES (" +
                     idNino + ", " +
                     idRcompensa + ", " +
-                    activo + ")");
+                    activo + ", "+
+                    registroNubeCanje+")");
 
             database.execSQL(insert);
 

@@ -14,7 +14,7 @@ public class PreferenciasDao {
 
     private static SQLiteDatabase basedatos;
 
-    public static boolean addPreferenciasFrutas (String TAG, Context context, int idNino, String nombreFruta, int siGusta, int noGusta, int conosco){
+    public static boolean addPreferenciasFrutas (String TAG, Context context, int idNino, String nombreFruta, int siGusta, int noGusta, int conosco, int registroNubeGustoFru){
 
         try{
 
@@ -27,13 +27,15 @@ public class PreferenciasDao {
                     Utilidades.CAMPO_NombreFruta + ", " +
                     Utilidades.CAMPO_siGustaFruta + ", " +
                     Utilidades.CAMPO_noGustaFruta + ", " +
-                    Utilidades.CAMPO_conoscoFruta + " )" +
+                    Utilidades.CAMPO_conoscoFruta + ", "+
+                    Utilidades.CAMPO_registroNubeGustoFru+")" +
                     "VALUES ( " +
                     idNino + ",'" +
                     nombreFruta + "', " +
                     siGusta + ", " +
                     noGusta + ", " +
-                    conosco + ")";
+                    conosco + ", "+
+                    registroNubeGustoFru+")";
 
             basedatos.execSQL(insert);
 
@@ -46,7 +48,7 @@ public class PreferenciasDao {
         }
     }
 
-    public static boolean addPreferenciasVerduras (String TAG, Context context, int idNino, String nombreFruta, int siGusta, int noGusta, int conosco){
+    public static boolean addPreferenciasVerduras (String TAG, Context context, int idNino, String nombreFruta, int siGusta, int noGusta, int conosco, int registroNubeGustoVerdu){
 
         try{
 
@@ -59,13 +61,15 @@ public class PreferenciasDao {
                     Utilidades.CAMPO_NombreVerdura + ", " +
                     Utilidades.CAMPO_siGustaVerdura + ", " +
                     Utilidades.CAMPO_noGustaVerdura + ", " +
-                    Utilidades.CAMPO_conoscoVerdura + " )" +
+                    Utilidades.CAMPO_conoscoVerdura + ", "+
+                    Utilidades.CAMPO_registroNubeGustoVerdu+")" +
                     "VALUES ( " +
                     idNino + ",'" +
                     nombreFruta + "', " +
                     siGusta + ", " +
                     noGusta + ", " +
-                    conosco + ")";
+                    conosco + ", "+
+                    registroNubeGustoVerdu+")";
 
             basedatos.execSQL(insert);
 
