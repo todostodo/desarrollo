@@ -23,8 +23,6 @@ public class ConexionApi extends AppCompatActivity {
 
     public static RequestQueue queue;
 
-
-
     //////////////////////////////////////////[*********Metodos para el manejo de la tabla Recompensas**********]
     //-----------------------------------[Obtener todos los datos de la tabla recompensas]
     public static void ObtenerDatosRecompensas(Context context){
@@ -38,7 +36,7 @@ public class ConexionApi extends AppCompatActivity {
             public void onResponse(JSONObject response) {
 
                 try {
-                    JSONArray jsonArray = response.getJSONArray("data");//
+                    JSONArray jsonArray = response.getJSONArray("data");
 
                     for(int i=0; i<jsonArray.length(); i++){
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
