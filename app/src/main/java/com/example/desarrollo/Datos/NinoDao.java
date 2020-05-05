@@ -24,7 +24,7 @@ public class NinoDao {
     private static HijoRegistroActivity gustos;
     private static final String TAG = "NinoDao";
 
-    public static boolean addNino(String TAG, Context context, int idUsuario, String nombre, String genero, String apPaterno, String apMaterno, int edad, Double peso, Double estatura, Double lineabultra, Double lineabv, Double leneabf, int totfich, Double esfuerzoultra, Double esfuerzof, Double esfuerzov) {
+    public static boolean addNino(String TAG, Context context, int idUsuario, String nombre, String genero, String apPaterno, String apMaterno, int edad, Double peso, Double estatura, Double lineabultra, Double lineabv, Double leneabf, int totfich, Double esfuerzoultra, Double esfuerzof, Double esfuerzov, int registroNubeNino) {
 
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
@@ -47,7 +47,8 @@ public class NinoDao {
                     Utilidades.CAMPO_TotalFichas + ", " +
                     Utilidades.CAMPO_EsfuerzoUltraprocesado + ", " +
                     Utilidades.CAMPO_EsfuerzoFruta + ", " +
-                    Utilidades.CAMPO_EsfuerzoVerdura + ") " +
+                    Utilidades.CAMPO_EsfuerzoVerdura + ", "+
+                    Utilidades.CAMPO_registroNubeNino+") " +
                     "VALUES ( " +
                     idUsuario + ", '" +
                     nombre + "', '" +
@@ -63,7 +64,8 @@ public class NinoDao {
                     totfich + ", " +
                     esfuerzoultra + ", " +
                     esfuerzof + ", " +
-                    esfuerzov + ")";
+                    esfuerzov + ", "+
+                    registroNubeNino+")";
 
 
             database.execSQL(inset);

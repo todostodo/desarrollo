@@ -1,10 +1,6 @@
 package com.example.desarrollo.ConexionApi;
 
 import android.content.Context;
-import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -19,13 +15,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import  com.example.desarrollo.Datos.UserDao;
-import com.example.desarrollo.Precentacion.Login.IntroduccionActivity;
 
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class ConexionApi extends AppCompatActivity {
 
@@ -174,13 +166,13 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ///////////////////////***********[Insertar un usuario nuevo]***************
-    public static boolean InsertarUsuarioNuevo(Context context, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int estadoReg){
+    public static boolean InsertarUsuarioNuevo(Context context, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int estadoReg, int registroNubeUsuario){
 
         boolean respuesta=true;
         String url = "http://68.183.148.243/Persuhabit/usuarios";
         RequestQueue queue = Volley.newRequestQueue(context);
         final String nomu1, apmu1,  appu1, correo1, pwdu1;
-        final int nivel1,  estadoReg1;
+        final int nivel1,  estadoReg1, registroNubeUsuario1;
         final Context context1;
         nomu1 = nomu;
         apmu1 = apmu;
@@ -190,6 +182,7 @@ public class ConexionApi extends AppCompatActivity {
         nivel1 = nivel;
         estadoReg1 = estadoReg;
         context1=context;
+        registroNubeUsuario1= registroNubeUsuario;
 
 // POST parameters
         Map<String, Object> params = new HashMap<String, Object>();
@@ -214,7 +207,7 @@ public class ConexionApi extends AppCompatActivity {
                         try {
                                 int resultado = response.getInt("data");
                                 System.out.println("el valor del id: "+resultado);
-                            llegue(response,nomu1, apmu1,appu1,correo1,pwdu1,nivel1,estadoReg1,context1);
+                            llegue(response,nomu1, apmu1,appu1,correo1,pwdu1,nivel1,estadoReg1,context1,registroNubeUsuario1);
                             // registrar(resultado);
 
                         } catch (JSONException e) {
@@ -236,9 +229,9 @@ public class ConexionApi extends AppCompatActivity {
     }
 
 
-    public static void llegue(JSONObject response, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int estadoReg, Context context) throws JSONException {
+    public static void llegue(JSONObject response, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int estadoReg, Context context, int registroNubeUsuario) throws JSONException {
         int resultado = response.getInt("data");
-        UserDao.addUsuario("add",context,nomu,appu,apmu,correo,pwdu,nivel,estadoReg,resultado);
+        UserDao.addUsuario("add",context,nomu,appu,apmu,correo,pwdu,nivel,estadoReg,resultado,registroNubeUsuario);
     }
 
 
@@ -473,7 +466,6 @@ public class ConexionApi extends AppCompatActivity {
         params.put("esfuerzof", esfuerzof);
         params.put("esfuerzov", esfuerzov);
         params.put("id", id);
-
         JSONObject jsonObj = new JSONObject(params);
 
 // Request a json response from the provided URL

@@ -14,7 +14,7 @@ public class TutorDao {
 
     private static SQLiteDatabase database;
 
-    public static boolean addTutor(Context context, String nombre, String apellidoP, String apellidoM, String correo, String contra, int idUsuario, String parentesco, int mensaje) {
+    public static boolean addTutor(Context context, String nombre, String apellidoP, String apellidoM, String correo, String contra, int idUsuario, String parentesco, int mensaje, int registroNubeTutor) {
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
             database = null;
@@ -28,7 +28,8 @@ public class TutorDao {
                     Utilidades.CAMPO_parentesco + ", " +
                     Utilidades.CAMPO_mensaje + ", " +
                     Utilidades.CAMPO_correo + ", " +
-                    Utilidades.CAMPO_passwordTutor + ") " +
+                    Utilidades.CAMPO_passwordTutor + ", "+
+                    Utilidades.CAMPO_registroNubeTutor+") " +
                     "VALUES ( " +
                     idUsuario + ", '" +
                     nombre + "', '" +
@@ -37,7 +38,8 @@ public class TutorDao {
                     parentesco + "', " +
                     mensaje + ", '" +
                     correo + "', " +
-                    contra + ")";
+                    contra + ", "+
+                    registroNubeTutor+")";
 
             database.execSQL(inset);
 
