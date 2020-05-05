@@ -25,20 +25,20 @@ public class ConexionApi extends AppCompatActivity {
 
     //////////////////////////////////////////[*********Metodos para el manejo de la tabla Recompensas**********]
     //-----------------------------------[Obtener todos los datos de la tabla recompensas]
-    public static void ObtenerDatosRecompensas(Context context){
+    public static void ObtenerDatosRecompensas(Context context) {
 
         queue = Volley.newRequestQueue(context);
 
 
-        String url ="http://68.183.148.243/Persuhabit/recompensas";//establece ruta al servidor para obtener los datos
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        String url = "http://68.183.148.243/Persuhabit/recompensas";//establece ruta al servidor para obtener los datos
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 try {
                     JSONArray jsonArray = response.getJSONArray("data");
 
-                    for(int i=0; i<jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         String descrip = jsonObject.getString("descrip");
                         System.out.println(descrip);
@@ -60,7 +60,7 @@ public class ConexionApi extends AppCompatActivity {
     //-----------------------------------------[Poner una nueva Recompensa]
     //****************este metodo recive la recompensa en la variable "descrip", y el valor corespondiente
     //****************a esta en la variable "valor".
-    public static void PonerRecompensaNueva(Context context,String descrip,int valor){
+    public static void PonerRecompensaNueva(Context context, String descrip, int valor) {
         String url = "http://68.183.148.243/Persuhabit/recompensas";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -73,18 +73,14 @@ public class ConexionApi extends AppCompatActivity {
 
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -94,11 +90,11 @@ public class ConexionApi extends AppCompatActivity {
 
     //-----------------------------------------[Eliminar una recompensa]
     //********************Este metodo recive el id de la recompensa a eliminar en la variable "id"
-    public static void EliminarRecompensa(Context context, int id){
+    public static void EliminarRecompensa(Context context, int id) {
         String url = "http://68.183.148.243/Persuhabit/recompensas/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
-       // POST parameters
+        // POST parameters
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("id", id);
 
@@ -106,18 +102,14 @@ public class ConexionApi extends AppCompatActivity {
 
         // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -133,19 +125,19 @@ public class ConexionApi extends AppCompatActivity {
 
     //////////////////////////////////////////// [********Metodos para el manejo de USUARIOS**********]
     /////////////////////////////////[Consulta general de todos los usuarios]
-    public static void ObtenerDatosUsuarios(Context context){
+    public static void ObtenerDatosUsuarios(Context context) {
 
         queue = Volley.newRequestQueue(context);
 
-        String url ="http://68.183.148.243/Persuhabit/usuarios";//establece ruta al servidor para obtener los datos
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        String url = "http://68.183.148.243/Persuhabit/usuarios";//establece ruta al servidor para obtener los datos
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 try {
                     JSONArray jsonArray = response.getJSONArray("data");//
 
-                    for(int i=0; i<jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                     }
@@ -166,7 +158,7 @@ public class ConexionApi extends AppCompatActivity {
     ///////////////////////***********[Insertar un usuario nuevo]***************
     public static boolean InsertarUsuarioNuevo(Context context, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int experiencia, int estadoReg){
 
-        boolean respuesta=true;
+        boolean respuesta = true;
         String url = "http://68.183.148.243/Persuhabit/usuarios";
         RequestQueue queue = Volley.newRequestQueue(context);
         final String nomu1, apmu1,  appu1, correo1, pwdu1;
@@ -198,12 +190,10 @@ public class ConexionApi extends AppCompatActivity {
         System.out.println("AGREGAR usuarioooooooooooooooooo: "+nomu+", "+apmu+", "+appu+", "+correo+", "+pwdu+", "+nivel+", "+estadoReg);
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
 
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                         try {
                             System.out.println("entre a la consuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
                                 int resultado = response.getInt("data");
@@ -216,11 +206,9 @@ public class ConexionApi extends AppCompatActivity {
                         }
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -237,10 +225,8 @@ public class ConexionApi extends AppCompatActivity {
     }
 
 
-
-
     ////////////////////////****************[Actualizar Correo del Usuario]
-    public static void ActualizarCorreoUsuario(Context context, String correo, int id){
+    public static void ActualizarCorreoUsuario(Context context, String correo, int id) {
         String url = "http://68.183.148.243/Persuhabit/usuarios/correo";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -253,18 +239,14 @@ public class ConexionApi extends AppCompatActivity {
 
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.PUT, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.PUT, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -273,7 +255,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ////////////////////////[Actualizar Contraseña del Usuario]
-    public static void ActualizarContraseñaUsuario(Context context, String pwdu, int id){
+    public static void ActualizarContraseñaUsuario(Context context, String pwdu, int id) {
         String url = "http://68.183.148.243/Persuhabit/usuarios/password";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -286,18 +268,14 @@ public class ConexionApi extends AppCompatActivity {
 
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.PUT, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.PUT, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -306,7 +284,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ////////////////////////////////////////[eliminar un usuario]
-    public static void EliminaUsuario(Context context, int id){
+    public static void EliminaUsuario(Context context, int id) {
         String url = "http://68.183.148.243/Persuhabit/usuarios/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -318,18 +296,14 @@ public class ConexionApi extends AppCompatActivity {
 
         // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -345,19 +319,19 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[*************Inician Metodos de la tabla Niño**************]
 ////////////////////****************[Consulta general de todos los Niños]
-    public static void ObtenerDatosNiños(Context context){
+    public static void ObtenerDatosNiños(Context context) {
 
         queue = Volley.newRequestQueue(context);
 
-        String url ="http://68.183.148.243/Persuhabit/nino";//establece ruta al servidor para obtener los datos
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        String url = "http://68.183.148.243/Persuhabit/nino";//establece ruta al servidor para obtener los datos
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 try {
                     JSONArray jsonArray = response.getJSONArray("data");//
 
-                    for(int i=0; i<jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                     }
@@ -376,7 +350,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     //////////////////////////////////[Insertar un nuevo niño]
-    public static void PonerNiñoNuevo(Context context,int idusu, String genero, String nomn, String appn, String apmn, int edad, double peso, double estat, double medi, double lineabultra, double lineabv, double leneabf, int totfich, double esfuerzoultra, double esfuerzof, double esfuerzov){
+    public static void PonerNiñoNuevo(Context context, int idusu, String genero, String nomn, String appn, String apmn, int edad, double peso, double estat, double medi, double lineabultra, double lineabv, double leneabf, int totfich, double esfuerzoultra, double esfuerzof, double esfuerzov) {
         String url = "http://68.183.148.243/Persuhabit/nino";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -403,18 +377,14 @@ public class ConexionApi extends AppCompatActivity {
 
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -423,7 +393,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ////////////////////////[Actualizar linea base de ultra procesados, frutas y verduras del niño]
-    public static void ActualizaLineaBase_Fruta_Verdura_Ultra(Context context, double lineabultra, double lineabv, double lineabf, int id){
+    public static void ActualizaLineaBase_Fruta_Verdura_Ultra(Context context, double lineabultra, double lineabv, double lineabf, int id) {
         String url = "http://68.183.148.243/Persuhabit/nino/LineaBase";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -438,18 +408,14 @@ public class ConexionApi extends AppCompatActivity {
 
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.PUT, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.PUT, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -458,7 +424,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ////////////////////////[Actualizar Esfuerzo de ultra procesados, frutas y verduras del niño]
-    public static void ActualizaEsfuerzo_Fruta_Verdura_Ultra(Context context, double esfuerzoultra, double esfuerzof, double esfuerzov, int id){
+    public static void ActualizaEsfuerzo_Fruta_Verdura_Ultra(Context context, double esfuerzoultra, double esfuerzof, double esfuerzov, int id) {
         String url = "http://68.183.148.243/Persuhabit/nino/esfuerzo";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -472,18 +438,14 @@ public class ConexionApi extends AppCompatActivity {
 
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.PUT, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.PUT, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -492,7 +454,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ////////////////////////////////////////[eliminar niño]
-    public static void EliminaNiño(Context context, int id){
+    public static void EliminaNiño(Context context, int id) {
         String url = "http://68.183.148.243/Persuhabit/nino/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -504,18 +466,14 @@ public class ConexionApi extends AppCompatActivity {
 
         // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -531,19 +489,19 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[*************Inician Metodos de la tabla Registro**************]
 ////////////////////*************[Consulta general de todos los Registros]
-    public static void ObtenerDatosRegistro(Context context){
+    public static void ObtenerDatosRegistro(Context context) {
 
         queue = Volley.newRequestQueue(context);
 
-        String url ="http://68.183.148.243/Persuhabit/registro";//establece ruta al servidor para obtener los datos
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        String url = "http://68.183.148.243/Persuhabit/registro";//establece ruta al servidor para obtener los datos
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 try {
                     JSONArray jsonArray = response.getJSONArray("data");//
 
-                    for(int i=0; i<jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                     }
@@ -562,7 +520,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     //////////////////////////////////[Insertar un nuevo registro]
-    public static void PonerRegistroNuevo(Context context,int idNino, String fechar){
+    public static void PonerRegistroNuevo(Context context, int idNino, String fechar) {
         String url = "http://68.183.148.243/Persuhabit/registro";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -576,18 +534,14 @@ public class ConexionApi extends AppCompatActivity {
 
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -596,7 +550,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ////////////////////////////////////////[eliminar registro]
-    public static void EliminaRegistro(Context context, int id){
+    public static void EliminaRegistro(Context context, int id) {
         String url = "http://68.183.148.243/Persuhabit/registro/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -608,18 +562,14 @@ public class ConexionApi extends AppCompatActivity {
 
         // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -635,19 +585,19 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[*************Inician Metodos de la tabla Mensajes_Persuasivos**************]
 ////////////////////[Consulta general de todos los Mensajes_Persuasivos]
-    public static void ObtenerDatosMensajes_Persuasivos(Context context){
+    public static void ObtenerDatosMensajes_Persuasivos(Context context) {
 
         queue = Volley.newRequestQueue(context);
 
-        String url ="http://68.183.148.243/Persuhabit/MsgPersuasivo";//establece ruta al servidor para obtener los datos
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        String url = "http://68.183.148.243/Persuhabit/MsgPersuasivo";//establece ruta al servidor para obtener los datos
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 try {
                     JSONArray jsonArray = response.getJSONArray("data");//
 
-                    for(int i=0; i<jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                     }
@@ -666,7 +616,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ///////////////////////[Insertar un Mensaje Persuasivo nuevo]
-    public static void PonerMensajes_PersuasivosNuevo(Context context,String tipo, String msg){
+    public static void PonerMensajes_PersuasivosNuevo(Context context, String tipo, String msg) {
         String url = "http://68.183.148.243/Persuhabit/MsgPersuasivo";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -680,18 +630,14 @@ public class ConexionApi extends AppCompatActivity {
 
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -700,7 +646,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ////////////////////////////////////////[eliminar Mensaje Persuasivo]
-    public static void EliminaMensajes_Persuasivos(Context context, int id){
+    public static void EliminaMensajes_Persuasivos(Context context, int id) {
         String url = "http://68.183.148.243/Persuhabit/MsgPersuasivo/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -712,18 +658,14 @@ public class ConexionApi extends AppCompatActivity {
 
         // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -739,19 +681,19 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[*************Inician Metodos de la tabla Historial_Nutricion**************]
 ////////////////////***************[Consulta general de Historial_Nutricion]
-    public static void ObtenerDatosHistorial_Nutricion(Context context){
+    public static void ObtenerDatosHistorial_Nutricion(Context context) {
 
         queue = Volley.newRequestQueue(context);
 
-        String url ="http://68.183.148.243/Persuhabit/HistorialNutri";//establece ruta al servidor para obtener los datos
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        String url = "http://68.183.148.243/Persuhabit/HistorialNutri";//establece ruta al servidor para obtener los datos
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 try {
                     JSONArray jsonArray = response.getJSONArray("data");//
 
-                    for(int i=0; i<jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                     }
@@ -770,7 +712,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ///////////////////////[Insertar Historial_Nutricion nuevo]
-    public static void PonerHistorial_NutricionNuevo(Context context,int idusu, int Respuesta_Nutri){
+    public static void PonerHistorial_NutricionNuevo(Context context, int idusu, int Respuesta_Nutri) {
         String url = "http://68.183.148.243/Persuhabit/HistorialNutri";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -784,18 +726,14 @@ public class ConexionApi extends AppCompatActivity {
 
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -804,7 +742,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ////////////////////////////////////////[eliminar Historial_Nutricion]
-    public static void EliminaHistorial_Nutricion(Context context, int id){
+    public static void EliminaHistorial_Nutricion(Context context, int id) {
         String url = "http://68.183.148.243/Persuhabit/HistorialNutri/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -816,18 +754,14 @@ public class ConexionApi extends AppCompatActivity {
 
         // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -843,19 +777,19 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[*************Inician Metodos de la tabla Historial_Autoeficacia**************]
 ////////////////////***********[Consulta general de Historial_Autoeficacia]
-    public static void ObtenerDatosHistorial_Autoeficacia(Context context){
+    public static void ObtenerDatosHistorial_Autoeficacia(Context context) {
 
         queue = Volley.newRequestQueue(context);
 
-        String url ="http://68.183.148.243/Persuhabit/HistorialAuto";//establece ruta al servidor para obtener los datos
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        String url = "http://68.183.148.243/Persuhabit/HistorialAuto";//establece ruta al servidor para obtener los datos
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 try {
                     JSONArray jsonArray = response.getJSONArray("data");//
 
-                    for(int i=0; i<jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                     }
@@ -874,7 +808,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ///////////////////////[Insertar Historial_Autoeficacia nuevo]
-    public static void PonerHistorial_AutoeficaciaNuevo(Context context,int idusu, String RespuestaAuto){
+    public static void PonerHistorial_AutoeficaciaNuevo(Context context, int idusu, String RespuestaAuto) {
         String url = "http://68.183.148.243/Persuhabit/HistorialAuto";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -888,18 +822,14 @@ public class ConexionApi extends AppCompatActivity {
 
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -908,7 +838,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ////////////////////////////////////////[eliminar Historial_Autoeficacia]
-    public static void EliminaHistorial_Autoeficacia(Context context, int id){
+    public static void EliminaHistorial_Autoeficacia(Context context, int id) {
         String url = "http://68.183.148.243/Persuhabit/HistorialAuto/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -920,18 +850,14 @@ public class ConexionApi extends AppCompatActivity {
 
         // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -947,19 +873,19 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[*************Inician rutas de la tabla GustoVerdura**************]
 ////////////////////[Consulta general de GustoVerdura]
-    public static void ObtenerDatosGustoVerdura(Context context){
+    public static void ObtenerDatosGustoVerdura(Context context) {
 
         queue = Volley.newRequestQueue(context);
 
-        String url ="http://68.183.148.243/Persuhabit/GustoVerdura";//establece ruta al servidor para obtener los datos
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        String url = "http://68.183.148.243/Persuhabit/GustoVerdura";//establece ruta al servidor para obtener los datos
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 try {
                     JSONArray jsonArray = response.getJSONArray("data");//
 
-                    for(int i=0; i<jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                     }
@@ -978,7 +904,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ///////////////////////[Insertar GustoVerdura nuevo]
-    public static void PonerGustoVerduraNuevo(Context context,String nombreV, int siGustaV, int noGustaV, int conoscoV, int idNino){
+    public static void PonerGustoVerduraNuevo(Context context, String nombreV, int siGustaV, int noGustaV, int conoscoV, int idNino) {
         String url = "http://68.183.148.243/Persuhabit/GustoVerdura";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -995,18 +921,14 @@ public class ConexionApi extends AppCompatActivity {
 
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -1015,7 +937,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ////////////////////////////////////////[eliminar GustoVerdura]
-    public static void EliminaGustoVerdura(Context context, int id){
+    public static void EliminaGustoVerdura(Context context, int id) {
         String url = "http://68.183.148.243/Persuhabit/GustoVerdura/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -1027,18 +949,14 @@ public class ConexionApi extends AppCompatActivity {
 
         // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -1054,19 +972,19 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[*************Inician Metodos de la tabla GustoFrutas**************]
 ////////////////////************[Consulta general de GustoFrutas]
-    public static void ObtenerDatosGustoFrutas(Context context){
+    public static void ObtenerDatosGustoFrutas(Context context) {
 
         queue = Volley.newRequestQueue(context);
 
-        String url ="http://68.183.148.243/Persuhabit/GustoFrutas";//establece ruta al servidor para obtener los datos
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        String url = "http://68.183.148.243/Persuhabit/GustoFrutas";//establece ruta al servidor para obtener los datos
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 try {
                     JSONArray jsonArray = response.getJSONArray("data");//
 
-                    for(int i=0; i<jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                     }
@@ -1085,7 +1003,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ///////////////////////[Insertar GustoFrutas nuevo]
-    public static void PonerGustoFrutasNuevo(Context context,int idNino, String nombreF, int siGustaF, int noGustaF, int conoscoF){
+    public static void PonerGustoFrutasNuevo(Context context, int idNino, String nombreF, int siGustaF, int noGustaF, int conoscoF) {
         String url = "http://68.183.148.243/Persuhabit/GustoFrutas";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -1102,18 +1020,14 @@ public class ConexionApi extends AppCompatActivity {
 
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -1122,7 +1036,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ////////////////////////////////////////[eliminar GustoFrutas]
-    public static void EliminaGustoFrutas(Context context, int id){
+    public static void EliminaGustoFrutas(Context context, int id) {
         String url = "http://68.183.148.243/Persuhabit/GustoFrutas/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -1134,18 +1048,14 @@ public class ConexionApi extends AppCompatActivity {
 
         // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -1161,19 +1071,19 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[*************Inician Metodos de la tabla Envia_Msg**************]
 ////////////////////**************[Consulta general de Envia_Msg]
-    public static void ObtenerDatosEnvia_Msg(Context context){
+    public static void ObtenerDatosEnvia_Msg(Context context) {
 
         queue = Volley.newRequestQueue(context);
 
-        String url ="http://68.183.148.243/Persuhabit/EnviaMsg";//establece ruta al servidor para obtener los datos
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        String url = "http://68.183.148.243/Persuhabit/EnviaMsg";//establece ruta al servidor para obtener los datos
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 try {
                     JSONArray jsonArray = response.getJSONArray("data");//
 
-                    for(int i=0; i<jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                     }
@@ -1192,7 +1102,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ///////////////////////[Insertar Envia_Msg nuevo]
-    public static void PonerEnvia_MsgNuevo(Context context, int idusu, int idmsg, String horame, String Fechame){
+    public static void PonerEnvia_MsgNuevo(Context context, int idusu, int idmsg, String horame, String Fechame) {
         String url = "http://68.183.148.243/Persuhabit/EnviaMsg";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -1204,23 +1114,18 @@ public class ConexionApi extends AppCompatActivity {
         params.put("Fechame", Fechame);
 
 
-
         JSONObject jsonObj = new JSONObject(params);
 
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -1229,7 +1134,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ////////////////////////////////////////[eliminar Envia_Msg]
-    public static void EliminaEnvia_Msg(Context context, int id){
+    public static void EliminaEnvia_Msg(Context context, int id) {
         String url = "http://68.183.148.243/Persuhabit/EnviaMsg/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -1241,18 +1146,14 @@ public class ConexionApi extends AppCompatActivity {
 
         // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -1268,19 +1169,19 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[*************Inician Metodos de la tabla DetalleReg**************]
 ////////////////////[Consulta general de DetalleReg]
-    public static void ObtenerDatosDetalleReg(Context context){
+    public static void ObtenerDatosDetalleReg(Context context) {
 
         queue = Volley.newRequestQueue(context);
 
-        String url ="http://68.183.148.243/Persuhabit/DetalleReg";//establece ruta al servidor para obtener los datos
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        String url = "http://68.183.148.243/Persuhabit/DetalleReg";//establece ruta al servidor para obtener los datos
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 try {
                     JSONArray jsonArray = response.getJSONArray("data");//
 
-                    for(int i=0; i<jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                     }
@@ -1299,7 +1200,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ///////////////////////[Insertar DetalleReg nuevo]
-    public static void PonerDetalleRegNuevo(Context context, int idNino, int idalimento, double equi, double cad, double umedr, String hora, String tipo){
+    public static void PonerDetalleRegNuevo(Context context, int idNino, int idalimento, double equi, double cad, double umedr, String hora, String tipo) {
         String url = "http://68.183.148.243/Persuhabit/DetalleReg";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -1314,23 +1215,18 @@ public class ConexionApi extends AppCompatActivity {
         params.put("tipo", tipo);
 
 
-
         JSONObject jsonObj = new JSONObject(params);
 
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -1339,7 +1235,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ////////////////////////////////////////[eliminar DetalleReg]
-    public static void EliminaDetalleReg(Context context, int id){
+    public static void EliminaDetalleReg(Context context, int id) {
         String url = "http://68.183.148.243/Persuhabit/DetalleReg/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -1351,18 +1247,14 @@ public class ConexionApi extends AppCompatActivity {
 
         // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -1378,19 +1270,19 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[*************Inician Metodos de la tabla Cuestionario_Nutricion**************]
 ////////////////////*************[Consulta general de Cuestionario_Nutricion]
-    public static void ObtenerCuestionario_Nutricion(Context context){
+    public static void ObtenerCuestionario_Nutricion(Context context) {
 
         queue = Volley.newRequestQueue(context);
 
-        String url ="http://68.183.148.243/Persuhabit/CuestionarioNutri";//establece ruta al servidor para obtener los datos
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        String url = "http://68.183.148.243/Persuhabit/CuestionarioNutri";//establece ruta al servidor para obtener los datos
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 try {
                     JSONArray jsonArray = response.getJSONArray("data");//
 
-                    for(int i=0; i<jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                     }
@@ -1409,7 +1301,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ///////////////////////[Insertar Cuestionario_Nutricion nuevo]
-    public static void PonerCuestionario_NutricionNuevo(Context context, int idHistoNutri, String Preg_Nutri, String Res_Pre_Nutri, int Msg){
+    public static void PonerCuestionario_NutricionNuevo(Context context, int idHistoNutri, String Preg_Nutri, String Res_Pre_Nutri, int Msg) {
         String url = "http://68.183.148.243/Persuhabit/CuestionarioNutri";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -1421,23 +1313,18 @@ public class ConexionApi extends AppCompatActivity {
         params.put("Msg", Msg);
 
 
-
         JSONObject jsonObj = new JSONObject(params);
 
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -1446,7 +1333,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ////////////////////////////////////////[eliminar Cuestionario_Nutricion]
-    public static void EliminaCuestionario_Nutricion(Context context, int id){
+    public static void EliminaCuestionario_Nutricion(Context context, int id) {
         String url = "http://68.183.148.243/Persuhabit/CuestionarioNutri/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -1458,18 +1345,14 @@ public class ConexionApi extends AppCompatActivity {
 
         // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -1485,19 +1368,19 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[*************Inician Metodos de la tabla CanjeFi**************]
 ////////////////////*************[Consulta general de CanjeFi]
-    public static void ObtenerCanjeFi(Context context){
+    public static void ObtenerCanjeFi(Context context) {
 
         queue = Volley.newRequestQueue(context);
 
-        String url ="http://68.183.148.243/Persuhabit/CanjeFi";//establece ruta al servidor para obtener los datos
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        String url = "http://68.183.148.243/Persuhabit/CanjeFi";//establece ruta al servidor para obtener los datos
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 try {
                     JSONArray jsonArray = response.getJSONArray("data");//
 
-                    for(int i=0; i<jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                     }
@@ -1516,7 +1399,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ///////////////////////[Insertar CanjeFi nuevo]
-    public static void PonerCanjeFiNuevo(Context context, int idNino, int idrecom, String fechacanje, int Activo){
+    public static void PonerCanjeFiNuevo(Context context, int idNino, int idrecom, String fechacanje, int Activo) {
         String url = "http://68.183.148.243/Persuhabit/CanjeFi";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -1528,23 +1411,18 @@ public class ConexionApi extends AppCompatActivity {
         params.put("Activo", Activo);
 
 
-
         JSONObject jsonObj = new JSONObject(params);
 
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -1553,7 +1431,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ////////////////////////////////////////[eliminar CanjeFi]
-    public static void EliminaCanjeFi(Context context, int id){
+    public static void EliminaCanjeFi(Context context, int id) {
         String url = "http://68.183.148.243/Persuhabit/CanjeFi/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -1565,18 +1443,14 @@ public class ConexionApi extends AppCompatActivity {
 
         // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -1592,19 +1466,19 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[*************Inician Metodos de la tabla Tutor**************]
 ////////////////////****************[Consulta general de Tutor]
-    public static void ObtenerTutor(Context context){
+    public static void ObtenerTutor(Context context) {
 
         queue = Volley.newRequestQueue(context);
 
-        String url ="http://68.183.148.243/Persuhabit/tutor";//establece ruta al servidor para obtener los datos
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        String url = "http://68.183.148.243/Persuhabit/tutor";//establece ruta al servidor para obtener los datos
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 try {
                     JSONArray jsonArray = response.getJSONArray("data");//
 
-                    for(int i=0; i<jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                     }
@@ -1623,7 +1497,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ///////////////////////[Insertar Tutor nuevo]
-    public static void PonerTutorNuevo(Context context, int idusu, String nomt, String appt, String appmt, String parent, int msg, String correo, int pwdt){
+    public static void PonerTutorNuevo(Context context, int idusu, String nomt, String appt, String appmt, String parent, int msg, String correo, int pwdt) {
         String url = "http://68.183.148.243/Persuhabit/tutor";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -1639,23 +1513,18 @@ public class ConexionApi extends AppCompatActivity {
         params.put("pwdt", pwdt);
 
 
-
         JSONObject jsonObj = new JSONObject(params);
 
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
@@ -1664,7 +1533,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ////////////////////////////////////////[eliminar Tutor]
-    public static void EliminaTutor(Context context, int id){
+    public static void EliminaTutor(Context context, int id) {
         String url = "http://68.183.148.243/Persuhabit/tutor/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -1676,18 +1545,14 @@ public class ConexionApi extends AppCompatActivity {
 
         // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>()
-                {
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response)
-                    {
+                    public void onResponse(JSONObject response) {
                     }
                 },
-                        new Response.ErrorListener()
-                        {
+                        new Response.ErrorListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error)
-                            {
+                            public void onErrorResponse(VolleyError error) {
                             }
                         });
 
