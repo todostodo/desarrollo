@@ -1,6 +1,7 @@
 package com.example.desarrollo.ConexionApi;
 
 import android.content.Context;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -16,7 +17,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import  com.example.desarrollo.Datos.UserDao;
+
+import com.example.desarrollo.Datos.UserDao;
 
 
 public class ConexionApi extends AppCompatActivity {
@@ -156,12 +158,12 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ///////////////////////***********[Insertar un usuario nuevo]***************
-    public static boolean InsertarUsuarioNuevo(Context context, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int experiencia, int estadoReg){
+    public static boolean InsertarUsuarioNuevo(Context context, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int experiencia, int estadoReg) {
 
         boolean respuesta = true;
         String url = "http://68.183.148.243/Persuhabit/usuarios";
         RequestQueue queue = Volley.newRequestQueue(context);
-        final String nomu1, apmu1,  appu1, correo1, pwdu1;
+        final String nomu1, apmu1, appu1, correo1, pwdu1;
         final int nivel1, estadoReg1, experiencia1;
         final Context context1;
         nomu1 = nomu;
@@ -172,7 +174,7 @@ public class ConexionApi extends AppCompatActivity {
         nivel1 = nivel;
         estadoReg1 = estadoReg;
         experiencia1 = experiencia;
-        context1=context;
+        context1 = context;
 
 // POST parameters
         Map<String, Object> params = new HashMap<String, Object>();
@@ -187,7 +189,6 @@ public class ConexionApi extends AppCompatActivity {
 
         JSONObject jsonObj = new JSONObject(params);
 
-        System.out.println("AGREGAR usuarioooooooooooooooooo: "+nomu+", "+apmu+", "+appu+", "+correo+", "+pwdu+", "+nivel+", "+estadoReg);
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
                 (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
@@ -195,10 +196,9 @@ public class ConexionApi extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            System.out.println("entre a la consuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
-                                int resultado = response.getInt("data");
-                                System.out.println("el valor del id: "+resultado);
-                            llegue(response,nomu1, apmu1,appu1,correo1,pwdu1,nivel1,experiencia1,estadoReg1,context1);
+                            int resultado = response.getInt("data");
+                            System.out.println("el valor del id: " + resultado);
+                            llegue(response, nomu1, apmu1, appu1, correo1, pwdu1, nivel1, experiencia1, estadoReg1, context1);
                             // registrar(resultado);
 
                         } catch (JSONException e) {
@@ -218,10 +218,9 @@ public class ConexionApi extends AppCompatActivity {
     }
 
 
-    public static void llegue(JSONObject response, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int experiencia,int estadoReg, Context context) throws JSONException {
+    public static void llegue(JSONObject response, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int experiencia, int estadoReg, Context context) throws JSONException {
         int resultado = response.getInt("data");
-        System.out.println("llego estoooooooooooooooooooooooooooooooooo: "+resultado);
-        UserDao.addUsuario("add",context,nomu,appu,apmu,correo,pwdu,nivel,experiencia,estadoReg,resultado);
+        UserDao.addUsuario("add", context, nomu, appu, apmu, correo, pwdu, nivel, experiencia, estadoReg, resultado);
     }
 
 
