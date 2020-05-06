@@ -118,7 +118,17 @@ public class TutorFragment extends AppCompatActivity implements AdapterView.OnIt
 
                                     if (contra.equals(reContra)) {
 
-                                        boolean add = tutorDao.addTutor(this, nombre, apellidoP, apellidoM, correo, contra, idUsuario, parentesco, mensaje,1);
+                                        boolean add = tutorDao.addTutor(
+                                                this,
+                                                nombre,
+                                                apellidoP,
+                                                apellidoM,
+                                                correo,
+                                                contra,
+                                                idUsuario,
+                                                parentesco,
+                                                mensaje,
+                                                1);
 
                                         if (add == true) {
                                             Toast.makeText(this, "Tutor Agregado", Toast.LENGTH_SHORT).show();

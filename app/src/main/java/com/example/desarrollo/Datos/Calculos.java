@@ -23,6 +23,7 @@ public class Calculos {
     private static SQLiteDatabase database;
 
     private static final String TAG = "Calculos";
+
     private static double rendondearValor(double valor) {
         long factor = (long) Math.pow(10, 2);
         valor = valor * factor;
@@ -51,7 +52,7 @@ public class Calculos {
         return round;
     }
 
-    public static boolean registrarDetalleReg(String TAG, Context context, int idNino, int alimento, double unidadMedida, double cantidad, double equivalencia, String Horaregistro, String fecha, String tipo, int registroNubeDetGeg) {
+    public static boolean registrarDetalleReg(String TAG, Context context, int idNino, int alimento, double unidadMedida, double cantidad, double equivalencia, String Horaregistro, String fecha, String tipo, int registroNube) {
 
         try {
 
@@ -69,8 +70,8 @@ public class Calculos {
                     Utilidades.CAMPO_Cantidad + ", " +
                     Utilidades.CAMPO_UnidadMedida + ", " +
                     Utilidades.CAMPO_Tipo + ", " +
-                    Utilidades.CAMPO_HoraRegistro + ", "+
-                    Utilidades.CAMPO_registroNubeDetGeg+") " +
+                    Utilidades.CAMPO_HoraRegistro + ", " +
+                    Utilidades.CAMPO_registroNube + ") " +
                     "VALUES ( " +
                     idNino + ", " +
                     alimento + ", " +
@@ -78,14 +79,14 @@ public class Calculos {
                     cantidad + ", " +
                     unidadMedida + ", '" +
                     tipo + "', '" +
-                    Horaregistro + "', "+
-                    registroNubeDetGeg+")";
+                    Horaregistro + "', " +
+                    registroNube + ")";
 
             String insertRegistro = "INSERT INTO " + Utilidades.TABLA_Registro + " (" +
                     Utilidades.CAMPO_idNino + ", " +
-                    Utilidades.CAMPO_FechaRegistro + ", "+
-                    Utilidades.CAMPO_registroNubeReg+") " +
-                    "VALUES (" + idNino + ", '" + fecha + "', "+registroNubeDetGeg+")";
+                    Utilidades.CAMPO_FechaRegistro + ", " +
+                    Utilidades.CAMPO_registroNube + ") " +
+                    "VALUES (" + idNino + ", '" + fecha + "', " + registroNube + ")";
 
             database.execSQL(insetDetalleRegistro);
             database.execSQL(insertRegistro);
@@ -1188,7 +1189,7 @@ public class Calculos {
         } finally {
             database.close();
         }
-        int round = (int)  Math.round(sumatoria);
+        int round = (int) Math.round(sumatoria);
         return round;
     }
 

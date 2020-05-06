@@ -100,7 +100,12 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
                     }else{
                         backgroundValor.setBackgroundResource(R.drawable.rectangulo_gris);
 
-                        boolean insert = consultar.insertMotivador(TAG, getApplicationContext(), descripcion, Integer.valueOf(valor),1);
+                        boolean insert = consultar.insertMotivador(
+                                TAG,
+                                getApplicationContext(),
+                                descripcion,
+                                Integer.valueOf(valor),
+                                1);
 
                         if (insert == true){
                             Toast.makeText(getApplicationContext(), "El motivador fue agregado con exito", Toast.LENGTH_SHORT).show();

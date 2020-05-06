@@ -30,9 +30,9 @@ public class UserDao {
                     Utilidades.CAMPO_correo + ", " +
                     Utilidades.CAMPO_passwordUsu + ", " +
                     Utilidades.CAMPO_nivel + ", " +
-                    Utilidades.CAMPO_experiencia + ","+
-                    Utilidades.CAMPO_estadoRegistro+", "+
-                    Utilidades.CAMPO_idGlobal+")" +
+                    Utilidades.CAMPO_estadoRegistro + "," +
+                    Utilidades.CAMPO_idGlobal + ") " +
+                    Utilidades.CAMPO_registroNube + ") " +
                     "VALUES ('" +
                     nomUsuario + "', '" +
                     apellidoPaternoUsu + "', '" +
@@ -144,7 +144,7 @@ public class UserDao {
         }
     }
 
-    public static void sumarExpUsuarario(String TAG, Context context, int exp){
+    public static void sumarExpUsuarario(String TAG, Context context, int exp) {
 
         try {
             ConexionSQLHelper conection = new ConexionSQLHelper(context);
@@ -155,14 +155,14 @@ public class UserDao {
 
             database.execSQL(sumExp);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.e(TAG, "Error" + e);
-        }finally {
+        } finally {
             database.close();
         }
     }
 
-    public static void suvirNivelUsuario(String TAG, Context context, int nivel){
+    public static void suvirNivelUsuario(String TAG, Context context, int nivel) {
 
         try {
             ConexionSQLHelper conection = new ConexionSQLHelper(context);
@@ -172,9 +172,9 @@ public class UserDao {
             String subitNivel = "UPDATE " + Utilidades.TABLA_Usuario + " SET " + Utilidades.CAMPO_nivel + " = (" + Utilidades.CAMPO_nivel + " + " + nivel + ")";
             database.execSQL(subitNivel);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.e(TAG, "Error " + e);
-        }finally {
+        } finally {
             database.close();
         }
     }

@@ -14,9 +14,9 @@ public class PreferenciasDao {
 
     private static SQLiteDatabase basedatos;
 
-    public static boolean addPreferenciasFrutas (String TAG, Context context, int idNino, String nombreFruta, int siGusta, int noGusta, int conosco, int registroNubeGustoFru){
+    public static boolean addPreferenciasFrutas(String TAG, Context context, int idNino, String nombreFruta, int siGusta, int noGusta, int conosco, int registroNube) {
 
-        try{
+        try {
 
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
             basedatos = null;
@@ -27,30 +27,30 @@ public class PreferenciasDao {
                     Utilidades.CAMPO_NombreFruta + ", " +
                     Utilidades.CAMPO_siGustaFruta + ", " +
                     Utilidades.CAMPO_noGustaFruta + ", " +
-                    Utilidades.CAMPO_conoscoFruta + ", "+
-                    Utilidades.CAMPO_registroNubeGustoFru+")" +
+                    Utilidades.CAMPO_conoscoFruta + ", " +
+                    Utilidades.CAMPO_registroNube + ")" +
                     "VALUES ( " +
                     idNino + ",'" +
                     nombreFruta + "', " +
                     siGusta + ", " +
                     noGusta + ", " +
-                    conosco + ", "+
-                    registroNubeGustoFru+")";
+                    conosco + ", " +
+                    registroNube + ")";
 
             basedatos.execSQL(insert);
 
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.e(TAG, "ERROR " + e);
             return false;
-        }finally {
+        } finally {
             basedatos.close();
         }
     }
 
-    public static boolean addPreferenciasVerduras (String TAG, Context context, int idNino, String nombreFruta, int siGusta, int noGusta, int conosco, int registroNubeGustoVerdu){
+    public static boolean addPreferenciasVerduras(String TAG, Context context, int idNino, String nombreFruta, int siGusta, int noGusta, int conosco, int registroNube) {
 
-        try{
+        try {
 
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
             basedatos = null;
@@ -61,23 +61,23 @@ public class PreferenciasDao {
                     Utilidades.CAMPO_NombreVerdura + ", " +
                     Utilidades.CAMPO_siGustaVerdura + ", " +
                     Utilidades.CAMPO_noGustaVerdura + ", " +
-                    Utilidades.CAMPO_conoscoVerdura + ", "+
-                    Utilidades.CAMPO_registroNubeGustoVerdu+")" +
+                    Utilidades.CAMPO_conoscoVerdura + ", " +
+                    Utilidades.CAMPO_registroNube + ")" +
                     "VALUES ( " +
                     idNino + ",'" +
                     nombreFruta + "', " +
                     siGusta + ", " +
                     noGusta + ", " +
-                    conosco + ", "+
-                    registroNubeGustoVerdu+")";
+                    conosco + ", " +
+                    registroNube + ")";
 
             basedatos.execSQL(insert);
 
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.e(TAG, "ERROR " + e);
             return false;
-        }finally {
+        } finally {
             basedatos.close();
         }
     }

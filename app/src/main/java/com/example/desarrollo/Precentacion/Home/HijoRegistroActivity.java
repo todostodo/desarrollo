@@ -680,10 +680,6 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
             startActivity(detalleConsumo);
             finish();
         } else {
-            //SharedPreferences preferences = getApplicationContext().getSharedPreferences("Usuario", MODE_PRIVATE);
-            //SharedPreferences.Editor editor = preferences.edit();
-            //editor.putBoolean("inicioAutomatico", true);
-            //editor.commit();
             userDao.updateEstadoUsaurio(TAG, getApplicationContext());
             finish();
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);

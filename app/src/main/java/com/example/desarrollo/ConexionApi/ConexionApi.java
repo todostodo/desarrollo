@@ -44,7 +44,7 @@ public class ConexionApi extends AppCompatActivity {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         String descrip = jsonObject.getString("descrip");
                         System.out.println(descrip);
-                    }
+                }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
