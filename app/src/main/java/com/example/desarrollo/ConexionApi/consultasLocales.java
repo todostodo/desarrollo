@@ -13,17 +13,17 @@ public class consultasLocales {
     private static SQLiteDatabase database;
     private static final String TAG = "consultasLocales";
 
-    public static void obtenerDatosUsuario(Context context){
+    public static void obtenerDatosUsuario(Context context) {
 
-        String nombre,apellidoPaterno,apellidoMaterno,correo,pasw;
-        int nivel,estReg,idGlobal;
+        String nombre, apellidoPaterno, apellidoMaterno, correo, pasw;
+        int nivel, estReg, idGlobal;
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
 
             database = null;
             database = connection.getReadableDatabase();
 
-            Cursor cur = database.rawQuery("SELECT * FROM "+Utilidades.TABLA_Usuario, null);
+            Cursor cur = database.rawQuery("SELECT * FROM " + Utilidades.TABLA_Usuario, null);
 
             if (cur.moveToFirst()) {
                 do {
@@ -45,7 +45,7 @@ public class consultasLocales {
         }
     }
 
-    public static void obtenerDatosHistoAuto(Context context){
+    public static void obtenerDatosHistoAuto(Context context) {
 
         String Respuesta_Auto;
         int CAMPO_idUsuario;
@@ -55,7 +55,7 @@ public class consultasLocales {
             database = null;
             database = connection.getReadableDatabase();
 
-            Cursor cur = database.rawQuery("SELECT * FROM "+Utilidades.TABLA_Historial_Autoeficacia+" WHERE "+Utilidades.CAMPO_registroNubeAutoefi+" = 1" , null);
+            Cursor cur = database.rawQuery("SELECT * FROM " + Utilidades.TABLA_Historial_Autoeficacia + " WHERE " + Utilidades.CAMPO_registroNube + " = 1", null);
 
             if (cur.moveToFirst()) {
                 do {
