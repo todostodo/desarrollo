@@ -189,7 +189,6 @@ public class ConexionApi extends AppCompatActivity {
 
         JSONObject jsonObj = new JSONObject(params);
 
-        System.out.println("AGREGAR usuarioooooooooooooooooo: " + nomu + ", " + apmu + ", " + appu + ", " + correo + ", " + pwdu + ", " + nivel + ", " + estadoReg);
 // Request a json response from the provided URL
         JsonObjectRequest jsonObjRequest = new JsonObjectRequest
                 (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
@@ -197,7 +196,6 @@ public class ConexionApi extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            System.out.println("entre a la consuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
                             int resultado = response.getInt("data");
                             System.out.println("el valor del id: " + resultado);
                             llegue(response, nomu1, apmu1, appu1, correo1, pwdu1, nivel1, experiencia1, estadoReg1, context1);
@@ -222,7 +220,6 @@ public class ConexionApi extends AppCompatActivity {
 
     public static void llegue(JSONObject response, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int experiencia, int estadoReg, Context context) throws JSONException {
         int resultado = response.getInt("data");
-        System.out.println("llego estoooooooooooooooooooooooooooooooooo: " + resultado);
         UserDao.addUsuario("add", context, nomu, appu, apmu, correo, pwdu, nivel, experiencia, estadoReg, resultado);
     }
 
