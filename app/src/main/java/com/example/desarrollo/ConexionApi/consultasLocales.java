@@ -11,6 +11,8 @@ import com.example.desarrollo.Ultilidades.Utilidades;
 
 import java.util.ArrayList;
 
+import static com.android.volley.Request.Method.HEAD;
+
 public class consultasLocales {
 
     private static SQLiteDatabase database;
@@ -516,9 +518,11 @@ public class consultasLocales {
             database = null;
             database = connection.getReadableDatabase();
 
+
             Cursor cur = database.rawQuery(
                     "SELECT * FROM " + Utilidades.TABLA_GustoVerdura + " WHERE " + Utilidades.CAMPO_registroNube + " = 1",
                     null);
+
 
             if (cur.moveToFirst()) {
                 do {
