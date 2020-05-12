@@ -18,6 +18,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.example.desarrollo.Datos.MotivadoresDao;
+import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Datos.UserDao;
 
 
@@ -44,7 +46,7 @@ public class ConexionApi extends AppCompatActivity {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         String descrip = jsonObject.getString("descrip");
                         System.out.println(descrip);
-                }
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -62,10 +64,16 @@ public class ConexionApi extends AppCompatActivity {
     //-----------------------------------------[Poner una nueva Recompensa]
     //****************este metodo recive la recompensa en la variable "descrip", y el valor corespondiente
     //****************a esta en la variable "valor".
-    public static void PonerRecompensaNueva(Context context, String descrip, int valor) {
+    public static void insertarRecompensaNueva(final Context context, String descrip, int valor) {
         String url = "http://68.183.148.243/Persuhabit/recompensas";
         RequestQueue queue = Volley.newRequestQueue(context);
 
+        final String descrip1;
+        final int valor1;
+        final Context context1;
+        descrip1 = descrip;
+        valor1 = valor;
+        context1 = context;
 // POST parameters
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("descrip", descrip);
@@ -78,6 +86,11 @@ public class ConexionApi extends AppCompatActivity {
                 (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        try {
+                            registrarRecompensaLocal(context1, response, descrip1, valor1);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 },
                         new Response.ErrorListener() {
@@ -88,6 +101,11 @@ public class ConexionApi extends AppCompatActivity {
 
 // Add the request to the RequestQueue.
         queue.add(jsonObjRequest);
+    }
+
+    public static void registrarRecompensaLocal(Context context, JSONObject response, String descrip, int valor) throws JSONException {
+        int resultado = response.getInt("data");
+        MotivadoresDao.insertMotivador("recomLocal", context, descrip, valor, resultado);
     }
 
     //-----------------------------------------[Eliminar una recompensa]
@@ -161,7 +179,7 @@ public class ConexionApi extends AppCompatActivity {
     public static boolean InsertarUsuarioNuevo(Context context, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int experiencia, int estadoReg) {
 
         boolean respuesta = true;
-        String url = "http://68.183.148.243/Persuhabit/usuarios";
+        String url = "http://68.183.148.243/Persuhabit/usuario/registro";
         RequestQueue queue = Volley.newRequestQueue(context);
         final String nomu1, apmu1, appu1, correo1, pwdu1;
         final int nivel1, estadoReg1, experiencia1;
@@ -179,8 +197,8 @@ public class ConexionApi extends AppCompatActivity {
 // POST parameters
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("nomu", nomu);
-        params.put("apmu", apmu);
         params.put("appu", appu);
+        params.put("apmu", apmu);
         params.put("correo", correo);
         params.put("pwdu", pwdu);
         params.put("nivel", nivel);
@@ -349,7 +367,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     //////////////////////////////////[Insertar un nuevo niño]
-    public static void PonerNiñoNuevo(Context context, int idusu, String genero, String nomn, String appn, String apmn, int edad, double peso, double estat, double medi, double lineabultra, double lineabv, double leneabf, int totfich, double esfuerzoultra, double esfuerzof, double esfuerzov) {
+    public static void insertarNiñoNuevo(final Context context, int idusu, String genero, String nomn, String appn, String apmn, int edad, double peso, double estat, double lineabultra, double lineabv, double leneabf, int totfich, double esfuerzoultra, double esfuerzof, double esfuerzov) {
         String url = "http://68.183.148.243/Persuhabit/nino";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -363,7 +381,6 @@ public class ConexionApi extends AppCompatActivity {
         params.put("edad", edad);
         params.put("peso", peso);
         params.put("estat", estat);
-        params.put("medi", medi);
         params.put("lineabultra", lineabultra);
         params.put("lineabv", lineabv);
         params.put("leneabf", leneabf);
@@ -372,6 +389,28 @@ public class ConexionApi extends AppCompatActivity {
         params.put("esfuerzof", esfuerzof);
         params.put("esfuerzov", esfuerzov);
 
+        final String genero1, nomn1, appn1, apmn1;
+        final int idusu1, edad1, totfich1;
+        final double peso1, estat1, lineabultra1, lineabv1, leneabf1, esfuerzoultra1, esfuerzof1, esfuerzov1;
+        final Context context1;
+        context1 = context;
+
+        idusu1 = idusu;
+        nomn1 = nomn;
+        genero1 = genero;
+        appn1 = appn;
+        apmn1 = apmn;
+        edad1 = edad;
+        peso1 = peso;
+        estat1 = estat;
+        lineabultra1 = lineabultra;
+        lineabv1 = lineabv;
+        leneabf1 = leneabf;
+        totfich1 = totfich;
+        esfuerzoultra1 = esfuerzoultra;
+        esfuerzof1 = esfuerzof;
+        esfuerzov1 = esfuerzov;
+
         JSONObject jsonObj = new JSONObject(params);
 
 // Request a json response from the provided URL
@@ -379,6 +418,12 @@ public class ConexionApi extends AppCompatActivity {
                 (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        try {
+                            registrarNinolocal(context1, idusu1, nomn1, genero1, appn1, apmn1, edad1, peso1, estat1, lineabultra1, lineabv1,
+                                    leneabf1, totfich1, esfuerzoultra1, esfuerzof1, esfuerzov1, response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 },
                         new Response.ErrorListener() {
@@ -389,6 +434,13 @@ public class ConexionApi extends AppCompatActivity {
 
 // Add the request to the RequestQueue.
         queue.add(jsonObjRequest);
+    }
+
+    public static void registrarNinolocal(Context context, int idusu, String nombre, String genero, String appat, String apmat, int edad, double peso, double estatura, double lineabultra, double lineabv, double lineabf, int totfich, double esfuerzoultra, double esfuerzof, double esfuerzov, JSONObject response) throws JSONException {
+        int result = response.getInt("data");
+
+        NinoDao.addNino("newUsu", context, idusu, nombre, genero, appat, apmat, edad, peso, estatura, lineabultra, lineabv,
+                lineabf, totfich, esfuerzoultra, esfuerzof, esfuerzov, result);
     }
 
     ////////////////////////[Actualizar linea base de ultra procesados, frutas y verduras del niño]
@@ -519,7 +571,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     //////////////////////////////////[Insertar un nuevo registro]
-    public static void PonerRegistroNuevo(Context context, int idNino, String fechar) {
+    public static void insertarRegistroNuevo(Context context, int idNino, String fechar) {
         String url = "http://68.183.148.243/Persuhabit/registro";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -903,7 +955,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ///////////////////////[Insertar GustoVerdura nuevo]
-    public static void PonerGustoVerduraNuevo(Context context, String nombreV, int siGustaV, int noGustaV, int conoscoV, int idNino) {
+    public static void insertarGustoVerduraNuevo(Context context, String nombreV, int siGustaV, int noGustaV, int conoscoV, int idNino) {
         String url = "http://68.183.148.243/Persuhabit/GustoVerdura";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -1002,7 +1054,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ///////////////////////[Insertar GustoFrutas nuevo]
-    public static void PonerGustoFrutasNuevo(Context context, int idNino, String nombreF, int siGustaF, int noGustaF, int conoscoF) {
+    public static void insertarGustoFrutasNuevo(Context context, int idNino, String nombreF, int siGustaF, int noGustaF, int conoscoF) {
         String url = "http://68.183.148.243/Persuhabit/GustoFrutas";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -1199,7 +1251,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ///////////////////////[Insertar DetalleReg nuevo]
-    public static void PonerDetalleRegNuevo(Context context, int idNino, int idalimento, double equi, double cad, double umedr, String hora, String tipo) {
+    public static void insertarDetalleRegNuevo(Context context, int idNino, int idalimento, double equi, double cad, double umedr, String hora, String tipo) {
         String url = "http://68.183.148.243/Persuhabit/DetalleReg";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -1398,7 +1450,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ///////////////////////[Insertar CanjeFi nuevo]
-    public static void PonerCanjeFiNuevo(Context context, int idNino, int idrecom, String fechacanje, int Activo) {
+    public static void insertarCanjeFiNuevo(Context context, int idNino, int idrecom, String fechacanje, int Activo) {
         String url = "http://68.183.148.243/Persuhabit/CanjeFi";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -1563,6 +1615,125 @@ public class ConexionApi extends AppCompatActivity {
     //***********************************
     //**************************************[FIN de los metodos para la tabla Tutor]
 
+    //////////////////////////////////[Insertar un nuevo TiempoAplicacion]
+    public static void insertarTiempoAplicacion(Context context, int idusu, String duracion) {
+        String url = "http://68.183.148.243/Persuhabit/tiempoaplicacion";
+        RequestQueue queue = Volley.newRequestQueue(context);
+
+// POST parameters
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("idusu", idusu);
+        params.put("duracion", duracion);
+
+
+        JSONObject jsonObj = new JSONObject(params);
+
+// Request a json response from the provided URL
+        JsonObjectRequest jsonObjRequest = new JsonObjectRequest
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                    }
+                },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                            }
+                        });
+
+// Add the request to the RequestQueue.
+        queue.add(jsonObjRequest);
+    }
+
+    //////////////////////////////////[Insertar un nuevo GestoTerrible]
+    public static void insertarGestoTerrible(Context context, int idNino, int idalimento) {
+        String url = "http://68.183.148.243/Persuhabit/GestoTerrible";
+        RequestQueue queue = Volley.newRequestQueue(context);
+
+// POST parameters
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("idNino", idNino);
+        params.put("idalimento", idalimento);
+
+
+        JSONObject jsonObj = new JSONObject(params);
+
+// Request a json response from the provided URL
+        JsonObjectRequest jsonObjRequest = new JsonObjectRequest
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                    }
+                },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                            }
+                        });
+
+// Add the request to the RequestQueue.
+        queue.add(jsonObjRequest);
+    }
+
+    //////////////////////////////////[Insertar un nuevo GestoBien]
+    public static void insertarGestoBien(Context context, int idNino, int idalimento) {
+        String url = "http://68.183.148.243/Persuhabit/GestoBien";
+        RequestQueue queue = Volley.newRequestQueue(context);
+
+// POST parameters
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("idNino", idNino);
+        params.put("idalimento", idalimento);
+
+
+        JSONObject jsonObj = new JSONObject(params);
+
+// Request a json response from the provided URL
+        JsonObjectRequest jsonObjRequest = new JsonObjectRequest
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                    }
+                },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                            }
+                        });
+
+// Add the request to the RequestQueue.
+        queue.add(jsonObjRequest);
+    }
+
+    //////////////////////////////////[Insertar un nuevo GestoGenial]
+    public static void insertarGestoGenial(Context context, int idNino, int idalimento) {
+        String url = "http://68.183.148.243/Persuhabit/GestoGenial";
+        RequestQueue queue = Volley.newRequestQueue(context);
+
+// POST parameters
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("idNino", idNino);
+        params.put("idalimento", idalimento);
+
+
+        JSONObject jsonObj = new JSONObject(params);
+
+// Request a json response from the provided URL
+        JsonObjectRequest jsonObjRequest = new JsonObjectRequest
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                    }
+                },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                            }
+                        });
+
+// Add the request to the RequestQueue.
+        queue.add(jsonObjRequest);
+    }
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

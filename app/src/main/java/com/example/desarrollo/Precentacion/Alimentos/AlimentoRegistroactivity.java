@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.desarrollo.Datos.Calculos;
+import com.example.desarrollo.Datos.GestosDao;
 import com.example.desarrollo.Datos.MotivadoresDao;
 import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Datos.UserDao;
@@ -196,6 +197,8 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
                 registrarAlimento();
                 fichaPrimerIntento();
                 reaccionHijoDialog.dismiss();
+                int ali=Integer.parseInt(f_idAlimento);
+                GestosDao.insertGestoTerri("gestoTer",getApplicationContext(),idNino,ali,1);
             }
         });
         _btnEstaBien.setOnClickListener(new View.OnClickListener() {
@@ -204,6 +207,8 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
                 registrarAlimento();
                 fichaPrimerIntento();
                 reaccionHijoDialog.dismiss();
+                int ali=Integer.parseInt(f_idAlimento);
+                GestosDao.insertGestoBien("gestoBien",getApplicationContext(),idNino,ali,1);
             }
         });
         _btnGenia.setOnClickListener(new View.OnClickListener() {
@@ -213,6 +218,8 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
                 experienciaUsuario();
                 fichaPrimerIntento();
                 reaccionHijoDialog.dismiss();
+                int ali=Integer.parseInt(f_idAlimento);
+                GestosDao.insertGestoGenial("gestoGenial",getApplicationContext(),idNino,ali,1);
             }
         });
 

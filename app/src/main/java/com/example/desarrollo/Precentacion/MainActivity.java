@@ -31,9 +31,11 @@ import com.example.desarrollo.ConexionApi.ConexionApi;
 
 import com.example.desarrollo.Datos.Calculos;
 import com.example.desarrollo.Datos.ConexionSQLHelper;
+import com.example.desarrollo.Datos.Mensajeria;
 import com.example.desarrollo.Datos.NinoDao;
+import com.example.desarrollo.Datos.TiempoAplicacionDao;
 import com.example.desarrollo.Datos.TutorDao;
-import com.example.desarrollo.Entidades.Nino;
+import com.example.desarrollo.ConexionApi.consultasLocales;
 import com.example.desarrollo.Precentacion.Home.HomeFragment;
 
 import com.example.desarrollo.Precentacion.Motivadores.MotivadoresFragment;
@@ -83,13 +85,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-        Date date = new Date();
-        DateFormat hora = new SimpleDateFormat("HH:mm:ss");
-        inicio = "" + hora.format(date);
-
-
-
         Calculos.inicializarFichasAlimento(this);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.btmNavegacion);
@@ -133,15 +128,6 @@ public class MainActivity extends AppCompatActivity {
         ft.detach(fragment);
         ft.attach(fragment);
         ft.commit();
-    }
-
-    @Override
-    protected void onDestroy() {
-
-        hora(inicio, this);
-
-        super.onDestroy();
-
     }
 
     public static void hora(String inicio, Context con) {
@@ -196,6 +182,9 @@ public class MainActivity extends AppCompatActivity {
         finh = segundos1 / 3600;
         finm = (segundos1 - (3600 * finh)) / 60;
         fins = segundos1 - ((finh * 3600) + (finm * 60));
+        String duracion = ""+finh+" : "+finm+" : "+fins;
+
+        TiempoAplicacionDao.insertDuracion("TiempApp",con,1,duracion,1);
 
     }
 
@@ -204,5 +193,37 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         this.finishAffinity();
+    }
+
+    @Override
+    protected void onStart() {
+         Mensajeria estadoConexion;
+        estadoConexion = new Mensajeria();
+        boolean networkInfo = estadoConexion.estadoConexion(getApplicationContext());
+        if (networkInfo == true) {
+
+            //int arr[] = consultasLocales.obtenerDatosNino(this);
+            //System.out.println(arr[0]+" "+arr[1]+" "+arr[2]+" "+arr[3]);
+              consultasLocales.obtenerDatosGustoFruta(this);
+              consultasLocales.obtenerDatosGustoVerdura(this);
+              consultasLocales.obtenerDatosRegistro(this);
+              consultasLocales.obtenerDatosCanjeFi(this);
+              consultasLocales.obtenerDatosDetalleRegistro(this);
+              consultasLocales.obtenerDatosTiempoAplicacion(this);
+              consultasLocales.obtenerDatosGestoTerrible(this);
+              consultasLocales.obtenerDatosGestoBien(this);
+              consultasLocales.obtenerDatosGestoGenial(this);
+        }
+
+        Date date = new Date();
+        DateFormat hora = new SimpleDateFormat("HH:mm:ss");
+        inicio = "" + hora.format(date);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        hora(inicio, this);
+        super.onStop();
     }
 }

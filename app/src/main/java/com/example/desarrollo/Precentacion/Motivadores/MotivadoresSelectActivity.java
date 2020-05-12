@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.desarrollo.ConexionApi.ConexionApi;
+import com.example.desarrollo.Datos.Mensajeria;
 import com.example.desarrollo.Datos.MotivadoresDao;
 import com.example.desarrollo.Entidades.MotivadoresSelect;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresSelect;
@@ -100,12 +102,22 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
                     }else{
                         backgroundValor.setBackgroundResource(R.drawable.rectangulo_gris);
 
-                        boolean insert = consultar.insertMotivador(
+                        Mensajeria estadoConexion;
+                        estadoConexion = new Mensajeria();
+                        boolean networkInfo = estadoConexion.estadoConexion(getApplicationContext());
+                        boolean insert = true;
+                        if (networkInfo == true) {
+                             ConexionApi.insertarRecompensaNueva(getApplicationContext(),descripcion,Integer.valueOf(valor));
+                        }else {
+                            Toast.makeText(getApplicationContext(), "Debes tener Interne Para realizar este paso", Toast.LENGTH_SHORT).show();
+                            insert=false;
+                        }
+                        /*boolean insert = consultar.insertMotivador(
                                 TAG,
                                 getApplicationContext(),
                                 descripcion,
                                 Integer.valueOf(valor),
-                                1);
+                                1);*/
 
                         if (insert == true){
                             Toast.makeText(getApplicationContext(), "El motivador fue agregado con exito", Toast.LENGTH_SHORT).show();

@@ -30,9 +30,9 @@ public class UserDao {
                     Utilidades.CAMPO_correo + ", " +
                     Utilidades.CAMPO_passwordUsu + ", " +
                     Utilidades.CAMPO_nivel + ", " +
-                    Utilidades.CAMPO_estadoRegistro + "," +
+                    Utilidades.CAMPO_experiencia + "," +
+                    Utilidades.CAMPO_estadoRegistro + ", " +
                     Utilidades.CAMPO_idGlobal + ") " +
-                    Utilidades.CAMPO_registroNube + ") " +
                     "VALUES ('" +
                     nomUsuario + "', '" +
                     apellidoPaternoUsu + "', '" +
