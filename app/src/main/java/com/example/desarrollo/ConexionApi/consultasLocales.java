@@ -725,6 +725,121 @@ public class consultasLocales {
         }
     }
 
+    public static void obtenerDatosVioNotificacion(Context context) {
+
+        String duracion;
+        int idNoti, idUsuario;
+        int vec[] = obtenerDatosUsuario(context);
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
+
+            database = null;
+            database = connection.getReadableDatabase();
+
+            Cursor cur = database.rawQuery(
+                    "SELECT * FROM " + Utilidades.Tabla_VioNotificacion + " WHERE " + Utilidades.CAMPO_registroNube + " = 1",
+                    null);
+
+            if (cur.moveToFirst()) {
+                do {
+                    idNoti = cur.getInt(0);
+                    idUsuario = cur.getInt(1);
+                    System.out.println("idnotiiiiiiiiiiiiii::::::::::::     "+idNoti);
+                    boolean entro = false;
+                    if (vec[0] == idUsuario) {
+                        entro = true;
+                        ConexionApi.insertarVioNotificacion(context,vec[1]);
+                    }
+                    if (entro == true) {
+                        updateTabla_VioNotificacion("updateTiemA", context, idNoti);
+                    }
+
+                } while (cur.moveToNext());
+            }
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error " + e);
+        } finally {
+            database.close();
+        }
+    }
+
+    public static void actualizarDatosLineaBase(Context context) {
+
+        double lineabultra, lineabv, leneabf;
+        int idNino;
+        int vec[] = obtenerDatosNino(context);
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
+
+            database = null;
+            database = connection.getReadableDatabase();
+
+            Cursor cur = database.rawQuery(
+                    "SELECT Nino,lineabultra,lineabv,leneabf FROM " + Utilidades.TABLA_Nino,
+                    null);
+
+            if (cur.moveToFirst()) {
+                do {
+                    idNino = cur.getInt(0);
+                    lineabultra = cur.getDouble(1);
+                    lineabv = cur.getDouble(2);
+                    leneabf = cur.getDouble(3);
+
+                    if (vec[0] == idNino) {
+                        ConexionApi.ActualizaLineaBase_Fruta_Verdura_Ultra(context,lineabultra,lineabv,leneabf,vec[1]);
+                    } else if (vec[2] == idNino) {
+                        ConexionApi.ActualizaLineaBase_Fruta_Verdura_Ultra(context,lineabultra,lineabv,leneabf,vec[3]);
+                    }
+
+                } while (cur.moveToNext());
+            }
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error " + e);
+        } finally {
+            database.close();
+        }
+    }
+
+    public static void actualizarDatosesfuerzo(Context context) {
+
+        double esfuerzoultra, esfuerzof, esfuerzov;
+        int idNino;
+        int vec[] = obtenerDatosNino(context);
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
+
+            database = null;
+            database = connection.getReadableDatabase();
+
+            Cursor cur = database.rawQuery(
+                    "SELECT Nino,esfuerzoultra,esfuerzof,esfuerzov FROM " + Utilidades.TABLA_Nino,
+                    null);
+
+            if (cur.moveToFirst()) {
+                do {
+                    idNino = cur.getInt(0);
+                    esfuerzoultra = cur.getDouble(1);
+                    esfuerzof = cur.getDouble(2);
+                    esfuerzov = cur.getDouble(3);
+
+                    if (vec[0] == idNino) {
+                        ConexionApi.ActualizaEsfuerzo_Fruta_Verdura_Ultra(context,esfuerzoultra,esfuerzof,esfuerzov,vec[1]);
+                    } else if (vec[2] == idNino) {
+                        ConexionApi.ActualizaEsfuerzo_Fruta_Verdura_Ultra(context,esfuerzoultra,esfuerzof,esfuerzov,vec[3]);
+                    }
+
+                } while (cur.moveToNext());
+            }
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error " + e);
+        } finally {
+            database.close();
+        }
+    }
+
     //***********************************************
     //**********************************************************
     //********************************************************************
@@ -1015,6 +1130,23 @@ public class consultasLocales {
             database = conection.getWritableDatabase();
             String updateEstadoUsuario = "UPDATE " + Utilidades.Tabla_GestoGenial +
                     " SET " + Utilidades.CAMPO_registroNube + " = " + "0" + " WHERE " + Utilidades.CAMPO_idGenial + " = " + id;
+            database.execSQL(updateEstadoUsuario);
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error " + e);
+        } finally {
+            database.close();
+        }
+    }
+
+    public static void updateTabla_VioNotificacion(String TAG, Context context, int id) {
+        try {
+            ConexionSQLHelper conection = new ConexionSQLHelper(context);
+            database = null;
+
+            database = conection.getWritableDatabase();
+            String updateEstadoUsuario = "UPDATE " + Utilidades.Tabla_VioNotificacion +
+                    " SET " + Utilidades.CAMPO_registroNube + " = " + "0" + " WHERE " + Utilidades.CAMPO_idVioNoti + " = " + id;
             database.execSQL(updateEstadoUsuario);
 
         } catch (Exception e) {

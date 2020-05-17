@@ -59,6 +59,8 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
 
         db.execSQL(Utilidades.CREAR_Tabla_GestoGenial);
 
+        db.execSQL(Utilidades.CREAR_VioNotificacion);
+
         insertMotivadoresDefault(db);
 
     }
@@ -76,6 +78,7 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS GestoTerrible");
         db.execSQL("DROP TABLE IF EXISTS GestoBien");
         db.execSQL("DROP TABLE IF EXISTS GestoGenial");
+        db.execSQL("DROP TABLE IF EXISTS VioNotificacion");
 
         onCreate(db);
 

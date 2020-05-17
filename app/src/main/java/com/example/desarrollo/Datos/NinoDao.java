@@ -80,6 +80,7 @@ public class NinoDao {
                 SharedPreferences.Editor editor = preferenc.edit();
                 editor.putInt("instalacion", 1);
                 editor.putInt("dia", dias);
+                editor.putInt("valorNoti", 1);
                 editor.putInt("anterior", dias);
                 editor.putInt("curso", dias);
                 editor.putInt("llave1", 0);

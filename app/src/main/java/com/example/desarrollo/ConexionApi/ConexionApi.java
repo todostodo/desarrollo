@@ -1737,5 +1737,33 @@ public class ConexionApi extends AppCompatActivity {
 
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+    //////////////////////////////////[Insertar un nuevo VioNotificacion]
+    public static void insertarVioNotificacion(Context context, int idusu) {
+        String url = "http://68.183.148.243/Persuhabit/VioNotificacion";
+        RequestQueue queue = Volley.newRequestQueue(context);
+
+// POST parameters
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("idusu", idusu);
+
+
+        JSONObject jsonObj = new JSONObject(params);
+
+// Request a json response from the provided URL
+        JsonObjectRequest jsonObjRequest = new JsonObjectRequest
+                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                    }
+                },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                            }
+                        });
+
+// Add the request to the RequestQueue.
+        queue.add(jsonObjRequest);
+    }
 
 }

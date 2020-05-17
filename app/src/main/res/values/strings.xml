@@ -436,4 +436,25 @@
     <string name="enviar_codigo">Enviar código</string>
 
 
+    <!-- String De las Notificaciones -->
+    <string name="Notifi1">Solamente el aguacate y el dátil superan al plátano en su contenido de potasio</string>
+    <string name="Notifi2">Inconvenientes del platano: El pátano inmaduro está formado  mayormente por almidón, lo que lo hace un alimento dificil de digerir o que proboca flatulencias. En el plátano maduro queda alrededor de un 1% de almidón, que si se mastica y ensaliba bien no causa ningún problema digestivo</string>
+    <string name="Notifi3">Sabías que el plátano contiene pequeñas cantidades de Serotonica, la cual tiene un efecto vasodilatador arterial, inhibición de las sensaciones dolorosas en la médula espinal y sedación nerviosa.</string>
+    <string name="Notifi4">El plátano es una ruta ideal para todos aquellos que padezcan del corazón, angina de pecho, arritmia, insuficiencia cardiáca, hipertensión arterial o arteriosclerosis debido a su excepcional composición.</string>
+    <string name="Notifi5">El pátano presenta el mejor cociente potasio/sodio, el más alto entre las frutas y hortalizas y mejor que el presentado por carnes rojas, pescado y lácteos, razón por la que previene la hipertensión.</string>
+    <string name="Notifi6">El plátano  contiene abundante fibra vegetal que hace descender el nivel de colesterol.</string>
+    <string name="Notifi7">El plátano no está contraindicado en casos de diabétes pero si se debe usar de forma controlada por los hidrátos de arbono en forma de azúcares, sin embargo, los azúcares del plátano se absorben más lentamente y por lo tanto no producen una brusca subida en el nivel de azúcar</string>
+    <string name="Notifi8">En las afecciones del corazón. El durazano, aunque no es un estimulante directo del corazón, facilita el trabajo de éste noble órgano</string>
+    <string name="Notifi9">En las afecciones digestivas, el durazno se digiere muy bien, por lo que es recomendable consumir en éstos casos, siempre y cuando esté bien maduro. Contiene fibra vegetal soluble, que actúa como suavizante del aparato digestivo</string>
+    <string name="Notifi10">En las afecciones renales el durazno ejerce una suave acción diurética, lo que unido a su falta de sodio y su pobreza proteínica, lo hace muy recomendable en la dieta de los insuficientes renales</string>
+    <string name="Notifi11">En el caso de la obesidad, el durazno es muy recomnedable por ser una de las frutas con mayor capacidad de crear sensación de saciedad. Por lo que se puede decir que reduce el apetito, además de que su aporte calórico es bastante bajo. Facilita la eliminación de residuos metabólicos de tipo ácido, frecuentes en caso de obesidad</string>
+    <string name="Notifi12">La uva contiene sustancias no nutritivas lladas Fitoquímicos que no pertenecen a ningúno de los grupos de nutrientes conocidos, pero ejercen numerosas funciones que benefician al  organismo y  todavía se están investigando</string>
+    <string name="Notifi13">Los ácidos orgánicos que contiene la uva , ejercen una acción importante en la sagre, al producir Alcalinización, lo que facilita la eliminación de los residuos metabólicos como el ácido úrico</string>
+    <string name="Notifi14">Las uvas contienen antioxidantes llamados flavonoides que evitan la formación del colesterol causante de la arteriosclerosis</string>
+    <string name="Notifi15">Recientemente se ha comprobado que las uvas contiene Resveratrol que actúa como un poderoso anticancerígeno</string>
+    <string name="Notifi16">La uva activa la función desintoxicadora del higado, muy recomendada en estas afecciones</string>
+    <string name="Notifi17">La uva es recomendada por ser un laxante suave que combate el estreñimiento por pereza intestila o sedentarismo, además de equilibrar la flora intestinal</string>
+    <string name="Notifi18">La uva ha demostrado tener un efecto antitumoral, especialmente en su piel. Es recomendable que la consuman de manera regular aquellas personas que tienen un alto riezgo de padecer cancer, así como los que ya están diagnosticados</string>
+
+
 </resources>

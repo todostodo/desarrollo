@@ -14,6 +14,7 @@ public class InicioSesionDao {
     public static boolean verificarUsuario(String TAG, Context context, String correo, String password) {
         boolean existeUsuario = false;
 
+        System.out.println("Esto llego: "+correo+","+password);
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
 
@@ -26,10 +27,13 @@ public class InicioSesionDao {
                     " FROM " + Utilidades.TABLA_Usuario +
                     " WHERE " + Utilidades.CAMPO_correo + " = '" + correo + "'", null);
 
+
+            System.out.println();
             if (cursor.moveToFirst()) {
 
                 String getCorreo = cursor.getString(0);
                 String getPassword = cursor.getString(1);
+                System.out.println(getCorreo+","+getPassword);
 
                 if (getCorreo.equals(correo) && getPassword.equals(password))
                     existeUsuario = true;

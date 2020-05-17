@@ -309,7 +309,7 @@ public class Utilidades {
                     CAMPO_idNino + " INTEGER NOT NULL, " +
                     CAMPO_IdAlimento + " TEXT NOT NULL, "+
                     CAMPO_registroNube + " INTEGER NOT NULL, "+
-                    "FOREIGN KEY (" + CAMPO_idNino + ") REFERENCES Usuario (" + CAMPO_idNino + "))";
+                    "FOREIGN KEY (" + CAMPO_idNino + ") REFERENCES Nino (" + CAMPO_idNino + "))";
     //*******************************************************************************************************************************************
 
 
@@ -322,7 +322,7 @@ public class Utilidades {
                     CAMPO_idNino + " INTEGER NOT NULL, " +
                     CAMPO_IdAlimento + " TEXT NOT NULL, "+
                     CAMPO_registroNube + " INTEGER NOT NULL, "+
-                    "FOREIGN KEY (" + CAMPO_idNino + ") REFERENCES Usuario (" + CAMPO_idNino + "))";
+                    "FOREIGN KEY (" + CAMPO_idNino + ") REFERENCES Nino (" + CAMPO_idNino + "))";
 
     //**********************************************************************************************************************************************
 
@@ -335,6 +335,18 @@ public class Utilidades {
                     CAMPO_idNino + " INTEGER NOT NULL, " +
                     CAMPO_IdAlimento + " TEXT NOT NULL, "+
                     CAMPO_registroNube + " INTEGER NOT NULL, "+
-                    "FOREIGN KEY (" + CAMPO_idNino + ") REFERENCES Usuario (" + CAMPO_idNino + "))";
+                    "FOREIGN KEY (" + CAMPO_idNino + ") REFERENCES Nino (" + CAMPO_idNino + "))";
+
+    //************************************************************************************************************************************
+
+    public static final String Tabla_VioNotificacion = "VioNotificacion";
+    public static final String CAMPO_idVioNoti = "idNoti";
+
+    public static final String CREAR_VioNotificacion =
+            "CREATE TABLE " + "" + Tabla_VioNotificacion + " (" +
+                    CAMPO_idVioNoti + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    CAMPO_idUsuario + " INTEGER NOT NULL, " +
+                    CAMPO_registroNube + " INTEGER NOT NULL, "+
+                    "FOREIGN KEY (" + CAMPO_idUsuario + ") REFERENCES Usuario (" + CAMPO_idUsuario + "))";
 
 }
