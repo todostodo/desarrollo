@@ -20,8 +20,6 @@ public class InicioSesionDao {
 
             database = null;
             database = connection.getReadableDatabase();
-            //String getCorreo = "";
-            //String getPassword = "";
 
             Cursor cursor = database.rawQuery("SELECT " + Utilidades.CAMPO_correo + "," + Utilidades.CAMPO_passwordUsu +
                     " FROM " + Utilidades.TABLA_Usuario +
@@ -47,6 +45,33 @@ public class InicioSesionDao {
         }
 
         return existeUsuario;
+    }
+
+    public static boolean verificarPasswordUser(String TAG, Context context, int id, String password) {
+        boolean coincidePass = false;
+        try {
+
+            ConexionSQLHelper conection = new ConexionSQLHelper(context);
+            database = null;
+            database = conection.getReadableDatabase();
+
+            Cursor cursor = database.rawQuery("SELECT " + Utilidades.CAMPO_passwordUsu + " FROM " + Utilidades.TABLA_Usuario +
+                    " WHERE " + Utilidades.CAMPO_idGlobal + " = " + id, null);
+
+            while (cursor.moveToNext()) {
+                String getPassword = cursor.getString(0);
+
+                if (getPassword.equals(password))
+                    coincidePass = true;
+            }
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error" + e);
+            return false;
+        } finally {
+            database.close();
+        }
+        return coincidePass;
     }
 
     public static boolean verificarUsuarioTutor(String TAG, Context context, String correo, String password) {

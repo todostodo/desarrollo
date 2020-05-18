@@ -181,8 +181,8 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="40dp"
+            android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintLeft_toRightOf="@+id/txtCantidadConsumoUltrap"
             app:layout_constraintRight_toRightOf="parent"
@@ -219,9 +219,9 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:fontFamily="@font/roboto_regular"
-                    android:textSize="16sp"
                     android:text="Pieza"
-                    android:textColor="@color/negro" />
+                    android:textColor="@color/negro"
+                    android:textSize="16sp" />
 
             </RelativeLayout>
 
@@ -234,11 +234,10 @@
         style="?attr/buttonBarButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/rectangulo_azul"
-        android:backgroundTint="#A5EFD3"
+        android:background="@drawable/custom_button_verde"
         android:fontFamily="@font/roboto_medium"
         android:text="Registrar calorias"
-        android:textColor="@color/negro"
+        android:textColor="@color/blanco"
         app:layout_constraintHeight_percent="0.12"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -1,6 +1,7 @@
 package com.example.desarrollo.ConexionApi;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -427,7 +428,7 @@ public class consultasLocales {
 
         String nombreTutor, apellidoPaterno, apellidoMaterno, parentesco, correo;
         int idUsuario, mensaje, passwordTutor;
-        int arr[] = obtenerDatosUsuario(context);
+        //int arr[] = obtenerDatosUsuario(context);
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
 
@@ -559,6 +560,7 @@ public class consultasLocales {
 
     public static void obtenerDatosTiempoAplicacion(Context context) {
 
+        SharedPreferences sharedPreferences = context.getSharedPreferences("Usuario", Context.MODE_PRIVATE);
         String duracion;
         int idTiemA, idUsuario;
         int vec[] = obtenerDatosUsuario(context);

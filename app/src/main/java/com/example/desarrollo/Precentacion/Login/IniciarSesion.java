@@ -1,11 +1,14 @@
 package com.example.desarrollo.Precentacion.Login;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,6 +21,12 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.desarrollo.Datos.InicioSesionDao;
 import com.example.desarrollo.Datos.UserDao;
 import com.example.desarrollo.Precentacion.MainActivity;
@@ -34,6 +43,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
@@ -42,6 +57,7 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
     private RelativeLayout _btnInicarSesion, _btnLoginFacebook, _btnCerrarLogin;
     private TextView _txtCorreoUsuario, _txtPassUsuario, _btnOlvidePassword;
     private LoginButton _btnLoginFacebookOnclick;
+    private String sEmail, sPassword;
 
     private boolean inicioSesionUsuario = true;
     private Toastp toastp;
@@ -124,29 +140,10 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
                     toastp.toastp(getApplicationContext(), "Ingrese la contraseña");
                 } else {
 
-                    boolean existeUsuario = inicioSesionDao.verificarUsuario(TAG, getApplicationContext(), correo, password);
+                    sEmail = correo;
+                    sPassword = password;
+                    new loadLogin().execute("login");
 
-                    if (existeUsuario == true) {
-
-
-                        boolean estadoUsuario = userDao.estadoUsuario(TAG, getApplicationContext());
-                        if (estadoUsuario == true) {
-
-                            Intent activityPrincipal = new Intent(this, MainActivity.class);
-                            startActivity(activityPrincipal);
-                            savePreferencesDato(correo);
-
-                        } else {
-
-                            Intent introduccion = new Intent(getApplicationContext(), IntroduccionActivity.class);
-                            startActivity(introduccion);
-
-                            savePreferencesDato(correo);
-                        }
-
-                    } else {
-                        toastp.toastp(getApplicationContext(), "El correo o contraseña son incorrectos");
-                    }
                 }
             }
         }
@@ -167,7 +164,7 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
                         Intent activityPrincipal = new Intent(this, MainActivity.class);
                         startActivity(activityPrincipal);
 
-                        savePreferencesDato(correo);
+                        //savePreferencesDato(correo);
 
                     } else {
                         toastp.toastp(getApplicationContext(), "El correo o contraseña son incorrectos");
@@ -175,14 +172,6 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
                 }
             }
         }
-    }
-
-    private void savePreferencesDato(String correo) {
-        SharedPreferences preferences = getApplicationContext().getSharedPreferences("Usuario", MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("inicioAutomatico", true);
-        editor.putString("correoUsuario", correo);
-        editor.commit();
     }
 
     private void iniciarSesionGoogle() {
@@ -282,4 +271,96 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
+
+    private void loginUserWebService(final String correo, final String password) {
+
+        String url = "http://68.183.148.243/Persuhabit/usuario/login";
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        Map<String, Object> stringObjectMap = new HashMap<String, Object>();
+        stringObjectMap.put("correo", correo);
+        stringObjectMap.put("pwdu", password);
+
+        JSONObject jsonObject = new JSONObject(stringObjectMap);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    String success = response.getString("message");
+                    Log.v(TAG, "message -------------------------------- " + success);
+                    if (success.equals("success")) {
+
+                        int idGlobla = response.getInt("data");
+                        boolean estadoUsuario = userDao.estadoUsuario(TAG, getApplicationContext());
+
+                        if (estadoUsuario == true) {
+
+                            Intent activityPrincipal = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(activityPrincipal);
+                            savePreferencesDato(correo, idGlobla);
+
+                        } else {
+
+                            Intent introduccion = new Intent(getApplicationContext(), IntroduccionActivity.class);
+                            startActivity(introduccion);
+
+                            savePreferencesDato(correo, idGlobla);
+
+                        }
+
+                    } else {
+                        toastp.toastp(getApplicationContext(), "El usuario o constraseña ingresados son incorrectos");
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+        queue.add(jsonObjectRequest);
+
+    }
+
+    private void savePreferencesDato(String correo, int idGlobal) {
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences("Usuario", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("inicioAutomatico", true);
+        editor.putString("correoUsuario", correo);
+        editor.putInt("idGlobal", idGlobal);
+        editor.commit();
+    }
+
+    private class loadLogin extends AsyncTask<String, String, String> {
+
+        private ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = ProgressDialog.show(IniciarSesion.this,
+                    "", "Iniciado sesión", true, false);
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            loginUserWebService(sEmail, sPassword);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressDialog.dismiss();
+        }
+    }
+
 }

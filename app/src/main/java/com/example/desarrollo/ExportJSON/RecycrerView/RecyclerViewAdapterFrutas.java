@@ -85,6 +85,7 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
                 i.putExtra("fruta_idAlimentos", frutas.get(viewHolder.getAdapterPosition()).getId());
                 i.putExtra("fruta_nombre", frutas.get(viewHolder.getAdapterPosition()).getNombre());
                 i.putExtra("fruta_equivalencia", frutas.get(viewHolder.getAdapterPosition()).getEquivalencia());
+                i.putExtra("fruta_unidadMedida", frutas.get(viewHolder.getAdapterPosition()).getUnidadMedida());
                 i.putExtra("fruta_descripcion", frutas.get(viewHolder.getAdapterPosition()).getDescripcion());
                 i.putExtra("fruta_recomendacion", frutas.get(viewHolder.getAdapterPosition()).getRecomendacion());
                 i.putExtra("fruta_recomendacionDos", frutas.get(viewHolder.getAdapterPosition()).getRecomendacionDos());

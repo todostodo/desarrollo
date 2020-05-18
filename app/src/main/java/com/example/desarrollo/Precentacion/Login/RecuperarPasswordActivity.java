@@ -3,10 +3,12 @@ package com.example.desarrollo.Precentacion.Login;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -19,13 +21,31 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.desarrollo.Datos.Mensajeria;
 import com.example.desarrollo.R;
 import com.example.desarrollo.Ultilidades.Toastp;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class RecuperarPasswordActivity extends AppCompatActivity {
 
@@ -45,6 +65,9 @@ public class RecuperarPasswordActivity extends AppCompatActivity {
 
     private Toastp toastp;
     Mensajeria mensajeria;
+
+    protected String sEmail = "persuhabit@gmail.com";
+    protected String sPassword = "#HealthyFoodTec#";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -88,12 +111,10 @@ public class RecuperarPasswordActivity extends AppCompatActivity {
     //Pantalla Uno
     private void enviarCodigoCorreo() {
 
-        final String sEmail = "persuhabit@gmail.com";
-        final String sPassword = "#HealthyFoodTec#";
         destinatarioCorreo = _txtCorreoUsuario.getText().toString().trim(); //Correo aquien se le mandara el codigo
         String[] confirmarDominioCorreo = destinatarioCorreo.split("");
         String validacionCorreo = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-        String txtAsuntoCorreo = "Recuperación de contraseña"; //Agreagr un asunto --
+        String txtAsuntoCorreo = "Recuperación de contraseña"; //Agregar un asunto --
 
 
         if (destinatarioCorreo.isEmpty()) {
@@ -134,7 +155,63 @@ public class RecuperarPasswordActivity extends AppCompatActivity {
                     VERIFICAR ANTES SI EL CORREO SE ENCUENTRA REGISTRADO EN LA BASE DE DATOS
                     */
 
-                    preparCorreo();
+                    String url = "http://68.183.148.243/Persuhabit/usuario/correo";
+                    RequestQueue queue = Volley.newRequestQueue(this);
+
+                    Map<String, Object> stringObjectMap = new HashMap<String, Object>();
+                    stringObjectMap.put("correo", destinatarioCorreo);
+
+                    JSONObject jsonObject = new JSONObject(stringObjectMap);
+
+                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                String success = response.getString("message");
+
+                                if (success.equals("success")) {
+
+                                    int idRecoveryPass = response.getInt("data");
+                                    SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("Usuario", MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putInt("idRecoveryPass", idRecoveryPass);
+                                    editor.commit();
+
+                                    Log.v("RecuprarPassword", "idRecoveryPass --------------------------- " + idRecoveryPass);
+
+                                    preparCorreo();
+
+                                } else {
+
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(RecuperarPasswordActivity.this);
+                                    builder.setCancelable(false);
+                                    builder.setMessage("El correo ingresado no se encuentra registrado en la aplicación");
+                                    builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                            dialog.dismiss();
+
+                                        }
+                                    });
+
+                                    builder.show();
+
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+
+                                }
+                            });
+
+                    queue.add(jsonObjectRequest);
 
                 } else {
                     mensajeDialog("El mensaje no se pudo entregar. El nombre de dominio del destinatario no existe o no se encuentra en nuestra lista de dominios aceptados");
@@ -320,7 +397,7 @@ public class RecuperarPasswordActivity extends AppCompatActivity {
                     } else {
 
                         if (validarCodigo.equals(codigoRecuperacionGenerado)) {
-                            toastp.toastp(getApplicationContext(), "Codigo correcto " + validarCodigo + " - " + codigoRecuperacionGenerado);
+                            //toastp.toastp(getApplicationContext(), "Codigo correcto " + validarCodigo + " - " + codigoRecuperacionGenerado);
 
                             Intent cambiaPass = new Intent(getApplicationContext(), CambiarPasswordActivity.class);
                             cambiaPass.putExtra("destinatarioCorreo", destinatarioCorreo);
@@ -365,11 +442,13 @@ public class RecuperarPasswordActivity extends AppCompatActivity {
 
     private void preparCorreo() {
 
+        mensajeria = new Mensajeria();
         _txtCorreoEnviado.setText(destinatarioCorreo);
         codigoRecuperacionGenerado = mensajeria.generarCodigoRecuperacion();
 
         if (!codigoRecuperacionGenerado.isEmpty()) {
 
+            String txtAsuntoCorreo = "Recuperación de la contraseña";
             String txtMensajeCorreo = "Codigo de recuperación : " + codigoRecuperacionGenerado; //Lo que va contener el Correo
 
             _activityVerificarCodigo.setVisibility(View.VISIBLE);
@@ -377,47 +456,43 @@ public class RecuperarPasswordActivity extends AppCompatActivity {
             verificarCodigo();
             //Iniciarlizar propiedades
 
-                        /*
-                        Properties properties = new Properties();
-                        properties.put("mail.smtp.auth", "true");
-                        properties.put("mail.smtp.starttls.enable", "true");
-                        properties.put("mail.smtp.host", "smtp.gmail.com");
-                        properties.put("mail.smtp.port", "587");
 
-                        //Inicializar sesion
-                        Session session = Session.getInstance(properties, new Authenticator() {
-                            @Override
-                            protected PasswordAuthentication getPasswordAuthentication() {
-                                return new PasswordAuthentication(sEmail, sPassword);
-                            }
-                        });
+            Properties properties = new Properties();
+            properties.put("mail.smtp.auth", "true");
+            properties.put("mail.smtp.starttls.enable", "true");
+            properties.put("mail.smtp.host", "smtp.gmail.com");
+            properties.put("mail.smtp.port", "587");
 
-                        try {
-                            //Inicializar contenido del correo
-                            Message message = new MimeMessage(session);
-                            //Enviar correo
-                            message.setFrom(new InternetAddress(sEmail));
-                            //Recipiente correo
-                            message.setRecipients(Message.RecipientType.TO,
-                                    InternetAddress.parse(destinatarioCorreo.trim()));
-                            //Asunto del correo
-                            message.setSubject(txtAsuntoCorreo.trim());
-                            //Mensaje de correo
-                            message.setText(txtMensajeCorreo.trim());
+            //Inicializar sesion
+            Session session = Session.getInstance(properties, new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(mensajeria.getsEmail(), mensajeria.getsPassword());
+                }
+            });
 
-                            //Enviar correo
-                            new EnviarCorreo().execute(message);
+            try {
+                //Inicializar contenido del correo
+                Message message = new MimeMessage(session);
+                //Enviar correo
+                message.setFrom(new InternetAddress(mensajeria.getsEmail()));
+                //Recipiente correo
+                message.setRecipients(Message.RecipientType.TO,
+                        InternetAddress.parse(destinatarioCorreo.trim()));
+                //Asunto del correo
+                message.setSubject(txtAsuntoCorreo.trim());
+                //Mensaje de correo
+                message.setText(txtMensajeCorreo.trim());
+
+                //Enviar correo
+                new enviarCorreo().execute(message);
 
 
-                        } catch (MessagingException e) {
-                            e.printStackTrace();
-                        }
-                         */
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
+
         }
-
-        toastp.toastp(getApplicationContext(), codigoRecuperacionGenerado);
-
-
     }
 
     private class enviarCorreo extends AsyncTask<Message, String, String> {
@@ -452,7 +527,6 @@ public class RecuperarPasswordActivity extends AppCompatActivity {
                 //Cuando termine
                 AlertDialog.Builder builder = new AlertDialog.Builder(RecuperarPasswordActivity.this);
                 builder.setCancelable(false);
-                //builder.setTitle(Html.fromHtml("<font color='#509324>Enviado</font>"));
                 builder.setMessage("El código de recuperación se envio correctamente");
                 builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     @Override

@@ -434,6 +434,7 @@
     <string name="ingresa_tu_correo">Ingresa tu correo</string>
     <string name="mensaje_registro_usuario">Ingrese la dirección de correo electrónico para obtener el codigó y pueda restablecer la contraseña</string>
     <string name="enviar_codigo">Enviar código</string>
+    <string name="ingrese_el_nuevo_correo">Ingrese el nuevo correo</string>
 
 
     <!-- String De las Notificaciones -->

@@ -34,6 +34,7 @@ public class ModelFrutas extends AppCompatActivity {
                 String id = itemObj.getString("id");
                 String nombre = itemObj.getString("nombre");
                 String equivalencia = itemObj.getString("equivalencia");
+                String unidadMedida = itemObj.getString("unidadMedida");
                 String descripcion = itemObj.getString("descripcion");
                 String recomendacion = itemObj.getString("recomendacion");
                 String recomendacionDos = itemObj.getString("recomendacionDos");
@@ -44,7 +45,7 @@ public class ModelFrutas extends AppCompatActivity {
                 String imgUrl = itemObj.getString("imgUrl");
                 String background = itemObj.getString("backgroud");
 
-                Frutas frutas = new Frutas(id, nombre, equivalencia, descripcion, recomendacion, recomendacionDos, frase, ventaja, avisoTitulo, aviso, imgUrl, background);
+                Frutas frutas = new Frutas(id, nombre, equivalencia, unidadMedida, descripcion, recomendacion, recomendacionDos, frase, ventaja, avisoTitulo, aviso, imgUrl, background);
                 arrayList.add(frutas);
             }
 

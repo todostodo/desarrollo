@@ -15,13 +15,16 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
 import android.text.Html;
 import android.text.InputFilter;
 import android.text.Spanned;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -42,22 +45,22 @@ import com.example.desarrollo.Ultilidades.Toastp;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 
-
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class AlimentoRegistroactivity extends AppCompatActivity {
 
     private TextView f_nombre, f_descripcion, f_recomendacion, f_recomendacionDos, f_frase, f_ventaja, f_avisoTitulo, f_aviso;
     private TextView _txtMensajeDialog;
-    private String f_idAlimento, f_unidadMedida, hora, fecha, tipoAlimento;
+    private String f_idAlimento, f_equivalencia, f_unidadMedida, hora, fecha, tipoAlimento;
     private int idNino;
     private ImageView f_imagen;
     private RelativeLayout f_fondo;
     private Button _btnRegistrarFruta;
-    private Dialog reaccionHijoDialog, ninosDialog;
-    private TextView _txtCantidadConsumo;
+    private Dialog reaccionHijoDialog, ninosDialog, registroAlimentoDialog;
     private LinearLayout _fruta_linearRecomendacionDos, _btnTerrible, _btnEstaBien, _btnGenia;
     private RelativeLayout _fruta_relativeAviso;
     private RelativeLayout _btmCerrarSelectFrutas;
     private boolean ganoFinaPrimerIntento = false;
+    private String _txtCantidadConsumo;
 
     //Open dialog
     private Button _btnEpicFichaSalir;
@@ -66,6 +69,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
     private LinearLayout _epicFichaFondoNegro;
     private ImageView _epicFichaImg;
     private Animation fromsmall, fromnothing, forloci, togo;
+    private ArrayList<Button> buttonsListDialogRegistro = new ArrayList<>();
     //---------------------
 
     private Toastp toast;
@@ -107,14 +111,35 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
                 validarCantidadConsumo();
             }
         });
+    }
 
-        //Validad cantidad de consumo
-        _txtCantidadConsumo.setFilters(new InputFilter[]{new InputFilter() {
-            DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
 
+    private void validarCantidadConsumo() {
+
+        registroAlimentoDialog = new Dialog(AlimentoRegistroactivity.this);
+        registroAlimentoDialog.setContentView(R.layout.alimentos_generar_registro_dialog);
+        registroAlimentoDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        registroAlimentoDialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+
+        TextView _txtNombreAlimentoDialog = (TextView) registroAlimentoDialog.findViewById(R.id.txtNombreAlimentoDialog);
+        TextView _txtBeneficioAlimentoDialog = (TextView) registroAlimentoDialog.findViewById(R.id.txtBeneficioAlimentoDialog);
+        TextView _txtUnidadMedidaAlimentoDialog = (TextView) registroAlimentoDialog.findViewById(R.id.txtUnidadMedidaAlimentoDialog);
+        final EditText _txtCantidadConsumoDialog = (EditText) registroAlimentoDialog.findViewById(R.id.txtCantidadConsumoDialog);
+        final Button _btnUnCuartoDialog = (Button) registroAlimentoDialog.findViewById(R.id.btnUnCuartoDialog);
+        final Button _btnUnMedioDialog = (Button) registroAlimentoDialog.findViewById(R.id.btnUnMedioDialog);
+        final Button _btnTresCuartosDialog = (Button) registroAlimentoDialog.findViewById(R.id.btnTresCuartosDialog);
+        Button _btnRegistrarAlimentoDialog = (Button) registroAlimentoDialog.findViewById(R.id.btnRegistrarAlimentoDialog);
+        Button _btnCancelarAlimentosDialog = (Button) registroAlimentoDialog.findViewById(R.id.btnCancelarAlimentosDialog);
+
+        _txtNombreAlimentoDialog.setText(f_nombre.getText().toString());
+        _txtBeneficioAlimentoDialog.setText(f_ventaja.getText().toString());
+        _txtUnidadMedidaAlimentoDialog.setText(f_unidadMedida);
+
+        final DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
+        _txtCantidadConsumoDialog.setFilters(new InputFilter[]{new InputFilter() {
             @Override
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-
                 int indexPoint = dest.toString().indexOf(decimalFormatSymbols.getDecimalSeparator());
 
                 if (indexPoint == -1)
@@ -122,62 +147,147 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
 
                 int decimals = dend - (indexPoint + 1);
                 return decimals < 2 ? source : "";
-
             }
         }});
-    }
 
+        _btnRegistrarAlimentoDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-    private void validarCantidadConsumo() {
+                ninoDisponibleArrayList = new ArrayList<>();
+                motivadoresDao.consultarNino(TAG, getApplicationContext(), ninoDisponibleArrayList);
+                _txtCantidadConsumo = _txtCantidadConsumoDialog.getText().toString().trim();
 
-        ninoDisponibleArrayList = new ArrayList<>();
-        motivadoresDao.consultarNino(TAG, this, ninoDisponibleArrayList);
+                if (_txtCantidadConsumo.equals("")) {
 
-        if (_txtCantidadConsumo.getText().toString().trim().equals("")) {
-            toast.toastp(getApplicationContext(), "Ingrese la cantidad de consumo");
-        } else {
-            int countNino = ninoDao.countNino(TAG, getApplicationContext());
+                    toast.toastp(getApplicationContext(), "Ingrese la cantidad de consumo");
 
-            if (countNino > 1) {
+                } else {
+                    registroAlimentoDialog.dismiss();
+                    int countNino = ninoDao.countNino(TAG, getApplicationContext());
 
-                ninosDialog = new Dialog(AlimentoRegistroactivity.this);
-                ninosDialog.setContentView(R.layout.motivadores_select_nino);
-                ninosDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                ninosDialog.setCanceledOnTouchOutside(false);
+                    if (countNino > 1) {
 
-                _myRecyclerViewNino = (RecyclerView) ninosDialog.findViewById(R.id.myRecyclerViewMotivadoresSelectNino);
-                _txtMensajeDialog = (TextView) ninosDialog.findViewById(R.id.txtMensajeComprobacion);
-                _txtMensajeDialog.setText("Seleccione al niño que le registrara el alimento");
+                        ninosDialog = new Dialog(AlimentoRegistroactivity.this);
+                        ninosDialog.setContentView(R.layout.motivadores_select_nino);
+                        ninosDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        ninosDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        ninosDialog.setCanceledOnTouchOutside(false);
 
-                _myRecyclerViewNino.setLayoutManager(new LinearLayoutManager(this));
-                adapterSelectNino = new RecyclerViewMotivadoresSelectNino(this, ninoDisponibleArrayList);
-                _myRecyclerViewNino.setAdapter(adapterSelectNino);
+                        _myRecyclerViewNino = (RecyclerView) ninosDialog.findViewById(R.id.myRecyclerViewMotivadoresSelectNino);
+                        _txtMensajeDialog = (TextView) ninosDialog.findViewById(R.id.txtMensajeComprobacion);
+                        _txtMensajeDialog.setText("Seleccione al niño que le registrara el alimento");
 
-                final TextView cancelar = (TextView) ninosDialog.findViewById(R.id.btnCancelarSelectNinoMotivador);
-                adapterSelectNino.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                        _myRecyclerViewNino.setLayoutManager(new LinearLayoutManager(AlimentoRegistroactivity.this));
+                        adapterSelectNino = new RecyclerViewMotivadoresSelectNino(AlimentoRegistroactivity.this, ninoDisponibleArrayList);
+                        _myRecyclerViewNino.setAdapter(adapterSelectNino);
 
-                        idNino = ninoDisponibleArrayList.get(_myRecyclerViewNino.getChildAdapterPosition(v)).getIdNino();
-                        ninosDialog.dismiss();
+                        final TextView cancelar = (TextView) ninosDialog.findViewById(R.id.btnCancelarSelectNinoMotivador);
+                        adapterSelectNino.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                idNino = ninoDisponibleArrayList.get(_myRecyclerViewNino.getChildAdapterPosition(v)).getIdNino();
+                                ninosDialog.dismiss();
+                                cargarReaccionHijoDialog();
+                            }
+                        });
+
+                        cancelar.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ninosDialog.dismiss();
+                            }
+                        });
+
+                        ninosDialog.show();
+                    } else {
+                        idNino = ninoDisponibleArrayList.get(0).getIdNino();
                         cargarReaccionHijoDialog();
                     }
-                });
-
-                cancelar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        ninosDialog.dismiss();
-                    }
-                });
-
-                ninosDialog.show();
-            } else {
-                idNino = ninoDisponibleArrayList.get(0).getIdNino();
-                cargarReaccionHijoDialog();
+                }
             }
+        });
+
+        _txtCantidadConsumoDialog.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().equals("0.25") ||
+                        s.toString().equals("0.5") ||
+                        s.toString().equals("0.75")) {
+                } else {
+                    for (int i = 0; i < buttonsListDialogRegistro.size(); i++) {
+                        buttonsListDialogRegistro.get(i).setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blanco)));
+                        buttonsListDialogRegistro.get(i).setTextColor(getResources().getColor(R.color.negro));
+                    }
+                    buttonsListDialogRegistro.clear();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        _btnUnCuartoDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectButtonDialogRegistro(_btnUnCuartoDialog);
+                undeselectButtonDialogRegistro(_btnUnCuartoDialog);
+                _txtCantidadConsumoDialog.setText("0.25");
+            }
+        });
+        _btnUnMedioDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectButtonDialogRegistro(_btnUnMedioDialog);
+                undeselectButtonDialogRegistro(_btnUnMedioDialog);
+                _txtCantidadConsumoDialog.setText("0.5");
+            }
+        });
+        _btnTresCuartosDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectButtonDialogRegistro(_btnTresCuartosDialog);
+                undeselectButtonDialogRegistro(_btnTresCuartosDialog);
+                _txtCantidadConsumoDialog.setText("0.75");
+            }
+        });
+
+        _btnCancelarAlimentosDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registroAlimentoDialog.dismiss();
+            }
+        });
+
+        registroAlimentoDialog.show();
+
+    }
+
+    //Validacion de botones con valor de decimales ---- Dialog alimentos_generar_registro_dialog
+    private void selectButtonDialogRegistro(Button button) {
+        button.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#85C0AE")));
+        button.setTextColor(getResources().getColor(R.color.blanco));
+        buttonsListDialogRegistro.add(button);
+    }
+
+    private void undeselectButtonDialogRegistro(Button button) {
+        if (buttonsListDialogRegistro.size() > 1) {
+            if (!buttonsListDialogRegistro.get(0).getText().toString().equals(buttonsListDialogRegistro.get(1).getText().toString())) {
+                buttonsListDialogRegistro.get(0).setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.blanco)));
+                buttonsListDialogRegistro.get(0).setTextColor(getResources().getColor(R.color.negro));
+            }
+            buttonsListDialogRegistro.remove(0);
         }
     }
+
+    //------------------------------
+
 
     private void cargarReaccionHijoDialog() {
 
@@ -229,7 +339,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
     //Suma de experiencia al usuario
     private void experienciaUsuario() {
 
-        double cantidadConsumo = Double.valueOf(_txtCantidadConsumo.getText().toString());
+        double cantidadConsumo = Double.valueOf(_txtCantidadConsumo.toString());
         int experiencia = 0;
 
         if (cantidadConsumo >= 1.0) {
@@ -240,12 +350,12 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
             experiencia = 5;
         }
 
-        if (idNino == 1){
-            if (lineaBaseGeneradaNinoUno()){
+        if (idNino == 1) {
+            if (lineaBaseGeneradaNinoUno()) {
                 userDao.sumarExpUsuarario(TAG, getApplicationContext(), experiencia);
             }
-        } else if (idNino == 2){
-            if (lineaBaseGeneradaNinoDos()){
+        } else if (idNino == 2) {
+            if (lineaBaseGeneradaNinoDos()) {
                 userDao.sumarExpUsuarario(TAG, getApplicationContext(), experiencia);
             }
         }
@@ -309,8 +419,8 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("Calculo", MODE_PRIVATE);
         double baseEsfuerzoVerduras = ninoDao.consultarEsfuerzoConsumoVerduras(TAG, getApplicationContext(), idNino);
-        double cantidadConsumo = Double.valueOf(_txtCantidadConsumo.getText().toString().trim());
-        double unidadMedida = calculos.obtenerEquivalencia(cantidadConsumo, Double.valueOf(f_unidadMedida));
+        double cantidadConsumo = Double.valueOf(_txtCantidadConsumo.toString().trim());
+        double unidadMedida = calculos.obtenerEquivalencia(cantidadConsumo, Double.valueOf(f_equivalencia));
 
         if (unidadMedida >= baseEsfuerzoVerduras) {
 
@@ -387,7 +497,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
 
     private void fichaNoConoceAlimento() {
 
-        double cantidad = Double.valueOf(_txtCantidadConsumo.getText().toString());
+        double cantidad = Double.valueOf(_txtCantidadConsumo.toString());
 
         if (cantidad >= 1.0) {
             String nombreAlimento = f_nombre.getText().toString();
@@ -420,22 +530,22 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
             }
         }
 
-        _txtCantidadConsumo.setText("");
+        //_txtCantidadConsumo.setText("");
     }
     //-----------------------------------------------------------
 
     private void registrarAlimento() {
 
         getHoraFecha();
-        double equivalencia = calculos.obtenerEquivalencia(Double.valueOf(_txtCantidadConsumo.getText().toString().trim()), Double.valueOf(f_unidadMedida));
+        double equivalencia = calculos.obtenerEquivalencia(Double.valueOf(_txtCantidadConsumo), Double.valueOf(f_equivalencia));
 
         boolean insert = calculos.registrarDetalleReg(
                 TAG,
                 this,
                 idNino,
                 Integer.valueOf(f_idAlimento),
-                Double.valueOf(f_unidadMedida),
-                Double.valueOf(_txtCantidadConsumo.getText().toString().trim()),
+                Double.valueOf(f_equivalencia),
+                Double.valueOf(_txtCantidadConsumo),
                 equivalencia,
                 hora,
                 fecha,
@@ -457,7 +567,8 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
 
         f_idAlimento = getIntent().getExtras().getString("fruta_idAlimentos");
         f_nombre.setText(getIntent().getExtras().getString("fruta_nombre"));
-        f_unidadMedida = getIntent().getExtras().getString("fruta_equivalencia");
+        f_equivalencia = getIntent().getExtras().getString("fruta_equivalencia");
+        f_unidadMedida = getIntent().getExtras().getString("fruta_unidadMedida");
         f_descripcion.setText(getIntent().getExtras().getString("fruta_descripcion"));
         f_recomendacion.setText(getIntent().getExtras().getString("fruta_recomendacion"));
         f_recomendacionDos.setText(getIntent().getExtras().getString("fruta_recomendacionDos"));
@@ -513,7 +624,6 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
         f_fondo = (RelativeLayout) findViewById(R.id.backgroundSelectFruta);
         _btmCerrarSelectFrutas = (RelativeLayout) findViewById(R.id.btmCerrarSelectFrutas);
         _btnRegistrarFruta = (Button) findViewById(R.id.btnRegistrarFruta);
-        _txtCantidadConsumo = (TextView) findViewById(R.id.txtCantidadConsumo);
         _fruta_linearRecomendacionDos = (LinearLayout) findViewById(R.id.fruta_linearRecomendacionDos);
         _fruta_relativeAviso = (RelativeLayout) findViewById(R.id.fruta_relativeAviso);
 

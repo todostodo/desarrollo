@@ -1,11 +1,14 @@
 package com.example.desarrollo.Precentacion.Home;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 
 import com.example.desarrollo.ConexionApi.ConexionApi;
 
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +30,13 @@ import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.desarrollo.ConexionApi.ConexionApi;
 import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Datos.PreferenciasDao;
 import com.example.desarrollo.Datos.UserDao;
@@ -37,7 +47,11 @@ import com.example.desarrollo.Precentacion.MainActivity;
 import com.example.desarrollo.R;
 import com.example.desarrollo.Ultilidades.Toastp;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HijoRegistroActivity extends AppCompatActivity implements RecyclerViewPreferencias.ChnageStatusListener, View.OnClickListener {
 
@@ -84,10 +98,11 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
     private RecyclerView _myRecyclerViewFrutas, _myRecyclerViewVerduras;
     private RecyclerViewPreferencias mAdapter = null;
     private RecyclerView.LayoutManager layoutManager;
-    PreferenciasDao preferenciasDao;
-    NinoDao ninoDao;
-    Toastp toast;
-    UserDao userDao;
+    private PreferenciasDao preferenciasDao;
+    private NinoDao ninoDao;
+    private Toastp toast;
+    private UserDao userDao;
+    private ConexionApi conexionApi;
 
     ModelPreferencias modelFrutas = new ModelPreferencias();
 
@@ -271,13 +286,10 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                     _registroNinoGenero.setVisibility(View.GONE);
                     _registroDatosNino.setVisibility(View.VISIBLE);
 
-                    if (generoNino.equals("hombre")) {
+                    if (generoNino.equals("hombre"))
                         _imgGeneroNinoRegistroDatos.setImageResource(R.drawable.icon_genero_hombre);
-                        //_fondoGeneroNino.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.rojo)));
-                    } else {
+                    else
                         _imgGeneroNinoRegistroDatos.setImageResource(R.drawable.icon_genero_mujer);
-                        //_fondoGeneroNino.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.gris_genero)));
-                    }
 
                     regresar = 2;
                     registrarDatosNino();
@@ -336,8 +348,6 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
 
                 String peso = _txtHijoPeso.getText().toString().trim();
                 String estatura = _txtHijoEstatura.getText().toString().trim();
-                //String mCintura = _txtHijoMedidaCintura.getText().toString().trim();
-
 
                 if (peso.isEmpty()) {
                     toast.toastp(getApplicationContext(), "Ingrese su peso");
@@ -545,6 +555,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
 
     private void registrarNino() {
         SharedPreferences preferenc = getApplicationContext().getSharedPreferences("Calculo", getApplicationContext().MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("Usuario", MODE_PRIVATE);
         int inpre = preferenc.getInt("primera", 0);
         if (inpre == 0) {
             SharedPreferences.Editor editor = preferenc.edit();
@@ -554,10 +565,10 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         }
         int idNino = preferenc.getInt("nino", 1);
         //Agregar datos generales
-        int arr[] = consultasLocales.obtenerDatosUsuario(getApplicationContext());
+        //int arr[] = consultasLocales.obtenerDatosUsuario(getApplicationContext());
         ConexionApi.insertarNiñoNuevo(
                 getApplicationContext(),
-                arr[1],
+                sharedPreferences.getInt("idGlobal",0),
                 generoNino,
                 nombreNino,
                 apellidoPNino,
@@ -689,19 +700,8 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
             edito.commit();
         }
 
-        toast.toastp(getApplicationContext(), "Se ha registrado conrrectamenta el niño");
+        new registrarHijoProgress().execute("add");
 
-        boolean estadoRegistroUsuario = userDao.estadoUsuario(TAG, getApplicationContext());
-        if (estadoRegistroUsuario == true) {
-            Intent detalleConsumo = new Intent(getApplicationContext(), DetalleConsumoDia.class);
-            startActivity(detalleConsumo);
-            finish();
-        } else {
-            userDao.updateEstadoUsaurio(TAG, getApplicationContext());
-            finish();
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-        }
     }
 
     private void init() {
@@ -776,4 +776,60 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
             }
         }
     }
+
+    private class registrarHijoProgress extends AsyncTask<String, String, String> {
+
+        private ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = ProgressDialog.show(HijoRegistroActivity.this,
+                    "Porfavor espere", "Registrando al niño", true, false);
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                boolean estadoRegistroUsuario = userDao.estadoUsuario(TAG, getApplicationContext());
+
+                if (estadoRegistroUsuario == true) {
+
+                    Intent detalleConsumo = new Intent(getApplicationContext(), DetalleConsumoDia.class);
+                    startActivity(detalleConsumo);
+                    finish();
+
+                } else {
+
+                    SharedPreferences sharedPreferences = getApplication().getSharedPreferences("Usuario", MODE_PRIVATE);
+                    userDao.updateEstadoUsuario(TAG, getApplicationContext());
+                    conexionApi.updateEstadoUsuario(getApplicationContext(), sharedPreferences.getInt("idGlobal", 0));
+
+                    finish();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+
+                }
+
+                return "Success";
+
+            }catch (Exception e){
+                e.printStackTrace();
+                return "Fail";
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            progressDialog.dismiss();
+            if (s.equals("Success")){
+                toast.toastp(getApplicationContext(), "Se ha registrado conrrectamente el niño");
+            }else{
+                toast.toastp(getApplicationContext(), "Algo salio mal");
+            }
+        }
+    }
+
 }
