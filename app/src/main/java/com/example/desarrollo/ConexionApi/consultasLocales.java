@@ -12,7 +12,9 @@ import com.example.desarrollo.Ultilidades.Utilidades;
 
 import java.util.ArrayList;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.android.volley.Request.Method.HEAD;
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class consultasLocales {
 
@@ -560,10 +562,10 @@ public class consultasLocales {
 
     public static void obtenerDatosTiempoAplicacion(Context context) {
 
-        SharedPreferences sharedPreferences = context.getSharedPreferences("Usuario", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = context.getSharedPreferences("Usuario", MODE_PRIVATE);
         String duracion;
         int idTiemA, idUsuario;
-        int vec[] = obtenerDatosUsuario(context);
+       // int vec[] = obtenerDatosUsuario(context);
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
 
@@ -581,9 +583,9 @@ public class consultasLocales {
                     duracion = cur.getString(2);
 
                     boolean entro = false;
-                    if (vec[0] == idUsuario) {
+                    if (1 == idUsuario) {
                         entro = true;
-                        ConexionApi.insertarTiempoAplicacion(context,vec[1],duracion);
+                        ConexionApi.insertarTiempoAplicacion(context,sharedPreferences.getInt("idGlobal",0),duracion);
                     }
                     if (entro == true) {
                         updateTabla_TiempoAplicacion("updateTiemA", context, idTiemA);
@@ -731,7 +733,9 @@ public class consultasLocales {
 
         String duracion;
         int idNoti, idUsuario;
-        int vec[] = obtenerDatosUsuario(context);
+        //int vec[] = obtenerDatosUsuario(context);
+        SharedPreferences sharedPreferences =context.getSharedPreferences("Usuario", MODE_PRIVATE);
+
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
 
@@ -748,9 +752,9 @@ public class consultasLocales {
                     idUsuario = cur.getInt(1);
                     System.out.println("idnotiiiiiiiiiiiiii::::::::::::     "+idNoti);
                     boolean entro = false;
-                    if (vec[0] == idUsuario) {
+                    if (1 == idUsuario) {
                         entro = true;
-                        ConexionApi.insertarVioNotificacion(context,vec[1]);
+                        ConexionApi.insertarVioNotificacion(context,sharedPreferences.getInt("idGlobal",0));
                     }
                     if (entro == true) {
                         updateTabla_VioNotificacion("updateTiemA", context, idNoti);
