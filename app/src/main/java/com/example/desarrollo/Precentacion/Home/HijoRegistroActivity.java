@@ -555,6 +555,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
 
     private void registrarNino() {
         SharedPreferences preferenc = getApplicationContext().getSharedPreferences("Calculo", getApplicationContext().MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("Usuario", MODE_PRIVATE);
         int inpre = preferenc.getInt("primera", 0);
         if (inpre == 0) {
             SharedPreferences.Editor editor = preferenc.edit();
@@ -564,10 +565,10 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         }
         int idNino = preferenc.getInt("nino", 1);
         //Agregar datos generales
-        int arr[] = consultasLocales.obtenerDatosUsuario(getApplicationContext());
+        //int arr[] = consultasLocales.obtenerDatosUsuario(getApplicationContext());
         ConexionApi.insertarNiñoNuevo(
                 getApplicationContext(),
-                arr[1],
+                sharedPreferences.getInt("idGlobal",0),
                 generoNino,
                 nombreNino,
                 apellidoPNino,

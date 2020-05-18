@@ -181,7 +181,7 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     ///////////////////////***********[Insertar un usuario nuevo]***************
-    public static boolean InsertarUsuarioNuevo(Context context, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int experiencia, int estadoReg) {
+    /*public static boolean InsertarUsuarioNuevo(Context context, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int experiencia, int estadoReg) {
 
         boolean respuesta = true;
         String url = "http://68.183.148.243/Persuhabit/usuario/registro";
@@ -213,7 +213,7 @@ public class ConexionApi extends AppCompatActivity {
 
 // Add the request to the RequestQueue.
         queue.add(jsonObjRequest);
-    }
+    }*/
 
     ////////////////////////[Actualizar estado del usuario]
 
