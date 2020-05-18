@@ -10,11 +10,15 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationManagerCompat;
 
+import com.example.desarrollo.Datos.NotificacionDao;
 import com.example.desarrollo.Precentacion.MainActivity;
 import com.example.desarrollo.R;
 
 import java.io.File;
+
+import static com.example.desarrollo.Precentacion.MainActivity.NOTIFICACION_ID;
 
 public class BienbenidaActivity extends AppCompatActivity {
 
@@ -23,6 +27,19 @@ public class BienbenidaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent bundle= getIntent();
+        if (bundle != null) {
+            String Titulo = bundle.getStringExtra("title");
+            if(Titulo != null) {
+                if (Titulo.equals("si")) {
+                    NotificacionDao.insertVioNotificacion("notificacion", this, 1, 1);
+
+                    NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
+                    notificationManagerCompat.cancel(NOTIFICACION_ID);
+                }
+            }
+        }
 
         if (restorePreferenceData()){
             Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);

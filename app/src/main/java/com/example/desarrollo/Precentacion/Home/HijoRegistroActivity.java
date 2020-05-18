@@ -3,6 +3,9 @@ package com.example.desarrollo.Precentacion.Home;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+
+import com.example.desarrollo.ConexionApi.ConexionApi;
+
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -16,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.example.desarrollo.ConexionApi.consultasLocales;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -50,7 +55,6 @@ import java.util.Map;
 
 public class HijoRegistroActivity extends AppCompatActivity implements RecyclerViewPreferencias.ChnageStatusListener, View.OnClickListener {
 
-    public static int idNino;
     private Button _btnRegistrarPreferenciasVerduras, _btnRegistrarPreferenciasFrutas;
     private String gustos = "siGusta";
     private boolean updateVerdura = false;
@@ -550,29 +554,34 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
     }
 
     private void registrarNino() {
-        SharedPreferences sharedPreferences = getApplication().getSharedPreferences("Usuario", MODE_PRIVATE);
+        SharedPreferences preferenc = getApplicationContext().getSharedPreferences("Calculo", getApplicationContext().MODE_PRIVATE);
+        int inpre = preferenc.getInt("primera", 0);
+        if (inpre == 0) {
+            SharedPreferences.Editor editor = preferenc.edit();
+            editor.putInt("primera", 1);
+            editor.putInt("nino", 1);
+            editor.commit();
+        }
+        int idNino = preferenc.getInt("nino", 1);
         //Agregar datos generales
-        ninoDao.addNino
-                (
-                        TAG,
-                        getApplicationContext(),
-                        sharedPreferences.getInt("idGlobal", 0),
-                        nombreNino,
-                        generoNino,
-                        apellidoPNino,
-                        apellidoMNino,
-                        auxEdad,
-                        Double.parseDouble(pesoNino),
-                        Double.parseDouble(estaturaNino),
-                        0.0,
-                        0.0,
-                        0.0,
-                        0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        1
-                );
+        int arr[] = consultasLocales.obtenerDatosUsuario(getApplicationContext());
+        ConexionApi.insertarNiñoNuevo(
+                getApplicationContext(),
+                arr[1],
+                generoNino,
+                nombreNino,
+                apellidoPNino,
+                apellidoMNino,
+                auxEdad,
+                Double.parseDouble(pesoNino),
+                Double.parseDouble(estaturaNino),
+                0.0,
+                0.0,
+                0.0,
+                0,
+                0.0,
+                0.0,
+                0.0);
 
         //Agregar preferencias frutas
         for (int i = 0; i < siGustaFruta.size(); i++) {
@@ -681,6 +690,13 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                             0,
                             1
                     );
+
+            int incremento = idNino;
+            incremento++;
+            SharedPreferences.Editor edito = preferenc.edit();
+            edito.remove("nino");
+            edito.putInt("nino", incremento);
+            edito.commit();
         }
 
         new registrarHijoProgress().execute("add");

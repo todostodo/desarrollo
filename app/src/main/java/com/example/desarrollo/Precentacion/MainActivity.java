@@ -3,14 +3,21 @@ package com.example.desarrollo.Precentacion;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -31,11 +38,14 @@ import com.example.desarrollo.ConexionApi.ConexionApi;
 
 import com.example.desarrollo.Datos.Calculos;
 import com.example.desarrollo.Datos.ConexionSQLHelper;
+import com.example.desarrollo.Datos.Mensajeria;
 import com.example.desarrollo.Datos.NinoDao;
+import com.example.desarrollo.Datos.TiempoAplicacionDao;
 import com.example.desarrollo.Datos.TutorDao;
-import com.example.desarrollo.Entidades.Nino;
+import com.example.desarrollo.ConexionApi.consultasLocales;
 import com.example.desarrollo.Precentacion.Home.HomeFragment;
 
+import com.example.desarrollo.Precentacion.Login.BienbenidaActivity;
 import com.example.desarrollo.Precentacion.Motivadores.MotivadoresFragment;
 import com.example.desarrollo.Precentacion.Perfil.PerfilFragment;
 import com.example.desarrollo.R;
@@ -83,13 +93,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-        Date date = new Date();
-        DateFormat hora = new SimpleDateFormat("HH:mm:ss");
-        inicio = "" + hora.format(date);
-
-
-
         Calculos.inicializarFichasAlimento(this);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.btmNavegacion);
@@ -133,15 +136,6 @@ public class MainActivity extends AppCompatActivity {
         ft.detach(fragment);
         ft.attach(fragment);
         ft.commit();
-    }
-
-    @Override
-    protected void onDestroy() {
-
-        hora(inicio, this);
-
-        super.onDestroy();
-
     }
 
     public static void hora(String inicio, Context con) {
@@ -196,6 +190,9 @@ public class MainActivity extends AppCompatActivity {
         finh = segundos1 / 3600;
         finm = (segundos1 - (3600 * finh)) / 60;
         fins = segundos1 - ((finh * 3600) + (finm * 60));
+        String duracion = ""+finh+" : "+finm+" : "+fins;
+
+        TiempoAplicacionDao.insertDuracion("TiempApp",con,1,duracion,1);
 
     }
 
@@ -204,5 +201,159 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         this.finishAffinity();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    @Override
+    protected void onStart() {
+         Mensajeria estadoConexion;
+        estadoConexion = new Mensajeria();
+        boolean networkInfo = estadoConexion.estadoConexion(getApplicationContext());
+        if (networkInfo == true) {
+
+            //int arr[] = consultasLocales.obtenerDatosNino(this);
+            //System.out.println(arr[0]+" "+arr[1]+" "+arr[2]+" "+arr[3]);
+              consultasLocales.obtenerDatosGustoFruta(this);
+              consultasLocales.obtenerDatosGustoVerdura(this);
+              consultasLocales.obtenerDatosRegistro(this);
+              consultasLocales.obtenerDatosCanjeFi(this);
+              consultasLocales.obtenerDatosDetalleRegistro(this);
+              consultasLocales.obtenerDatosTiempoAplicacion(this);
+              consultasLocales.obtenerDatosGestoTerrible(this);
+              consultasLocales.obtenerDatosGestoBien(this);
+              consultasLocales.obtenerDatosGestoGenial(this);
+              consultasLocales.obtenerDatosVioNotificacion(this);
+              consultasLocales.actualizarDatosLineaBase(this);
+              consultasLocales.actualizarDatosesfuerzo(this);
+        }
+
+        Date date = new Date();
+        DateFormat hora = new SimpleDateFormat("HH:mm:ss");
+        inicio = "" + hora.format(date);
+
+        String valor="";
+        int inih;
+        String cadena = cadena = "" + hora.format(date);
+        valor = "" + inicio.charAt(0);
+        valor = valor + "" + inicio.charAt(1);
+        inih = Integer.parseInt(valor);
+
+        SharedPreferences preferenc = this.getSharedPreferences("Calculo", this.MODE_PRIVATE);
+        int llave = preferenc.getInt("valorNoti", 0);
+        if(llave==0){
+            if(inih>=14 && inih<=24){
+
+                SharedPreferences.Editor editor = preferenc.edit();
+                editor.remove("valorNoti");
+                editor.putInt("valorNoti", 1);
+                editor.commit();
+
+                iniciarNotifi();
+
+            }
+        }else {
+            if(inih>=1 && inih<14){
+                SharedPreferences.Editor editor = preferenc.edit();
+                editor.remove("valorNoti");
+                editor.putInt("valorNoti", 0);
+                editor.commit();
+            }
+        }
+
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        hora(inicio, this);
+        super.onStop();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private void iniciarNotifi(){
+        setbienbenidaPending();
+        createNotificationChannel();
+        notifi();
+    }
+
+    private final static String CHANNEL_ID = "NOTIFICACION";
+    public final static int NOTIFICACION_ID = 0;
+    private PendingIntent bienbenida;
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private void setbienbenidaPending() {
+        Intent intent = new Intent(this, BienbenidaActivity.class);
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addParentStack(BienbenidaActivity.class);
+        intent.putExtra("title", "si");
+        stackBuilder.addNextIntent(intent);
+        bienbenida = stackBuilder.getPendingIntent(1,PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+
+    private void notifi() {
+        String a= "";
+        int valorEntero =(int) Math.floor(Math.random()*(18-1+1)+1);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
+        builder.setSmallIcon(R.drawable.sms);
+        builder.setContentTitle("Persuhabit");
+        builder.setContentText("Despliega la notificacion");
+        builder.setColor(Color.BLUE);
+        if(valorEntero == 1) {
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi1)));
+        } else if(valorEntero == 2){
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi2)));
+        }else if(valorEntero == 3){
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi3)));
+        }else if(valorEntero == 4){
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi4)));
+        }else if(valorEntero == 5){
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi5)));
+        }else if(valorEntero == 6){
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi6)));
+        }else if(valorEntero == 7){
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi7)));
+        }else if(valorEntero == 8){
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi8)));
+        }else if(valorEntero == 9){
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi9)));
+        }else if(valorEntero == 10){
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi10)));
+        }else if(valorEntero == 11){
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi11)));
+        }else if(valorEntero == 12){
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi12)));
+        }else if(valorEntero == 13){
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi13)));
+        }else if(valorEntero == 14){
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi14)));
+        }else if(valorEntero == 15){
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi15)));
+        }else if(valorEntero == 16){
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi16)));
+        }else if(valorEntero == 17){
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi17)));
+        }else if(valorEntero == 18){
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(getString(R.string.Notifi18)));
+        }
+        builder.setPriority(NotificationCompat.PRIORITY_MAX);
+        builder.setLights(Color.MAGENTA, 1000, 1000);
+        builder.setVibrate(new long[]{1000, 1000, 1000, 1000, 1000});
+        builder.setDefaults(Notification.DEFAULT_SOUND);
+
+        builder.addAction(R.drawable.sms,"He leido la recomendacion",bienbenida);
+
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
+        notificationManagerCompat.notify(NOTIFICACION_ID, builder.build());
+    }
+
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "Notificacion";
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_HIGH);
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 }

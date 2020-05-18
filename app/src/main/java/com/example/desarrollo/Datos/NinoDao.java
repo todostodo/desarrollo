@@ -24,7 +24,7 @@ public class NinoDao {
     private static HijoRegistroActivity gustos;
     private static final String TAG = "NinoDao";
 
-    public static boolean addNino(String TAG, Context context, int idUsuario, String nombre, String genero, String apPaterno, String apMaterno, int edad, Double peso, Double estatura, Double lineabultra, Double lineabv, Double leneabf, int totfich, Double esfuerzoultra, Double esfuerzof, Double esfuerzov, int registroNube) {
+    public static boolean addNino(String TAG, Context context, int idUsuario, String nombre, String genero, String apPaterno, String apMaterno, int edad, Double peso, Double estatura, Double lineabultra, Double lineabv, Double leneabf, int totfich, Double esfuerzoultra, Double esfuerzof, Double esfuerzov, int idGlobal) {
 
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
@@ -48,7 +48,7 @@ public class NinoDao {
                     Utilidades.CAMPO_EsfuerzoUltraprocesado + ", " +
                     Utilidades.CAMPO_EsfuerzoFruta + ", " +
                     Utilidades.CAMPO_EsfuerzoVerdura + ", " +
-                    Utilidades.CAMPO_registroNube + ") " +
+                    Utilidades.CAMPO_idGlobal+") " +
                     "VALUES ( " +
                     idUsuario + ", '" +
                     nombre + "', '" +
@@ -65,7 +65,7 @@ public class NinoDao {
                     esfuerzoultra + ", " +
                     esfuerzof + ", " +
                     esfuerzov + ", " +
-                    registroNube + ")";
+                    idGlobal+")";
 
 
             database.execSQL(inset);
@@ -80,6 +80,7 @@ public class NinoDao {
                 SharedPreferences.Editor editor = preferenc.edit();
                 editor.putInt("instalacion", 1);
                 editor.putInt("dia", dias);
+                editor.putInt("valorNoti", 1);
                 editor.putInt("anterior", dias);
                 editor.putInt("curso", dias);
                 editor.putInt("llave1", 0);
@@ -130,7 +131,7 @@ public class NinoDao {
             Cursor cursor = database.rawQuery(getId, null);
             cursor.moveToFirst();
 
-            gustos.idNino = cursor.getInt(0);
+
             cursor.close();
             return true;
 

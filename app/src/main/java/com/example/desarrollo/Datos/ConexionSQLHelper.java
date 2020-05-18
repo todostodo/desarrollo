@@ -51,6 +51,16 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
 
         db.execSQL(Utilidades.CREAR_TABLA_GustoVerdura);
 
+        db.execSQL(Utilidades.CREAR_Tabla_TiempoAplicacion);
+
+        db.execSQL(Utilidades.CREAR_Tabla_GestoTerrible);
+
+        db.execSQL(Utilidades.CREAR_Tabla_GestoBien);
+
+        db.execSQL(Utilidades.CREAR_Tabla_GestoGenial);
+
+        db.execSQL(Utilidades.CREAR_VioNotificacion);
+
         insertMotivadoresDefault(db);
 
     }
@@ -64,6 +74,11 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Tutor");
         db.execSQL("DROP TABLE IF EXISTS GustoFrutas");
         db.execSQL("DROP TABLE IF EXISTS GustoVerdura");
+        db.execSQL("DROP TABLE IF EXISTS TiempoAplicacion");
+        db.execSQL("DROP TABLE IF EXISTS GestoTerrible");
+        db.execSQL("DROP TABLE IF EXISTS GestoBien");
+        db.execSQL("DROP TABLE IF EXISTS GestoGenial");
+        db.execSQL("DROP TABLE IF EXISTS VioNotificacion");
 
         onCreate(db);
 

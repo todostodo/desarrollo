@@ -18,7 +18,7 @@ public class MotivadoresDao {
 
     private static SQLiteDatabase database;
 
-    public static boolean insertMotivador(String TAG, Context context, String desc, int valor, int registroNube) {
+    public static boolean insertMotivador(String TAG, Context context, String desc, int valor, int idGlobal) {
 
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
@@ -28,8 +28,8 @@ public class MotivadoresDao {
             String insert = ("INSERT INTO " + Utilidades.TABLA_Recompensas + " ( " +
                     Utilidades.CAMPO_descripcion + ", " +
                     Utilidades.CAMPO_valor + ", " +
-                    Utilidades.CAMPO_registroNube + ") " +
-                    "VALUES ('" + desc + "', " + valor + ", " + registroNube + ")");
+                    Utilidades.CAMPO_idGlobal+") " +
+                    "VALUES ('" + desc + "', " + valor + ", "+idGlobal+")");
             database.execSQL(insert);
 
             return true;

@@ -113,12 +113,13 @@ public class Utilidades {
     public static final String CAMPO_descripcion = "descrip";
     public static final String CAMPO_valor = "valor";
 
+
     public static final String CREAR_Tabla_Recompensas =
             "CREATE TABLE " + "" + TABLA_Recompensas + " (" +
                     CAMPO_idRecompensa + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_descripcion + " TEXT NOT NULL, " +
                     CAMPO_valor + " INTEGER NOT NULL, " +
-                    CAMPO_registroNube + " INTEGER NOT NULL)";
+                    CAMPO_idGlobal+" INTEGER NOT NULL)";
     //****************************************************************************************************ya
     //Constantes para campos de la tabla Nino
     public static final String TABLA_Nino = "Nino";
@@ -156,7 +157,7 @@ public class Utilidades {
                     CAMPO_EsfuerzoUltraprocesado + " REAL NOT NULL, " +
                     CAMPO_EsfuerzoFruta + " REAL NOT NULL, " +
                     CAMPO_EsfuerzoVerdura + " REAL NOT NULL, " +
-                    CAMPO_registroNube + " INTEGER NOT NULL, " +
+                    CAMPO_idGlobal + " INTEGER NOT NULL, " +
                     " FOREIGN KEY (" + CAMPO_idUsuario + ") REFERENCES " + Utilidades.TABLA_Usuario + "(" + CAMPO_idUsuario + "))";
 
     //Constantes para campos de la tabla CanjeFi
@@ -283,4 +284,69 @@ public class Utilidades {
                     CAMPO_conoscoVerdura + " INTEGER NOT NULL," +
                     CAMPO_registroNube + " INTEGER NOT NULL," +
                     "FOREIGN KEY (" + CAMPO_idNinoGustosVerdura + ") REFERENCES Nino (" + CAMPO_idNinoGustosVerdura + "))";
+
+    //***************************************************************************************************************************************
+
+    public static final String Tabla_TiempoAplicacion = "TiempoAplicacion";
+    public static final String CAMPO_idTiemA = "idTiemA";
+    public static final String CAMPO_duracion = "duracion";
+
+    public static final String CREAR_Tabla_TiempoAplicacion =
+            "CREATE TABLE " + "" + Tabla_TiempoAplicacion + " (" +
+                    CAMPO_idTiemA + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    CAMPO_idUsuario + " INTEGER NOT NULL, " +
+                    CAMPO_duracion + " TEXT NOT NULL, "+
+                    CAMPO_registroNube + " INTEGER NOT NULL, "+
+                    "FOREIGN KEY (" + CAMPO_idUsuario + ") REFERENCES Usuario (" + CAMPO_idUsuario + "))";
+//*********************************************************************************************************************************************
+
+    public static final String Tabla_GestoTerrible = "GestoTerrible";
+    public static final String CAMPO_idTer = "idTer";
+
+    public static final String CREAR_Tabla_GestoTerrible =
+            "CREATE TABLE " + "" + Tabla_GestoTerrible + " (" +
+                    CAMPO_idTer + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    CAMPO_idNino + " INTEGER NOT NULL, " +
+                    CAMPO_IdAlimento + " TEXT NOT NULL, "+
+                    CAMPO_registroNube + " INTEGER NOT NULL, "+
+                    "FOREIGN KEY (" + CAMPO_idNino + ") REFERENCES Nino (" + CAMPO_idNino + "))";
+    //*******************************************************************************************************************************************
+
+
+    public static final String Tabla_GestoBien = "GestoBien";
+    public static final String CAMPO_idBien = "idBien";
+
+    public static final String CREAR_Tabla_GestoBien =
+            "CREATE TABLE " + "" + Tabla_GestoBien + " (" +
+                    CAMPO_idBien + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    CAMPO_idNino + " INTEGER NOT NULL, " +
+                    CAMPO_IdAlimento + " TEXT NOT NULL, "+
+                    CAMPO_registroNube + " INTEGER NOT NULL, "+
+                    "FOREIGN KEY (" + CAMPO_idNino + ") REFERENCES Nino (" + CAMPO_idNino + "))";
+
+    //**********************************************************************************************************************************************
+
+    public static final String Tabla_GestoGenial = "GestoGenial";
+    public static final String CAMPO_idGenial = "idGenial";
+
+    public static final String CREAR_Tabla_GestoGenial =
+            "CREATE TABLE " + "" + Tabla_GestoGenial + " (" +
+                    CAMPO_idGenial + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    CAMPO_idNino + " INTEGER NOT NULL, " +
+                    CAMPO_IdAlimento + " TEXT NOT NULL, "+
+                    CAMPO_registroNube + " INTEGER NOT NULL, "+
+                    "FOREIGN KEY (" + CAMPO_idNino + ") REFERENCES Nino (" + CAMPO_idNino + "))";
+
+    //************************************************************************************************************************************
+
+    public static final String Tabla_VioNotificacion = "VioNotificacion";
+    public static final String CAMPO_idVioNoti = "idNoti";
+
+    public static final String CREAR_VioNotificacion =
+            "CREATE TABLE " + "" + Tabla_VioNotificacion + " (" +
+                    CAMPO_idVioNoti + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    CAMPO_idUsuario + " INTEGER NOT NULL, " +
+                    CAMPO_registroNube + " INTEGER NOT NULL, "+
+                    "FOREIGN KEY (" + CAMPO_idUsuario + ") REFERENCES Usuario (" + CAMPO_idUsuario + "))";
+
 }
