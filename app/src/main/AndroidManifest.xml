@@ -64,9 +64,6 @@
         <activity
             android:name=".Precentacion.Perfil.PerfilAjustesActivity"
             android:screenOrientation="userPortrait" />
-        <activity
-            android:name=".Precentacion.Perfil.PerfilEditar"
-            android:screenOrientation="userPortrait" />
 
         <activity
             android:name=".Precentacion.Alimentos.AlimentoRegistroactivity"

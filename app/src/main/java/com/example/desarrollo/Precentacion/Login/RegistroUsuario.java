@@ -1,35 +1,51 @@
 package com.example.desarrollo.Precentacion.Login;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.Bundle;
+import android.os.AsyncTask;
+import android.os.Bundle;;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.desarrollo.ConexionApi.ConexionApi;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.desarrollo.Datos.Mensajeria;
 import com.example.desarrollo.Datos.UserDao;
-import com.example.desarrollo.Precentacion.Home.HijoRegistroActivity;
 import com.example.desarrollo.R;
 import com.example.desarrollo.Ultilidades.Toastp;
 
-import static com.android.volley.Request.Method.HEAD;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegistroUsuario extends AppCompatActivity {
 
     private TextView _txtNombre, _txtApellidoPaterno, _txtApellidoMaterno, _txtCorreo, _txtPassword, _btnIrLogin;
     private RelativeLayout _btnRegistrarUsuario, _btnCerrarRegistro;
-
     private Toastp toastp;
     private UserDao userDao;
     private Mensajeria estadoConexion;
+
+    private String sNombre,
+            sApellidoPaterno,
+            sApellidoMaterno,
+            sCorreo,
+            sPassword;
+
+
+    public boolean getUserConfirm;
 
     private static final String TAG = "RegistroUsuario";
 
@@ -67,9 +83,9 @@ public class RegistroUsuario extends AppCompatActivity {
 
     private void registrarUsuario() {
 
-        String nombre = _txtNombre.getText().toString();
-        String apellidoPaterno = _txtApellidoPaterno.getText().toString();
-        String apellidoMaterno = _txtApellidoMaterno.getText().toString();
+        String nombre = _txtNombre.getText().toString().trim();
+        String apellidoPaterno = _txtApellidoPaterno.getText().toString().trim();
+        String apellidoMaterno = _txtApellidoMaterno.getText().toString().trim();
         String correo = _txtCorreo.getText().toString().trim();
         String password = _txtPassword.getText().toString();
         String validacionCorreo = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -103,34 +119,13 @@ public class RegistroUsuario extends AppCompatActivity {
                                     toastp.toastp(getApplicationContext(), "La contraseña debe de contener más de 8 caracteres");
                                 } else {
 
-                                     /*
-                                        Guardar id generada de la base de datos (WEB SERVIDE) antes de crear la cuenta localmente
-                                        enviar la id de la web service a la base de datos local
-                                        despues almacenar el correo y la id en sharepreferences
-                                     */
+                                    sNombre = nombre;
+                                    sApellidoPaterno = apellidoPaterno;
+                                    sApellidoMaterno = apellidoMaterno;
+                                    sCorreo = correo;
+                                    sPassword = password;
 
-                                    estadoConexion = new Mensajeria();
-                                    boolean networkInfo = estadoConexion.estadoConexion(getApplicationContext());
-
-                                    if (networkInfo == true) {
-                                        boolean addUser = ConexionApi.InsertarUsuarioNuevo(
-                                                getApplicationContext(),
-                                                nombre,
-                                                apellidoMaterno,
-                                                apellidoPaterno,
-                                                correo,
-                                                password,
-                                                0,
-                                                0,
-                                                0);
-
-                                        if (addUser == true) {
-                                            Intent introduccion = new Intent(getApplicationContext(), IntroduccionActivity.class);
-                                            startActivity(introduccion);
-                                        }
-                                    } else {
-                                        toastp.toastp(getApplicationContext(), "Conexion no valida: Revisa tu conexion a internet.");
-                                    }
+                                    new loadRegisterUser().execute("registro");
                                 }
                             }
                         }
@@ -149,5 +144,109 @@ public class RegistroUsuario extends AppCompatActivity {
         _btnRegistrarUsuario = (RelativeLayout) findViewById(R.id.btnRegistrarUsuario);
         _btnCerrarRegistro = (RelativeLayout) findViewById(R.id.btnCerrarLoginRegistro);
         _btnIrLogin = (TextView) findViewById(R.id.btnIrLogin);
+    }
+
+
+    private void addUserWebService(final String nomu, final String appu, final String apmu, final String correo, final String pwdu, final int nivel, final int experiencia, final int estadoReg) {
+
+        String url = "http://68.183.148.243/Persuhabit/usuario/registro";
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        Map<String, Object> stringObjectMap = new HashMap<String, Object>();
+        stringObjectMap.put("nomu", nomu);
+        stringObjectMap.put("apmu", apmu);
+        stringObjectMap.put("appu", appu);
+        stringObjectMap.put("correo", correo);
+        stringObjectMap.put("pwdu", pwdu);
+        stringObjectMap.put("nivel", nivel);
+        stringObjectMap.put("experiencia", experiencia);
+        stringObjectMap.put("estadoReg", estadoReg);
+
+        JSONObject jsonObject = new JSONObject(stringObjectMap);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    String existeUsuario = response.getString("data");
+                    if (!existeUsuario.equals("Fail")) {
+
+                        int idGlobal = response.getInt("data");
+                        System.out.println("el valor del id: " + idGlobal);
+                        userDao.addUsuario(TAG, getApplicationContext(), nomu, appu, apmu, correo, pwdu, nivel, experiencia, estadoReg, idGlobal);
+                        Intent introduccion = new Intent(getApplicationContext(), IntroduccionActivity.class);
+                        startActivity(introduccion);
+
+                    } else {
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegistroUsuario.this);
+                        builder.setCancelable(false);
+                        builder.setMessage("El correo ingresado ya se encuentra registrado");
+                        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                        builder.show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+        queue.add(jsonObjectRequest);
+    }
+
+    private class loadRegisterUser extends AsyncTask<String, String, String> {
+
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = ProgressDialog.show(RegistroUsuario.this,
+                    "", "Creando registro", true, false);
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            estadoConexion = new Mensajeria();
+            boolean networkInfo = estadoConexion.estadoConexion(getApplicationContext());
+
+            if (networkInfo == true) {
+
+                addUserWebService(sNombre, sApellidoPaterno, sApellidoMaterno, sCorreo, sPassword, 0, 0, 0);
+
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(RegistroUsuario.this);
+                builder.setCancelable(false);
+                builder.setMessage("Conexion no valida: Revisa tu conexion a internet.");
+                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressDialog.dismiss();
+        }
     }
 }

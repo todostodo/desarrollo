@@ -1,6 +1,7 @@
 package com.example.desarrollo.ConexionApi;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,11 +20,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.example.desarrollo.Datos.UserDao;
+import com.example.desarrollo.Precentacion.Login.RegistroUsuario;
+import com.example.desarrollo.Ultilidades.Toastp;
 
 
 public class ConexionApi extends AppCompatActivity {
 
+    public Toastp toast;
     public static RequestQueue queue;
+    private static final String TAG = "ConexionApi";
 
     //////////////////////////////////////////[*********Metodos para el manejo de la tabla Recompensas**********]
     //-----------------------------------[Obtener todos los datos de la tabla recompensas]
@@ -157,105 +162,9 @@ public class ConexionApi extends AppCompatActivity {
         queue.add(jsonObjectRequest);
     }
 
-    ///////////////////////***********[Insertar un usuario nuevo]***************
-    public static boolean InsertarUsuarioNuevo(Context context, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int experiencia, int estadoReg) {
-
-        boolean respuesta = true;
-        String url = "http://68.183.148.243/Persuhabit/usuarios";
-        RequestQueue queue = Volley.newRequestQueue(context);
-        final String nomu1, apmu1, appu1, correo1, pwdu1;
-        final int nivel1, estadoReg1, experiencia1;
-        final Context context1;
-        nomu1 = nomu;
-        apmu1 = apmu;
-        appu1 = appu;
-        correo1 = correo;
-        pwdu1 = pwdu;
-        nivel1 = nivel;
-        estadoReg1 = estadoReg;
-        experiencia1 = experiencia;
-        context1 = context;
-
-// POST parameters
-        Map<String, Object> params = new HashMap<String, Object>();
-        params.put("nomu", nomu);
-        params.put("apmu", apmu);
-        params.put("appu", appu);
-        params.put("correo", correo);
-        params.put("pwdu", pwdu);
-        params.put("nivel", nivel);
-        params.put("experiencia", experiencia);
-        params.put("estadoReg", estadoReg);
-
-        JSONObject jsonObj = new JSONObject(params);
-
-// Request a json response from the provided URL
-        JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            int resultado = response.getInt("data");
-                            System.out.println("el valor del id: " + resultado);
-                            llegue(response, nomu1, apmu1, appu1, correo1, pwdu1, nivel1, experiencia1, estadoReg1, context1);
-                            // registrar(resultado);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                            }
-                        });
-
-// Add the request to the RequestQueue.
-        queue.add(jsonObjRequest);
-        return respuesta;
-    }
-
-
-    public static void llegue(JSONObject response, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int experiencia, int estadoReg, Context context) throws JSONException {
-        int resultado = response.getInt("data");
-        UserDao.addUsuario("add", context, nomu, appu, apmu, correo, pwdu, nivel, experiencia, estadoReg, resultado);
-    }
-
-
-    ////////////////////////****************[Actualizar Correo del Usuario]
-    public static void ActualizarCorreoUsuario(Context context, String correo, int id) {
-        String url = "http://68.183.148.243/Persuhabit/usuarios/correo";
-        RequestQueue queue = Volley.newRequestQueue(context);
-
-// POST parameters
-        Map<String, Object> params = new HashMap<String, Object>();
-        params.put("correo", correo);
-        params.put("id", id);
-
-        JSONObject jsonObj = new JSONObject(params);
-
-// Request a json response from the provided URL
-        JsonObjectRequest jsonObjRequest = new JsonObjectRequest
-                (Request.Method.PUT, url, jsonObj, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                    }
-                },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                            }
-                        });
-
-// Add the request to the RequestQueue.
-        queue.add(jsonObjRequest);
-    }
-
     ////////////////////////[Actualizar Contraseña del Usuario]
     public static void ActualizarContraseñaUsuario(Context context, String pwdu, int id) {
-        String url = "http://68.183.148.243/Persuhabit/usuarios/password";
+        String url = "http://68.183.148.243/Persuhabit/usuario/password";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -280,6 +189,33 @@ public class ConexionApi extends AppCompatActivity {
 
 // Add the request to the RequestQueue.
         queue.add(jsonObjRequest);
+    }
+
+    ////////////////////////[Actualizar estado del usuario]
+
+    public static void updateEstadoUsuario(Context context, int idUsuario) {
+        String url = "http://68.183.148.243/Persuhabit/usuario/estado";
+        RequestQueue queue = Volley.newRequestQueue(context);
+
+        Map<String, Object> stringObjectMap = new HashMap<String, Object>();
+        stringObjectMap.put("idusu", idUsuario);
+
+        JSONObject jsonObject = new JSONObject(stringObjectMap);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, url, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+        queue.add(jsonObjectRequest);
     }
 
     ////////////////////////////////////////[eliminar un usuario]

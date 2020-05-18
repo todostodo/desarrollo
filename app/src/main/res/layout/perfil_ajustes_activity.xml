@@ -100,7 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
-            android:text="Editar perfil"
+            android:text="Cambiar correo electrónico"
             android:textColor="@color/gris_oscuro_subTitulos"
             android:textSize="16sp" />
 

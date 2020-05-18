@@ -1,6 +1,7 @@
 package com.example.desarrollo.Datos;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -44,6 +45,7 @@ public class UserDao {
                     estadoRegistro + ", " +
                     idGlobal + ")";
 
+            savePreferencesDate(context, idGlobal, correoUsu);
             database.execSQL(agregar);
 
             return true;
@@ -53,6 +55,15 @@ public class UserDao {
         } finally {
             database.close();
         }
+    }
+
+    private static void savePreferencesDate(Context context, int idGlobal, String correo) {
+        SharedPreferences preferences = context.getSharedPreferences("Usuario", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("idGlobal", idGlobal);
+        editor.putString("correoUsuario", correo);
+        editor.putBoolean("inicioAutomatico", true);
+        editor.commit();
     }
 
     public static boolean estadoUsuario(String TAG, Context context) {
@@ -83,7 +94,7 @@ public class UserDao {
         }
     }
 
-    public static void updateEstadoUsaurio(String TAG, Context context) {
+    public static void updateEstadoUsuario(String TAG, Context context) {
         try {
             ConexionSQLHelper conection = new ConexionSQLHelper(context);
             database = null;
@@ -174,6 +185,49 @@ public class UserDao {
 
         } catch (Exception e) {
             Log.e(TAG, "Error " + e);
+        } finally {
+            database.close();
+        }
+    }
+
+    public static boolean editEmailUser(String TAG, Context context, int idUsuario, String correo) {
+        try {
+
+            ConexionSQLHelper conection = new ConexionSQLHelper(context);
+            database = null;
+            database = conection.getWritableDatabase();
+
+            String query = "UPDATE " + Utilidades.TABLA_Usuario + " SET correo = '" + correo + "'" +
+                    " WHERE " + Utilidades.CAMPO_idGlobal + " = " + idUsuario;
+
+            database.execSQL(query);
+
+            return true;
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error" + e);
+            return false;
+        } finally {
+            database.close();
+        }
+    }
+
+    public static boolean editPasswordUser(String TAG, Context context, int idUsuario, String password) {
+        try {
+
+            ConexionSQLHelper conection = new ConexionSQLHelper(context);
+            database = null;
+            database = conection.getWritableDatabase();
+
+            String query = "UPDATE " + Utilidades.TABLA_Usuario + " SET " + Utilidades.CAMPO_passwordUsu + " = '" + password + "'" +
+                    " WHERE " + Utilidades.CAMPO_idGlobal + " = " + idUsuario;
+            database.execSQL(query);
+
+            return true;
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error" + e);
+            return false;
         } finally {
             database.close();
         }

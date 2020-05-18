@@ -40,6 +40,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         boolean estadoUsuario = userDao.estadoUsuario(TAG, getContext());
+
         if (estadoUsuario != true) {
 
             Intent introduccion = new Intent(getActivity(), IntroduccionActivity.class);

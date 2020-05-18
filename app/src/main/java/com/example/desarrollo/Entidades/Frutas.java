@@ -5,6 +5,7 @@ public class Frutas {
     private String id;
     private String nombre;
     private String equivalencia;
+    private String unidadMedida;
     private String descripcion;
     private String recomendacion;
     private String recomendacionDos;
@@ -15,10 +16,11 @@ public class Frutas {
     private String imgUrl;
     private String background;
 
-    public Frutas(String id, String nombre, String equivalencia, String descripcion, String recomendacion, String recomendacionDos, String frase, String ventaja, String avisoTitulo, String aviso, String imgUrl, String background) {
+    public Frutas(String id, String nombre, String equivalencia, String unidadMedida, String descripcion, String recomendacion, String recomendacionDos, String frase, String ventaja, String avisoTitulo, String aviso, String imgUrl, String background) {
         this.id = id;
         this.nombre = nombre;
         this.equivalencia = equivalencia;
+        this.unidadMedida = unidadMedida;
         this.descripcion = descripcion;
         this.recomendacion = recomendacion;
         this.recomendacionDos = recomendacionDos;
@@ -30,13 +32,13 @@ public class Frutas {
         this.background = background;
     }
 
-   public Frutas(String id, String nombre, String equivalencia, String imgUrl, String background){
+    public Frutas(String id, String nombre, String equivalencia, String imgUrl, String background) {
         this.id = id;
         this.nombre = nombre;
         this.equivalencia = equivalencia;
         this.imgUrl = imgUrl;
         this.background = background;
-   }
+    }
 
     public String getId() {
         return id;
@@ -48,6 +50,10 @@ public class Frutas {
 
     public String getEquivalencia() {
         return equivalencia;
+    }
+
+    public String getUnidadMedida() {
+        return unidadMedida;
     }
 
     public String getDescripcion() {
