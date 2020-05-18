@@ -55,7 +55,7 @@ public class consultasLocales {
 
         String Respuesta_Auto;
         int idUsuario;
-        int arr[] = obtenerDatosUsuario(context);
+        //int arr[] = obtenerDatosUsuario(context);
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
 
@@ -83,7 +83,7 @@ public class consultasLocales {
     public static void obtenerDatosHistoNutri(Context context) {
 
         int idUsuario, Respuesta_Nutri;
-        int arr[] = obtenerDatosUsuario(context);
+        //int arr[] = obtenerDatosUsuario(context);
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
 
@@ -112,7 +112,7 @@ public class consultasLocales {
 
         int id_Histo_Nutri, Msg;
         String Preg_Nutri, Res_Pre_Nutri;
-        int arr[] = obtenerDatosUsuario(context);
+        //int arr[] = obtenerDatosUsuario(context);
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
 
@@ -142,7 +142,7 @@ public class consultasLocales {
     public static void obtenerDatosMensajesPersuasivos(Context context) {
 
         String tipoMensage, Mensage;
-        int arr[] = obtenerDatosUsuario(context);
+        //int arr[] = obtenerDatosUsuario(context);
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
 
@@ -172,7 +172,7 @@ public class consultasLocales {
 
         String Hora_Em, Fecha_EM;
         int idUsuario, idmsgE;
-        int arr[] = obtenerDatosUsuario(context);
+        //int arr[] = obtenerDatosUsuario(context);
         try {
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
 
