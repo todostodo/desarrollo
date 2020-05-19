@@ -21,7 +21,6 @@ public class MotivadoresDao {
     public static boolean insertMotivador(String TAG, Context context, String desc, int valor, int idGlobal) {
 
         try {
-
             ConexionSQLHelper connection = new ConexionSQLHelper(context);
             database = null;
             database = connection.getWritableDatabase();
@@ -34,7 +33,6 @@ public class MotivadoresDao {
             database.execSQL(insert);
 
             return true;
-
         } catch (Exception e) {
             Log.e(TAG, "Error " + e);
             return false;
@@ -301,7 +299,6 @@ public class MotivadoresDao {
             while (cursor.moveToNext()) {
                 motivadoresCompletos = cursor.getInt(0);
             }
-            cursor.close();
 
             if (motivadoresCompletos > 3) {
                 String activarMotivadores = "UPDATE " + Utilidades.TABLA_CanjeFi + " SET " + Utilidades.CAMPO_Activo + " = " + " 0 " +

@@ -278,7 +278,6 @@ public class Calculos {
                             } else {
                                 Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
                             }
-                            cursor.close();
 
                         } catch (Exception e) {
                             Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
@@ -324,8 +323,6 @@ public class Calculos {
             if (cursor.moveToFirst()) {
                 a = cursor.getInt(0);
             }
-
-            cursor.close();
 
         } catch (Exception e) {
 
@@ -434,8 +431,6 @@ public class Calculos {
                             } else {
                                 Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
                             }
-
-                            cursor.close();
 
                         } catch (Exception e) {
                             Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
@@ -589,8 +584,6 @@ public class Calculos {
                                 retorno = sumatoria;
 
                             }
-
-                            cursor.close();
                         } catch (Exception e) {
                             Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
                         } finally {
@@ -750,7 +743,6 @@ public class Calculos {
                         Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
                     }
 
-                    cursor.close();
 
                 } catch (Exception e) {
                     Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
@@ -879,7 +871,6 @@ public class Calculos {
                         Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
                     }
 
-                    cursor.close();
 
                 } catch (Exception e) {
                     Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
@@ -1001,8 +992,6 @@ public class Calculos {
                         Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
                     }
 
-                    cursor.close();
-
                 } catch (Exception e) {
                     Toast.makeText(context, "Error al consultar", Toast.LENGTH_SHORT).show();
                 } finally {
@@ -1084,8 +1073,6 @@ public class Calculos {
                 a = cursor.getDouble(0);
             }
 
-            cursor.close();
-
         } catch (Exception e) {
 
         } finally {
@@ -1157,8 +1144,6 @@ public class Calculos {
                     // Toast.makeText(context, ""+cursor.getDouble(0), Toast.LENGTH_SHORT).show();
                 } while (cursor.moveToNext());
             }
-
-            cursor.close();
 
             int dia = preferenc.getInt("dia", 0);
             int pase = preferenc.getInt("pase4", 0);
@@ -1271,8 +1256,6 @@ public class Calculos {
                     // Toast.makeText(context, ""+cursor.getDouble(0), Toast.LENGTH_SHORT).show();
                 } while (cursor.moveToNext());
             }
-
-            cursor.close();
 
         } catch (Exception e) {
             Log.v(TAG, "Error -------------- " + e);

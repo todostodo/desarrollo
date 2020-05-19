@@ -267,8 +267,6 @@ public class NinoDao {
 
             }
 
-            cursor.close();
-
         } catch (Exception e) {
             Log.e(TAG, "Error" + e);
         } finally {
@@ -291,8 +289,6 @@ public class NinoDao {
             while (cursor.moveToNext()) {
                 progresoFruta = cursor.getDouble(0);
             }
-
-            cursor.close();
 
         } catch (Exception e) {
             Log.e(TAG, "Error " + e);
@@ -317,8 +313,6 @@ public class NinoDao {
             while (cursor.moveToNext()) {
                 progresoFruta = cursor.getDouble(0);
             }
-
-            cursor.close();
 
         } catch (Exception e) {
             Log.e(TAG, "Error " + e);
@@ -349,8 +343,6 @@ public class NinoDao {
                     countId = cursor.getInt(0);
                 }
 
-                cursor.close();
-
             }
             if (tipoAlimento.equals("Verdura")) {
 
@@ -362,10 +354,7 @@ public class NinoDao {
                 while (cursor.moveToNext()) {
                     countId = cursor.getInt(0);
                 }
-
-                cursor.close();
             }
-
 
             if (countId != 0)
                 existePreferencia = true;

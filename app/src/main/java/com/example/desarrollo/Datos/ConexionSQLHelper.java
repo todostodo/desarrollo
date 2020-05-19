@@ -11,8 +11,10 @@ import com.example.desarrollo.Ultilidades.Utilidades;
 
 public class ConexionSQLHelper extends SQLiteOpenHelper {
 
+    private static final String TAG = "ConexionSQLHelper";
+
     public ConexionSQLHelper(@Nullable Context context) {
-        super(context, "persuhabit.db", null, 1);
+        super(context, "basedatos.db", null, 1);
     }
 
     @Override
@@ -83,19 +85,24 @@ public class ConexionSQLHelper extends SQLiteOpenHelper {
     }
 
     public void insertMotivadoresDefault(SQLiteDatabase db) {
+        try {
 
-        db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ", " + Utilidades.CAMPO_idGlobal + ") " + "VALUES" + "('Leer un cuento', 10, 0 );");
-        db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ", " + Utilidades.CAMPO_idGlobal + ") " + "VALUES" + "('1 Juego de mesa (loteria, memorama, pares) ', 15, 0 );");
-        db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ", " + Utilidades.CAMPO_idGlobal + ") " + "VALUES" + "('Salir al parque', 25, 0 );");
-        db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ", " + Utilidades.CAMPO_idGlobal + ") " + "VALUES" + "('Ver la television por media hora', 25, 0 );");
-        db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ", " + Utilidades.CAMPO_idGlobal + ") " + "VALUES" + "('Usar el celular por media hora ', 25, 0 );");
-        db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ", " + Utilidades.CAMPO_idGlobal + ") " + "VALUES" + "('Jugar video juegos por media hora ', 30, 0 );");
-        db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ", " + Utilidades.CAMPO_idGlobal + ") " + "VALUES" + "('Pasear en bicicleta, patines o patineta por una hora', 35, 0 );");
-        db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ", " + Utilidades.CAMPO_idGlobal + ") " + "VALUES" + "('Ir al cine', 50, 0 );");
-        db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ", " + Utilidades.CAMPO_idGlobal + ") " + "VALUES" + "('Comprar algun juguete sencillo ', 50, 0 );");
-        db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ", " + Utilidades.CAMPO_idGlobal + ") " + "VALUES" + "('Permiso para visitar a primo o amigo una hora ', 60, 0 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Leer un cuento', 10 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('1 Juego de mesa (loteria, memorama, pares) ', 15 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Salir al parque', 25 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Ver la television por media hora', 25 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Usar el celular por media hora ', 25 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Jugar video juegos por media hora ', 30 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Pasear en bicicleta, patines o patineta por una hora', 35 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Ir al cine', 50 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Comprar algun juguete sencillo ', 50 );");
+            db.execSQL("INSERT INTO " + Utilidades.TABLA_Recompensas + " (" + Utilidades.CAMPO_descripcion + ", " + Utilidades.CAMPO_valor + ") " + "VALUES" + "('Permiso para visitar a primo o amigo una hora ', 60 );");
 
-        onCreate(db);
+            onCreate(db);
 
+        } catch (Exception e) {
+
+        } finally {
+        }
     }
 }

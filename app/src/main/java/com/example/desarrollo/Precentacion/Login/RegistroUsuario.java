@@ -44,6 +44,9 @@ public class RegistroUsuario extends AppCompatActivity {
             sCorreo,
             sPassword;
 
+
+    public boolean getUserConfirm;
+
     private static final String TAG = "RegistroUsuario";
 
     @Override
@@ -122,25 +125,7 @@ public class RegistroUsuario extends AppCompatActivity {
                                     sCorreo = correo;
                                     sPassword = password;
 
-                                    estadoConexion = new Mensajeria();
-                                    boolean networkInfo = estadoConexion.estadoConexion(getApplicationContext());
-
-                                    if (networkInfo == true) {
-
-                                        addUserWebService(sNombre, sApellidoPaterno, sApellidoMaterno, sCorreo, sPassword, 0, 0, 0);
-
-                                    } else {
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(RegistroUsuario.this);
-                                        builder.setCancelable(false);
-                                        builder.setMessage("Conexion no valida: Revisa tu conexion a internet.");
-                                        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        });
-                                        builder.show();
-                                    }
+                                    new loadRegisterUser().execute("registro");
                                 }
                             }
                         }
@@ -220,5 +205,48 @@ public class RegistroUsuario extends AppCompatActivity {
                 });
 
         queue.add(jsonObjectRequest);
+    }
+
+    private class loadRegisterUser extends AsyncTask<String, String, String> {
+
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = ProgressDialog.show(RegistroUsuario.this,
+                    "", "Creando registro", true, false);
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            estadoConexion = new Mensajeria();
+            boolean networkInfo = estadoConexion.estadoConexion(getApplicationContext());
+
+            if (networkInfo == true) {
+
+                addUserWebService(sNombre, sApellidoPaterno, sApellidoMaterno, sCorreo, sPassword, 0, 0, 0);
+
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(RegistroUsuario.this);
+                builder.setCancelable(false);
+                builder.setMessage("Conexion no valida: Revisa tu conexion a internet.");
+                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressDialog.dismiss();
+        }
     }
 }

@@ -109,10 +109,8 @@ public class ConexionApi extends AppCompatActivity {
     }
 
     public static void registrarRecompensaLocal(Context context, JSONObject response, String descrip, int valor) throws JSONException {
-        Toastp toast = new Toastp();
         int resultado = response.getInt("data");
         MotivadoresDao.insertMotivador("recomLocal", context, descrip, valor, resultado);
-        toast.toastp(context, "El motivador fue agregado con exito");
     }
 
     //-----------------------------------------[Eliminar una recompensa]
