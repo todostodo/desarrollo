@@ -11,7 +11,7 @@ public class InicioSesionDao {
 
     private static SQLiteDatabase database;
 
-    public static boolean verificarUsuario(String TAG, Context context, String correo, String password) {
+    /*public static boolean verificarUsuario(String TAG, Context context, String correo, String password) {
         boolean existeUsuario = false;
 
         System.out.println("Esto llego: "+correo+","+password);
@@ -37,6 +37,7 @@ public class InicioSesionDao {
                     existeUsuario = true;
             }
 
+            cursor.close();
 
         } catch (Exception e) {
             Log.e(TAG, "Error " + e);
@@ -45,7 +46,7 @@ public class InicioSesionDao {
         }
 
         return existeUsuario;
-    }
+    }*/
 
     public static boolean verificarPasswordUser(String TAG, Context context, int id, String password) {
         boolean coincidePass = false;
@@ -64,6 +65,8 @@ public class InicioSesionDao {
                 if (getPassword.equals(password))
                     coincidePass = true;
             }
+
+            cursor.close();
 
         } catch (Exception e) {
             Log.e(TAG, "Error" + e);
@@ -94,6 +97,8 @@ public class InicioSesionDao {
                 getCorreo = cursor.getString(0);
                 getPassword = cursor.getString(1);
             }
+
+            cursor.close();
 
             if (getCorreo.equals(correo) && getPassword.equals(password))
                 existeUsuario = true;

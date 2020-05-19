@@ -1,6 +1,7 @@
 package com.example.desarrollo.Precentacion.Motivadores;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -12,7 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +24,7 @@ import com.example.desarrollo.Datos.Mensajeria;
 import com.example.desarrollo.Datos.MotivadoresDao;
 import com.example.desarrollo.Entidades.MotivadoresSelect;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresSelect;
+import com.example.desarrollo.Precentacion.Login.RecuperarPasswordActivity;
 import com.example.desarrollo.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -99,34 +103,42 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
                     if (valor.equals("")) {
                         backgroundValor.setBackgroundResource(R.drawable.rectangulo_border_rojo);
                         Toast.makeText(getApplicationContext(), "Ingrese el valor del motivador", Toast.LENGTH_SHORT).show();
-                    }else{
+                    } else {
                         backgroundValor.setBackgroundResource(R.drawable.rectangulo_gris);
 
                         Mensajeria estadoConexion;
                         estadoConexion = new Mensajeria();
                         boolean networkInfo = estadoConexion.estadoConexion(getApplicationContext());
-                        boolean insert = true;
+
                         if (networkInfo == true) {
-                             ConexionApi.insertarRecompensaNueva(getApplicationContext(),descripcion,Integer.valueOf(valor));
-                        }else {
-                            Toast.makeText(getApplicationContext(), "Debes tener Interne Para realizar este paso", Toast.LENGTH_SHORT).show();
-                            insert=false;
+                            ConexionApi.insertarRecompensaNueva(getApplicationContext(), descripcion, Integer.valueOf(valor));
+                        } else {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(MotivadoresSelectActivity.this);
+                            builder.setCancelable(false);
+                            builder.setMessage("Debes tener internet para realizar este paso");
+                            builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            //Toast.makeText(getApplicationContext(), "Debes tener internet para realizar este paso", Toast.LENGTH_SHORT).show();
                         }
+
                         /*boolean insert = consultar.insertMotivador(
                                 TAG,
                                 getApplicationContext(),
                                 descripcion,
                                 Integer.valueOf(valor),
-                                1);*/
+                                1);
 
-                        if (insert == true){
+                        if (insert == true) {
                             Toast.makeText(getApplicationContext(), "El motivador fue agregado con exito", Toast.LENGTH_SHORT).show();
                             addMotivadorDialog.dismiss();
                             consultarListaMotivadoresDisponibles();
-                        }
-                        else{
+                        } else {
                             Toast.makeText(getApplicationContext(), "Error al agregar el motivador", Toast.LENGTH_SHORT).show();
-                        }
+                        }*/
                     }
                 }
             }

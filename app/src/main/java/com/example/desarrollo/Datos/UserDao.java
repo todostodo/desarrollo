@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabaseLockedException;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -49,8 +50,9 @@ public class UserDao {
             database.execSQL(agregar);
 
             return true;
-        } catch (Exception e) {
-            Log.e(TAG, "Error " + e);
+
+        } catch (SQLiteDatabaseLockedException e) {
+            Log.e(TAG, "Error --------------------------------- " + e);
             return false;
         } finally {
             database.close();

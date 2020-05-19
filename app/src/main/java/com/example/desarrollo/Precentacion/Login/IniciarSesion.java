@@ -57,7 +57,6 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
     private RelativeLayout _btnInicarSesion, _btnLoginFacebook, _btnCerrarLogin;
     private TextView _txtCorreoUsuario, _txtPassUsuario, _btnOlvidePassword;
     private LoginButton _btnLoginFacebookOnclick;
-    private String sEmail, sPassword;
 
     private boolean inicioSesionUsuario = true;
     private Toastp toastp;
@@ -140,9 +139,7 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
                     toastp.toastp(getApplicationContext(), "Ingrese la contraseña");
                 } else {
 
-                    sEmail = correo;
-                    sPassword = password;
-                    new loadLogin().execute("login");
+                    loginUserWebService(correo, password);
 
                 }
             }
@@ -337,30 +334,6 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
         editor.putString("correoUsuario", correo);
         editor.putInt("idGlobal", idGlobal);
         editor.commit();
-    }
-
-    private class loadLogin extends AsyncTask<String, String, String> {
-
-        private ProgressDialog progressDialog;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog = ProgressDialog.show(IniciarSesion.this,
-                    "", "Iniciado sesión", true, false);
-        }
-
-        @Override
-        protected String doInBackground(String... strings) {
-            loginUserWebService(sEmail, sPassword);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            progressDialog.dismiss();
-        }
     }
 
 }
