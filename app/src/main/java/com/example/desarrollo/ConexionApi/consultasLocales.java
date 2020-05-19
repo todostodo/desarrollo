@@ -21,6 +21,39 @@ public class consultasLocales {
     private static SQLiteDatabase database;
     private static final String TAG = "consultasLocales";
 
+    public static int[] obtenerDatosUsuario(Context context) {
+
+        int con = 0;
+        int arr[] = new int[4];
+
+        try {
+            ConexionSQLHelper connection = new ConexionSQLHelper(context);
+
+            database = null;
+            database = connection.getReadableDatabase();
+
+            Cursor cur = database.rawQuery(
+                    "SELECT " + Utilidades.CAMPO_idUsuario + "," + Utilidades.CAMPO_idGlobal + " FROM " + Utilidades.TABLA_Usuario,
+                    null);
+
+            if (cur.moveToFirst()) {
+                do {
+                    arr[con] = cur.getInt(0);
+                    con++;
+                    arr[con] = cur.getInt(1);
+                    con++;
+                } while (cur.moveToNext());
+            }
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error " + e);
+        } finally {
+            database.close();
+        }
+
+        return arr;
+    }
+
     public static void obtenerDatosHistoAuto(Context context) {
 
         String Respuesta_Auto;
