@@ -206,32 +206,32 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onStart() {
-         Mensajeria estadoConexion;
+        Mensajeria estadoConexion;
         estadoConexion = new Mensajeria();
         boolean networkInfo = estadoConexion.estadoConexion(getApplicationContext());
         if (networkInfo == true) {
 
             //int arr[] = consultasLocales.obtenerDatosNino(this);
             //System.out.println(arr[0]+" "+arr[1]+" "+arr[2]+" "+arr[3]);
-              consultasLocales.obtenerDatosGustoFruta(this);
-              consultasLocales.obtenerDatosGustoVerdura(this);
-              consultasLocales.obtenerDatosRegistro(this);
-              consultasLocales.obtenerDatosCanjeFi(this);
-              consultasLocales.obtenerDatosDetalleRegistro(this);
-              consultasLocales.obtenerDatosTiempoAplicacion(this);
-              consultasLocales.obtenerDatosGestoTerrible(this);
-              consultasLocales.obtenerDatosGestoBien(this);
-              consultasLocales.obtenerDatosGestoGenial(this);
-              consultasLocales.obtenerDatosVioNotificacion(this);
-              consultasLocales.actualizarDatosLineaBase(this);
-              consultasLocales.actualizarDatosesfuerzo(this);
+            consultasLocales.obtenerDatosGustoFruta(this);
+            consultasLocales.obtenerDatosGustoVerdura(this);
+            consultasLocales.obtenerDatosRegistro(this);
+            consultasLocales.obtenerDatosCanjeFi(this);
+            consultasLocales.obtenerDatosDetalleRegistro(this);
+            consultasLocales.obtenerDatosTiempoAplicacion(this);
+            consultasLocales.obtenerDatosGestoTerrible(this);
+            consultasLocales.obtenerDatosGestoBien(this);
+            consultasLocales.obtenerDatosGestoGenial(this);
+            consultasLocales.obtenerDatosVioNotificacion(this);
+            consultasLocales.actualizarDatosLineaBase(this);
+            consultasLocales.actualizarDatosesfuerzo(this);
         }
 
         Date date = new Date();
         DateFormat hora = new SimpleDateFormat("HH:mm:ss");
         inicio = "" + hora.format(date);
 
-        String valor="";
+        String valor = "";
         int inih;
         String cadena = cadena = "" + hora.format(date);
         valor = "" + inicio.charAt(0);
@@ -240,8 +240,11 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences preferenc = this.getSharedPreferences("Calculo", this.MODE_PRIVATE);
         int llave = preferenc.getInt("valorNoti", 0);
-        if(llave==0){
-            if(inih>=14 && inih<=24){
+        int noti = preferenc.getInt("noti", 0);
+
+        if(noti == 1){
+          if (llave == 0) {
+              if (inih >= 14 && inih <= 24) {
 
                 SharedPreferences.Editor editor = preferenc.edit();
                 editor.remove("valorNoti");
@@ -250,14 +253,15 @@ public class MainActivity extends AppCompatActivity {
 
                 iniciarNotifi();
 
-            }
-        }else {
-            if(inih>=1 && inih<14){
+              }
+          } else {
+              if (inih >= 1 && inih < 14) {
                 SharedPreferences.Editor editor = preferenc.edit();
                 editor.remove("valorNoti");
                 editor.putInt("valorNoti", 0);
                 editor.commit();
-            }
+              }
+          }
         }
 
         super.onStart();
