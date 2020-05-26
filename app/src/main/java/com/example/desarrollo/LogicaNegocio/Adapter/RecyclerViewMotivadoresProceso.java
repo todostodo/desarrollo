@@ -21,9 +21,9 @@ import java.util.List;
 
 public class RecyclerViewMotivadoresProceso extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    Context context;
-    List<MotivadoresProceso> procesoList = new ArrayList<>();
-    int i = 0;
+    private Context context;
+    private List<MotivadoresProceso> procesoList = new ArrayList<>();
+    private int i = 0;
 
     private OnItemClickListener mListener;
 

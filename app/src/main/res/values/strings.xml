@@ -400,7 +400,7 @@
     <string name="como_va_la_alimentacion_de_tu_hijo">¿Cómo va la alimentación de tu hijo?</string>
     <string name="alimentos">Alimentos</string>
     <string name="detalle_de_consumo_del_dia">Detalle de consumo del día</string>
-    <string name="reporte_de_la_semana">Reporte de la semana</string>
+    <string name="reporte_de_consumo">Reporte de consumo</string>
     <string name="foro">Foro</string>
 
     <string name="tutor">Tutor</string>
@@ -435,6 +435,8 @@
     <string name="mensaje_registro_usuario">Ingrese la dirección de correo electrónico para obtener el codigó y pueda restablecer la contraseña</string>
     <string name="enviar_codigo">Enviar código</string>
     <string name="ingrese_el_nuevo_correo">Ingrese el nuevo correo</string>
+
+    <!-- String para el Reporte de consumo -->
 
 
     <!-- String De las Notificaciones -->

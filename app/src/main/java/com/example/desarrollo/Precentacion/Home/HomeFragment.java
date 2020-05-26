@@ -1,9 +1,7 @@
 package com.example.desarrollo.Precentacion.Home;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,10 +17,8 @@ import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Datos.UserDao;
 import com.example.desarrollo.Precentacion.Alimentos.AlimentosActivity;
 import com.example.desarrollo.Precentacion.Login.IntroduccionActivity;
-import com.example.desarrollo.Precentacion.MainActivity;
+import com.example.desarrollo.Precentacion.ReporteConsumo.ReporteConsumoActivity;
 import com.example.desarrollo.R;
-
-import org.w3c.dom.Text;
 
 import java.util.Calendar;
 
@@ -79,6 +75,14 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), DetalleConsumoDia.class);
                 startActivity(intent);
+            }
+        });
+
+        getView().findViewById(R.id.btnReporteConsumo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent reporteConsumo = new Intent(getActivity(), ReporteConsumoActivity.class);
+                startActivity(reporteConsumo);
             }
         });
     }

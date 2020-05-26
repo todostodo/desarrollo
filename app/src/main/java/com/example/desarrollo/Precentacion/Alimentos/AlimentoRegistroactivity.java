@@ -38,6 +38,8 @@ import com.example.desarrollo.Datos.MotivadoresDao;
 import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Datos.UserDao;
 import com.example.desarrollo.Entidades.MotivadoresSelect;
+import com.example.desarrollo.Entidades.MsgEducativos;
+import com.example.desarrollo.ExportJSON.Model.ModelMsgEducativos;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresSelectNino;
 import com.example.desarrollo.R;
 import com.example.desarrollo.Ultilidades.Toastp;
@@ -55,7 +57,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
     private ImageView f_imagen;
     private RelativeLayout f_fondo;
     private Button _btnRegistrarFruta;
-    private Dialog reaccionHijoDialog, ninosDialog, registroAlimentoDialog;
+    private Dialog reaccionHijoDialog, ninosDialog, registroAlimentoDialog, msgEducativoDialog;
     private LinearLayout _fruta_linearRecomendacionDos, _btnTerrible, _btnEstaBien, _btnGenia;
     private RelativeLayout _fruta_relativeAviso;
     private RelativeLayout _btmCerrarSelectFrutas;
@@ -77,6 +79,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
     private NinoDao ninoDao;
     private UserDao userDao;
     private MotivadoresDao motivadoresDao;
+    ModelMsgEducativos modelMsgEducativos = new ModelMsgEducativos();
     private ArrayList<MotivadoresSelect.MotivadoresNinoDisponible> ninoDisponibleArrayList;
     private RecyclerView _myRecyclerViewNino;
     private RecyclerViewMotivadoresSelectNino adapterSelectNino;
@@ -189,7 +192,12 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
 
                                 idNino = ninoDisponibleArrayList.get(_myRecyclerViewNino.getChildAdapterPosition(v)).getIdNino();
                                 ninosDialog.dismiss();
-                                cargarReaccionHijoDialog();
+                                if (lineaBaseGeneradaNinoUno()) {
+                                    cargarReaccionHijoDialog();
+                                } else {
+                                    registrarAlimento();
+                                }
+
                             }
                         });
 
@@ -203,7 +211,11 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
                         ninosDialog.show();
                     } else {
                         idNino = ninoDisponibleArrayList.get(0).getIdNino();
-                        cargarReaccionHijoDialog();
+                        if (lineaBaseGeneradaNinoUno()) {
+                            cargarReaccionHijoDialog();
+                        } else {
+                            registrarAlimento();
+                        }
                     }
                 }
             }
@@ -291,7 +303,6 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
 
     private void cargarReaccionHijoDialog() {
 
-
         reaccionHijoDialog = new Dialog(AlimentoRegistroactivity.this);
         reaccionHijoDialog.setCanceledOnTouchOutside(false);
         reaccionHijoDialog.setContentView(R.layout.reaccion_consumo_dialog);
@@ -306,9 +317,11 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
             public void onClick(View v) {
                 registrarAlimento();
                 fichaPrimerIntento();
+                experienciaUsuario();
                 reaccionHijoDialog.dismiss();
-                int ali=Integer.parseInt(f_idAlimento);
-                GestosDao.insertGestoTerri("gestoTer",getApplicationContext(),idNino,ali,1);
+                msgEducativoDialog();
+                int ali = Integer.parseInt(f_idAlimento);
+                GestosDao.insertGestoTerri("gestoTer", getApplicationContext(), idNino, ali, 1);
             }
         });
         _btnEstaBien.setOnClickListener(new View.OnClickListener() {
@@ -316,9 +329,11 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
             public void onClick(View v) {
                 registrarAlimento();
                 fichaPrimerIntento();
+                experienciaUsuario();
                 reaccionHijoDialog.dismiss();
-                int ali=Integer.parseInt(f_idAlimento);
-                GestosDao.insertGestoBien("gestoBien",getApplicationContext(),idNino,ali,1);
+                msgEducativoDialog();
+                int ali = Integer.parseInt(f_idAlimento);
+                GestosDao.insertGestoBien("gestoBien", getApplicationContext(), idNino, ali, 1);
             }
         });
         _btnGenia.setOnClickListener(new View.OnClickListener() {
@@ -328,12 +343,37 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
                 experienciaUsuario();
                 fichaPrimerIntento();
                 reaccionHijoDialog.dismiss();
-                int ali=Integer.parseInt(f_idAlimento);
-                GestosDao.insertGestoGenial("gestoGenial",getApplicationContext(),idNino,ali,1);
+                msgEducativoDialog();
+                int ali = Integer.parseInt(f_idAlimento);
+                GestosDao.insertGestoGenial("gestoGenial", getApplicationContext(), idNino, ali, 1);
             }
         });
 
         reaccionHijoDialog.show();
+    }
+
+    private void msgEducativoDialog() {
+        msgEducativoDialog = new Dialog(AlimentoRegistroactivity.this);
+        msgEducativoDialog.setContentView(R.layout.mensaje_educativo_dialog);
+        msgEducativoDialog.setCancelable(false);
+        msgEducativoDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        msgEducativoDialog.getWindow().getAttributes().windowAnimations = R.anim.fade_in;
+
+        TextView txtMensajeEducativo = (TextView) msgEducativoDialog.findViewById(R.id.txtMensajeEducativoDialog);
+        Button btnSalirMsgEdicativo = (Button) msgEducativoDialog.findViewById(R.id.btnSalirMsgEducativoDialog);
+        ArrayList<MsgEducativos> msgEducativosList = new ArrayList<>();
+        modelMsgEducativos.addItemsFromJSONMsgEducativos(msgEducativosList, TAG, getApplicationContext());
+        int selectMsgRound = (int) (Math.random() * msgEducativosList.size());
+        txtMensajeEducativo.setText(msgEducativosList.get(selectMsgRound).getMsgEducativo());
+
+        btnSalirMsgEdicativo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                msgEducativoDialog.dismiss();
+            }
+        });
+
+        msgEducativoDialog.show();
     }
 
     //Suma de experiencia al usuario
@@ -553,7 +593,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
                 1
         );
         if (insert == true) {
-            //toast.toastp(getApplicationContext(), "Alimento registrado");
+            toast.toastp(getApplicationContext(), "Alimento registrado");
         } else {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
         }

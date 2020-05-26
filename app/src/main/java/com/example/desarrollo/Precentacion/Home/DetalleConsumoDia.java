@@ -281,9 +281,9 @@ public class DetalleConsumoDia extends AppCompatActivity {
         pStatusFrutas = 0;
 
 
-        int caloriasSemanaPasada = calculos.caloriaFija(getApplicationContext(), idNino);
-        int caloriasSemanaActual = calculos.caloriaCambio(getApplicationContext(), idNino);
-        int caloriasHoy = calculos.caloriaDia(getApplicationContext(), idNino);
+        double caloriasSemanaPasada = calculos.caloriaFija(getApplicationContext(), idNino);
+        double caloriasSemanaActual = calculos.caloriaCambio(getApplicationContext(), idNino);
+        double caloriasHoy = calculos.caloriaDia(getApplicationContext(), idNino);
 
         _txtCaloriasSemanaPasada.setText(String.valueOf(caloriasSemanaPasada));
         _txtCaloriasSemanaActual.setText(String.valueOf(caloriasSemanaActual));

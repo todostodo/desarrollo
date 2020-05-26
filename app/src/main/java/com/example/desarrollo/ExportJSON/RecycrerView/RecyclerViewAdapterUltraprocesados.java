@@ -2,6 +2,7 @@ package com.example.desarrollo.ExportJSON.RecycrerView;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
@@ -23,8 +24,10 @@ import com.example.desarrollo.Datos.Calculos;
 import com.example.desarrollo.Datos.MotivadoresDao;
 import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Entidades.MotivadoresSelect;
+import com.example.desarrollo.Entidades.MsgEducativos;
 import com.example.desarrollo.ExportJSON.Filter.FilteredHelperUltraprocesados;
 import com.example.desarrollo.Entidades.UltraProcesados;
+import com.example.desarrollo.ExportJSON.Model.ModelMsgEducativos;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresSelectNino;
 import com.example.desarrollo.R;
 import com.example.desarrollo.Ultilidades.Toastp;
@@ -41,7 +44,8 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
     private FilteredHelperUltraprocesados filterHelper;
     private Toastp toast;
     private Calculos calculos;
-    private Dialog dialogUltraprocesados, ninoDialog;
+    private ModelMsgEducativos modelMsgEducativos = new ModelMsgEducativos();
+    private Dialog dialogUltraprocesados, ninoDialog, msgEducativoDialog;
 
     //todo: Seleccionar nino para registrar el consumo
     private MotivadoresDao motivadoresDao;
@@ -163,11 +167,9 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
                             if (spinnerActive == false) {
                                 if (txtUnidadMedida.getText().toString().equals("Pieza")) {
                                     equivalencia = calculos.obtenerEquivalenciaPieza(Double.valueOf(cantidad), kcalorias);
-                                } else if (txtUnidadMedida.getText().toString().equals("Bolsa")) {
-                                    String contenido = txtContenidoUltrap.getText().toString();
-                                    String nuevoContendio = contenido.replaceAll("[a-zA-Z ]", "");
+                                } else if (txtUnidadMedida.getText().toString().equals("Bolsa") || txtUnidadMedida.getText().toString().equals("Paquete")) {
 
-                                    equivalencia = calculos.obtenerEquivalenciaPaquete(Double.valueOf(nuevoContendio), kcalorias);
+                                    equivalencia = calculos.obtenerEquivalenciaPaquete(Double.valueOf(cantidad), kcalorias);
                                 }
                             }
                             if (spinnerActive == true) {
@@ -254,6 +256,8 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
                         idNino = listNinoDisponible.get(_myRecyclerViewNino.getChildAdapterPosition(v)).getIdNino();
                         registrarConsumo(context, idAlimentoUltrap, kcalorias, cantidad, equivalencia);
                         ninoDialog.dismiss();
+                        if (lineaBaseGeneradaNinoUno())
+                            msgEducativoDialog(context);
                     }
                 });
 
@@ -267,6 +271,8 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
             } else {
                 idNino = listNinoDisponible.get(0).getIdNino();
                 registrarConsumo(context, idAlimentoUltrap, kcalorias, cantidad, equivalencia);
+                if (lineaBaseGeneradaNinoUno())
+                    msgEducativoDialog(context);
             }
 
             return true;
@@ -287,8 +293,40 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
                 equivalencia,
                 horaRegistro,
                 fechaRegistro,
-                "ULtraProcesado",
+                alimento,
+                //"ULtraProcesado",
                 1);
+
+        toast.toastp(context, "Alimento registrado");
+    }
+
+    private void msgEducativoDialog(Context context) {
+        msgEducativoDialog = new Dialog(context);
+        msgEducativoDialog.setContentView(R.layout.mensaje_educativo_dialog);
+        msgEducativoDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        TextView txtMensajeEducativo = (TextView) msgEducativoDialog.findViewById(R.id.txtMensajeEducativoDialog);
+        Button btnSalirMsgEducativo = (Button) msgEducativoDialog.findViewById(R.id.btnSalirMsgEducativoDialog);
+        ArrayList<MsgEducativos> msgEducativoList = new ArrayList<>();
+
+        modelMsgEducativos.addItemsFromJSONMsgEducativos(msgEducativoList, TAG, context);
+        int selectMsg = (int) (Math.random() * msgEducativoList.size());
+        txtMensajeEducativo.setText(msgEducativoList.get(selectMsg).getMsgEducativo());
+
+        btnSalirMsgEducativo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                msgEducativoDialog.dismiss();
+            }
+        });
+
+        msgEducativoDialog.show();
+
+    }
+
+    private boolean lineaBaseGeneradaNinoUno() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("Calculo", Context.MODE_PRIVATE);
+        Boolean lineaBaseGeneradaNino1 = sharedPreferences.getBoolean("LineaBaseGenerada1", false);
+        return lineaBaseGeneradaNino1;
     }
 
     private void getHoraFecha() {

@@ -48,7 +48,7 @@ public class NinoDao {
                     Utilidades.CAMPO_EsfuerzoUltraprocesado + ", " +
                     Utilidades.CAMPO_EsfuerzoFruta + ", " +
                     Utilidades.CAMPO_EsfuerzoVerdura + ", " +
-                    Utilidades.CAMPO_idGlobal+") " +
+                    Utilidades.CAMPO_idGlobal + ") " +
                     "VALUES ( " +
                     idUsuario + ", '" +
                     nombre + "', '" +
@@ -65,7 +65,7 @@ public class NinoDao {
                     esfuerzoultra + ", " +
                     esfuerzof + ", " +
                     esfuerzov + ", " +
-                    idGlobal+")";
+                    idGlobal + ")";
 
 
             database.execSQL(inset);

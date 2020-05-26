@@ -69,7 +69,7 @@ public class ConexionApi extends AppCompatActivity {
     //-----------------------------------------[Poner una nueva Recompensa]
     //****************este metodo recive la recompensa en la variable "descrip", y el valor corespondiente
     //****************a esta en la variable "valor".
-    public static void insertarRecompensaNueva(final Context context, String descrip, int valor) {
+    /*public static void insertarRecompensaNueva(final Context context, String descrip, int valor) {
         String url = "http://68.183.148.243/Persuhabit/recompensas";
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -92,7 +92,7 @@ public class ConexionApi extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            registrarRecompensaLocal(context1, response, descrip1, valor1);
+                           registrarRecompensaLocal(context1, response, descrip1, valor1);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -111,7 +111,7 @@ public class ConexionApi extends AppCompatActivity {
     public static void registrarRecompensaLocal(Context context, JSONObject response, String descrip, int valor) throws JSONException {
         int resultado = response.getInt("data");
         MotivadoresDao.insertMotivador("recomLocal", context, descrip, valor, resultado);
-    }
+    }*/
 
     //-----------------------------------------[Eliminar una recompensa]
     //********************Este metodo recive el id de la recompensa a eliminar en la variable "id"

@@ -93,6 +93,11 @@
         <activity
             android:name=".Precentacion.Home.DetalleConsumoDia"
             android:screenOrientation="userPortrait" />
+
+        <activity
+            android:name=".Precentacion.ReporteConsumo.ReporteConsumoActivity"
+            android:screenOrientation="userPortrait" />
+
     </application>
 
 </manifest>
