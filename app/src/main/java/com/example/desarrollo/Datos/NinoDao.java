@@ -79,6 +79,7 @@ public class NinoDao {
                 String fecha = Calculos.getFecha();
                 SharedPreferences.Editor editor = preferenc.edit();
                 editor.putInt("instalacion", 1);
+                editor.putInt("noti", 0);
                 editor.putInt("dia", dias);
                 editor.putInt("valorNoti", 1);
                 editor.putInt("anterior", dias);

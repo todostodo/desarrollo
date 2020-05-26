@@ -301,8 +301,16 @@ public class Calculos {
         if (entro == 1) {
             if (retorno >= 2.0) {
                 editarNiño(context, idNino, 2.0, 0);
+                SharedPreferences.Editor edito = preferenc.edit();
+                edito.remove("noti");
+                edito.putInt("noti", 1);
+                edito.commit();
             } else {
                 editarNiño(context, idNino, retorno, 1);
+                SharedPreferences.Editor edito = preferenc.edit();
+                edito.remove("noti");
+                edito.putInt("noti", 1);
+                edito.commit();
             }
         }
 
