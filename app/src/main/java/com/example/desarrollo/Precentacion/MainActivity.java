@@ -192,7 +192,9 @@ public class MainActivity extends AppCompatActivity {
         fins = segundos1 - ((finh * 3600) + (finm * 60));
         String duracion = ""+finh+" : "+finm+" : "+fins;
 
-        TiempoAplicacionDao.insertDuracion("TiempApp",con,1,duracion,1);
+        SharedPreferences sharedPreferences = con.getSharedPreferences("Usuario", MODE_PRIVATE);
+
+        TiempoAplicacionDao.insertDuracion("TiempApp",con,sharedPreferences.getInt("idGlobal",0),duracion,1);
 
     }
 

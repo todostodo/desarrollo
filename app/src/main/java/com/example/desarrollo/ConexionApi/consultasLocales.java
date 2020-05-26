@@ -562,7 +562,6 @@ public class consultasLocales {
 
     public static void obtenerDatosTiempoAplicacion(Context context) {
 
-        SharedPreferences sharedPreferences = context.getSharedPreferences("Usuario", MODE_PRIVATE);
         String duracion;
         int idTiemA, idUsuario;
        // int vec[] = obtenerDatosUsuario(context);
@@ -582,14 +581,8 @@ public class consultasLocales {
                     idUsuario = cur.getInt(1);
                     duracion = cur.getString(2);
 
-                    boolean entro = false;
-                    if (1 == idUsuario) {
-                        entro = true;
-                        ConexionApi.insertarTiempoAplicacion(context,sharedPreferences.getInt("idGlobal",0),duracion);
-                    }
-                    if (entro == true) {
+                        ConexionApi.insertarTiempoAplicacion(context,idUsuario,duracion);
                         updateTabla_TiempoAplicacion("updateTiemA", context, idTiemA);
-                    }
 
                 } while (cur.moveToNext());
             }
