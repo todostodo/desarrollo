@@ -40,14 +40,12 @@ public class IntroduccionActivity extends AppCompatActivity {
         setContentView(R.layout.introduccion_activity);
         init();
 
-        //getSupportActionBar().hide();
-
         final List<IntroduccionScreenItem> listScreemItem = new ArrayList<>();
-        listScreemItem.add(new IntroduccionScreenItem("Antes de comenzar", "Te mostraremos algunas indicaciones de la funcionalidad de la aplicación para que pueda entender la dinámica.", R.drawable.introduccion_img_4));
-        listScreemItem.add(new IntroduccionScreenItem("Frutas", "El niño deberá de consumir las porciones de frutas que el sistema le indica por día, este se aumentara cada 7 días de acuerdo a su desempeño, el objetivo es llegar a 2 porciones de consumo diarios.", R.drawable.introduccion_img_1));
-        listScreemItem.add(new IntroduccionScreenItem("Verduras", "Al igual que las frutas deberá consumir las porciones que el sistema le indica el objetivo es llegar a 3 porciones de consumo diario.", R.drawable.introduccion_img_2));
-        listScreemItem.add(new IntroduccionScreenItem("Fichas y motivadores", "Se le darán fichas al niño si logra consumir las porciones de frutas y verduras del día al igual si logra consumir uno que no le gusta o no conoce también se le darán fichas por disminuir el consumo de comida ultra procesada, máximo de niños a registrar 2.", R.drawable.introduccion_img_3));
-        listScreemItem.add(new IntroduccionScreenItem("¡¡Importante!!", "Los primero 7 días el niño no podrá generar fichas ya que mediremos su línea base de frutas y verduras para poder asignarle las porciones a consumir en el día", R.drawable.introduccion_img_5));
+        listScreemItem.add(new IntroduccionScreenItem("Antes de comenzar", "Los consumos habituales de tu hijo de frutas verduras y ultra procesados, se deberán registrar en la aplicación durante una semana (línea base de consumos).", R.drawable.introduccion_img_4));
+        listScreemItem.add(new IntroduccionScreenItem("Recompensas", "Deberán escoger entre papá e hijo, los motivadores más apropiados para usar.", R.drawable.introduccion_img_1));
+        listScreemItem.add(new IntroduccionScreenItem("Consumo", "Después de calcular la línea base de consumos, la aplicación sugerirá pequeños incrementos para el consumo de frutas y verduras.", R.drawable.introduccion_img_2));
+        listScreemItem.add(new IntroduccionScreenItem("Alimentación sana", "La aplicación promoverá que se decrementen los consumos de alimentos ultra procesados.", R.drawable.introduccion_img_3));
+        listScreemItem.add(new IntroduccionScreenItem("Fichas", "Por cada consumo cumplido, la aplicación otorgará fichas que el niño podrá intercambiar por motivadores.", R.drawable.introduccion_img_5));
 
         screenPager = findViewById(R.id.screen_viewpager);
         introduccionViewPagerAdapter = new IntroduccionViewPagerAdapter(this, listScreemItem);

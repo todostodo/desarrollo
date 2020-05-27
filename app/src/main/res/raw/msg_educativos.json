@@ -1,0 +1,128 @@
+{
+    "msgEducativo":[
+        {
+            "id": 1,
+            "msg": "Las porciones recomendadas de fruta al día para un niño son 2"
+        },
+        {
+            "id": 2,
+            "msg": "Una porción de fruta equivale a 1 pieza  de durazno, mandarina, manzana, naranja"
+        },
+        {
+            "id": 3,
+            "msg": "Una porción de fruta puede ser  2 piezas  de guayaba, ciruelas, lima"
+        },
+        {
+            "id": 4,
+            "msg": "Una porción de fruta equivala a ½ taza de piña, zarzamora, fresas, uvas, capulines"
+        },
+        {
+            "id": 5,
+            "msg": "Una porción de fruta equivale a 1 taza de papaya, melón, sandía"
+        },
+        {
+            "id": 6,
+            "msg": "Ua porción de frutas puede ser  ½ pieza de pera, tuna, plátano, toronja, mango"
+        },
+        {
+            "id": 7,
+            "msg": "Se recomienda que su hijo consuma 3 porciones de verdura diario"
+        },
+        {
+            "id": 8,
+            "msg": "Se recomienda que su hijo consuma 3 porciones de verdura diario"
+        },
+        {
+            "id": 9,
+            "msg": "Se recomienda que su hijo consuma 7.5 porciones de cereales diario"
+        },
+        {
+            "id": 10,
+            "msg": "Una porción de cereal equivale a  2 cucharadas de Harina de maíz, de arroz o de trigo"
+        },
+        {
+            "id": 12,
+            "msg": "Una porción de cereal equivale a  ⅓ taza Avena"
+        },
+        {
+            "id": 13,
+            "msg": "Una porción de cereal puede ser ½ pieza papa asada o cocida"
+        },
+        {
+            "id": 14,
+            "msg": "Una porción de cereal equivale a  ½ pieza de Bolillo, telera, tortilla de trigo, pan de caja, pan dulce, tamal"
+        },
+        {
+            "id": 15,
+            "msg": "Una porción de ceral puede ser 1 pieza de tortilla o sope"
+        },
+        {
+            "id": 16,
+            "msg": "Se recomienda que su hijo consuma 2.5 porciones de alimentos de origen animal "
+        },
+        {
+            "id": 17,
+            "msg": "Una porción de alimento de origen animal equivale a  1 pieza de huevo, 2 cucharadas de queso rallado"
+        },
+        {
+            "id": 18,
+            "msg": "Una porción de alimentos de origen animal puede ser 1 taza de leche o yoguth semidescremado, 3 cucharadas de leche en polvo"
+        },
+        {
+            "id": 19,
+            "msg": "Una porción de alimentos de origen animal puede ser media palma de la mano o 30 gr  de aves, res, borrego, cordero, conejo, ternera)"
+        },
+        {
+            "id": 20,
+            "msg": "Una porción de alimentos de origen animal puede ser media palma de la mano o 30 gr (Pescado, marisco)"
+        },
+        {
+            "id": 21,
+            "msg": "Se recomienda de su hijo tome 2L de agua natural todos los días"
+        },
+        {
+            "id": 22,
+            "msg": "Se recomienda que su hijo consuma 2 porciones de azucares "
+        },
+        {
+            "id": 23,
+            "msg": "Una porción de azucares equivale a 2 cucharadiatas de Miel (abeja, caña, maíz, maple), mermelada"
+        },
+        {
+            "id": 24,
+            "msg": "Una porción de azucares equivale a 2 cucharadiatas de azucar blanca, mascabado o jalea"
+        },
+        {
+            "id": 25,
+            "msg": "Se recomienda que un niño consuma 4 porciones de grasa "
+        },
+        {
+            "id": 26,
+            "msg": "Una porción de grasa equivale a una cucaradita de aceite de oliva, cartamo, maiz"
+        },
+        {
+            "id": 27,
+            "msg": "Una porción de grasa equivale a una cucaradita de  aderezo, crema, queso crema untable ⅓ pieza de aguacate"
+        },
+        {
+            "id": 28,
+            "msg": "Los azúcares no están considerados en el Plato de Bien Comer, se consideran accesorios de la alimentación"
+        },
+        {
+            "id": 29,
+            "msg": "Las grasas no están consideradas en el Plato de Bien Comer, se consideran accesorios de la alimentación"
+        },
+        {
+            "id": 30,
+            "msg": "El bajo consumo de verduras y frutas se encuentra es un factor para desarrollar enfermedades caardiovaculares"
+        },
+        {
+            "id": 31,
+            "msg": "El bajo consumo de verduras y frutas se encuentra es un factor para desarrollar algunos tipos de cáncer"
+        },
+        {
+            "id": 32,
+            "msg": "El bajo consumo de verduras y frutas se encuentra es un factor para desarrollar sobrepeso u obesidad"
+        }
+    ]
+}

@@ -24,8 +24,8 @@ import java.util.List;
 
 public class RecyclerViewHistorialConsumo extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    Context context;
-    List<HistorialConsumo> consumoList;
+    private Context context;
+    private List<HistorialConsumo> consumoList;
 
     public RecyclerViewHistorialConsumo(Context context, List<HistorialConsumo> consumoList) {
         this.context = context;

@@ -224,26 +224,11 @@
       "aviso": "Aportan poco menos de 300 kcal/100 g. Son muy ricas en hierro: 100 g cubren la cuarta parte de las necesidades diarias de este mineral. También son ricas en potasio y en fibra vegetal. Su contenido en grasa es casi el mismo que el de las uvas frescas. Las vitaminas del complejo B se hallan más concentradas, pero en cambio la C disminuye y la A prácticamente desaparece.",
       "imgUrl": "f_uva",
       "backgroud": "#797B9D"
-    },
-    {
-      "id": "16",
-      "nombre": "Zarzamora",
-      "unidadMedida": "pieza",
-      "equivalencia": "0.75",
-      "descripcion": " ",
-      "recomendacion": "",
-      "recomendacionDos": "",
-      "frase": "",
-      "ventaja": "",
-      "avisoTitulo": "",
-      "aviso": "",
-      "imgUrl": "f_zarzamora",
-      "backgroud": "#797B9D"
     }
   ],
   "Verdura" : [
     {
-      "id": "17",
+      "id": "16",
       "nombre": "Apio",
       "equivalencia": "1.5",
       "unidadMedida": "taza",
@@ -258,7 +243,7 @@
       "backgroud": "#9FBB56"
     },
     {
-      "id": "18",
+      "id": "17",
       "nombre": "Berenjena",
       "unidadMedida": "taza",
       "equivalencia": "0.5",
@@ -273,7 +258,7 @@
       "backgroud": "#7C6567"
     },
     {
-      "id": "19", 
+      "id": "18",
       "nombre": "Betabel",
       "equivalencia": "0.5",
       "unidadMedida": "taza",
@@ -288,7 +273,7 @@
       "backgroud": "#C76E76"
     },
     {
-      "id": "20",
+      "id": "19",
       "nombre": "Brocoli (brécol)",
       "equivalencia": "0.5",
       "unidadMedida": "taza",
@@ -303,7 +288,7 @@
       "backgroud": "#7C9D76"
     },
     {
-      "id": "21",
+      "id": "20",
       "nombre": "Calabaza (zapallo)",
       "equivalencia": "0.5",
       "unidadMedida": "pieza",
@@ -318,22 +303,7 @@
       "backgroud": "#FFA955"
     },
     {
-      "id": "22",
-      "nombre": "Chayote",
-      "equivalencia": "0.5",
-      "unidadMedida": "taza",
-      "descripcion": " ",
-      "recomendacion": "",
-      "recomendacionDos": "",
-      "frase": "",
-      "ventaja": "",
-      "avisoTitulo": "",
-      "aviso": "",
-      "imgUrl": "v_chayote",
-      "backgroud": "#A1AD7D"
-    },
-    {
-      "id": "23",
+      "id": "21",
       "nombre": "Garbanzo (chícharo)",
       "equivalencia": "0.82",
       "unidadMedida": "taza",
@@ -348,7 +318,7 @@
       "backgroud": "#D0DEAA"
     },
     {
-      "id": "24",
+      "id": "22",
       "nombre": "Coliflor",
       "equivalencia": "0.75",
       "unidadMedida": "taza",
@@ -363,52 +333,37 @@
       "backgroud": "#CCBC94"
     },
     {
-      "id": "25",
+      "id": "23",
       "nombre": "Ejote",
       "equivalencia": "0.5",
       "unidadMedida": "taza",
-      "descripcion": "",
-      "recomendacion": "",
+      "descripcion": "Los ejotes poseen vitamina A, C, K y vitaminas del grupo B, además de minerales como el ácido fólico, fibra, potasio, calcio, hierro y magnesio, todos estos nutrientes siendo",
+      "recomendacion": "Hervidos al vapor, salteados o fritos",
       "recomendacionDos": "",
-      "frase": "",
-      "ventaja": "",
+      "frase": "Son una buena fuente de fibra",
+      "ventaja": "Alimento para el corazón",
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "v_ejote",
       "backgroud": "#9ACF55"
     },
     {
-      "id": "26",
-      "nombre": "Espinacas",
-      "equivalencia": "0.5",
-      "unidadMedida": "taza",
-      "descripcion": " ",
-      "recomendacion": "",
-      "recomendacionDos": "",
-      "frase": "",
-      "ventaja": "",
-      "avisoTitulo": "",
-      "aviso": "",
-      "imgUrl": "v_espinacas",
-      "backgroud": "#8DB355"
-    },
-    {
-      "id": "27",
+      "id": "24",
       "nombre": "Jicama",
       "equivalencia": "0.5",
       "unidadMedida": "taza",
-      "descripcion": "",
-      "recomendacion": "",
+      "descripcion": "La jicama es una buena fuente de fibra y contiene vitamina C, calcio, potasio, fósforo, hierro, carbohidratos y pocas proteínas y lípidos. Además, es baja en sodio, contiene un",
+      "recomendacion": "El jugo de jícama es una excelente fuente en calcio y fósforo, esta se puede combinar con ensaladas y en jugo con pera ya que es un remedio para las hemorroides.",
       "recomendacionDos": "",
-      "frase": "",
-      "ventaja": "",
+      "frase": "Ayuda a promover la salud cardiaca",
+      "ventaja": "Alimento para el corazón",
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "v_jicama",
       "backgroud": "#D4AA72"
     },
     {
-      "id": "28",
+      "id": "25",
       "nombre": "Lechuga",
       "equivalencia": "3.0",
       "unidadMedida": "taza",
@@ -423,22 +378,22 @@
       "backgroud": "#85B73F"
     },
     {
-      "id": "29",
+      "id": "26",
       "nombre": "Nopal",
       "equivalencia": "1.0",
       "unidadMedida": "taza",
-      "descripcion": " ",
-      "recomendacion": "",
+      "descripcion": "El nopal es un alimento rico en viamina A, B y C, el 95% contiene un 95% de agua, actua como un antioxicante y contiene betacaronetos",
+      "recomendacion": "Se puede comer crudo en ensalada, licuado con algún jugo o cocido",
       "recomendacionDos": "",
-      "frase": "",
-      "ventaja": "",
+      "frase": "Protege tu sistema inmunológico",
+      "ventaja": "Alimento para la piel",
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "v_nopal",
       "backgroud": "#B3C98C"
     },
     {
-      "id": "30",
+      "id": "27",
       "nombre": "Pepino",
       "equivalencia": "1.25",
       "unidadMedida": "taza",
@@ -453,7 +408,7 @@
       "backgroud": "#839B67"
     },
     {
-      "id": "31",
+      "id": "28",
       "nombre": "Pimiento (chile dulce)",
       "equivalencia": "1.0",
       "unidadMedida": "taza",
@@ -468,7 +423,7 @@
       "backgroud": "#D55E58"
     },
     {
-      "id": "32",
+      "id": "29",
       "nombre": "Repollo (col)",
       "equivalencia": "0.8",
       "unidadMedida": "taza",
@@ -483,7 +438,7 @@
       "backgroud": "#707D61"
     },
     {
-      "id": "33",
+      "id": "30",
       "nombre": "Tomate",
       "equivalencia": "5.0",
       "unidadMedida": "pieza",
@@ -498,7 +453,7 @@
       "backgroud": "#D46A5C"
     },
     {
-      "id": "34",
+      "id": "31",
       "nombre": "Zanahoria",
       "equivalencia": "0.5",
       "unidadMedida": "taza",

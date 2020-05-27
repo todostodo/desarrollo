@@ -59,6 +59,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_toStartOf="@+id/fruta_backgroundVentaja"
+                android:layout_toLeftOf="@+id/fruta_backgroundVentaja"
                 android:text="@string/textview"
                 android:textColor="@color/gris_opaco"
                 android:textSize="16sp" />

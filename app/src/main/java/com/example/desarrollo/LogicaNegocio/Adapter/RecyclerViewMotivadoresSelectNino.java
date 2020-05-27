@@ -17,9 +17,9 @@ import java.util.List;
 
 public class RecyclerViewMotivadoresSelectNino extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener{
 
-    Context context;
-    List<MotivadoresSelect.MotivadoresNinoDisponible> ninoDisponibleList;
-    View.OnClickListener listener;
+    private Context context;
+    private List<MotivadoresSelect.MotivadoresNinoDisponible> ninoDisponibleList;
+    private View.OnClickListener listener;
 
     public RecyclerViewMotivadoresSelectNino(Context context, List<MotivadoresSelect.MotivadoresNinoDisponible> ninoDisponibleList) {
         this.context = context;

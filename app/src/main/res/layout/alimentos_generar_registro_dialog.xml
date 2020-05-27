@@ -224,7 +224,7 @@
         android:background="@drawable/rectangulo_azul"
         android:backgroundTint="#59968A"
         android:fontFamily="@font/roboto_medium"
-        android:text="Registrar calorias"
+        android:text="Registrar consumo"
         android:textColor="@color/blanco"
         app:layout_constraintHeight_percent="0.11"
         app:layout_constraintLeft_toLeftOf="parent"

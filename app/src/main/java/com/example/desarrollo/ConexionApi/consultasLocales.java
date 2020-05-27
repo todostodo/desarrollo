@@ -775,7 +775,7 @@ public class consultasLocales {
             database = connection.getReadableDatabase();
 
             Cursor cur = database.rawQuery(
-                    "SELECT Nino,lineabultra,lineabv,leneabf FROM " + Utilidades.TABLA_Nino,
+                    "SELECT idNino,lineabultra,lineabv,leneabf FROM " + Utilidades.TABLA_Nino,
                     null);
 
             if (cur.moveToFirst()) {
@@ -813,7 +813,7 @@ public class consultasLocales {
             database = connection.getReadableDatabase();
 
             Cursor cur = database.rawQuery(
-                    "SELECT Nino,esfuerzoultra,esfuerzof,esfuerzov FROM " + Utilidades.TABLA_Nino,
+                    "SELECT idNino,esfuerzoultra,esfuerzof,esfuerzov FROM " + Utilidades.TABLA_Nino,
                     null);
 
             if (cur.moveToFirst()) {

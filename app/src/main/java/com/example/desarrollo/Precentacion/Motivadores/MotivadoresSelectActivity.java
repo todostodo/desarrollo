@@ -16,7 +16,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.desarrollo.ConexionApi.ConexionApi;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.desarrollo.Datos.Mensajeria;
 import com.example.desarrollo.Datos.MotivadoresDao;
 import com.example.desarrollo.Entidades.MotivadoresSelect;
@@ -24,7 +29,12 @@ import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewMotivadoresSelec
 import com.example.desarrollo.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MotivadoresSelectActivity extends AppCompatActivity {
 
@@ -35,7 +45,7 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
     private RelativeLayout _btnAddMotivador;
     private RelativeLayout _btnCerrarMotivadoresSelect;
 
-    MotivadoresDao consultar;
+    MotivadoresDao motivadoresDao;
 
     private static final String TAG = "MotivadoresSelectActivity";
 
@@ -68,7 +78,7 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
 
     private void consultarListaMotivadoresDisponibles() {
         motivadoresList.clear();
-        consultar.cosultarMotivadores(TAG, getApplicationContext(), motivadoresList);
+        motivadoresDao.cosultarMotivadores(TAG, getApplicationContext(), motivadoresList);
         adapter = new RecyclerViewMotivadoresSelect(getApplicationContext(), motivadoresList);
         _myRecyclerViewMotivadores.setAdapter(adapter);
     }
@@ -88,8 +98,8 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
         btnAddMotivador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String descripcion = txtDescripcion.getText().toString();
-                String valor = txtValor.getText().toString().trim();
+                final String descripcion = txtDescripcion.getText().toString();
+                final String valor = txtValor.getText().toString().trim();
 
                 if (descripcion.equals("")) {
                     backgroundDescripcion.setBackgroundResource(R.drawable.rectangulo_border_rojo);
@@ -99,7 +109,7 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
                     if (valor.equals("")) {
                         backgroundValor.setBackgroundResource(R.drawable.rectangulo_border_rojo);
                         Toast.makeText(getApplicationContext(), "Ingrese el valor del motivador", Toast.LENGTH_SHORT).show();
-                    }else{
+                    } else {
                         backgroundValor.setBackgroundResource(R.drawable.rectangulo_gris);
 
                         Mensajeria estadoConexion;
@@ -107,25 +117,53 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
                         boolean networkInfo = estadoConexion.estadoConexion(getApplicationContext());
                         boolean insert = true;
                         if (networkInfo == true) {
-                             ConexionApi.insertarRecompensaNueva(getApplicationContext(),descripcion,Integer.valueOf(valor));
-                        }else {
-                            Toast.makeText(getApplicationContext(), "Debes tener Interne Para realizar este paso", Toast.LENGTH_SHORT).show();
-                            insert=false;
-                        }
-                        /*boolean insert = consultar.insertMotivador(
-                                TAG,
-                                getApplicationContext(),
-                                descripcion,
-                                Integer.valueOf(valor),
-                                1);*/
+                            //ConexionApi.insertarRecompensaNueva(getApplicationContext(), descripcion, Integer.valueOf(valor));
 
-                        if (insert == true){
-                            Toast.makeText(getApplicationContext(), "El motivador fue agregado con exito", Toast.LENGTH_SHORT).show();
-                            addMotivadorDialog.dismiss();
-                            consultarListaMotivadoresDisponibles();
-                        }
-                        else{
-                            Toast.makeText(getApplicationContext(), "Error al agregar el motivador", Toast.LENGTH_SHORT).show();
+                            String url = "http://68.183.148.243/Persuhabit/recompensas";
+                            RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+
+                            Map<String, Object> params = new HashMap<String, Object>();
+                            params.put("descrip", descripcion);
+                            params.put("valor", valor);
+
+                            JSONObject jsonObj = new JSONObject(params);
+
+                            JsonObjectRequest jsonObjRequest = new JsonObjectRequest
+                                    (Request.Method.POST, url, jsonObj, new Response.Listener<JSONObject>() {
+                                        @Override
+                                        public void onResponse(JSONObject response) {
+                                            try {
+                                                int idGlobalRecompensa = response.getInt("data");
+                                                boolean insert = motivadoresDao.insertMotivador(
+                                                        TAG,
+                                                        getApplicationContext(),
+                                                        descripcion,
+                                                        Integer.valueOf(valor),
+                                                        idGlobalRecompensa
+                                                );
+
+                                                if (insert == true) {
+                                                    Toast.makeText(getApplicationContext(), "El motivador fue agregado con exito", Toast.LENGTH_SHORT).show();
+                                                    addMotivadorDialog.dismiss();
+                                                    consultarListaMotivadoresDisponibles();
+                                                }
+
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    },
+                                            new Response.ErrorListener() {
+                                                @Override
+                                                public void onErrorResponse(VolleyError error) {
+                                                }
+                                            });
+
+                            queue.add(jsonObjRequest);
+
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Debes tener Interne Para realizar este paso", Toast.LENGTH_SHORT).show();
+                            insert = false;
                         }
                     }
                 }

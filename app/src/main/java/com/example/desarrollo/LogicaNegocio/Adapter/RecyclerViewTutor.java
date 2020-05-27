@@ -29,10 +29,10 @@ import java.util.List;
 
 public class RecyclerViewTutor extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    Context context;
-    List<Tutor> tutorList;
-    Dialog dialogOptions;
-    TutorDao tutorDao;
+    private Context context;
+    private List<Tutor> tutorList;
+    private Dialog dialogOptions;
+    private TutorDao tutorDao;
 
 
     public RecyclerViewTutor(Context context, List<Tutor> tutorList) {
