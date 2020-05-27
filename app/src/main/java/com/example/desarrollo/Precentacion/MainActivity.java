@@ -69,30 +69,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SharedPreferences preferenc = getSharedPreferences("Calculo", MODE_PRIVATE);
-        int llave1 = preferenc.getInt("llave1", 0);
-        int llave2 = preferenc.getInt("llave2", 0);
-        int llave3 = preferenc.getInt("llave3", 0);
-
-        System.out.println(llave1+" , "+llave2+" , "+llave3);
-        if(llave1 ==0 || llave2==0 || llave3==0) {
-            Calculos.generaLBF(this, 1);
-            Calculos.generaLBF(this, 2);
-            Calculos.generaLBV(this, 1);
-            Calculos.generaLBV(this, 2);
-            Calculos.generaLBUlPro(this, 1);
-            Calculos.generaLBUlPro(this, 2);
-        }else {
-            Calculos.EsfuerzoF(this, 1);
-            Calculos.EsfuerzoF(this, 2);
-            Calculos.EsfuerzoV(this, 1);
-            Calculos.EsfuerzoV(this, 2);
-            Calculos.EsfuerzoUP(this, 1);
-            Calculos.EsfuerzoUP(this, 2);
-        }
-
-
-
         Calculos.inicializarFichasAlimento(this);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.btmNavegacion);
@@ -208,6 +184,30 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onStart() {
+
+        SharedPreferences preferenci = getSharedPreferences("Calculo", MODE_PRIVATE);
+        int llave1 = preferenci.getInt("llave1", 0);
+        int llave2 = preferenci.getInt("llave2", 0);
+        int llave3 = preferenci.getInt("llave3", 0);
+
+        System.out.println(llave1+" , "+llave2+" , "+llave3);
+        if(llave1 ==0 || llave2==0 || llave3==0) {
+            Calculos.generaLBF(this, 1);
+            Calculos.generaLBF(this, 2);
+            Calculos.generaLBV(this, 1);
+            Calculos.generaLBV(this, 2);
+            Calculos.generaLBUlPro(this, 1);
+            Calculos.generaLBUlPro(this, 2);
+        }else {
+            Calculos.EsfuerzoF(this, 1);
+            Calculos.EsfuerzoF(this, 2);
+            Calculos.EsfuerzoV(this, 1);
+            Calculos.EsfuerzoV(this, 2);
+            Calculos.EsfuerzoUP(this, 1);
+            Calculos.EsfuerzoUP(this, 2);
+        }
+
+        System.out.println("Esto esssssss:  "+Calculos.caloriaFija(this,1)+" : "+Calculos.caloriaCambio(this,1)+" : "+Calculos.caloriaDia(this,1));
         Mensajeria estadoConexion;
         estadoConexion = new Mensajeria();
         boolean networkInfo = estadoConexion.estadoConexion(getApplicationContext());
