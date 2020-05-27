@@ -1122,7 +1122,7 @@ public class Calculos {
         }
     }
 
-    public static int caloriaCambio(Context context, int idNino) {
+    public static int caloriaCambio(Context context, int idNino) {//semana
 
         double sumatoria = 0;
         try {
