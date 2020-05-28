@@ -106,6 +106,8 @@ public class NinoDao {
                 editor.putString("FechaFin", "");
                 editor.putString("ValorUltra1", "nada");
                 editor.putString("ValorUltra2", "nada");
+                editor.putString("ValorUltra1SemanaANterior", "nada");
+                editor.putString("ValorUltra2SemanaANterior", "nada");
                 editor.putInt("llaveESF1", 0);
                 editor.putInt("llaveESF2", 0);
                 editor.putInt("llaveESUP1", 0);

@@ -345,7 +345,7 @@ public class Calculos {
     public static void generaLBUlPro(Context context, int idNino) {
 
         double retorno = 0, entro = 0;
-        double sumatoria = 0;
+        double sumatoria = 0,sumakaloria=0;
         int consulta = CuantosNinos(context);
 
         SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
@@ -380,16 +380,18 @@ public class Calculos {
 
 
                             String inicio = preferenc.getString("FechaInicio", "");
+
                             String fecha = getFecha();
-                            Cursor cursor = database.rawQuery("SELECT DetalleReg.cad FROM DetalleReg,Registro WHERE DetalleReg.idreg=Registro.idreg AND Registro.idNino=" + idNino +
-                                    " AND DetalleReg.tipo = 'Bebidas' OR DetalleReg.tipo = 'Frituras' OR DetalleReg.tipo = 'Golosinas' OR DetalleReg.tipo = 'Galletas y panesillos'" +
-                                    " AND Registro.fechar BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
+                            Cursor cursor = database.rawQuery("SELECT DetalleReg.cad,DetalleReg.equi FROM DetalleReg INNER JOIN Registro ON DetalleReg.idreg=Registro.idreg WHERE Registro.idNino=" + idNino + " " +
+                                    "AND Registro.fechar BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
+
                             // Cursor cursor = database.rawQuery("SELECT * FROM Registro",null);
                             if (cursor.moveToFirst()) {
 
                                 do {
                                     // System.out.println("SUMATORIA: "+cursor.getInt(0));
                                     sumatoria = sumatoria + cursor.getDouble(0);
+                                    sumakaloria = sumakaloria + cursor.getDouble(1);
 
                                     // Toast.makeText(context, ""+cursor.getDouble(0), Toast.LENGTH_SHORT).show();
                                 } while (cursor.moveToNext());
@@ -478,11 +480,19 @@ public class Calculos {
                 SharedPreferences.Editor edito = preferenc.edit();
                 edito.remove("LineaBaseGenerada1");
                 edito.putBoolean("LineaBaseGenerada1", true);
+                edito.remove("ValorUltra1");
+                edito.putString("ValorUltra1", ""+retorno);
+                edito.remove("ValorUltra1SemanaANterior");
+                edito.putString("ValorUltra1SemanaANterior", ""+sumakaloria);
                 edito.commit();
             } else {
                 SharedPreferences.Editor edito = preferenc.edit();
                 edito.remove("LineaBaseGenerada2");
                 edito.putBoolean("LineaBaseGenerada2", true);
+                edito.remove("ValorUltra2");
+                edito.putString("ValorUltra2", ""+retorno);
+                edito.remove("ValorUltra2SemanaANterior");
+                edito.putString("ValorUltra2SemanaANterior", ""+sumakaloria);
                 edito.commit();
             }
         }
@@ -770,7 +780,7 @@ public class Calculos {
 
     public static void EsfuerzoUP(Context context, int idNino) {
         double retorno = 0;
-        double sumatoria = 0;
+        double sumatoria = 0,sumakaloria=0;
         int consulta = CuantosNinos(context);
 
         SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
@@ -806,9 +816,9 @@ public class Calculos {
 
 
                     String inicio = preferenc.getString("FechaInicio", "");
+                    System.out.println(inicio+"   :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::.");
                     String fecha = getFecha();
-                    Cursor cursor = database.rawQuery("SELECT DetalleReg.cad FROM DetalleReg,Registro WHERE DetalleReg.idreg=Registro.idreg AND Registro.idNino=" + idNino + " " +
-                            "AND DetalleReg.tipo = 'Bebidas' OR DetalleReg.tipo = 'Frituras' OR DetalleReg.tipo = 'Golosinas' OR DetalleReg.tipo = 'Galletas y panesillos'" +
+                    Cursor cursor = database.rawQuery("SELECT DetalleReg.cad,DetalleReg.equi FROM DetalleReg INNER JOIN Registro ON DetalleReg.idreg=Registro.idreg WHERE Registro.idNino=" + idNino + " " +
                             "AND Registro.fechar BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
                     // Cursor cursor = database.rawQuery("SELECT * FROM Registro",null);
 
@@ -817,7 +827,7 @@ public class Calculos {
                         do {
                             // System.out.println("SUMATORIA: "+cursor.getInt(0));
                             sumatoria = sumatoria + cursor.getDouble(0);
-
+                            sumakaloria = sumakaloria + cursor.getDouble(1);
                             // Toast.makeText(context, ""+cursor.getDouble(0), Toast.LENGTH_SHORT).show();
                         } while (cursor.moveToNext());
 
@@ -832,24 +842,37 @@ public class Calculos {
                             SharedPreferences.Editor editor = preferenc.edit();
                             editor.remove("llaveESUP1");
                             editor.putInt("llaveESUP1", 1);
+                            editor.remove("ValorUltra1SemanaANterior");
+                            editor.putString("ValorUltra1SemanaANterior", ""+sumakaloria);
                             editor.commit();
                             double res = consultarNiño(context, idNino, 2);
                             if (res <= sumatoria) {
                                 res = res - (0.25);
                                 //registra
                                 actualizaNiño(context, idNino, res, 2);
+                                SharedPreferences.Editor edito = preferenc.edit();
+                                edito.remove("ValorUltra1");
+                                edito.putString("ValorUltra1", ""+res);
+                                editor.commit();
                             }
                         } else if (idNino == 2) {
                             System.out.println("llave up 2");
                             SharedPreferences.Editor editor = preferenc.edit();
                             editor.remove("llaveESUP2");
                             editor.putInt("llaveESUP2", 1);
+                            editor.remove("ValorUltra2SemanaANterior");
+                            editor.putString("ValorUltra2SemanaANterior", ""+sumakaloria);
                             editor.commit();
                             double res = consultarNiño(context, idNino, 2);
                             if (res <= sumatoria) {
                                 res = res - (0.25);
                                 //registra
                                 actualizaNiño(context, idNino, res, 2);
+                                actualizaNiño(context, idNino, res, 2);
+                                SharedPreferences.Editor edito = preferenc.edit();
+                                edito.remove("ValorUltra2");
+                                edito.putString("ValorUltra2", ""+res);
+                                editor.commit();
                             }
                         }
 
@@ -1126,7 +1149,7 @@ public class Calculos {
         }
     }
 
-    public static double caloriaCambio(Context context, int idNino) {
+    public static double caloriaCambio(Context context, int idNino) {//semana
 
         double sumatoria = 0;
         try {
@@ -1136,17 +1159,12 @@ public class Calculos {
 
             SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
 
-            String inicio = preferenc.getString("FechaIni", "");
+            String inicio = preferenc.getString("FechaInicio", "");
             String fecha = getFecha();
             System.out.println("FECHA: " + inicio);
             Cursor cursor = database.rawQuery("SELECT " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Equivalencia + " FROM " + Utilidades.TABLA_DetalleRegistro +
                     " INNER JOIN " + Utilidades.TABLA_Registro + " ON " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idRegistro +
-                    " WHERE " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro +
-                    " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idNino + " = " + idNino +
-                    " AND " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " = " + "'Bebidas'" +
-                    " OR " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " = " + "'Frituras'" +
-                    " OR " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " = " + "'Golosinas'" +
-                    " OR " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " = " + "'Galletas y panesillos'" +
+                    " WHERE " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idNino + " = " + idNino +
                     " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro +
                     " BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
 
@@ -1212,7 +1230,7 @@ public class Calculos {
         //int resultado = 0;
         SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
         if (idNino == 1) {
-            String inicio = preferenc.getString("ValorUltra1", "nada");
+            String inicio = preferenc.getString("ValorUltra1SemanaANterior", "nada");
             if (inicio.equals("nada")) {
                 //resultado = 0.0;
                 resultado = 0;
@@ -1225,7 +1243,7 @@ public class Calculos {
                     resultado = Double.parseDouble(inicio);
             }
         } else if (idNino == 2) {
-            String inicio = preferenc.getString("ValorUltra2", "nada");
+            String inicio = preferenc.getString("ValorUltra2SemanaANterior", "nada");
             if (inicio.equals("nada")) {
                 //resultado = 0.0;
                 resultado = 0;
@@ -1251,19 +1269,13 @@ public class Calculos {
 
             SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
 
-            String inicio = preferenc.getString("FechaInicio", "");
+          //  String inicio = preferenc.getString("FechaInicio", "");
             String fecha = getFecha();
 
             Cursor cursor = database.rawQuery("SELECT " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Equivalencia + " FROM " + Utilidades.TABLA_DetalleRegistro +
                     " INNER JOIN " + Utilidades.TABLA_Registro + " ON " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idRegistro +
-                    " WHERE " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro +
-                    " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idNino + " = " + idNino +
-                    " AND " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " = " + "'Bebidas'" +
-                    " OR " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " = " + "'Frituras'" +
-                    " OR " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " = " + "'Golosinas'" +
-                    " OR " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " = " + "'Galletas y panesillos'" +
-                    " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro +
-                    " BETWEEN '" + fecha + "' AND '" + fecha + "'", null);
+                    " WHERE " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idNino + " = " + idNino +
+                    " AND " + Utilidades.TABLA_Registro+"."+Utilidades.CAMPO_FechaRegistro + " = '" + fecha + "'", null);
 
             if (cursor.moveToFirst()) {
                 do {
