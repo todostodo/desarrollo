@@ -16,7 +16,7 @@ public class TiempoAplicacionDao {
             database = null;
             database = connection.getWritableDatabase();
 
-            String insert = ("INSERT INTO " + Utilidades.Tabla_TiempoAplicacion + " ( " +
+            String insert = ("INSERT INTO " + Utilidades.TABLA_TiempoAplicacion + " ( " +
                     Utilidades.CAMPO_idUsuario + ", " +
                     Utilidades.CAMPO_duracion + ", " +
                     Utilidades.CAMPO_registroNube+") " +

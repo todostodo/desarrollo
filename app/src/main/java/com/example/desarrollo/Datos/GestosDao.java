@@ -16,7 +16,7 @@ public class GestosDao {
             database = null;
             database = connection.getWritableDatabase();
 
-            String insert = ("INSERT INTO " + Utilidades.Tabla_GestoTerrible + " ( " +
+            String insert = ("INSERT INTO " + Utilidades.TABLA_GestoTerrible + " ( " +
                     Utilidades.CAMPO_idNino + ", " +
                     Utilidades.CAMPO_IdAlimento + ", " +
                     Utilidades.CAMPO_registroNube+") " +
@@ -39,7 +39,7 @@ public class GestosDao {
             database = null;
             database = connection.getWritableDatabase();
 
-            String insert = ("INSERT INTO " + Utilidades.Tabla_GestoBien + " ( " +
+            String insert = ("INSERT INTO " + Utilidades.TABLA_GestoBien + " ( " +
                     Utilidades.CAMPO_idNino + ", " +
                     Utilidades.CAMPO_IdAlimento + ", " +
                     Utilidades.CAMPO_registroNube+") " +
@@ -62,7 +62,7 @@ public class GestosDao {
             database = null;
             database = connection.getWritableDatabase();
 
-            String insert = ("INSERT INTO " + Utilidades.Tabla_GestoGenial + " ( " +
+            String insert = ("INSERT INTO " + Utilidades.TABLA_GestoGenial + " ( " +
                     Utilidades.CAMPO_idNino + ", " +
                     Utilidades.CAMPO_IdAlimento + ", " +
                     Utilidades.CAMPO_registroNube+") " +

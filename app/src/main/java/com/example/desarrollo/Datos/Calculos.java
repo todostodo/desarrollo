@@ -345,7 +345,7 @@ public class Calculos {
     public static void generaLBUlPro(Context context, int idNino) {
 
         double retorno = 0, entro = 0;
-        double sumatoria = 0,sumakaloria=0;
+        double sumatoria = 0, sumakaloria = 0;
         int consulta = CuantosNinos(context);
 
         SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
@@ -481,18 +481,18 @@ public class Calculos {
                 edito.remove("LineaBaseGenerada1");
                 edito.putBoolean("LineaBaseGenerada1", true);
                 edito.remove("ValorUltra1");
-                edito.putString("ValorUltra1", ""+retorno);
+                edito.putString("ValorUltra1", "" + retorno);
                 edito.remove("ValorUltra1SemanaANterior");
-                edito.putString("ValorUltra1SemanaANterior", ""+sumakaloria);
+                edito.putString("ValorUltra1SemanaANterior", "" + sumakaloria);
                 edito.commit();
             } else {
                 SharedPreferences.Editor edito = preferenc.edit();
                 edito.remove("LineaBaseGenerada2");
                 edito.putBoolean("LineaBaseGenerada2", true);
                 edito.remove("ValorUltra2");
-                edito.putString("ValorUltra2", ""+retorno);
+                edito.putString("ValorUltra2", "" + retorno);
                 edito.remove("ValorUltra2SemanaANterior");
-                edito.putString("ValorUltra2SemanaANterior", ""+sumakaloria);
+                edito.putString("ValorUltra2SemanaANterior", "" + sumakaloria);
                 edito.commit();
             }
         }
@@ -780,7 +780,7 @@ public class Calculos {
 
     public static void EsfuerzoUP(Context context, int idNino) {
         double retorno = 0;
-        double sumatoria = 0,sumakaloria=0;
+        double sumatoria = 0, sumakaloria = 0;
         int consulta = CuantosNinos(context);
 
         SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
@@ -816,7 +816,7 @@ public class Calculos {
 
 
                     String inicio = preferenc.getString("FechaInicio", "");
-                    System.out.println(inicio+"   :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::.");
+                    System.out.println(inicio + "   :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::.");
                     String fecha = getFecha();
                     Cursor cursor = database.rawQuery("SELECT DetalleReg.cad,DetalleReg.equi FROM DetalleReg INNER JOIN Registro ON DetalleReg.idreg=Registro.idreg WHERE Registro.idNino=" + idNino + " " +
                             "AND Registro.fechar BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
@@ -843,7 +843,7 @@ public class Calculos {
                             editor.remove("llaveESUP1");
                             editor.putInt("llaveESUP1", 1);
                             editor.remove("ValorUltra1SemanaANterior");
-                            editor.putString("ValorUltra1SemanaANterior", ""+sumakaloria);
+                            editor.putString("ValorUltra1SemanaANterior", "" + sumakaloria);
                             editor.commit();
                             double res = consultarNiño(context, idNino, 2);
                             if (res <= sumatoria) {
@@ -852,7 +852,7 @@ public class Calculos {
                                 actualizaNiño(context, idNino, res, 2);
                                 SharedPreferences.Editor edito = preferenc.edit();
                                 edito.remove("ValorUltra1");
-                                edito.putString("ValorUltra1", ""+res);
+                                edito.putString("ValorUltra1", "" + res);
                                 editor.commit();
                             }
                         } else if (idNino == 2) {
@@ -861,7 +861,7 @@ public class Calculos {
                             editor.remove("llaveESUP2");
                             editor.putInt("llaveESUP2", 1);
                             editor.remove("ValorUltra2SemanaANterior");
-                            editor.putString("ValorUltra2SemanaANterior", ""+sumakaloria);
+                            editor.putString("ValorUltra2SemanaANterior", "" + sumakaloria);
                             editor.commit();
                             double res = consultarNiño(context, idNino, 2);
                             if (res <= sumatoria) {
@@ -871,7 +871,7 @@ public class Calculos {
                                 actualizaNiño(context, idNino, res, 2);
                                 SharedPreferences.Editor edito = preferenc.edit();
                                 edito.remove("ValorUltra2");
-                                edito.putString("ValorUltra2", ""+res);
+                                edito.putString("ValorUltra2", "" + res);
                                 editor.commit();
                             }
                         }
@@ -1162,11 +1162,16 @@ public class Calculos {
             String inicio = preferenc.getString("FechaInicio", "");
             String fecha = getFecha();
             System.out.println("FECHA: " + inicio);
-            Cursor cursor = database.rawQuery("SELECT " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Equivalencia + " FROM " + Utilidades.TABLA_DetalleRegistro +
+            /*Cursor cursor = database.rawQuery("SELECT " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Equivalencia + " FROM " + Utilidades.TABLA_DetalleRegistro +
                     " INNER JOIN " + Utilidades.TABLA_Registro + " ON " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idRegistro +
                     " WHERE " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idNino + " = " + idNino +
                     " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro +
-                    " BETWEEN '" + inicio + "' AND '" + fecha + "'", null);
+                    " BETWEEN '" + inicio + "' AND '" + fecha + "'", null);*/
+            Cursor cursor = database.rawQuery("SELECT " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Equivalencia + " FROM " + Utilidades.TABLA_DetalleRegistro +
+                    " INNER JOIN " + Utilidades.TABLA_Registro + " ON " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idRegistro +
+                    " WHERE (" + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " >= " + " DATE(" + inicio + ") AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " <= " + " DATE(" + fecha + "))" +
+                    " AND (" + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " != 'Fruta' AND " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " != 'Verdura')" +
+                    " AND " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idNino + " == " + idNino, null);
 
             if (cursor.moveToFirst()) {
                 do {
@@ -1269,13 +1274,13 @@ public class Calculos {
 
             SharedPreferences preferenc = context.getSharedPreferences("Calculo", context.MODE_PRIVATE);
 
-          //  String inicio = preferenc.getString("FechaInicio", "");
+            //  String inicio = preferenc.getString("FechaInicio", "");
             String fecha = getFecha();
 
             Cursor cursor = database.rawQuery("SELECT " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Equivalencia + " FROM " + Utilidades.TABLA_DetalleRegistro +
                     " INNER JOIN " + Utilidades.TABLA_Registro + " ON " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idRegistro +
                     " WHERE " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idNino + " = " + idNino +
-                    " AND " + Utilidades.TABLA_Registro+"."+Utilidades.CAMPO_FechaRegistro + " = '" + fecha + "'", null);
+                    " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " = '" + fecha + "'", null);
 
             if (cursor.moveToFirst()) {
                 do {

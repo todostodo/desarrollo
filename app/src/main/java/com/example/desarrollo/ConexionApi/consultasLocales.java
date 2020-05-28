@@ -13,8 +13,6 @@ import com.example.desarrollo.Ultilidades.Utilidades;
 import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
-import static com.android.volley.Request.Method.HEAD;
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class consultasLocales {
 
@@ -572,7 +570,7 @@ public class consultasLocales {
             database = connection.getReadableDatabase();
 
             Cursor cur = database.rawQuery(
-                    "SELECT * FROM " + Utilidades.Tabla_TiempoAplicacion + " WHERE " + Utilidades.CAMPO_registroNube + " = 1",
+                    "SELECT * FROM " + Utilidades.TABLA_TiempoAplicacion + " WHERE " + Utilidades.CAMPO_registroNube + " = 1",
                     null);
 
             if (cur.moveToFirst()) {
@@ -607,7 +605,7 @@ public class consultasLocales {
             database = connection.getReadableDatabase();
 
             Cursor cur = database.rawQuery(
-                    "SELECT * FROM " + Utilidades.Tabla_GestoTerrible + " WHERE " + Utilidades.CAMPO_registroNube + " = 1",
+                    "SELECT * FROM " + Utilidades.TABLA_GestoTerrible + " WHERE " + Utilidades.CAMPO_registroNube + " = 1",
                     null);
 
             if (cur.moveToFirst()) {
@@ -649,7 +647,7 @@ public class consultasLocales {
             database = connection.getReadableDatabase();
 
             Cursor cur = database.rawQuery(
-                    "SELECT * FROM " + Utilidades.Tabla_GestoBien + " WHERE " + Utilidades.CAMPO_registroNube + " = 1",
+                    "SELECT * FROM " + Utilidades.TABLA_GestoBien + " WHERE " + Utilidades.CAMPO_registroNube + " = 1",
                     null);
 
             if (cur.moveToFirst()) {
@@ -691,7 +689,7 @@ public class consultasLocales {
             database = connection.getReadableDatabase();
 
             Cursor cur = database.rawQuery(
-                    "SELECT * FROM " + Utilidades.Tabla_GestoGenial + " WHERE " + Utilidades.CAMPO_registroNube + " = 1",
+                    "SELECT * FROM " + Utilidades.TABLA_GestoGenial + " WHERE " + Utilidades.CAMPO_registroNube + " = 1",
                     null);
 
             if (cur.moveToFirst()) {
@@ -736,7 +734,7 @@ public class consultasLocales {
             database = connection.getReadableDatabase();
 
             Cursor cur = database.rawQuery(
-                    "SELECT * FROM " + Utilidades.Tabla_VioNotificacion + " WHERE " + Utilidades.CAMPO_registroNube + " = 1",
+                    "SELECT * FROM " + Utilidades.TABLA_VioNotificacion + " WHERE " + Utilidades.CAMPO_registroNube + " = 1",
                     null);
 
             if (cur.moveToFirst()) {
@@ -1076,7 +1074,7 @@ public class consultasLocales {
             database = null;
 
             database = conection.getWritableDatabase();
-            String updateEstadoUsuario = "UPDATE " + Utilidades.Tabla_TiempoAplicacion +
+            String updateEstadoUsuario = "UPDATE " + Utilidades.TABLA_TiempoAplicacion +
                     " SET " + Utilidades.CAMPO_registroNube + " = " + "0" + " WHERE " + Utilidades.CAMPO_idTiemA + " = " + id;
             database.execSQL(updateEstadoUsuario);
 
@@ -1093,7 +1091,7 @@ public class consultasLocales {
             database = null;
 
             database = conection.getWritableDatabase();
-            String updateEstadoUsuario = "UPDATE " + Utilidades.Tabla_GestoTerrible +
+            String updateEstadoUsuario = "UPDATE " + Utilidades.TABLA_GestoTerrible +
                     " SET " + Utilidades.CAMPO_registroNube + " = " + "0" + " WHERE " + Utilidades.CAMPO_idTer + " = " + id;
             database.execSQL(updateEstadoUsuario);
 
@@ -1110,7 +1108,7 @@ public class consultasLocales {
             database = null;
 
             database = conection.getWritableDatabase();
-            String updateEstadoUsuario = "UPDATE " + Utilidades.Tabla_GestoBien +
+            String updateEstadoUsuario = "UPDATE " + Utilidades.TABLA_GestoBien +
                     " SET " + Utilidades.CAMPO_registroNube + " = " + "0" + " WHERE " + Utilidades.CAMPO_idBien + " = " + id;
             database.execSQL(updateEstadoUsuario);
 
@@ -1127,7 +1125,7 @@ public class consultasLocales {
             database = null;
 
             database = conection.getWritableDatabase();
-            String updateEstadoUsuario = "UPDATE " + Utilidades.Tabla_GestoGenial +
+            String updateEstadoUsuario = "UPDATE " + Utilidades.TABLA_GestoGenial +
                     " SET " + Utilidades.CAMPO_registroNube + " = " + "0" + " WHERE " + Utilidades.CAMPO_idGenial + " = " + id;
             database.execSQL(updateEstadoUsuario);
 
@@ -1144,7 +1142,7 @@ public class consultasLocales {
             database = null;
 
             database = conection.getWritableDatabase();
-            String updateEstadoUsuario = "UPDATE " + Utilidades.Tabla_VioNotificacion +
+            String updateEstadoUsuario = "UPDATE " + Utilidades.TABLA_VioNotificacion +
                     " SET " + Utilidades.CAMPO_registroNube + " = " + "0" + " WHERE " + Utilidades.CAMPO_idVioNoti + " = " + id;
             database.execSQL(updateEstadoUsuario);
 

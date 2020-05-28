@@ -115,10 +115,20 @@ public class RecyclerViewMotivadoresProceso extends RecyclerView.Adapter<Recycle
         i++;
 
         viewHolder.txtDescripcion.setText(proceso.getDescripcion());
-        viewHolder.txtTotalValorProgreso.setText(String.valueOf(valorMotivador));
 
         viewHolder.motivadorProgreso.setMax(valorMotivador);
         viewHolder.motivadorProgreso.setProgress(totalFichas);
+
+        if (totalFichas < 10)
+            viewHolder.txtSumaValorProgeso.setText("0" + String.valueOf(totalFichas) + "/");
+        else
+            viewHolder.txtSumaValorProgeso.setText(String.valueOf(totalFichas) + "/");
+
+        if (valorMotivador < 10)
+            viewHolder.txtTotalValorProgreso.setText("0" + String.valueOf(valorMotivador));
+        else
+            viewHolder.txtTotalValorProgreso.setText(String.valueOf(valorMotivador));
+
 
         if (totalFichas >= valorMotivador) {
             viewHolder.btnCanjearMotivador.setVisibility(View.VISIBLE);
@@ -126,7 +136,6 @@ public class RecyclerViewMotivadoresProceso extends RecyclerView.Adapter<Recycle
             viewHolder.txtSumaValorProgeso.setText(String.valueOf(valorMotivador) + "/");
             viewHolder.txtSumaValorProgeso.setTextColor(Color.parseColor("#4B9D4C"));
             viewHolder.txtTotalValorProgreso.setTextColor(Color.parseColor("#4B9D4C"));
-
         }
 
         if (procesoList.get(position).getActivo() == 2) {
@@ -137,7 +146,6 @@ public class RecyclerViewMotivadoresProceso extends RecyclerView.Adapter<Recycle
             viewHolder.motivadorProgreso.setMax(1);
             viewHolder.motivadorProgreso.setProgress(1);
             viewHolder.imgRegaloMotivador.setImageResource(R.drawable.icon_regalo_abierto);
-
         } else {
             viewHolder.txtPorcentajeMotivadoresProceso.setText(String.valueOf(porcentajeMotivador(valorMotivador, totalFichas)));
         }

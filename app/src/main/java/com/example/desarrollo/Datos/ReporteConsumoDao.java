@@ -101,7 +101,6 @@ public class ReporteConsumoDao {
                     " ON " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idRegistro +
                     " WHERE (" + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " >= Date('" + FechaInicio + "')" + " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " <= Date('" + FechaFinal + "'))" +
                     " AND (" + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " != 'Verdura'" + " AND " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " != 'Fruta')" +
-                    " AND DetalleReg.tipo != 'ULtraProcesado'" +
                     " AND " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idNino + " = " + idNino, null);
 
             while (cursor.moveToNext()) {

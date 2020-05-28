@@ -192,11 +192,19 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
 
                                 idNino = ninoDisponibleArrayList.get(_myRecyclerViewNino.getChildAdapterPosition(v)).getIdNino();
                                 ninosDialog.dismiss();
-                                if (lineaBaseGeneradaNinoUno()) {
-                                    cargarReaccionHijoDialog();
-                                } else {
-                                    registrarAlimento();
+
+                                if (idNino == 1) {
+                                    if (lineaBaseGeneradaNinoUno())
+                                        cargarReaccionHijoDialog();
+                                    else
+                                        registrarAlimento();
+                                } else if (idNino == 2) {
+                                    if (lineaBaseGeneradaNinoDos())
+                                        cargarReaccionHijoDialog();
+                                    else
+                                        registrarAlimento();
                                 }
+
 
                             }
                         });

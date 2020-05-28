@@ -16,7 +16,7 @@ public class NotificacionDao {
             database = null;
             database = connection.getWritableDatabase();
 
-            String insert = ("INSERT INTO " + Utilidades.Tabla_VioNotificacion + " ( " +
+            String insert = ("INSERT INTO " + Utilidades.TABLA_VioNotificacion + " ( " +
                     Utilidades.CAMPO_idUsuario + ", " +
                     Utilidades.CAMPO_registroNube+") " +
                     "VALUES (" + usuario + ", "+regNube+")");
