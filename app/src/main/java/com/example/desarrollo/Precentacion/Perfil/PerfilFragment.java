@@ -42,13 +42,12 @@ public class PerfilFragment extends Fragment {
     private View view;
 
     private RelativeLayout _btnAjustesPerfil;
-    private TextView _txtNombreUsuario, _txtNivelUsuario, _txtExperienciaUsuario, _txtCantidadNinos, _txtProgresoNivelUsuario, _txtAvanceNivelPorcentaje;
+    private TextView _txtNombreUsuario, _txtNivelUsuario, _txtExperienciaUsuario, _txtProgresoNivelUsuario, _txtAvanceNivelPorcentaje;
     private ProgressBar _chartNivelUsuario;
     private Integer nivelUsuario = 0, expUsuario = 0, expSiguienteNivel = 0;
 
     //Open dialog
     private Button _btnEpicNivelSalir;
-    //private TextView _txtEpicFichaTitulo, _txtEpicFichaMensaje, _txtEpicFichaCantidad;
     private TextView _txtEpicNivelUsuario;
     private ConstraintLayout _epicNivelContenido;
     private LinearLayout _epicNivelFondoNegro;
@@ -90,6 +89,7 @@ public class PerfilFragment extends Fragment {
     }
 
     private void mostrarDatosUsuario() {
+
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("Usuario", Context.MODE_PRIVATE);
         String correo = sharedPreferences.getString("correoUsuario", "correo");
         listNiveles = new ArrayList<>();
@@ -121,8 +121,6 @@ public class PerfilFragment extends Fragment {
             double porcentajeNivel = porcentajeNivel(expUsuario, expSiguienteNivel);
             _txtAvanceNivelPorcentaje.setText(String.valueOf(porcentajeNivel) + "%");
 
-            //int cantidadNinos = ninoDao.countNino(TAG, getContext());
-            //_txtCantidadNinos.setText(String.valueOf(cantidadNinos));
         }
     }
 
@@ -180,7 +178,6 @@ public class PerfilFragment extends Fragment {
         _txtNombreUsuario = (TextView) view.findViewById(R.id.txtNombreUsuario);
         _txtNivelUsuario = (TextView) view.findViewById(R.id.txtNivelUsuario);
         _txtExperienciaUsuario = (TextView) view.findViewById(R.id.txtExperienciaUsuario);
-        //_txtCantidadNinos = (TextView) view.findViewById(R.id.txtCantidadNinos);
         _txtProgresoNivelUsuario = (TextView) view.findViewById(R.id.txtProgresoNivelUsuario);
         _txtAvanceNivelPorcentaje = (TextView) view.findViewById(R.id.txtAvanceNivelPorcentaje);
         _chartNivelUsuario = (ProgressBar) view.findViewById(R.id.chartProgresoNivel);

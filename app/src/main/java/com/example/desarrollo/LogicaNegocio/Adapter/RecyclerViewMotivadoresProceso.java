@@ -10,6 +10,7 @@ import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +25,7 @@ public class RecyclerViewMotivadoresProceso extends RecyclerView.Adapter<Recycle
     private Context context;
     private List<MotivadoresProceso> procesoList = new ArrayList<>();
     private int i = 0;
+    private ArrayList<String> listColor = new ArrayList<>();
 
     private OnItemClickListener mListener;
 
@@ -48,25 +50,27 @@ public class RecyclerViewMotivadoresProceso extends RecyclerView.Adapter<Recycle
         TextView txtSumaValorProgeso;
         TextView txtTotalValorProgreso;
         TextView txtPorcentajeMotivadoresProceso;
-        Button btnCanjearMotivador, btnMEnProgreso;
+        Button btnCanjearMotivador;
         SeekBar motivadorProgreso;
         ConstraintLayout constProcesoMotivador;
         ImageView imgTerminoMotivador, imgRegaloMotivador;
+        LinearLayout layoutProgresoMotivadores;
+        CardView backgroundMotivadoresProgreso;
 
         public ItemViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
 
-            //txtTotalValor = (TextView) itemView.findViewById(R.id.txtTotalValorMotivadorProceso);
             txtDescripcion = (TextView) itemView.findViewById(R.id.txtDescripcionMotivadorProceso);
             txtSumaValorProgeso = (TextView) itemView.findViewById(R.id.txtSumaValorMotivadorProceso);
             txtTotalValorProgreso = (TextView) itemView.findViewById(R.id.txtTotalValorMotivadorProceso);
             txtPorcentajeMotivadoresProceso = (TextView) itemView.findViewById(R.id.txtPorcentajeMotivadoresProceso);
             btnCanjearMotivador = (Button) itemView.findViewById(R.id.btnMCanjear);
-            btnMEnProgreso = (Button) itemView.findViewById(R.id.btnMEnProgreso);
             motivadorProgreso = (SeekBar) itemView.findViewById(R.id.MotivadorProgreso);
             constProcesoMotivador = (ConstraintLayout) itemView.findViewById(R.id.constProcesoMotivador);
             imgTerminoMotivador = (ImageView) itemView.findViewById(R.id.imgTerminoMotivador);
             imgRegaloMotivador = (ImageView) itemView.findViewById(R.id.imgRegaloMotivador);
+            layoutProgresoMotivadores = (LinearLayout) itemView.findViewById(R.id.layoutProgresoMotivadores);
+            backgroundMotivadoresProgreso = (CardView) itemView.findViewById(R.id.backgroundMotivadoresProgreso);
 
             btnCanjearMotivador.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -79,6 +83,11 @@ public class RecyclerViewMotivadoresProceso extends RecyclerView.Adapter<Recycle
                     }
                 }
             });
+
+            listColor.add("#E1F2FF");
+            listColor.add("#E6E1FF");
+            listColor.add("#FFEFE1");
+            listColor.add("#FEEDCF");
 
         }
     }
@@ -98,10 +107,12 @@ public class RecyclerViewMotivadoresProceso extends RecyclerView.Adapter<Recycle
         ItemViewHolder viewHolder = (ItemViewHolder) holder;
         MotivadoresProceso proceso = this.procesoList.get(position);
 
-        boolean terminoMotivador = false;
-
         int totalFichas = proceso.getTotalFicha();
         int valorMotivador = proceso.getValor();
+
+
+        viewHolder.backgroundMotivadoresProgreso.setCardBackgroundColor(Color.parseColor(listColor.get(i)));
+        i++;
 
         viewHolder.txtDescripcion.setText(proceso.getDescripcion());
         viewHolder.txtTotalValorProgreso.setText(String.valueOf(valorMotivador));
@@ -110,17 +121,12 @@ public class RecyclerViewMotivadoresProceso extends RecyclerView.Adapter<Recycle
         viewHolder.motivadorProgreso.setProgress(totalFichas);
 
         if (totalFichas >= valorMotivador) {
-            viewHolder.btnMEnProgreso.setVisibility(View.GONE);
             viewHolder.btnCanjearMotivador.setVisibility(View.VISIBLE);
+            viewHolder.layoutProgresoMotivadores.setVisibility(View.GONE);
             viewHolder.txtSumaValorProgeso.setText(String.valueOf(valorMotivador) + "/");
             viewHolder.txtSumaValorProgeso.setTextColor(Color.parseColor("#4B9D4C"));
             viewHolder.txtTotalValorProgreso.setTextColor(Color.parseColor("#4B9D4C"));
 
-            terminoMotivador = true;
-
-        } else {
-            viewHolder.txtSumaValorProgeso.setText(totalFichas + "/");
-            terminoMotivador = false;
         }
 
         if (procesoList.get(position).getActivo() == 2) {
@@ -134,9 +140,6 @@ public class RecyclerViewMotivadoresProceso extends RecyclerView.Adapter<Recycle
 
         } else {
             viewHolder.txtPorcentajeMotivadoresProceso.setText(String.valueOf(porcentajeMotivador(valorMotivador, totalFichas)));
-        }
-        if (terminoMotivador == true) {
-            viewHolder.txtPorcentajeMotivadoresProceso.setText("100%");
         }
     }
 

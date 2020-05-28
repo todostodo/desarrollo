@@ -124,46 +124,33 @@
                     android:layout_height="wrap_content">
 
 
-                    <TextView
+                    <LinearLayout
                         android:id="@+id/lblMotivadores"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginLeft="20dp"
                         android:layout_marginTop="20dp"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="@string/motivadores"
-                        android:textColor="@color/gris_oscuro_subTitulos"
-                        android:textSize="24sp"
+                        android:gravity="center"
+                        android:orientation="vertical"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginRight="20dp"
-                        android:orientation="horizontal"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/icon_ficha" />
 
                         <TextView
-                            android:id="@+id/txtFichasNino"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="top"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="100"
+                            android:text="@string/motivadores"
                             android:textColor="@color/negro"
-                            android:textColorHighlight="@color/negro"
-                            android:textSize="20sp" />
+                            android:textSize="24sp" />
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="@string/canjea_tus_fichas_por_recompensas"
+                            android:textColor="@color/gris_opaco"
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
@@ -173,10 +160,38 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginTop="50dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginRight="20dp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/lblMotivadores">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icon_ficha" />
+
+                            <TextView
+                                android:id="@+id/txtFichasNino"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:fontFamily="@font/roboto_medium"
+                                android:text="100"
+                                android:textColor="@color/negro"
+                                android:textColorHighlight="@color/negro"
+                                android:textSize="20sp" />
+
+
+                        </LinearLayout>
 
                         <ImageView
                             android:id="@+id/imgPerfilNinoMotivador"
@@ -184,89 +199,60 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:src="@drawable/icon_genero_hombre"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <LinearLayout
-                            android:id="@+id/layoutNombreNino"
+                        <Spinner
+                            android:id="@+id/spinnerMotivadoresNino"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:orientation="vertical"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginTop="10dp"
+                            android:backgroundTint="#9FA2AA"
                             app:layout_constraintLeft_toRightOf="@+id/imgPerfilNinoMotivador"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                            <Spinner
-                                android:id="@+id/spinnerMotivadoresNino"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentTop="true"
-                                android:backgroundTint="#9FA2AA" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/roboto_regular"
-                                android:text="Canjea tus fichas"
-                                android:textColor="@color/gris_oscuro_subTitulos"
-                                android:textSize="16sp" />
-
-                        </LinearLayout>
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/datosNinoMotivador">
-
-                        <TextView
+                        <Button
+                            android:id="@+id/btnSelectMotivador"
+                            style="?attr/buttonBarButtonStyle"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
                             android:layout_marginStart="20dp"
                             android:layout_marginLeft="20dp"
-                            android:fontFamily="@font/roboto_medium"
-                            android:text="Asignados"
-                            android:textColor="@color/gris_oscuro_subTitulos"
-                            android:textSize="18sp"
+                            android:layout_marginTop="15dp"
+                            android:background="@drawable/rectangulo_custom_background"
+                            android:backgroundTint="#367FFA"
+                            android:fontFamily="@font/roboto_regular"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="20dp"
+                            android:text="Asignar morivador"
+                            android:textAllCaps="false"
+                            android:textColor="@color/blanco"
+                            android:textSize="14sp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toLeftOf="parent" />
+                            app:layout_constraintHorizontal_bias="0"
+                            app:layout_constraintLeft_toRightOf="@+id/imgPerfilNinoMotivador"
+                            app:layout_constraintTop_toBottomOf="@+id/spinnerMotivadoresNino" />
 
-                        <RelativeLayout
-                            android:id="@+id/btnSelectMotivador"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="20dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:background="@drawable/circulo_custom_background"
-                                android:backgroundTint="@color/azul_button"
-                                android:paddingLeft="30dp"
-                                android:paddingTop="20dp"
-                                android:paddingRight="30dp"
-                                android:paddingBottom="20dp" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:background="@drawable/icon_mas"
-                                android:backgroundTint="@color/blanco"
-                                android:padding="18dp" />
-
-                        </RelativeLayout>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="40dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="En proceso"
+                        android:textColor="#656E87"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/datosNinoMotivador" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -274,8 +260,8 @@
                     android:id="@+id/myRecyclerViewMotivadoresProceso"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:paddingBottom="20dp"
                     android:visibility="visible"

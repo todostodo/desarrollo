@@ -103,7 +103,6 @@ public class PerfilAjustesActivity extends AppCompatActivity {
 
         dialogEditCorreo = new Dialog(PerfilAjustesActivity.this);
         dialogEditCorreo.setContentView(R.layout.perfil_edit_correo);
-        dialogEditCorreo.setCancelable(false);
         dialogEditCorreo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogEditCorreo.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -217,7 +216,6 @@ public class PerfilAjustesActivity extends AppCompatActivity {
 
         dialogEditPassword = new Dialog(PerfilAjustesActivity.this);
         dialogEditPassword.setContentView(R.layout.perfil_edit_password);
-        dialogEditPassword.setCancelable(false);
         dialogEditPassword.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogEditPassword.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
@@ -334,7 +332,7 @@ public class PerfilAjustesActivity extends AppCompatActivity {
         _btnCancelarEditPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogEditCorreo.dismiss();
+                dialogEditPassword.dismiss();
             }
         });
 

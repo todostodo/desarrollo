@@ -61,7 +61,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
     private int gustosAuxiliar = 0, regresar = 1;
     private Button _btnAddNino;
     private TextView _txtAvisoPreferencia, txtToast;
-    private TextView _edadTres, _edadCuatro, _edadCinco, _edadSeis, _edadSiete, _edadOcho, _edadNueve, _edadDiez, _edadOnce, _edadDoce;
+    private TextView _edadSeis, _edadSiete, _edadOcho, _edadNueve, _edadDiez, _edadOnce, _edadDoce;
     private ArrayList<TextView> listTexView = new ArrayList<>();
     private EditText
             _txtHijoNombre,
@@ -166,7 +166,8 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
     }
 
     private void validacionEdadNino() {
-        _edadTres.setOnClickListener(new View.OnClickListener() {
+
+       /* _edadTres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 auxEdad = 3;
@@ -192,7 +193,8 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
                 listTexView.add(_edadCinco);
                 validacionEdadNinoDesactivarEvento();
             }
-        });
+        });*/
+
         _edadSeis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -564,11 +566,10 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
             editor.commit();
         }
         int idNino = preferenc.getInt("nino", 1);
-        //Agregar datos generales
-        //int arr[] = consultasLocales.obtenerDatosUsuario(getApplicationContext());
+
         ConexionApi.insertarNiñoNuevo(
                 getApplicationContext(),
-                sharedPreferences.getInt("idGlobal",0),
+                sharedPreferences.getInt("idGlobal", 0),
                 generoNino,
                 nombreNino,
                 apellidoPNino,
@@ -736,10 +737,6 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
         //Tercera parte - medidas corporales
         _registroMedidasNino = (ConstraintLayout) findViewById(R.id.registroNino);
 
-        //Botones para seleccionar la edad
-        _edadTres = (TextView) findViewById(R.id.edadTres);
-        _edadCuatro = (TextView) findViewById(R.id.edadCuatro);
-        _edadCinco = (TextView) findViewById(R.id.edadCinco);
         _edadSeis = (TextView) findViewById(R.id.edadSeis);
         _edadSiete = (TextView) findViewById(R.id.edadSiete);
         _edadOcho = (TextView) findViewById(R.id.edadOcho);
@@ -813,7 +810,7 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
 
                 return "Success";
 
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
                 return "Fail";
             }
@@ -824,9 +821,9 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
             super.onPostExecute(s);
 
             progressDialog.dismiss();
-            if (s.equals("Success")){
+            if (s.equals("Success")) {
                 toast.toastp(getApplicationContext(), "Se ha registrado conrrectamente el niño");
-            }else{
+            } else {
                 toast.toastp(getApplicationContext(), "Algo salio mal");
             }
         }

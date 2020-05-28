@@ -14,6 +14,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -297,7 +298,7 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
                 //"ULtraProcesado",
                 1);
 
-        toast.toastp(context, "Alimento registrado");
+        Toast.makeText(context, "Kcalorias registradas", Toast.LENGTH_SHORT).show();
     }
 
     private void msgEducativoDialog(Context context) {

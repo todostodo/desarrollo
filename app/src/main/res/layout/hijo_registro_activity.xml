@@ -460,7 +460,7 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <TextView
+                    <!--<TextView
                         android:id="@+id/edadTres"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -486,7 +486,7 @@
                         android:layout_marginRight="25dp"
                         android:text="5"
                         android:textColor="@color/gris_edad"
-                        android:textSize="40sp" />
+                        android:textSize="40sp" />-->
 
                     <TextView
                         android:id="@+id/edadSeis"

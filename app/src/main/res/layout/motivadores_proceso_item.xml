@@ -4,12 +4,227 @@
     android:id="@+id/backgroundMotivadoresProgreso"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="1dp"
-    app:cardUseCompatPadding="true">
+    android:layout_marginTop="20dp"
+    app:cardCornerRadius="20dp"
+    app:cardBackgroundColor="#E1F2FF"
+    app:cardElevation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imgTerminoMotivador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_doble_palomita"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintProgresoMotivador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgRegaloMotivador"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_regalo"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.15" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/imgRegaloMotivador"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/txtDescripcionMotivadorProceso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Ir de paseo en bicicleta"
+                    android:textColor="@color/negro"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textColor="#656E87"
+                        android:layout_marginRight="5dp"
+                        android:text="Fichas"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/txtSumaValorMotivadorProceso"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="06/"
+                            android:textColor="#656E87"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtTotalValorMotivadorProceso"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/txtSumaValorMotivadorProceso"
+                            android:layout_toRightOf="@+id/txtSumaValorMotivadorProceso"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="08"
+                            android:textColor="#656E87"
+                            android:textSize="16sp" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constProcesoMotivador"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintProgresoMotivador">
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <LinearLayout
+                        android:id="@+id/layoutProgresoMotivadores"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="visible"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginBottom="10dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/txtPorcentajeMotivadoresProceso"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.6"
+                                android:fontFamily="@font/roboto_medium"
+                                android:text="60.0"
+                                android:textColor="#656E87"
+                                android:layout_marginRight="5dp"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.6"
+                                android:fontFamily="@font/roboto_medium"
+                                android:text="de"
+                                android:textColor="#656E87"
+                                android:layout_marginRight="5dp"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.6"
+                                android:fontFamily="@font/roboto_medium"
+                                android:text="100% completado"
+                                android:textColor="#656E87"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                        <SeekBar
+                            android:id="@+id/MotivadorProgreso"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="8.4"
+                            android:max="10"
+                            android:layout_marginLeft="-15dp"
+                            android:maxHeight="10dp"
+                            android:minHeight="10dp"
+                            android:progress="5"
+                            android:progressDrawable="@drawable/seek_bar_motivadores"
+                            android:thumb="@null" />
+
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btnMCanjear"
+                        style="?attr/buttonBarButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/rectangulo_custom_background"
+                        android:backgroundTint="#367FFA"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Canjear"
+                        android:textAllCaps="false"
+                        android:textColor="@color/blanco"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHeight_percent="0.9"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.4" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
+
+
+    <!--
+     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp">
@@ -160,7 +375,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/blanco"
                 android:textSize="16sp"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_percent="0.6"
                 app:layout_constraintRight_toRightOf="parent"
@@ -180,7 +395,7 @@
                 android:textAllCaps="false"
                 android:textColor="#A3A5B5"
                 android:textSize="16sp"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_percent="0.6"
                 app:layout_constraintRight_toRightOf="parent"
@@ -190,161 +405,4 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.cardview.widget.CardView>
-
-
-    <!--
-      <TextView
-            android:id="@+id/txtDescripcionMotivadorProceso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="30dp"
-            android:fontFamily="@font/roboto_regular"
-            android:text="@string/textview"
-            android:textColor="@color/blanco"
-            android:textSize="16sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/layoutPorcentaje"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:orientation="horizontal"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDescripcionMotivadorProceso">
-
-            <TextView
-                android:id="@+id/txtPorcentajeMotivadoresProceso"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_medium"
-                android:text="@string/textview"
-                android:textColor="@color/blanco"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="@font/roboto_regular"
-                android:text="/ 100 %"
-                android:textColor="#80000000"
-                android:textSize="20sp" />
-
-        </LinearLayout>
-
-
-        <Button
-            android:id="@+id/btnMCanjear"
-            style="?android:borderlessButtonStyle"
-            android:layout_width="90dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/rectangulo_custom_background"
-            android:backgroundTint="#80000000"
-            android:fontFamily="@font/roboto_regular"
-            android:text="Canjear"
-            android:textAllCaps="false"
-            android:textColor="@color/blanco"
-            android:textSize="16sp"
-            android:visibility="gone"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDescripcionMotivadorProceso" />
-
-
-        <LinearLayout
-            android:id="@+id/layoutProcesoMotivador"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:orientation="vertical"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutPorcentaje">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="5dp"
-                    android:text="@string/valor"
-                    android:textColor="@color/blanco"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/txtTotalValorMotivadorProceso"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text="@string/textview"
-                    android:textColor="@color/blanco"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/fichas"
-                    android:textColor="@color/blanco"
-                    android:textSize="14sp" />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/txtSumaValorMotivadorProceso"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:layout_toStartOf="@+id/txtTotalValorMotivadorProceso2"
-                        android:layout_toLeftOf="@+id/txtTotalValorMotivadorProceso2"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="@string/textview"
-                        android:textColor="@color/blanco"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/txtTotalValorMotivadorProceso2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="@string/textview"
-                        android:textColor="@color/blanco"
-                        android:textSize="14sp" />
-
-                </RelativeLayout>
-
-
-            </LinearLayout>
-
-            <SeekBar
-                android:id="@+id/MotivadorProgreso"
-                android:layout_width="match_parent"
-                android:layout_height="7dp"
-                android:layout_marginTop="3dp"
-                android:max="10"
-                android:maxHeight="10dp"
-                android:minHeight="10dp"
-                android:progress="5"
-                android:progressDrawable="@drawable/seek_bar_motivadores"
-                android:thumb="@null" />
-
-        </LinearLayout>
     -->

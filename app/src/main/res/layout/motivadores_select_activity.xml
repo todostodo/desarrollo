@@ -55,15 +55,14 @@
                     android:id="@+id/myRecyclerViewMotivadoresDisponibles"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="50dp"
-                    tools:listitem="@layout/motivadores_select_item"
-                    app:layout_constraintTop_toBottomOf="@+id/btnCerrarLogin"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@+id/btnCerrarLogin"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:listitem="@layout/motivadores_select_item" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -86,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:background="@drawable/circulo_custom_background"
-            android:backgroundTint="@color/azul_button"
+            android:backgroundTint="#367FFA"
             android:paddingLeft="30dp"
             android:paddingTop="20dp"
             android:paddingRight="30dp"

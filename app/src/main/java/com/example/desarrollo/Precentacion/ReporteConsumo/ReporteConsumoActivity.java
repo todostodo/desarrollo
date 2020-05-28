@@ -17,7 +17,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.desarrollo.Datos.Calculos;
+import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Datos.ReporteConsumoDao;
+import com.example.desarrollo.Entidades.Nino;
 import com.example.desarrollo.Entidades.ReporteConsumo;
 import com.example.desarrollo.LogicaNegocio.Adapter.RecyclerViewReporteConsumo;
 import com.example.desarrollo.R;
@@ -31,8 +33,8 @@ import java.util.List;
 
 public class ReporteConsumoActivity extends AppCompatActivity {
 
-    private Spinner spinnerReporteConsumo;
-    private ArrayAdapter<CharSequence> adapterApinner;
+    private Spinner spinnerReporteConsumo, spinnerNinoReporteConsumo;
+    private ArrayAdapter<CharSequence> adapterApinnerNino;
     private TextView _txtSumPorcionesReporteConsumo;
     private Calendar calendar;
     private List<String> spinnerArrayFecha = new ArrayList<>();
@@ -44,15 +46,19 @@ public class ReporteConsumoActivity extends AppCompatActivity {
     private ImageView imgDesplazarAlimentosReporte, imgDesplazarUltraPReporte;
     private LinearLayout layoutMostrarAlimentosReporteConsumo, layoutMostrarUltraPReporteConsumo;
     private RelativeLayout _btnCerrarReporteConsumo;
+    private LinearLayout layoutDezplazarUltraPReporteConsumo;
 
     private RecyclerView _myRecyclerViewReporteConsumo, _myRecyclerViewUltraPReporteConsumo;
     private RecyclerViewReporteConsumo adapterReporteConsumo;
     private ArrayList<ReporteConsumo> reporteConsumoListFV = new ArrayList<>();
     private ArrayList<ReporteConsumo> reporteConsumoListUltraP = new ArrayList<>();
+    private ArrayList<Nino> ninoList = new ArrayList<>();
+    private ArrayList<String> listNino;
 
     private ReporteConsumoDao reporteConsumoDao = new ReporteConsumoDao();
     private Calculos calculos;
     private Toastp toastp;
+    private NinoDao ninoDao;
 
     private static final String TAG = "ReporteConsumoActivity";
 
@@ -108,13 +114,13 @@ public class ReporteConsumoActivity extends AppCompatActivity {
         btnOcultarReporteUltraP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (desplazarUltraP == true){
+                if (desplazarUltraP == true) {
                     imgDesplazarUltraPReporte.setImageResource(R.drawable.icon_desplazar_abajo);
-                    _myRecyclerViewUltraPReporteConsumo.setVisibility(View.VISIBLE);
+                    layoutDezplazarUltraPReporteConsumo.setVisibility(View.VISIBLE);
                     desplazarUltraP = false;
-                }else{
+                } else {
                     imgDesplazarUltraPReporte.setImageResource(R.drawable.icon_desplazar_arriba);
-                    _myRecyclerViewUltraPReporteConsumo.setVisibility(View.GONE);
+                    layoutDezplazarUltraPReporteConsumo.setVisibility(View.GONE);
                     desplazarUltraP = true;
                 }
             }
@@ -127,6 +133,39 @@ public class ReporteConsumoActivity extends AppCompatActivity {
             }
         });
 
+        selectNino();
+
+    }
+
+    private void selectNino() {
+
+        ninoList.clear();
+        ninoDao.consultarNino(TAG, getApplicationContext(), ninoList);
+        listNino = new ArrayList<>();
+
+        for (int i = 0; i < ninoList.size(); i++){
+            listNino.add(ninoList.get(i).getNombre());
+        }
+
+        adapterApinnerNino = new ArrayAdapter(getApplicationContext(), R.layout.spinner_reporte_consumo, listNino);
+        adapterApinnerNino.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerNinoReporteConsumo.setAdapter(adapterApinnerNino);
+
+        spinnerNinoReporteConsumo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectFecha(ninoList.get(position).getIdNino());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    private void selectFecha(final int idNino){
+
         spinnerArrayFecha.add("Semana actual");
         spinnerArrayFecha.add("Semana anterior");
         spinnerArrayFecha.add("2 semanas atras");
@@ -137,16 +176,15 @@ public class ReporteConsumoActivity extends AppCompatActivity {
         spinnerArrayFecha.add("7 semanas atras");
         spinnerArrayFecha.add("8 semanas atras");
 
-        ArrayAdapter<String> adapterApinner = new ArrayAdapter<String>(this, R.layout.spinner_reporte_consumo, spinnerArrayFecha);
-        adapterApinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerReporteConsumo.setAdapter(adapterApinner);
+        ArrayAdapter<String> adapterApinnerFecha = new ArrayAdapter<String>(this, R.layout.spinner_reporte_consumo, spinnerArrayFecha);
+        adapterApinnerFecha.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerReporteConsumo.setAdapter(adapterApinnerFecha);
 
         spinnerReporteConsumo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Object item = parent.getItemAtPosition(position);
-                toastp.toastp(getApplicationContext(), "SELECT " + item.toString());
-                mostrarReporteConsumo(item.toString());
+                mostrarReporteConsumo(item.toString(), idNino);
             }
 
             @Override
@@ -154,10 +192,9 @@ public class ReporteConsumoActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
-    private void mostrarReporteConsumo(String semana) {
+    private void mostrarReporteConsumo(String semana, int idNino) {
 
         String[] fechas = new String[7];
         boolean mostrarReporte = false;
@@ -165,27 +202,32 @@ public class ReporteConsumoActivity extends AppCompatActivity {
         if (semana.equals("Semana actual")) {
             fechas = semanaActual();
             mostrarReporte = true;
-        } else {
-            if (semana.equals("Semana anterior")) {
-                fechas = calendarReporteConsumo(7);
-                mostrarReporte = true;
-            } else {
-                if (semana.equals("2 semanas atras")) {
-                    fechas = calendarReporteConsumo(14);
-                    mostrarReporte = true;
-                } else {
-                    if (semana.equals("3 semanas atras")) {
-                        fechas = calendarReporteConsumo(21);
-                        mostrarReporte = true;
-                    } else {
-                        if (semana.equals("4 semanas atras")) {
-                            fechas = calendarReporteConsumo(28);
-                            mostrarReporte = true;
-                        }
-                    }
-                }
-            }
+        } else if (semana.equals("Semana anterior")) {
+            fechas = calendarReporteConsumo(7);
+            mostrarReporte = true;
+        } else if (semana.equals("2 semanas atras")) {
+            fechas = calendarReporteConsumo(14);
+            mostrarReporte = true;
+        } else if (semana.equals("3 semanas atras")) {
+            fechas = calendarReporteConsumo(21);
+            mostrarReporte = true;
+        } else if (semana.equals("4 semanas atras")) {
+            fechas = calendarReporteConsumo(28);
+            mostrarReporte = true;
+        } else if (semana.equals("5 semanas atras")) {
+            fechas = calendarReporteConsumo(35);
+            mostrarReporte = true;
+        } else if (semana.equals("6 semanas atras")) {
+            fechas = calendarReporteConsumo(42);
+            mostrarReporte = true;
+        } else if (semana.equals("7 semanas atras")) {
+            fechas = calendarReporteConsumo(49);
+            mostrarReporte = true;
+        } else if (semana.equals("8 semanas atras")) {
+            fechas = calendarReporteConsumo(56);
+            mostrarReporte = true;
         }
+
 
         txtFechaInicioReporteConsumo.setText(fechas[0] + " al ");
         txtFechaFinalReporteConsumo.setText(fechas[6]);
@@ -197,7 +239,7 @@ public class ReporteConsumoActivity extends AppCompatActivity {
             reporteConsumoListFV.clear();
             double sumProciones = 0;
             _myRecyclerViewReporteConsumo.setLayoutManager(new LinearLayoutManager(this));
-            reporteConsumoDao.consultarReporteConsumo(TAG, getApplicationContext(), reporteConsumoListFV, getDaysFormat[0], getDaysFormat[6]);
+            reporteConsumoDao.consultarReporteConsumo(TAG, getApplicationContext(), reporteConsumoListFV, getDaysFormat[0], getDaysFormat[6], idNino);
             adapterReporteConsumo = new RecyclerViewReporteConsumo(reporteConsumoListFV, "FrutasVerduras");
             _myRecyclerViewReporteConsumo.setAdapter(adapterReporteConsumo);
 
@@ -208,10 +250,11 @@ public class ReporteConsumoActivity extends AppCompatActivity {
 
 
             //Codigo para mostrar Reporte Ultra procesados
+
             reporteConsumoListUltraP.clear();
             double sumKcalorias = 0;
             _myRecyclerViewUltraPReporteConsumo.setLayoutManager(new LinearLayoutManager(this));
-            reporteConsumoDao.consultarReporteConsumoUltraProcesados(TAG, getApplicationContext(), reporteConsumoListUltraP, getDaysFormat[0], getDaysFormat[6]);
+            reporteConsumoDao.consultarReporteConsumoUltraProcesados(TAG, getApplicationContext(), reporteConsumoListUltraP, getDaysFormat[0], getDaysFormat[6], idNino);
             adapterReporteConsumo = new RecyclerViewReporteConsumo(reporteConsumoListUltraP, "UltraProcesados");
             _myRecyclerViewUltraPReporteConsumo.setAdapter((adapterReporteConsumo));
 
@@ -255,6 +298,7 @@ public class ReporteConsumoActivity extends AppCompatActivity {
 
     private void init() {
         spinnerReporteConsumo = (Spinner) findViewById(R.id.spinnerReporteConsumo);
+        spinnerNinoReporteConsumo = (Spinner) findViewById(R.id.spinnerNinoReporteConsumo);
         _myRecyclerViewReporteConsumo = (RecyclerView) findViewById(R.id.myRecyclerViewAlimentosReporteConsumo);
         _myRecyclerViewUltraPReporteConsumo = (RecyclerView) findViewById(R.id.myRecyclerViewUltraPReporteConsumo);
         _txtSumPorcionesReporteConsumo = (TextView) findViewById(R.id.txtSumPorcionesReporteConsumo);
@@ -271,5 +315,6 @@ public class ReporteConsumoActivity extends AppCompatActivity {
         layoutMostrarUltraPReporteConsumo = (LinearLayout) findViewById(R.id.layoutMostrarUltraPReporteConsumo);
         txtSumKcaloriasReporteConsumo = (TextView) findViewById(R.id.txtSumKcaloriasReporteConsumo);
         _btnCerrarReporteConsumo = (RelativeLayout) findViewById(R.id.btnCerrarReporteConsumo);
+        layoutDezplazarUltraPReporteConsumo = (LinearLayout) findViewById(R.id.layoutDezplazarUltraPReporteConsumo);
     }
 }

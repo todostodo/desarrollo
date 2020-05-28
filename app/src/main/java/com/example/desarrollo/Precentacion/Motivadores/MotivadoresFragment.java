@@ -37,7 +37,7 @@ import java.util.Locale;
 public class MotivadoresFragment extends Fragment {
 
     private View view;
-    private RelativeLayout _btnSelectMotivador;
+    private Button _btnSelectMotivador;
     private LinearLayout _layoutMotivadoresVacio;
     private TextView _txtFichasNino;
     private Spinner _spinnerMotivadoresNino;
@@ -244,7 +244,7 @@ public class MotivadoresFragment extends Fragment {
 
 
     private void init() {
-        _btnSelectMotivador = (RelativeLayout) view.findViewById(R.id.btnSelectMotivador);
+        _btnSelectMotivador = (Button) view.findViewById(R.id.btnSelectMotivador);
         _layoutMotivadoresVacio = (LinearLayout) view.findViewById(R.id.layoutMotivadoresVacio);
         _txtFichasNino = (TextView) view.findViewById(R.id.txtFichasNino);
         _spinnerMotivadoresNino = (Spinner) view.findViewById(R.id.spinnerMotivadoresNino);

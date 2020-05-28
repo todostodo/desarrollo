@@ -569,8 +569,6 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
                 }
             }
         }
-
-        //_txtCantidadConsumo.setText("");
     }
     //-----------------------------------------------------------
 
@@ -593,7 +591,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
                 1
         );
         if (insert == true) {
-            toast.toastp(getApplicationContext(), "Alimento registrado");
+            Toast.makeText(getApplicationContext(), "Porciones registradas", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
         }

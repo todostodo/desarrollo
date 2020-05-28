@@ -18,7 +18,7 @@ public class ReporteConsumoDao {
 
     private SQLiteDatabase database;
 
-    public void consultarReporteConsumo(String TAG, Context context, ArrayList list, String FechaInicio, String FechaFinal) {
+    public void consultarReporteConsumo(String TAG, Context context, ArrayList list, String FechaInicio, String FechaFinal, int idNino) {
 
         try {
             ConexionSQLHelper conection = new ConexionSQLHelper(context);
@@ -38,7 +38,8 @@ public class ReporteConsumoDao {
                     " INNER JOIN " + Utilidades.TABLA_Registro +
                     " ON " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idRegistro +
                     " WHERE (" + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " >= Date('" + FechaInicio + "')" + " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " <= Date('" + FechaFinal + "'))" +
-                    " AND (" + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " == 'Verdura'" + " OR " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " == 'Fruta')", null);
+                    " AND (" + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " == 'Verdura'" + " OR " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " == 'Fruta')" +
+                    " AND " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idNino + " = " + idNino, null);
 
             Log.v(TAG, "FECHA INICIO --------------- " + FechaInicio);
             Log.v(TAG, "FECHA FINAL --------------- " + FechaFinal);
@@ -79,7 +80,7 @@ public class ReporteConsumoDao {
         }
     }
 
-    public void consultarReporteConsumoUltraProcesados(String TAG, Context context, ArrayList list, String FechaInicio, String FechaFinal) {
+    public void consultarReporteConsumoUltraProcesados(String TAG, Context context, ArrayList list, String FechaInicio, String FechaFinal, int idNino) {
 
         try {
             ConexionSQLHelper conection = new ConexionSQLHelper(context);
@@ -100,7 +101,8 @@ public class ReporteConsumoDao {
                     " ON " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idRegistro +
                     " WHERE (" + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " >= Date('" + FechaInicio + "')" + " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " <= Date('" + FechaFinal + "'))" +
                     " AND (" + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " != 'Verdura'" + " AND " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " != 'Fruta')" +
-                    " AND DetalleReg.tipo != 'ULtraProcesado'", null);
+                    " AND DetalleReg.tipo != 'ULtraProcesado'" +
+                    " AND " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idNino + " = " + idNino, null);
 
             while (cursor.moveToNext()) {
 
