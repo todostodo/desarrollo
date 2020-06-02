@@ -244,10 +244,12 @@ public class MainActivity extends AppCompatActivity {
         int llave = preferenc.getInt("valorNoti", 0);
         int noti = preferenc.getInt("noti", 0);
 
+        //System.out.println("llave: "+llave+" ,noti: "+noti+" , ini: "+inih);
         if(noti == 1){
           if (llave == 0) {
               if (inih >= 14 && inih <= 24) {
 
+                  //System.out.println("entre a la notificacioooooon");
                 SharedPreferences.Editor editor = preferenc.edit();
                 editor.remove("valorNoti");
                 editor.putInt("valorNoti", 1);
@@ -258,6 +260,7 @@ public class MainActivity extends AppCompatActivity {
               }
           } else {
               if (inih >= 1 && inih < 14) {
+                 // System.out.println("entre a la notificacioooooon");
                 SharedPreferences.Editor editor = preferenc.edit();
                 editor.remove("valorNoti");
                 editor.putInt("valorNoti", 0);
