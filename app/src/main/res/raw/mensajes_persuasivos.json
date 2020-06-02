@@ -52,5 +52,32 @@
       "titulo": "Tus esfuerzos",
       "mensaje": "Se han visto recompensados con un buen resultado, te felicito por lograr consumir las porciones de verduras del día"
     }
+  ],
+  "consumoPlaneadoUltraP":[
+    {
+      "id": "11",
+      "titulo": "Bien hecho",
+      "mensaje": "Lograste disminuir el consumo de comida chatarra."
+    },
+    {
+      "id": "12",
+      "titulo": "Te has esforzado",
+      "mensaje": "Al disminuir el consumo de la comida ultra procesada y por consecuencia tienes buenos resultados."
+    },
+    {
+      "id": "13",
+      "titulo": "Veo que te has esforzado",
+      "mensaje": "Mucho al disminuir el consumo de comida ultra procesada, sigue así."
+    },
+    {
+      "id": "14",
+      "titulo": "Tus esfuerzos",
+      "mensaje": "Se han visto recompensado con un buen resultado, te felicito por lograr disminuir el consumo de comida ultra procesada."
+    },
+     {
+      "id": "15",
+      "titulo": "Buen trabajo",
+      "mensaje": "Pudiste disminuir el consumo de comida chatarra."
+    }
   ]
 }

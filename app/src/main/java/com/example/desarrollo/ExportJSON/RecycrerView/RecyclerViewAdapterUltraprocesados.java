@@ -257,8 +257,14 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
                         idNino = listNinoDisponible.get(_myRecyclerViewNino.getChildAdapterPosition(v)).getIdNino();
                         registrarConsumo(context, idAlimentoUltrap, kcalorias, cantidad, equivalencia);
                         ninoDialog.dismiss();
-                        if (lineaBaseGeneradaNinoUno())
-                            msgEducativoDialog(context);
+                        if (idNino == 1){
+                            if (lineaBaseGeneradaNinoUno())
+                                msgEducativoDialog(context);
+                        } else if (idNino == 2){
+                            if (lineaBaseGeneradaNinoDos())
+                                msgEducativoDialog(context);
+                        }
+
                     }
                 });
 
@@ -328,6 +334,12 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
         SharedPreferences sharedPreferences = context.getSharedPreferences("Calculo", Context.MODE_PRIVATE);
         Boolean lineaBaseGeneradaNino1 = sharedPreferences.getBoolean("LineaBaseGenerada1", false);
         return lineaBaseGeneradaNino1;
+    }
+
+    private boolean lineaBaseGeneradaNinoDos() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("Calculo", Context.MODE_PRIVATE);
+        Boolean lineaBaseGeneradaNino2 = sharedPreferences.getBoolean("LineaBaseGenerada2", false);
+        return lineaBaseGeneradaNino2;
     }
 
     private void getHoraFecha() {

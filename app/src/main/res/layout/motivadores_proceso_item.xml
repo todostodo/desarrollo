@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
-    app:cardCornerRadius="20dp"
     app:cardBackgroundColor="#E1F2FF"
+    app:cardCornerRadius="15dp"
     app:cardElevation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,6 +18,9 @@
             android:id="@+id/imgTerminoMotivador"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
             android:src="@drawable/icon_doble_palomita"
             android:visibility="gone"
             app:layout_constraintRight_toRightOf="parent"
@@ -54,8 +57,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
                     android:fontFamily="@font/roboto_medium"
                     android:text="Ir de paseo en bicicleta"
                     android:textColor="@color/negro"
@@ -64,20 +67,20 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginStart="15dp">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/roboto_regular"
-                        android:textColor="#656E87"
                         android:layout_marginRight="5dp"
-                        android:text="Fichas"/>
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Fichas"
+                        android:textColor="#656E87"
+                        android:textSize="16sp" />
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -112,8 +115,8 @@
                     android:id="@+id/constProcesoMotivador"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="visible"
                     android:layout_marginTop="10dp"
+                    android:visibility="visible"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/constraintProgresoMotivador">
@@ -121,22 +124,22 @@
                     <View
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <LinearLayout
                         android:id="@+id/layoutProgresoMotivadores"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:orientation="vertical"
-                        android:visibility="visible"
                         android:layout_marginLeft="15dp"
                         android:layout_marginBottom="10dp"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:orientation="vertical"
+                        android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintRight_toRightOf="parent">
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -147,21 +150,21 @@
                                 android:id="@+id/txtPorcentajeMotivadoresProceso"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
                                 android:layout_weight="1.6"
                                 android:fontFamily="@font/roboto_medium"
                                 android:text="60.0"
                                 android:textColor="#656E87"
-                                android:layout_marginRight="5dp"
                                 android:textSize="18sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
                                 android:layout_weight="1.6"
                                 android:fontFamily="@font/roboto_medium"
                                 android:text="de"
                                 android:textColor="#656E87"
-                                android:layout_marginRight="5dp"
                                 android:textSize="18sp" />
 
                             <TextView
@@ -179,10 +182,10 @@
                             android:id="@+id/MotivadorProgreso"
                             android:layout_width="match_parent"
                             android:layout_height="10dp"
+                            android:layout_marginLeft="-15dp"
                             android:layout_marginTop="10dp"
                             android:layout_weight="8.4"
                             android:max="10"
-                            android:layout_marginLeft="-15dp"
                             android:maxHeight="10dp"
                             android:minHeight="10dp"
                             android:progress="5"
@@ -198,7 +201,7 @@
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:background="@drawable/rectangulo_custom_background"
-                        android:backgroundTint="#367FFA"
+                        android:backgroundTint="#80367FFA"
                         android:fontFamily="@font/roboto_regular"
                         android:text="Canjear"
                         android:textAllCaps="false"

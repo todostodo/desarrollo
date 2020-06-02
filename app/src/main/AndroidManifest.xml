@@ -98,6 +98,13 @@
             android:name=".Precentacion.ReporteConsumo.ReporteConsumoActivity"
             android:screenOrientation="userPortrait" />
 
+        <activity android:name=".Precentacion.Foro.ForoActivity"
+            android:screenOrientation="userPortrait" />
+
+        <activity android:name=".Precentacion.Foro.ForoInformacionActivity"
+            android:screenOrientation="userPortrait"
+            android:theme="@style/ThemeSegundaActivity"/>
+
     </application>
 
 </manifest>

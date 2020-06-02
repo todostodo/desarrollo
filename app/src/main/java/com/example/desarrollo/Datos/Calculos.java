@@ -1162,11 +1162,7 @@ public class Calculos {
             String inicio = preferenc.getString("FechaInicio", "");
             String fecha = getFecha();
             System.out.println("FECHA: " + inicio);
-            /*Cursor cursor = database.rawQuery("SELECT " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Equivalencia + " FROM " + Utilidades.TABLA_DetalleRegistro +
-                    " INNER JOIN " + Utilidades.TABLA_Registro + " ON " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idRegistro +
-                    " WHERE " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idNino + " = " + idNino +
-                    " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro +
-                    " BETWEEN '" + inicio + "' AND '" + fecha + "'", null);*/
+
             Cursor cursor = database.rawQuery("SELECT " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Equivalencia + " FROM " + Utilidades.TABLA_DetalleRegistro +
                     " INNER JOIN " + Utilidades.TABLA_Registro + " ON " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idRegistro +
                     " WHERE (" + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " >= " + " DATE(" + inicio + ") AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " <= " + " DATE(" + fecha + "))" +
@@ -1279,8 +1275,9 @@ public class Calculos {
 
             Cursor cursor = database.rawQuery("SELECT " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Equivalencia + " FROM " + Utilidades.TABLA_DetalleRegistro +
                     " INNER JOIN " + Utilidades.TABLA_Registro + " ON " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idRegistro +
+                            " AND (" + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " != 'Fruta' AND " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " != 'Verdura')" +
                     " WHERE " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idNino + " = " + idNino +
-                    " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " = '" + fecha + "'", null);
+                    " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " == '" + fecha + "'", null);
 
             if (cursor.moveToFirst()) {
                 do {

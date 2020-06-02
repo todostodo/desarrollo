@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:fitsSystemWindows="false"
+    android:background="@color/blanco">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/tituloForo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:id="@+id/btmCerrarForo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:padding="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/flecha_regresar"
+                    android:backgroundTint="@color/gris_opaco"
+                    android:padding="10dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="7"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Recetas"
+                android:textColor="@color/negro"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <!--EN CASO DE AGREGAR MAS RECETAS -->
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/mySearchViewRecetas"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginLeft="25dp"
+            android:visibility="invisible"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/rectangulo_gris"
+            android:backgroundTint="#F5F6F8"
+            android:elevation="0dp"
+            android:inputType="text"
+            android:theme="@style/AppSearchView"
+            app:iconifiedByDefault="false"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tituloForo"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="Buscar"
+            app:searchIcon="@drawable/buscar_recetas" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/myRecyclerViewForoRecetas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mySearchViewRecetas"
+            tools:listitem="@layout/foro_activity_item" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

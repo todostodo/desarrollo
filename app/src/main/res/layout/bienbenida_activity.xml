@@ -16,8 +16,9 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -28,34 +29,22 @@
             android:background="@drawable/icon_alimento_manzana"
             android:backgroundTint="@color/blanco" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_medium"
-                android:text="@string/alimentaci_n"
-                android:textColor="@color/blanco"
-                android:textSize="26sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:text="@string/s_a_n_a"
-                android:textColor="@color/blanco"
-                android:textSize="20sp" />
-
-        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/alimentaci_n"
+            android:textColor="@color/blanco"
+            android:textSize="24sp" />
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="0dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/s_a_n_a"
+            android:textColor="@color/blanco"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -65,11 +54,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/rectangulo_transparent_border_blanco"
+        android:background="@drawable/rectangulo_gris"
         android:fontFamily="@font/roboto_regular"
         android:text="@string/registrarse"
         android:textAllCaps="false"
-        android:textColor="@color/blanco"
+        android:textColor="@color/negro"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/btnOptionLogin"
         app:layout_constraintHeight_percent="0.06"
@@ -82,7 +71,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/rectangulo_rojo"
+        android:background="@drawable/rectangulo_transparent_border_blanco"
         android:fontFamily="@font/roboto_regular"
         android:text="@string/iniciar_sesion"
         android:textAllCaps="false"

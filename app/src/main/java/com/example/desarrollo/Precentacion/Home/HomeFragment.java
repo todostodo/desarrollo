@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.example.desarrollo.Datos.NinoDao;
 import com.example.desarrollo.Datos.UserDao;
 import com.example.desarrollo.Precentacion.Alimentos.AlimentosActivity;
+import com.example.desarrollo.Precentacion.Foro.ForoActivity;
 import com.example.desarrollo.Precentacion.Login.IntroduccionActivity;
 import com.example.desarrollo.Precentacion.ReporteConsumo.ReporteConsumoActivity;
 import com.example.desarrollo.R;
@@ -83,6 +84,14 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent reporteConsumo = new Intent(getActivity(), ReporteConsumoActivity.class);
                 startActivity(reporteConsumo);
+            }
+        });
+
+        getView().findViewById(R.id.btnForo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent foro = new Intent(getActivity(), ForoActivity.class);
+                startActivity(foro);
             }
         });
     }

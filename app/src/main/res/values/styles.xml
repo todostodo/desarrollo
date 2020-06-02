@@ -8,6 +8,11 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="ThemeSegundaActivity" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/negro</item>
+        <item name="colorPrimaryDark">@color/negro</item>
+        <item name="colorAccent">@color/negro</item>
+    </style>
 
     <style name="AppSearchView" parent="Widget.AppCompat.SearchView">
         <item name="android:textSize">16sp</item>

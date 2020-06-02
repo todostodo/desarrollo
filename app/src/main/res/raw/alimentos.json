@@ -13,7 +13,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "f_platano",
-      "backgroud": "#F1D890"
+      "backgroud": "F1D890"
     },
     {
       "id": "2",
@@ -28,7 +28,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "f_manzana",
-      "backgroud": "#E6AFB0"
+      "backgroud": "E6AFB0"
     },
     {
       "id": "3",
@@ -43,7 +43,7 @@
       "avisoTitulo": "Las naranjas verdes pueden estar maduras",
       "aviso": "Para que las naranjas adquieran su típico color anaranjado, se precisa que mientras están en el árbol sufran varias noches consecutivas de frío, lo cual no suele ser raro en los países templados.<br><br>El punto de maduración de la naranja no se reconoce por su color exterior, sino por la proporción entre el azúcar y el ácido de su jugo. En los frutos maduros esta proporción es aproximadamente de 6:1, es decir, seis veces más cantidad de azúcar que de ácido. ",
       "imgUrl": "f_naranja",
-      "backgroud": "#FECFAC"
+      "backgroud": "FECFAC"
     },
     {
       "id": "4",
@@ -58,7 +58,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "f_pera",
-      "backgroud": "#DAC366"
+      "backgroud": "DAC366"
     },
     {
       "id": "5",
@@ -73,7 +73,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "f_ciruela",
-      "backgroud": "#BBB8C6"
+      "backgroud": "BBB8C6"
     },
     {
       "id": "6",
@@ -88,7 +88,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "f_durazno",
-      "backgroud": "#F9998D"
+      "backgroud": "F9998D"
     },
     {
       "id": "7",
@@ -103,7 +103,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "f_fresa",
-      "backgroud": "#E9ADAE"
+      "backgroud": "E9ADAE"
     },
     {
       "id": "8",
@@ -118,7 +118,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "f_guayaba",
-      "backgroud": "#D8D9B1"
+      "backgroud": "D8D9B1"
     },
     {
       "id": "9",
@@ -126,14 +126,14 @@
       "unidadMedida": "pieza",
       "equivalencia": "1.25",
       "descripcion": "El kiwi contiene una cantidad moderada de hidratos de carbono en forma de azúcares (11 ,5%), el l% de proteínas y menos del 0.5% de grasa",
-      "recomendacion": " Al natural: Es la forma habitual de consumirlo. El kiwi es un fruto muy resistente, que soporta largos desplazamientos. Normalmente se recolecta cuando todavía está verde, y madura bien fuera del árbol. ",
+      "recomendacion": "Al natural: Es la forma habitual de consumirlo. El kiwi es un fruto muy resistente, que soporta largos desplazamientos. Normalmente se recolecta cuando todavía está verde, y madura bien fuera del árbol. ",
       "recomendacionDos": "",
       "frase": "Estimula las defensas y evita la anemia",
       "ventaja": "Alimento para las infecciones",
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "f_kiwi",
-      "backgroud": "#D2DFB9"
+      "backgroud": "D2DFB9"
     },
     {
       "id": "10",
@@ -148,7 +148,7 @@
       "avisoTitulo": "Los cítricos previenen el cancer",
       "aviso": "Todas las frutas poseen propiedades anticancerígenas, y su consumo habitual contribuye a prevenir el cáncer. Sin embargo, las frutas pertenecientes al grupo de los cítricos destacan por contener una equilibrada combinación de sustancias anticancerígenas: vitamina C, flavonoides, Iimonoides y pectina<br><br>Todas estas sustancias se potencian mutuamente para lograr un marcado efecto protector frente al cáncer. Esto significa que cada una de ellas tomada de forma aislada y purificada, no es tan eficaz como cuando se la ingiere formando parte de una naranja o de un limón, por ejemplo. ",
       "imgUrl": "f_mandarina",
-      "backgroud": "#FBCCB4"
+      "backgroud": "FBCCB4"
     },
     {
       "id": "11",
@@ -163,7 +163,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "f_melon",
-      "backgroud": "#F3AD5B"
+      "backgroud": "F3AD5B"
     },
     {
       "id": "12",
@@ -178,7 +178,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "f_papayo",
-      "backgroud": "#FFD792"
+      "backgroud": "FFD792"
     },
     {
       "id": "13",
@@ -193,7 +193,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "f_pina",
-      "backgroud": "#F2C982"
+      "backgroud": "F2C982"
     },
     {
       "id": "14",
@@ -208,7 +208,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "f_sandia",
-      "backgroud": "#F1BEBD"
+      "backgroud": "F1BEBD"
     },
     {
       "id": "15",
@@ -223,7 +223,7 @@
       "avisoTitulo": "Uvas pasas",
       "aviso": "Aportan poco menos de 300 kcal/100 g. Son muy ricas en hierro: 100 g cubren la cuarta parte de las necesidades diarias de este mineral. También son ricas en potasio y en fibra vegetal. Su contenido en grasa es casi el mismo que el de las uvas frescas. Las vitaminas del complejo B se hallan más concentradas, pero en cambio la C disminuye y la A prácticamente desaparece.",
       "imgUrl": "f_uva",
-      "backgroud": "#797B9D"
+      "backgroud": "797B9D"
     }
   ],
   "Verdura" : [
@@ -240,7 +240,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "v_apio",
-      "backgroud": "#9FBB56"
+      "backgroud": "9FBB56"
     },
     {
       "id": "17",
@@ -255,7 +255,7 @@
       "avisoTitulo": "Precauciones",
       "aviso": "Las berenjenas contienen una cierta cantidad de solanina, que desaparece casi por completo con la maduración.<br><br>La solanina es un alcaloide tóxico que produce trastornos digestivos, pero que desaparece con el calor.<br><br>Por ello las berenjenas se deben tomar siempre bien maduras y cocinadas.",
       "imgUrl": "v_berenjena",
-      "backgroud": "#7C6567"
+      "backgroud": "7C6567"
     },
     {
       "id": "18",
@@ -270,7 +270,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "v_betabel",
-      "backgroud": "#C76E76"
+      "backgroud": "C76E76"
     },
     {
       "id": "19",
@@ -285,7 +285,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "v_brocoli",
-      "backgroud": "#7C9D76"
+      "backgroud": "7C9D76"
     },
     {
       "id": "20",
@@ -300,7 +300,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "v_calabaza",
-      "backgroud": "#FFA955"
+      "backgroud": "FFA955"
     },
     {
       "id": "21",
@@ -315,7 +315,7 @@
       "avisoTitulo": "Déficit de cinc",
       "aviso": "Algunos especialistas en nutrición enfatizan el hecho de que la alimentación a base de vegetales puede ser deficitaria en cinc. Sin embargo, 100 g de garbanzos contienen más cinc (3,43 mg) que la misma cantidad de carne (2,97 mg). Los garbanzos, al igual que las lentejas y la soja, son una excelente fuente de cinc.",
       "imgUrl": "v_chicharo",
-      "backgroud": "#D0DEAA"
+      "backgroud": "D0DEAA"
     },
     {
       "id": "22",
@@ -330,7 +330,7 @@
       "avisoTitulo": "Precauciones",
       "aviso": "Aunque la coliflor se recomienda en las afecciones gástricas e intestinales, su uso debe restringirse en los siguientes casos:<br><b>• Colelitiasis</b> (piedras en la vesícula), debido a que puede producir pesadez y dispepsia de tipo biliar.<br><b>• Flatulencias</b> intestinales: La coliflor aumenta la producción de gases intestinales en personas propensas, debido a su abundante contenido en celulosa.",
       "imgUrl": "v_coliflor",
-      "backgroud": "#CCBC94"
+      "backgroud": "CCBC94"
     },
     {
       "id": "23",
@@ -345,7 +345,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "v_ejote",
-      "backgroud": "#9ACF55"
+      "backgroud": "9ACF55"
     },
     {
       "id": "24",
@@ -360,7 +360,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "v_jicama",
-      "backgroud": "#D4AA72"
+      "backgroud": "D4AA72"
     },
     {
       "id": "25",
@@ -375,7 +375,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "v_lechuga",
-      "backgroud": "#85B73F"
+      "backgroud": "85B73F"
     },
     {
       "id": "26",
@@ -390,7 +390,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "v_nopal",
-      "backgroud": "#B3C98C"
+      "backgroud": "B3C98C"
     },
     {
       "id": "27",
@@ -405,7 +405,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "v_pepino",
-      "backgroud": "#839B67"
+      "backgroud": "839B67"
     },
     {
       "id": "28",
@@ -420,7 +420,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "v_pimiento",
-      "backgroud": "#D55E58"
+      "backgroud": "D55E58"
     },
     {
       "id": "29",
@@ -435,7 +435,7 @@
       "avisoTitulo": "Las coles previenen el cáncer",
       "aviso": "Son muchos los experimentos realizados con animales de laboratorio (ratones casi siempre), en los que se pone de manifiesto la acción anticancerosa de las coles, y en general, de todos los vegetales de la familia de las Crucíferas. En todas estas investigaciones se demuestra que los animales que son alimentados con coles, no desarrollan tumores, incluso aunque se los someta a la acción de potentes cancerígenos como el benzopireno que se encuentra en el humo del tabaco.",
       "imgUrl": "v_repollo",
-      "backgroud": "#707D61"
+      "backgroud": "707D61"
     },
     {
       "id": "30",
@@ -450,7 +450,7 @@
       "avisoTitulo": "El tomate y el ácido oxálico",
       "aviso": "Durante muchos años se ha estado prohibiendo el tomate a los que padecen cálculos renales, debido a su contenido en ácido oxálico. Esta sustancia junto con el calcio forma sales insolubles (oxalato cálcico), las cuales precipitan en forma de cálculos o piedras.<br><br>Sin embargo, no hay razón para eliminar el tomate de la dieta de los enfermos renales. Su contenido en ácido oxálico es muy bajo, similar al de muchos otros alimentos e inferior al de la lechuga, el té o las espinacas.<br><br>Además, el tomate es un buen diurético y depurativo que facilita la función renal. ",
       "imgUrl": "v_tomate",
-      "backgroud": "#D46A5C"
+      "backgroud": "D46A5C"
     },
     {
       "id": "31",
@@ -465,7 +465,7 @@
       "avisoTitulo": "",
       "aviso": "",
       "imgUrl": "v_zanahoria",
-      "backgroud": "#DA8A55"
+      "backgroud": "DA8A55"
     }
   ]
 }

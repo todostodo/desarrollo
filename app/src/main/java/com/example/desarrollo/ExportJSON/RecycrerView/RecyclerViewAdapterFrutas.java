@@ -20,7 +20,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.desarrollo.ExportJSON.Filter.FilterHelperFrutas;
+import com.example.desarrollo.ExportJSON.Filter.FilteredHelperFrutas;
 import com.example.desarrollo.Entidades.Frutas;
 import com.example.desarrollo.R;
 import com.example.desarrollo.Precentacion.Alimentos.AlimentoRegistroactivity;
@@ -32,11 +32,8 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
     private Context context;
     private List<Frutas> frutas;
     private String tipoAlimento;
-    private ArrayList meGusta = new ArrayList();
     private ArrayList<Frutas> currentList;
-    private FilterHelperFrutas filterHelper;
-
-    private static final String TAG = "RecyclerViewAdapterFrut";
+    private FilteredHelperFrutas filterHelper;
 
     public RecyclerViewAdapterFrutas(Context context, ArrayList<Frutas> frutas, String tipoAlimento) {
         this.context = context;
@@ -53,7 +50,6 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
         ImageView imgUrl;
         CardView view_container;
         CardView backgroundVentaja;
-        //LinearLayout backgroundFrutas;
         RelativeLayout backgroundFrutas;
 
 
@@ -114,7 +110,7 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
 
         itemViewHolder.nombre.setText(frutas.getNombre());
         itemViewHolder.frase.setText(frutas.getFrase());
-        itemViewHolder.backgroundFrutas.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(frutas.getBackground())));
+        itemViewHolder.backgroundFrutas.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#" + frutas.getBackground())));
 
         String ventaja = frutas.getVentaja();
 
@@ -130,19 +126,19 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
                     itemViewHolder.backgroundVentaja.setCardBackgroundColor(Color.parseColor("#EBF5EF"));
                     itemViewHolder.ventaja.setTextColor(Color.parseColor("#5C9076"));
                 } else {
-                    if (ventaja.equals("Alimento para el estómago") || ventaja.equals("Alimento para el intestino")){
+                    if (ventaja.equals("Alimento para el estómago") || ventaja.equals("Alimento para el intestino")) {
                         itemViewHolder.backgroundVentaja.setCardBackgroundColor(Color.parseColor("#F9DEC2"));
                         itemViewHolder.ventaja.setTextColor(Color.parseColor("#EF9D49"));
-                    }else {
-                        if (ventaja.equals("Alimento para los ojos")){
+                    } else {
+                        if (ventaja.equals("Alimento para los ojos")) {
                             itemViewHolder.backgroundVentaja.setCardBackgroundColor(Color.parseColor("#EFE9FC"));
                             itemViewHolder.ventaja.setTextColor(Color.parseColor("#7639EB"));
-                        }else{
-                            if (ventaja.equals("Alimento para la piel")){
+                        } else {
+                            if (ventaja.equals("Alimento para la piel")) {
                                 itemViewHolder.backgroundVentaja.setCardBackgroundColor(Color.parseColor("#FBEDEC"));
                                 itemViewHolder.ventaja.setTextColor(Color.parseColor("#ECC4B8"));
-                            }else{
-                                if (ventaja.equals("")){
+                            } else {
+                                if (ventaja.equals("")) {
                                     itemViewHolder.backgroundVentaja.setVisibility(View.GONE);
                                 }
                             }
@@ -158,10 +154,6 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
                 .with(itemViewHolder.imgUrl.getContext())
                 .load(getImage(frutas.getImgUrl()))
                 .into(itemViewHolder.imgUrl);
-
-
-        //Animation animation = AnimationUtils.loadAnimation(context, R.anim.item_transition_animation);
-        //holder.itemView.startAnimation(animation);
 
     }
 
@@ -186,7 +178,7 @@ public class RecyclerViewAdapterFrutas extends RecyclerView.Adapter<RecyclerView
     @Override
     public Filter getFilter() {
         if (filterHelper == null) {
-            filterHelper = new FilterHelperFrutas(currentList, this, context);
+            filterHelper = new FilteredHelperFrutas(currentList, this, context);
         }
 
         return filterHelper;

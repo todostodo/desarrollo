@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -40,6 +41,7 @@ public class RecyclerViewHistorialConsumo extends RecyclerView.Adapter<RecyclerV
         TextView porciones;
         TextView backgroundAlimento;
         ImageView imgUrlAlimento;
+        CardView cardBackgroudHistoryItem;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -50,6 +52,7 @@ public class RecyclerViewHistorialConsumo extends RecyclerView.Adapter<RecyclerV
             porciones = (TextView) itemView.findViewById(R.id.txtHrPorciones);
             backgroundAlimento = (TextView) itemView.findViewById(R.id.backgroundHrFrutas);
             imgUrlAlimento = (ImageView) itemView.findViewById(R.id.imgUrlHrFrutas);
+            cardBackgroudHistoryItem = (CardView) itemView.findViewById(R.id.cardBackgroudHistoryItem);
 
         }
     }
@@ -75,11 +78,12 @@ public class RecyclerViewHistorialConsumo extends RecyclerView.Adapter<RecyclerV
         HistorialConsumo historialConsumo = this.consumoList.get(position);
 
         viewHolder.nombre.setText(historialConsumo.getNombreAlimentos());
-        viewHolder.consumo.setText("Cantidad cosumida: " + String.valueOf(historialConsumo.getCantidadAlimento()));
-        viewHolder.porciones.setText("Equivalente a porciones: " + String.valueOf(historialConsumo.getUnidadMedida()));
+        viewHolder.consumo.setText(String.valueOf(historialConsumo.getCantidadAlimento()));
+        viewHolder.porciones.setText(String.valueOf(historialConsumo.getUnidadMedida()));
         viewHolder.hora.setText(historialConsumo.getHora());
+        viewHolder.cardBackgroudHistoryItem.setCardBackgroundColor(Color.parseColor("#33" + historialConsumo.getBackgroundAlimento()));
 
-        viewHolder.backgroundAlimento.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(historialConsumo.getBackgroundAlimento())));
+        viewHolder.backgroundAlimento.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#" + historialConsumo.getBackgroundAlimento())));
         Glide
                 .with(viewHolder.imgUrlAlimento.getContext())
                 .load(getImage(historialConsumo.getImgUrl()))

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardBackgroudHistoryItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
-    app:cardBackgroundColor="#F5F4F9"
+    app:cardBackgroundColor="#33F1D890"
     app:cardCornerRadius="15dp"
     app:cardElevation="0dp">
 
@@ -30,7 +31,7 @@
                     android:id="@+id/backgroundHrFrutas"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:background="@drawable/rectangulo_azul_marino" />
+                    android:background="@drawable/rectangulo_blanco" />
 
                 <ImageView
                     android:id="@+id/imgUrlHrFrutas"
@@ -57,7 +58,7 @@
                     android:layout_marginRight="5dp"
                     android:fontFamily="@font/roboto_regular"
                     android:text="@string/textview"
-                    android:textColor="@color/gris_oscuro_subTitulos"
+                    android:textColor="#656E87"
                     android:textSize="16sp" />
 
 
@@ -78,26 +79,61 @@
                         android:textColor="@color/gris_oscuro_subTitulos"
                         android:textSize="16sp" />
 
-                    <TextView
-                        android:id="@+id/txtHrConsumo"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="20dp"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="@string/textview"
-                        android:textColor="@color/gris"
-                        android:textSize="14sp" />
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/txtHrPorciones"
+                        <TextView
+                            android:id="@+id/txtHrConsumo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/textview"
+                            android:textColor="#656E87"
+                            android:textSize="14sp" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="20dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="cantidad"
+                            android:textColor="#656E87"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="@string/textview"
-                        android:textColor="@color/gris"
-                        android:textSize="14sp" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtHrPorciones"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/textview"
+                            android:textColor="#656E87"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="equivalente"
+                            android:textColor="#656E87"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

@@ -55,8 +55,8 @@ public class DetalleConsumoDia extends AppCompatActivity {
     private RelativeLayout _btmCerrarDetalleConsumo;
     private ProgressBar _charFrutas, _chartVerduras;
     private Handler handler = new Handler();
-    private int pStatusFrutas = 0;
-    private boolean ganoFichaDialogFruta = false, ganoFichaDialogVerdura = false;
+    private int pStatusFrutas = 0, pStatusVerduras = 0;
+    private boolean ganoFichaDialogFruta = false, ganoFichaDialogVerdura = false, ganoFichaDialogUltraP = false;
     private double avanceEsfuerzoVerdura, consultarEsfuerzoConsumoVerduras;
     private DecimalFormat reducirDigitosProciones = new DecimalFormat("#.##");
 
@@ -259,13 +259,13 @@ public class DetalleConsumoDia extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (pStatusFrutas < progresoVerduras) {
-                    pStatusFrutas += 1;
+                while (pStatusVerduras < progresoVerduras) {
+                    pStatusVerduras += 1;
 
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            _chartVerduras.setProgress((int) pStatusFrutas);
+                            _chartVerduras.setProgress((int) pStatusVerduras);
 
                         }
                     });
@@ -279,6 +279,7 @@ public class DetalleConsumoDia extends AppCompatActivity {
         }).start();
 
         pStatusFrutas = 0;
+        pStatusVerduras = 0;
 
 
         double caloriasSemanaPasada = calculos.caloriaFija(getApplicationContext(), idNino);
@@ -307,6 +308,12 @@ public class DetalleConsumoDia extends AppCompatActivity {
             msgPersuasivos.addItemsFromJSONMsgPersuasivos(list, TAG, "consumoPlaneadoVerduras", getApplicationContext());
             showDialogFicha(1, idNino, list.get(selectMsg).getTitulo(), list.get(selectMsg).getMensaje());
         }
+        if (alimento.equals("UltraProcesada")) {
+
+            msgPersuasivos.addItemsFromJSONMsgPersuasivos(list, TAG, "consumoPlaneadoUltraP", getApplicationContext());
+            showDialogFicha(1, idNino, list.get(selectMsg).getTitulo(), list.get(selectMsg).getMensaje());
+
+        }
 
         Log.v(TAG, "Size list -----------------------------------------" + list.size() + " Random " + selectMsg);
 
@@ -330,7 +337,7 @@ public class DetalleConsumoDia extends AppCompatActivity {
                         ganoFichaDialogFruta = false;
                         fichaVerdura(idNino);
                     }
-                } else{
+                } else {
                     fichaVerdura(idNino);
                 }
             }
@@ -348,7 +355,7 @@ public class DetalleConsumoDia extends AppCompatActivity {
                         ganoFichaDialogFruta = false;
                         fichaVerdura(idNino);
                     }
-                }else {
+                } else {
                     fichaVerdura(idNino);
                 }
             }
@@ -370,7 +377,11 @@ public class DetalleConsumoDia extends AppCompatActivity {
                         editor.commit();
                         ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 1);
 
+                        ganoFichaDialogVerdura = true;
                         mensajeFichas(idNino, "verduras");
+                    } else {
+                        ganoFichaDialogVerdura = false;
+                        fichaUltraP(idNino);
                     }
                 }
             }
@@ -382,9 +393,40 @@ public class DetalleConsumoDia extends AppCompatActivity {
                         editor.commit();
                         ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 1);
 
+                        ganoFichaDialogVerdura = true;
                         mensajeFichas(idNino, "verduras");
+                    } else {
+                        ganoFichaDialogFruta = false;
+                        fichaUltraP(idNino);
                     }
                 }
+            }
+        } else {
+            ganoFichaDialogVerdura = false;
+            fichaUltraP(idNino);
+        }
+    }
+
+    private void fichaUltraP(int idNino) {
+
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("Calculo", MODE_PRIVATE);
+        if (idNino == 1) {
+            if (sharedPreferences.getBoolean("fichaNino1", true)) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("fichaNino1", false);
+                editor.commit();
+                ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 1);
+
+                mensajeFichas(idNino, "UltraProcesada");
+            }
+        } else if (idNino == 2) {
+            if (sharedPreferences.getBoolean("fichaNino2", true)) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("fichaNino2", false);
+                editor.commit();
+                ninoDao.acumularFichas(TAG, getApplicationContext(), idNino, 1);
+
+                mensajeFichas(idNino, "UltraProcesada");
             }
         }
     }
@@ -437,6 +479,15 @@ public class DetalleConsumoDia extends AppCompatActivity {
                         }
                     }, 1000);
 
+                } else if (ganoFichaDialogVerdura == true) {
+
+                    ganoFichaDialogVerdura = false;
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            fichaUltraP(idNino);
+                        }
+                    }, 1000);
                 }
             }
         });

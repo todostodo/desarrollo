@@ -2,6 +2,7 @@ package com.example.desarrollo.Precentacion.Alimentos;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -55,7 +56,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
     private String f_idAlimento, f_equivalencia, f_unidadMedida, hora, fecha, tipoAlimento;
     private int idNino;
     private ImageView f_imagen;
-    private RelativeLayout f_fondo;
+    private CardView f_fondo;
     private Button _btnRegistrarFruta;
     private Dialog reaccionHijoDialog, ninosDialog, registroAlimentoDialog, msgEducativoDialog;
     private LinearLayout _fruta_linearRecomendacionDos, _btnTerrible, _btnEstaBien, _btnGenia;
@@ -605,7 +606,6 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void cargarDatosFruta() {
 
         String recomendacionDos;
@@ -620,7 +620,8 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
         f_recomendacionDos.setText(getIntent().getExtras().getString("fruta_recomendacionDos"));
         f_ventaja.setText(getIntent().getExtras().getString("fruta_ventaja"));
         avisoTitulo = getIntent().getExtras().getString("fruta_avisoTitulo");
-        f_fondo.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(getIntent().getExtras().getString("fruta_fondo"))));
+        //f_fondo.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#" + getIntent().getExtras().getString("fruta_fondo"))));
+        f_fondo.setCardBackgroundColor(Color.parseColor("#" + getIntent().getExtras().getString("fruta_fondo")));
         f_frase.setText(getIntent().getExtras().getString("fruta_frase"));
         recomendacionDos = getIntent().getExtras().getString("fruta_recomendacionDos");
         tipoAlimento = getIntent().getExtras().getString("fruta_tipoAlimento");
@@ -667,7 +668,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
         f_avisoTitulo = (TextView) findViewById(R.id.fruta_avisoTitulo);
         f_aviso = (TextView) findViewById(R.id.fruta_aviso);
         f_imagen = (ImageView) findViewById(R.id.fruta_imagen);
-        f_fondo = (RelativeLayout) findViewById(R.id.backgroundSelectFruta);
+        f_fondo = (CardView) findViewById(R.id.cardBackgroudInformacio);
         _btmCerrarSelectFrutas = (RelativeLayout) findViewById(R.id.btmCerrarSelectFrutas);
         _btnRegistrarFruta = (Button) findViewById(R.id.btnRegistrarFruta);
         _fruta_linearRecomendacionDos = (LinearLayout) findViewById(R.id.fruta_linearRecomendacionDos);

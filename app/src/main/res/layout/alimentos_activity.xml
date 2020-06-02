@@ -20,12 +20,15 @@
 
             <LinearLayout
                 android:id="@+id/tituloAlimentos"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:orientation="horizontal"
+                app:layout_constraintRight_toLeftOf="@+id/relativeBusquedaAlimentos"
+                app:layout_constraintEnd_toStartOf="@+id/relativeBusquedaAlimentos"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -49,10 +52,11 @@
                 </RelativeLayout>
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="7"
+                    android:gravity="center"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/titulo_alimentos"
                     android:textColor="@color/negro"
@@ -60,12 +64,12 @@
 
             </LinearLayout>
 
-
             <RelativeLayout
+                android:id="@+id/relativeBusquedaAlimentos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginEnd="20dp"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">

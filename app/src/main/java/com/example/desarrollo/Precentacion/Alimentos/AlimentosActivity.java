@@ -23,9 +23,7 @@ import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewAdapterFrutas;
 import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewAdapterUltraprocesados;
 import com.example.desarrollo.R;
 
-
 import java.util.ArrayList;
-
 
 public class AlimentosActivity extends AppCompatActivity {
 
@@ -226,7 +224,7 @@ public class AlimentosActivity extends AppCompatActivity {
         mySearchViewFrutas.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                adapterFrutas.getFilter().filter(query);
+                //adapterFrutas.getFilter().filter(query);
                 return false;
             }
 
@@ -265,7 +263,7 @@ public class AlimentosActivity extends AppCompatActivity {
         mySearchViewVerduras.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                adapterVerduras.getFilter().filter(query);
+                //adapterVerduras.getFilter().filter(query);
                 return false;
             }
 
@@ -345,7 +343,7 @@ public class AlimentosActivity extends AppCompatActivity {
         mySearchViewUltraProcesados.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                adapterUltraprocesados.getFilter().filter(query);
+                //adapterUltraprocesados.getFilter().filter(query);
                 return false;
             }
 

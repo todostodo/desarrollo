@@ -39,7 +39,7 @@ public class ReporteConsumoActivity extends AppCompatActivity {
     private Calendar calendar;
     private List<String> spinnerArrayFecha = new ArrayList<>();
     private String[] getDaysFormat = new String[7];
-    private ImageView btnAlimentosReporte, btnUltraprocesadosReporte;
+    private ImageView btnUltraprocesadosReporte;
     private TextView textSelectUltraprocesador, txtFechaInicioReporteConsumo, txtFechaFinalReporteConsumo, txtSumKcaloriasReporteConsumo;
     private boolean activarUltraprocesados = false, desplazarAlimento = true, desplazarUltraP = false;
     private ConstraintLayout btnOcultarReporteAlimentos, btnOcultarReporteUltraP;
@@ -67,13 +67,6 @@ public class ReporteConsumoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reporte_consumo_activity);
         init();
-
-        btnAlimentosReporte.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         btnUltraprocesadosReporte.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -302,7 +295,6 @@ public class ReporteConsumoActivity extends AppCompatActivity {
         _myRecyclerViewReporteConsumo = (RecyclerView) findViewById(R.id.myRecyclerViewAlimentosReporteConsumo);
         _myRecyclerViewUltraPReporteConsumo = (RecyclerView) findViewById(R.id.myRecyclerViewUltraPReporteConsumo);
         _txtSumPorcionesReporteConsumo = (TextView) findViewById(R.id.txtSumPorcionesReporteConsumo);
-        btnAlimentosReporte = (ImageView) findViewById(R.id.btnAlimentoReporteConsumo);
         btnUltraprocesadosReporte = (ImageView) findViewById(R.id.btnUltraProcesadosReporteConsumo);
         textSelectUltraprocesador = (TextView) findViewById(R.id.txtSelectUltraprocesadosReporte);
         txtFechaInicioReporteConsumo = (TextView) findViewById(R.id.txtFechaInicioReporteConsumo);

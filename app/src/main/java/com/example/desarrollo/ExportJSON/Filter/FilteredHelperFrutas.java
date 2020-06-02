@@ -9,12 +9,12 @@ import com.example.desarrollo.ExportJSON.RecycrerView.RecyclerViewAdapterFrutas;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilterHelperFrutas extends Filter {
+public class FilteredHelperFrutas extends Filter {
     List<Frutas> currentList;
     RecyclerViewAdapterFrutas adapter;
     Context context;
 
-    public FilterHelperFrutas(List<Frutas> currentList, RecyclerViewAdapterFrutas adapter, Context context) {
+    public FilteredHelperFrutas(List<Frutas> currentList, RecyclerViewAdapterFrutas adapter, Context context) {
         this.currentList = currentList;
         this.adapter = adapter;
         this.context = context;
@@ -23,10 +23,9 @@ public class FilterHelperFrutas extends Filter {
     @Override
     protected FilterResults performFiltering(CharSequence constraint) {
 
-        FilterResults filterResults=new FilterResults();
+        FilterResults filterResults = new FilterResults();
 
-        if(constraint != null && constraint.length()>0)
-        {
+        if (constraint != null && constraint.length() > 0) {
             //CHANGE TO UPPER
             constraint = constraint.toString().toUpperCase();
 
@@ -36,13 +35,11 @@ public class FilterHelperFrutas extends Filter {
             Frutas holidays = null;
 
             //ITERATE CURRENT LIST
-            for (int i = 0;i < currentList.size(); i++)
-            {
+            for (int i = 0; i < currentList.size(); i++) {
                 holidays = currentList.get(i);
 
                 //SEARCH
-                if(holidays.getNombre().toUpperCase().contains(constraint) )
-                {
+                if (holidays.getNombre().toUpperCase().contains(constraint)) {
                     //ADD IF FOUND
                     foundFilters.add(holidays);
                 }
@@ -51,8 +48,7 @@ public class FilterHelperFrutas extends Filter {
             //SET RESULTS TO FILTER LIST
             filterResults.count = foundFilters.size();
             filterResults.values = foundFilters;
-        }else
-        {
+        } else {
             //NO ITEM FOUND.LIST REMAINS INTACT
             filterResults.count = currentList.size();
             filterResults.values = currentList;

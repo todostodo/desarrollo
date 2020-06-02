@@ -1,0 +1,84 @@
+{
+    "Recetas": [
+        {
+            "id": 1,
+            "titulo": "Tortitas de brocoli",
+            "tiempoPreparacion": "30 minutos",
+            "ingredientes": "1 taza de brócoli en trozos\n1 zanahoria mediana\n1/2 taza de chicharos\n1/2 taza de elotes cocido en grano\n4 huevos\n15 gr. de queso para fundir bajo en grasa\n2 dientes de ajo picados\n1 cucharada (sopera) de aceite de oliva\nPerejil picado\nSal al gusto",
+            "preparacion": "Precalentar el horno 180°.\n\nLavar y cortar el brócoli y la zanahoria en trozos. Cocinarlo en agua hirviendo por unos 5 minutos, retirarlo y reservarlo.\n\nCocinar también en agua hirviendo los chicharos y el elote.\n\nEn un bol, batir los huevos. Añadir sal, perejil y luego, la zanahoria, los chicharos, el maíz, el brócoli. Mezclar todo para que se cuaje bien.\n\nEn una sartén poner un poco de aceite y dorar los ajos picados e incorporarlos a la mezcla. Con la ayuda de una cuchara hacer tortitas con la mezcla y poner a que se dore por ambos lados.\n\nCubrir una bandeja de horno con papel vegetal. Poner las tortitas doradas en la bandeja y hornearlas por unos 10 minutos. Servir caliente, acompañado por una ensalada de tomates o por arroz blanco.",
+            "background": "r_tortitas_brocoli"
+        },
+        {
+            "id": 2,
+            "titulo": "Omelet de verduras",
+            "tiempoPreparacion": "15 minutos",
+            "ingredientes": "1/2 ramo de brócoli, coliflor o la verdura de preferencia del niño\n5 huevos\n1 dientes de ajo picados\nPerejil picado\nSal al gusto\nAceite de oliva\nConsejos: usar la verdura de preferencia del niño",
+            "preparacion" : "Lavar bien el brócoli o coliflor y dejar que se seque.\n\nEn una olla con abundante agua, poner sal y cocinar por 5 minutos la flor del brócoli o coliflor.\n\nEn una sartén con el aceite saltear durante unos segundos el ajo picado y el perejil.\n\nEnseguida, añadir las flores de brócoli o coliflor y volver a saltear.\n\nBatir todos los huevos en un bol, salpimentarlos, y añadirlos a la sartén. Tapar y cocinar a fuego medio hasta que se cuajen los huevos.\n\nDar vuelta a la tortilla y punto.\n\nRetirar y servir junto con rodajas de tomate.",
+            "background": "r_omelet_verduras"
+        },
+        {
+            "id": 3,
+            "titulo": "Colación de verduras",
+            "tiempoPreparacion": "5 minutos",
+            "ingredientes": "Pepino, zanahoria o jicama\n1/2 limón\nSal\nChile Tajín o chamoy",
+            "preparacion": "Lavar y pelar la verdura que se desea utilizar.\n\nCon el rallador de queso, rallar la verdura.\n\nPoner sal y limón.\n\nAgregar chile Tajín o chamoy al gusto",
+            "background": "r_conlacion_verduras"
+        },
+        {
+            "id": 4,
+            "titulo": "Ensalada de sandía y queso",
+            "tiempoPreparacion": "10 minutos",
+            "ingredientes": "150 gramos de Sandía\n10 unidades de Uvas\n50 gramos de Pera\n100 gramos de queso fresco\n1 unidad de Limón\n1 cucharada postre de Miel de maple\n1 cucharada sopera de maní",
+            "preparacion": "Cortar la sandía en cubos pequeños y retirarles la semilla.\n\nCortar las uvas en mitades y retirar las semillas.\n\nCortar la pera en cubos.\n\nCortar el queso en cubos pequeños.\n\nExprimir el limón y revolverlo con la miel de maple como aderezo.\n\nRevolver todo",
+            "background": "r_ensalada_sandia"
+        },
+        {
+            "id": 5,
+            "titulo": "Ensalada de zanahoria",
+            "tiempoPreparacion": "5 minutos",
+            "ingredientes": "100 gramos de zanahoria rallada\n2 cucharadas de yogurt bajo en grasa (tipo griego)\n1/2 Naranja\n1 pizca de Sal, Pimienta y mostaza\n100 gramos de queso panela en cubos\n1/2 lata de elote",
+            "preparacion": "Para preparar el aderezo se mezcla el yogur, la pizca de mostaza, sal, pimienta y el jugo de media naranja.\n\nEn un recipiente revuelves la zanahoria rallada, el elote, la panela y el aderezo.",
+            "background": "r_ensalada_zanahoria"
+        },
+        {
+            "id": 6,
+            "titulo": "Pan francés vegano con plátano, durazno y uva",
+            "tiempoPreparacion": "10 minutos",
+            "ingredientes": "12 rebanadas Pan Integral\n1 1/2 tazas Leche de almendra\n1 Plátano\n1 pizca Canela\n1 Durazno en cubos\n1 Plátano en rebanadas\n1 taza Uva verde en mitades\n2 cucharadas Azúcar mascabado\n4 cucharadas Aceite de Oliva\n1/4 taza Amaranto",
+            "preparacion": "LICÚA la leche con el plátano y la canela.\n\nPASA cada rebanada de pan por la preparación anterior.\n\nDORA en una sartén con 2 cucharadas de aceite de oliva. Reserva.\n\nSALTEA las frutas con el resto del aceite.\n\nESPOLVOREA el azúcar y dora por unos segundos las frutas.\n\nSIRVE el pan y acompaña con las frutas.\n\nESPOLVOREA el amaranto.",
+            "background": "r_pan_frances"
+        },
+        {
+            "id": 7,
+            "titulo": "Pico de gallo de sandía y pepino",
+            "tiempoPreparacion": "10 minutos",
+            "ingredientes": "4 tazas Sandía en cubos\n1 Pepino picado\n200 gr Queso Panela en cubos\n1/4 Cebolla picada\n40 gr Arándanos\n4 Hoja de Menta picadas\n1/4 taza Aceite de Oliva\n4 cucharadas Vinagre de manzana\n1 cucharada Miel de Abeja\nSal al gusto\nPimienta al gusto",
+            "preparacion": "Coloca en un tazón la sandía, el pepino, la cebolla, los arándanos, la menta y el queso. Reserva.\n\nMezcla el aceite con la miel, el vinagre, salpimienta y bate hasta integrar.\n\nVierte la vinagreta sobre la mezcla de sandía y sirve.",
+            "background": "r_pico_gallo"
+        },
+        {
+            "id": 8,
+            "titulo": "Zumo de verduras y frutas",
+            "tiempoPreparacion": "5 minutos",
+            "ingredientes": "1/2 zanahoria\n1/4 remolacha\n2 fresas\n1, 1/2 manzana roja\n1 taza de jugo de naranja natural",
+            "preparacion": "Lavamos toda la fruta y verdura (se puede pelar las verduras).\n\nQuitamos el corazón a la manzana y la otra mitad de la manzana.\n\nBatimos todo hasta conseguir la textura deseada. (Se puede colar).",
+            "background": "r_zumo"
+        },
+        {
+            "id": 9,
+            "titulo": "Batido de plátano y avena",
+            "tiempoPreparacion": "",
+            "ingredientes": "1 tazas de leche\n1/2 taza de avena tradicional\n1/4 taza de pasas\n1 plátanos\nUna pizca de canela molida",
+            "preparacion": "Vierte la leche en una licuadora.\n\nAñade la avena y las pasas de uva y deja en remojo durante 3 minutos.\n\nEnciende la licuadora y procesa la avena y pasas hasta que estén deshechos.\n\nCorta el plátano y añádelo a la licuadora junto con la canela. Licua hasta alcanzar la textura deseada.",
+            "background": "r_batido_platano"
+        },
+        {
+            "id": 10,
+            "titulo": "Batido de mango y piña",
+            "tiempoPreparacion": "",
+            "ingredientes": "1 mango maduro, cortado en cubos\n1 plátano pequeño\n150 ml de leche de coco\n100 g de piezas de piña\nJugo de naranja (100 ml).",
+            "preparacion": "Vierte los ingredientes en una licuadora\n\nAgrega 5 cubos de hielo\n\nLicua todo.",
+            "background": "r_batido_mango"
+        }
+    ]
+}
