@@ -26,11 +26,11 @@ public class RecyclerViewPreferencias extends RecyclerView.Adapter<RecyclerViewP
     private List<PreferenciasNino> preferencias;
     ChnageStatusListener chnageStatusListener;
 
-    public interface ChnageStatusListener{
+    public interface ChnageStatusListener {
         void onItemChangeListener(int position, PreferenciasNino model);
     }
 
-    public void setModel(ArrayList<PreferenciasNino> models){
+    public void setModel(ArrayList<PreferenciasNino> models) {
         this.preferencias = models;
     }
 
@@ -54,11 +54,10 @@ public class RecyclerViewPreferencias extends RecyclerView.Adapter<RecyclerViewP
 
             nombre = (TextView) itemView.findViewById(R.id.nombreFrutaPreferencias);
             imgUrl = (ImageView) itemView.findViewById(R.id.imgUrlFrutasPreferencias);
-            background  = (CardView) itemView.findViewById(R.id.backgroundPreferencias);
+            background = (CardView) itemView.findViewById(R.id.backgroundPreferencias);
             lyt_checket = (RelativeLayout) itemView.findViewById(R.id.lyt_checked);
         }
     }
-
 
 
     @NonNull
@@ -77,18 +76,18 @@ public class RecyclerViewPreferencias extends RecyclerView.Adapter<RecyclerViewP
 
         final PreferenciasNino model = (PreferenciasNino) this.preferencias.get(position);
 
-        if (model != null){
+        if (model != null) {
             holder.nombre.setText(model.getNombreFruta());
             holder.position = position;
-            holder.background.setCardBackgroundColor(Color.parseColor(model.getBackground()));
+            holder.background.setCardBackgroundColor(Color.parseColor("#" + model.getBackground()));
             Glide
                     .with(holder.imgUrl.getContext())
                     .load(getImage(model.getImgUrlFruta()))
                     .into(holder.imgUrl);
 
-            if (model.isSelect()){
+            if (model.isSelect()) {
                 holder.lyt_checket.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 holder.lyt_checket.setVisibility(View.GONE);
             }
         }
@@ -97,13 +96,13 @@ public class RecyclerViewPreferencias extends RecyclerView.Adapter<RecyclerViewP
             @Override
             public void onClick(View v) {
 
-                if (model.isSelect()){
+                if (model.isSelect()) {
                     model.setSelect(false);
-                }else{
+                } else {
                     model.setSelect(true);
                 }
                 preferencias.set(holder.position, model);
-                if (chnageStatusListener != null){
+                if (chnageStatusListener != null) {
                     chnageStatusListener.onItemChangeListener(holder.position, model);
                 }
 
@@ -117,7 +116,7 @@ public class RecyclerViewPreferencias extends RecyclerView.Adapter<RecyclerViewP
 
     @Override
     public int getItemCount() {
-        if (preferencias != null)  return preferencias.size();
+        if (preferencias != null) return preferencias.size();
         return 0;
     }
 

@@ -870,7 +870,3 @@
     </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>
-
-    <!--
-     android:id="@+id/txtHijoMedidaCintura"
-    -->
