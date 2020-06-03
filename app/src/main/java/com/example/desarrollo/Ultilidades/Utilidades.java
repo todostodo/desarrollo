@@ -26,7 +26,7 @@ public class Utilidades {
                     CAMPO_passwordUsu + " TEXT NOT NULL," +
                     CAMPO_nivel + " INTEGER NOT NULL, " +
                     CAMPO_experiencia + " INTEGER NOT NULL, " +
-                    CAMPO_estadoRegistro + " TINYINT NOT NULL, "+
+                    CAMPO_estadoRegistro + " TINYINT NOT NULL, " +
                     CAMPO_idGlobal + " INTEGER NOT NULL)";
 
     //************************************************************************************************
@@ -119,7 +119,7 @@ public class Utilidades {
                     CAMPO_idRecompensa + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_descripcion + " TEXT NOT NULL, " +
                     CAMPO_valor + " INTEGER NOT NULL, " +
-                    CAMPO_idGlobal+" INTEGER NOT NULL)";
+                    CAMPO_idGlobal + " INTEGER NOT NULL)";
     //****************************************************************************************************ya
     //Constantes para campos de la tabla Nino
     public static final String TABLA_Nino = "Nino";
@@ -295,8 +295,8 @@ public class Utilidades {
             "CREATE TABLE " + "" + TABLA_TiempoAplicacion + " (" +
                     CAMPO_idTiemA + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_idUsuario + " INTEGER NOT NULL, " +
-                    CAMPO_duracion + " TEXT NOT NULL, "+
-                    CAMPO_registroNube + " INTEGER NOT NULL, "+
+                    CAMPO_duracion + " TEXT NOT NULL, " +
+                    CAMPO_registroNube + " INTEGER NOT NULL, " +
                     "FOREIGN KEY (" + CAMPO_idUsuario + ") REFERENCES Usuario (" + CAMPO_idUsuario + "))";
 //*********************************************************************************************************************************************
 
@@ -307,8 +307,8 @@ public class Utilidades {
             "CREATE TABLE " + "" + TABLA_GestoTerrible + " (" +
                     CAMPO_idTer + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_idNino + " INTEGER NOT NULL, " +
-                    CAMPO_IdAlimento + " TEXT NOT NULL, "+
-                    CAMPO_registroNube + " INTEGER NOT NULL, "+
+                    CAMPO_IdAlimento + " TEXT NOT NULL, " +
+                    CAMPO_registroNube + " INTEGER NOT NULL, " +
                     "FOREIGN KEY (" + CAMPO_idNino + ") REFERENCES Nino (" + CAMPO_idNino + "))";
     //*******************************************************************************************************************************************
 
@@ -320,8 +320,8 @@ public class Utilidades {
             "CREATE TABLE " + "" + TABLA_GestoBien + " (" +
                     CAMPO_idBien + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_idNino + " INTEGER NOT NULL, " +
-                    CAMPO_IdAlimento + " TEXT NOT NULL, "+
-                    CAMPO_registroNube + " INTEGER NOT NULL, "+
+                    CAMPO_IdAlimento + " TEXT NOT NULL, " +
+                    CAMPO_registroNube + " INTEGER NOT NULL, " +
                     "FOREIGN KEY (" + CAMPO_idNino + ") REFERENCES Nino (" + CAMPO_idNino + "))";
 
     //**********************************************************************************************************************************************
@@ -333,8 +333,8 @@ public class Utilidades {
             "CREATE TABLE " + "" + TABLA_GestoGenial + " (" +
                     CAMPO_idGenial + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_idNino + " INTEGER NOT NULL, " +
-                    CAMPO_IdAlimento + " TEXT NOT NULL, "+
-                    CAMPO_registroNube + " INTEGER NOT NULL, "+
+                    CAMPO_IdAlimento + " TEXT NOT NULL, " +
+                    CAMPO_registroNube + " INTEGER NOT NULL, " +
                     "FOREIGN KEY (" + CAMPO_idNino + ") REFERENCES Nino (" + CAMPO_idNino + "))";
 
     //************************************************************************************************************************************
@@ -346,7 +346,7 @@ public class Utilidades {
             "CREATE TABLE " + "" + TABLA_VioNotificacion + " (" +
                     CAMPO_idVioNoti + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     CAMPO_idUsuario + " INTEGER NOT NULL, " +
-                    CAMPO_registroNube + " INTEGER NOT NULL, "+
+                    CAMPO_registroNube + " INTEGER NOT NULL, " +
                     "FOREIGN KEY (" + CAMPO_idUsuario + ") REFERENCES Usuario (" + CAMPO_idUsuario + "))";
 
 }
