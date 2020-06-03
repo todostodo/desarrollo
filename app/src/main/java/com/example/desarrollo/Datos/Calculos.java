@@ -1168,7 +1168,6 @@ public class Calculos {
                     " WHERE (" + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " >= " + " DATE(" + inicio + ") AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " <= " + " DATE(" + fecha + "))" +
                     " AND (" + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " != 'Fruta' AND " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " != 'Verdura')" +
                     " AND " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idNino + " == " + idNino, null);
-
             if (cursor.moveToFirst()) {
                 do {
                     System.out.println("SUMATORIA: " + cursor.getInt(0));

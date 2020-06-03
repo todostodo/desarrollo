@@ -81,7 +81,7 @@ public class NinoDao {
                 editor.putInt("instalacion", 1);
                 editor.putInt("noti", 0);
                 editor.putInt("dia", dias);
-                editor.putInt("valorNoti", 1);
+                editor.putInt("valorNoti", 0);
                 editor.putInt("anterior", dias);
                 editor.putInt("curso", dias);
                 editor.putInt("llave1", 0);
