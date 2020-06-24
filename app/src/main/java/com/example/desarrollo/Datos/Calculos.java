@@ -276,7 +276,7 @@ public class Calculos {
 
 
                             } else {
-                                Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
                             }
 
                         } catch (Exception e) {
@@ -441,7 +441,7 @@ public class Calculos {
 
 
                             } else {
-                                Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
                             }
 
                         } catch (Exception e) {
@@ -760,7 +760,7 @@ public class Calculos {
 
 
                     } else {
-                        Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -903,7 +903,7 @@ public class Calculos {
 
 
                     } else {
-                        Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -1024,7 +1024,7 @@ public class Calculos {
 
 
                     } else {
-                        Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (Exception e) {
