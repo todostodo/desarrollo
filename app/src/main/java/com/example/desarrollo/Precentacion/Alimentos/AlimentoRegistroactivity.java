@@ -328,7 +328,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
                 fichaPrimerIntento();
                 experienciaUsuario();
                 reaccionHijoDialog.dismiss();
-                msgEducativoDialog();
+                //msgEducativoDialog();
                 int ali = Integer.parseInt(f_idAlimento);
                 GestosDao.insertGestoTerri("gestoTer", getApplicationContext(), idNino, ali, 1);
             }
@@ -340,7 +340,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
                 fichaPrimerIntento();
                 experienciaUsuario();
                 reaccionHijoDialog.dismiss();
-                msgEducativoDialog();
+                //msgEducativoDialog();
                 int ali = Integer.parseInt(f_idAlimento);
                 GestosDao.insertGestoBien("gestoBien", getApplicationContext(), idNino, ali, 1);
             }
@@ -352,7 +352,7 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
                 experienciaUsuario();
                 fichaPrimerIntento();
                 reaccionHijoDialog.dismiss();
-                msgEducativoDialog();
+                //msgEducativoDialog();
                 int ali = Integer.parseInt(f_idAlimento);
                 GestosDao.insertGestoGenial("gestoGenial", getApplicationContext(), idNino, ali, 1);
             }
@@ -441,7 +441,8 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
                             fichaNoConoceAlimento();
                         }
                     }, 1000);
-
+                } else if (ganoFinaPrimerIntento == false) {
+                    msgEducativoDialog();
                 }
                 _epicFichaFondoNegro.startAnimation(togo);
                 _epicFichaContenido.startAnimation(togo);
@@ -577,6 +578,8 @@ public class AlimentoRegistroactivity extends AppCompatActivity {
                     }
                 }
             }
+        } else {
+            msgEducativoDialog();
         }
     }
     //-----------------------------------------------------------

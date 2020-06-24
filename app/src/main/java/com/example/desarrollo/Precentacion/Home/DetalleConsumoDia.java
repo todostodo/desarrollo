@@ -117,8 +117,8 @@ public class DetalleConsumoDia extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), HijoRegistroActivity.class);
-                startActivity(intent);
                 finish();
+                startActivity(intent);
             }
         });
 

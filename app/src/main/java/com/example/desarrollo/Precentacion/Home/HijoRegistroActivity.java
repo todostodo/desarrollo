@@ -167,34 +167,6 @@ public class HijoRegistroActivity extends AppCompatActivity implements RecyclerV
 
     private void validacionEdadNino() {
 
-       /* _edadTres.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                auxEdad = 3;
-                validacionEdadNinoActivaEvento(_edadTres);
-                listTexView.add(_edadTres);
-                validacionEdadNinoDesactivarEvento();
-            }
-        });
-        _edadCuatro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                auxEdad = 4;
-                validacionEdadNinoActivaEvento(_edadCuatro);
-                listTexView.add(_edadCuatro);
-                validacionEdadNinoDesactivarEvento();
-            }
-        });
-        _edadCinco.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                auxEdad = 5;
-                validacionEdadNinoActivaEvento(_edadCinco);
-                listTexView.add(_edadCinco);
-                validacionEdadNinoDesactivarEvento();
-            }
-        });*/
-
         _edadSeis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
