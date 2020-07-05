@@ -165,21 +165,21 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
                         if (cantidad.equals("")) {
                             toast.toastp(parent.getContext(), "Ingrese la cantidad");
                         } else {
+
+                            String contenido = txtContenidoUltrap.getText().toString();
+                            String nuevoContendio = contenido.replaceAll("[a-zA-Z ]", "");
+
                             if (spinnerActive == false) {
                                 if (txtUnidadMedida.getText().toString().equals("Pieza")) {
-                                    equivalencia = calculos.obtenerEquivalenciaPieza(Double.valueOf(cantidad), kcalorias);
+                                    equivalencia = calculos.obtenerEquivalenciaPieza(Double.valueOf(cantidad), kcalorias, Double.valueOf(nuevoContendio));
                                 } else if (txtUnidadMedida.getText().toString().equals("Bolsa") || txtUnidadMedida.getText().toString().equals("Paquete")) {
-
                                     equivalencia = calculos.obtenerEquivalenciaPaquete(Double.valueOf(cantidad), kcalorias);
                                 }
                             }
                             if (spinnerActive == true) {
                                 if (spinnerUnidadMedida.getSelectedItem().toString().equals("Pieza")) {
-                                    equivalencia = calculos.obtenerEquivalenciaPieza(Double.valueOf(cantidad), kcalorias);
+                                    equivalencia = calculos.obtenerEquivalenciaPieza(Double.valueOf(cantidad), kcalorias, Double.valueOf(nuevoContendio));
                                 } else if (spinnerUnidadMedida.getSelectedItem().toString().equals("Paquete")) {
-                                    String contenido = txtContenidoUltrap.getText().toString();
-                                    String nuevoContendio = contenido.replaceAll("[a-zA-Z ]", "");
-
                                     equivalencia = calculos.obtenerEquivalenciaPaquete(Double.valueOf(nuevoContendio), kcalorias);
                                 }
                             }
@@ -257,10 +257,10 @@ public class RecyclerViewAdapterUltraprocesados extends RecyclerView.Adapter<Rec
                         idNino = listNinoDisponible.get(_myRecyclerViewNino.getChildAdapterPosition(v)).getIdNino();
                         registrarConsumo(context, idAlimentoUltrap, kcalorias, cantidad, equivalencia);
                         ninoDialog.dismiss();
-                        if (idNino == 1){
+                        if (idNino == 1) {
                             if (lineaBaseGeneradaNinoUno())
                                 msgEducativoDialog(context);
-                        } else if (idNino == 2){
+                        } else if (idNino == 2) {
                             if (lineaBaseGeneradaNinoDos())
                                 msgEducativoDialog(context);
                         }

@@ -38,12 +38,11 @@ public class Calculos {
         return round;
     }
 
-    public static double obtenerEquivalenciaPieza(double cantidad, double kcalorias) {
-
-        double equivalencia = cantidad * kcalorias;
+    public static double obtenerEquivalenciaPieza(double cantidad, double kcalorias, double contenidoNeto) {
+        double contenidoPieza = kcalorias / contenidoNeto;
+        double equivalencia = cantidad * contenidoPieza;
         double round = rendondearValor(equivalencia);
         return round;
-
     }
 
     public static double obtenerEquivalenciaPaquete(double contenidoNeto, double kcalorias) {
@@ -276,7 +275,7 @@ public class Calculos {
 
 
                             } else {
-                               // Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
                             }
 
                         } catch (Exception e) {
@@ -760,7 +759,7 @@ public class Calculos {
 
 
                     } else {
-                       // Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -903,7 +902,7 @@ public class Calculos {
 
 
                     } else {
-                      //  Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
+                        //  Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -1024,7 +1023,7 @@ public class Calculos {
 
 
                     } else {
-                      //  Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
+                        //  Toast.makeText(context, "no entre", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (Exception e) {
@@ -1274,7 +1273,7 @@ public class Calculos {
 
             Cursor cursor = database.rawQuery("SELECT " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Equivalencia + " FROM " + Utilidades.TABLA_DetalleRegistro +
                     " INNER JOIN " + Utilidades.TABLA_Registro + " ON " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idRegistro + " = " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_idRegistro +
-                            " AND (" + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " != 'Fruta' AND " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " != 'Verdura')" +
+                    " AND (" + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " != 'Fruta' AND " + Utilidades.TABLA_DetalleRegistro + "." + Utilidades.CAMPO_Tipo + " != 'Verdura')" +
                     " WHERE " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_idNino + " = " + idNino +
                     " AND " + Utilidades.TABLA_Registro + "." + Utilidades.CAMPO_FechaRegistro + " == '" + fecha + "'", null);
 
