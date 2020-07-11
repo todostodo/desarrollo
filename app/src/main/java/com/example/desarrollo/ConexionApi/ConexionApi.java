@@ -39,7 +39,7 @@ public class ConexionApi extends AppCompatActivity {
         queue = Volley.newRequestQueue(context);
 
 
-        String url = "http://68.183.148.243/Persuhabit/recompensas";//establece ruta al servidor para obtener los datos
+        String url = "http://161.35.14.188/Persuhabit/recompensas";//establece ruta al servidor para obtener los datos
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -70,7 +70,7 @@ public class ConexionApi extends AppCompatActivity {
     //****************este metodo recive la recompensa en la variable "descrip", y el valor corespondiente
     //****************a esta en la variable "valor".
     /*public static void insertarRecompensaNueva(final Context context, String descrip, int valor) {
-        String url = "http://68.183.148.243/Persuhabit/recompensas";
+        String url = "http://161.35.14.188/Persuhabit/recompensas";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         final String descrip1;
@@ -116,7 +116,7 @@ public class ConexionApi extends AppCompatActivity {
     //-----------------------------------------[Eliminar una recompensa]
     //********************Este metodo recive el id de la recompensa a eliminar en la variable "id"
     public static void EliminarRecompensa(Context context, int id) {
-        String url = "http://68.183.148.243/Persuhabit/recompensas/eliminar";
+        String url = "http://161.35.14.188/Persuhabit/recompensas/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // POST parameters
@@ -154,7 +154,7 @@ public class ConexionApi extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(context);
 
-        String url = "http://68.183.148.243/Persuhabit/usuarios";//establece ruta al servidor para obtener los datos
+        String url = "http://161.35.14.188/Persuhabit/usuarios";//establece ruta al servidor para obtener los datos
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -184,7 +184,7 @@ public class ConexionApi extends AppCompatActivity {
     /*public static boolean InsertarUsuarioNuevo(Context context, String nomu, String apmu, String appu, String correo, String pwdu, int nivel, int experiencia, int estadoReg) {
 
         boolean respuesta = true;
-        String url = "http://68.183.148.243/Persuhabit/usuario/registro";
+        String url = "http://161.35.14.188/Persuhabit/usuario/registro";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -218,7 +218,7 @@ public class ConexionApi extends AppCompatActivity {
     ////////////////////////[Actualizar estado del usuario]
 
     public static void updateEstadoUsuario(Context context, int idUsuario) {
-        String url = "http://68.183.148.243/Persuhabit/usuario/estado";
+        String url = "http://161.35.14.188/Persuhabit/usuario/estado";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         Map<String, Object> stringObjectMap = new HashMap<String, Object>();
@@ -244,7 +244,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[eliminar un usuario]
     public static void EliminaUsuario(Context context, int id) {
-        String url = "http://68.183.148.243/Persuhabit/usuarios/eliminar";
+        String url = "http://161.35.14.188/Persuhabit/usuarios/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // POST parameters
@@ -282,7 +282,7 @@ public class ConexionApi extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(context);
 
-        String url = "http://68.183.148.243/Persuhabit/nino";//establece ruta al servidor para obtener los datos
+        String url = "http://161.35.14.188/Persuhabit/nino";//establece ruta al servidor para obtener los datos
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -310,7 +310,7 @@ public class ConexionApi extends AppCompatActivity {
 
     //////////////////////////////////[Insertar un nuevo niño]
     public static void insertarNiñoNuevo(final Context context, int idusu, String genero, String nomn, String appn, String apmn, int edad, double peso, double estat, double lineabultra, double lineabv, double leneabf, int totfich, double esfuerzoultra, double esfuerzof, double esfuerzov) {
-        String url = "http://68.183.148.243/Persuhabit/nino";
+        String url = "http://161.35.14.188/Persuhabit/nino";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -387,7 +387,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////[Actualizar linea base de ultra procesados, frutas y verduras del niño]
     public static void ActualizaLineaBase_Fruta_Verdura_Ultra(Context context, double lineabultra, double lineabv, double lineabf, int id) {
-        String url = "http://68.183.148.243/Persuhabit/nino/LineaBase";
+        String url = "http://161.35.14.188/Persuhabit/nino/LineaBase";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -418,7 +418,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////[Actualizar Esfuerzo de ultra procesados, frutas y verduras del niño]
     public static void ActualizaEsfuerzo_Fruta_Verdura_Ultra(Context context, double esfuerzoultra, double esfuerzof, double esfuerzov, int id) {
-        String url = "http://68.183.148.243/Persuhabit/nino/esfuerzo";
+        String url = "http://161.35.14.188/Persuhabit/nino/esfuerzo";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -448,7 +448,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[eliminar niño]
     public static void EliminaNiño(Context context, int id) {
-        String url = "http://68.183.148.243/Persuhabit/nino/eliminar";
+        String url = "http://161.35.14.188/Persuhabit/nino/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // POST parameters
@@ -486,7 +486,7 @@ public class ConexionApi extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(context);
 
-        String url = "http://68.183.148.243/Persuhabit/registro";//establece ruta al servidor para obtener los datos
+        String url = "http://161.35.14.188/Persuhabit/registro";//establece ruta al servidor para obtener los datos
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -514,7 +514,7 @@ public class ConexionApi extends AppCompatActivity {
 
     //////////////////////////////////[Insertar un nuevo registro]
     public static void insertarRegistroNuevo(Context context, int idNino, String fechar) {
-        String url = "http://68.183.148.243/Persuhabit/registro";
+        String url = "http://161.35.14.188/Persuhabit/registro";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -544,7 +544,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[eliminar registro]
     public static void EliminaRegistro(Context context, int id) {
-        String url = "http://68.183.148.243/Persuhabit/registro/eliminar";
+        String url = "http://161.35.14.188/Persuhabit/registro/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // POST parameters
@@ -582,7 +582,7 @@ public class ConexionApi extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(context);
 
-        String url = "http://68.183.148.243/Persuhabit/MsgPersuasivo";//establece ruta al servidor para obtener los datos
+        String url = "http://161.35.14.188/Persuhabit/MsgPersuasivo";//establece ruta al servidor para obtener los datos
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -610,7 +610,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ///////////////////////[Insertar un Mensaje Persuasivo nuevo]
     public static void PonerMensajes_PersuasivosNuevo(Context context, String tipo, String msg) {
-        String url = "http://68.183.148.243/Persuhabit/MsgPersuasivo";
+        String url = "http://161.35.14.188/Persuhabit/MsgPersuasivo";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -640,7 +640,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[eliminar Mensaje Persuasivo]
     public static void EliminaMensajes_Persuasivos(Context context, int id) {
-        String url = "http://68.183.148.243/Persuhabit/MsgPersuasivo/eliminar";
+        String url = "http://161.35.14.188/Persuhabit/MsgPersuasivo/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // POST parameters
@@ -678,7 +678,7 @@ public class ConexionApi extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(context);
 
-        String url = "http://68.183.148.243/Persuhabit/HistorialNutri";//establece ruta al servidor para obtener los datos
+        String url = "http://161.35.14.188/Persuhabit/HistorialNutri";//establece ruta al servidor para obtener los datos
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -706,7 +706,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ///////////////////////[Insertar Historial_Nutricion nuevo]
     public static void PonerHistorial_NutricionNuevo(Context context, int idusu, int Respuesta_Nutri) {
-        String url = "http://68.183.148.243/Persuhabit/HistorialNutri";
+        String url = "http://161.35.14.188/Persuhabit/HistorialNutri";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -736,7 +736,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[eliminar Historial_Nutricion]
     public static void EliminaHistorial_Nutricion(Context context, int id) {
-        String url = "http://68.183.148.243/Persuhabit/HistorialNutri/eliminar";
+        String url = "http://161.35.14.188/Persuhabit/HistorialNutri/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // POST parameters
@@ -774,7 +774,7 @@ public class ConexionApi extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(context);
 
-        String url = "http://68.183.148.243/Persuhabit/HistorialAuto";//establece ruta al servidor para obtener los datos
+        String url = "http://161.35.14.188/Persuhabit/HistorialAuto";//establece ruta al servidor para obtener los datos
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -802,7 +802,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ///////////////////////[Insertar Historial_Autoeficacia nuevo]
     public static void PonerHistorial_AutoeficaciaNuevo(Context context, int idusu, String RespuestaAuto) {
-        String url = "http://68.183.148.243/Persuhabit/HistorialAuto";
+        String url = "http://161.35.14.188/Persuhabit/HistorialAuto";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -832,7 +832,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[eliminar Historial_Autoeficacia]
     public static void EliminaHistorial_Autoeficacia(Context context, int id) {
-        String url = "http://68.183.148.243/Persuhabit/HistorialAuto/eliminar";
+        String url = "http://161.35.14.188/Persuhabit/HistorialAuto/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // POST parameters
@@ -870,7 +870,7 @@ public class ConexionApi extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(context);
 
-        String url = "http://68.183.148.243/Persuhabit/GustoVerdura";//establece ruta al servidor para obtener los datos
+        String url = "http://161.35.14.188/Persuhabit/GustoVerdura";//establece ruta al servidor para obtener los datos
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -898,7 +898,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ///////////////////////[Insertar GustoVerdura nuevo]
     public static void insertarGustoVerduraNuevo(Context context, String nombreV, int siGustaV, int noGustaV, int conoscoV, int idNino) {
-        String url = "http://68.183.148.243/Persuhabit/GustoVerdura";
+        String url = "http://161.35.14.188/Persuhabit/GustoVerdura";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -931,7 +931,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[eliminar GustoVerdura]
     public static void EliminaGustoVerdura(Context context, int id) {
-        String url = "http://68.183.148.243/Persuhabit/GustoVerdura/eliminar";
+        String url = "http://161.35.14.188/Persuhabit/GustoVerdura/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // POST parameters
@@ -969,7 +969,7 @@ public class ConexionApi extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(context);
 
-        String url = "http://68.183.148.243/Persuhabit/GustoFrutas";//establece ruta al servidor para obtener los datos
+        String url = "http://161.35.14.188/Persuhabit/GustoFrutas";//establece ruta al servidor para obtener los datos
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -997,7 +997,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ///////////////////////[Insertar GustoFrutas nuevo]
     public static void insertarGustoFrutasNuevo(Context context, int idNino, String nombreF, int siGustaF, int noGustaF, int conoscoF) {
-        String url = "http://68.183.148.243/Persuhabit/GustoFrutas";
+        String url = "http://161.35.14.188/Persuhabit/GustoFrutas";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -1030,7 +1030,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[eliminar GustoFrutas]
     public static void EliminaGustoFrutas(Context context, int id) {
-        String url = "http://68.183.148.243/Persuhabit/GustoFrutas/eliminar";
+        String url = "http://161.35.14.188/Persuhabit/GustoFrutas/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // POST parameters
@@ -1068,7 +1068,7 @@ public class ConexionApi extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(context);
 
-        String url = "http://68.183.148.243/Persuhabit/EnviaMsg";//establece ruta al servidor para obtener los datos
+        String url = "http://161.35.14.188/Persuhabit/EnviaMsg";//establece ruta al servidor para obtener los datos
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -1096,7 +1096,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ///////////////////////[Insertar Envia_Msg nuevo]
     public static void PonerEnvia_MsgNuevo(Context context, int idusu, int idmsg, String horame, String Fechame) {
-        String url = "http://68.183.148.243/Persuhabit/EnviaMsg";
+        String url = "http://161.35.14.188/Persuhabit/EnviaMsg";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -1128,7 +1128,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[eliminar Envia_Msg]
     public static void EliminaEnvia_Msg(Context context, int id) {
-        String url = "http://68.183.148.243/Persuhabit/EnviaMsg/eliminar";
+        String url = "http://161.35.14.188/Persuhabit/EnviaMsg/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // POST parameters
@@ -1166,7 +1166,7 @@ public class ConexionApi extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(context);
 
-        String url = "http://68.183.148.243/Persuhabit/DetalleReg";//establece ruta al servidor para obtener los datos
+        String url = "http://161.35.14.188/Persuhabit/DetalleReg";//establece ruta al servidor para obtener los datos
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -1194,7 +1194,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ///////////////////////[Insertar DetalleReg nuevo]
     public static void insertarDetalleRegNuevo(Context context, int idNino, int idalimento, double equi, double cad, double umedr, String hora, String tipo) {
-        String url = "http://68.183.148.243/Persuhabit/DetalleReg";
+        String url = "http://161.35.14.188/Persuhabit/DetalleReg";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -1229,7 +1229,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[eliminar DetalleReg]
     public static void EliminaDetalleReg(Context context, int id) {
-        String url = "http://68.183.148.243/Persuhabit/DetalleReg/eliminar";
+        String url = "http://161.35.14.188/Persuhabit/DetalleReg/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // POST parameters
@@ -1267,7 +1267,7 @@ public class ConexionApi extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(context);
 
-        String url = "http://68.183.148.243/Persuhabit/CuestionarioNutri";//establece ruta al servidor para obtener los datos
+        String url = "http://161.35.14.188/Persuhabit/CuestionarioNutri";//establece ruta al servidor para obtener los datos
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -1295,7 +1295,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ///////////////////////[Insertar Cuestionario_Nutricion nuevo]
     public static void PonerCuestionario_NutricionNuevo(Context context, int idHistoNutri, String Preg_Nutri, String Res_Pre_Nutri, int Msg) {
-        String url = "http://68.183.148.243/Persuhabit/CuestionarioNutri";
+        String url = "http://161.35.14.188/Persuhabit/CuestionarioNutri";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -1327,7 +1327,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[eliminar Cuestionario_Nutricion]
     public static void EliminaCuestionario_Nutricion(Context context, int id) {
-        String url = "http://68.183.148.243/Persuhabit/CuestionarioNutri/eliminar";
+        String url = "http://161.35.14.188/Persuhabit/CuestionarioNutri/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // POST parameters
@@ -1365,7 +1365,7 @@ public class ConexionApi extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(context);
 
-        String url = "http://68.183.148.243/Persuhabit/CanjeFi";//establece ruta al servidor para obtener los datos
+        String url = "http://161.35.14.188/Persuhabit/CanjeFi";//establece ruta al servidor para obtener los datos
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -1393,7 +1393,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ///////////////////////[Insertar CanjeFi nuevo]
     public static void insertarCanjeFiNuevo(Context context, int idNino, int idrecom, String fechacanje, int Activo) {
-        String url = "http://68.183.148.243/Persuhabit/CanjeFi";
+        String url = "http://161.35.14.188/Persuhabit/CanjeFi";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -1425,7 +1425,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[eliminar CanjeFi]
     public static void EliminaCanjeFi(Context context, int id) {
-        String url = "http://68.183.148.243/Persuhabit/CanjeFi/eliminar";
+        String url = "http://161.35.14.188/Persuhabit/CanjeFi/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // POST parameters
@@ -1463,7 +1463,7 @@ public class ConexionApi extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(context);
 
-        String url = "http://68.183.148.243/Persuhabit/tutor";//establece ruta al servidor para obtener los datos
+        String url = "http://161.35.14.188/Persuhabit/tutor";//establece ruta al servidor para obtener los datos
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -1491,7 +1491,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ///////////////////////[Insertar Tutor nuevo]
     public static void PonerTutorNuevo(Context context, int idusu, String nomt, String appt, String appmt, String parent, int msg, String correo, int pwdt) {
-        String url = "http://68.183.148.243/Persuhabit/tutor";
+        String url = "http://161.35.14.188/Persuhabit/tutor";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -1527,7 +1527,7 @@ public class ConexionApi extends AppCompatActivity {
 
     ////////////////////////////////////////[eliminar Tutor]
     public static void EliminaTutor(Context context, int id) {
-        String url = "http://68.183.148.243/Persuhabit/tutor/eliminar";
+        String url = "http://161.35.14.188/Persuhabit/tutor/eliminar";
         RequestQueue queue = Volley.newRequestQueue(context);
 
         // POST parameters
@@ -1559,7 +1559,7 @@ public class ConexionApi extends AppCompatActivity {
 
     //////////////////////////////////[Insertar un nuevo TiempoAplicacion]
     public static void insertarTiempoAplicacion(Context context, int idusu, String duracion) {
-        String url = "http://68.183.148.243/Persuhabit/tiempoaplicacion";
+        String url = "http://161.35.14.188/Persuhabit/tiempoaplicacion";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -1589,7 +1589,7 @@ public class ConexionApi extends AppCompatActivity {
 
     //////////////////////////////////[Insertar un nuevo GestoTerrible]
     public static void insertarGestoTerrible(Context context, int idNino, int idalimento) {
-        String url = "http://68.183.148.243/Persuhabit/GestoTerrible";
+        String url = "http://161.35.14.188/Persuhabit/GestoTerrible";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -1619,7 +1619,7 @@ public class ConexionApi extends AppCompatActivity {
 
     //////////////////////////////////[Insertar un nuevo GestoBien]
     public static void insertarGestoBien(Context context, int idNino, int idalimento) {
-        String url = "http://68.183.148.243/Persuhabit/GestoBien";
+        String url = "http://161.35.14.188/Persuhabit/GestoBien";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -1649,7 +1649,7 @@ public class ConexionApi extends AppCompatActivity {
 
     //////////////////////////////////[Insertar un nuevo GestoGenial]
     public static void insertarGestoGenial(Context context, int idNino, int idalimento) {
-        String url = "http://68.183.148.243/Persuhabit/GestoGenial";
+        String url = "http://161.35.14.188/Persuhabit/GestoGenial";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
@@ -1681,7 +1681,7 @@ public class ConexionApi extends AppCompatActivity {
 
     //////////////////////////////////[Insertar un nuevo VioNotificacion]
     public static void insertarVioNotificacion(Context context, int idusu) {
-        String url = "http://68.183.148.243/Persuhabit/VioNotificacion";
+        String url = "http://161.35.14.188/Persuhabit/VioNotificacion";
         RequestQueue queue = Volley.newRequestQueue(context);
 
 // POST parameters
