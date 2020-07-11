@@ -82,7 +82,7 @@ public class CambiarPasswordActivity extends AppCompatActivity {
                                  */
 
                                 SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("Usuario", MODE_PRIVATE);
-                                String url = "http://68.183.148.243/Persuhabit/usuario/password";
+                                String url = "http://161.35.14.188/Persuhabit/usuario/password";
                                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
                                 Map<String, Object> params = new HashMap<String, Object>();

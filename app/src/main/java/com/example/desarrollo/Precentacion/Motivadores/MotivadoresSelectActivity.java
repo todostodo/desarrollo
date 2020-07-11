@@ -119,7 +119,7 @@ public class MotivadoresSelectActivity extends AppCompatActivity {
                         if (networkInfo == true) {
                             //ConexionApi.insertarRecompensaNueva(getApplicationContext(), descripcion, Integer.valueOf(valor));
 
-                            String url = "http://68.183.148.243/Persuhabit/recompensas";
+                            String url = "http://161.35.14.188/Persuhabit/recompensas";
                             RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
                             Map<String, Object> params = new HashMap<String, Object>();

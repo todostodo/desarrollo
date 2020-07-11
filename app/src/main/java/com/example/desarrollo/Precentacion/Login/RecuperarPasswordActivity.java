@@ -155,7 +155,7 @@ public class RecuperarPasswordActivity extends AppCompatActivity {
                     VERIFICAR ANTES SI EL CORREO SE ENCUENTRA REGISTRADO EN LA BASE DE DATOS
                     */
 
-                    String url = "http://68.183.148.243/Persuhabit/usuario/correo";
+                    String url = "http://161.35.14.188/Persuhabit/usuario/correo";
                     RequestQueue queue = Volley.newRequestQueue(this);
 
                     Map<String, Object> stringObjectMap = new HashMap<String, Object>();

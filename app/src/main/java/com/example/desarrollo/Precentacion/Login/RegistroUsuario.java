@@ -149,7 +149,7 @@ public class RegistroUsuario extends AppCompatActivity {
 
     private void addUserWebService(final String nomu, final String appu, final String apmu, final String correo, final String pwdu, final int nivel, final int experiencia, final int estadoReg) {
 
-        String url = "http://68.183.148.243/Persuhabit/usuario/registro";
+        String url = "http://161.35.14.188/Persuhabit/usuario/registro";
         RequestQueue queue = Volley.newRequestQueue(this);
 
         Map<String, Object> stringObjectMap = new HashMap<String, Object>();

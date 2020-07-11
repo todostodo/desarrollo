@@ -141,7 +141,7 @@ public class PerfilAjustesActivity extends AppCompatActivity {
 
                                 if (confirmPass == true) {
 
-                                    String url = "http://68.183.148.243/Persuhabit/usuario/correo";
+                                    String url = "http://161.35.14.188/Persuhabit/usuario/correo";
                                     RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
                                     Map<String, Object> params = new HashMap<String, Object>();
@@ -268,7 +268,7 @@ public class PerfilAjustesActivity extends AppCompatActivity {
                                             toastp.toastp(getApplicationContext(), "La contraseña ingresada es incorrecta");
                                         } else {
 
-                                            String url = "http://68.183.148.243/Persuhabit/usuario/password";
+                                            String url = "http://161.35.14.188/Persuhabit/usuario/password";
                                             RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
                                             Map<String, Object> params = new HashMap<String, Object>();

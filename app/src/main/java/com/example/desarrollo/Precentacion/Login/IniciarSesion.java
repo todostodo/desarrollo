@@ -274,7 +274,7 @@ public class IniciarSesion extends AppCompatActivity implements GoogleApiClient.
 
     private void loginUserWebService(final String correo, final String password) {
 
-        String url = "http://68.183.148.243/Persuhabit/usuario/login";
+        String url = "http://161.35.14.188/Persuhabit/usuario/login";
         RequestQueue queue = Volley.newRequestQueue(this);
 
         Map<String, Object> stringObjectMap = new HashMap<String, Object>();
